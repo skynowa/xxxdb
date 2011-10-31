@@ -1,0 +1,17 @@
+##### Dirs and files for ignoring #####
+
+
+##### dirs #####
+debug
+release
+
+
+##### files #####
+TODO.txt
+base.db
+image.png
+Makefile
+Makefile.Debug
+Makefile.Release
+.project
+.cproject
