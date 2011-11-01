@@ -138,7 +138,7 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.2" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Libs/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.D:/Libs/QtSDK/pythongdb/python_2.7based/gdb-i686-pc-mingw32.exe</value>
+    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Soft/Coding/_C++/Qt_creator_2.2.1/mingw/bin/gcc.exe.x86-windows-msys-pe-32bit.D:/Soft/Coding/_C++/Qt_creator_2.2.1/pythongdb/gdb-i686-pc-mingw32.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
@@ -184,11 +184,11 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">2</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">D:/My projects/Visual C++/Projects/XXXDb</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">5</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Libs/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.D:/Libs/QtSDK/pythongdb/python_2.7based/gdb-i686-pc-mingw32.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Soft/Coding/_C++/Qt_creator_2.2.1/mingw/bin/gcc.exe.x86-windows-msys-pe-32bit.D:/Soft/Coding/_C++/Qt_creator_2.2.1/pythongdb/gdb-i686-pc-mingw32.exe</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <valuemap key="ProjectExplorer.Target.BuildConfiguration.3" type="QVariantMap">
-    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Libs/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.D:/Libs/QtSDK/pythongdb/python_2.7based/gdb-i686-pc-mingw32.exe</value>
+    <value key="ProjectExplorer.BuildCOnfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Soft/Coding/_C++/Qt_creator_2.2.1/mingw/bin/gcc.exe.x86-windows-msys-pe-32bit.D:/Soft/Coding/_C++/Qt_creator_2.2.1/pythongdb/gdb-i686-pc-mingw32.exe</value>
     <valuemap key="ProjectExplorer.BuildConfiguration.BuildStepList.0" type="QVariantMap">
      <valuemap key="ProjectExplorer.BuildStepList.Step.0" type="QVariantMap">
       <value key="ProjectExplorer.ProjectConfiguration.DefaultDisplayName" type="QString">qmake</value>
@@ -234,7 +234,7 @@
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildConfiguration" type="int">0</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.BuildDirectory" type="QString">D:/My projects/Visual C++/Projects/XXXDb</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.QtVersionId" type="int">5</value>
-    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Libs/QtSDK/mingw/bin/g++.exe.x86-windows-msys-pe-32bit.D:/Libs/QtSDK/pythongdb/python_2.7based/gdb-i686-pc-mingw32.exe</value>
+    <value key="Qt4ProjectManager.Qt4BuildConfiguration.ToolChain" type="QString">ProjectExplorer.ToolChain.Mingw:D:/Soft/Coding/_C++/Qt_creator_2.2.1/mingw/bin/gcc.exe.x86-windows-msys-pe-32bit.D:/Soft/Coding/_C++/Qt_creator_2.2.1/pythongdb/gdb-i686-pc-mingw32.exe</value>
     <value key="Qt4ProjectManager.Qt4BuildConfiguration.UseShadowBuild" type="bool">false</value>
    </valuemap>
    <value key="ProjectExplorer.Target.BuildConfigurationCount" type="int">4</value>
@@ -275,7 +275,7 @@
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.EnvironmentId</variable>
-  <value type="QString">{464e8301-0783-4f85-abb8-82dd6fa4b5c4}</value>
+  <value type="QString">{00000000-0000-0000-0000-000000000000}</value>
  </data>
  <data>
   <variable>ProjectExplorer.Project.Updater.FileVersion</variable>

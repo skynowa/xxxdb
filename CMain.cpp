@@ -6,13 +6,15 @@
 
 
 #include "CMain.h"
+
+
 //---------------------------------------------------------------------------
 CMain::CMain(QWidget *parent)
     : QWidget(parent)
 {
     ui.setupUi(this);
 
-    setupModel();
+    _setupModel();
 
     QImage imgPhoto;
     imgPhoto.load("./image.png");
@@ -23,13 +25,12 @@ CMain::CMain(QWidget *parent)
     //ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 //---------------------------------------------------------------------------
-CMain::~CMain()
-{
+CMain::~CMain() {
     _m_dbDatabse.close();
 }
 //---------------------------------------------------------------------------
 void
-CMain::setupModel() {
+CMain::_setupModel() {
     bool bRes = false;
 
     _m_dbDatabse = QSqlDatabase::addDatabase("QSQLITE");
@@ -43,11 +44,12 @@ CMain::setupModel() {
     //Set up the main table
     QSqlQuery query;
 
-    bRes = query.exec("CREATE TABLE T_PERSON (F_ID INT PRIMARY KEY, F_NAME VARCHAR(20), F_ADGE INT)");
+    bRes = query.exec("CREATE TABLE T_PERSON (F_ID INT PRIMARY KEY, F_NAME BLOB, F_ADGE INT)");
     if (false == bRes) {
         //QMessageBox::critical(0, tr(""), tr("Can't create table."), QMessageBox::Cancel);
     }
 
+#if 0
     bRes = query.exec("INSERT INTO T_PERSON VALUES(1, 'Alice',  20)");
     if (false == bRes) {
         //QMessageBox::critical(0, tr(""), tr("Can't insert record."), QMessageBox::Cancel);
@@ -57,21 +59,23 @@ CMain::setupModel() {
     bRes = query.exec("INSERT INTO T_PERSON VALUES(3, 'Carol',  19)");
     bRes = query.exec("INSERT INTO T_PERSON VALUES(4, 'Donald', 40)");
     bRes = query.exec("INSERT INTO T_PERSON VALUES(5, 'Emma',   25)");
+#endif
 
-    //QSqlTableModel
-    model = new CSqlCryptTableModel(this, _m_dbDatabse);
-    model->setTable("T_PERSON");
-    model->setEditStrategy(QSqlTableModel::OnFieldChange);
-    model->select();
-    //model->removeColumn(0); // don't show the ID
+    //CSqlCryptTableModel
+    _m_mdModel = new CSqlCryptTableModel(this, _m_dbDatabse);
+    _m_mdModel->setKey("0123456789");
+    _m_mdModel->setTable("T_PERSON");
+    _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+    _m_mdModel->select();
+    //_m_mdModel->removeColumn(0); // don't show the ID
 
-    model->setHeaderData(0, Qt::Horizontal, tr("Id"));
-    model->setHeaderData(1, Qt::Horizontal, tr("Name"));
-    model->setHeaderData(2, Qt::Horizontal, tr("Address"));
+    _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
+    _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
+    _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Address"));
 
-    ui.tabvInfo->setModel(model);
+    ui.tabvInfo->setModel(_m_mdModel);
     ui.tabvInfo->show();
 
-    model->select();
+    _m_mdModel->select();
 }
 //---------------------------------------------------------------------------

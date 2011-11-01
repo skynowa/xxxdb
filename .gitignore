@@ -4,6 +4,7 @@
 ##### dirs #####
 debug
 release
+GeneratedFiles
 
 
 ##### files #####
@@ -15,3 +16,9 @@ Makefile.Debug
 Makefile.Release
 .project
 .cproject
+*.sdf
+*.pdb
+*.ncb
+*.suo
+*.user
+*.opensdf

@@ -1,6 +1,6 @@
 /**
  * \file   CSqlCryptTableModel.cpp
- * \brief  main widget
+ * \brief  SQL crypt table model
  */
 
 
@@ -12,9 +12,18 @@ CSqlCryptTableModel::CSqlCryptTableModel(
     QObject     *parent /* = 0 */,
     QSqlDatabase db     /* = QSqlDatabase()*/
 ) :
-    QSqlTableModel(parent, db)
+    QSqlTableModel(parent, db),
+    _m_bfBlowFish ()
 {
 
+}
+//---------------------------------------------------------------------------
+BOOL
+CSqlCryptTableModel::setKey(
+    const std::tstring &csKey
+) 
+{
+    return _m_bfBlowFish.bSetKey(csKey);
 }
 //---------------------------------------------------------------------------
 /*virtual*/
@@ -28,21 +37,48 @@ CSqlCryptTableModel::setData(
     qDebug() << "[setData] index: " << index.column();
     qDebug() << "[setData] value: " << value.toString();
 
-    return QSqlTableModel::setData(index, value, role);
+
+    QVariant vOut;
+
+    if (1 == index.column() && !value.isNull()) {
+        QByteArray baIn = value.toByteArray(); 
+        QByteArray baOut; baOut.resize(baIn.size());
+        INT        iNum = 0; // must be zero
+
+	    _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmEncrypt);
+
+        vOut = baOut;
+    } else {
+        vOut = value;
+    }
+
+    return QSqlTableModel::setData(index, vOut, role);
 }
 //---------------------------------------------------------------------------
 /*virtual*/
 QVariant
 CSqlCryptTableModel::data(
-    const QModelIndex &item,
+    const QModelIndex &index,
     int                role /* = Qt::DisplayRole */
 ) const
 {
+    qDebug() << "[data] index: " << index.column();
+    qDebug() << "[data] value: " << QSqlTableModel::data(index, role).toString();
+
+
     QVariant vRes;
 
-    vRes = QSqlTableModel::data(item, role);
-    qDebug() << "[data] item: " << vRes.toString();
+    if (1 == index.column() && !QSqlTableModel::data(index, role).isNull()) {
+        QByteArray baIn = QSqlTableModel::data(index, role).toByteArray(); 
+        QByteArray baOut; baOut.resize(baIn.size());
+        INT        iNum = 0; // must be zero
 
+	    _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmDecrypt);
+
+        vRes = baOut;
+    } else {
+        vRes = QSqlTableModel::data(index, role);
+    }
 
     return vRes;
 }

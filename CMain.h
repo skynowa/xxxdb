@@ -7,13 +7,10 @@
 #ifndef CMAIN_H
 #define CMAIN_H
 //---------------------------------------------------------------------------
-#include <QtGui/QWidget>
-#include <QtGui/QMessageBox>
-#include <QtSql>
-#include <QImage>
+#include <xLib/Common/xCommon.h>
 
+#include "../Common.h"
 #include "ui_CMain.h"
-
 #include "Classes/CSqlCryptTableModel.h"
 //---------------------------------------------------------------------------
 class CMain :
@@ -22,17 +19,15 @@ class CMain :
         Q_OBJECT
 
     public:
-        CMain(QWidget *parent = 0);
-        ~CMain();
+                             CMain     (QWidget *parent = 0);
+                            ~CMain     ();
 
     private:
-        Ui::CMainClass  ui;
+        Ui::CMainClass       ui;
+        CSqlCryptTableModel *_m_mdModel;
+        QSqlDatabase         _m_dbDatabse;
 
-        CSqlCryptTableModel *model;
-
-        QSqlDatabase    _m_dbDatabse;
-
-        void            setupModel();
+        void                 _setupModel();
 };
 //---------------------------------------------------------------------------
 #endif // CMAIN_H
