@@ -1,7 +1,6 @@
 /**
  * \file   CMain.cpp
  * \brief  main widget
- *
  */
 
 
@@ -9,8 +8,8 @@
 
 
 //---------------------------------------------------------------------------
-CMain::CMain(QWidget *parent)
-    : QWidget(parent)
+CMain::CMain(QWidget *parent, Qt::WFlags flags)
+    : QMainWindow(parent, flags)
 {
     ui.setupUi(this);
 
@@ -25,7 +24,8 @@ CMain::CMain(QWidget *parent)
     //ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
 }
 //---------------------------------------------------------------------------
-CMain::~CMain() {
+CMain::~CMain()
+{
     _m_dbDatabse.close();
 }
 //---------------------------------------------------------------------------
@@ -37,7 +37,7 @@ CMain::_setupModel() {
 
     _m_dbDatabse.setDatabaseName("./base.db");
     if (!_m_dbDatabse.open()) {
-        QMessageBox::critical(0, tr(""), tr("Unable to establish a database connection."), QMessageBox::Cancel);
+        QMessageBox::critical(0, tr(""), _m_dbDatabse.lastError().text(), QMessageBox::Cancel);
         return;
     }
 
@@ -63,7 +63,7 @@ CMain::_setupModel() {
 
     //CSqlCryptTableModel
     _m_mdModel = new CSqlCryptTableModel(this, _m_dbDatabse);
-    _m_mdModel->setKey("0123456789");
+    _m_mdModel->setKey(xT("0123456789"));
     _m_mdModel->setTable("T_PERSON");
     _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
     _m_mdModel->select();
@@ -79,3 +79,4 @@ CMain::_setupModel() {
     _m_mdModel->select();
 }
 //---------------------------------------------------------------------------
+

@@ -1,107 +1,94 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <Project ToolsVersion="4.0" xmlns="http://schemas.microsoft.com/developer/msbuild/2003">
   <ItemGroup>
-    <Filter Include="Generated Files">
-      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
-      <Extensions>cpp;c;cxx;moc;h;def;odl;idl;res</Extensions>
+    <Filter Include="Resource">
+      <UniqueIdentifier>{D9D6E242-F8AF-46E4-B9FD-80ECBC20BA3E}</UniqueIdentifier>
+      <Extensions>qrc;*</Extensions>
+      <ParseFiles>false</ParseFiles>
     </Filter>
-    <Filter Include="Generated Files\Debug">
-      <UniqueIdentifier>{86212911-0f0f-4c7f-a158-1afa33cee782}</UniqueIdentifier>
+    <Filter Include="Classes">
+      <UniqueIdentifier>{d7ad46ac-c7aa-43d2-b4f9-f4b52c9d1ff4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib">
+      <UniqueIdentifier>{895a774e-ba9f-45ac-b751-52524917287c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Common">
+      <UniqueIdentifier>{e70f7bab-e957-4fd2-871a-6bc199f35130}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Crypt">
+      <UniqueIdentifier>{55bde2f4-24e8-4f65-bc0f-f09ee7fa2e5c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Debug">
+      <UniqueIdentifier>{6687ebcc-0757-4312-bd9e-f6faeeb966b5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Filesystem">
+      <UniqueIdentifier>{2fd58605-e8ac-4ed7-8cd9-d8d34354676b}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Log">
+      <UniqueIdentifier>{585ea132-5185-4dc5-a2e4-cdeb8fbd3033}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Sync">
+      <UniqueIdentifier>{685b12df-578c-49f3-8ae6-d0da4aa776fe}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Common\Win">
+      <UniqueIdentifier>{af8b0eae-02a4-4d56-8f20-fe2e88dd9dea}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="xLib\Crypt\OpenSSL">
+      <UniqueIdentifier>{ce3c7ca4-47ac-4c57-b1f7-7d6bc658375c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="Forms">
+      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
+      <Extensions>ui</Extensions>
+    </Filter>
+    <Filter Include="Generated">
+      <UniqueIdentifier>{71ED8ED8-ACB9-4CE9-BBE1-E00B30144E11}</UniqueIdentifier>
+      <Extensions>moc;h;cpp</Extensions>
+      <SourceControlFiles>False</SourceControlFiles>
+    </Filter>
+    <Filter Include="Generated\Debug">
+      <UniqueIdentifier>{cda7fc31-0335-4d86-99a2-a22f10a5f924}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
-    <Filter Include="Generated Files\Release">
-      <UniqueIdentifier>{311fbb34-368f-4d5e-9457-a4de0f85e2ca}</UniqueIdentifier>
+    <Filter Include="Generated\Release">
+      <UniqueIdentifier>{cc668968-2566-485d-82dd-a14372b1e004}</UniqueIdentifier>
       <Extensions>cpp;moc</Extensions>
       <SourceControlFiles>False</SourceControlFiles>
     </Filter>
     <Filter Include="Source">
       <UniqueIdentifier>{4FC737F1-C7A5-4376-A066-2A32D752A2FF}</UniqueIdentifier>
-      <Extensions>cpp;c;cxx;def;odl;idl;hpj;bat;asm;asmx</Extensions>
-    </Filter>
-    <Filter Include="Forms">
-      <UniqueIdentifier>{99349809-55BA-4b9d-BF79-8FDBB0286EB3}</UniqueIdentifier>
-      <Extensions>ui</Extensions>
-      <ParseFiles>false</ParseFiles>
-    </Filter>
-    <Filter Include="xLib">
-      <UniqueIdentifier>{7a5900e7-ee92-4871-b3e1-447ba9c87227}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Common">
-      <UniqueIdentifier>{a1279459-5610-42b3-8b99-0956bb165dd6}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Debug">
-      <UniqueIdentifier>{d140178b-b2cb-4da2-b776-6744e7216a86}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Crypt">
-      <UniqueIdentifier>{c8359d51-7b10-46f7-ad90-62872463c2c9}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Common\Linux">
-      <UniqueIdentifier>{1f39b55c-7edb-42c9-94e6-9ab9fdcd64cd}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Common\Win">
-      <UniqueIdentifier>{d90cdd49-893f-4a2b-baf3-95607a57a13e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Filesystem">
-      <UniqueIdentifier>{fb739065-19fd-4d34-a413-4119695c487a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Sync">
-      <UniqueIdentifier>{6520b082-6eda-469a-bf83-86324e584c6e}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="xLib\Log">
-      <UniqueIdentifier>{f98e196a-3906-4471-8ce1-7d7e267eb2c2}</UniqueIdentifier>
+      <Extensions>cpp;cxx;c;def</Extensions>
     </Filter>
   </ItemGroup>
   <ItemGroup>
-    <ClCompile Include="CMain.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
-    <ClCompile Include="Classes\CSqlCryptTableModel.cpp">
-      <Filter>Source</Filter>
-    </ClCompile>
     <ClCompile Include="main.cpp">
       <Filter>Source</Filter>
     </ClCompile>
+    <ClCompile Include="CMain.cpp">
+      <Filter>Source</Filter>
+    </ClCompile>
     <ClCompile Include="GeneratedFiles\Debug\moc_CMain.cpp">
-      <Filter>Generated Files\Debug</Filter>
+      <Filter>Generated\Debug</Filter>
     </ClCompile>
     <ClCompile Include="GeneratedFiles\Release\moc_CMain.cpp">
-      <Filter>Generated Files\Release</Filter>
+      <Filter>Generated\Release</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\OpenSSL\CxBlowfish.cpp">
-      <Filter>xLib\Crypt</Filter>
+    <ClCompile Include="GeneratedFiles\qrc_CMain.cpp">
+      <Filter>Generated</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxAutoProfiler.cpp">
-      <Filter>xLib\Debug</Filter>
+    <ClCompile Include="Classes\CSqlCryptTableModel.cpp">
+      <Filter>Classes</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxDebugger.cpp">
-      <Filter>xLib\Debug</Filter>
+    <ClCompile Include="..\..\..\..\xLib\Source\Common\Win\CxCom.cpp">
+      <Filter>xLib\Common\Win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxLastError.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxProfiler.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxReport.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxStackTrace.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxStdError.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxTest.cpp">
-      <Filter>xLib\Debug</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxTestManager.cpp">
-      <Filter>xLib\Debug</Filter>
+    <ClCompile Include="..\..\..\..\xLib\Source\Common\Win\CxComPort.cpp">
+      <Filter>xLib\Common\Win</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\xLib\Source\Common\Win\CxShell.cpp">
       <Filter>xLib\Common\Win</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Common\Win\CxCom.cpp">
+    <ClCompile Include="..\..\..\..\xLib\Source\Common\Win\CxClipboard.cpp">
       <Filter>xLib\Common\Win</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\xLib\Source\Common\CxChar.cpp">
@@ -137,8 +124,41 @@
     <ClCompile Include="..\..\..\..\xLib\Source\Common\CxAppSettings.cpp">
       <Filter>xLib\Common</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Filesystem\CxDir.cpp">
-      <Filter>xLib\Filesystem</Filter>
+    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\OpenSSL\CxBlowfish.cpp">
+      <Filter>xLib\Crypt\OpenSSL</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\CxCrc32.cpp">
+      <Filter>xLib\Crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\CxRandom.cpp">
+      <Filter>xLib\Crypt</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxLastError.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxProfiler.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxReport.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxStackTrace.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxStdError.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxTest.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxTestManager.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxAutoProfiler.cpp">
+      <Filter>xLib\Debug</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Debug\CxDebugger.cpp">
+      <Filter>xLib\Debug</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\xLib\Source\Filesystem\CxDll.cpp">
       <Filter>xLib\Filesystem</Filter>
@@ -164,8 +184,20 @@
     <ClCompile Include="..\..\..\..\xLib\Source\Filesystem\CxVolume.cpp">
       <Filter>xLib\Filesystem</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Sync\CxAtomicLongInt.cpp">
-      <Filter>xLib\Sync</Filter>
+    <ClCompile Include="..\..\..\..\xLib\Source\Filesystem\CxDir.cpp">
+      <Filter>xLib\Filesystem</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxFileLog.cpp">
+      <Filter>xLib\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxSystemLog.cpp">
+      <Filter>xLib\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxTraceLog.cpp">
+      <Filter>xLib\Log</Filter>
+    </ClCompile>
+    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxConsoleLog.cpp">
+      <Filter>xLib\Log</Filter>
     </ClCompile>
     <ClCompile Include="..\..\..\..\xLib\Source\Sync\CxAutoCriticalSection.cpp">
       <Filter>xLib\Sync</Filter>
@@ -206,69 +238,32 @@
     <ClCompile Include="..\..\..\..\xLib\Source\Sync\CxWaitableTimer.cpp">
       <Filter>xLib\Sync</Filter>
     </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\CxCrc32.cpp">
-      <Filter>xLib\Crypt</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxConsoleLog.cpp">
-      <Filter>xLib\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxFileLog.cpp">
-      <Filter>xLib\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxSystemLog.cpp">
-      <Filter>xLib\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Log\CxTraceLog.cpp">
-      <Filter>xLib\Log</Filter>
-    </ClCompile>
-    <ClCompile Include="..\..\..\..\xLib\Source\Crypt\CxRandom.cpp">
-      <Filter>xLib\Crypt</Filter>
+    <ClCompile Include="..\..\..\..\xLib\Source\Sync\CxAtomicLongInt.cpp">
+      <Filter>xLib\Sync</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>
-    <ClInclude Include="ui_CMain.h">
-      <Filter>Generated Files</Filter>
+    <CustomBuild Include="CMain.ui">
+      <Filter>Forms</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMain.qrc">
+      <Filter>Resource</Filter>
+    </CustomBuild>
+    <CustomBuild Include="CMain.h">
+      <Filter>Source</Filter>
+    </CustomBuild>
+  </ItemGroup>
+  <ItemGroup>
+    <ClInclude Include="GeneratedFiles\ui_CMain.h">
+      <Filter>Generated</Filter>
     </ClInclude>
     <ClInclude Include="Classes\CSqlCryptTableModel.h">
+      <Filter>Classes</Filter>
+    </ClInclude>
+    <ClInclude Include="Common.h">
       <Filter>Source</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\OpenSSL\CxBlowfish.h">
-      <Filter>xLib\Crypt</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxDebugger.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxLastError.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxProfiler.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxReport.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxStackTrace.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxStdError.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxTest.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxTestManager.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\xDebug.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxAutoProfiler.h">
-      <Filter>xLib\Debug</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Linux\xCommon_Unix.h">
-      <Filter>xLib\Common\Linux</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\CxCom.h">
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\CxComPort.h">
       <Filter>xLib\Common\Win</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\CxHandleT.h">
@@ -280,8 +275,11 @@
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\xCommon_Win.h">
       <Filter>xLib\Common\Win</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\CxAppSettings.h">
-      <Filter>xLib\Common</Filter>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\CxClipboard.h">
+      <Filter>xLib\Common\Win</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\Win\CxCom.h">
+      <Filter>xLib\Common\Win</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\CxArray.h">
       <Filter>xLib\Common</Filter>
@@ -364,8 +362,47 @@
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\xTypes.h">
       <Filter>xLib\Common</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Filesystem\CxDir.h">
-      <Filter>xLib\Filesystem</Filter>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Common\CxAppSettings.h">
+      <Filter>xLib\Common</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\OpenSSL\CxBase64.h">
+      <Filter>xLib\Crypt\OpenSSL</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\CxRandom.h">
+      <Filter>xLib\Crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\CxCrc32.h">
+      <Filter>xLib\Crypt</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxDebugger.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxLastError.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxProfiler.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxReport.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxStackTrace.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxStdError.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxTest.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxTestManager.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\xDebug.h">
+      <Filter>xLib\Debug</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Debug\CxAutoProfiler.h">
+      <Filter>xLib\Debug</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Filesystem\CxDll.h">
       <Filter>xLib\Filesystem</Filter>
@@ -390,6 +427,24 @@
     </ClInclude>
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Filesystem\CxVolume.h">
       <Filter>xLib\Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Filesystem\CxDir.h">
+      <Filter>xLib\Filesystem</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxConsoleLog.h">
+      <Filter>xLib\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxFileLog.h">
+      <Filter>xLib\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxSystemLog.h">
+      <Filter>xLib\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxTraceLog.h">
+      <Filter>xLib\Log</Filter>
+    </ClInclude>
+    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\xLogs.h">
+      <Filter>xLib\Log</Filter>
     </ClInclude>
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Sync\CxAtomicLongInt.h">
       <Filter>xLib\Sync</Filter>
@@ -436,48 +491,13 @@
     <ClInclude Include="..\..\..\..\xLib\Include\xLib\Sync\CxWaitableTimer.h">
       <Filter>xLib\Sync</Filter>
     </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\CxCrc32.h">
-      <Filter>xLib\Crypt</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxConsoleLog.h">
-      <Filter>xLib\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxFileLog.h">
-      <Filter>xLib\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxSystemLog.h">
-      <Filter>xLib\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\CxTraceLog.h">
-      <Filter>xLib\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Log\xLogs.h">
-      <Filter>xLib\Log</Filter>
-    </ClInclude>
-    <ClInclude Include="..\..\..\..\xLib\Include\xLib\Crypt\CxRandom.h">
-      <Filter>xLib\Crypt</Filter>
-    </ClInclude>
-    <ClInclude Include="Common.h">
-      <Filter>Source</Filter>
-    </ClInclude>
   </ItemGroup>
   <ItemGroup>
-    <CustomBuild Include="CMain.ui">
-      <Filter>Forms</Filter>
-    </CustomBuild>
-    <CustomBuild Include="CMain.h">
-      <Filter>Source</Filter>
-    </CustomBuild>
-  </ItemGroup>
-  <ItemGroup>
-    <None Include="..\..\..\..\xLib\Source\Debug\CxReport.inl">
-      <Filter>xLib\Debug</Filter>
+    <None Include="..\..\..\..\xLib\Source\Common\Win\CxHandleT.inl">
+      <Filter>xLib\Common\Win</Filter>
     </None>
     <None Include="..\..\..\..\xLib\Include\xLib\Common\DbEmpty.db.zip.txt">
       <Filter>xLib\Common</Filter>
-    </None>
-    <None Include="..\..\..\..\xLib\Source\Common\Win\CxHandleT.inl">
-      <Filter>xLib\Common\Win</Filter>
     </None>
     <None Include="..\..\..\..\xLib\Source\Common\CxArray.inl">
       <Filter>xLib\Common</Filter>
@@ -494,12 +514,11 @@
     <None Include="..\..\..\..\xLib\Source\Common\CxType.inl">
       <Filter>xLib\Common</Filter>
     </None>
-    <None Include="..\..\..\..\xLib\Source\Common\DbEmpty.db.zip.txt">
-      <Filter>xLib\Common</Filter>
+    <None Include="..\..\..\..\xLib\Source\Debug\CxReport.inl">
+      <Filter>xLib\Debug</Filter>
     </None>
     <None Include="..\..\..\..\xLib\Source\Sync\CxThreadPool.inl">
       <Filter>xLib\Sync</Filter>
     </None>
-    <None Include="..\Translater\TODO.txt" />
   </ItemGroup>
 </Project>

@@ -4,6 +4,8 @@
 ##### dirs #####
 debug
 release
+Debug
+Release
 GeneratedFiles
 
 
@@ -22,3 +24,6 @@ Makefile.Release
 *.suo
 *.user
 *.opensdf
+*.exe
+*.ilk
+

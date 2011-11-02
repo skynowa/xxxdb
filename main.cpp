@@ -1,27 +1,10 @@
-/**
- * \file   main.cpp
- * \brief  main module
- */
-
-
 #include "CMain.h"
+#include <QtGui/QApplication>
 
-#include <QtGui>
-#include <QApplication>
-//---------------------------------------------------------------------------
-int 
-main(
-    int   argc, 
-    char *argv[]
-)
+int main(int argc, char *argv[])
 {
-    QApplication apApplication(argc, argv);
-    CMain        wdgMain;
-
-    (void)wdgMain.show();
-
-    int iRes = apApplication.exec();
-
-    return iRes;
+    QApplication a(argc, argv);
+    CMain w;
+    w.show();
+    return a.exec();
 }
-//---------------------------------------------------------------------------
