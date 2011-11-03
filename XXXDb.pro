@@ -1,16 +1,19 @@
-TEMPLATE = app
-TARGET = XXXDb
+TEMPLATE    = app
 
-QT        += core gui sql
+TARGET      = XXXDb
 
-HEADERS   += CMain.h \
-    Classes/CSqlCryptTableModel.h
+QT          += core gui sql
 
+HEADERS     += CMain.h \
+               Classes/CSqlCryptTableModel.h
 
-SOURCES   += main.cpp \
-    CMain.cpp \
-    Classes/CSqlCryptTableModel.cpp
+SOURCES     += main.cpp \
+               CMain.cpp \
+               Classes/CSqlCryptTableModel.cpp
 
+INCLUDEPATH += /home/sergey/Coding/xLib/
+#LIBS        += libxlib.a
+    
+FORMS       += CMain.ui
 
-FORMS     += CMain.ui
-RESOURCES +=
+RESOURCES   +=

@@ -8,7 +8,10 @@
 
 
 //---------------------------------------------------------------------------
-CMain::CMain(QWidget *parent, Qt::WFlags flags)
+CMain::CMain(
+    QWidget    *parent,
+    Qt::WFlags  flags
+)
     : QMainWindow(parent, flags)
 {
     ui.setupUi(this);

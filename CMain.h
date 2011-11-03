@@ -13,20 +13,21 @@
 #include "ui_CMain.h"
 #include "Classes/CSqlCryptTableModel.h"
 //---------------------------------------------------------------------------
-class CMain : public QMainWindow
+class CMain :
+    public QMainWindow
 {
-    Q_OBJECT
+        Q_OBJECT
 
-public:
-    CMain(QWidget *parent = 0, Qt::WFlags flags = 0);
-    ~CMain();
+    public:
+                             CMain      (QWidget *parent = 0, Qt::WFlags flags = 0);
+                            ~CMain      ();
 
-private:
-        Ui::CMainClass ui;
+    private:
+        Ui::CMainClass       ui;
         QSqlDatabase         _m_dbDatabse;
         CSqlCryptTableModel *_m_mdModel;
 
         void                 _setupModel();
 };
-
+//---------------------------------------------------------------------------
 #endif // CMAIN_H
