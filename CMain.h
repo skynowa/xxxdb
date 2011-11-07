@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 #include <xLib/Common/xCommon.h>
 
-#include "../Common.h"
+#include "Common.h"
 #include "ui_CMain.h"
 #include "Classes/CSqlCryptTableModel.h"
 //---------------------------------------------------------------------------
@@ -23,11 +23,31 @@ class CMain :
                             ~CMain      ();
 
     private:
-        Ui::CMainClass       ui;
-        QSqlDatabase         _m_dbDatabse;
+        Ui::CMainClass       _m_Ui;
+        QSqlDatabase         _m_dbDatabase;
         CSqlCryptTableModel *_m_mdModel;
 
         void                 _setupModel();
+
+    private slots:
+        /****************************************************************************
+        *   mnubMain - main toolbar
+        *
+        *****************************************************************************/
+
+        //--------------------------------------------------
+        // mnuEdit
+        void                 First      ();
+        void                 Prior      ();
+        void                 Next       ();
+        void                 Last       ();
+        void                 Insert     ();
+        void                 Delete     ();
+        void                 Edit       ();
+        void                 Post       ();
+        void                 Cancel     ();
+        void                 Refresh    ();
+
 };
 //---------------------------------------------------------------------------
 #endif // CMAIN_H

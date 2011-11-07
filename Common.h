@@ -52,7 +52,7 @@
 #include <QImage>
 
 //---------------------------------------------------------------------------
-#define xNOT_IMPL QMessageBox::warning(this, qApp->applicationName(), tr(__FUNCTION__) + tr(": Not implemented"))
+#define _xNOT_IMPL QMessageBox::warning(this, qApp->applicationName(), tr(__FUNCTION__) + tr(": Not implemented"))
 #define xMSG(s)   QMessageBox::information(NULL, qApp->applicationName(), tr(s))
 //---------------------------------------------------------------------------
 #endif // CONSOLE_COMMON_H

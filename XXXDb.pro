@@ -1,19 +1,21 @@
-TEMPLATE    = app
+TEMPLATE = app
+TARGET = XXXDb
+QT += core gui sql network
 
-TARGET      = XXXDb
+INCLUDEPATH += /home/sergey/Coding/xLib/Include/
+INCLUDEPATH += /home/sergey/Coding/xLib/Source/
 
-QT          += core gui sql
+LIBS        += libxlib.a
+LIBS        += -lcrypt -lssl -lcrypto
 
-HEADERS     += CMain.h \
-               Classes/CSqlCryptTableModel.h
 
-SOURCES     += main.cpp \
-               CMain.cpp \
-               Classes/CSqlCryptTableModel.cpp
 
-INCLUDEPATH += /home/sergey/Coding/xLib/
-#LIBS        += libxlib.a
-    
-FORMS       += CMain.ui
+HEADERS += CMain.h \
+    Classes/CSqlCryptTableModel.h
+SOURCES +=  main.cpp \
+    CMain.cpp \
+    Classes/CSqlCryptTableModel.cpp
 
-RESOURCES   +=
+
+FORMS += CMain.ui
+RESOURCES +=
