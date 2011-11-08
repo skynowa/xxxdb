@@ -12,6 +12,7 @@ GeneratedFiles
 
 ##### files #####
 TODO.txt
+XXXDb
 base.db
 image.png
 Makefile
@@ -27,4 +28,8 @@ Makefile.Release
 *.opensdf
 *.exe
 *.ilk
-
+*.o
+*.a
+*.exe
+moc_CMain.cpp
+ui_CMain.h

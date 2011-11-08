@@ -15,9 +15,15 @@ class CSqlCryptTableModel :
     public QSqlTableModel
 {
     public:
-        explicit           CSqlCryptTableModel(QObject *parent = 0, QSqlDatabase db = QSqlDatabase());
+        enum ECryptAlgorithm {
+            caUnknown,
+            caBlowfish
+        };
 
-        BOOL               setKey             (const std::tstring &csKey);
+
+        explicit           CSqlCryptTableModel(QObject *parent = 0, QSqlDatabase db = QSqlDatabase(), const ECryptAlgorithm ccaCryptAlgorithm = caBlowfish);
+
+        BOOL               setCryptKey        (const std::tstring &csCryptKey);
             ///< set crypto key
         virtual bool	   setData            (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
             ///< set encrypted data
@@ -25,7 +31,8 @@ class CSqlCryptTableModel :
             ///< get decrypted data
 
     private:
-        mutable CxBlowfish _m_bfBlowFish;   ///< implement blowfish algorithm
+        ECryptAlgorithm    _m_caCryptAlgorithm;    ///< crypt algorithm
+        mutable CxBlowfish _m_bfBlowFish;          ///< implement blowfish algorithm
 
 };
 //---------------------------------------------------------------------------

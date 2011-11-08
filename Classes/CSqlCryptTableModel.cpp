@@ -9,19 +9,21 @@
 
 //---------------------------------------------------------------------------
 CSqlCryptTableModel::CSqlCryptTableModel(
-    QObject     *parent /* = 0 */,
-    QSqlDatabase db     /* = QSqlDatabase()*/
+    QObject               *parent            /* = 0 */,
+    QSqlDatabase           db                /* = QSqlDatabase()*/,
+    const ECryptAlgorithm  ccaCryptAlgorithm /* = caBlowfish*/
 ) :
-    QSqlTableModel(parent, db),
-    _m_bfBlowFish ()
+    QSqlTableModel     (parent, db),
+    _m_caCryptAlgorithm(ccaCryptAlgorithm),
+    _m_bfBlowFish      ()
 {
 
 }
 //---------------------------------------------------------------------------
 BOOL
-CSqlCryptTableModel::setKey(
+CSqlCryptTableModel::setCryptKey(
     const std::tstring &csKey
-) 
+)
 {
     return _m_bfBlowFish.bSetKey(csKey);
 }
@@ -41,11 +43,11 @@ CSqlCryptTableModel::setData(
     QVariant vOut;
 
     if (1 == index.column() && !value.isNull()) {
-        QByteArray baIn = value.toByteArray(); 
+        QByteArray baIn = value.toByteArray();
         QByteArray baOut; baOut.resize(baIn.size());
         INT        iNum = 0; // must be zero
 
-	    _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmEncrypt);
+        _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmEncrypt);
 
         vOut = baOut;
     } else {
@@ -69,11 +71,11 @@ CSqlCryptTableModel::data(
     QVariant vRes;
 
     if (1 == index.column() && !QSqlTableModel::data(index, role).isNull()) {
-        QByteArray baIn = QSqlTableModel::data(index, role).toByteArray(); 
+        QByteArray baIn = QSqlTableModel::data(index, role).toByteArray();
         QByteArray baOut; baOut.resize(baIn.size());
         INT        iNum = 0; // must be zero
 
-	    _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmDecrypt);
+        _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmDecrypt);
 
         vRes = baOut;
     } else {

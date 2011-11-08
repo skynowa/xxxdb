@@ -27,7 +27,7 @@ class CMain :
         QSqlDatabase         _m_dbDatabase;
         CSqlCryptTableModel *_m_mdModel;
 
-        void                 _setupModel();
+        void                 _initModel();
 
     private slots:
         /****************************************************************************

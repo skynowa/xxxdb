@@ -16,7 +16,7 @@ CMain::CMain(
 {
     _m_Ui.setupUi(this);
 
-    _setupModel();
+    _initModel();
 
     /****************************************************************************
     *   setup slots
@@ -53,7 +53,7 @@ CMain::~CMain()
 }
 //---------------------------------------------------------------------------
 void
-CMain::_setupModel() {
+CMain::_initModel() {
     bool bRes = false;
 
     _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
@@ -69,27 +69,25 @@ CMain::_setupModel() {
     //Set up the main table
     QSqlQuery qryInfo(_m_dbDatabase);
 
-    bRes = qryInfo.exec("create table T_PERSON (F_ID int primary key, F_NAME varchar(64), F_ADGE int);");
+    bRes = qryInfo.exec("create table if not exists T_PERSON (F_ID int primary key, F_NAME varchar(64), F_ADGE int);");
     if (false == bRes) {
         QMessageBox::critical(0, tr(""), qryInfo.lastError().text(), QMessageBox::Cancel);
     }
 
     //CSqlCryptTableModel
     _m_mdModel = new CSqlCryptTableModel(this, _m_dbDatabase);
-    _m_mdModel->setKey(xT("0123456789"));
+    _m_mdModel->setCryptKey(xT("0123456789"));
     _m_mdModel->setTable("T_PERSON");
     _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
     _m_mdModel->select();
     //_m_mdModel->removeColumn(0); // don't show the ID
-
     _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
     _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
     _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Address"));
+    _m_mdModel->select();
 
     _m_Ui.tabvInfo->setModel(_m_mdModel);
     _m_Ui.tabvInfo->show();
-
-    ///_m_mdModel->select();
 }
 //---------------------------------------------------------------------------
 
@@ -102,47 +100,7 @@ CMain::_setupModel() {
 
 //---------------------------------------------------------------------------
 void
-CMain::Cancel() {
-
-}
-//---------------------------------------------------------------------------
-void
-CMain::Delete() {
-
-}
-//---------------------------------------------------------------------------
-void
-CMain::Edit() {
-
-}
-//---------------------------------------------------------------------------
-void
 CMain::First() {
-
-}
-//---------------------------------------------------------------------------
-void
-CMain::Insert() {
-    QSqlQuery qryInfo;
-
-    bool bRes = qryInfo.exec("insert into T_PERSON values(102, 'Christine', 20)");
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), qryInfo.lastError().text(), QMessageBox::Cancel);
-    }
-}
-//---------------------------------------------------------------------------
-void
-CMain::Last() {
-
-}
-//---------------------------------------------------------------------------
-void
-CMain::Next() {
-
-}
-//---------------------------------------------------------------------------
-void
-CMain::Post() {
 
 }
 //---------------------------------------------------------------------------
@@ -152,12 +110,64 @@ CMain::Prior() {
 }
 //---------------------------------------------------------------------------
 void
-CMain::Refresh() {
-    QSqlQuery qryInfo(_m_dbDatabase);
+CMain::Next() {
 
-    bool bRes = qryInfo.exec("select * from T_PERSON");
+}
+//---------------------------------------------------------------------------
+void
+CMain::Last() {
+
+}
+//---------------------------------------------------------------------------
+void
+CMain::Insert() {
+    bool bRes = _m_mdModel->insertRow(_m_mdModel->rowCount());
     if (false == bRes) {
-        QMessageBox::critical(0, tr(""), qryInfo.lastError().text(), QMessageBox::Cancel);
+        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
+    }
+
+/*
+    QModelIndex index;
+    int row = tableModel->rowCount();
+    tableModel->insertRow(row);
+    index = tableModel->index(row, 0);
+    myTableView->setCurrentIndex(index);
+    myTableView->edit(index);
+*/
+
+    Refresh();
+}
+//---------------------------------------------------------------------------
+void
+CMain::Delete() {
+    QModelIndex miIndex = _m_Ui.tabvInfo->currentIndex();
+
+    bool bRes = _m_Ui.tabvInfo->model()->removeRow(miIndex.row());   //_m_mdModel->
+    if (false == bRes) {
+        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
+    }
+}
+//---------------------------------------------------------------------------
+void
+CMain::Edit() {
+
+}
+//---------------------------------------------------------------------------
+void
+CMain::Post() {
+
+}
+//---------------------------------------------------------------------------
+void
+CMain::Cancel() {
+
+}
+//---------------------------------------------------------------------------
+void
+CMain::Refresh() {
+    bool bRes = _m_mdModel->select();
+    if (false == bRes) {
+        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
     }
 }
 //---------------------------------------------------------------------------
