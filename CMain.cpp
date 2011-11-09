@@ -47,8 +47,8 @@ CMain::CMain(
     }
 }
 //---------------------------------------------------------------------------
-CMain::~CMain()
-{
+/*virtual*/
+CMain::~CMain() {
     _m_dbDatabase.close();
 }
 //---------------------------------------------------------------------------
@@ -61,18 +61,13 @@ CMain::_initModel() {
     _m_dbDatabase.setDatabaseName("./base.db");
 
     bRes = _m_dbDatabase.open();
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), _m_dbDatabase.lastError().text(), QMessageBox::Cancel);
-        return;
-    }
+    qCHECK_REF(bRes, _m_dbDatabase);
 
     //Set up the main table
     QSqlQuery qryInfo(_m_dbDatabase);
 
     bRes = qryInfo.exec("create table if not exists T_PERSON (F_ID int primary key, F_NAME varchar(64), F_ADGE int);");
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), qryInfo.lastError().text(), QMessageBox::Cancel);
-    }
+    qCHECK_REF(bRes, qryInfo);
 
     //CSqlCryptTableModel
     _m_mdModel = new CSqlCryptTableModel(this, _m_dbDatabase);
@@ -87,7 +82,10 @@ CMain::_initModel() {
     _m_mdModel->select();
 
     _m_Ui.tabvInfo->setModel(_m_mdModel);
+    _m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
     _m_Ui.tabvInfo->show();
+
+    m_navNavigator.Setup(_m_mdModel, _m_Ui.tabvInfo);
 }
 //---------------------------------------------------------------------------
 
@@ -101,73 +99,51 @@ CMain::_initModel() {
 //---------------------------------------------------------------------------
 void
 CMain::First() {
-
+    m_navNavigator.First();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Prior() {
-
+    m_navNavigator.Prior();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Next() {
-
+    m_navNavigator.Next();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Last() {
-
+    m_navNavigator.Last();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Insert() {
-    bool bRes = _m_mdModel->insertRow(_m_mdModel->rowCount());
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
-    }
-
-/*
-    QModelIndex index;
-    int row = tableModel->rowCount();
-    tableModel->insertRow(row);
-    index = tableModel->index(row, 0);
-    myTableView->setCurrentIndex(index);
-    myTableView->edit(index);
-*/
-
-    Refresh();
+    m_navNavigator.Insert();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Delete() {
-    QModelIndex miIndex = _m_Ui.tabvInfo->currentIndex();
-
-    bool bRes = _m_Ui.tabvInfo->model()->removeRow(miIndex.row());   //_m_mdModel->
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
-    }
+    m_navNavigator.Delete();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Edit() {
-
+    m_navNavigator.Edit();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Post() {
-
+    m_navNavigator.Post();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Cancel() {
-
+    m_navNavigator.Cancel();
 }
 //---------------------------------------------------------------------------
 void
 CMain::Refresh() {
-    bool bRes = _m_mdModel->select();
-    if (false == bRes) {
-        QMessageBox::critical(0, tr(""), _m_mdModel->lastError().text(), QMessageBox::Cancel);
-    }
+    m_navNavigator.Refresh();
 }
 //---------------------------------------------------------------------------

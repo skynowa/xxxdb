@@ -2,6 +2,9 @@
 <ui version="4.0">
  <class>CMainClass</class>
  <widget class="QMainWindow" name="CMainClass">
+  <property name="enabled">
+   <bool>true</bool>
+  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
@@ -12,6 +15,9 @@
   </property>
   <property name="windowTitle">
    <string>CMain</string>
+  </property>
+  <property name="statusTip">
+   <string/>
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
@@ -46,7 +52,7 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>19</height>
+     <height>22</height>
     </rect>
    </property>
    <widget class="QMenu" name="menuGhfd_ghfsdfsdfasdfasdfasdfasdfasefassdfasdfasg">
@@ -76,7 +82,7 @@
     <enum>TopToolBarArea</enum>
    </attribute>
    <attribute name="toolBarBreak">
-    <bool>true</bool>
+    <bool>false</bool>
    </attribute>
    <addaction name="actMovetoFirst"/>
    <addaction name="actMovetoPrior"/>
@@ -142,8 +148,6 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources>
-  <include location="CMain.qrc"/>
- </resources>
+ <resources/>
  <connections/>
 </ui>

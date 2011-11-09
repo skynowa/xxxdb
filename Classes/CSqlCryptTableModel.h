@@ -7,7 +7,7 @@
 #ifndef CSQLCRYPTTABLEMODEL_H
 #define CSQLCRYPTTABLEMODEL_H
 //---------------------------------------------------------------------------
-#include "../Common.h"
+#include "Common.h"
 
 #include <xLib/Crypt/OpenSSL/CxBlowfish.h>
 //---------------------------------------------------------------------------
@@ -22,8 +22,9 @@ class CSqlCryptTableModel :
 
 
         explicit           CSqlCryptTableModel(QObject *parent = 0, QSqlDatabase db = QSqlDatabase(), const ECryptAlgorithm ccaCryptAlgorithm = caBlowfish);
+            ///< constructor
 
-        BOOL               setCryptKey        (const std::tstring &csCryptKey);
+        BOOL               setCryptKey        (const std::string_t &csCryptKey);
             ///< set crypto key
         virtual bool	   setData            (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
             ///< set encrypted data

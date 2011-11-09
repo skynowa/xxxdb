@@ -7,11 +7,11 @@
 #ifndef CMAIN_H
 #define CMAIN_H
 //---------------------------------------------------------------------------
-#include <xLib/Common/xCommon.h>
-
-#include "Common.h"
 #include "ui_CMain.h"
+
+#include "Classes/Common.h"
 #include "Classes/CSqlCryptTableModel.h"
+#include "Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
 class CMain :
     public QMainWindow
@@ -20,12 +20,15 @@ class CMain :
 
     public:
                              CMain      (QWidget *parent = 0, Qt::WFlags flags = 0);
-                            ~CMain      ();
+        virtual             ~CMain      ();
+
+        CSqlNavigator        m_navNavigator;
 
     private:
         Ui::CMainClass       _m_Ui;
         QSqlDatabase         _m_dbDatabase;
         CSqlCryptTableModel *_m_mdModel;
+
 
         void                 _initModel();
 
@@ -37,16 +40,16 @@ class CMain :
 
         //--------------------------------------------------
         // mnuEdit
-        void                 First      ();
-        void                 Prior      ();
-        void                 Next       ();
-        void                 Last       ();
-        void                 Insert     ();
-        void                 Delete     ();
-        void                 Edit       ();
-        void                 Post       ();
-        void                 Cancel     ();
-        void                 Refresh    ();
+        void            First        ();
+        void            Prior        ();
+        void            Next         ();
+        void            Last         ();
+        void            Insert       ();
+        void            Delete       ();
+        void            Edit         ();
+        void            Post         ();
+        void            Cancel       ();
+        void            Refresh      ();
 
 };
 //---------------------------------------------------------------------------
