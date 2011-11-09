@@ -3,9 +3,11 @@ TARGET      = XXXDb
 QT          = core gui sql network
 CONFIG      += warn_on
 
-INCLUDEPATH = "/home/sergey/Coding/xLib/Include/" "/home/sergey/Coding/xLib/Source/"
+unix: INCLUDEPATH = "/home/sergey/Coding/xLib/Include/" "/home/sergey/Coding/xLib/Source/"
+win32:INCLUDEPATH = "D:/xLib/Include/" "D:/xLib/Source/" "D:/Libs/OpenSSL/OpenSSL-Win32/include/"
 
-LIBS        = ./Libs/libxlib.a -lcrypto
+unix: LIBS        = ./Libs/libxlib.a -lcrypto
+win32:LIBS        = "D:\Libs\OpenSSL\OpenSSL-Win32\lib\libeay32.lib" "D:\Libs\OpenSSL\OpenSSL-Win32\lib\ssleay32.lib"
 
 HEADERS     = CMain.h \
               Classes/CSqlCryptTableModel.h \
