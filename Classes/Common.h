@@ -56,7 +56,7 @@
 
 //---------------------------------------------------------------------------
 #define qNOT_IMPL               { QMessageBox::warning(this, qApp->applicationName(), tr(__FUNCTION__) + tr(": Not implemented")); }
-#define qMSG(s)                 { QMessageBox::information(NULL, qApp->applicationName(), tr(s)); }
+#define qMSG(s)                 { QMessageBox::information(NULL, qApp->applicationName(), s); }
 #define qCHECK_REF(var, object) { if (false == var) { QMessageBox::critical(0, qApp->applicationName(), object.lastError().text(),  QMessageBox::Cancel); } }
 #define qCHECK_PTR(var, object) { if (false == var) { QMessageBox::critical(0, qApp->applicationName(), object->lastError().text(), QMessageBox::Cancel); } }
 //---------------------------------------------------------------------------

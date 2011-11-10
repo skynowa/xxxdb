@@ -24,14 +24,14 @@
     <item row="0" column="0" rowspan="2">
      <widget class="QTableView" name="tabvInfo"/>
     </item>
-    <item row="0" column="1">
+    <item row="0" column="2">
      <widget class="QLabel" name="lblPhoto">
       <property name="text">
        <string>TextLabel</string>
       </property>
      </widget>
     </item>
-    <item row="1" column="1">
+    <item row="1" column="2">
      <spacer name="verticalSpacer">
       <property name="orientation">
        <enum>Qt::Vertical</enum>
@@ -43,6 +43,9 @@
        </size>
       </property>
      </spacer>
+    </item>
+    <item row="2" column="0">
+     <widget class="QLineEdit" name="ledtName"/>
     </item>
    </layout>
   </widget>

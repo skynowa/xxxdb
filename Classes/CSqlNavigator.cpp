@@ -28,7 +28,7 @@ CSqlNavigator::~CSqlNavigator() {
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Setup(
+CSqlNavigator::setup(
     QSqlTableModel *tmTableModel,
     QTableView     *tabvTableView
 )
@@ -38,52 +38,53 @@ CSqlNavigator::Setup(
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::First() {
+CSqlNavigator::first() {
     int iTargetRow = 0;
 
     _m_tabvTableView->selectRow(iTargetRow);
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Prior() {
+CSqlNavigator::prior() {
     int iTargetRow = _m_tabvTableView->currentIndex().row() - 1;
 
     _m_tabvTableView->selectRow(iTargetRow);
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Next() {
+CSqlNavigator::next() {
     int iTargetRow = _m_tabvTableView->currentIndex().row() + 1;
 
     _m_tabvTableView->selectRow(iTargetRow);
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Last() {
+CSqlNavigator::last() {
     int iTargetRow = _m_tmTableModel->rowCount() - 1;
 
     _m_tabvTableView->selectRow(iTargetRow);
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Insert() {
+CSqlNavigator::insert() {
     bool bRes = _m_tmTableModel->insertRow(_m_tmTableModel->rowCount());
     qCHECK_PTR(bRes, _m_tmTableModel);
 
-    Refresh();
-    Edit();
+    refresh();
+    edit();
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Delete() {
+CSqlNavigator::remove() {
     int iTargetRow = _m_tabvTableView->currentIndex().row();
+    if (- 1 == iTargetRow) { return; }
 
     bool bRes = _m_tabvTableView->model()->removeRow(iTargetRow);
     qCHECK_PTR(bRes, _m_tmTableModel);
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Edit() {
+CSqlNavigator::edit() {
     const int   ciTargetCell = 1;
 
     int         iTargetRow   = _m_tabvTableView->currentIndex().row();
@@ -94,7 +95,7 @@ CSqlNavigator::Edit() {
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Post() {
+CSqlNavigator::post() {
     const int   ciTargetCell = 1;
 
     int         iTargetRow   = _m_tabvTableView->currentIndex().row();
@@ -105,12 +106,12 @@ CSqlNavigator::Post() {
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Cancel() {
+CSqlNavigator::cancel() {
 
 }
 //---------------------------------------------------------------------------
 void
-CSqlNavigator::Refresh() {
+CSqlNavigator::refresh() {
     bool bRes = _m_tmTableModel->select();
     qCHECK_PTR(bRes, _m_tmTableModel);
 

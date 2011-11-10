@@ -25,39 +25,46 @@ CMain::CMain(
 
     //--------------------------------------------------
     // mnuEdit
-    QObject::connect(_m_Ui.actMovetoFirst, SIGNAL( triggered() ), this, SLOT( First()   ));
-    QObject::connect(_m_Ui.actMovetoPrior, SIGNAL( triggered() ), this, SLOT( Prior()   ));
-    QObject::connect(_m_Ui.actMovetoNext,  SIGNAL( triggered() ), this, SLOT( Next()    ));
-    QObject::connect(_m_Ui.actMovetoLast,  SIGNAL( triggered() ), this, SLOT( Last()    ));
-    QObject::connect(_m_Ui.actInsert,      SIGNAL( triggered() ), this, SLOT( Insert()  ));
-    QObject::connect(_m_Ui.actDelete,      SIGNAL( triggered() ), this, SLOT( Delete()  ));
-    QObject::connect(_m_Ui.actEdit,        SIGNAL( triggered() ), this, SLOT( Edit()    ));
-    QObject::connect(_m_Ui.actPost,        SIGNAL( triggered() ), this, SLOT( Post()    ));
-    QObject::connect(_m_Ui.actCancel,      SIGNAL( triggered() ), this, SLOT( Cancel()  ));
-    QObject::connect(_m_Ui.actRefresh,     SIGNAL( triggered() ), this, SLOT( Refresh() ));
+    QObject::connect(_m_Ui.actMovetoFirst, SIGNAL( triggered() ), this, SLOT( first()   ));
+    QObject::connect(_m_Ui.actMovetoPrior, SIGNAL( triggered() ), this, SLOT( prior()   ));
+    QObject::connect(_m_Ui.actMovetoNext,  SIGNAL( triggered() ), this, SLOT( next()    ));
+    QObject::connect(_m_Ui.actMovetoLast,  SIGNAL( triggered() ), this, SLOT( last()    ));
+    QObject::connect(_m_Ui.actInsert,      SIGNAL( triggered() ), this, SLOT( insert()  ));
+    QObject::connect(_m_Ui.actDelete,      SIGNAL( triggered() ), this, SLOT( remove()  ));
+    QObject::connect(_m_Ui.actEdit,        SIGNAL( triggered() ), this, SLOT( edit()    ));
+    QObject::connect(_m_Ui.actPost,        SIGNAL( triggered() ), this, SLOT( post()    ));
+    QObject::connect(_m_Ui.actCancel,      SIGNAL( triggered() ), this, SLOT( cancel()  ));
+    QObject::connect(_m_Ui.actRefresh,     SIGNAL( triggered() ), this, SLOT( refresh() ));
 
     {
         QImage imgPhoto;
-        imgPhoto.load("./image.png");
+        imgPhoto.load("./image1.png");
 
         QImage img1 = imgPhoto.scaled(QSize(120 * 2, 90 * 2), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
         _m_Ui.lblPhoto->setPixmap(QPixmap::fromImage(img1));
         //ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     }
+
+    {
+     //   _m_Ui.ledtName->setMap
+    }
 }
 //---------------------------------------------------------------------------
 /*virtual*/
 CMain::~CMain() {
-    _m_dbDatabase.close();
+
 }
 //---------------------------------------------------------------------------
 void
 CMain::_initModel() {
     bool bRes = false;
 
-    _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
 
+    bRes = QSqlDatabase::isDriverAvailable("QSQLITE");
+    xCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return;);
+
+    _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
     _m_dbDatabase.setDatabaseName("./base.db");
 
     bRes = _m_dbDatabase.open();
@@ -66,7 +73,7 @@ CMain::_initModel() {
     //Set up the main table
     QSqlQuery qryInfo(_m_dbDatabase);
 
-    bRes = qryInfo.exec("create table if not exists T_PERSON (F_ID int primary key, F_NAME varchar(64), F_ADGE int);");
+    bRes = qryInfo.exec("create table if not exists T_PERSON (F_ID int primary key not null, F_NAME varchar(64), F_ADGE int);");
     qCHECK_REF(bRes, qryInfo);
 
     //CSqlCryptTableModel
@@ -85,10 +92,9 @@ CMain::_initModel() {
     _m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
     _m_Ui.tabvInfo->show();
 
-    m_navNavigator.Setup(_m_mdModel, _m_Ui.tabvInfo);
+    m_navNavigator.setup(_m_mdModel, _m_Ui.tabvInfo);
 }
 //---------------------------------------------------------------------------
-
 
 
 /****************************************************************************
@@ -98,52 +104,52 @@ CMain::_initModel() {
 
 //---------------------------------------------------------------------------
 void
-CMain::First() {
-    m_navNavigator.First();
+CMain::first() {
+    m_navNavigator.first();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Prior() {
-    m_navNavigator.Prior();
+CMain::prior() {
+    m_navNavigator.prior();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Next() {
-    m_navNavigator.Next();
+CMain::next() {
+    m_navNavigator.next();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Last() {
-    m_navNavigator.Last();
+CMain::last() {
+    m_navNavigator.last();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Insert() {
-    m_navNavigator.Insert();
+CMain::insert() {
+    m_navNavigator.insert();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Delete() {
-    m_navNavigator.Delete();
+CMain::remove() {
+    m_navNavigator.remove();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Edit() {
-    m_navNavigator.Edit();
+CMain::edit() {
+    m_navNavigator.edit();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Post() {
-    m_navNavigator.Post();
+CMain::post() {
+    m_navNavigator.post();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Cancel() {
-    m_navNavigator.Cancel();
+CMain::cancel() {
+    m_navNavigator.cancel();
 }
 //---------------------------------------------------------------------------
 void
-CMain::Refresh() {
-    m_navNavigator.Refresh();
+CMain::refresh() {
+    m_navNavigator.refresh();
 }
 //---------------------------------------------------------------------------

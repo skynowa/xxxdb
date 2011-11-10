@@ -36,8 +36,8 @@ CSqlCryptTableModel::setData(
     int                role /* = Qt::EditRole */
 )
 {
-    qDebug() << "[setData] index: " << index.column();
-    qDebug() << "[setData] value: " << value.toString();
+    //qDebug() << "[setData] index: " << index.column();
+    //qDebug() << "[setData] value: " << value.toString();
 
 
     QVariant vOut;
@@ -64,12 +64,13 @@ CSqlCryptTableModel::data(
     int                role /* = Qt::DisplayRole */
 ) const
 {
-    qDebug() << "[data] index: " << index.column();
-    qDebug() << "[data] value: " << QSqlTableModel::data(index, role).toString();
+    //qDebug() << "[data] index: " << index.column();
+    //qDebug() << "[data] value: " << QSqlTableModel::data(index, role).toString();
 
 
     QVariant vRes;
 
+    //TODO: which fields should be encrypted
     if (1 == index.column() && !QSqlTableModel::data(index, role).isNull()) {
         QByteArray baIn = QSqlTableModel::data(index, role).toByteArray();
         QByteArray baOut; baOut.resize(baIn.size());

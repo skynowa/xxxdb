@@ -40,16 +40,16 @@ class CMain :
 
         //--------------------------------------------------
         // mnuEdit
-        void            First        ();
-        void            Prior        ();
-        void            Next         ();
-        void            Last         ();
-        void            Insert       ();
-        void            Delete       ();
-        void            Edit         ();
-        void            Post         ();
-        void            Cancel       ();
-        void            Refresh      ();
+        void                 first     ();
+        void                 prior     ();
+        void                 next      ();
+        void                 last      ();
+        void                 insert    ();
+        void                 remove    ();
+        void                 edit      ();
+        void                 post      ();
+        void                 cancel    ();
+        void                 refresh   ();
 
 };
 //---------------------------------------------------------------------------

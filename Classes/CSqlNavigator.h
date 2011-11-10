@@ -18,20 +18,20 @@ class CSqlNavigator :
                         CSqlNavigator();
                             ///< constructor
         virtual        ~CSqlNavigator();
+                            ///< destructor
 
-        void            Setup        (QSqlTableModel *tmTableModel, QTableView *tabvTableView);
+        void            setup        (QSqlTableModel *tmTableModel, QTableView *tabvTableView);
 
-    public slots:
-        void            First        ();
-        void            Prior        ();
-        void            Next         ();
-        void            Last         ();
-        void            Insert       ();
-        void            Delete       ();
-        void            Edit         ();
-        void            Post         ();
-        void            Cancel       ();
-        void            Refresh      ();
+        void            first        ();
+        void            prior        ();
+        void            next         ();
+        void            last         ();
+        void            insert       ();
+        void            remove       ();
+        void            edit         ();
+        void            post         ();
+        void            cancel       ();
+        void            refresh      ();
 
     private:
         QSqlTableModel *_m_tmTableModel;
