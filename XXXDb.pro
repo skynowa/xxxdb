@@ -1,12 +1,20 @@
-TEMPLATE           = app
+#---------------------------------------------------------------------------
+#
+# \file  XXXDb.pro
+# \brief project file
+#
+#---------------------------------------------------------------------------
+
+
 TARGET             = XXXDb
+TEMPLATE           = app
 QT                 = core gui sql network
 CONFIG            += warn_on
 
-unix: INCLUDEPATH  = "/home/sergey/Coding/xLib/Include/" "/home/sergey/Coding/xLib/Source/"
-win32:INCLUDEPATH  = "D:/xLib/Include/" "D:/xLib/Source/" "D:/Libs/OpenSSL/OpenSSL-Win32/include/"
+unix: INCLUDEPATH  =
+win32:INCLUDEPATH  = "$(XLIB)/Include" "D:/Libs/OpenSSL/OpenSSL-Win32/include/"
 
-unix: LIBS         = ./Libs/libxlib.a -lcrypto
+unix: LIBS         = -lxlib -lcrypto
 win32:LIBS         = "D:\Libs\OpenSSL\OpenSSL-Win32\lib\libeay32.lib" "D:\Libs\OpenSSL\OpenSSL-Win32\lib\ssleay32.lib"
 
 HEADERS            = CMain.h \

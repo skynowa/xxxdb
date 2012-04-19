@@ -20,9 +20,9 @@ CSqlCryptTableModel::CSqlCryptTableModel(
 
 }
 //---------------------------------------------------------------------------
-BOOL
+bool
 CSqlCryptTableModel::setCryptKey(
-    const std::string_t &csKey
+    const std::tstring_t &csKey
 )
 {
     return _m_bfBlowFish.bSetKey(csKey);
@@ -47,7 +47,7 @@ CSqlCryptTableModel::setData(
         QByteArray baOut; baOut.resize(baIn.size());
         int        iNum = 0; // must be zero
 
-        _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmEncrypt);
+        _m_bfBlowFish.bEncryptCfb64((uchar_t *)baIn.data(), (uchar_t *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmEncrypt);
 
         vOut = baOut;
     } else {
@@ -76,7 +76,7 @@ CSqlCryptTableModel::data(
         QByteArray baOut; baOut.resize(baIn.size());
         int        iNum = 0; // must be zero
 
-        _m_bfBlowFish.bEncryptCfb64((UCHAR *)baIn.data(), (UCHAR *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmDecrypt);
+        _m_bfBlowFish.bEncryptCfb64((uchar_t *)baIn.data(), (uchar_t *)baOut.data(), baIn.size(), &iNum, CxBlowfish::cmDecrypt);
 
         vRes = baOut;
     } else {

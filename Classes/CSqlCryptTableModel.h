@@ -24,7 +24,7 @@ class CSqlCryptTableModel :
         explicit           CSqlCryptTableModel(QObject *parent = 0, QSqlDatabase db = QSqlDatabase(), const ECryptAlgorithm ccaCryptAlgorithm = caBlowfish);
             ///< constructor
 
-        BOOL               setCryptKey        (const std::string_t &csCryptKey);
+        bool               setCryptKey        (const std::tstring_t &csCryptKey);
             ///< set crypto key
         virtual bool	   setData            (const QModelIndex &index, const QVariant &value, int role = Qt::EditRole);
             ///< set encrypted data
