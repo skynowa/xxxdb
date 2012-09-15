@@ -13,3 +13,5 @@ TODO.txt
 *.autosave
 Makefile*
 *.pdb
+*.jpg
+*.png
