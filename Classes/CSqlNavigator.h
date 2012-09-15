@@ -7,7 +7,7 @@
 #ifndef xLib_CSqlNavigatorH
 #define xLib_CSqlNavigatorH
 //---------------------------------------------------------------------------
-#include "Common.h"
+#include "../QtLib/Common.h"
 //---------------------------------------------------------------------------
 class CSqlNavigator :
     public QObject

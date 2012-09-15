@@ -2,36 +2,14 @@
 
 
 ##### dirs #####
-debug
-release
-Debug
-Release
-Temp
-GeneratedFiles
-.settings
 Distr
+Temp
+Ui
 
 
 ##### files #####
 TODO.txt
-XXXDb
-base.db
-image.png
-Makefile
-Makefile.Debug
-Makefile.Release
-.project
-.cproject
-*.sdf
+*.pro.user
+*.autosave
+Makefile*
 *.pdb
-*.ncb
-*.suo
-*.user
-*.opensdf
-*.exe
-*.ilk
-*.o
-*.a
-*.exe
-moc_CMain.cpp
-ui_CMain.h

@@ -6,30 +6,61 @@
 #---------------------------------------------------------------------------
 
 
-TARGET             = XXXDb
-TEMPLATE           = app
-QT                 = core gui sql network
-CONFIG            += warn_on
+TARGET          = XXXDb
+TEMPLATE        = app
+QT              = core gui sql network
+CONFIG         += warn_on
 
-unix: INCLUDEPATH  =
-win32:INCLUDEPATH  =
+win32 {
+    INCLUDEPATH = "$$(xLib)/Project/Include"
 
-unix: LIBS         =
-win32:LIBS         =
+    CONFIG(debug, debug|release) {
+        LIBS    = "$$(xLib)/Build/Libs/VC++2010/Debug/StaticLib_VC++2010.lib"
+    } else {
+        LIBS    = "$$(xLib)/Build/Libs/VC++2010/Release/StaticLib_VC++2010.lib"
+    }
 
-HEADERS            = CMain.h \
-                     Classes/Common.h \
-                     Classes/CSqlNavigator.h
+    LIBS       += User32.lib Ole32.lib Advapi32.lib shell32.lib
+}
+unix {
+    INCLUDEPATH =
 
-SOURCES            = main.cpp \
-                     CMain.cpp \
-                     Classes/CSqlNavigator.cpp
+    CONFIG(debug, debug|release) {
+        LIBS    = -lxlib_r  # TODO: make -lxlib_d
+    } else {
+        LIBS    = -lxlib_r
+    }
 
-FORMS              = Forms/CMain.ui
-RESOURCES          =
+    LIBS       +=
+}
 
-DESTDIR            = ./Distr
-MOC_DIR            = ./Temp
-OBJECTS_DIR        = ./Temp
-RCC_DIR            = ./Resources
-UI_DIR             = ./Ui
+HEADERS         = QtLib/Common.h \
+                  Config.h \
+                  CMain.h \
+                  Classes/CSqlNavigator.h
+
+SOURCES         = main.cpp \
+                  CMain.cpp \
+                  Classes/CSqlNavigator.cpp
+
+FORMS           = Forms/CMain.ui
+
+RESOURCES       = Resources/CMain.qrc
+RC_FILE         =
+
+
+
+OUT_DIR         =
+
+CONFIG(debug, debug|release) {
+    OUT_DIR    = ./Build/Debug
+} else {
+    OUT_DIR    = ./Build/Release
+}
+
+DESTDIR         = "$$OUT_DIR/Distr"
+MOC_DIR         = "$$OUT_DIR/Temp"
+OBJECTS_DIR     = "$$OUT_DIR/Temp"
+RCC_DIR         = "$$OUT_DIR/Temp"
+UI_DIR          = "$$OUT_DIR/Ui"
+

@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 #include "ui_CMain.h"
 
-#include "Classes/Common.h"
+#include "QtLib/Common.h"
 #include "Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
 class CMain :
