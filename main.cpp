@@ -1,19 +1,52 @@
 /**
- * \file   main.cpp
- * \brief  main module
+ * \file  main.cpp
+ * \brief main window
  */
 
 
-
-#include "CMain.h"
 #include <QtGui/QApplication>
-//---------------------------------------------------------------------------
-int
-main(int argc, char *argv[]) {
-    QApplication a(argc, argv);
-    CMain w;
-    w.show();
+#include "CMain.h"
 
-    return a.exec();
+//---------------------------------------------------------------------------
+int main(int argc, char *argv[])
+{
+#if defined(Q_WS_WIN)
+    const QByteArray codecName = "Windows-1251";
+#else
+    const QByteArray codecName = "UTF-8";
+#endif
+
+
+    QTextCodec *codec = QTextCodec::codecForName(codecName);
+    Q_ASSERT(NULL != codec);
+
+    QTextCodec::setCodecForTr(codec);
+    QTextCodec::setCodecForCStrings(codec);
+    QTextCodec::setCodecForLocale(codec);
+
+    // application single inststance
+    {
+        bool bRes = false;
+
+        static QSharedMemory smLocker(CONFIG_GUID);
+
+        bRes = smLocker.attach();
+        qCHECK_RET(true == bRes, EXIT_SUCCESS);
+
+        bRes = smLocker.create(1);
+        qCHECK_RET(false == bRes, EXIT_SUCCESS);
+    }
+
+    QApplication apApplication(argc, argv);
+
+    QCoreApplication::setOrganizationName("");
+    QCoreApplication::setApplicationName( apApplication.applicationFilePath() );
+
+    CMain dlgMain;
+    dlgMain.show();
+
+    int iExitCode = apApplication.exec();
+
+    return iExitCode;
 }
 //---------------------------------------------------------------------------

@@ -4,11 +4,12 @@
  */
 
 
-#ifndef CMAIN_H
-#define CMAIN_H
+#ifndef PickupDb_CMainH
+#define PickupDb_CMainH
 //---------------------------------------------------------------------------
 #include "ui_CMain.h"
 
+#include "Config.h"
 #include "QtLib/Common.h"
 #include "Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
@@ -18,8 +19,8 @@ class CMain :
         Q_OBJECT
 
     public:
-                             CMain      (QWidget *parent = 0, Qt::WFlags flags = 0);
-        virtual             ~CMain      ();
+                             CMain     (QWidget *parent = 0, Qt::WFlags flags = 0);
+        virtual             ~CMain     ();
 
         CSqlNavigator        m_navNavigator;
 
@@ -52,4 +53,4 @@ class CMain :
 
 };
 //---------------------------------------------------------------------------
-#endif // CMAIN_H
+#endif // PickupDb_CMainH

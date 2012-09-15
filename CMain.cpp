@@ -58,39 +58,55 @@ CMain::~CMain() {
 //---------------------------------------------------------------------------
 void
 CMain::_initModel() {
-    bool bRes = false;
+    //--------------------------------------------------
+    // settings DB
+    {
+        bool bRes = false;
+
+        bRes = QSqlDatabase::isDriverAvailable("QSQLITE");
+        qCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return;);
+
+        _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
+        _m_dbDatabase.setDatabaseName(QCoreApplication::applicationFilePath() + CONFIG_DB_FILE_EXT);
+
+        bRes = _m_dbDatabase.open();
+        qCHECK_REF(bRes, _m_dbDatabase);
+
+        {
+            QSqlQuery qryInfo(_m_dbDatabase);
+
+            const QString csSql = \
+                    "CREATE TABLE IF NOT EXISTS t_person"
+                    "( "
+                    "    f_id   INTEGER     PRIMARY KEY AUTOINCREMENT "
+                    "                       NOT NULL "
+                    "                       UNIQUE, "
+                    "    f_name varchar(64), "
+                    "    f_adge int "
+                    ")";
+
+            bRes = qryInfo.exec(csSql);
+            qCHECK_REF(bRes, qryInfo);
+        }
+    }
 
 
-    bRes = QSqlDatabase::isDriverAvailable("QSQLITE");
-    qCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return);
-
-    _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
-    _m_dbDatabase.setDatabaseName("./base.db");
-
-    bRes = _m_dbDatabase.open();
-    qCHECK_REF(bRes, _m_dbDatabase);
-
-    //Set up the main table
-    QSqlQuery qryInfo(_m_dbDatabase);
-
-    bRes = qryInfo.exec("create table if not exists T_PERSON (F_ID int primary key not null, F_NAME varchar(64), F_ADGE int);");
-    qCHECK_REF(bRes, qryInfo);
-
-    //CSqlCryptTableModel
+    // QSqlTableModel
     _m_mdModel = new QSqlTableModel(this, _m_dbDatabase);
     _m_mdModel->setTable("T_PERSON");
     _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
     _m_mdModel->select();
-    //_m_mdModel->removeColumn(0); // don't show the ID
+    _m_mdModel->removeColumn(0); // don't show the ID
     _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
     _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
-    _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Address"));
+    _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
     _m_mdModel->select();
 
     _m_Ui.tabvInfo->setModel(_m_mdModel);
     _m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
     _m_Ui.tabvInfo->show();
 
+    // m_navNavigator
     m_navNavigator.setup(_m_mdModel, _m_Ui.tabvInfo);
 }
 //---------------------------------------------------------------------------
