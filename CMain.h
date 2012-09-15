@@ -10,7 +10,6 @@
 #include "ui_CMain.h"
 
 #include "Classes/Common.h"
-#include "Classes/CSqlCryptTableModel.h"
 #include "Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
 class CMain :
@@ -27,7 +26,7 @@ class CMain :
     private:
         Ui::CMainClass       _m_Ui;
         QSqlDatabase         _m_dbDatabase;
-        CSqlCryptTableModel *_m_mdModel;
+        QSqlTableModel      *_m_mdModel;
 
 
         void                 _initModel();

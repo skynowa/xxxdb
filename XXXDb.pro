@@ -12,19 +12,17 @@ QT                 = core gui sql network
 CONFIG            += warn_on
 
 unix: INCLUDEPATH  =
-win32:INCLUDEPATH  = "$(XLIB)/Include" "D:/Libs/OpenSSL/OpenSSL-Win32/include/"
+win32:INCLUDEPATH  =
 
-unix: LIBS         = -lxlib -lcrypto
-win32:LIBS         = "D:\Libs\OpenSSL\OpenSSL-Win32\lib\libeay32.lib" "D:\Libs\OpenSSL\OpenSSL-Win32\lib\ssleay32.lib"
+unix: LIBS         =
+win32:LIBS         =
 
 HEADERS            = CMain.h \
                      Classes/Common.h \
-                     Classes/CSqlCryptTableModel.h \
                      Classes/CSqlNavigator.h
 
 SOURCES            = main.cpp \
                      CMain.cpp \
-                     Classes/CSqlCryptTableModel.cpp \
                      Classes/CSqlNavigator.cpp
 
 FORMS              = Forms/CMain.ui

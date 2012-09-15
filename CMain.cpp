@@ -62,7 +62,7 @@ CMain::_initModel() {
 
 
     bRes = QSqlDatabase::isDriverAvailable("QSQLITE");
-    xCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return;);
+    qCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return);
 
     _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
     _m_dbDatabase.setDatabaseName("./base.db");
@@ -77,8 +77,7 @@ CMain::_initModel() {
     qCHECK_REF(bRes, qryInfo);
 
     //CSqlCryptTableModel
-    _m_mdModel = new CSqlCryptTableModel(this, _m_dbDatabase);
-    _m_mdModel->setCryptKey(xT("0123456789"));
+    _m_mdModel = new QSqlTableModel(this, _m_dbDatabase);
     _m_mdModel->setTable("T_PERSON");
     _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
     _m_mdModel->select();
