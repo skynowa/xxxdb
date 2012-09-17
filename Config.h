@@ -8,7 +8,7 @@
 #define PickupDb_ConfigH
 //---------------------------------------------------------------------------
 // main window
-#define CONFIG_APP_NAME                       tr("Start")
+#define CONFIG_APP_NAME                       "PickupDB"
 
 // etc
 #define CONFIG_BACKUP_DIR_NAME                "Backups"

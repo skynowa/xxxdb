@@ -21,31 +21,28 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
-    <item row="0" column="0" rowspan="2">
-     <widget class="QTableView" name="tabvInfo"/>
-    </item>
-    <item row="0" column="2">
-     <widget class="QLabel" name="lblPhoto">
-      <property name="text">
-       <string>TextLabel</string>
-      </property>
-     </widget>
-    </item>
-    <item row="1" column="2">
-     <spacer name="verticalSpacer">
+    <item row="0" column="0">
+     <widget class="QSplitter" name="splitter_2">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
-      <property name="sizeHint" stdset="0">
-       <size>
-        <width>20</width>
-        <height>310</height>
-       </size>
-      </property>
-     </spacer>
-    </item>
-    <item row="2" column="0">
-     <widget class="QLineEdit" name="ledtName"/>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
+       </property>
+       <widget class="QLabel" name="lblPhoto">
+        <property name="text">
+         <string>TextLabel</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="groupBox">
+        <property name="title">
+         <string>GroupBox</string>
+        </property>
+       </widget>
+      </widget>
+      <widget class="QTableView" name="tabvInfo"/>
+     </widget>
     </item>
    </layout>
   </widget>
@@ -55,26 +52,9 @@
      <x>0</x>
      <y>0</y>
      <width>600</width>
-     <height>22</height>
+     <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuGhfd_ghfsdfsdfasdfasdfasdfasdfasefassdfasdfasg">
-    <property name="title">
-     <string>Edit</string>
-    </property>
-    <addaction name="actMovetoFirst"/>
-    <addaction name="actMovetoPrior"/>
-    <addaction name="actMovetoNext"/>
-    <addaction name="actMovetoLast"/>
-    <addaction name="separator"/>
-    <addaction name="actInsert"/>
-    <addaction name="actDelete"/>
-    <addaction name="actEdit"/>
-    <addaction name="actPost"/>
-    <addaction name="actCancel"/>
-    <addaction name="actRefresh"/>
-   </widget>
-   <addaction name="menuGhfd_ghfsdfsdfasdfasdfasdfasdfasefassdfasdfasg"/>
   </widget>
   <widget class="QStatusBar" name="statusBar"/>
   <widget class="QToolBar" name="toolBar">
@@ -87,68 +67,8 @@
    <attribute name="toolBarBreak">
     <bool>false</bool>
    </attribute>
-   <addaction name="actMovetoFirst"/>
-   <addaction name="actMovetoPrior"/>
-   <addaction name="actMovetoNext"/>
-   <addaction name="actMovetoLast"/>
    <addaction name="separator"/>
-   <addaction name="actInsert"/>
-   <addaction name="actDelete"/>
-   <addaction name="actEdit"/>
-   <addaction name="actPost"/>
-   <addaction name="actCancel"/>
-   <addaction name="actRefresh"/>
   </widget>
-  <action name="actMovetoFirst">
-   <property name="text">
-    <string>First</string>
-   </property>
-  </action>
-  <action name="actMovetoPrior">
-   <property name="text">
-    <string>Prior</string>
-   </property>
-  </action>
-  <action name="actMovetoNext">
-   <property name="text">
-    <string>Next</string>
-   </property>
-  </action>
-  <action name="actMovetoLast">
-   <property name="text">
-    <string>Last</string>
-   </property>
-  </action>
-  <action name="actInsert">
-   <property name="text">
-    <string>Insert</string>
-   </property>
-  </action>
-  <action name="actDelete">
-   <property name="text">
-    <string>Delete</string>
-   </property>
-  </action>
-  <action name="actEdit">
-   <property name="text">
-    <string>Edit</string>
-   </property>
-  </action>
-  <action name="actPost">
-   <property name="text">
-    <string>Post</string>
-   </property>
-  </action>
-  <action name="actCancel">
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </action>
-  <action name="actRefresh">
-   <property name="text">
-    <string>Refresh</string>
-   </property>
-  </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
  <resources/>

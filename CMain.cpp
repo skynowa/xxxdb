@@ -12,7 +12,22 @@ CMain::CMain(
     QWidget    *parent,
     Qt::WFlags  flags
 ) :
-    QMainWindow(parent, flags)
+    QMainWindow        (parent, flags),
+    actFile_Exit       (this),
+    actEdit_MovetoFirst(this),
+    actEdit_MovetoPrior(this),
+    actEdit_MovetoNext (this),
+    actEdit_MovetoLast (this),
+    actEdit_Insert     (this),
+    actEdit_Delete     (this),
+    actEdit_Edit       (this),
+    actEdit_Post       (this),
+    actEdit_Cancel     (this),
+    actEdit_Refresh    (this),
+    actFind_Search     (this),
+    actOptions_Settings(this),
+    actHelp_Faq        (this),
+    actHelp_About      (this)
 {
     _construct();
 }
@@ -25,7 +40,20 @@ CMain::~CMain() {
 
 
 /****************************************************************************
-*   mnuEdit
+*   group "File"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnExit() {
+    close();
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "Edit"
 *
 *****************************************************************************/
 
@@ -83,6 +111,90 @@ CMain::slot_OnRefresh() {
 
 
 /****************************************************************************
+*   group "Find"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnSearch() {
+
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "View"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+/*
+void
+CMain::xxxxxxx() {
+
+}
+*/
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "Options"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnSettings() {
+
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "Help"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnFaq() {
+
+}
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnAbout() {
+    QString sMsg = QString(tr(
+        "<p>"
+        "<b>%1</b> - accounting software for girls"
+        "</p>")
+            .arg(CONFIG_APP_NAME)
+        );
+
+    QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, sMsg);
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+/****************************************************************************
 *   private
 *
 *****************************************************************************/
@@ -90,27 +202,16 @@ CMain::slot_OnRefresh() {
 //---------------------------------------------------------------------------
 void
 CMain::_construct() {
-    _m_Ui.setupUi(this);
+    m_Ui.setupUi(this);
 
     _initModel();
+    _initActions();
+    _initMenus();
 
     /****************************************************************************
     *   setup slots
     *
     *****************************************************************************/
-
-    //--------------------------------------------------
-    // mnuEdit
-    QObject::connect(_m_Ui.actMovetoFirst, SIGNAL( triggered() ), this, SLOT( slot_OnFirst()   ));
-    QObject::connect(_m_Ui.actMovetoPrior, SIGNAL( triggered() ), this, SLOT( slot_OnPrior()   ));
-    QObject::connect(_m_Ui.actMovetoNext,  SIGNAL( triggered() ), this, SLOT( slot_OnNext()    ));
-    QObject::connect(_m_Ui.actMovetoLast,  SIGNAL( triggered() ), this, SLOT( slot_OnLast()    ));
-    QObject::connect(_m_Ui.actInsert,      SIGNAL( triggered() ), this, SLOT( slot_OnInsert()  ));
-    QObject::connect(_m_Ui.actDelete,      SIGNAL( triggered() ), this, SLOT( slot_OnRemove()  ));
-    QObject::connect(_m_Ui.actEdit,        SIGNAL( triggered() ), this, SLOT( slot_OnEdit()    ));
-    QObject::connect(_m_Ui.actPost,        SIGNAL( triggered() ), this, SLOT( slot_OnPost()    ));
-    QObject::connect(_m_Ui.actCancel,      SIGNAL( triggered() ), this, SLOT( slot_OnCancel()  ));
-    QObject::connect(_m_Ui.actRefresh,     SIGNAL( triggered() ), this, SLOT( slot_OnRefresh() ));
 
     {
         QImage imgPhoto;
@@ -119,12 +220,12 @@ CMain::_construct() {
 
         QImage img1 = imgPhoto.scaled(QSize(120 * 2, 90 * 2), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
 
-        _m_Ui.lblPhoto->setPixmap(QPixmap::fromImage(img1));
-        // _m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
+        m_Ui.lblPhoto->setPixmap(QPixmap::fromImage(img1));
+        // m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     }
 
     {
-        // _m_Ui.ledtName->setMap
+        // m_Ui.ledtName->setMap
     }
 }
 //---------------------------------------------------------------------------
@@ -180,17 +281,166 @@ CMain::_initModel() {
         _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
         _m_mdModel->select();
 
-        _m_Ui.tabvInfo->setModel(_m_mdModel);
-        _m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-        _m_Ui.tabvInfo->show();
+        m_Ui.tabvInfo->setModel(_m_mdModel);
+        m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        m_Ui.tabvInfo->show();
     }
 
     //--------------------------------------------------
     // m_navNavigator
     {
-        m_navNavigator.setup(_m_mdModel, _m_Ui.tabvInfo);
+        m_navNavigator.setup(_m_mdModel, m_Ui.tabvInfo);
     }
 
 }
 //---------------------------------------------------------------------------
+void
+CMain::_initActions() {
+    // group "File"
+    {
+        actFile_Exit.setText(tr("Exit"));
+        connect(&actFile_Exit, SIGNAL( triggered() ), this, SLOT( slot_OnExit() ));
+        m_Ui.toolBar->addAction(&actFile_Exit);
+    }
+
+    // group "Edit"
+    {
+        actEdit_MovetoFirst.setText(tr("First"));
+        connect(&actEdit_MovetoFirst, SIGNAL( triggered() ), this, SLOT( slot_OnFirst() ));
+        m_Ui.toolBar->addAction(&actEdit_MovetoFirst);
+
+        actEdit_MovetoPrior.setText(tr("Prior"));
+        connect(&actEdit_MovetoPrior, SIGNAL( triggered() ), this, SLOT( slot_OnPrior() ));
+        m_Ui.toolBar->addAction(&actEdit_MovetoPrior);
+
+        actEdit_MovetoNext.setText(tr("Next"));
+        connect(&actEdit_MovetoNext, SIGNAL( triggered() ), this, SLOT( slot_OnNext() ));
+        m_Ui.toolBar->addAction(&actEdit_MovetoNext);
+
+        actEdit_MovetoLast.setText(tr("Last"));
+        connect(&actEdit_MovetoLast, SIGNAL( triggered() ), this, SLOT( slot_OnLast() ));
+        m_Ui.toolBar->addAction(&actEdit_MovetoLast);
+
+        actEdit_Insert.setText(tr("Insert"));
+        connect(&actEdit_Insert, SIGNAL( triggered() ), this, SLOT( slot_OnInsert() ));
+        m_Ui.toolBar->addAction(&actEdit_Insert);
+
+        actEdit_Delete.setText(tr("Delete"));
+        connect(&actEdit_Delete, SIGNAL( triggered() ), this, SLOT( slot_OnRemove() ));
+        m_Ui.toolBar->addAction(&actEdit_Delete);
+
+        actEdit_Edit.setText(tr("Edit"));
+        connect(&actEdit_Edit, SIGNAL( triggered() ), this, SLOT( slot_OnEdit() ));
+        m_Ui.toolBar->addAction(&actEdit_Edit);
+
+        actEdit_Post.setText(tr("Post"));
+        connect(&actEdit_Post, SIGNAL( triggered() ), this, SLOT( slot_OnPost() ));
+        m_Ui.toolBar->addAction(&actEdit_Post);
+
+        actEdit_Cancel.setText(tr("Cancel"));
+        connect(&actEdit_Cancel, SIGNAL( triggered() ), this, SLOT( slot_OnCancel() ));
+        m_Ui.toolBar->addAction(&actEdit_Cancel);
+
+        actEdit_Refresh.setText(tr("Refresh"));
+        connect(&actEdit_Refresh, SIGNAL( triggered() ), this, SLOT( slot_OnRefresh() ));
+        m_Ui.toolBar->addAction(&actEdit_Refresh);
+    }
+
+    // group "Find"
+    {
+        actFind_Search.setText(tr("Search"));
+        connect(&actFind_Search, SIGNAL( triggered() ), this, SLOT( slot_OnSearch() ));
+        m_Ui.toolBar->addAction(&actFind_Search);
+    }
+
+    // group "View"
+    {
+
+    }
+
+    // group "Options"
+    {
+        actOptions_Settings.setText(tr("Settings"));
+        connect(&actOptions_Settings, SIGNAL( triggered() ), this, SLOT( slot_OnSettings() ));
+        m_Ui.toolBar->addAction(&actOptions_Settings);
+    }
+
+    // group "Help"
+    {
+        actHelp_Faq.setText(tr("FAQ"));
+        connect(&actHelp_Faq, SIGNAL( triggered() ), this, SLOT( slot_OnFaq() ));
+        m_Ui.toolBar->addAction(&actHelp_Faq);
+
+        actHelp_About.setText(tr("About"));
+        connect(&actHelp_About, SIGNAL( triggered() ), this, SLOT( slot_OnAbout() ));
+        m_Ui.toolBar->addAction(&actHelp_About);
+    }
+}
+//---------------------------------------------------------------------------
+void
+CMain::_initMenus() {
+    // group "File"
+    {
+        mnuFile.setTitle(tr("File"));
+
+        mnuFile.addAction(&actFile_Exit);
+
+        menuBar()->addMenu(&mnuFile);
+    }
+
+    // group "Edit"
+    {
+        mnuEdit.setTitle(tr("Edit"));
+
+        mnuEdit.addAction(&actEdit_MovetoFirst);
+        mnuEdit.addAction(&actEdit_MovetoPrior);
+        mnuEdit.addAction(&actEdit_MovetoNext);
+        mnuEdit.addAction(&actEdit_MovetoLast);
+        mnuEdit.addAction(&actEdit_Insert);
+        mnuEdit.addAction(&actEdit_Delete);
+        mnuEdit.addAction(&actEdit_Edit);
+        mnuEdit.addAction(&actEdit_Post);
+        mnuEdit.addAction(&actEdit_Cancel);
+        mnuEdit.addAction(&actEdit_Refresh);
+
+        menuBar()->addMenu(&mnuEdit);
+    }
+
+    // group "Find"
+    {
+        mnuFind.setTitle(tr("Find"));
+
+        mnuFind.addAction(&actFind_Search);
+
+        menuBar()->addMenu(&mnuFind);
+    }
+
+    // group "View"
+    {
+        mnuView.setTitle(tr("View"));
+
+        menuBar()->addMenu(&mnuView);
+    }
+
+    // group "Options"
+    {
+        mnuOptions.setTitle(tr("Options"));
+
+        mnuOptions.addAction(&actOptions_Settings);
+
+        menuBar()->addMenu(&mnuOptions);
+    }
+
+    // group "Help"
+    {
+        mnuHelp.setTitle(tr("Help"));
+
+        mnuHelp.addAction(&actHelp_Faq);
+        mnuHelp.addAction(&actHelp_About);
+
+        menuBar()->addMenu(&mnuHelp);
+    }
+}
+//---------------------------------------------------------------------------
+
 
