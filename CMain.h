@@ -32,6 +32,7 @@ class CMain :
 
         void            _construct     ();
         void            _destruct      ();
+        void            _initMain      ();
         void            _initModel     ();
         void            _initActions   ();
         void            _initMenus     ();
@@ -101,6 +102,10 @@ class CMain :
         // group "Help"
         void            slot_OnFaq     ();
         void            slot_OnAbout   ();
+
+    private:
+        // utils
+        void            _widgetAlignCenter(QWidget *widget);
 
 };
 //---------------------------------------------------------------------------
