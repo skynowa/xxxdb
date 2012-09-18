@@ -26,7 +26,7 @@ unix {
     INCLUDEPATH =
 
     CONFIG(debug, debug|release) {
-        LIBS    = -lxlib_r  # TODO: make -lxlib_d
+        LIBS    = -lxlib_d
     } else {
         LIBS    = -lxlib_r
     }
@@ -45,10 +45,14 @@ SOURCES         = main.cpp \
 
 FORMS           = Forms/CMain.ui
 
-RESOURCES       = Resources/CMain.qrc
-RC_FILE         =
+RESOURCES       = Resources/App.qrc
 
-
+win32 {
+    RC_FILE     = Resources/App_win.rc
+}
+unix {
+    RC_FILE     = # n/a
+}
 
 OUT_DIR         =
 

@@ -83,6 +83,8 @@ CMain::_destruct() {
 //---------------------------------------------------------------------------
 void
 CMain::_initMain() {
+    setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
+
     setWindowTitle(CONFIG_APP_NAME);
 
     setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
