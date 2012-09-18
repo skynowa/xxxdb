@@ -19,5 +19,6 @@
 #define CONFIG_BACKUP_DIR_NAME      "Backups"
 #define CONFIG_DB_FILE_EXT          ".db"
 #define CONFIG_GUID                 "PickupDB_simple_guid"
+#define CONFIG_TABLEVIEW_ROW_HEIGHT 20
 //---------------------------------------------------------------------------
 #endif // PickupDb_ConfigH

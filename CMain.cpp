@@ -134,12 +134,12 @@ CMain::_initModel() {
         _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         _m_mdModel->select();
         _m_mdModel->removeColumn(0); // don't show the ID
-        _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
-        _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
-        _m_mdModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
+        _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Name"));
+        _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Adge"));
         _m_mdModel->select();
 
         m_Ui.tabvInfo->setModel(_m_mdModel);
+        m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
         m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_Ui.tabvInfo->show();
     }
