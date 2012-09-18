@@ -9,7 +9,7 @@
 //---------------------------------------------------------------------------
 // main window
 #define CONFIG_APP_NAME             "PickupDB"
-#define CONFIG_APP_WIDTH            800
+#define CONFIG_APP_WIDTH            1000
 #define CONFIG_APP_HEIGHT           600
 
 // resources

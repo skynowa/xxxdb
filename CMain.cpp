@@ -58,12 +58,27 @@ CMain::_construct() {
     _initModel();
     _initActions();
     _initMenus();
+}
+//---------------------------------------------------------------------------
+void
+CMain::_destruct() {
 
-    /****************************************************************************
-    *   setup slots
-    *
-    *****************************************************************************/
+}
+//---------------------------------------------------------------------------
+void
+CMain::_initMain() {
+    // CMain
+    {
+        setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
 
+        setWindowTitle(CONFIG_APP_NAME);
+
+        setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
+
+        _widgetAlignCenter(this);
+    }
+
+    // lblPhoto
     {
         QImage imgPhoto;
 
@@ -74,22 +89,19 @@ CMain::_construct() {
         m_Ui.lblPhoto->setPixmap(QPixmap::fromImage(img1));
         // m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
     }
-}
-//---------------------------------------------------------------------------
-void
-CMain::_destruct() {
 
-}
-//---------------------------------------------------------------------------
-void
-CMain::_initMain() {
-    setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
+    // gbxShortInfo
+    {
+        m_Ui.gbxShortInfo->setTitle(tr(""));
+    }
 
-    setWindowTitle(CONFIG_APP_NAME);
+    // splitters
+    {
+        m_Ui.splitter->setStretchFactor(1, 1);
 
-    setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
-
-    _widgetAlignCenter(this);
+        // m_Ui.splPhotoTable->setStretchFactor(1, 1);
+        // m_Ui.splPhotoShortInfo->setStretchFactor(1, 1);
+    }
 }
 //---------------------------------------------------------------------------
 void
@@ -112,13 +124,13 @@ CMain::_initModel() {
             QSqlQuery qryInfo(_m_dbDatabase);
 
             const QString csSql = \
-                    "CREATE TABLE IF NOT EXISTS t_person"
+                    "CREATE TABLE IF NOT EXISTS "
+                    "   t_person "
                     "( "
-                    "    f_id   INTEGER     PRIMARY KEY AUTOINCREMENT "
-                    "                       NOT NULL "
-                    "                       UNIQUE, "
-                    "    f_name varchar(64), "
-                    "    f_adge int "
+                    "    f_id      INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+                    "    f_name    VARCHAR (64), "
+                    "    f_adge    INT, "
+                    "    f_photo_1 BLOB "
                     ")";
 
             bRes = qryInfo.exec(csSql);
