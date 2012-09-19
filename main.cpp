@@ -16,13 +16,15 @@ int main(int argc, char *argv[])
     const QByteArray codecName = "UTF-8";
 #endif
 
+    // set codecs
+    {
+        QTextCodec *codec = QTextCodec::codecForName(codecName);
+        Q_ASSERT(NULL != codec);
 
-    QTextCodec *codec = QTextCodec::codecForName(codecName);
-    Q_ASSERT(NULL != codec);
-
-    QTextCodec::setCodecForTr(codec);
-    QTextCodec::setCodecForCStrings(codec);
-    QTextCodec::setCodecForLocale(codec);
+        QTextCodec::setCodecForTr(codec);
+        QTextCodec::setCodecForCStrings(codec);
+        QTextCodec::setCodecForLocale(codec);
+    }
 
     // application single inststance
     {
@@ -42,11 +44,11 @@ int main(int argc, char *argv[])
     QCoreApplication::setOrganizationName("");
     QCoreApplication::setApplicationName(CONFIG_APP_NAME);
 
-    CMain dlgMain;
-    dlgMain.show();
+    CMain wndMain;
+    wndMain.show();
 
-    int iExitCode = apApplication.exec();
+    int iRv = apApplication.exec();
 
-    return iExitCode;
+    return iRv;
 }
 //---------------------------------------------------------------------------

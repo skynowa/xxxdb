@@ -6,6 +6,8 @@
 
 #include "CMain.h"
 
+#include "Forms/CPersonEdit.h"
+
 
 /****************************************************************************
 *   public
@@ -102,6 +104,12 @@ CMain::_initMain() {
         // m_Ui.splPhotoTable->setStretchFactor(1, 1);
         // m_Ui.splPhotoShortInfo->setStretchFactor(1, 1);
     }
+
+    // signals
+    {
+        connect(m_Ui.tabvInfo, SIGNAL( doubleClicked(const QModelIndex &) ),
+                this,          SLOT  ( slot_tabvInfo_OnDoubleClicked(const QModelIndex &) ));
+    }
 }
 //---------------------------------------------------------------------------
 void
@@ -142,6 +150,8 @@ CMain::_initModel() {
     // _m_mdModel
     {
         _m_mdModel = new QSqlTableModel(this, _m_dbDatabase);
+        Q_ASSERT(NULL != _m_mdModel);
+
         _m_mdModel->setTable("t_person");
         _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         _m_mdModel->select();
@@ -152,7 +162,9 @@ CMain::_initModel() {
 
         m_Ui.tabvInfo->setModel(_m_mdModel);
         m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
+        m_Ui.tabvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+
         m_Ui.tabvInfo->show();
     }
 
@@ -366,6 +378,16 @@ CMain::slot_OnRemove() {
 void
 CMain::slot_OnEdit() {
     m_navNavigator.edit();
+}
+//---------------------------------------------------------------------------
+void
+CMain::slot_tabvInfo_OnDoubleClicked(const QModelIndex &index) {
+
+
+
+    CPersonEdit dlgPersonEdit(this);
+
+    dlgPersonEdit.exec();
 }
 //---------------------------------------------------------------------------
 void

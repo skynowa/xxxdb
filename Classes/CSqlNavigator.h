@@ -16,9 +16,7 @@ class CSqlNavigator :
 
     public:
                         CSqlNavigator();
-                            ///< constructor
         virtual        ~CSqlNavigator();
-                            ///< destructor
 
         void            setup        (QSqlTableModel *tmTableModel, QTableView *tabvTableView);
 
