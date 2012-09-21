@@ -22,24 +22,27 @@
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
-     <widget class="QSplitter" name="splitter">
+     <widget class="QSplitter" name="splitter_2">
       <property name="orientation">
-       <enum>Qt::Vertical</enum>
+       <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QLabel" name="lblPhoto">
-       <property name="text">
-        <string>TextLabel</string>
+      <widget class="QSplitter" name="splitter">
+       <property name="orientation">
+        <enum>Qt::Vertical</enum>
        </property>
+       <widget class="QLabel" name="lblPhoto">
+        <property name="text">
+         <string>lblPhoto</string>
+        </property>
+       </widget>
+       <widget class="QGroupBox" name="gbxShortInfo">
+        <property name="title">
+         <string>gbxShortInfo</string>
+        </property>
+       </widget>
       </widget>
-      <widget class="QGroupBox" name="gbxShortInfo">
-       <property name="title">
-        <string>GroupBox</string>
-       </property>
-      </widget>
+      <widget class="QTableView" name="tabvInfo"/>
      </widget>
-    </item>
-    <item row="0" column="1">
-     <widget class="QTableView" name="tabvInfo"/>
     </item>
    </layout>
   </widget>

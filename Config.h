@@ -22,6 +22,11 @@
 #define CONFIG_DB_F_PHOTO_1             "f_photo_1"
 
 
+// photo
+#define CONFIG_PHOTO_WIDTH              300
+#define CONFIG_PHOTO_HEIGHT             200
+
+
 // data groups
 #define CONFIG_DATA_GROUP_HEADER        "Groups"
 

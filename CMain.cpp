@@ -65,7 +65,7 @@ CMain::_construct() {
 //---------------------------------------------------------------------------
 void
 CMain::_destruct() {
-
+    delete _m_tmModel;  _m_tmModel = NULL;
 }
 //---------------------------------------------------------------------------
 void
@@ -83,18 +83,6 @@ CMain::_initMain() {
         _widgetAlignCenter(this);
     }
 
-    // lblPhoto
-    {
-        QImage imgPhoto;
-
-        imgPhoto.load(QCoreApplication::applicationDirPath() + "/image.jpg");
-
-        QImage img1 = imgPhoto.scaled(QSize(120 * 2, 90 * 2), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-
-        m_Ui.lblPhoto->setPixmap(QPixmap::fromImage(img1));
-        // m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-    }
-
     // gbxShortInfo
     {
         m_Ui.gbxShortInfo->setTitle(tr(""));
@@ -102,16 +90,23 @@ CMain::_initMain() {
 
     // splitters
     {
-        m_Ui.splitter->setStretchFactor(1, 1);
+        // m_Ui.splitter->setStretchFactor(1, 1);
+        // m_Ui.splitter->size().setWidth(1000);
+        // m_Ui.splitter->adjustSize();
 
         // m_Ui.splPhotoTable->setStretchFactor(1, 1);
         // m_Ui.splPhotoShortInfo->setStretchFactor(1, 1);
     }
 
-    // signals
+    // lblPhoto
     {
-        connect(m_Ui.tabvInfo, SIGNAL( doubleClicked(const QModelIndex &) ),
-                this,          SLOT  ( slot_tabvInfo_OnDoubleClicked(const QModelIndex &) ));
+        m_Ui.lblPhoto->clear();
+        m_Ui.lblPhoto->setFixedSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT);
+        m_Ui.lblPhoto->setScaledContents(false);
+        m_Ui.lblPhoto->setBackgroundRole(QPalette::Base);
+        m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
+        m_Ui.lblPhoto->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
+        m_Ui.lblPhoto->setFrameShape(QFrame::Box);
     }
 }
 //---------------------------------------------------------------------------
@@ -156,26 +151,43 @@ CMain::_initModel() {
         Q_ASSERT(NULL != _m_tmModel);
 
         _m_tmModel->setTable("t_person");
-        //_m_tmModel->removeColumn(0); // don't show the ID
-        //_m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
-        //_m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Name"));
-        //_m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Adge"));
-        _m_tmModel->setEditStrategy(QSqlTableModel::OnRowChange /*OnFieldChange*/);
+        _m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
+        _m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
+        _m_tmModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
+        _m_tmModel->setHeaderData(3, Qt::Horizontal, tr("Photo"));
+        _m_tmModel->setEditStrategy(QSqlTableModel::OnRowChange);
         _m_tmModel->select();
 
         m_Ui.tabvInfo->setModel(_m_tmModel);
+        m_Ui.tabvInfo->hideColumn(0); // don't show the CONFIG_DB_F_ID
         m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
         m_Ui.tabvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        m_Ui.tabvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+        m_Ui.tabvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        m_Ui.tabvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         m_Ui.tabvInfo->show();
+    }
+
+    //--------------------------------------------------
+    // slots
+    {
+        connect(m_Ui.tabvInfo->selectionModel(), SIGNAL( selectionChanged(const QItemSelection &, const QItemSelection &) ),
+                this,                            SLOT  ( slot_tabvInfo_OnSelectionChanged(const QItemSelection &, const QItemSelection &) ));
+
+        connect(m_Ui.tabvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
+                this,                            SLOT  ( slot_tabvInfo_OnDoubleClicked(const QModelIndex &) ));
     }
 
     //--------------------------------------------------
     // m_navNavigator
     {
         m_navNavigator.setup(_m_tmModel, m_Ui.tabvInfo);
-    }
 
+        // go to the last record
+        m_navNavigator.last();
+        slot_tabvInfo_OnSelectionChanged(QItemSelection(), QItemSelection());
+    }
 }
 //---------------------------------------------------------------------------
 void
@@ -380,6 +392,37 @@ CMain::slot_OnRemove() {
 void
 CMain::slot_OnEdit() {
     m_navNavigator.edit();
+}
+//---------------------------------------------------------------------------
+void
+CMain::slot_tabvInfo_OnSelectionChanged(
+    const QItemSelection &selected,
+    const QItemSelection &deselected
+)
+{
+    Q_UNUSED(selected);
+    Q_UNUSED(deselected);
+
+    // lblPhoto
+    {
+        const int  ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
+
+        if (0 >= baPhoto.size()) {
+            // TODO: show "empty" photo
+            m_Ui.lblPhoto->clear();
+        } else {
+            QImage imgPhoto;
+
+            bool bRv = imgPhoto.loadFromData(baPhoto);
+            Q_ASSERT(true == bRv);
+
+            QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+
+            m_Ui.lblPhoto->setPixmap(pixPixmap);
+        }
+    }
 }
 //---------------------------------------------------------------------------
 void

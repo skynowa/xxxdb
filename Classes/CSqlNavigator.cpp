@@ -16,10 +16,11 @@
 CSqlNavigator::CSqlNavigator(
     QWidget *parent
 ) :
-    QObject         (0),
+    QObject         (parent),
     _m_tmTableModel (NULL),
     _m_tabvTableView(NULL)
 {
+
 }
 //---------------------------------------------------------------------------
 /*virtual*/
@@ -33,6 +34,9 @@ CSqlNavigator::setup(
     QTableView     *tabvTableView
 )
 {
+    Q_ASSERT(NULL != tmTableModel);
+    Q_ASSERT(NULL != tabvTableView);
+
     _m_tmTableModel  = tmTableModel;
     _m_tabvTableView = tabvTableView;
 }
@@ -77,7 +81,7 @@ CSqlNavigator::insert() {
 void
 CSqlNavigator::remove() {
     int iTargetRow = _m_tabvTableView->currentIndex().row();
-    if (- 1 == iTargetRow) { return; }
+    qCHECK_DO(- 1 == iTargetRow, return);
 
     bool bRes = _m_tabvTableView->model()->removeRow(iTargetRow);
     qCHECK_PTR(bRes, _m_tmTableModel);

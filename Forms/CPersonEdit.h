@@ -27,6 +27,7 @@ class CPersonEdit :
         QList<QTreeWidgetItem *> _m_ltwGroups;
         QSqlTableModel          *_m_tmModel;
         const int                _m_ciCurrentRow;
+        QByteArray               _m_baPhoto;
 
         void                     _construct ();
         void                     _destruct  ();
@@ -36,7 +37,11 @@ class CPersonEdit :
         void                     _saveAll   ();
 
     private Q_SLOTS:
-        void                     slot_bbxButtons_OnClicked(QAbstractButton *button);
+        void                     slot_tbtnPhotoChange_OnClicked();
+        void                     slot_tbtnPhotoDelete_OnClicked();
+        void                     slot_tbtnPhotoSaveAs_OnClicked();
+
+        void                     slot_bbxButtons_OnClicked     (QAbstractButton *button);
 };
 //---------------------------------------------------------------------------
 #endif // PickupDB_CPersonEditH

@@ -80,7 +80,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QLabel" name="label">
+      <widget class="QLabel" name="lblPhoto">
        <property name="geometry">
         <rect>
          <x>196</x>
@@ -96,7 +96,7 @@
         <enum>QFrame::Plain</enum>
        </property>
        <property name="text">
-        <string>TextLabel</string>
+        <string/>
        </property>
        <property name="scaledContents">
         <bool>false</bool>
@@ -111,7 +111,7 @@
       <widget class="QToolButton" name="tbtnPhotoChange">
        <property name="geometry">
         <rect>
-         <x>404</x>
+         <x>372</x>
          <y>248</y>
          <width>25</width>
          <height>19</height>
@@ -124,7 +124,7 @@
       <widget class="QToolButton" name="tbtnPhotoDelete">
        <property name="geometry">
         <rect>
-         <x>432</x>
+         <x>400</x>
          <y>248</y>
          <width>25</width>
          <height>19</height>
@@ -184,6 +184,19 @@
        </property>
        <property name="text">
         <string>&gt;|</string>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="tbtnPhotoSaveAs">
+       <property name="geometry">
+        <rect>
+         <x>428</x>
+         <y>248</y>
+         <width>25</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>...</string>
        </property>
       </widget>
      </widget>
