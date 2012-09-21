@@ -20,15 +20,20 @@ class CPersonEdit :
     public:
         Ui::CPersonEdit          m_Ui;
 
-        explicit                 CPersonEdit(QWidget *parent = 0);
+                                 CPersonEdit(QWidget *parent, QSqlTableModel *tableModel, const int &currentRow);
         virtual                 ~CPersonEdit();
 
     private:
         QList<QTreeWidgetItem *> _m_ltwGroups;
+        QSqlTableModel          *_m_tmModel;
+        const int                _m_ciCurrentRow;
 
         void                     _construct ();
         void                     _destruct  ();
         void                     _initMain  ();
+
+        void                     _resetAll  ();
+        void                     _saveAll   ();
 
     private Q_SLOTS:
         void                     slot_bbxButtons_OnClicked(QAbstractButton *button);

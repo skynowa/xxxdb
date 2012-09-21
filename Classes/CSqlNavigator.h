@@ -15,7 +15,7 @@ class CSqlNavigator :
         Q_OBJECT
 
     public:
-                        CSqlNavigator();
+        explicit        CSqlNavigator(QWidget *parent);
         virtual        ~CSqlNavigator();
 
         void            setup        (QSqlTableModel *tmTableModel, QTableView *tabvTableView);

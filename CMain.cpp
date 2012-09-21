@@ -20,6 +20,9 @@ CMain::CMain(
     Qt::WFlags  flags
 ) :
     QMainWindow        (parent, flags),
+    m_navNavigator     (this),
+    _m_dbDatabase      (),
+    _m_tmModel         (NULL),
     actFile_Exit       (this),
     actEdit_MovetoFirst(this),
     actEdit_MovetoPrior(this),
@@ -54,8 +57,6 @@ CMain::~CMain() {
 //---------------------------------------------------------------------------
 void
 CMain::_construct() {
-    m_Ui.setupUi(this);
-
     _initMain();
     _initModel();
     _initActions();
@@ -69,6 +70,8 @@ CMain::_destruct() {
 //---------------------------------------------------------------------------
 void
 CMain::_initMain() {
+    m_Ui.setupUi(this);
+
     // CMain
     {
         setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
@@ -133,12 +136,12 @@ CMain::_initModel() {
 
             const QString csSql = \
                     "CREATE TABLE IF NOT EXISTS "
-                    "   t_person "
+                    "    " CONFIG_DB_T_PERSON
                     "( "
-                    "    f_id      INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-                    "    f_name    VARCHAR (64), "
-                    "    f_adge    INT, "
-                    "    f_photo_1 BLOB "
+                    "    " CONFIG_DB_F_ID        "    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+                    "    " CONFIG_DB_F_MAIN_NAME "    VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_AGE  "    INT, "
+                    "    " CONFIG_DB_F_PHOTO_1   "    BLOB "
                     ")";
 
             bRes = qryInfo.exec(csSql);
@@ -147,31 +150,30 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _m_mdModel
+    // _m_tmModel
     {
-        _m_mdModel = new QSqlTableModel(this, _m_dbDatabase);
-        Q_ASSERT(NULL != _m_mdModel);
+        _m_tmModel = new QSqlTableModel(this, _m_dbDatabase);
+        Q_ASSERT(NULL != _m_tmModel);
 
-        _m_mdModel->setTable("t_person");
-        _m_mdModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-        _m_mdModel->select();
-        _m_mdModel->removeColumn(0); // don't show the ID
-        _m_mdModel->setHeaderData(0, Qt::Horizontal, tr("Name"));
-        _m_mdModel->setHeaderData(1, Qt::Horizontal, tr("Adge"));
-        _m_mdModel->select();
+        _m_tmModel->setTable("t_person");
+        //_m_tmModel->removeColumn(0); // don't show the ID
+        //_m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
+        //_m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Name"));
+        //_m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Adge"));
+        _m_tmModel->setEditStrategy(QSqlTableModel::OnRowChange /*OnFieldChange*/);
+        _m_tmModel->select();
 
-        m_Ui.tabvInfo->setModel(_m_mdModel);
+        m_Ui.tabvInfo->setModel(_m_tmModel);
         m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
         m_Ui.tabvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-
         m_Ui.tabvInfo->show();
     }
 
     //--------------------------------------------------
     // m_navNavigator
     {
-        m_navNavigator.setup(_m_mdModel, m_Ui.tabvInfo);
+        m_navNavigator.setup(_m_tmModel, m_Ui.tabvInfo);
     }
 
 }
@@ -381,11 +383,12 @@ CMain::slot_OnEdit() {
 }
 //---------------------------------------------------------------------------
 void
-CMain::slot_tabvInfo_OnDoubleClicked(const QModelIndex &index) {
-
-
-
-    CPersonEdit dlgPersonEdit(this);
+CMain::slot_tabvInfo_OnDoubleClicked(
+    const QModelIndex &index
+)
+{
+    const int   ciCurrentRow = index.row();
+    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
 
     dlgPersonEdit.exec();
 }
@@ -480,13 +483,16 @@ CMain::slot_OnAbout() {
 
 //---------------------------------------------------------------------------
 void
-CMain::_widgetAlignCenter(QWidget *widget) {
+CMain::_widgetAlignCenter(
+    QWidget *widget
+)
+{
     Q_ASSERT(NULL != widget);
 
     QDesktopWidget *desktop = QApplication::desktop();
 
-    int x = (desktop->width()  - widget->width())  / 2;
-    int y = (desktop->height() - widget->height()) / 2;
+    const int x = (desktop->width()  - widget->width())  / 2;
+    const int y = (desktop->height() - widget->height()) / 2;
 
     widget->setGeometry(x, y, widget->width(), widget->height());
 }

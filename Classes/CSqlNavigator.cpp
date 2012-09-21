@@ -14,7 +14,7 @@
 
 //---------------------------------------------------------------------------
 CSqlNavigator::CSqlNavigator(
-
+    QWidget *parent
 ) :
     QObject         (0),
     _m_tmTableModel (NULL),

@@ -13,9 +13,18 @@
 *****************************************************************************/
 
 //---------------------------------------------------------------------------
-CPersonEdit::CPersonEdit(QWidget *parent) :
-    QDialog(parent)
+CPersonEdit::CPersonEdit(
+    QWidget        *parent,
+    QSqlTableModel *tableModel,
+    const int      &currentRow
+) :
+    QDialog        (parent),
+    _m_tmModel     (tableModel),
+    _m_ciCurrentRow(currentRow)
 {
+    Q_ASSERT(NULL != _m_tmModel);
+    Q_ASSERT(- 1  <  _m_ciCurrentRow);
+
     _construct();
 }
 //---------------------------------------------------------------------------
@@ -25,7 +34,6 @@ CPersonEdit::~CPersonEdit() {
 }
 //---------------------------------------------------------------------------
 
-
 /****************************************************************************
 *   private
 *
@@ -34,9 +42,17 @@ CPersonEdit::~CPersonEdit() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::_construct() {
-    {
-        m_Ui.setupUi(this);
-    }
+    _initMain();
+}
+//---------------------------------------------------------------------------
+void
+CPersonEdit::_destruct() {
+    qDeleteAll(_m_ltwGroups);
+}
+//---------------------------------------------------------------------------
+void
+CPersonEdit::_initMain() {
+    m_Ui.setupUi(this);
 
     // QTreeWidget
     {
@@ -66,6 +82,7 @@ CPersonEdit::_construct() {
         m_Ui.twGroups->resizeColumnToContents(0);
     }
 
+    // tabwGroupsDetail
     {
         #if 0
             QTreeWidgetItem *item;
@@ -78,20 +95,19 @@ CPersonEdit::_construct() {
         #endif
     }
 
+    // "Main" group
+    {
+        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+
+        m_Ui.cboName->lineEdit()->setText( srRecord.value(CONFIG_DB_F_MAIN_NAME).toString() );
+        m_Ui.cboAge->lineEdit()->setText ( srRecord.value(CONFIG_DB_F_MAIN_AGE ).toString() );
+    }
+
+    // bbxButtons
     {
         connect(m_Ui.bbxButtons, SIGNAL(clicked(QAbstractButton *)),
                 this,            SLOT  (slot_bbxButtons_OnClicked(QAbstractButton *)));
     }
-}
-//---------------------------------------------------------------------------
-void
-CPersonEdit::_destruct() {
-    qDeleteAll(_m_ltwGroups);
-}
-//---------------------------------------------------------------------------
-void
-CPersonEdit::_initMain() {
-
 }
 //---------------------------------------------------------------------------
 
@@ -103,15 +119,19 @@ CPersonEdit::_initMain() {
 
 //---------------------------------------------------------------------------
 void
-CPersonEdit::slot_bbxButtons_OnClicked(QAbstractButton *button) {
+CPersonEdit::slot_bbxButtons_OnClicked(
+    QAbstractButton *button
+)
+{
     QDialogButtonBox::StandardButton sbType = m_Ui.bbxButtons->standardButton(button);
     switch (sbType) {
         case QDialogButtonBox::Reset: {
-
-        }
-        break;
+                _resetAll();
+            }
+            break;
 
         case QDialogButtonBox::Ok: {
+                _saveAll();
                 close();
             }
             break;
@@ -122,7 +142,7 @@ CPersonEdit::slot_bbxButtons_OnClicked(QAbstractButton *button) {
             break;
 
         case QDialogButtonBox::Apply: {
-
+                _saveAll();
             }
             break;
 
@@ -133,3 +153,41 @@ CPersonEdit::slot_bbxButtons_OnClicked(QAbstractButton *button) {
     }
 }
 //---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   private slots
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CPersonEdit::_resetAll() {
+    m_Ui.cboName->lineEdit()->clear();
+    m_Ui.cboAge->lineEdit()->clear();
+}
+//---------------------------------------------------------------------------
+void
+CPersonEdit::_saveAll() {
+    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+
+    {
+        srRecord.setValue(CONFIG_DB_F_MAIN_NAME, m_Ui.cboName->lineEdit()->text());
+        srRecord.setValue(CONFIG_DB_F_MAIN_AGE , m_Ui.cboAge->lineEdit()->text() );
+    }
+
+    _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
+}
+//---------------------------------------------------------------------------
+
+
+
+
+
+
+
+
+
+
+
+

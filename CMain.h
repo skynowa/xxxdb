@@ -28,7 +28,7 @@ class CMain :
 
     private:
         QSqlDatabase    _m_dbDatabase;
-        QSqlTableModel *_m_mdModel;
+        QSqlTableModel *_m_tmModel;
 
         void            _construct        ();
         void            _destruct         ();

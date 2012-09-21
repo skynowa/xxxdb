@@ -12,6 +12,16 @@
 #define CONFIG_APP_WIDTH                1000
 #define CONFIG_APP_HEIGHT               600
 
+
+// DB tables, fields
+#define CONFIG_DB_T_PERSON              "t_person"
+
+#define CONFIG_DB_F_ID                  "f_id"
+#define CONFIG_DB_F_MAIN_NAME           "f_main_name"
+#define CONFIG_DB_F_MAIN_AGE            "f_main_age"
+#define CONFIG_DB_F_PHOTO_1             "f_photo_1"
+
+
 // data groups
 #define CONFIG_DATA_GROUP_HEADER        "Groups"
 
@@ -29,8 +39,10 @@
 #define CONFIG_DATA_GROUP_ETC           "Etc"
 #define CONFIG_DATA_GROUP_NOTE          "Note"
 
+
 // resources
 #define CONFIG_RES_MAIN_ICON            ":/App.ico"
+
 
 // etc
 #define CONFIG_BACKUP_DIR_NAME          "Backups"
