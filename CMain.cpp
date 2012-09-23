@@ -75,11 +75,8 @@ CMain::_initMain() {
     // CMain
     {
         setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
-
         setWindowTitle(CONFIG_APP_NAME);
-
         setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
-
         _widgetAlignCenter(this);
     }
 
@@ -382,6 +379,11 @@ CMain::slot_OnLast() {
 void
 CMain::slot_OnInsert() {
     m_navNavigator.insert();
+
+    const int   ciCurrentRow = _m_tmModel->rowCount() - 1;
+    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+
+    dlgPersonEdit.exec();
 }
 //---------------------------------------------------------------------------
 void
@@ -409,8 +411,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
         QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
 
         if (0 >= baPhoto.size()) {
-            // TODO: show "empty" photo
-            m_Ui.lblPhoto->clear();
+            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
         } else {
             QImage imgPhoto;
 

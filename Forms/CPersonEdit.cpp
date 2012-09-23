@@ -99,21 +99,9 @@ CPersonEdit::_initMain() {
     {
         QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
 
+        // lables
         m_Ui.cboName->lineEdit()->setText( srRecord.value(CONFIG_DB_F_MAIN_NAME).toString() );
         m_Ui.cboAge->lineEdit()->setText ( srRecord.value(CONFIG_DB_F_MAIN_AGE ).toString() );
-
-
-        // m_Ui.lblPhoto
-        {
-            QImage imgPhoto;
-            imgPhoto.loadFromData( srRecord.value(CONFIG_DB_F_MAIN_AGE ).toByteArray() );
-
-            QImage  img1   = imgPhoto.scaled(QSize(120 * 2, 90 * 2), Qt::IgnoreAspectRatio, Qt::SmoothTransformation);
-            QPixmap pixmap = QPixmap::fromImage(img1);
-
-            m_Ui.lblPhoto->setPixmap(pixmap);
-            // m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Expanding, QSizePolicy::Expanding);
-        }
 
         // lblPhoto
         {
@@ -121,8 +109,7 @@ CPersonEdit::_initMain() {
             QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
 
             if (0 >= baPhoto.size()) {
-                // TODO: show "empty" photo
-                m_Ui.lblPhoto->clear();
+                m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
             } else {
                 QImage imgPhoto;
 

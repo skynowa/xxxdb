@@ -41,7 +41,7 @@ int main(int argc, char *argv[])
 
     QApplication apApplication(argc, argv);
 
-    QCoreApplication::setOrganizationName("");
+    QCoreApplication::setOrganizationName(CONFIG_ORG_NAME);
     QCoreApplication::setApplicationName(CONFIG_APP_NAME);
 
     CMain wndMain;

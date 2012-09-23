@@ -32,8 +32,8 @@ class CSqlNavigator :
         void            refresh      ();
 
     private:
-        QSqlTableModel *_m_tmTableModel;
-        QTableView     *_m_tabvTableView;
+        QSqlTableModel *_m_tmModel;
+        QTableView     *_m_tvView;
 
 };
 //---------------------------------------------------------------------------

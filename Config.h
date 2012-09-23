@@ -8,6 +8,7 @@
 #define PickupDb_ConfigH
 //---------------------------------------------------------------------------
 // main window
+#define CONFIG_ORG_NAME                 ""
 #define CONFIG_APP_NAME                 "PickupDB"
 #define CONFIG_APP_WIDTH                1000
 #define CONFIG_APP_HEIGHT               600
@@ -54,5 +55,6 @@
 #define CONFIG_DB_FILE_EXT              ".db"
 #define CONFIG_GUID                     "PickupDB_simple_guid"
 #define CONFIG_TABLEVIEW_ROW_HEIGHT     20
+#define CONFIG_TEXT_NO_PHOTO            "No photo"
 //---------------------------------------------------------------------------
 #endif // PickupDb_ConfigH
