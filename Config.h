@@ -26,6 +26,9 @@
 // photo
 #define CONFIG_PHOTO_WIDTH              300
 #define CONFIG_PHOTO_HEIGHT             200
+#define CONFIG_IMAGE_FORMATS            "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
+#define CONFIG_IMAGE_IS_CONVERT         true
+
 
 
 // data groups

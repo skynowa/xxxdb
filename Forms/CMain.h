@@ -9,10 +9,10 @@
 //---------------------------------------------------------------------------
 #include "ui_CMain.h"
 
-#include "QtLib/Common.h"
+#include "../QtLib/Common.h"
 
-#include "Config.h"
-#include "Classes/CSqlNavigator.h"
+#include "../Config.h"
+#include "../Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
 class CMain :
     public QMainWindow
@@ -107,8 +107,6 @@ class CMain :
         void            slot_tabvInfo_OnDoubleClicked   (const QModelIndex &index);
 
     private:
-        // utils
-        void            _widgetAlignCenter(QWidget *widget);
 
 };
 //---------------------------------------------------------------------------

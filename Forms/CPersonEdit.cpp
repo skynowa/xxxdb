@@ -6,6 +6,8 @@
 
 #include "CPersonEdit.h"
 
+#include "../Classes/CUtils.h"
+
 
 /****************************************************************************
 *   public
@@ -33,6 +35,7 @@ CPersonEdit::~CPersonEdit() {
     _destruct();
 }
 //---------------------------------------------------------------------------
+
 
 /****************************************************************************
 *   private
@@ -155,12 +158,8 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
 
     QStringList slFilters;
 
-    slFilters << "Images (*.png *.xpm *.jpg *.jpeg *.bmp)";
-#if defined(Q_WS_WIN)
-    slFilters << "All files (*)";
-#else
-    slFilters << "All files (*)";
-#endif
+    slFilters << "Image files (" CONFIG_IMAGE_FORMATS ")";
+    slFilters << "All   files (*)";
 
     fdlgDialog.setNameFilters(slFilters);
     //fdlgDialog.setDirectory();
@@ -173,15 +172,20 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
             break;
 
         case QDialog::Accepted: {
-                QString sFilePath = fdlgDialog.selectedFiles().first();
+                const QString csFilePath = fdlgDialog.selectedFiles().first();
 
-                QFile file(sFilePath);
+                if (true == CONFIG_IMAGE_IS_CONVERT) {
+                    CUtils::imageConvert(csFilePath, &_m_baPhoto);
+                } else {
+                    QFile file(csFilePath);
 
-                bool bRv = file.open(QIODevice::ReadOnly);
-                Q_ASSERT(true == bRv);
+                    bool bRv = file.open(QIODevice::ReadOnly);
+                    Q_ASSERT(true == bRv);
 
-                _m_baPhoto = file.readAll();
+                    _m_baPhoto = file.readAll();
+                }
 
+                Q_ASSERT(0 < _m_baPhoto.size());
             }
             break;
 

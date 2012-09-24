@@ -39,6 +39,16 @@
         <property name="title">
          <string>gbxShortInfo</string>
         </property>
+        <widget class="QTextEdit" name="textEdit">
+         <property name="geometry">
+          <rect>
+           <x>0</x>
+           <y>72</y>
+           <width>101</width>
+           <height>37</height>
+          </rect>
+         </property>
+        </widget>
        </widget>
       </widget>
       <widget class="QTableView" name="tabvInfo"/>

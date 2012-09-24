@@ -5,7 +5,7 @@
 
 
 #include <QtGui/QApplication>
-#include "CMain.h"
+#include "Forms/CMain.h"
 
 //---------------------------------------------------------------------------
 int main(int argc, char *argv[])

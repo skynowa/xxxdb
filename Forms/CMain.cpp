@@ -6,7 +6,8 @@
 
 #include "CMain.h"
 
-#include "Forms/CPersonEdit.h"
+#include "../Forms/CPersonEdit.h"
+#include "../Classes/CUtils.h"
 
 
 /****************************************************************************
@@ -77,7 +78,7 @@ CMain::_initMain() {
         setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
         setWindowTitle(CONFIG_APP_NAME);
         setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
-        _widgetAlignCenter(this);
+        CUtils::widgetAlignCenter(this);
     }
 
     // gbxShortInfo
@@ -423,6 +424,8 @@ CMain::slot_tabvInfo_OnSelectionChanged(
 
             m_Ui.lblPhoto->setPixmap(pixPixmap);
         }
+
+        m_Ui.textEdit->setText(QString::number(baPhoto.size()));
     }
 }
 //---------------------------------------------------------------------------
@@ -516,28 +519,5 @@ CMain::slot_OnAbout() {
         );
 
     QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, sMsg);
-}
-//---------------------------------------------------------------------------
-
-
-/****************************************************************************
-*   utils
-*
-*****************************************************************************/
-
-//---------------------------------------------------------------------------
-void
-CMain::_widgetAlignCenter(
-    QWidget *widget
-)
-{
-    Q_ASSERT(NULL != widget);
-
-    QDesktopWidget *desktop = QApplication::desktop();
-
-    const int x = (desktop->width()  - widget->width())  / 2;
-    const int y = (desktop->height() - widget->height()) / 2;
-
-    widget->setGeometry(x, y, widget->width(), widget->height());
 }
 //---------------------------------------------------------------------------

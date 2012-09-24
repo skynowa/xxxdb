@@ -36,13 +36,15 @@ unix {
 
 HEADERS         = QtLib/Common.h \
                   Config.h \
-                  CMain.h \
                   Classes/CSqlNavigator.h \
+                  Classes/CUtils.h \
+                  Forms/CMain.h \
                   Forms/CPersonEdit.h
 
 SOURCES         = main.cpp \
-                  CMain.cpp \
                   Classes/CSqlNavigator.cpp \
+                  Classes/CUtils.cpp \
+                  Forms/CMain.cpp \
                   Forms/CPersonEdit.cpp
 
 FORMS           = Forms/CMain.ui \
