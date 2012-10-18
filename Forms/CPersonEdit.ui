@@ -37,9 +37,74 @@
      </property>
      <column>
       <property name="text">
-       <string notr="true">1</string>
+       <string>Groups</string>
       </property>
      </column>
+     <item>
+      <property name="text">
+       <string>Main</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Phones</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Address</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>E-mail</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>WEB</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Messengers</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Job</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Studies</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Dates</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Interests</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Periods</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Etc</string>
+      </property>
+     </item>
+     <item>
+      <property name="text">
+       <string>Note</string>
+      </property>
+     </item>
     </widget>
    </item>
    <item row="0" column="1">
@@ -49,7 +114,7 @@
      </property>
      <widget class="QWidget" name="tab">
       <attribute name="title">
-       <string>Page</string>
+       <string>Main</string>
       </attribute>
       <widget class="QComboBox" name="cboName">
        <property name="geometry">
@@ -199,6 +264,66 @@
         <string>...</string>
        </property>
       </widget>
+     </widget>
+     <widget class="QWidget" name="tab_2">
+      <attribute name="title">
+       <string>Phones</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_3">
+      <attribute name="title">
+       <string>Address</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_4">
+      <attribute name="title">
+       <string>E-mail</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_5">
+      <attribute name="title">
+       <string>WEB</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_6">
+      <attribute name="title">
+       <string>Messengers</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_7">
+      <attribute name="title">
+       <string>Job</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_8">
+      <attribute name="title">
+       <string>Studies</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_9">
+      <attribute name="title">
+       <string>Dates</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_10">
+      <attribute name="title">
+       <string>Interests</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_11">
+      <attribute name="title">
+       <string>Periods</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_12">
+      <attribute name="title">
+       <string>Etc</string>
+      </attribute>
+     </widget>
+     <widget class="QWidget" name="tab_13">
+      <attribute name="title">
+       <string>Note</string>
+      </attribute>
      </widget>
     </widget>
    </item>

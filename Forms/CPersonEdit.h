@@ -41,7 +41,8 @@ class CPersonEdit :
         void                     slot_tbtnPhotoDelete_OnClicked();
         void                     slot_tbtnPhotoSaveAs_OnClicked();
 
-        void                     slot_bbxButtons_OnClicked     (QAbstractButton *button);
+        void                     slot_bbxButtons_OnClicked             (QAbstractButton *button);
+        void                     slot_twGroups_OnActivated             (const QModelIndex &index);
 };
 //---------------------------------------------------------------------------
 #endif // PickupDB_CPersonEditH

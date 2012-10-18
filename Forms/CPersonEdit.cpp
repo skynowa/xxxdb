@@ -57,47 +57,6 @@ void
 CPersonEdit::_initMain() {
     m_Ui.setupUi(this);
 
-    // QTreeWidget
-    {
-        m_Ui.twGroups->setColumnCount(1);
-        m_Ui.twGroups->setHeaderLabels(QStringList() << CONFIG_DATA_GROUP_HEADER);
-        m_Ui.twGroups->setMinimumWidth(110);
-        m_Ui.twGroups->setMaximumWidth(110);
-
-        // top items
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_MAIN) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_PHONES) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_ADDRESS) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_EMAIL) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_WEB) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_MESSENGERS) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_JOB) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_STUDIES) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_DATES) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_INTERESTS) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_PERIODS) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_ETC) );
-        _m_ltwGroups.push_back( new QTreeWidgetItem(m_Ui.twGroups, QStringList() << CONFIG_DATA_GROUP_NOTE) );
-
-        m_Ui.twGroups->addTopLevelItems(_m_ltwGroups);
-
-        m_Ui.twGroups->expandAll();
-        m_Ui.twGroups->resizeColumnToContents(0);
-    }
-
-    // tabwGroupsDetail
-    {
-        #if 0
-            QTreeWidgetItem *item;
-
-            QWidget *w = new QWidget(this);
-
-            foreach(item, _m_ltwGroups) {
-                m_Ui.tabwGroupsDetail->addTab(w, item->text(0));
-            }
-        #endif
-    }
-
     // "Main" group
     {
         QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
@@ -129,15 +88,17 @@ CPersonEdit::_initMain() {
 
     // signals
     {
-        connect(m_Ui.tbtnPhotoChange, SIGNAL( clicked() ),
-                this,                 SLOT  ( slot_tbtnPhotoChange_OnClicked() ));
-        connect(m_Ui.tbtnPhotoDelete, SIGNAL( clicked() ),
-                this,                 SLOT  ( slot_tbtnPhotoDelete_OnClicked() ));
-        connect(m_Ui.tbtnPhotoSaveAs, SIGNAL( clicked() ),
-                this,                 SLOT  ( slot_tbtnPhotoSaveAs_OnClicked() ));
+        connect(m_Ui.tbtnPhotoChange,  SIGNAL( clicked() ),
+                this,                  SLOT  ( slot_tbtnPhotoChange_OnClicked() ));
+        connect(m_Ui.tbtnPhotoDelete,  SIGNAL( clicked() ),
+                this,                  SLOT  ( slot_tbtnPhotoDelete_OnClicked() ));
+        connect(m_Ui.tbtnPhotoSaveAs,  SIGNAL( clicked() ),
+                this,                  SLOT  ( slot_tbtnPhotoSaveAs_OnClicked() ));
 
-        connect(m_Ui.bbxButtons,      SIGNAL( clicked(QAbstractButton *) ),
-                this,                 SLOT  ( slot_bbxButtons_OnClicked(QAbstractButton *) ));
+        connect(m_Ui.bbxButtons,       SIGNAL( clicked(QAbstractButton *) ),
+                this,                  SLOT  ( slot_bbxButtons_OnClicked(QAbstractButton *) ));
+        connect(m_Ui.twGroups,         SIGNAL( clicked(const QModelIndex &) ),
+                this,                  SLOT  ( slot_twGroups_OnActivated(const QModelIndex &) ));
     }
 }
 //---------------------------------------------------------------------------
@@ -311,15 +272,12 @@ CPersonEdit::_saveAll() {
     _m_tmModel->submitAll();
 }
 //---------------------------------------------------------------------------
-
-
-
-
-
-
-
-
-
-
-
+void
+CPersonEdit::slot_twGroups_OnActivated(
+    const QModelIndex &index
+)
+{
+    m_Ui.tabwGroupsDetail->setCurrentIndex( index.row() );
+}
+//---------------------------------------------------------------------------
 

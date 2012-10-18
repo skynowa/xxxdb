@@ -30,25 +30,6 @@
 #define CONFIG_IMAGE_IS_CONVERT         true
 
 
-
-// data groups
-#define CONFIG_DATA_GROUP_HEADER        "Groups"
-
-#define CONFIG_DATA_GROUP_MAIN          "Main"
-#define CONFIG_DATA_GROUP_PHONES        "Phones"
-#define CONFIG_DATA_GROUP_ADDRESS       "Address"
-#define CONFIG_DATA_GROUP_EMAIL         "E-mail"
-#define CONFIG_DATA_GROUP_WEB           "WEB"
-#define CONFIG_DATA_GROUP_MESSENGERS    "Messengers"
-#define CONFIG_DATA_GROUP_JOB           "Job"
-#define CONFIG_DATA_GROUP_STUDIES       "Studies"
-#define CONFIG_DATA_GROUP_DATES         "Dates"
-#define CONFIG_DATA_GROUP_INTERESTS     "Interests"
-#define CONFIG_DATA_GROUP_PERIODS       "Periods"
-#define CONFIG_DATA_GROUP_ETC           "Etc"
-#define CONFIG_DATA_GROUP_NOTE          "Note"
-
-
 // resources
 #define CONFIG_RES_MAIN_ICON            ":/App.ico"
 
