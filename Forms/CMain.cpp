@@ -9,6 +9,8 @@
 #include "../Forms/CPersonEdit.h"
 #include "../Classes/CUtils.h"
 
+#include <xLib/Common/CxString.h>
+
 
 /****************************************************************************
 *   public
@@ -66,7 +68,7 @@ CMain::_construct() {
 //---------------------------------------------------------------------------
 void
 CMain::_destruct() {
-    delete _m_tmModel;  _m_tmModel = NULL;
+    xPTR_DELETE(_m_tmModel);
 }
 //---------------------------------------------------------------------------
 void
@@ -79,6 +81,12 @@ CMain::_initMain() {
         setWindowTitle(CONFIG_APP_NAME);
         setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
         CUtils::widgetAlignCenter(this);
+    }
+
+    // gbxPhotoAlbum
+    {
+        m_Ui.gbxPhotoAlbum->setTitle(tr(""));
+        m_Ui.gbxPhotoAlbum->setFixedHeight(50);
     }
 
     // gbxShortInfo
@@ -425,7 +433,9 @@ CMain::slot_tabvInfo_OnSelectionChanged(
             m_Ui.lblPhoto->setPixmap(pixPixmap);
         }
 
-        m_Ui.textEdit->setText(QString::number(baPhoto.size()));
+        const QString csText = QString("Photo size: %1").arg( CxString::sFormatBytes(baPhoto.size()).c_str() );
+
+        m_Ui.lblPhotoSize->setText(csText);
     }
 }
 //---------------------------------------------------------------------------
