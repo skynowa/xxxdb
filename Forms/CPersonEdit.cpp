@@ -6,7 +6,7 @@
 
 #include "CPersonEdit.h"
 
-#include "../Classes/CUtils.h"
+#include "../QtLib/CUtils.h"
 
 
 /****************************************************************************

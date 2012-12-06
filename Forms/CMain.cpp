@@ -7,7 +7,7 @@
 #include "CMain.h"
 
 #include "../Forms/CPersonEdit.h"
-#include "../Classes/CUtils.h"
+#include "../QtLib/CUtils.h"
 
 #include <xLib/Common/CxString.h>
 
@@ -433,7 +433,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
             m_Ui.lblPhoto->setPixmap(pixPixmap);
         }
 
-        const QString csText = QString("Photo size: %1").arg( CxString::sFormatBytes(baPhoto.size()).c_str() );
+        const QString csText = QString("Photo size: ") + qS2QS( CxString::sFormatBytes(baPhoto.size()) );
 
         m_Ui.lblPhotoSize->setText(csText);
     }

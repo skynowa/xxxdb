@@ -7,9 +7,6 @@
 #ifndef PickupDb_CMainH
 #define PickupDb_CMainH
 //---------------------------------------------------------------------------
-#undef UNICODE
-#undef _UNICODE
-
 #include "ui_CMain.h"
 
 #include <xLib/Common/xCommon.h>
