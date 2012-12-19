@@ -17,21 +17,25 @@
 
 //---------------------------------------------------------------------------
 CPersonEdit::CPersonEdit(
-    QWidget        *parent,
-    QSqlTableModel *tableModel,
-    const int      &currentRow
+    QWidget        *a_parent,
+    QSqlTableModel *a_tableModel,
+    const int      &a_currentRow
 ) :
-    QDialog        (parent),
-    _m_tmModel     (tableModel),
-    _m_ciCurrentRow(currentRow)
+    QDialog        (a_parent),
+    _m_ltwGroups   (),
+    _m_tmModel     (a_tableModel),
+    _m_dmMapper    (NULL),
+    _m_ciCurrentRow(a_currentRow)
 {
+    // _m_ltwGroups - n/a
     Q_ASSERT(NULL != _m_tmModel);
+    Q_ASSERT(NULL == _m_dmMapper);
     Q_ASSERT(- 1  <  _m_ciCurrentRow);
 
     _construct();
 }
 //---------------------------------------------------------------------------
-/*virtual*/
+/* virtual */
 CPersonEdit::~CPersonEdit() {
     _destruct();
 }
@@ -58,37 +62,6 @@ CPersonEdit::_destruct() {
 void
 CPersonEdit::_initMain() {
     m_Ui.setupUi(this);
-
-#if 0
-    // "Main" group
-    {
-        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-
-        // lables
-        m_Ui.cboName->lineEdit()->setText( srRecord.value(CONFIG_DB_F_MAIN_NAME).toString() );
-        m_Ui.cboAge->lineEdit()->setText ( srRecord.value(CONFIG_DB_F_MAIN_AGE ).toString() );
-
-        // lblPhoto
-        {
-            const int  ciCurrentRow = _m_ciCurrentRow;
-            QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
-
-            if (0 >= baPhoto.size()) {
-                m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
-            } else {
-                QImage imgPhoto;
-
-                bool bRv = imgPhoto.loadFromData(baPhoto);
-                Q_ASSERT(true == bRv);
-
-                QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-                QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
-
-                m_Ui.lblPhoto->setPixmap(pixPixmap);
-            }
-        }
-    }
-#endif
 
     // maps ui controls into DB fields
     {
@@ -150,21 +123,43 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
             break;
 
         case QDialog::Accepted: {
-                QByteArray    baPhoto;
-                const QString csFilePath = fdlgDialog.selectedFiles().first();
+                QByteArray baPhoto;
 
-                if (true == CONFIG_IMAGE_IS_CONVERT) {
-                    CUtils::imageConvert(csFilePath, &baPhoto);
-                } else {
-                    QFile file(csFilePath);
+                // file to buffer
+                {
+                    const QString csFilePath = fdlgDialog.selectedFiles().first();
 
-                    bool bRv = file.open(QIODevice::ReadOnly);
-                    Q_ASSERT(true == bRv);
+                    if (true == CONFIG_IMAGE_IS_CONVERT) {
+                        CUtils::imageConvert(csFilePath, &baPhoto);
+                    } else {
+                        QFile file(csFilePath);
 
-                    baPhoto = file.readAll();
+                        bool bRv = file.open(QIODevice::ReadOnly);
+                        Q_ASSERT(true == bRv);
+
+                        baPhoto = file.readAll();
+                    }
+
+                    Q_ASSERT(0 < baPhoto.size());
                 }
 
-                Q_ASSERT(0 < baPhoto.size());
+                // lblPhoto
+                {
+                    if (0 >= baPhoto.size()) {
+                        m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
+                    } else {
+                        QImage imgPhoto;
+
+                        bool bRv = imgPhoto.loadFromData(baPhoto);
+                        Q_ASSERT(true == bRv);
+
+                        QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                        QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+
+                        m_Ui.lblPhoto->setPixmap(pixPixmap);
+                    }
+                }
+
             }
             break;
 
@@ -177,16 +172,6 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
-#if 0
-    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-
-    srRecord.setValue(CONFIG_DB_F_PHOTO_1, _m_baPhoto);
-    _m_baPhoto.clear();
-
-    _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
-    _m_tmModel->submitAll();
-#endif
-
     m_Ui.lblPhoto->clear();
 }
 //---------------------------------------------------------------------------
@@ -215,7 +200,7 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
                 Q_ASSERT(true == bRv);
 
                 QDataStream stream(&file);
-                int iRv = stream.writeRawData( baPhoto.constData(), baPhoto.size() );
+                int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
                 Q_ASSERT(0 < iRv);
             }
             break;
@@ -229,10 +214,10 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_bbxButtons_OnClicked(
-    QAbstractButton *button
+    QAbstractButton *a_button
 )
 {
-    QDialogButtonBox::StandardButton sbType = m_Ui.bbxButtons->standardButton(button);
+    QDialogButtonBox::StandardButton sbType = m_Ui.bbxButtons->standardButton(a_button);
     switch (sbType) {
         case QDialogButtonBox::Reset: {
                 _resetAll();
@@ -274,46 +259,34 @@ void
 CPersonEdit::_resetAll() {
     m_Ui.cboName->lineEdit()->clear();
     m_Ui.cboAge->lineEdit()->clear();
+    m_Ui.lblPhoto->clear();
 }
 //---------------------------------------------------------------------------
 void
 CPersonEdit::_saveAll() {
-#if 0
-    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+    bool bRv = _m_dmMapper->submit();
+    Q_ASSERT(true == bRv);
 
+    // set current index
     {
-        srRecord.setValue(CONFIG_DB_F_MAIN_NAME, m_Ui.cboName->lineEdit()->text());
-        srRecord.setValue(CONFIG_DB_F_MAIN_AGE,  m_Ui.cboAge->lineEdit()->text() );
-
-        if (0 < _m_baPhoto.size()) {
-            srRecord.setValue(CONFIG_DB_F_PHOTO_1, _m_baPhoto);
-            _m_baPhoto.clear();
-        }
+        _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
 
-    _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
-    _m_tmModel->submitAll();
-#endif
+    // set current index
+    {
+        CMain *parent = static_cast<CMain *>( this->parent() );
+        Q_ASSERT(NULL != parent);
 
-     bool bRv = _m_dmMapper->submit();
-     Q_ASSERT(true == bRv);
-
-     // set current index
-    _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
-
-     // set current index
-     CMain *parent = static_cast<CMain *>( this->parent() );
-     Q_ASSERT(NULL != parent);
-
-     parent->m_Ui.tabvInfo->selectRow(_m_ciCurrentRow);
+        parent->m_Ui.tabvInfo->selectRow(_m_ciCurrentRow);
+    }
 }
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_twGroups_OnActivated(
-    const QModelIndex &index
+    const QModelIndex &a_index
 )
 {
-    m_Ui.tabwGroupsDetail->setCurrentIndex( index.row() );
+    m_Ui.tabwGroupsDetail->setCurrentIndex( a_index.row() );
 }
 //---------------------------------------------------------------------------
 

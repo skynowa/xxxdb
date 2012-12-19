@@ -35,7 +35,7 @@ CDelegateDbImage::setEditorData(
 {
     if (_m_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
-        Q_ASSERT(lblPhoto);
+        Q_ASSERT(NULL != lblPhoto);
 
         QByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
 
@@ -71,16 +71,22 @@ CDelegateDbImage::setModelData(
 ) const
 {
     if (_m_ciImageFieldIndex == a_index.column()) {
-        QLabel *label = static_cast<QLabel *>( a_editor );
-        Q_ASSERT(label);
+        QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
+        Q_ASSERT(NULL != lblPhoto);
 
-        QBuffer buf;
-        buf.open(QIODevice::WriteOnly);
+        QBuffer bfPhoto;
 
-        bool bRv = label->pixmap()->save(&buf, "jpeg");
-        Q_ASSERT(true == bRv);
+        const QPixmap *ppmPixmap = lblPhoto->pixmap();
+        if (NULL == ppmPixmap) {
+            bfPhoto.reset();
+        } else {
+            bfPhoto.open(QIODevice::WriteOnly);
 
-        a_model->setData(a_index, buf.data(), Qt::EditRole);
+            bool bRv = ppmPixmap->save(&bfPhoto, "jpeg");
+            Q_ASSERT(true == bRv);
+        }
+
+        a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
     } else {
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }
