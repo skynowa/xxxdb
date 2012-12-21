@@ -25,6 +25,10 @@ class CMain :
         virtual        ~CMain             ();
 
         Ui::CMainClass  m_Ui;
+        QString         m_sAppName;
+        QString         m_sAppDir;
+        QString         m_sDbDir;
+        QString         m_sDbBackupDir;
         CSqlNavigator   m_navNavigator;
 
     private:

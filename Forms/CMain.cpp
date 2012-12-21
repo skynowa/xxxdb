@@ -23,6 +23,10 @@ CMain::CMain(
     Qt::WFlags  flags
 ) :
     QMainWindow        (parent, flags),
+    m_sAppName         (),
+    m_sAppDir          (),
+    m_sDbDir           (),
+    m_sDbBackupDir     (),
     m_navNavigator     (this),
     _m_dbDatabase      (),
     _m_tmModel         (NULL),
@@ -75,6 +79,17 @@ void
 CMain::_initMain() {
     m_Ui.setupUi(this);
 
+    //--------------------------------------------------
+    // data
+    {
+        m_sAppName     = CONFIG_APP_NAME;
+        m_sAppDir      = qApp->applicationDirPath();
+        m_sDbDir       = m_sAppDir + QDir::separator() + "Db";
+        m_sDbBackupDir = m_sDbDir  + QDir::separator() + "Backup";
+
+        QDir().mkpath(m_sDbDir);
+    }
+
     // CMain
     {
         setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
@@ -121,16 +136,16 @@ CMain::_initModel() {
     //--------------------------------------------------
     // settings DB
     {
-        bool bRes = false;
+        bool bRv = false;
 
-        bRes = QSqlDatabase::isDriverAvailable("QSQLITE");
-        qCHECK_DO(false == bRes, qMSG(QSqlDatabase().lastError().text()); return;);
+        bRv = QSqlDatabase::isDriverAvailable("QSQLITE");
+        qCHECK_DO(false == bRv, qMSG(QSqlDatabase().lastError().text()); return;);
 
         _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
         _m_dbDatabase.setDatabaseName(QCoreApplication::applicationFilePath() + CONFIG_DB_FILE_EXT);
 
-        bRes = _m_dbDatabase.open();
-        qCHECK_REF(bRes, _m_dbDatabase);
+        bRv = _m_dbDatabase.open();
+        qCHECK_REF(bRv, _m_dbDatabase);
 
         {
             QSqlQuery qryInfo(_m_dbDatabase);
@@ -145,8 +160,8 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_PHOTO_1   "    BLOB "
                     ")";
 
-            bRes = qryInfo.exec(csSql);
-            qCHECK_REF(bRes, qryInfo);
+            bRv = qryInfo.exec(csSql);
+            qCHECK_REF(bRv, qryInfo);
         }
     }
 
@@ -201,81 +216,104 @@ CMain::_initActions() {
     // group "File"
     {
         actFile_Exit.setText(tr("Exit"));
-        connect(&actFile_Exit, SIGNAL( triggered() ), this, SLOT( slot_OnExit() ));
-        m_Ui.toolBar->addAction(&actFile_Exit);
+        connect(&actFile_Exit, SIGNAL( triggered() ),
+                 this, SLOT( slot_OnExit() ));
+        //// m_Ui.toolBar->addAction(&actFile_Exit);
+
+        //// m_Ui.toolBar->addSeparator();
     }
 
     // group "Edit"
     {
         actEdit_MovetoFirst.setText(tr("First"));
-        connect(&actEdit_MovetoFirst, SIGNAL( triggered() ), this, SLOT( slot_OnFirst() ));
+        connect(&actEdit_MovetoFirst, SIGNAL( triggered() ),
+                this,                 SLOT  ( slot_OnFirst() ));
         m_Ui.toolBar->addAction(&actEdit_MovetoFirst);
 
         actEdit_MovetoPrior.setText(tr("Prior"));
-        connect(&actEdit_MovetoPrior, SIGNAL( triggered() ), this, SLOT( slot_OnPrior() ));
+        connect(&actEdit_MovetoPrior, SIGNAL( triggered() ),
+                this,                 SLOT  ( slot_OnPrior() ));
         m_Ui.toolBar->addAction(&actEdit_MovetoPrior);
 
         actEdit_MovetoNext.setText(tr("Next"));
-        connect(&actEdit_MovetoNext, SIGNAL( triggered() ), this, SLOT( slot_OnNext() ));
+        connect(&actEdit_MovetoNext, SIGNAL( triggered() ),
+                this,                SLOT  ( slot_OnNext() ));
         m_Ui.toolBar->addAction(&actEdit_MovetoNext);
 
         actEdit_MovetoLast.setText(tr("Last"));
-        connect(&actEdit_MovetoLast, SIGNAL( triggered() ), this, SLOT( slot_OnLast() ));
+        connect(&actEdit_MovetoLast, SIGNAL( triggered() ),
+                this,                SLOT  ( slot_OnLast() ));
         m_Ui.toolBar->addAction(&actEdit_MovetoLast);
 
         actEdit_Insert.setText(tr("Insert"));
-        connect(&actEdit_Insert, SIGNAL( triggered() ), this, SLOT( slot_OnInsert() ));
+        connect(&actEdit_Insert, SIGNAL( triggered() ),
+                this,            SLOT  ( slot_OnInsert() ));
         m_Ui.toolBar->addAction(&actEdit_Insert);
 
         actEdit_Delete.setText(tr("Delete"));
-        connect(&actEdit_Delete, SIGNAL( triggered() ), this, SLOT( slot_OnRemove() ));
+        connect(&actEdit_Delete, SIGNAL( triggered() ),
+                this,            SLOT  ( slot_OnRemove() ));
         m_Ui.toolBar->addAction(&actEdit_Delete);
 
         actEdit_Edit.setText(tr("Edit"));
-        connect(&actEdit_Edit, SIGNAL( triggered() ), this, SLOT( slot_OnEdit() ));
+        connect(&actEdit_Edit, SIGNAL( triggered() ),
+                this,          SLOT  ( slot_OnEdit() ));
         m_Ui.toolBar->addAction(&actEdit_Edit);
 
         actEdit_Post.setText(tr("Post"));
-        connect(&actEdit_Post, SIGNAL( triggered() ), this, SLOT( slot_OnPost() ));
+        connect(&actEdit_Post, SIGNAL( triggered() ),
+                this,          SLOT  ( slot_OnPost() ));
         m_Ui.toolBar->addAction(&actEdit_Post);
 
         actEdit_Cancel.setText(tr("Cancel"));
-        connect(&actEdit_Cancel, SIGNAL( triggered() ), this, SLOT( slot_OnCancel() ));
+        connect(&actEdit_Cancel, SIGNAL( triggered() ),
+                this,            SLOT  ( slot_OnCancel() ));
         m_Ui.toolBar->addAction(&actEdit_Cancel);
 
         actEdit_Refresh.setText(tr("Refresh"));
-        connect(&actEdit_Refresh, SIGNAL( triggered() ), this, SLOT( slot_OnRefresh() ));
+        connect(&actEdit_Refresh, SIGNAL( triggered() ),
+                this,             SLOT  ( slot_OnRefresh() ));
         m_Ui.toolBar->addAction(&actEdit_Refresh);
+
+        m_Ui.toolBar->addSeparator();
     }
 
     // group "Find"
     {
         actFind_Search.setText(tr("Search"));
-        connect(&actFind_Search, SIGNAL( triggered() ), this, SLOT( slot_OnSearch() ));
+        connect(&actFind_Search, SIGNAL( triggered() ),
+                this,            SLOT  ( slot_OnSearch() ));
         m_Ui.toolBar->addAction(&actFind_Search);
+
+        m_Ui.toolBar->addSeparator();
     }
 
     // group "View"
     {
-
+        //// m_Ui.toolBar->addSeparator();
     }
 
     // group "Options"
     {
         actOptions_Settings.setText(tr("Settings"));
-        connect(&actOptions_Settings, SIGNAL( triggered() ), this, SLOT( slot_OnSettings() ));
-        m_Ui.toolBar->addAction(&actOptions_Settings);
+        connect(&actOptions_Settings, SIGNAL( triggered() ),
+                this,                 SLOT  ( slot_OnSettings() ));
+        //// m_Ui.toolBar->addAction(&actOptions_Settings);
+
+        //// m_Ui.toolBar->addSeparator();
     }
 
     // group "Help"
     {
         actHelp_Faq.setText(tr("FAQ"));
-        connect(&actHelp_Faq, SIGNAL( triggered() ), this, SLOT( slot_OnFaq() ));
-        m_Ui.toolBar->addAction(&actHelp_Faq);
+        connect(&actHelp_Faq, SIGNAL( triggered() ),
+                this,         SLOT  ( slot_OnFaq() ));
+        //// m_Ui.toolBar->addAction(&actHelp_Faq);
 
         actHelp_About.setText(tr("About"));
-        connect(&actHelp_About, SIGNAL( triggered() ), this, SLOT( slot_OnAbout() ));
-        m_Ui.toolBar->addAction(&actHelp_About);
+        connect(&actHelp_About, SIGNAL( triggered() ),
+                this,           SLOT  ( slot_OnAbout() ));
+        //// m_Ui.toolBar->addAction(&actHelp_About);
     }
 }
 //---------------------------------------------------------------------------
@@ -484,15 +522,6 @@ CMain::slot_OnSearch() {
 *   group "View"
 *
 *****************************************************************************/
-
-//---------------------------------------------------------------------------
-/*
-void
-CMain::xxxxxxx() {
-
-}
-*/
-//---------------------------------------------------------------------------
 
 
 /****************************************************************************
