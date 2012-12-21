@@ -7,6 +7,7 @@
 #include "CPersonEdit.h"
 
 #include "../QtLib/CUtils.h"
+#include "../Classes/CDelegateDbImage.h"
 
 
 /****************************************************************************
@@ -50,6 +51,7 @@ CPersonEdit::_construct() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::_destruct() {
+    delete _m_dmMapper; _m_dmMapper = NULL;
     qDeleteAll(_m_ltwGroups);
 }
 //---------------------------------------------------------------------------
@@ -57,6 +59,7 @@ void
 CPersonEdit::_initMain() {
     m_Ui.setupUi(this);
 
+#if 0
     // "Main" group
     {
         QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
@@ -84,6 +87,20 @@ CPersonEdit::_initMain() {
                 m_Ui.lblPhoto->setPixmap(pixPixmap);
             }
         }
+    }
+#endif
+
+    // maps ui controls into DB fields
+    {
+        _m_dmMapper = new QDataWidgetMapper(this);
+        _m_dmMapper->setModel(_m_tmModel);
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTO_1), NULL));
+        _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
+
+        _m_dmMapper->addMapping(m_Ui.cboName->lineEdit(), _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_NAME));
+        _m_dmMapper->addMapping(m_Ui.cboAge->lineEdit(),  _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_AGE));
+        _m_dmMapper->addMapping(m_Ui.lblPhoto,            _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTO_1));
+        _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
 
     // signals
@@ -123,7 +140,7 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
     slFilters << "All   files (*)";
 
     fdlgDialog.setNameFilters(slFilters);
-    //fdlgDialog.setDirectory();
+    // fdlgDialog.setDirectory();
 
     QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
     switch (dcRes) {
@@ -159,6 +176,7 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
+#if 0
     QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
 
     srRecord.setValue(CONFIG_DB_F_PHOTO_1, _m_baPhoto);
@@ -166,6 +184,9 @@ CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
 
     _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
     _m_tmModel->submitAll();
+#endif
+
+    m_Ui.lblPhoto->clear();
 }
 //---------------------------------------------------------------------------
 void
@@ -174,8 +195,8 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
     fdlgDialog.setFileMode(QFileDialog::AnyFile);
-    //fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
-    //fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
+    // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
+    // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
 
     QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
     switch (dcRes) {
@@ -256,6 +277,7 @@ CPersonEdit::_resetAll() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::_saveAll() {
+#if 0
     QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
 
     {
@@ -270,6 +292,9 @@ CPersonEdit::_saveAll() {
 
     _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
     _m_tmModel->submitAll();
+#endif
+
+    (bool)_m_dmMapper->submit();
 }
 //---------------------------------------------------------------------------
 void

@@ -106,8 +106,8 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
-     <widget class="QWidget" name="tabwGroupsDetailPage1" native="true">
-      <widget class="QComboBox" name="cboName">
+     <widget class="QWidget" name="tabwGroupsDetailPage1">
+      <widget class="QComboBox" name="cboNick">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -123,7 +123,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge">
+      <widget class="QComboBox" name="cboAaaaaaaaaa">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -268,7 +268,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_2">
+      <widget class="QComboBox" name="cboName">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -297,7 +297,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_3">
+      <widget class="QComboBox" name="cboAge">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -528,7 +528,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage2" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage2">
       <widget class="QLabel" name="label_12">
        <property name="geometry">
         <rect>
@@ -695,7 +695,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage3" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage3">
       <widget class="QComboBox" name="cboAge_7">
        <property name="geometry">
         <rect>
@@ -946,7 +946,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage4" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage4">
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
@@ -957,7 +957,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage5" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage5">
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_4">
@@ -968,7 +968,7 @@
        </item>
       </layout>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage6" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage6">
       <widget class="QLabel" name="label_25">
        <property name="geometry">
         <rect>
@@ -1025,7 +1025,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage7" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage7">
       <widget class="QLabel" name="label_27">
        <property name="geometry">
         <rect>
@@ -1137,7 +1137,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage8" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage8">
       <widget class="QLabel" name="label_31">
        <property name="geometry">
         <rect>
@@ -1304,7 +1304,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage9" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage9">
       <widget class="QComboBox" name="cboName_20">
        <property name="geometry">
         <rect>
@@ -1445,8 +1445,8 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage10" native="true"/>
-     <widget class="QWidget" name="tabwGroupsDetailPage11" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage10"/>
+     <widget class="QWidget" name="tabwGroupsDetailPage11">
       <widget class="QLabel" name="label_35">
        <property name="geometry">
         <rect>
@@ -1500,7 +1500,7 @@
        </property>
       </widget>
      </widget>
-     <widget class="QWidget" name="tabwGroupsDetailPage12" native="true">
+     <widget class="QWidget" name="tabwGroupsDetailPage12">
       <layout class="QGridLayout" name="gridLayout_7">
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_6">

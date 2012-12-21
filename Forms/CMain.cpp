@@ -136,9 +136,7 @@ CMain::_initModel() {
     //--------------------------------------------------
     // settings DB
     {
-        bool bRv = false;
-
-        bRv = QSqlDatabase::isDriverAvailable("QSQLITE");
+        bool bRv = QSqlDatabase::isDriverAvailable("QSQLITE");
         qCHECK_DO(false == bRv, qMSG(QSqlDatabase().lastError().text()); return;);
 
         _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
