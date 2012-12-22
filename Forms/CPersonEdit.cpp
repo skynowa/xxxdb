@@ -352,7 +352,9 @@ CPersonEdit::_resetAll() {
 void
 CPersonEdit::_saveAll() {
     bool bRv = _m_dmMapper->submit();
-    Q_ASSERT(true == bRv);
+    if (false == bRv) {
+        qDebug() << __FUNCTION__ << ": " << _m_tmModel->lastError().text();
+    }
 
     // set current index
     {
