@@ -107,7 +107,7 @@
 #define CONFIG_DB_F_ETC_DATELASTCHANGE      "f_etc_datelastchange"
 
 // Notes
-#define CONFIG_DB_F_NOTE_NOTES              "f_note_notes"
+#define CONFIG_DB_F_NOTES_NOTES             "f_notes_notes"
 
 //---------------------------------------------------------------------------
 #endif // PickupDb_ConfigH

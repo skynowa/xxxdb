@@ -144,7 +144,7 @@ CPersonEdit::_initMain() {
             _m_mapDbControls[CONFIG_DB_F_ETC_DATELASTCHANGE]     = m_Ui.dtDateLastChange;
 
             // Note
-            _m_mapDbControls[CONFIG_DB_F_NOTE_NOTES]             = m_Ui.tedtNotes;
+            _m_mapDbControls[CONFIG_DB_F_NOTES_NOTES]            = m_Ui.tedtNotes;
         }
 
         // map DB controls

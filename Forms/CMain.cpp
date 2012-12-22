@@ -225,7 +225,7 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_ETC_DATELASTCHANGE     " DATETIME, "
 
                     // Notes
-                    "    " CONFIG_DB_F_NOTE_NOTES             " VARCHAR (256) "
+                    "    " CONFIG_DB_F_NOTES_NOTES            " VARCHAR (256) "
                     ")";
 
             bRv = qryInfo.exec(csSql);
