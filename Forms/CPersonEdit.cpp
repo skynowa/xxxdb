@@ -67,12 +67,12 @@ CPersonEdit::_initMain() {
     {
         _m_dmMapper = new QDataWidgetMapper(this);
         _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTO_1), NULL));
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_PHOTO_1), NULL));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
         _m_dmMapper->addMapping(m_Ui.cboName->lineEdit(), _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_NAME));
         _m_dmMapper->addMapping(m_Ui.cboAge->lineEdit(),  _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_AGE));
-        _m_dmMapper->addMapping(m_Ui.lblPhoto,            _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTO_1));
+        _m_dmMapper->addMapping(m_Ui.lblPhoto,            _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_PHOTO_1));
         _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
 
@@ -193,7 +193,7 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
 
         case QDialog::Accepted: {
                 QString    sFilePath = fdlgDialog.selectedFiles().first();
-                QByteArray baPhoto   = _m_tmModel->record(_m_ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
+                QByteArray baPhoto   = _m_tmModel->record(_m_ciCurrentRow).value(CONFIG_DB_F_MAIN_PHOTO_1).toByteArray();
 
                 QFile  file(sFilePath);
                 bool bRv = file.open(QIODevice::WriteOnly);

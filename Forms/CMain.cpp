@@ -152,10 +152,10 @@ CMain::_initModel() {
                     "CREATE TABLE IF NOT EXISTS "
                     "    " CONFIG_DB_T_PERSON
                     "( "
-                    "    " CONFIG_DB_F_ID        "    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-                    "    " CONFIG_DB_F_MAIN_NAME "    VARCHAR (64), "
-                    "    " CONFIG_DB_F_MAIN_AGE  "    INT, "
-                    "    " CONFIG_DB_F_PHOTO_1   "    BLOB "
+                    "    " CONFIG_DB_F_ID           "    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+                    "    " CONFIG_DB_F_MAIN_NAME    "    VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_AGE     "    INT, "
+                    "    " CONFIG_DB_F_MAIN_PHOTO_1 "    BLOB "
                     ")";
 
             bRv = qryInfo.exec(csSql);
@@ -453,7 +453,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
     // lblPhoto
     {
         const int  ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
-        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTO_1).toByteArray();
+        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_MAIN_PHOTO_1).toByteArray();
 
         if (0 >= baPhoto.size()) {
             m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
