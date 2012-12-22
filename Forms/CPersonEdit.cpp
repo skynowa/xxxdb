@@ -122,12 +122,12 @@ CPersonEdit::_initMain() {
             _m_mapDbControls[CONFIG_DB_F_JOB_COMPANY]            = m_Ui.cboCompany->lineEdit();
 
             // Dates
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAY]         = m_Ui.cboBirthday->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYFATHER]   = m_Ui.cboBirthdayFather->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYMOTHER]   = m_Ui.cboBirthdayMother->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYDATING]        = m_Ui.cboDayDating->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTKISS]     = m_Ui.cboDayFirstKiss->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTSEX]      = m_Ui.cboDayFirstSex->lineEdit();
+            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAY]         = m_Ui.dtBirthday;
+            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYFATHER]   = m_Ui.dtBirthdayFather;
+            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYMOTHER]   = m_Ui.dtBirthdayMother;
+            _m_mapDbControls[CONFIG_DB_F_DATES_DAYDATING]        = m_Ui.dtDayDating;
+            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTKISS]     = m_Ui.dtDayFirstKiss;
+            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTSEX]      = m_Ui.dtDayFirstSex;
 
             // Interests
             _m_mapDbControls[CONFIG_DB_F_INTERESTS_HOBBY]        = m_Ui.cboHobby->lineEdit();

@@ -107,7 +107,7 @@
       <enum>QFrame::Plain</enum>
      </property>
      <property name="currentIndex">
-      <number>0</number>
+      <number>7</number>
      </property>
      <widget class="QWidget" name="tabwGroupsDetailPage1">
       <widget class="QComboBox" name="cboNick">
@@ -1154,48 +1154,6 @@
         <string>Dating day:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboDayDating">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>92</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cboBirthdayMother">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>64</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cboBirthdayFather">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>36</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_32">
        <property name="geometry">
         <rect>
@@ -1207,22 +1165,6 @@
        </property>
        <property name="text">
         <string>Mother birthday:</string>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cboBirthday">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>8</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_33">
@@ -1251,35 +1193,6 @@
         <string>Father birthday:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboDayFirstSex">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>148</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-      </widget>
-      <widget class="QComboBox" name="cboDayFirstKiss">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>120</y>
-         <width>120</width>
-         <height>22</height>
-        </rect>
-       </property>
-       <property name="editable">
-        <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
-      </widget>
       <widget class="QLabel" name="label_37">
        <property name="geometry">
         <rect>
@@ -1304,6 +1217,84 @@
        </property>
        <property name="text">
         <string>1-st sex day:</string>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtBirthday">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>8</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtBirthdayFather">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>36</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtBirthdayMother">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>64</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtDayDating">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>92</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtDayFirstKiss">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>120</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
+       </property>
+      </widget>
+      <widget class="QDateTimeEdit" name="dtDayFirstSex">
+       <property name="geometry">
+        <rect>
+         <x>94</x>
+         <y>148</y>
+         <width>120</width>
+         <height>22</height>
+        </rect>
+       </property>
+       <property name="buttonSymbols">
+        <enum>QAbstractSpinBox::NoButtons</enum>
        </property>
       </widget>
      </widget>
