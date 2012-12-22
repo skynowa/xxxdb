@@ -11,6 +11,8 @@
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
+
+#include "CMain.h"
 //---------------------------------------------------------------------------
 class CPersonEdit :
     public QDialog

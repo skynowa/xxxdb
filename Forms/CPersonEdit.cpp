@@ -294,7 +294,17 @@ CPersonEdit::_saveAll() {
     _m_tmModel->submitAll();
 #endif
 
-    (bool)_m_dmMapper->submit();
+     bool bRv = _m_dmMapper->submit();
+     Q_ASSERT(true == bRv);
+
+     // set current index
+    _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
+
+     // set current index
+     CMain *parent = static_cast<CMain *>( this->parent() );
+     Q_ASSERT(NULL != parent);
+
+     parent->m_Ui.tabvInfo->selectRow(_m_ciCurrentRow);
 }
 //---------------------------------------------------------------------------
 void
