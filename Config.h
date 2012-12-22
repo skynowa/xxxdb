@@ -39,7 +39,7 @@
 #define CONFIG_DB_F_MAIN_NICK               "f_main_nick"
 #define CONFIG_DB_F_MAIN_SURNAME            "f_main_surname"
 #define CONFIG_DB_F_MAIN_NAME               "f_main_name"
-#define CONFIG_DB_F_MAIN_SECONDNAME         "f_main_secondname"
+#define CONFIG_DB_F_MAIN_PATRONYMIC         "f_main_patronymic"
 #define CONFIG_DB_F_MAIN_AGE                "f_main_age"
 #define CONFIG_DB_F_MAIN_HEIGHT             "f_main_height"
 #define CONFIG_DB_F_MAIN_WEIGHT             "f_main_weight"

@@ -158,7 +158,7 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_MAIN_NICK              " VARCHAR (64), "
                     "    " CONFIG_DB_F_MAIN_SURNAME           " VARCHAR (64), "
                     "    " CONFIG_DB_F_MAIN_NAME              " VARCHAR (64), "
-                    "    " CONFIG_DB_F_MAIN_SECONDNAME        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_PATRONYMIC        " VARCHAR (64), "
                     "    " CONFIG_DB_F_MAIN_AGE               " INT, "
                     "    " CONFIG_DB_F_MAIN_HEIGHT            " INT, "
                     "    " CONFIG_DB_F_MAIN_WEIGHT            " INT, "
@@ -240,10 +240,12 @@ CMain::_initModel() {
         Q_ASSERT(NULL != _m_tmModel);
 
         _m_tmModel->setTable("t_person");
+    #if 0
         _m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
         _m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
         _m_tmModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
         _m_tmModel->setHeaderData(3, Qt::Horizontal, tr("Photo"));
+    #endif
         _m_tmModel->setEditStrategy(QSqlTableModel::OnRowChange);
         _m_tmModel->select();
 

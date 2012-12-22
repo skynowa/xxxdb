@@ -20,84 +20,61 @@
    <string/>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <widget class="QGroupBox" name="gbxPhotoAlbum">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>225</y>
-      <width>300</width>
-      <height>37</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>gbxPhotoAlbum</string>
-    </property>
-    <widget class="QLabel" name="lblPhotoSize">
-     <property name="geometry">
-      <rect>
-       <x>12</x>
-       <y>12</y>
-       <width>169</width>
-       <height>16</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>lblPhotoSize</string>
-     </property>
-     <property name="textFormat">
-      <enum>Qt::PlainText</enum>
-     </property>
-    </widget>
-    <widget class="QToolButton" name="tbtnPhotoAlbumShow">
-     <property name="geometry">
-      <rect>
-       <x>268</x>
-       <y>12</y>
-       <width>25</width>
-       <height>19</height>
-      </rect>
-     </property>
-     <property name="text">
-      <string>...</string>
-     </property>
-    </widget>
-   </widget>
-   <widget class="QLabel" name="lblPhoto">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>12</y>
-      <width>300</width>
-      <height>205</height>
-     </rect>
-    </property>
-    <property name="text">
-     <string>lblPhoto</string>
-    </property>
-   </widget>
-   <widget class="QTableView" name="tabvInfo">
-    <property name="geometry">
-     <rect>
-      <x>320</x>
-      <y>4</y>
-      <width>565</width>
-      <height>517</height>
-     </rect>
-    </property>
-   </widget>
-   <widget class="QGroupBox" name="gbxShortInfo">
-    <property name="geometry">
-     <rect>
-      <x>4</x>
-      <y>268</y>
-      <width>300</width>
-      <height>249</height>
-     </rect>
-    </property>
-    <property name="title">
-     <string>gbxShortInfo</string>
-    </property>
-   </widget>
+   <layout class="QGridLayout" name="gridLayout">
+    <item row="0" column="0">
+     <widget class="QLabel" name="lblPhoto">
+      <property name="text">
+       <string>lblPhoto</string>
+      </property>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <widget class="QTableView" name="tabvInfo"/>
+    </item>
+    <item row="1" column="0">
+     <widget class="QGroupBox" name="gbxPhotoAlbum">
+      <property name="title">
+       <string>gbxPhotoAlbum</string>
+      </property>
+      <widget class="QLabel" name="lblPhotoSize">
+       <property name="geometry">
+        <rect>
+         <x>12</x>
+         <y>12</y>
+         <width>169</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>lblPhotoSize</string>
+       </property>
+       <property name="textFormat">
+        <enum>Qt::PlainText</enum>
+       </property>
+      </widget>
+      <widget class="QToolButton" name="tbtnPhotoAlbumShow">
+       <property name="geometry">
+        <rect>
+         <x>268</x>
+         <y>12</y>
+         <width>25</width>
+         <height>19</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string>...</string>
+       </property>
+      </widget>
+     </widget>
+    </item>
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="gbxShortInfo">
+      <property name="title">
+       <string>gbxShortInfo</string>
+      </property>
+     </widget>
+    </item>
+   </layout>
   </widget>
   <widget class="QMenuBar" name="menuBar">
    <property name="geometry">

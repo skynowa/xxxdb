@@ -76,7 +76,7 @@ CPersonEdit::_initMain() {
             _m_mapDbControls[CONFIG_DB_F_MAIN_NICK]              = m_Ui.cboNick->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_SURNAME]           = m_Ui.cboSurname->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_NAME]              = m_Ui.cboName->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_SECONDNAME]        = m_Ui.cboSecondName->lineEdit();
+            _m_mapDbControls[CONFIG_DB_F_MAIN_PATRONYMIC]        = m_Ui.cboPatronymic->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_AGE]               = m_Ui.cboAge->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_HEIGHT]            = m_Ui.cboHeight->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_WEIGHT]            = m_Ui.cboWeight->lineEdit();

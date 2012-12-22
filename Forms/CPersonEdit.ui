@@ -258,7 +258,7 @@
         <string>...</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboSecondName">
+      <widget class="QComboBox" name="cboPatronymic">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -436,7 +436,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Second name:</string>
+        <string>Patronymic:</string>
        </property>
       </widget>
       <widget class="QLabel" name="label_5">
