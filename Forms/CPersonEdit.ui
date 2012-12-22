@@ -106,6 +106,9 @@
      <property name="frameShadow">
       <enum>QFrame::Plain</enum>
      </property>
+     <property name="currentIndex">
+      <number>0</number>
+     </property>
      <widget class="QWidget" name="tabwGroupsDetailPage1">
       <widget class="QComboBox" name="cboNick">
        <property name="geometry">
@@ -123,7 +126,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAaaaaaaaaa">
+      <widget class="QComboBox" name="cboSurname">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -255,7 +258,7 @@
         <string>...</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_2">
+      <widget class="QComboBox" name="cboSecondName">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -284,7 +287,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_3">
+      <widget class="QComboBox" name="cboHeight">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -313,7 +316,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_4">
+      <widget class="QComboBox" name="cboHairLength">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -326,7 +329,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_4">
+      <widget class="QComboBox" name="cboWeight">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -342,7 +345,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_5">
+      <widget class="QComboBox" name="cboAppearance">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -355,7 +358,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_5">
+      <widget class="QComboBox" name="cboHairColor">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -371,7 +374,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_6">
+      <widget class="QComboBox" name="cboAgreement">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -555,7 +558,7 @@
         <string>Additional:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_8">
+      <widget class="QComboBox" name="cboPhoneHome">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -568,7 +571,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_6">
+      <widget class="QComboBox" name="cboPhoneJob">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -597,7 +600,7 @@
         <string>Mobile 1:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_7">
+      <widget class="QComboBox" name="cboMobile1">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -626,7 +629,7 @@
         <string>Home:</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="textEdit">
+      <widget class="QTextEdit" name="tedtPhoneAdditional">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -636,7 +639,7 @@
         </rect>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_18">
+      <widget class="QComboBox" name="cboMobile2">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -665,7 +668,7 @@
         <string>Mobile 2:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_23">
+      <widget class="QComboBox" name="cboMobile3">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -696,7 +699,7 @@
       </widget>
      </widget>
      <widget class="QWidget" name="tabwGroupsDetailPage3">
-      <widget class="QComboBox" name="cboAge_7">
+      <widget class="QComboBox" name="cboDistrict">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -722,7 +725,7 @@
         <string>Apartment:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_9">
+      <widget class="QComboBox" name="cboHouse">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -748,7 +751,7 @@
         <string>Porch:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_8">
+      <widget class="QComboBox" name="cboCity">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -777,7 +780,7 @@
         <string>Country:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_9">
+      <widget class="QComboBox" name="cboCountry">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -793,7 +796,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_10">
+      <widget class="QComboBox" name="cboApartment">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -848,7 +851,7 @@
         <string>City:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_10">
+      <widget class="QComboBox" name="cboFloor">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -884,10 +887,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>Flor:</string>
+        <string>Floor:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_11">
+      <widget class="QComboBox" name="cboStreet">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -916,7 +919,7 @@
         <string>House:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_12">
+      <widget class="QComboBox" name="cboPorch">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -932,7 +935,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_11">
+      <widget class="QComboBox" name="cboCode">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -951,7 +954,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="textEdit_2"/>
+          <widget class="QTextEdit" name="tedtEmail"/>
          </item>
         </layout>
        </item>
@@ -962,7 +965,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="textEdit_3"/>
+          <widget class="QTextEdit" name="tedtWeb"/>
          </item>
         </layout>
        </item>
@@ -995,7 +998,7 @@
         <string>Skype:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_13">
+      <widget class="QComboBox" name="cboIcq">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1011,7 +1014,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_12">
+      <widget class="QComboBox" name="cboSkype">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1052,7 +1055,7 @@
         <string>Address:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_14">
+      <widget class="QComboBox" name="cboSalary">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1081,7 +1084,7 @@
         <string>Profession:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_13">
+      <widget class="QComboBox" name="cboCompany">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1094,7 +1097,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_15">
+      <widget class="QComboBox" name="cboProfession">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1123,7 +1126,7 @@
         <string>Company :</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_14">
+      <widget class="QComboBox" name="cboAddress">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1148,10 +1151,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>Day dating:</string>
+        <string>Dating day:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_15">
+      <widget class="QComboBox" name="cboDayDating">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1164,7 +1167,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_16">
+      <widget class="QComboBox" name="cboBirthdayMother">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1180,7 +1183,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_16">
+      <widget class="QComboBox" name="cboBirthdayFather">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1206,7 +1209,7 @@
         <string>Mother birthday:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_17">
+      <widget class="QComboBox" name="cboBirthday">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1248,7 +1251,7 @@
         <string>Father birthday:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_18">
+      <widget class="QComboBox" name="cboDayFirstSex">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1261,7 +1264,7 @@
         <bool>true</bool>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_19">
+      <widget class="QComboBox" name="cboDayFirstKiss">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1305,7 +1308,7 @@
       </widget>
      </widget>
      <widget class="QWidget" name="tabwGroupsDetailPage9">
-      <widget class="QComboBox" name="cboName_20">
+      <widget class="QComboBox" name="cboHobby">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1334,7 +1337,7 @@
         <string>Sports:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_21">
+      <widget class="QComboBox" name="cboDrugs">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1350,7 +1353,7 @@
         <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_20">
+      <widget class="QComboBox" name="cboSports">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1376,7 +1379,7 @@
         <string>Smoking:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboAge_22">
+      <widget class="QComboBox" name="cboAlcohol">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1415,7 +1418,7 @@
         <string>Hobby:</string>
        </property>
       </widget>
-      <widget class="QComboBox" name="cboName_22">
+      <widget class="QComboBox" name="cboSmoking">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1470,10 +1473,10 @@
         </rect>
        </property>
        <property name="text">
-        <string>Change date:</string>
+        <string>Last change date:</string>
        </property>
       </widget>
-      <widget class="QDateTimeEdit" name="dateTimeEdit">
+      <widget class="QDateTimeEdit" name="dtDateCreation">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1486,7 +1489,7 @@
         <enum>QAbstractSpinBox::NoButtons</enum>
        </property>
       </widget>
-      <widget class="QDateTimeEdit" name="dateTimeEdit_2">
+      <widget class="QDateTimeEdit" name="dtDateLastChange">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1505,7 +1508,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="textEdit_4"/>
+          <widget class="QTextEdit" name="tedtNotes"/>
          </item>
         </layout>
        </item>
