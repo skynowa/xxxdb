@@ -150,20 +150,21 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
             break;
 
         case QDialog::Accepted: {
+                QByteArray    baPhoto;
                 const QString csFilePath = fdlgDialog.selectedFiles().first();
 
                 if (true == CONFIG_IMAGE_IS_CONVERT) {
-                    CUtils::imageConvert(csFilePath, &_m_baPhoto);
+                    CUtils::imageConvert(csFilePath, &baPhoto);
                 } else {
                     QFile file(csFilePath);
 
                     bool bRv = file.open(QIODevice::ReadOnly);
                     Q_ASSERT(true == bRv);
 
-                    _m_baPhoto = file.readAll();
+                    baPhoto = file.readAll();
                 }
 
-                Q_ASSERT(0 < _m_baPhoto.size());
+                Q_ASSERT(0 < baPhoto.size());
             }
             break;
 

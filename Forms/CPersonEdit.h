@@ -31,7 +31,6 @@ class CPersonEdit :
         QSqlTableModel          *_m_tmModel;
         QDataWidgetMapper       *_m_dmMapper;
         const int                _m_ciCurrentRow;
-        QByteArray               _m_baPhoto;
 
         void                     _construct();
         void                     _destruct ();

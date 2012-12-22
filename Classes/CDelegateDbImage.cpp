@@ -22,6 +22,9 @@ CDelegateDbImage::CDelegateDbImage(
     _m_ciImageFieldIndex  (a_imageFieldIndex),
     _m_lblInfoPanel       (a_infoPanel)
 {
+    Q_ASSERT(NULL != a_parent);
+    Q_ASSERT(0    <= _m_ciImageFieldIndex);
+    // _m_lblInfoPanel - n/a
 }
 //---------------------------------------------------------------------------
 void
@@ -75,9 +78,9 @@ CDelegateDbImage::setModelData(
         buf.open(QIODevice::WriteOnly);
 
         bool bRv = label->pixmap()->save(&buf, "jpeg");
-        if (true == bRv) {
-            a_model->setData(a_index, buf.data(), Qt::EditRole);
-        }
+        Q_ASSERT(true == bRv);
+
+        a_model->setData(a_index, buf.data(), Qt::EditRole);
     } else {
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }
