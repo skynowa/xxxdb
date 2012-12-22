@@ -151,11 +151,81 @@ CMain::_initModel() {
             const QString csSql = \
                     "CREATE TABLE IF NOT EXISTS "
                     "    " CONFIG_DB_T_PERSON
-                    "( "
-                    "    " CONFIG_DB_F_ID           "    INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
-                    "    " CONFIG_DB_F_MAIN_NAME    "    VARCHAR (64), "
-                    "    " CONFIG_DB_F_MAIN_AGE     "    INT, "
-                    "    " CONFIG_DB_F_MAIN_PHOTO_1 "    BLOB "
+                    "(   "
+                    "    " CONFIG_DB_F_ID                     " INTEGER PRIMARY KEY AUTOINCREMENT NOT NULL UNIQUE, "
+
+                    // Main
+                    "    " CONFIG_DB_F_MAIN_NICK              " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_SURNAME           " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_NAME              " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_SECONDNAME        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_AGE               " INT, "
+                    "    " CONFIG_DB_F_MAIN_HEIGHT            " INT, "
+                    "    " CONFIG_DB_F_MAIN_WEIGHT            " INT, "
+                    "    " CONFIG_DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_APPEARANCE        " INT, "
+                    "    " CONFIG_DB_F_MAIN_AGREEMENT         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MAIN_PHOTO_1           " BLOB, "
+
+                    // Phones
+                    "    " CONFIG_DB_F_PHONES_MOBILE1         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_MOBILE2         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_MOBILE3         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_PHONEHOME       " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_PHONEJOB        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_PHONEADDITIONAL " VARCHAR (256), "
+
+                    // Address
+                    "    " CONFIG_DB_F_ADDRESS_COUNTRY        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_CODE           " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_CITY           " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_DISTRICT       " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_STREET         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_HOUSE          " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_PORCH          " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_FLOOR          " VARCHAR (64), "
+                    "    " CONFIG_DB_F_ADDRESS_APARTMENT      " VARCHAR (64), "
+
+                    // E-mail
+                    "    " CONFIG_DB_F_EMAIL_EMAIL            " VARCHAR (256), "
+
+                    // Web
+                    "    " CONFIG_DB_F_WEB_WEB                " VARCHAR (256), "
+
+                    // Messengers
+                    "    " CONFIG_DB_F_MESSENGERS_ICQ         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_MESSENGERS_SKYPE       " VARCHAR (64), "
+
+                    // Job
+                    "    " CONFIG_DB_F_JOB_PROFESSION         " VARCHAR (64), "
+                    "    " CONFIG_DB_F_JOB_ADDRESS            " VARCHAR (64), "
+                    "    " CONFIG_DB_F_JOB_SALARY             " VARCHAR (64), "
+                    "    " CONFIG_DB_F_JOB_COMPANY            " VARCHAR (64), "
+
+                    // Dates
+                    "    " CONFIG_DB_F_DATES_BIRTHDAY         " DATETIME, "
+                    "    " CONFIG_DB_F_DATES_BIRTHDAYFATHER   " DATETIME, "
+                    "    " CONFIG_DB_F_DATES_BIRTHDAYMOTHER   " DATETIME, "
+                    "    " CONFIG_DB_F_DATES_DAYDATING        " DATETIME, "
+                    "    " CONFIG_DB_F_DATES_DAYFIRSTKISS     " DATETIME, "
+                    "    " CONFIG_DB_F_DATES_DAYFIRSTSEX      " DATETIME, "
+
+                    // Interests
+                    "    " CONFIG_DB_F_INTERESTS_HOBBY        " VARCHAR (64), "
+                    "    " CONFIG_DB_F_INTERESTS_SPORTS       " VARCHAR (64), "
+                    "    " CONFIG_DB_F_INTERESTS_SMOKING      " VARCHAR (64), "
+                    "    " CONFIG_DB_F_INTERESTS_ALCOHOL      " VARCHAR (64), "
+                    "    " CONFIG_DB_F_INTERESTS_DRUGS        " VARCHAR (64), "
+
+                    // Periods
+
+                    // Etc
+                    "    " CONFIG_DB_F_ETC_DATECREATION       " DATETIME, "
+                    "    " CONFIG_DB_F_ETC_DATELASTCHANGE     " DATETIME, "
+
+                    // Notes
+                    "    " CONFIG_DB_F_NOTE_NOTES             " VARCHAR (256) "
                     ")";
 
             bRv = qryInfo.exec(csSql);

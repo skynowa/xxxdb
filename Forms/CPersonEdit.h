@@ -31,6 +31,8 @@ class CPersonEdit :
         QSqlTableModel          *_m_tmModel;
         QDataWidgetMapper       *_m_dmMapper;
         const int                _m_ciCurrentRow;
+        QMap<QString, QWidget *> _m_mapDbControls;
+
 
         void                     _construct();
         void                     _destruct ();

@@ -103,11 +103,11 @@
 
 
 // Etc
-#define CONFIG_DB_F_ETC_DateCreation        "f_etc_datecreation"
-#define CONFIG_DB_F_ETC_DateLastChange      "f_etc_datelastchange"
+#define CONFIG_DB_F_ETC_DATECREATION        "f_etc_datecreation"
+#define CONFIG_DB_F_ETC_DATELASTCHANGE      "f_etc_datelastchange"
 
-// Note
-#define CONFIG_DB_F_NOTE_Note
+// Notes
+#define CONFIG_DB_F_NOTE_NOTES              "f_note_notes"
 
 //---------------------------------------------------------------------------
 #endif // PickupDb_ConfigH
