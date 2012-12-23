@@ -71,7 +71,6 @@ CDelegateDbImage::setModelData(
 ) const
 {
     if (_m_ciImageFieldIndex == a_index.column()) {
-    #if 0
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
         Q_ASSERT(NULL != lblPhoto);
 
@@ -79,16 +78,21 @@ CDelegateDbImage::setModelData(
 
         const QPixmap *ppmPixmap = lblPhoto->pixmap();
         if (NULL == ppmPixmap) {
+            // clear photo in DB
             bfPhoto.reset();
+
+            a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
         } else {
+            // don't rewrite photo in DB
+        #if 0
             bfPhoto.open(QIODevice::WriteOnly);
 
             bool bRv = ppmPixmap->save(&bfPhoto, "jpeg");
             Q_ASSERT(true == bRv);
-        }
 
-        a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
-    #endif
+            a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
+        #endif
+        }
     } else {
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }
