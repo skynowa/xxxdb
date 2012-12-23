@@ -64,6 +64,11 @@ CSqlNavigator::next() {
 //---------------------------------------------------------------------------
 void
 CSqlNavigator::last() {
+    // row count
+    for ( ; _m_tmModel->canFetchMore(); ) {
+        _m_tmModel->fetchMore();
+    }
+
     int iTargetRow = _m_tmModel->rowCount() - 1;
 
     _m_tvView->selectRow(iTargetRow);
@@ -71,8 +76,13 @@ CSqlNavigator::last() {
 //---------------------------------------------------------------------------
 void
 CSqlNavigator::insert() {
-    bool bRes = _m_tmModel->insertRow(_m_tmModel->rowCount());
-    qCHECK_PTR(bRes, _m_tmModel);
+    // row count
+    for ( ; _m_tmModel->canFetchMore(); ) {
+        _m_tmModel->fetchMore();
+    }
+
+    bool bRv = _m_tmModel->insertRow(_m_tmModel->rowCount());
+    qCHECK_PTR(bRv, _m_tmModel);
 }
 //---------------------------------------------------------------------------
 void
@@ -80,8 +90,8 @@ CSqlNavigator::remove() {
     int iTargetRow = _m_tvView->currentIndex().row();
     qCHECK_DO(- 1 == iTargetRow, return);
 
-    bool bRes = _m_tvView->model()->removeRow(iTargetRow);
-    qCHECK_PTR(bRes, _m_tmModel);
+    bool bRv = _m_tvView->model()->removeRow(iTargetRow);
+    qCHECK_PTR(bRv, _m_tmModel);
 }
 //---------------------------------------------------------------------------
 void
@@ -114,8 +124,8 @@ CSqlNavigator::cancel() {
 //---------------------------------------------------------------------------
 void
 CSqlNavigator::refresh() {
-    bool bRes = _m_tmModel->select();
-    qCHECK_PTR(bRes, _m_tmModel);
+    bool bRv = _m_tmModel->select();
+    qCHECK_PTR(bRv, _m_tmModel);
 
     int iTargetRow = _m_tvView->currentIndex().row();
     qCHECK_DO(- 1 == iTargetRow, return);
