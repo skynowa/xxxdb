@@ -276,8 +276,8 @@ CMain::_initModel() {
         m_Ui.tabvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
         m_Ui.tabvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         m_Ui.tabvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        m_Ui.tabvInfo->setAlternatingRowColors(true);
-        m_Ui.tabvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
+        // m_Ui.tabvInfo->setAlternatingRowColors(true);
+        // m_Ui.tabvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
         m_Ui.tabvInfo->setSortingEnabled(true);
         m_Ui.tabvInfo->sortByColumn(0, Qt::AscendingOrder);
 
