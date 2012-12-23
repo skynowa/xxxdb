@@ -67,7 +67,7 @@ CPersonEdit::_initMain() {
     {
         _m_dmMapper = new QDataWidgetMapper(this);
         _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_MAIN_PHOTO_1), NULL));
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1), NULL));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
         // DB controls to QMap
@@ -84,7 +84,6 @@ CPersonEdit::_initMain() {
             _m_mapDbControls[CONFIG_DB_F_MAIN_HAIRCOLOR]         = m_Ui.cboHairColor->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_APPEARANCE]        = m_Ui.cboAppearance->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_MAIN_AGREEMENT]         = m_Ui.cboAgreement->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_PHOTO_1]           = m_Ui.lblPhoto;
 
             // Phones
             _m_mapDbControls[CONFIG_DB_F_PHONES_MOBILE1]         = m_Ui.cboMobile1->lineEdit();
@@ -136,8 +135,7 @@ CPersonEdit::_initMain() {
             _m_mapDbControls[CONFIG_DB_F_INTERESTS_ALCOHOL]      = m_Ui.cboAlcohol->lineEdit();
             _m_mapDbControls[CONFIG_DB_F_INTERESTS_DRUGS]        = m_Ui.cboDrugs->lineEdit();
 
-            // Periods
-
+            // TODO: Periods
 
             // Etc
             _m_mapDbControls[CONFIG_DB_F_ETC_DATECREATION]       = m_Ui.dtDateCreation;
@@ -145,6 +143,9 @@ CPersonEdit::_initMain() {
 
             // Note
             _m_mapDbControls[CONFIG_DB_F_NOTES_NOTES]            = m_Ui.tedtNotes;
+
+            // Photos
+            _m_mapDbControls[CONFIG_DB_F_PHOTOS_1]               = m_Ui.lblPhoto;
         }
 
         // map DB controls
@@ -276,7 +277,7 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
 
         case QDialog::Accepted: {
                 QString    sFilePath = fdlgDialog.selectedFiles().first();
-                QByteArray baPhoto   = _m_tmModel->record(_m_ciCurrentRow).value(CONFIG_DB_F_MAIN_PHOTO_1).toByteArray();
+                QByteArray baPhoto   = _m_tmModel->record(_m_ciCurrentRow).value(CONFIG_DB_F_PHOTOS_1).toByteArray();
 
                 QFile  file(sFilePath);
                 bool bRv = file.open(QIODevice::WriteOnly);

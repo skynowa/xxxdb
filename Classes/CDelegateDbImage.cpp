@@ -71,6 +71,7 @@ CDelegateDbImage::setModelData(
 ) const
 {
     if (_m_ciImageFieldIndex == a_index.column()) {
+    #if 0
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
         Q_ASSERT(NULL != lblPhoto);
 
@@ -87,6 +88,7 @@ CDelegateDbImage::setModelData(
         }
 
         a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
+    #endif
     } else {
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }

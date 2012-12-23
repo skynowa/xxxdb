@@ -47,7 +47,6 @@
 #define CONFIG_DB_F_MAIN_HAIRCOLOR          "f_main_haircolor"
 #define CONFIG_DB_F_MAIN_APPEARANCE         "f_main_appearance"
 #define CONFIG_DB_F_MAIN_AGREEMENT          "f_main_agreement"
-#define CONFIG_DB_F_MAIN_PHOTO_1            "f_main_photo_1"
 
 // Phones
 #define CONFIG_DB_F_PHONES_MOBILE1          "f_phones_mobile1"
@@ -99,8 +98,7 @@
 #define CONFIG_DB_F_INTERESTS_ALCOHOL       "f_interests_alcohol"
 #define CONFIG_DB_F_INTERESTS_DRUGS         "f_interests_drugs"
 
-// Periods
-
+// TODO: Periods
 
 // Etc
 #define CONFIG_DB_F_ETC_DATECREATION        "f_etc_datecreation"
@@ -108,6 +106,24 @@
 
 // Notes
 #define CONFIG_DB_F_NOTES_NOTES             "f_notes_notes"
+
+// Photos
+#define CONFIG_DB_F_PHOTOS_1                "f_photos_1"
+#define CONFIG_DB_F_PHOTOS_2                "f_photos_2"
+#define CONFIG_DB_F_PHOTOS_3                "f_photos_3"
+#define CONFIG_DB_F_PHOTOS_4                "f_photos_4"
+#define CONFIG_DB_F_PHOTOS_5                "f_photos_5"
+#define CONFIG_DB_F_PHOTOS_6                "f_photos_6"
+#define CONFIG_DB_F_PHOTOS_7                "f_photos_7"
+#define CONFIG_DB_F_PHOTOS_8                "f_photos_8"
+#define CONFIG_DB_F_PHOTOS_9                "f_photos_9"
+#define CONFIG_DB_F_PHOTOS_10               "f_photos_10"
+#define CONFIG_DB_F_PHOTOS_11               "f_photos_11"
+#define CONFIG_DB_F_PHOTOS_12               "f_photos_12"
+#define CONFIG_DB_F_PHOTOS_13               "f_photos_13"
+#define CONFIG_DB_F_PHOTOS_14               "f_photos_14"
+#define CONFIG_DB_F_PHOTOS_15               "f_photos_15"
+#define CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD  "f_photos_primary_dbfield"
 
 //---------------------------------------------------------------------------
 #endif // PickupDb_ConfigH

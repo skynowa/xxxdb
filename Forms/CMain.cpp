@@ -164,9 +164,8 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_MAIN_WEIGHT            " INT, "
                     "    " CONFIG_DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
                     "    " CONFIG_DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
-                    "    " CONFIG_DB_F_MAIN_APPEARANCE        " INT, "
+                    "    " CONFIG_DB_F_MAIN_APPEARANCE        " VARCHAR (64), "
                     "    " CONFIG_DB_F_MAIN_AGREEMENT         " VARCHAR (64), "
-                    "    " CONFIG_DB_F_MAIN_PHOTO_1           " BLOB, "
 
                     // Phones
                     "    " CONFIG_DB_F_PHONES_MOBILE1         " VARCHAR (64), "
@@ -218,14 +217,32 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_INTERESTS_ALCOHOL      " VARCHAR (64), "
                     "    " CONFIG_DB_F_INTERESTS_DRUGS        " VARCHAR (64), "
 
-                    // Periods
+                    // TODO: Periods
 
                     // Etc
                     "    " CONFIG_DB_F_ETC_DATECREATION       " DATETIME, "
                     "    " CONFIG_DB_F_ETC_DATELASTCHANGE     " DATETIME, "
 
                     // Notes
-                    "    " CONFIG_DB_F_NOTES_NOTES            " VARCHAR (256) "
+                    "    " CONFIG_DB_F_NOTES_NOTES            " VARCHAR (256), "
+
+                    // Photos
+                    "    " CONFIG_DB_F_PHOTOS_1               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_2               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_3               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_4               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_5               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_6               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_7               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_8               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_9               " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_10              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_11              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_12              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_13              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_14              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_15              " BLOB, "
+                    "    " CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD " VARCHAR (64) "
                     ")";
 
             bRv = qryInfo.exec(csSql);
@@ -525,7 +542,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
     // lblPhoto
     {
         const int  ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
-        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_MAIN_PHOTO_1).toByteArray();
+        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTOS_1).toByteArray();
 
         if (0 >= baPhoto.size()) {
             m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
