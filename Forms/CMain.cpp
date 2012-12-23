@@ -268,12 +268,19 @@ CMain::_initModel() {
 
         m_Ui.tabvInfo->setModel(_m_tmModel);
         m_Ui.tabvInfo->hideColumn(0); // don't show the CONFIG_DB_F_ID
+        // m_Ui.tabvInfo->setColumnWidth(0, 40);
+        m_Ui.tabvInfo->verticalHeader()->setVisible(true);
         m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
         m_Ui.tabvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_Ui.tabvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
         m_Ui.tabvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
         m_Ui.tabvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        m_Ui.tabvInfo->setAlternatingRowColors(true);
+        m_Ui.tabvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
+        m_Ui.tabvInfo->setSortingEnabled(true);
+        m_Ui.tabvInfo->sortByColumn(0, Qt::AscendingOrder);
+
         m_Ui.tabvInfo->show();
     }
 
