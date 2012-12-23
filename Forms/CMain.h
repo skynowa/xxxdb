@@ -112,6 +112,8 @@ class CMain :
         void            slot_tabvInfo_OnDoubleClicked   (const QModelIndex &index);
 
     private:
+        void            _settingsLoad            ();
+        void            _settingsSave            ();
 
 };
 //---------------------------------------------------------------------------

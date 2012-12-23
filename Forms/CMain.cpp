@@ -72,6 +72,7 @@ CMain::_construct() {
 //---------------------------------------------------------------------------
 void
 CMain::_destruct() {
+    _settingsSave();
     xPTR_DELETE(_m_tmModel);
 }
 //---------------------------------------------------------------------------
@@ -129,6 +130,8 @@ CMain::_initMain() {
         m_Ui.lblPhoto->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
         m_Ui.lblPhoto->setFrameShape(QFrame::Box);
     }
+
+    _settingsLoad();
 }
 //---------------------------------------------------------------------------
 void
@@ -652,5 +655,43 @@ CMain::slot_OnAbout() {
         );
 
     QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, sMsg);
+}
+//---------------------------------------------------------------------------
+
+/****************************************************************************
+*   private
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::_settingsLoad() {
+    QSize  szSize;
+    QPoint pnPosition;
+
+    {
+        QSettings stSettings(QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, this);
+
+        stSettings.beginGroup("main");
+        szSize     = stSettings.value("size",     QSize(CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT)).toSize();
+        pnPosition = stSettings.value("position", QPoint(200, 200)).toPoint();
+        stSettings.endGroup();
+    }
+
+    // apply settings
+    {
+        resize(szSize);
+        move(pnPosition);
+    }
+}
+//---------------------------------------------------------------------------
+void
+CMain::_settingsSave() {
+    QSettings stSettings(QCoreApplication::applicationName() + ".ini", QSettings::IniFormat, this);
+
+    stSettings.beginGroup("main");
+    stSettings.setValue("position", pos());
+    stSettings.setValue("size",     size());
+    stSettings.endGroup();
 }
 //---------------------------------------------------------------------------
