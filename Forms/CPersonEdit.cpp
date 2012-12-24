@@ -74,79 +74,79 @@ CPersonEdit::_initMain() {
         // DB controls to QMap
         {
             // Main
-            _m_mapDbControls[CONFIG_DB_F_MAIN_NICK]              = m_Ui.cboNick->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_SURNAME]           = m_Ui.cboSurname->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_NAME]              = m_Ui.cboName->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_PATRONYMIC]        = m_Ui.cboPatronymic->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_AGE]               = m_Ui.cboAge->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_HEIGHT]            = m_Ui.cboHeight->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_WEIGHT]            = m_Ui.cboWeight->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_HAIRLENGTH]        = m_Ui.cboHairLength->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_HAIRCOLOR]         = m_Ui.cboHairColor->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_APPEARANCE]        = m_Ui.cboAppearance->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MAIN_AGREEMENT]         = m_Ui.cboAgreement->lineEdit();
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_NICK,              m_Ui.cboNick->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_SURNAME,           m_Ui.cboSurname->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_NAME,              m_Ui.cboName->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_PATRONYMIC,        m_Ui.cboPatronymic->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_AGE,               m_Ui.cboAge->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_HEIGHT,            m_Ui.cboHeight->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_WEIGHT,            m_Ui.cboWeight->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_HAIRLENGTH,        m_Ui.cboHairLength->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_HAIRCOLOR,         m_Ui.cboHairColor->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_APPEARANCE,        m_Ui.cboAppearance->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MAIN_AGREEMENT,         m_Ui.cboAgreement->lineEdit());
 
             // Phones
-            _m_mapDbControls[CONFIG_DB_F_PHONES_MOBILE1]         = m_Ui.cboMobile1->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_PHONES_MOBILE2]         = m_Ui.cboMobile2->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_PHONES_MOBILE3]         = m_Ui.cboMobile3->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_PHONES_PHONEHOME]       = m_Ui.cboPhoneHome->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_PHONES_PHONEJOB]        = m_Ui.cboPhoneJob->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_PHONES_PHONEADDITIONAL] = m_Ui.tedtPhoneAdditional;
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_MOBILE1,         m_Ui.cboMobile1->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_MOBILE2,         m_Ui.cboMobile2->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_MOBILE3,         m_Ui.cboMobile3->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_PHONEHOME,       m_Ui.cboPhoneHome->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_PHONEJOB,        m_Ui.cboPhoneJob->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_PHONES_PHONEADDITIONAL, m_Ui.tedtPhoneAdditional);
 
             // Address
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_COUNTRY]        = m_Ui.cboCountry->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_CODE]           = m_Ui.cboCode->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_CITY]           = m_Ui.cboCity->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_DISTRICT]       = m_Ui.cboDistrict->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_STREET]         = m_Ui.cboStreet->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_HOUSE]          = m_Ui.cboHouse->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_PORCH]          = m_Ui.cboPorch->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_FLOOR]          = m_Ui.cboFloor->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_ADDRESS_APARTMENT]      = m_Ui.cboApartment->lineEdit();
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_COUNTRY,        m_Ui.cboCountry->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_CODE,           m_Ui.cboCode->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_CITY,           m_Ui.cboCity->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_DISTRICT,       m_Ui.cboDistrict->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_STREET,         m_Ui.cboStreet->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_HOUSE,          m_Ui.cboHouse->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_PORCH,          m_Ui.cboPorch->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_FLOOR,          m_Ui.cboFloor->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_ADDRESS_APARTMENT,      m_Ui.cboApartment->lineEdit());
 
             // E-mail
-            _m_mapDbControls[CONFIG_DB_F_EMAIL_EMAIL]            = m_Ui.tedtEmail;
+            _m_mapDbControls.insert(CONFIG_DB_F_EMAIL_EMAIL,            m_Ui.tedtEmail);
 
             // Web
-            _m_mapDbControls[CONFIG_DB_F_WEB_WEB]                = m_Ui.tedtWeb;
+            _m_mapDbControls.insert(CONFIG_DB_F_WEB_WEB,                m_Ui.tedtWeb);
 
             // Messengers
-            _m_mapDbControls[CONFIG_DB_F_MESSENGERS_ICQ]         = m_Ui.cboIcq->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_MESSENGERS_SKYPE]       = m_Ui.cboSkype->lineEdit();
+            _m_mapDbControls.insert(CONFIG_DB_F_MESSENGERS_ICQ,         m_Ui.cboIcq->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_MESSENGERS_SKYPE,       m_Ui.cboSkype->lineEdit());
 
             // Job
-            _m_mapDbControls[CONFIG_DB_F_JOB_PROFESSION]         = m_Ui.cboProfession->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_JOB_ADDRESS]            = m_Ui.cboAddress->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_JOB_SALARY]             = m_Ui.cboSalary->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_JOB_COMPANY]            = m_Ui.cboCompany->lineEdit();
+            _m_mapDbControls.insert(CONFIG_DB_F_JOB_PROFESSION,         m_Ui.cboProfession->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_JOB_ADDRESS,            m_Ui.cboAddress->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_JOB_SALARY,             m_Ui.cboSalary->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_JOB_COMPANY,            m_Ui.cboCompany->lineEdit());
 
             // Dates
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAY]         = m_Ui.dtBirthday;
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYFATHER]   = m_Ui.dtBirthdayFather;
-            _m_mapDbControls[CONFIG_DB_F_DATES_BIRTHDAYMOTHER]   = m_Ui.dtBirthdayMother;
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYDATING]        = m_Ui.dtDayDating;
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTKISS]     = m_Ui.dtDayFirstKiss;
-            _m_mapDbControls[CONFIG_DB_F_DATES_DAYFIRSTSEX]      = m_Ui.dtDayFirstSex;
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAY,         m_Ui.dtBirthday);
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAYFATHER,   m_Ui.dtBirthdayFather);
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAYMOTHER,   m_Ui.dtBirthdayMother);
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_DAYDATING,        m_Ui.dtDayDating);
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_DAYFIRSTKISS,     m_Ui.dtDayFirstKiss);
+            _m_mapDbControls.insert(CONFIG_DB_F_DATES_DAYFIRSTSEX,      m_Ui.dtDayFirstSex);
 
             // Interests
-            _m_mapDbControls[CONFIG_DB_F_INTERESTS_HOBBY]        = m_Ui.cboHobby->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_INTERESTS_SPORTS]       = m_Ui.cboSports->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_INTERESTS_SMOKING]      = m_Ui.cboSmoking->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_INTERESTS_ALCOHOL]      = m_Ui.cboAlcohol->lineEdit();
-            _m_mapDbControls[CONFIG_DB_F_INTERESTS_DRUGS]        = m_Ui.cboDrugs->lineEdit();
+            _m_mapDbControls.insert(CONFIG_DB_F_INTERESTS_HOBBY,        m_Ui.cboHobby->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_INTERESTS_SPORTS,       m_Ui.cboSports->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_INTERESTS_SMOKING,      m_Ui.cboSmoking->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_INTERESTS_ALCOHOL,      m_Ui.cboAlcohol->lineEdit());
+            _m_mapDbControls.insert(CONFIG_DB_F_INTERESTS_DRUGS,        m_Ui.cboDrugs->lineEdit());
 
             // TODO: Periods
 
             // Etc
-            _m_mapDbControls[CONFIG_DB_F_ETC_DATECREATION]       = m_Ui.dtDateCreation;
-            _m_mapDbControls[CONFIG_DB_F_ETC_DATELASTCHANGE]     = m_Ui.dtDateLastChange;
+            _m_mapDbControls.insert(CONFIG_DB_F_ETC_DATECREATION,       m_Ui.dtDateCreation);
+            _m_mapDbControls.insert(CONFIG_DB_F_ETC_DATELASTCHANGE,     m_Ui.dtDateLastChange);
 
             // Note
-            _m_mapDbControls[CONFIG_DB_F_NOTES_NOTES]            = m_Ui.tedtNotes;
+            _m_mapDbControls.insert(CONFIG_DB_F_NOTES_NOTES,            m_Ui.tedtNotes);
 
             // Photos
-            _m_mapDbControls[CONFIG_DB_F_PHOTOS_1]               = m_Ui.lblPhoto;
+            _m_mapDbControls.insert(CONFIG_DB_F_PHOTOS_1,               m_Ui.lblPhoto);
         }
 
         // map DB controls

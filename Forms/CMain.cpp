@@ -287,7 +287,7 @@ CMain::_initModel() {
         // DB controls to QMap
         {
              // Photos
-            _m_mapDbControls[CONFIG_DB_F_PHOTOS_1] = m_Ui.lblPhoto;
+            _m_mapDbControls.insert(CONFIG_DB_F_PHOTOS_1, m_Ui.lblPhoto);
         }
 
         // map DB controls
