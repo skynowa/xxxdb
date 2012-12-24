@@ -30,21 +30,6 @@ CMain::CMain(
     m_navNavigator     (this),
     _m_dbDatabase      (),
     _m_tmModel         (NULL)
-//    actFile_Exit       (this),
-//    actEdit_MovetoFirst(this),
-//    actEdit_MovetoPrior(this),
-//    actEdit_MovetoNext (this),
-//    actEdit_MovetoLast (this),
-//    actEdit_Insert     (this),
-//    actEdit_Delete     (this),
-//    actEdit_Edit       (this),
-//    actEdit_Post       (this),
-//    actEdit_Cancel     (this),
-//    actEdit_Refresh    (this),
-//    actFind_Search     (this),
-//    actOptions_Settings(this),
-//    actHelp_Faq        (this),
-//    actHelp_About      (this)
 {
     _construct();
 }
@@ -423,7 +408,10 @@ CMain::slot_OnRemove() {
 //---------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    m_navNavigator.edit();
+    const int   ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+
+    dlgPersonEdit.exec();
 }
 //---------------------------------------------------------------------------
 void
@@ -436,6 +424,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
     Q_UNUSED(deselected);
 
     // lblPhoto
+#if 1
     {
         const int  ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
         QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTOS_1).toByteArray();
@@ -458,6 +447,7 @@ CMain::slot_tabvInfo_OnSelectionChanged(
 
         m_Ui.lblPhotoSize->setText(csText);
     }
+#endif
 }
 //---------------------------------------------------------------------------
 void

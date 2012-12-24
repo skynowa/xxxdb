@@ -354,7 +354,7 @@ void
 CPersonEdit::_saveAll() {
     bool bRv = _m_dmMapper->submit();
     if (false == bRv) {
-        qDebug() << __FUNCTION__ << ": " << _m_tmModel->lastError().text();
+        qDebug() << __FUNCTION__ << ": fail, " << _m_tmModel->lastError().text();
     }
 
     // set current index
