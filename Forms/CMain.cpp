@@ -278,7 +278,7 @@ CMain::_initModel() {
                 this,                            SLOT  ( slot_tabvInfo_OnSelectionChanged(const QItemSelection &, const QItemSelection &) ));
 
         connect(m_Ui.tabvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
-                this,                            SLOT  ( slot_tabvInfo_OnDoubleClicked(const QModelIndex &) ));
+                this,                            SLOT  ( slot_OnEdit() ));
     }
 
     //--------------------------------------------------
@@ -448,17 +448,6 @@ CMain::slot_tabvInfo_OnSelectionChanged(
         m_Ui.lblPhotoSize->setText(csText);
     }
 #endif
-}
-//---------------------------------------------------------------------------
-void
-CMain::slot_tabvInfo_OnDoubleClicked(
-    const QModelIndex &index
-)
-{
-    const int   ciCurrentRow = index.row();
-    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
-
-    dlgPersonEdit.exec();
 }
 //---------------------------------------------------------------------------
 void
