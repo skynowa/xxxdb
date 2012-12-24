@@ -193,71 +193,127 @@
    <addaction name="actFind_Search"/>
   </widget>
   <action name="actFile_Exit">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Exit.bmp</normaloff>:/Menu/Menu/Exit.bmp</iconset>
+   </property>
    <property name="text">
     <string>Exit</string>
    </property>
   </action>
   <action name="actEdit_First">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/First.bmp</normaloff>:/Menu/Menu/First.bmp</iconset>
+   </property>
    <property name="text">
     <string>First</string>
    </property>
   </action>
   <action name="actEdit_Prior">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Prior.bmp</normaloff>:/Menu/Menu/Prior.bmp</iconset>
+   </property>
    <property name="text">
     <string>Prior</string>
    </property>
   </action>
   <action name="actEdit_Next">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Next.bmp</normaloff>:/Menu/Menu/Next.bmp</iconset>
+   </property>
    <property name="text">
     <string>Next</string>
    </property>
   </action>
   <action name="actEdit_Last">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Last.bmp</normaloff>:/Menu/Menu/Last.bmp</iconset>
+   </property>
    <property name="text">
     <string>Last</string>
    </property>
   </action>
   <action name="actEdit_Insert">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Insert.bmp</normaloff>:/Menu/Menu/Insert.bmp</iconset>
+   </property>
    <property name="text">
     <string>Insert</string>
    </property>
   </action>
   <action name="actEdit_Delete">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Delete.bmp</normaloff>:/Menu/Menu/Delete.bmp</iconset>
+   </property>
    <property name="text">
     <string>Delete</string>
    </property>
   </action>
   <action name="actEdit_Edit">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Edit.bmp</normaloff>:/Menu/Menu/Edit.bmp</iconset>
+   </property>
    <property name="text">
     <string>Edit</string>
    </property>
   </action>
   <action name="actEdit_Post">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Post.bmp</normaloff>:/Menu/Menu/Post.bmp</iconset>
+   </property>
    <property name="text">
     <string>Post</string>
    </property>
   </action>
   <action name="actEdit_Cancel">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Cancel.bmp</normaloff>:/Menu/Menu/Cancel.bmp</iconset>
+   </property>
    <property name="text">
     <string>Cancel</string>
    </property>
   </action>
   <action name="actEdit_Refresh">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Refresh.bmp</normaloff>:/Menu/Menu/Refresh.bmp</iconset>
+   </property>
    <property name="text">
     <string>Refresh</string>
    </property>
   </action>
   <action name="actFind_Search">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Search.bmp</normaloff>:/Menu/Menu/Search.bmp</iconset>
+   </property>
    <property name="text">
     <string>Search</string>
    </property>
   </action>
   <action name="actOptions_Settings">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Options.bmp</normaloff>:/Menu/Menu/Options.bmp</iconset>
+   </property>
    <property name="text">
     <string>Settings</string>
    </property>
   </action>
   <action name="actHelp_Faq">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Faq.bmp</normaloff>:/Menu/Menu/Faq.bmp</iconset>
+   </property>
    <property name="text">
     <string>FAQ</string>
    </property>
@@ -269,6 +325,8 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
- <resources/>
+ <resources>
+  <include location="../Resources/App.qrc"/>
+ </resources>
  <connections/>
 </ui>
