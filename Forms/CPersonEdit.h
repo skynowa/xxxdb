@@ -29,10 +29,9 @@ class CPersonEdit :
     private:
         QList<QTreeWidgetItem *> _m_ltwGroups;
         QSqlTableModel          *_m_tmModel;
+        QMap<QString, QWidget *> _m_mapDbControls;
         QDataWidgetMapper       *_m_dmMapper;
         const int                _m_ciCurrentRow;
-        QMap<QString, QWidget *> _m_mapDbControls;
-
 
         void                     _construct();
         void                     _destruct ();

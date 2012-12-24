@@ -8,6 +8,7 @@
 
 #include "../Forms/CPersonEdit.h"
 #include "../QtLib/CUtils.h"
+#include "../Classes/CDelegateDbImage.h"
 
 #include <xLib/Common/CxString.h>
 
@@ -29,7 +30,9 @@ CMain::CMain(
     m_sDbBackupDir     (),
     m_navNavigator     (this),
     _m_dbDatabase      (),
-    _m_tmModel         (NULL)
+    _m_tmModel         (NULL),
+    _m_mapDbControls   (),
+    _m_dmMapper        (NULL)
 {
     _construct();
 }
@@ -57,6 +60,8 @@ CMain::_construct() {
 void
 CMain::_destruct() {
     _settingsSave();
+
+    xPTR_DELETE(_m_dmMapper);
     xPTR_DELETE(_m_tmModel);
 }
 //---------------------------------------------------------------------------
@@ -272,10 +277,34 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
+    // _m_dmMapper
+    {
+        _m_dmMapper = new QDataWidgetMapper(this);
+        _m_dmMapper->setModel(_m_tmModel);
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1), m_Ui.lblPhotoSize));
+        _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+
+        // DB controls to QMap
+        {
+             // Photos
+            _m_mapDbControls[CONFIG_DB_F_PHOTOS_1] = m_Ui.lblPhoto;
+        }
+
+        // map DB controls
+        {
+            QMap<QString, QWidget *>::Iterator it;
+
+            for (it = _m_mapDbControls.begin(); it != _m_mapDbControls.end(); ++ it) {
+                _m_dmMapper->addMapping(it.value(), _m_tmModel->fieldIndex(it.key()));
+            }
+        }
+    }
+
+    //--------------------------------------------------
     // slots
     {
-        connect(m_Ui.tabvInfo->selectionModel(), SIGNAL( selectionChanged(const QItemSelection &, const QItemSelection &) ),
-                this,                            SLOT  ( slot_tabvInfo_OnSelectionChanged(const QItemSelection &, const QItemSelection &) ));
+        connect(m_Ui.tabvInfo->selectionModel(), SIGNAL( currentRowChanged(QModelIndex,QModelIndex) ),
+                _m_dmMapper,                     SLOT  ( setCurrentModelIndex(QModelIndex)) );
 
         connect(m_Ui.tabvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
                 this,                            SLOT  ( slot_OnEdit() ));
@@ -288,7 +317,7 @@ CMain::_initModel() {
 
         // go to the last record
         m_navNavigator.last();
-        slot_tabvInfo_OnSelectionChanged(QItemSelection(), QItemSelection());
+        ////slot_tabvInfo_OnSelectionChanged(QItemSelection(), QItemSelection());
     }
 }
 //---------------------------------------------------------------------------
@@ -412,42 +441,6 @@ CMain::slot_OnEdit() {
     CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
 
     dlgPersonEdit.exec();
-}
-//---------------------------------------------------------------------------
-void
-CMain::slot_tabvInfo_OnSelectionChanged(
-    const QItemSelection &selected,
-    const QItemSelection &deselected
-)
-{
-    Q_UNUSED(selected);
-    Q_UNUSED(deselected);
-
-    // lblPhoto
-#if 1
-    {
-        const int  ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
-        QByteArray baPhoto      = _m_tmModel->record(ciCurrentRow).value(CONFIG_DB_F_PHOTOS_1).toByteArray();
-
-        if (0 >= baPhoto.size()) {
-            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
-        } else {
-            QImage imgPhoto;
-
-            bool bRv = imgPhoto.loadFromData(baPhoto);
-            Q_ASSERT(true == bRv);
-
-            QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-            QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
-
-            m_Ui.lblPhoto->setPixmap(pixPixmap);
-        }
-
-        const QString csText = QString("Photo size: ") + qS2QS( CxString::sFormatBytes(baPhoto.size()) );
-
-        m_Ui.lblPhotoSize->setText(csText);
-    }
-#endif
 }
 //---------------------------------------------------------------------------
 void

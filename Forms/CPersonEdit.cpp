@@ -21,11 +21,12 @@ CPersonEdit::CPersonEdit(
     QSqlTableModel *a_tableModel,
     const int      &a_currentRow
 ) :
-    QDialog        (a_parent),
-    _m_ltwGroups   (),
-    _m_tmModel     (a_tableModel),
-    _m_dmMapper    (NULL),
-    _m_ciCurrentRow(a_currentRow)
+    QDialog         (a_parent),
+    _m_ltwGroups    (),
+    _m_tmModel      (a_tableModel),
+    _m_mapDbControls(),
+    _m_dmMapper     (NULL),
+    _m_ciCurrentRow (a_currentRow)
 {
     // _m_ltwGroups - n/a
     Q_ASSERT(NULL != _m_tmModel);
