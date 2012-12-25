@@ -134,6 +134,7 @@ CMain::_initModel() {
         bRv = _m_dbDatabase.open();
         qCHECK_REF(bRv, _m_dbDatabase);
 
+        // create table
         {
             QSqlQuery qryInfo(_m_dbDatabase);
 
@@ -289,7 +290,7 @@ CMain::_initModel() {
 
         // map DB controls
         {
-            QHash<QString, QWidget *>::Iterator it;
+            QHash<QString, QWidget *>::ConstIterator it;
 
             for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
                 _m_dmMapper->addMapping(it.value(), _m_tmModel->fieldIndex(it.key()));
@@ -311,8 +312,6 @@ CMain::_initModel() {
     // m_navNavigator
     {
         m_navNavigator.construct(_m_tmModel, m_Ui.tabvInfo);
-
-        // go to the last record
         m_navNavigator.last();
     }
 }

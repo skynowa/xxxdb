@@ -158,6 +158,7 @@ CPersonEdit::_initMain() {
             }
         }
 
+        // activate current record
         _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
 
