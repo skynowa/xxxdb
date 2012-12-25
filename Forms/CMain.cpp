@@ -60,9 +60,6 @@ CMain::_construct() {
 void
 CMain::_destruct() {
     _settingsSave();
-
-    xPTR_DELETE(_m_dmMapper);
-    xPTR_DELETE(_m_tmModel);
 }
 //---------------------------------------------------------------------------
 void
