@@ -41,15 +41,15 @@ unix {
 
 HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
+                  QtLib/CSqlNavigator.h \
                   Config.h \
-                  Classes/CSqlNavigator.h \
                   Classes/CDelegateDbImage.h \
                   Forms/CMain.h \
                   Forms/CPersonEdit.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
-                  Classes/CSqlNavigator.cpp \
+                  QtLib/CSqlNavigator.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Forms/CMain.cpp \
                   Forms/CPersonEdit.cpp

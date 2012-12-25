@@ -11,9 +11,9 @@
 
 #include <xLib/Common/xCommon.h>
 #include "../QtLib/Common.h"
+#include "../QtLib/CSqlNavigator.h"
 
 #include "../Config.h"
-#include "../Classes/CSqlNavigator.h"
 //---------------------------------------------------------------------------
 class CMain :
     public QMainWindow

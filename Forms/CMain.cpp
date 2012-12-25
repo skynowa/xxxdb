@@ -313,11 +313,10 @@ CMain::_initModel() {
     //--------------------------------------------------
     // m_navNavigator
     {
-        m_navNavigator.setup(_m_tmModel, m_Ui.tabvInfo);
+        m_navNavigator.construct(_m_tmModel, m_Ui.tabvInfo);
 
         // go to the last record
         m_navNavigator.last();
-        ////slot_tabvInfo_OnSelectionChanged(QItemSelection(), QItemSelection());
     }
 }
 //---------------------------------------------------------------------------
