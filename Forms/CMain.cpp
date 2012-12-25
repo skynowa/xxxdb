@@ -69,7 +69,7 @@ CMain::_initMain() {
     //--------------------------------------------------
     // data
     {
-        m_sAppName     = CONFIG_APP_NAME;
+        m_sAppName     = QCoreApplication::applicationName();
         m_sAppDir      = qApp->applicationDirPath();
         m_sDbDir       = m_sAppDir + QDir::separator() + "Db";
         m_sDbBackupDir = m_sDbDir  + QDir::separator() + "Backup";
@@ -129,7 +129,7 @@ CMain::_initModel() {
         qCHECK_DO(false == bRv, qMSG(QSqlDatabase().lastError().text()); return;);
 
         _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
-        _m_dbDatabase.setDatabaseName(QCoreApplication::applicationFilePath() + CONFIG_DB_FILE_EXT);
+        _m_dbDatabase.setDatabaseName(m_sDbDir + QDir::separator() + m_sAppName + CONFIG_DB_FILE_EXT);
 
         bRv = _m_dbDatabase.open();
         qCHECK_REF(bRv, _m_dbDatabase);
