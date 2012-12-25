@@ -52,9 +52,9 @@
 #define CONFIG_DB_F_PHONES_MOBILE1          "f_phones_mobile1"
 #define CONFIG_DB_F_PHONES_MOBILE2          "f_phones_mobile2"
 #define CONFIG_DB_F_PHONES_MOBILE3          "f_phones_mobile3"
-#define CONFIG_DB_F_PHONES_PHONEHOME        "f_phones_phonehome"
-#define CONFIG_DB_F_PHONES_PHONEJOB         "f_phones_phonejob"
-#define CONFIG_DB_F_PHONES_PHONEADDITIONAL  "f_phones_phoneadditional"
+#define CONFIG_DB_F_PHONES_HOME             "f_phones_home"
+#define CONFIG_DB_F_PHONES_JOB              "f_phones_job"
+#define CONFIG_DB_F_PHONES_OTHER            "f_phones_other"
 
 // Address
 #define CONFIG_DB_F_ADDRESS_COUNTRY         "f_address_country"

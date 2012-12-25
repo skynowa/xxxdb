@@ -163,9 +163,9 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_PHONES_MOBILE1         " VARCHAR (64), "
                     "    " CONFIG_DB_F_PHONES_MOBILE2         " VARCHAR (64), "
                     "    " CONFIG_DB_F_PHONES_MOBILE3         " VARCHAR (64), "
-                    "    " CONFIG_DB_F_PHONES_PHONEHOME       " VARCHAR (64), "
-                    "    " CONFIG_DB_F_PHONES_PHONEJOB        " VARCHAR (64), "
-                    "    " CONFIG_DB_F_PHONES_PHONEADDITIONAL " VARCHAR (256), "
+                    "    " CONFIG_DB_F_PHONES_HOME            " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_JOB             " VARCHAR (64), "
+                    "    " CONFIG_DB_F_PHONES_OTHER           " VARCHAR (256), "
 
                     // Address
                     "    " CONFIG_DB_F_ADDRESS_COUNTRY        " VARCHAR (64), "
