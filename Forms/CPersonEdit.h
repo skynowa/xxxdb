@@ -32,6 +32,7 @@ class CPersonEdit :
         QHash<QString, QWidget *> _m_hsDbControls;
         QDataWidgetMapper        *_m_dmMapper;
         const int                 _m_ciCurrentRow;
+        QByteArray                _m_baPhoto;
 
         void                      _construct();
         void                      _destruct ();

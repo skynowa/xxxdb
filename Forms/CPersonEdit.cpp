@@ -26,7 +26,8 @@ CPersonEdit::CPersonEdit(
     _m_tmModel     (a_tableModel),
     _m_hsDbControls(),
     _m_dmMapper    (NULL),
-    _m_ciCurrentRow(a_currentRow)
+    _m_ciCurrentRow(a_currentRow),
+    _m_baPhoto     ()
 {
     // _m_ltwGroups - n/a
     Q_ASSERT(NULL != _m_tmModel);
@@ -209,34 +210,34 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
             break;
 
         case QDialog::Accepted: {
-                QByteArray baPhoto;
+                _m_baPhoto.clear();
 
                 // file to buffer
                 {
                     const QString csFilePath = fdlgDialog.selectedFiles().first();
 
                     if (true == CONFIG_IMAGE_IS_CONVERT) {
-                        CUtils::imageConvert(csFilePath, &baPhoto);
+                        CUtils::imageConvert(csFilePath, &_m_baPhoto);
                     } else {
                         QFile file(csFilePath);
 
                         bool bRv = file.open(QIODevice::ReadOnly);
                         Q_ASSERT(true == bRv);
 
-                        baPhoto = file.readAll();
+                        _m_baPhoto = file.readAll();
                     }
 
-                    Q_ASSERT(0 < baPhoto.size());
+                    Q_ASSERT(0 < _m_baPhoto.size());
                 }
 
                 // lblPhoto
                 {
-                    if (0 >= baPhoto.size()) {
+                    if (0 >= _m_baPhoto.size()) {
                         m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
                     } else {
                         QImage imgPhoto;
 
-                        bool bRv = imgPhoto.loadFromData(baPhoto);
+                        bool bRv = imgPhoto.loadFromData(_m_baPhoto);
                         Q_ASSERT(true == bRv);
 
                         QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
@@ -357,6 +358,20 @@ CPersonEdit::_saveAll() {
     bool bRv = _m_dmMapper->submit();
     if (false == bRv) {
         qDebug() << __FUNCTION__ << ": fail, " << _m_tmModel->lastError().text();
+    }
+
+    // save photo to DB
+    {
+        if (0 < _m_baPhoto.size()) {
+            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+            srRecord.setValue(CONFIG_DB_F_PHOTOS_1, _m_baPhoto);
+
+            _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
+            bRv = _m_tmModel->submitAll();
+            Q_ASSERT(true == bRv);
+
+            _m_baPhoto.clear();
+        }
     }
 
     // set current index
