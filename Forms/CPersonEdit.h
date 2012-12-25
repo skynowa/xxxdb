@@ -20,33 +20,33 @@ class CPersonEdit :
         Q_OBJECT
 
     public:
-        Ui::CPersonEdit          m_Ui;
+        Ui::CPersonEdit           m_Ui;
 
-                                 CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
-                                             const int &currentRow);
-        virtual                 ~CPersonEdit();
+                                  CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
+                                              const int &currentRow);
+        virtual                  ~CPersonEdit();
 
     private:
-        QList<QTreeWidgetItem *> _m_ltwGroups;
-        QSqlTableModel          *_m_tmModel;
-        QMap<QString, QWidget *> _m_mapDbControls;
-        QDataWidgetMapper       *_m_dmMapper;
-        const int                _m_ciCurrentRow;
+        QList<QTreeWidgetItem *>  _m_ltwGroups;
+        QSqlTableModel           *_m_tmModel;
+        QHash<QString, QWidget *> _m_hsDbControls;
+        QDataWidgetMapper        *_m_dmMapper;
+        const int                 _m_ciCurrentRow;
 
-        void                     _construct();
-        void                     _destruct ();
-        void                     _initMain ();
+        void                      _construct();
+        void                      _destruct ();
+        void                      _initMain ();
 
-        void                     _resetAll ();
-        void                     _saveAll  ();
+        void                      _resetAll ();
+        void                      _saveAll  ();
 
     private Q_SLOTS:
-        void                     slot_tbtnPhotoChange_OnClicked();
-        void                     slot_tbtnPhotoDelete_OnClicked();
-        void                     slot_tbtnPhotoSaveAs_OnClicked();
+        void                      slot_tbtnPhotoChange_OnClicked();
+        void                      slot_tbtnPhotoDelete_OnClicked();
+        void                      slot_tbtnPhotoSaveAs_OnClicked();
 
-        void                     slot_bbxButtons_OnClicked(QAbstractButton *button);
-        void                     slot_twGroups_OnActivated(const QModelIndex &index);
+        void                      slot_bbxButtons_OnClicked(QAbstractButton *button);
+        void                      slot_twGroups_OnActivated(const QModelIndex &index);
 };
 //---------------------------------------------------------------------------
 #endif // PickupDB_CPersonEditH

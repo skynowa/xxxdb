@@ -23,16 +23,16 @@ CMain::CMain(
     QWidget    *parent,
     Qt::WFlags  flags
 ) :
-    QMainWindow        (parent, flags),
-    m_sAppName         (),
-    m_sAppDir          (),
-    m_sDbDir           (),
-    m_sDbBackupDir     (),
-    m_navNavigator     (this),
-    _m_dbDatabase      (),
-    _m_tmModel         (NULL),
-    _m_mapDbControls   (),
-    _m_dmMapper        (NULL)
+    QMainWindow    (parent, flags),
+    m_sAppName     (),
+    m_sAppDir      (),
+    m_sDbDir       (),
+    m_sDbBackupDir (),
+    m_navNavigator (this),
+    _m_dbDatabase  (),
+    _m_tmModel     (NULL),
+    _m_hsDbControls(),
+    _m_dmMapper    (NULL)
 {
     _construct();
 }
@@ -287,14 +287,14 @@ CMain::_initModel() {
         // DB controls to QMap
         {
              // Photos
-            _m_mapDbControls.insert(CONFIG_DB_F_PHOTOS_1, m_Ui.lblPhoto);
+            _m_hsDbControls.insert(CONFIG_DB_F_PHOTOS_1, m_Ui.lblPhoto);
         }
 
         // map DB controls
         {
-            QMap<QString, QWidget *>::Iterator it;
+            QHash<QString, QWidget *>::Iterator it;
 
-            for (it = _m_mapDbControls.begin(); it != _m_mapDbControls.end(); ++ it) {
+            for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
                 _m_dmMapper->addMapping(it.value(), _m_tmModel->fieldIndex(it.key()));
             }
         }
