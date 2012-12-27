@@ -57,7 +57,6 @@ CPersonEdit::_construct() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::_destruct() {
-    delete _m_dmMapper; _m_dmMapper = NULL;
     qDeleteAll(_m_ltwGroups);
 }
 //---------------------------------------------------------------------------
@@ -69,7 +68,8 @@ CPersonEdit::_initMain() {
     {
         _m_dmMapper = new QDataWidgetMapper(this);
         _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1), NULL));
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
+                                                          CONFIG_PHOTO_SIZE, NULL));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
         // DB controls to QMap

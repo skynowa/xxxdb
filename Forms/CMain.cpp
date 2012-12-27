@@ -7,6 +7,7 @@
 #include "CMain.h"
 
 #include "../Forms/CPersonEdit.h"
+#include "../Forms/CPhotoAlbum.h"
 #include "../QtLib/CUtils.h"
 #include "../Classes/CDelegateDbImage.h"
 
@@ -279,7 +280,8 @@ CMain::_initModel() {
     {
         _m_dmMapper = new QDataWidgetMapper(this);
         _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1), m_Ui.lblPhotoSize));
+        _m_dmMapper->setItemDelegate(new CDelegateDbImage(_m_dmMapper, _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
+                                                          CONFIG_PHOTO_SIZE, m_Ui.lblPhotoSize));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
         // DB controls to QMap
@@ -306,6 +308,9 @@ CMain::_initModel() {
 
         connect(m_Ui.tabvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
                 this,                            SLOT  ( slot_OnEdit() ));
+
+        connect(m_Ui.tbtnPhotoAlbum,             SIGNAL( clicked() ),
+                this,                            SLOT  ( slot_OnPhotoAlbum() ));
     }
 
     //--------------------------------------------------
@@ -334,6 +339,8 @@ CMain::_initActions() {
                 this,                     SLOT  ( slot_OnNext() ));
         connect(m_Ui.actEdit_Last,        SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnLast() ));
+        connect(m_Ui.actEdit_To,          SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnTo() ));
         connect(m_Ui.actEdit_Insert,      SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnInsert() ));
         connect(m_Ui.actEdit_Delete,      SIGNAL( triggered() ),
@@ -413,6 +420,18 @@ CMain::slot_OnNext() {
 void
 CMain::slot_OnLast() {
     m_navNavigator.last();
+}
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnTo() {
+    const int ciCurrentRow = m_Ui.tabvInfo->currentIndex().row() + 1;
+    const int ciMinValue   = 1;
+    const int ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
+
+    int iTargetRow = QInputDialog::getInt(
+                        this, CONFIG_APP_NAME, "Go to row:", ciCurrentRow, ciMinValue, ciMaxValue) - 1;
+
+    m_navNavigator.to(iTargetRow);
 }
 //---------------------------------------------------------------------------
 void
@@ -510,6 +529,23 @@ CMain::slot_OnAbout() {
     QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, sMsg);
 }
 //---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   photo
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CMain::slot_OnPhotoAlbum() {
+    const int   ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+    CPhotoAlbum dlgPhotoAlbum(this, _m_tmModel, ciCurrentRow);
+
+    dlgPhotoAlbum.exec();
+}
+//---------------------------------------------------------------------------
+
 
 /****************************************************************************
 *   private

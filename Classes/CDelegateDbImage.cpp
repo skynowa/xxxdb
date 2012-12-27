@@ -14,12 +14,14 @@
 
 //---------------------------------------------------------------------------
 CDelegateDbImage::CDelegateDbImage(
-    QObject   *a_parent,
-    const int &a_imageFieldIndex,
-    QLabel    *a_infoPanel /* = NULL */
+    QObject     *a_parent,
+    const int   &a_imageFieldIndex,
+    const QSize &a_size,
+    QLabel      *a_infoPanel /* = NULL */
 ) :
     QSqlRelationalDelegate(a_parent),
     _m_ciImageFieldIndex  (a_imageFieldIndex),
+    _m_cszSize            (a_size),
     _m_lblInfoPanel       (a_infoPanel)
 {
     Q_ASSERT(NULL != a_parent);
@@ -47,7 +49,7 @@ CDelegateDbImage::setEditorData(
             bool bRv = imgPhoto.loadFromData(baPhoto);
             Q_ASSERT(true == bRv);
 
-            QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QImage  imgPhotoScaled = imgPhoto.scaled(_m_cszSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
 
             lblPhoto->setPixmap(pixPixmap);

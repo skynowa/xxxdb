@@ -45,17 +45,20 @@ HEADERS         = QtLib/Common.h \
                   Config.h \
                   Classes/CDelegateDbImage.h \
                   Forms/CMain.h \
-                  Forms/CPersonEdit.h
+                  Forms/CPersonEdit.h \
+                  Forms/CPhotoAlbum.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Forms/CMain.cpp \
-                  Forms/CPersonEdit.cpp
+                  Forms/CPersonEdit.cpp \
+                  Forms/CPhotoAlbum.cpp
 
 FORMS           = Forms/CMain.ui \
-                  Forms/CPersonEdit.ui
+                  Forms/CPersonEdit.ui \
+                  Forms/CPhotoAlbum.ui
 
 RESOURCES       = Resources/App.qrc
 

@@ -23,5 +23,6 @@
         <file>Menu/www.kyivstar.net.bmp</file>
         <file>Menu/Insert.bmp</file>
         <file>Menu/Post.bmp</file>
+        <file>Menu/To.bmp</file>
     </qresource>
 </RCC>

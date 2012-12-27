@@ -52,6 +52,7 @@ class CMain :
         void                       slot_OnPrior   ();
         void                       slot_OnNext    ();
         void                       slot_OnLast    ();
+        void                       slot_OnTo      ();
         void                       slot_OnInsert  ();
         void                       slot_OnRemove  ();
         void                       slot_OnEdit    ();
@@ -71,6 +72,9 @@ class CMain :
         // group "Help"
         void                       slot_OnFaq     ();
         void                       slot_OnAbout   ();
+
+        // photo
+        void                       slot_OnPhotoAlbum();
 
     private:
         void                       _settingsLoad  ();

@@ -16,8 +16,13 @@
 // photo
 #define CONFIG_PHOTO_WIDTH                  300
 #define CONFIG_PHOTO_HEIGHT                 200
+#define CONFIG_PHOTO_SIZE                   QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT)
 #define CONFIG_IMAGE_FORMATS                "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
 #define CONFIG_IMAGE_IS_CONVERT             true
+
+#define CONFIG_PHOTO_MINI_WIDTH             120
+#define CONFIG_PHOTO_MINI_HEIGHT            80
+#define CONFIG_PHOTO_MINI_SIZE              QSize(CONFIG_PHOTO_MINI_WIDTH, CONFIG_PHOTO_MINI_HEIGHT)
 
 // resources
 #define CONFIG_RES_MAIN_ICON                ":/App.ico"
