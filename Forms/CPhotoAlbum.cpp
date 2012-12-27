@@ -60,7 +60,7 @@ CPhotoAlbum::_initMain() {
 
     // maps ui controls into DB fields
     {
-        (void)_dbWidgetMap(m_Ui.lblPhoto,        CONFIG_DB_F_PHOTOS_1,  size());
+        // (void)_dbWidgetMap(m_Ui.lblPhoto,        CONFIG_DB_F_PHOTOS_1,  size());
 
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_1,  CONFIG_DB_F_PHOTOS_1,  CONFIG_PHOTO_MINI_SIZE);
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_2,  CONFIG_DB_F_PHOTOS_2,  CONFIG_PHOTO_MINI_SIZE);
