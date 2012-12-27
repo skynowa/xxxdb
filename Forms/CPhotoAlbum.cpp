@@ -36,6 +36,57 @@ CPhotoAlbum::~CPhotoAlbum() {
     _destruct();
 }
 //---------------------------------------------------------------------------
+bool
+CPhotoAlbum::eventFilter(
+    QObject *a_obj,
+    QEvent  *a_event
+)
+{
+    Q_UNUSED(a_obj);
+
+    if (a_event->type() == QEvent::MouseButtonPress)  {
+        QLabel *label = static_cast<QLabel *>( a_obj );
+
+        photoMini_OnClicked(label, CONFIG_DB_F_PHOTOS_1);
+
+        return true;
+    }
+
+    return QObject::eventFilter(a_obj, a_event);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::photoMini_OnClicked(
+    QLabel        *a_label,
+    const QString &a_dbFieldName
+)
+{
+    // lblPhoto
+    {
+        QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentRow).value(a_dbFieldName).toByteArray();
+
+        if (0 >= baPhoto.size()) {
+            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
+        } else {
+            QImage imgPhoto;
+
+            bool bRv = imgPhoto.loadFromData(baPhoto);
+            Q_ASSERT(true == bRv);
+
+            const int   ciHiddenMargin = 2;   // MAGIC: ciHiddenMargin
+            const QSize cszSize        = QSize(m_Ui.lblPhoto->width()  - ciHiddenMargin,
+                                               m_Ui.lblPhoto->height() - ciHiddenMargin);
+            QImage      imgPhotoScaled = imgPhoto.scaled(cszSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QPixmap     pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+
+            m_Ui.lblPhoto->setPixmap(pixPixmap);
+        }
+
+        a_label->setFrameShape(QFrame::WinPanel);
+        // a_label->setFrameShadow(QFrame::Sunken);
+    }
+}
+//---------------------------------------------------------------------------
 
 
 /****************************************************************************
@@ -60,8 +111,6 @@ CPhotoAlbum::_initMain() {
 
     // maps ui controls into DB fields
     {
-        // (void)_dbWidgetMap(m_Ui.lblPhoto,        CONFIG_DB_F_PHOTOS_1,  size());
-
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_1,  CONFIG_DB_F_PHOTOS_1,  CONFIG_PHOTO_MINI_SIZE);
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_2,  CONFIG_DB_F_PHOTOS_2,  CONFIG_PHOTO_MINI_SIZE);
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_3,  CONFIG_DB_F_PHOTOS_3,  CONFIG_PHOTO_MINI_SIZE);
@@ -72,6 +121,20 @@ CPhotoAlbum::_initMain() {
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_8,  CONFIG_DB_F_PHOTOS_8,  CONFIG_PHOTO_MINI_SIZE);
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_9,  CONFIG_DB_F_PHOTOS_9,  CONFIG_PHOTO_MINI_SIZE);
         (void)_dbWidgetMap(m_Ui.lblPhotoMini_10, CONFIG_DB_F_PHOTOS_10, CONFIG_PHOTO_MINI_SIZE);
+    }
+
+    // install event filter
+    {
+        m_Ui.lblPhotoMini_1->installEventFilter(this);
+        m_Ui.lblPhotoMini_2->installEventFilter(this);
+        m_Ui.lblPhotoMini_3->installEventFilter(this);
+        m_Ui.lblPhotoMini_4->installEventFilter(this);
+        m_Ui.lblPhotoMini_5->installEventFilter(this);
+        m_Ui.lblPhotoMini_6->installEventFilter(this);
+        m_Ui.lblPhotoMini_7->installEventFilter(this);
+        m_Ui.lblPhotoMini_8->installEventFilter(this);
+        m_Ui.lblPhotoMini_9->installEventFilter(this);
+        m_Ui.lblPhotoMini_10->installEventFilter(this);
     }
 }
 //---------------------------------------------------------------------------
