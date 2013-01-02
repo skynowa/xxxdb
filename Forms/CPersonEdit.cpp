@@ -75,87 +75,87 @@ CPersonEdit::_initMain() {
         // DB controls to QMap
         {
             // Main
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_NICK,            m_Ui.cboNick->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_SURNAME,         m_Ui.cboSurname->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_NAME,            m_Ui.cboName->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_PATRONYMIC,      m_Ui.cboPatronymic->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_AGE,             m_Ui.cboAge->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_HEIGHT,          m_Ui.cboHeight->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_WEIGHT,          m_Ui.cboWeight->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_HAIRLENGTH,      m_Ui.cboHairLength->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_HAIRCOLOR,       m_Ui.cboHairColor->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_APPEARANCE,      m_Ui.cboAppearance->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MAIN_AGREEMENT,       m_Ui.cboAgreement->lineEdit());
+            _m_hsDbControls.insert(m_Ui.cboNick->lineEdit(),       CONFIG_DB_F_MAIN_NICK);
+            _m_hsDbControls.insert(m_Ui.cboSurname->lineEdit(),    CONFIG_DB_F_MAIN_SURNAME);
+            _m_hsDbControls.insert(m_Ui.cboName->lineEdit(),       CONFIG_DB_F_MAIN_NAME);
+            _m_hsDbControls.insert(m_Ui.cboPatronymic->lineEdit(), CONFIG_DB_F_MAIN_PATRONYMIC);
+            _m_hsDbControls.insert(m_Ui.cboAge->lineEdit(),        CONFIG_DB_F_MAIN_AGE);
+            _m_hsDbControls.insert(m_Ui.cboHeight->lineEdit(),     CONFIG_DB_F_MAIN_HEIGHT);
+            _m_hsDbControls.insert(m_Ui.cboWeight->lineEdit(),     CONFIG_DB_F_MAIN_WEIGHT);
+            _m_hsDbControls.insert(m_Ui.cboHairLength->lineEdit(), CONFIG_DB_F_MAIN_HAIRLENGTH);
+            _m_hsDbControls.insert(m_Ui.cboHairColor->lineEdit(),  CONFIG_DB_F_MAIN_HAIRCOLOR);
+            _m_hsDbControls.insert(m_Ui.cboAppearance->lineEdit(), CONFIG_DB_F_MAIN_APPEARANCE);
+            _m_hsDbControls.insert(m_Ui.cboAgreement->lineEdit(),  CONFIG_DB_F_MAIN_AGREEMENT);
 
             // Phones
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_MOBILE1,       m_Ui.cboMobile1->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_MOBILE2,       m_Ui.cboMobile2->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_MOBILE3,       m_Ui.cboMobile3->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_HOME,          m_Ui.cboPhoneHome->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_JOB,           m_Ui.cboPhoneJob->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_PHONES_OTHER,         m_Ui.tedtPhoneAdditional);
+            _m_hsDbControls.insert(m_Ui.cboMobile1->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE1);
+            _m_hsDbControls.insert(m_Ui.cboMobile2->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE2);
+            _m_hsDbControls.insert(m_Ui.cboMobile3->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE3);
+            _m_hsDbControls.insert(m_Ui.cboPhoneHome->lineEdit(),  CONFIG_DB_F_PHONES_HOME);
+            _m_hsDbControls.insert(m_Ui.cboPhoneJob->lineEdit(),   CONFIG_DB_F_PHONES_JOB);
+            _m_hsDbControls.insert(m_Ui.tedtPhoneAdditional,       CONFIG_DB_F_PHONES_OTHER);
 
             // Address
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_COUNTRY,      m_Ui.cboCountry->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_CODE,         m_Ui.cboCode->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_CITY,         m_Ui.cboCity->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_DISTRICT,     m_Ui.cboDistrict->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_STREET,       m_Ui.cboStreet->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_HOUSE,        m_Ui.cboHouse->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_PORCH,        m_Ui.cboPorch->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_FLOOR,        m_Ui.cboFloor->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_ADDRESS_APARTMENT,    m_Ui.cboApartment->lineEdit());
+            _m_hsDbControls.insert(m_Ui.cboCountry->lineEdit(),    CONFIG_DB_F_ADDRESS_COUNTRY);
+            _m_hsDbControls.insert(m_Ui.cboCode->lineEdit(),       CONFIG_DB_F_ADDRESS_CODE);
+            _m_hsDbControls.insert(m_Ui.cboCity->lineEdit(),       CONFIG_DB_F_ADDRESS_CITY);
+            _m_hsDbControls.insert(m_Ui.cboDistrict->lineEdit(),   CONFIG_DB_F_ADDRESS_DISTRICT);
+            _m_hsDbControls.insert(m_Ui.cboStreet->lineEdit(),     CONFIG_DB_F_ADDRESS_STREET);
+            _m_hsDbControls.insert(m_Ui.cboHouse->lineEdit(),      CONFIG_DB_F_ADDRESS_HOUSE);
+            _m_hsDbControls.insert(m_Ui.cboPorch->lineEdit(),      CONFIG_DB_F_ADDRESS_PORCH);
+            _m_hsDbControls.insert(m_Ui.cboFloor->lineEdit(),      CONFIG_DB_F_ADDRESS_FLOOR);
+            _m_hsDbControls.insert(m_Ui.cboApartment->lineEdit(),  CONFIG_DB_F_ADDRESS_APARTMENT);
 
             // E-mail
-            _m_hsDbControls.insert(CONFIG_DB_F_EMAIL_EMAIL,          m_Ui.tedtEmail);
+            _m_hsDbControls.insert(m_Ui.tedtEmail,                 CONFIG_DB_F_EMAIL_EMAIL);
 
             // Web
-            _m_hsDbControls.insert(CONFIG_DB_F_WEB_WEB,              m_Ui.tedtWeb);
+            _m_hsDbControls.insert(m_Ui.tedtWeb,                   CONFIG_DB_F_WEB_WEB);
 
             // Messengers
-            _m_hsDbControls.insert(CONFIG_DB_F_MESSENGERS_ICQ,       m_Ui.cboIcq->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_MESSENGERS_SKYPE,     m_Ui.cboSkype->lineEdit());
+            _m_hsDbControls.insert(m_Ui.cboIcq->lineEdit(),        CONFIG_DB_F_MESSENGERS_ICQ);
+            _m_hsDbControls.insert(m_Ui.cboSkype->lineEdit(),      CONFIG_DB_F_MESSENGERS_SKYPE);
 
             // Job
-            _m_hsDbControls.insert(CONFIG_DB_F_JOB_PROFESSION,       m_Ui.cboProfession->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_JOB_ADDRESS,          m_Ui.cboAddress->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_JOB_SALARY,           m_Ui.cboSalary->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_JOB_COMPANY,          m_Ui.cboCompany->lineEdit());
+            _m_hsDbControls.insert(m_Ui.cboProfession->lineEdit(), CONFIG_DB_F_JOB_PROFESSION);
+            _m_hsDbControls.insert(m_Ui.cboAddress->lineEdit(),    CONFIG_DB_F_JOB_ADDRESS);
+            _m_hsDbControls.insert(m_Ui.cboSalary->lineEdit(),     CONFIG_DB_F_JOB_SALARY);
+            _m_hsDbControls.insert(m_Ui.cboCompany->lineEdit(),    CONFIG_DB_F_JOB_COMPANY);
 
             // Dates
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAY,       m_Ui.dtBirthday);
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAYFATHER, m_Ui.dtBirthdayFather);
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_BIRTHDAYMOTHER, m_Ui.dtBirthdayMother);
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_DAYDATING,      m_Ui.dtDayDating);
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_DAYFIRSTKISS,   m_Ui.dtDayFirstKiss);
-            _m_hsDbControls.insert(CONFIG_DB_F_DATES_DAYFIRSTSEX,    m_Ui.dtDayFirstSex);
+            _m_hsDbControls.insert(m_Ui.dtBirthday,                CONFIG_DB_F_DATES_BIRTHDAY);
+            _m_hsDbControls.insert(m_Ui.dtBirthdayFather,          CONFIG_DB_F_DATES_BIRTHDAYFATHER);
+            _m_hsDbControls.insert(m_Ui.dtBirthdayMother,          CONFIG_DB_F_DATES_BIRTHDAYMOTHER);
+            _m_hsDbControls.insert(m_Ui.dtDayDating,               CONFIG_DB_F_DATES_DAYDATING);
+            _m_hsDbControls.insert(m_Ui.dtDayFirstKiss,            CONFIG_DB_F_DATES_DAYFIRSTKISS);
+            _m_hsDbControls.insert(m_Ui.dtDayFirstSex,             CONFIG_DB_F_DATES_DAYFIRSTSEX);
 
             // Interests
-            _m_hsDbControls.insert(CONFIG_DB_F_INTERESTS_HOBBY,      m_Ui.cboHobby->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_INTERESTS_SPORTS,     m_Ui.cboSports->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_INTERESTS_SMOKING,    m_Ui.cboSmoking->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_INTERESTS_ALCOHOL,    m_Ui.cboAlcohol->lineEdit());
-            _m_hsDbControls.insert(CONFIG_DB_F_INTERESTS_DRUGS,      m_Ui.cboDrugs->lineEdit());
+            _m_hsDbControls.insert(m_Ui.cboHobby->lineEdit(),      CONFIG_DB_F_INTERESTS_HOBBY);
+            _m_hsDbControls.insert(m_Ui.cboSports->lineEdit(),     CONFIG_DB_F_INTERESTS_SPORTS);
+            _m_hsDbControls.insert(m_Ui.cboSmoking->lineEdit(),    CONFIG_DB_F_INTERESTS_SMOKING);
+            _m_hsDbControls.insert(m_Ui.cboAlcohol->lineEdit(),    CONFIG_DB_F_INTERESTS_ALCOHOL);
+            _m_hsDbControls.insert(m_Ui.cboDrugs->lineEdit(),      CONFIG_DB_F_INTERESTS_DRUGS);
 
             // TODO: Periods
 
             // Etc
-            _m_hsDbControls.insert(CONFIG_DB_F_ETC_DATECREATION,     m_Ui.dtDateCreation);
-            _m_hsDbControls.insert(CONFIG_DB_F_ETC_DATELASTCHANGE,   m_Ui.dtDateLastChange);
+            _m_hsDbControls.insert(m_Ui.dtDateCreation,            CONFIG_DB_F_ETC_DATECREATION);
+            _m_hsDbControls.insert(m_Ui.dtDateLastChange,          CONFIG_DB_F_ETC_DATELASTCHANGE);
 
             // Note
-            _m_hsDbControls.insert(CONFIG_DB_F_NOTES_NOTES,          m_Ui.tedtNotes);
+            _m_hsDbControls.insert(m_Ui.tedtNotes,                 CONFIG_DB_F_NOTES_NOTES);
 
             // Photos
-            _m_hsDbControls.insert(CONFIG_DB_F_PHOTOS_1,             m_Ui.lblPhoto);
+            _m_hsDbControls.insert(m_Ui.lblPhoto,                  CONFIG_DB_F_PHOTOS_1);
         }
 
         // map DB controls
         {
-            QHash<QString, QWidget *>::Iterator it;
+            db_controls_t::ConstIterator cit;
 
-            for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
-                _m_dmMapper->addMapping(it.value(), _m_tmModel->fieldIndex(it.key()));
+            for (cit = _m_hsDbControls.begin(); cit != _m_hsDbControls.end(); ++ cit) {
+                _m_dmMapper->addMapping(cit.key(), _m_tmModel->fieldIndex(cit.value()));
             }
         }
 

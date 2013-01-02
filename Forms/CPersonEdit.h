@@ -27,9 +27,11 @@ class CPersonEdit :
         virtual                  ~CPersonEdit();
 
     private:
+        typedef QHash<QWidget *, QString> db_controls_t;
+
         QList<QTreeWidgetItem *>  _m_ltwGroups;
         QSqlTableModel           *_m_tmModel;
-        QHash<QString, QWidget *> _m_hsDbControls;
+        db_controls_t             _m_hsDbControls;
         QDataWidgetMapper        *_m_dmMapper;
         const int                 _m_ciCurrentRow;
         QByteArray                _m_baPhoto;
