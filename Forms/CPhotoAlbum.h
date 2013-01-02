@@ -26,10 +26,13 @@ class CPhotoAlbum :
 
         bool               eventFilter        (QObject *obj, QEvent *event);
 
+    private:
+        typedef QHash<QLabel *, QString> db_controls_t;
+
         QSqlTableModel    *_m_tmModel;
         const int          _m_ciCurrentRow;
+        db_controls_t      _m_hsDbControls;
 
-    private:
         void               _construct         ();
         void               _destruct          ();
         void               _initMain          ();
@@ -38,7 +41,6 @@ class CPhotoAlbum :
                                                const QSize &size);
 
     private Q_SLOTS:
-
         void               photoMini_OnClicked(QLabel *label, const QString &dbFieldName);
 };
 //---------------------------------------------------------------------------

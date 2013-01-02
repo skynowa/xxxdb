@@ -82,4 +82,3 @@ MOC_DIR         = "$$OUT_DIR/Temp"
 OBJECTS_DIR     = "$$OUT_DIR/Temp"
 RCC_DIR         = "$$OUT_DIR/Temp"
 UI_DIR          = "$$OUT_DIR/Ui"
-

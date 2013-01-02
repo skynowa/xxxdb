@@ -378,14 +378,6 @@ CPersonEdit::_saveAll() {
     {
         _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
-
-    // set current index
-    {
-        CMain *parent = static_cast<CMain *>( this->parent() );
-        Q_ASSERT(NULL != parent);
-
-        parent->m_Ui.tabvInfo->selectRow(_m_ciCurrentRow);
-    }
 }
 //---------------------------------------------------------------------------
 void

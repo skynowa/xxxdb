@@ -455,6 +455,12 @@ CMain::slot_OnEdit() {
     CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
 
     dlgPersonEdit.exec();
+
+    // set current index
+    {
+        m_Ui.tabvInfo->selectRow(ciCurrentRow);
+        _m_dmMapper->setCurrentIndex(ciCurrentRow);
+    }
 }
 //---------------------------------------------------------------------------
 void

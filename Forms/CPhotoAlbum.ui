@@ -88,6 +88,9 @@
              <height>80</height>
             </size>
            </property>
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
+           </property>
            <property name="text">
             <string>lblPhotoMini_1</string>
            </property>
