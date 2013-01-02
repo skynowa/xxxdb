@@ -287,15 +287,15 @@ CMain::_initModel() {
         // DB controls to QMap
         {
              // Photos
-            _m_hsDbControls.insert(CONFIG_DB_F_PHOTOS_1, m_Ui.lblPhoto);
+            _m_hsDbControls.insert(m_Ui.lblPhoto, CONFIG_DB_F_PHOTOS_1);
         }
 
         // map DB controls
         {
-            QHash<QString, QWidget *>::ConstIterator it;
+            db_controls_t::ConstIterator cit;
 
-            for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
-                _m_dmMapper->addMapping(it.value(), _m_tmModel->fieldIndex(it.key()));
+            for (cit = _m_hsDbControls.begin(); cit != _m_hsDbControls.end(); ++ cit) {
+                _m_dmMapper->addMapping(cit.key(), _m_tmModel->fieldIndex( cit.value() ));
             }
         }
     }

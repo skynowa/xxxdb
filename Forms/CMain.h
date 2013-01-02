@@ -21,64 +21,67 @@ class CMain :
         Q_OBJECT
 
     public:
-        explicit                   CMain          (QWidget *parent = 0, Qt::WFlags flags = 0);
-        virtual                   ~CMain          ();
+        explicit           CMain            (QWidget *parent = 0, Qt::WFlags flags = 0);
+        virtual           ~CMain            ();
 
-        Ui::CMainClass             m_Ui;
-        QString                    m_sAppName;
-        QString                    m_sAppDir;
-        QString                    m_sDbDir;
-        QString                    m_sDbBackupDir;
-        CSqlNavigator              m_navNavigator;
+        Ui::CMainClass     m_Ui;
+        QString            m_sAppName;
+        QString            m_sAppDir;
+        QString            m_sDbDir;
+        QString            m_sDbBackupDir;
+        CSqlNavigator      m_navNavigator;
 
     private:
-        QSqlDatabase               _m_dbDatabase;
-        QSqlTableModel            *_m_tmModel;
-        QHash<QString, QWidget *>  _m_hsDbControls;
-        QDataWidgetMapper         *_m_dmMapper;
+        typedef QHash<QWidget *, QString> db_controls_t;
 
-        void                       _construct     ();
-        void                       _destruct      ();
-        void                       _initMain      ();
-        void                       _initModel     ();
-        void                       _initActions   ();
+        QSqlDatabase       _m_dbDatabase;
+        QSqlTableModel    *_m_tmModel;
+        db_controls_t      _m_hsDbControls;
+        QDataWidgetMapper *_m_dmMapper;
+
+        void               _construct       ();
+        void               _destruct        ();
+        void               _initMain        ();
+        void               _initModel       ();
+        void               _initActions     ();
 
     private slots:
         // group "Exit"
-        void                       slot_OnExit    ();
+        void               slot_OnExit      ();
 
         // group "Edit"
-        void                       slot_OnFirst   ();
-        void                       slot_OnPrior   ();
-        void                       slot_OnNext    ();
-        void                       slot_OnLast    ();
-        void                       slot_OnTo      ();
-        void                       slot_OnInsert  ();
-        void                       slot_OnRemove  ();
-        void                       slot_OnEdit    ();
-        void                       slot_OnPost    ();
-        void                       slot_OnCancel  ();
-        void                       slot_OnRefresh ();
+        void               slot_OnFirst     ();
+        void               slot_OnPrior     ();
+        void               slot_OnNext      ();
+        void               slot_OnLast      ();
+        void               slot_OnTo        ();
+        void               slot_OnInsert    ();
+        void               slot_OnRemove    ();
+        void               slot_OnEdit      ();
+        void               slot_OnPost      ();
+        void               slot_OnCancel    ();
+        void               slot_OnRefresh   ();
 
         // group "Find"
-        void                       slot_OnSearch  ();
+        void               slot_OnSearch    ();
 
         // group "View"
 
 
         // group "Options"
-        void                       slot_OnSettings();
+        void               slot_OnSettings  ();
 
         // group "Help"
-        void                       slot_OnFaq     ();
-        void                       slot_OnAbout   ();
+        void               slot_OnFaq       ();
+        void               slot_OnAbout     ();
 
         // photo
-        void                       slot_OnPhotoAlbum();
+        void               slot_OnPhotoAlbum();
 
     private:
-        void                       _settingsLoad  ();
-        void                       _settingsSave  ();
+        // settings
+        void               _settingsLoad    ();
+        void               _settingsSave    ();
 
 };
 //---------------------------------------------------------------------------
