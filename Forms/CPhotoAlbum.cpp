@@ -124,6 +124,8 @@ void
 CPhotoAlbum::_initMain() {
     m_Ui.setupUi(this);
 
+    setWindowFlags(Qt::Window);
+
     // _m_hsDbControls
     {
         _m_hsDbControls.insert(m_Ui.lblPhotoMini_1,  CONFIG_DB_F_PHOTOS_1);
