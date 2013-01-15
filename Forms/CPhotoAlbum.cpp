@@ -21,10 +21,11 @@ CPhotoAlbum::CPhotoAlbum(
     QSqlTableModel *a_tableModel,
     const int      &a_currentRow
 ) :
-    QDialog        (a_parent),
-    _m_tmModel     (a_tableModel),
-    _m_ciCurrentRow(a_currentRow),
-    _m_hsDbControls()
+    QMainWindow                (a_parent),
+    _m_tmModel                 (a_tableModel),
+    _m_ciCurrentRow            (a_currentRow),
+    _m_hsDbControls            (),
+    _m_iDBControls_CurrentIndex(0)
 
 {
     Q_ASSERT(NULL != _m_tmModel);
@@ -36,6 +37,8 @@ CPhotoAlbum::CPhotoAlbum(
 /* virtual */
 CPhotoAlbum::~CPhotoAlbum() {
     _destruct();
+
+    delete this;
 }
 //---------------------------------------------------------------------------
 bool
@@ -72,6 +75,9 @@ CPhotoAlbum::photoMini_OnClicked(
         // set border
         foreach (QLabel *key, _m_hsDbControls.keys()) {
             if (a_label == key) {
+                // current index
+                _m_iDBControls_CurrentIndex = _m_hsDbControls.keys().indexOf(key);
+
                 key->setFrameShape(QFrame::WinPanel);
             } else {
                 key->setFrameShape(QFrame::Box);
@@ -113,6 +119,7 @@ CPhotoAlbum::photoMini_OnClicked(
 void
 CPhotoAlbum::_construct() {
     _initMain();
+    _initActions();
 }
 //---------------------------------------------------------------------------
 void
@@ -153,6 +160,41 @@ CPhotoAlbum::_initMain() {
     }
 }
 //---------------------------------------------------------------------------
+void
+CPhotoAlbum::_initActions() {
+    // group "File"
+    {
+        connect(m_Ui.actFile_Exit,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnExit() ));
+    }
+
+    // group "Edit"
+    {
+        connect(m_Ui.actEdit_First,       SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnFirst() ));
+        connect(m_Ui.actEdit_Prior,       SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnPrior() ));
+        connect(m_Ui.actEdit_Next,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnNext() ));
+        connect(m_Ui.actEdit_Last,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnLast() ));
+        connect(m_Ui.actEdit_To,          SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnTo() ));
+        connect(m_Ui.actEdit_Insert,      SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnInsert() ));
+        connect(m_Ui.actEdit_Delete,      SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnRemove() ));
+        connect(m_Ui.actEdit_Edit,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnEdit() ));
+        connect(m_Ui.actEdit_Post,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnPost() ));
+        connect(m_Ui.actEdit_Cancel,      SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnCancel() ));
+        connect(m_Ui.actEdit_Refresh,     SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnRefresh() ));
+    }
+}
+//---------------------------------------------------------------------------
 QDataWidgetMapper *
 CPhotoAlbum::_dbWidgetMap(
     QWidget       *a_widget,
@@ -170,5 +212,115 @@ CPhotoAlbum::_dbWidgetMap(
     wmRv->setCurrentIndex(_m_ciCurrentRow);
 
     return wmRv;
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "File"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnExit() {
+    close();
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   group "Edit"
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnFirst() {
+    QLabel        *lblPhotoMini  = _m_hsDbControls.keys().first();
+    const QString  csDbFieldName = _m_hsDbControls[lblPhotoMini];
+
+    photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnPrior() {
+    if (0 >= _m_iDBControls_CurrentIndex) {
+        _m_iDBControls_CurrentIndex = 0;
+    } else {
+        -- _m_iDBControls_CurrentIndex;
+    }
+
+    QLabel        *lblPhotoMini  = _m_hsDbControls.keys().at(_m_iDBControls_CurrentIndex);
+    const QString  csDbFieldName = _m_hsDbControls[lblPhotoMini];
+
+    photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnNext() {
+    if (_m_iDBControls_CurrentIndex >= _m_hsDbControls.keys().count() - 1) {
+        _m_iDBControls_CurrentIndex = _m_hsDbControls.keys().count() - 1;
+    } else {
+        ++ _m_iDBControls_CurrentIndex;
+    }
+
+    QLabel        *lblPhotoMini  = _m_hsDbControls.keys().at(_m_iDBControls_CurrentIndex);
+    const QString  csDbFieldName = _m_hsDbControls[lblPhotoMini];
+
+    photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnLast() {
+    QLabel        *lblPhotoMini  = _m_hsDbControls.keys().last();
+    const QString  csDbFieldName = _m_hsDbControls[lblPhotoMini];
+
+    photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnTo() {
+    const int ciMinValue    = 1;
+    const int ciMaxValue    = _m_hsDbControls.count();
+
+    const int ciTargetIndex = QInputDialog::getInt(
+                                    this, CONFIG_APP_NAME, "Go to photo:",
+                                    _m_iDBControls_CurrentIndex + 1, ciMinValue, ciMaxValue) - 1;
+
+    QLabel        *lblPhotoMini  = _m_hsDbControls.keys().at(ciTargetIndex);
+    const QString  csDbFieldName = _m_hsDbControls[lblPhotoMini];
+
+    photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnInsert() {
+    // TODO: slot_OnInsert
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnRemove() {
+    // TODO: slot_OnRemove
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnEdit() {
+    // TODO: slot_OnEdit
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnPost() {
+    // TODO: slot_OnPost
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnCancel() {
+    // TODO: slot_OnCancel
+}
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnRefresh() {
+    // TODO: slot_OnRefresh
 }
 //---------------------------------------------------------------------------

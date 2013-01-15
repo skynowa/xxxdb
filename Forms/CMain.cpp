@@ -30,6 +30,7 @@ CMain::CMain(
     m_sDbDir       (),
     m_sDbBackupDir (),
     m_navNavigator (this),
+    m_wndPhotoAlbum(NULL),
     _m_dbDatabase  (),
     _m_tmModel     (NULL),
     _m_hsDbControls(),
@@ -545,10 +546,11 @@ CMain::slot_OnAbout() {
 //---------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
-    const int   ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
-    CPhotoAlbum dlgPhotoAlbum(this, _m_tmModel, ciCurrentRow);
+    const int ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
 
-    dlgPhotoAlbum.exec();
+    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, ciCurrentRow);
+
+    m_wndPhotoAlbum->show();
 }
 //---------------------------------------------------------------------------
 

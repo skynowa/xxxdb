@@ -15,6 +15,8 @@
 
 #include "../Config.h"
 //---------------------------------------------------------------------------
+class CPhotoAlbum;
+
 class CMain :
     public QMainWindow
 {
@@ -30,6 +32,7 @@ class CMain :
         QString            m_sDbDir;
         QString            m_sDbBackupDir;
         CSqlNavigator      m_navNavigator;
+        CPhotoAlbum       *m_wndPhotoAlbum;
 
     private:
         typedef QHash<QWidget *, QString> db_controls_t;
@@ -45,7 +48,7 @@ class CMain :
         void               _initModel       ();
         void               _initActions     ();
 
-    private slots:
+    private Q_SLOTS:
         // group "Exit"
         void               slot_OnExit      ();
 
