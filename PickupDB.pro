@@ -12,28 +12,28 @@ QT              = core gui sql network xml
 CONFIG         += warn_on
 
 win32 {
-    QMAKE_CXXFLAGS -= -Zc:wchar_t-
-    QMAKE_CXXFLAGS += -Zc:wchar_t
-    QMAKE_CFLAGS   -= -Zc:wchar_t-
-    QMAKE_CFLAGS   += -Zc:wchar_t
+    #QMAKE_CXXFLAGS -= -Zc:wchar_t-
+    #QMAKE_CXXFLAGS += -Zc:wchar_t
+    #QMAKE_CFLAGS   -= -Zc:wchar_t-
+    #QMAKE_CFLAGS   += -Zc:wchar_t
 
-    INCLUDEPATH     = "$$(xLib)/Project/Include"
+    INCLUDEPATH = #"$$(xLib)/Project/Include"
 
     CONFIG(debug, debug|release) {
-        LIBS        = "$$(xLib)/Build/Libs/VC++2010/Debug_Unicode/StaticLib_VC++2010.lib"
+        LIBS    = #"$$(xLib)/Build/Libs/VC++2010/Debug_Unicode/StaticLib_VC++2010.lib"
     } else {
-        LIBS        = "$$(xLib)/Build/Libs/VC++2010/Release_Unicode/StaticLib_VC++2010.lib"
+        LIBS    = #"$$(xLib)/Build/Libs/VC++2010/Release_Unicode/StaticLib_VC++2010.lib"
     }
 
-    LIBS           += User32.lib Ole32.lib Advapi32.lib shell32.lib
+    LIBS       += User32.lib Ole32.lib Advapi32.lib shell32.lib
 }
 unix {
     INCLUDEPATH =
 
     CONFIG(debug, debug|release) {
-        LIBS    = -lxlib_d
+        LIBS    = #-lxlib_d
     } else {
-        LIBS    = -lxlib_r
+        LIBS    = #-lxlib_r
     }
 
     LIBS       +=
@@ -46,7 +46,7 @@ HEADERS         = QtLib/Common.h \
                   Classes/CDelegateDbImage.h \
                   Forms/CMain.h \
                   Forms/CPersonEdit.h \
-    Forms/CPhotoAlbum.h
+                  Forms/CPhotoAlbum.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
@@ -54,11 +54,11 @@ SOURCES         = main.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Forms/CMain.cpp \
                   Forms/CPersonEdit.cpp \
-    Forms/CPhotoAlbum.cpp
+                  Forms/CPhotoAlbum.cpp
 
 FORMS           = Forms/CMain.ui \
                   Forms/CPersonEdit.ui \
-    Forms/CPhotoAlbum.ui
+                  Forms/CPhotoAlbum.ui
 
 RESOURCES       = Resources/App.qrc
 

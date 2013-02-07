@@ -7,7 +7,6 @@
 #ifndef PickupDb_CDelegateDbImageH
 #define PickupDb_CDelegateDbImageH
 //---------------------------------------------------------------------------
-#include <xLib/Common/xCommon.h>
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
 #include "../Config.h"

@@ -11,8 +11,6 @@
 #include "../QtLib/CUtils.h"
 #include "../Classes/CDelegateDbImage.h"
 
-#include <xLib/Common/CxString.h>
-
 
 /****************************************************************************
 *   public
