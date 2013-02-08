@@ -27,7 +27,7 @@ CPersonEdit::CPersonEdit(
     _m_hsDbControls(),
     _m_dmMapper    (NULL),
     _m_ciCurrentRow(a_currentRow),
-    _m_baPhoto     ()
+    _m_dbImage     ()
 {
     // _m_ltwGroups - n/a
     Q_ASSERT(NULL != _m_tmModel);
@@ -163,6 +163,12 @@ CPersonEdit::_initMain() {
         _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
     }
 
+    // _m_dbImage
+    {
+        _m_dbImage = new CDbImage(this, _m_tmModel, CONFIG_DB_F_PHOTOS_1,
+                                  _m_ciCurrentRow, m_Ui.lblPhoto);
+    }
+
     // signals
     {
         connect(m_Ui.tbtnPhotoChange,  SIGNAL( clicked() ),
@@ -210,42 +216,9 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
             break;
 
         case QDialog::Accepted: {
-                _m_baPhoto.clear();
+                const QString csFilePath = fdlgDialog.selectedFiles().first();
 
-                // file to buffer
-                {
-                    const QString csFilePath = fdlgDialog.selectedFiles().first();
-
-                    if (true == CONFIG_IMAGE_IS_CONVERT) {
-                        CUtils::imageConvert(csFilePath, &_m_baPhoto);
-                    } else {
-                        QFile file(csFilePath);
-
-                        bool bRv = file.open(QIODevice::ReadOnly);
-                        Q_ASSERT(true == bRv);
-
-                        _m_baPhoto = file.readAll();
-                    }
-
-                    Q_ASSERT(0 < _m_baPhoto.size());
-                }
-
-                // lblPhoto
-                {
-                    if (0 >= _m_baPhoto.size()) {
-                        m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
-                    } else {
-                        QImage imgPhoto;
-
-                        bool bRv = imgPhoto.loadFromData(_m_baPhoto);
-                        Q_ASSERT(true == bRv);
-
-                        QImage  imgPhotoScaled = imgPhoto.scaled(QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT), Qt::KeepAspectRatio, Qt::SmoothTransformation);
-                        QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
-
-                        m_Ui.lblPhoto->setPixmap(pixPixmap);
-                    }
-                }
+                _m_dbImage->changeFromFile(csFilePath);
 
             }
             break;
@@ -259,7 +232,7 @@ CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
-    m_Ui.lblPhoto->clear();
+    _m_dbImage->clear();
 }
 //---------------------------------------------------------------------------
 void
@@ -279,16 +252,9 @@ CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
             break;
 
         case QDialog::Accepted: {
-                QString    sFilePath = fdlgDialog.selectedFiles().first();
-                QByteArray baPhoto   = _m_tmModel->record(_m_ciCurrentRow).value(CONFIG_DB_F_PHOTOS_1).toByteArray();
+                QString sFilePath = fdlgDialog.selectedFiles().first();
 
-                QFile  file(sFilePath);
-                bool bRv = file.open(QIODevice::WriteOnly);
-                Q_ASSERT(true == bRv);
-
-                QDataStream stream(&file);
-                int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
-                Q_ASSERT(0 < iRv);
+                _m_dbImage->exportToFile(sFilePath);
             }
             break;
 
@@ -361,23 +327,10 @@ CPersonEdit::_saveAll() {
     }
 
     // save photo to DB
-    {
-        if (0 < _m_baPhoto.size()) {
-            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-            srRecord.setValue(CONFIG_DB_F_PHOTOS_1, _m_baPhoto);
-
-            _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
-            bRv = _m_tmModel->submitAll();
-            Q_ASSERT(true == bRv);
-
-            _m_baPhoto.clear();
-        }
-    }
+    _m_dbImage->save();
 
     // set current index
-    {
-        _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
-    }
+    _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
 }
 //---------------------------------------------------------------------------
 void

@@ -11,6 +11,7 @@
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
+#include "../Classes/CDbImage.h"
 
 #include "CMain.h"
 //---------------------------------------------------------------------------
@@ -34,7 +35,7 @@ class CPersonEdit :
         db_controls_t             _m_hsDbControls;
         QDataWidgetMapper        *_m_dmMapper;
         const int                 _m_ciCurrentRow;
-        QByteArray                _m_baPhoto;
+        CDbImage                 *_m_dbImage;
 
         void                      _construct();
         void                      _destruct ();
