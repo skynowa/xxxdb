@@ -12,17 +12,12 @@ QT              = core gui sql network xml
 CONFIG         += warn_on
 
 win32 {
-    #QMAKE_CXXFLAGS -= -Zc:wchar_t-
-    #QMAKE_CXXFLAGS += -Zc:wchar_t
-    #QMAKE_CFLAGS   -= -Zc:wchar_t-
-    #QMAKE_CFLAGS   += -Zc:wchar_t
-
-    INCLUDEPATH = #"$$(xLib)/Project/Include"
+    INCLUDEPATH =
 
     CONFIG(debug, debug|release) {
-        LIBS    = #"$$(xLib)/Build/Libs/VC++2010/Debug_Unicode/StaticLib_VC++2010.lib"
+        LIBS    =
     } else {
-        LIBS    = #"$$(xLib)/Build/Libs/VC++2010/Release_Unicode/StaticLib_VC++2010.lib"
+        LIBS    =
     }
 
     LIBS       += User32.lib Ole32.lib Advapi32.lib shell32.lib
@@ -31,9 +26,9 @@ unix {
     INCLUDEPATH =
 
     CONFIG(debug, debug|release) {
-        LIBS    = #-lxlib_d
+        LIBS    =
     } else {
-        LIBS    = #-lxlib_r
+        LIBS    =
     }
 
     LIBS       +=
