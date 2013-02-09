@@ -103,17 +103,44 @@ CDbImage::saveToFile() {
 //---------------------------------------------------------------------------
 void
 CDbImage::remove() {
-     _m_lblLabel->clear();
-
+    // ensure for removing
     {
-        _m_baBuffer.clear();
+        QMessageBox msgBox;
 
-        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
-        srRecord.setValue(_m_csDbField, _m_baBuffer);
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setText("Removing image.");
+        msgBox.setInformativeText("Do you want to remove image?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Cancel);
 
-        _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
-        bool bRv = _m_tmModel->submitAll();
-        Q_ASSERT(true == bRv);
+        int iRv = msgBox.exec();
+        switch (iRv) {
+            case QMessageBox::Yes: {
+                // yes, remove
+                break;
+            }
+
+            default: {
+                return;
+                break;
+            }
+        }
+    }
+
+    // remove
+    {
+        _m_lblLabel->clear();
+
+        {
+            _m_baBuffer.clear();
+
+            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
+            srRecord.setValue(_m_csDbField, _m_baBuffer);
+
+            _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
+            bool bRv = _m_tmModel->submitAll();
+            Q_ASSERT(true == bRv);
+        }
     }
 }
 //---------------------------------------------------------------------------
