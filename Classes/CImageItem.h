@@ -28,7 +28,8 @@ public:
                        CImageItem();
                       ~CImageItem();
 
-    static CImageItem *find      (const db_items_t &dbItems, QLabel *imageLabel);
+    static CImageItem *find      (const db_items_t &dbItems, const QLabel *imageLabel);
+    static CImageItem *find      (const db_items_t &dbItems, const int &index);
 
 private:
 

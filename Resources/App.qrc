@@ -24,5 +24,6 @@
         <file>Menu/Insert.bmp</file>
         <file>Menu/Post.bmp</file>
         <file>Menu/To.bmp</file>
+        <file>Menu/SetPrimaryImage.bmp</file>
     </qresource>
 </RCC>

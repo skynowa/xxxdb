@@ -55,6 +55,7 @@ private Q_SLOTS:
     void               slot_OnInsert      ();
     void               slot_OnRemove      ();
     void               slot_OnEdit        ();
+    void               slot_OnSetPrimary  ();
 
     // photo
     void               photoMini_OnClicked(QLabel *label, const QString &dbFieldName);

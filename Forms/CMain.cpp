@@ -235,7 +235,7 @@ CMain::_initModel() {
                     "    " CONFIG_DB_F_PHOTOS_13              " BLOB, "
                     "    " CONFIG_DB_F_PHOTOS_14              " BLOB, "
                     "    " CONFIG_DB_F_PHOTOS_15              " BLOB, "
-                    "    " CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD " VARCHAR (64) "
+                    "    " CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD " INT "
                     ")";
 
             bRv = qryInfo.exec(csSql);

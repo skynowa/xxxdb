@@ -57,58 +57,6 @@ CPhotoAlbum::eventFilter(
     return QObject::eventFilter(a_obj, a_event);
 }
 //-----------------------------------------------------------------------------
-void
-CPhotoAlbum::photoMini_OnClicked(
-    QLabel        *a_label,
-    const QString &a_dbFieldName
-)
-{
-    Q_ASSERT(NULL  != a_label);
-    Q_ASSERT(false == a_dbFieldName.isEmpty());
-
-    // lblPhotoMini
-    {
-        // set border
-        foreach (CImageItem *i, _m_viDbItems) {
-            if (a_label == i->imageLabel) {
-                // set current indexs
-                CImageItem::currentDbIndex = i->index;
-                CImageItem::currentDbImage = i->dbImage;
-
-                i->imageLabel->setFrameShape(QFrame::WinPanel);
-            } else {
-                i->imageLabel->setFrameShape(QFrame::Box);
-            }
-        }
-    }
-
-    // lblPhoto
-    {
-        QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentRow)
-                                .value(a_dbFieldName).toByteArray();
-
-        if (0 >= baPhoto.size()) {
-            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
-        } else {
-            QImage imgPhoto;
-
-            bool bRv = imgPhoto.loadFromData(baPhoto);
-            Q_ASSERT(true == bRv);
-
-            const int   ciHiddenMargin = 2;   // MAGIC: ciHiddenMargin
-            const QSize cszSize        = QSize(m_Ui.lblPhoto->width()  - ciHiddenMargin,
-                                               m_Ui.lblPhoto->height() - ciHiddenMargin);
-            QImage      imgPhotoScaled = imgPhoto.scaled(
-                                            cszSize,
-                                            Qt::KeepAspectRatio,
-                                            Qt::SmoothTransformation);
-            QPixmap     pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
-
-            m_Ui.lblPhoto->setPixmap(pixPixmap);
-        }
-    }
-}
-//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
@@ -188,6 +136,24 @@ CPhotoAlbum::_initMain() {
 
         cit->imageLabel->installEventFilter(this);
     }
+
+    // set primary image
+    {
+        // get primary image index
+        int iPrimaryIndex = - 1;
+        {
+            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+            iPrimaryIndex = srRecord.value(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
+        }
+
+        // set primary image index
+        {
+            QLabel  *lblPhotoMini = CImageItem::find(_m_viDbItems, iPrimaryIndex)->imageLabel;
+            QString  sDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
+
+            photoMini_OnClicked(lblPhotoMini, sDbFieldName);
+        }
+    }
 }
 //-----------------------------------------------------------------------------
 void
@@ -218,6 +184,8 @@ CPhotoAlbum::_initActions() {
                 this,                     SLOT  ( slot_OnRemove() ));
         connect(m_Ui.actEdit_Edit,        SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnEdit() ));
+        connect(m_Ui.actEdit_SetPrimary,  SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnSetPrimary() ));
     }
 }
 //-----------------------------------------------------------------------------
@@ -346,4 +314,76 @@ CPhotoAlbum::slot_OnEdit() {
     CImageItem::currentDbImage->loadFromFile();
 }
 //-----------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnSetPrimary() {
+    const int ciPrimaryIndex = CImageItem::currentDbIndex;
 
+    // write to DB
+    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+    srRecord.setValue(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD, ciPrimaryIndex);
+
+    _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
+    bool bRv = _m_tmModel->submit();
+    Q_ASSERT(true == bRv);
+}
+//-----------------------------------------------------------------------------
+
+
+/******************************************************************************
+*   photo
+*
+******************************************************************************/
+
+//-----------------------------------------------------------------------------
+void
+CPhotoAlbum::photoMini_OnClicked(
+    QLabel        *a_label,
+    const QString &a_dbFieldName
+)
+{
+    Q_ASSERT(NULL  != a_label);
+    Q_ASSERT(false == a_dbFieldName.isEmpty());
+
+    // lblPhotoMini
+    {
+        // set border
+        foreach (CImageItem *i, _m_viDbItems) {
+            if (a_label == i->imageLabel) {
+                // set current indexs
+                CImageItem::currentDbIndex = i->index;
+                CImageItem::currentDbImage = i->dbImage;
+
+                i->imageLabel->setFrameShape(QFrame::WinPanel);
+            } else {
+                i->imageLabel->setFrameShape(QFrame::Box);
+            }
+        }
+    }
+
+    // lblPhoto
+    {
+        QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentRow)
+                                .value(a_dbFieldName).toByteArray();
+
+        if (0 >= baPhoto.size()) {
+            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
+        } else {
+            QImage imgPhoto;
+
+            bool bRv = imgPhoto.loadFromData(baPhoto);
+            Q_ASSERT(true == bRv);
+
+            const int   ciHiddenMargin = 2;   // MAGIC: ciHiddenMargin
+            const QSize cszSize        = QSize(m_Ui.lblPhoto->width()  - ciHiddenMargin,
+                                               m_Ui.lblPhoto->height() - ciHiddenMargin);
+            QImage      imgPhotoScaled = imgPhoto.scaled(
+                                            cszSize,
+                                            Qt::KeepAspectRatio,
+                                            Qt::SmoothTransformation);
+            QPixmap     pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+
+            m_Ui.lblPhoto->setPixmap(pixPixmap);
+        }
+    }
+}
+//-----------------------------------------------------------------------------

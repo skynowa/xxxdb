@@ -355,10 +355,11 @@
     <addaction name="actEdit_Last"/>
     <addaction name="actEdit_To"/>
     <addaction name="separator"/>
+    <addaction name="actEdit_SaveAs"/>
     <addaction name="actEdit_Insert"/>
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
-    <addaction name="actEdit_SaveAs"/>
+    <addaction name="actEdit_SetPrimary"/>
    </widget>
    <addaction name="menuFile"/>
    <addaction name="menuEdit"/>
@@ -386,6 +387,7 @@
    <addaction name="actEdit_Insert"/>
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
+   <addaction name="actEdit_SetPrimary"/>
   </widget>
   <action name="actFile_Exit">
    <property name="icon">
@@ -478,6 +480,18 @@
    </property>
    <property name="toolTip">
     <string>Save As</string>
+   </property>
+  </action>
+  <action name="actEdit_SetPrimary">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/SetPrimaryImage.bmp</normaloff>:/Menu/Menu/SetPrimaryImage.bmp</iconset>
+   </property>
+   <property name="text">
+    <string>Set primary</string>
+   </property>
+   <property name="toolTip">
+    <string>Set primary</string>
    </property>
   </action>
  </widget>
