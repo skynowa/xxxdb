@@ -6,7 +6,7 @@
 
 #ifndef PickupDb_ConfigH
 #define PickupDb_ConfigH
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 // main window
 #define CONFIG_ORG_NAME                     "Skynowa Studio"
 #define CONFIG_APP_NAME                     "PickupDB"
@@ -14,6 +14,7 @@
 #define CONFIG_APP_HEIGHT                   600
 
 // photo
+#define CONFIG_PHOTO_NUM                    10
 #define CONFIG_PHOTO_WIDTH                  300
 #define CONFIG_PHOTO_HEIGHT                 200
 #define CONFIG_PHOTO_SIZE                   QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT)
@@ -130,5 +131,5 @@
 #define CONFIG_DB_F_PHOTOS_15               "f_photos_15"
 #define CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD  "f_photos_primary_dbfield"
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #endif // PickupDb_ConfigH

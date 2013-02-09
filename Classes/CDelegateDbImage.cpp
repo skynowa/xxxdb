@@ -7,12 +7,12 @@
 #include "CDelegateDbImage.h"
 
 
-/****************************************************************************
+/******************************************************************************
 *   public
 *
-*****************************************************************************/
+******************************************************************************/
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 CDelegateDbImage::CDelegateDbImage(
     QObject     *a_parent,
     const int   &a_imageFieldIndex,
@@ -28,7 +28,7 @@ CDelegateDbImage::CDelegateDbImage(
     Q_ASSERT(0    <= _m_ciImageFieldIndex);
     // _m_lblInfoPanel - n/a
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDelegateDbImage::setEditorData(
     QWidget           *a_editor,
@@ -49,7 +49,10 @@ CDelegateDbImage::setEditorData(
             bool bRv = imgPhoto.loadFromData(baPhoto);
             Q_ASSERT(true == bRv);
 
-            QImage  imgPhotoScaled = imgPhoto.scaled(_m_cszSize, Qt::KeepAspectRatio, Qt::SmoothTransformation);
+            QImage  imgPhotoScaled = imgPhoto.scaled(
+                                        _m_cszSize,
+                                        Qt::KeepAspectRatio,
+                                        Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
 
             lblPhoto->setPixmap(pixPixmap);
@@ -65,7 +68,7 @@ CDelegateDbImage::setEditorData(
         QSqlRelationalDelegate::setEditorData(a_editor, a_index);
     }
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDelegateDbImage::setModelData(
     QWidget            *a_editor,
@@ -100,7 +103,4 @@ CDelegateDbImage::setModelData(
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }
 }
-//---------------------------------------------------------------------------
-
-
-
+//-----------------------------------------------------------------------------

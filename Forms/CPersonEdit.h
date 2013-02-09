@@ -6,7 +6,7 @@
 
 #ifndef PickupDB_CPersonEditH
 #define PickupDB_CPersonEditH
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #include "ui_CPersonEdit.h"
 
 #include "../QtLib/Common.h"
@@ -14,7 +14,7 @@
 #include "../Classes/CDbImage.h"
 
 #include "CMain.h"
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 class CPersonEdit :
     public QDialog
 {
@@ -52,5 +52,5 @@ private Q_SLOTS:
     void                      slot_bbxButtons_OnClicked(QAbstractButton *button);
     void                      slot_twGroups_OnActivated(const QModelIndex &index);
 };
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #endif // PickupDB_CPersonEditH

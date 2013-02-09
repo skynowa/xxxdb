@@ -7,7 +7,7 @@
 #include <QtGui/QApplication>
 #include "Forms/CMain.h"
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
 #if defined(Q_WS_WIN)
@@ -26,7 +26,7 @@ int main(int argc, char *argv[])
         QTextCodec::setCodecForLocale(codec);
     }
 
-    // application single inststance
+    // application single instance
     {
         bool bRes = false;
 
@@ -51,4 +51,4 @@ int main(int argc, char *argv[])
 
     return iRv;
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------

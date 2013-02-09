@@ -7,12 +7,12 @@
 #include "CDbImage.h"
 
 
-/****************************************************************************
+/******************************************************************************
 *   public
 *
-*****************************************************************************/
+******************************************************************************/
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 CDbImage::CDbImage(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
@@ -30,11 +30,11 @@ CDbImage::CDbImage(
 {
 
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 CDbImage::~CDbImage() {
 
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::loadFromFile() {
     QFileDialog fdlgDialog(_m_wdParent);
@@ -50,8 +50,8 @@ CDbImage::loadFromFile() {
     fdlgDialog.setNameFilters(slFilters);
     // fdlgDialog.setDirectory();
 
-    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
-    switch (dcRes) {
+    int iRv = fdlgDialog.exec();
+    switch (iRv) {
         case QDialog::Rejected: {
                 // n/a
             }
@@ -70,7 +70,7 @@ CDbImage::loadFromFile() {
             break;
     }
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::saveToFile() {
     QFileDialog fdlgDialog(_m_wdParent);
@@ -80,8 +80,8 @@ CDbImage::saveToFile() {
     // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
     // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
 
-    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
-    switch (dcRes) {
+    int iRv = fdlgDialog.exec();
+    switch (iRv) {
         case QDialog::Rejected: {
                 // n/a;
             }
@@ -100,7 +100,7 @@ CDbImage::saveToFile() {
             break;
     }
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::remove() {
     // ensure for removing
@@ -143,15 +143,15 @@ CDbImage::remove() {
         }
     }
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 
 
-/****************************************************************************
+/******************************************************************************
 *   private
 *
-*****************************************************************************/
+******************************************************************************/
 
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::_loadFromFile(
     const QString &a_filePath
@@ -189,7 +189,8 @@ CDbImage::_loadFromFile(
 
             QImage  imgPhotoScaled = imgPhoto.scaled(
                                         QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT),
-                                        Qt::KeepAspectRatio, Qt::SmoothTransformation);
+                                        Qt::KeepAspectRatio,
+                                        Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
 
             _m_lblLabel->setPixmap(pixPixmap);
@@ -198,7 +199,7 @@ CDbImage::_loadFromFile(
 
     _flush();
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::_saveToFile(
     const QString &a_filePath
@@ -215,7 +216,7 @@ CDbImage::_saveToFile(
     int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
     Q_ASSERT(0 < iRv);
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 void
 CDbImage::_flush() {
     if (0 < _m_baBuffer.size()) {
@@ -229,5 +230,5 @@ CDbImage::_flush() {
         _m_baBuffer.clear();
     }
 }
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 

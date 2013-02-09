@@ -6,13 +6,14 @@
 
 #ifndef PickupDB_CPhotoAlbumH
 #define PickupDB_CPhotoAlbumH
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #include "ui_CPhotoAlbum.h"
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
 #include "../Classes/CDbImage.h"
-//---------------------------------------------------------------------------
+#include "../Classes/CImageItem.h"
+//-----------------------------------------------------------------------------
 class CPhotoAlbum :
     public QMainWindow
 {
@@ -28,13 +29,9 @@ public:
     bool               eventFilter        (QObject *obj, QEvent *event);
 
 private:
-    typedef QMap<QLabel *, QString> db_controls_t;
-
     QSqlTableModel    *_m_tmModel;
     const int          _m_ciCurrentRow;
-    db_controls_t      _m_hsDbControls;
-    int                _m_iDBControls_CurrentIndex;
-    CDbImage          *_m_dbImage_1;
+    db_items_t         _m_viDbItems;
 
     void               _construct         ();
     void               _destruct          ();
@@ -62,5 +59,5 @@ private Q_SLOTS:
     // photo
     void               photoMini_OnClicked(QLabel *label, const QString &dbFieldName);
 };
-//---------------------------------------------------------------------------
+//-----------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH
