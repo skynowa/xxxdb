@@ -157,6 +157,8 @@ CDbImage::_loadFromFile(
     const QString &a_filePath
 )
 {
+    // TODO: ensure rewrite image
+
     _m_baBuffer.clear();
 
     // file to buffer
