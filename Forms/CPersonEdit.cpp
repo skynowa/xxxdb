@@ -195,74 +195,17 @@ CPersonEdit::_initMain() {
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
-    QFileDialog fdlgDialog(this);
-
-    fdlgDialog.setAcceptMode(QFileDialog::AcceptOpen);
-    fdlgDialog.setFileMode(QFileDialog::AnyFile);
-
-    QStringList slFilters;
-
-    slFilters << "Image files (" CONFIG_IMAGE_FORMATS ")";
-    slFilters << "All   files (*)";
-
-    fdlgDialog.setNameFilters(slFilters);
-    // fdlgDialog.setDirectory();
-
-    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
-    switch (dcRes) {
-        case QDialog::Rejected: {
-                // n/a
-            }
-            break;
-
-        case QDialog::Accepted: {
-                const QString csFilePath = fdlgDialog.selectedFiles().first();
-
-                _m_dbImage->changeFromFile(csFilePath);
-
-            }
-            break;
-
-        default: {
-                Q_ASSERT(false);
-            }
-            break;
-    }
+    _m_dbImage->loadFromFile();
 }
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
-    _m_dbImage->clear();
+    _m_dbImage->remove();
 }
 //---------------------------------------------------------------------------
 void
 CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
-    QFileDialog fdlgDialog(this);
-
-    fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
-    fdlgDialog.setFileMode(QFileDialog::AnyFile);
-    // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
-    // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
-
-    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
-    switch (dcRes) {
-        case QDialog::Rejected: {
-                // n/a;
-            }
-            break;
-
-        case QDialog::Accepted: {
-                QString sFilePath = fdlgDialog.selectedFiles().first();
-
-                _m_dbImage->exportToFile(sFilePath);
-            }
-            break;
-
-        default: {
-                Q_ASSERT(false);
-            }
-            break;
-    }
+    _m_dbImage->saveToFile();
 }
 //---------------------------------------------------------------------------
 void
@@ -327,7 +270,7 @@ CPersonEdit::_saveAll() {
     }
 
     // save photo to DB
-    _m_dbImage->save();
+    //-- _m_dbImage->save();
 
     // set current index
     _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);

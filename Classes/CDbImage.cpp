@@ -14,13 +14,14 @@
 
 //---------------------------------------------------------------------------
 CDbImage::CDbImage(
-    QObject        *a_parent,
+    QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
     const QString  &a_dbField,
     const int      &a_currentIndex,
     QLabel         *a_label
 ) :
     QObject          (a_parent),
+    _m_wdParent      (a_parent),
     _m_tmModel       (a_tableModel),
     _m_csDbField     (a_dbField),
     _m_ciCurrentIndex(a_currentIndex),
@@ -35,32 +36,97 @@ CDbImage::~CDbImage() {
 }
 //---------------------------------------------------------------------------
 void
-CDbImage::importFromFile(
-    const QString &a_filePath
-)
-{
-    // TODO: importFromFile
+CDbImage::loadFromFile() {
+    QFileDialog fdlgDialog(_m_wdParent);
+
+    fdlgDialog.setAcceptMode(QFileDialog::AcceptOpen);
+    fdlgDialog.setFileMode(QFileDialog::AnyFile);
+
+    QStringList slFilters;
+
+    slFilters << "Image files (" CONFIG_IMAGE_FORMATS ")";
+    slFilters << "All   files (*)";
+
+    fdlgDialog.setNameFilters(slFilters);
+    // fdlgDialog.setDirectory();
+
+    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
+    switch (dcRes) {
+        case QDialog::Rejected: {
+                // n/a
+            }
+            break;
+
+        case QDialog::Accepted: {
+                const QString csFilePath = fdlgDialog.selectedFiles().first();
+
+                _loadFromFile(csFilePath);
+            }
+            break;
+
+        default: {
+                Q_ASSERT(false);
+            }
+            break;
+    }
 }
 //---------------------------------------------------------------------------
 void
-CDbImage::exportToFile(
-    const QString &a_filePath
-)
-{
-    QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentIndex)
-                            .value(_m_csDbField).toByteArray();
+CDbImage::saveToFile() {
+    QFileDialog fdlgDialog(_m_wdParent);
 
-    QFile file(a_filePath);
-    bool bRv = file.open(QIODevice::WriteOnly);
-    Q_ASSERT(true == bRv);
+    fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
+    fdlgDialog.setFileMode(QFileDialog::AnyFile);
+    // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
+    // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
 
-    QDataStream stream(&file);
-    int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
-    Q_ASSERT(0 < iRv);
+    QDialog::DialogCode dcRes = static_cast<QDialog::DialogCode>( fdlgDialog.exec() );
+    switch (dcRes) {
+        case QDialog::Rejected: {
+                // n/a;
+            }
+            break;
+
+        case QDialog::Accepted: {
+                const QString csFilePath = fdlgDialog.selectedFiles().first();
+
+                _saveToFile(csFilePath);
+            }
+            break;
+
+        default: {
+                Q_ASSERT(false);
+            }
+            break;
+    }
 }
 //---------------------------------------------------------------------------
 void
-CDbImage::changeFromFile(
+CDbImage::remove() {
+     _m_lblLabel->clear();
+
+    {
+        _m_baBuffer.clear();
+
+        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
+        srRecord.setValue(_m_csDbField, _m_baBuffer);
+
+        _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
+        bool bRv = _m_tmModel->submitAll();
+        Q_ASSERT(true == bRv);
+    }
+}
+//---------------------------------------------------------------------------
+
+
+/****************************************************************************
+*   private
+*
+*****************************************************************************/
+
+//---------------------------------------------------------------------------
+void
+CDbImage::_loadFromFile(
     const QString &a_filePath
 )
 {
@@ -100,31 +166,29 @@ CDbImage::changeFromFile(
             _m_lblLabel->setPixmap(pixPixmap);
         }
     }
+
+    _flush();
 }
 //---------------------------------------------------------------------------
 void
-CDbImage::clear() {
-    _m_lblLabel->clear();
+CDbImage::_saveToFile(
+    const QString &a_filePath
+)
+{
+    QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentIndex)
+                            .value(_m_csDbField).toByteArray();
+
+    QFile file(a_filePath);
+    bool bRv = file.open(QIODevice::WriteOnly);
+    Q_ASSERT(true == bRv);
+
+    QDataStream stream(&file);
+    int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
+    Q_ASSERT(0 < iRv);
 }
 //---------------------------------------------------------------------------
 void
-CDbImage::remove() {
-    clear();
-
-    {
-        _m_baBuffer.clear();
-
-        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
-        srRecord.setValue(_m_csDbField, _m_baBuffer);
-
-        _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
-        bool bRv = _m_tmModel->submitAll();
-        Q_ASSERT(true == bRv);
-    }
-}
-//---------------------------------------------------------------------------
-void
-CDbImage::save() {
+CDbImage::_flush() {
     if (0 < _m_baBuffer.size()) {
         QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
         srRecord.setValue(_m_csDbField, _m_baBuffer);
@@ -137,3 +201,4 @@ CDbImage::save() {
     }
 }
 //---------------------------------------------------------------------------
+

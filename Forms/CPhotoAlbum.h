@@ -11,6 +11,7 @@
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
+#include "../Classes/CDbImage.h"
 //---------------------------------------------------------------------------
 class CPhotoAlbum :
     public QMainWindow
@@ -33,6 +34,7 @@ private:
     const int          _m_ciCurrentRow;
     db_controls_t      _m_hsDbControls;
     int                _m_iDBControls_CurrentIndex;
+    CDbImage          *_m_dbImage_1;
 
     void               _construct         ();
     void               _destruct          ();

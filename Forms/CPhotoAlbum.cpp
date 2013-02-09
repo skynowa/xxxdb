@@ -25,7 +25,8 @@ CPhotoAlbum::CPhotoAlbum(
     _m_tmModel                 (a_tableModel),
     _m_ciCurrentRow            (a_currentRow),
     _m_hsDbControls            (),
-    _m_iDBControls_CurrentIndex(0)
+    _m_iDBControls_CurrentIndex(0),
+    _m_dbImage_1               (NULL)
 
 {
     Q_ASSERT(NULL != _m_tmModel);
@@ -157,6 +158,12 @@ CPhotoAlbum::_initMain() {
 
             cit.key()->installEventFilter(this);
         }
+    }
+
+    // _m_dbImage
+    {
+        _m_dbImage_1 = new CDbImage(this, _m_tmModel, CONFIG_DB_F_PHOTOS_1,
+                                  _m_ciCurrentRow, m_Ui.lblPhoto);
     }
 }
 //---------------------------------------------------------------------------
@@ -296,12 +303,12 @@ CPhotoAlbum::slot_OnTo() {
 //---------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnInsert() {
-    // TODO: slot_OnInsert
+    _m_dbImage_1->loadFromFile();
 }
 //---------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnRemove() {
-    // TODO: slot_OnRemove
+    _m_dbImage_1->remove();
 }
 //---------------------------------------------------------------------------
 void

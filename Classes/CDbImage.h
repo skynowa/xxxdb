@@ -17,24 +17,27 @@ class CDbImage :
 Q_OBJECT
 
 public:
-                    CDbImage      (QObject *parent, QSqlTableModel *tableModel,
-                                   const QString &dbField, const int &currentIndex,
-                                   QLabel *label);
-    virtual        ~CDbImage      ();
+                    CDbImage     (QWidget *parent, QSqlTableModel *tableModel,
+                                  const QString &dbField, const int &currentIndex,
+                                  QLabel *label);
+    virtual        ~CDbImage     ();
 
-    void            importFromFile(const QString &filePath);
-    void            exportToFile  (const QString &filePath);
-    void            changeFromFile(const QString &filePath);
-    void            clear         ();
-    void            remove        ();
-    void            save          ();
+    void            loadFromFile ();
+    void            saveToFile   ();
+    void            remove       ();
 
 private:
+    QWidget        *_m_wdParent;
     QSqlTableModel *_m_tmModel;
     const QString   _m_csDbField;
     const int       _m_ciCurrentIndex;
     QLabel         *_m_lblLabel;
     QByteArray      _m_baBuffer;
+
+    void            _loadFromFile(const QString &filePath);
+    void            _saveToFile  (const QString &filePath);
+    void            _flush       ();
+
 };
 //---------------------------------------------------------------------------
 #endif // PickupDb_CDbImageH
