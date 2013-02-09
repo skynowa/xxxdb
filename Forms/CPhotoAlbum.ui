@@ -358,9 +358,6 @@
     <addaction name="actEdit_Insert"/>
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
-    <addaction name="actEdit_Post"/>
-    <addaction name="actEdit_Cancel"/>
-    <addaction name="actEdit_Refresh"/>
     <addaction name="actEdit_SaveAs"/>
    </widget>
    <addaction name="menuFile"/>
@@ -385,13 +382,10 @@
    <addaction name="actEdit_Last"/>
    <addaction name="actEdit_To"/>
    <addaction name="separator"/>
+   <addaction name="actEdit_SaveAs"/>
    <addaction name="actEdit_Insert"/>
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
-   <addaction name="actEdit_Post"/>
-   <addaction name="actEdit_Cancel"/>
-   <addaction name="actEdit_Refresh"/>
-   <addaction name="actEdit_SaveAs"/>
   </widget>
   <action name="actFile_Exit">
    <property name="icon">
@@ -472,33 +466,6 @@
    </property>
    <property name="text">
     <string>Edit</string>
-   </property>
-  </action>
-  <action name="actEdit_Post">
-   <property name="icon">
-    <iconset resource="../Resources/App.qrc">
-     <normaloff>:/Menu/Menu/Post.bmp</normaloff>:/Menu/Menu/Post.bmp</iconset>
-   </property>
-   <property name="text">
-    <string>Post</string>
-   </property>
-  </action>
-  <action name="actEdit_Cancel">
-   <property name="icon">
-    <iconset resource="../Resources/App.qrc">
-     <normaloff>:/Menu/Menu/Cancel.bmp</normaloff>:/Menu/Menu/Cancel.bmp</iconset>
-   </property>
-   <property name="text">
-    <string>Cancel</string>
-   </property>
-  </action>
-  <action name="actEdit_Refresh">
-   <property name="icon">
-    <iconset resource="../Resources/App.qrc">
-     <normaloff>:/Menu/Menu/Refresh.bmp</normaloff>:/Menu/Menu/Refresh.bmp</iconset>
-   </property>
-   <property name="text">
-    <string>Refresh</string>
    </property>
   </action>
   <action name="actEdit_SaveAs">

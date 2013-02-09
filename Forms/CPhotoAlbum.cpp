@@ -195,12 +195,6 @@ CPhotoAlbum::_initActions() {
                 this,                     SLOT  ( slot_OnRemove() ));
         connect(m_Ui.actEdit_Edit,        SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnEdit() ));
-        connect(m_Ui.actEdit_Post,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnPost() ));
-        connect(m_Ui.actEdit_Cancel,      SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnCancel() ));
-        connect(m_Ui.actEdit_Refresh,     SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnRefresh() ));
     }
 }
 //---------------------------------------------------------------------------
@@ -323,18 +317,4 @@ CPhotoAlbum::slot_OnEdit() {
     _m_dbImage_1->loadFromFile();
 }
 //---------------------------------------------------------------------------
-void
-CPhotoAlbum::slot_OnPost() {
-    // TODO: slot_OnPost
-}
-//---------------------------------------------------------------------------
-void
-CPhotoAlbum::slot_OnCancel() {
-    // TODO: slot_OnCancel
-}
-//---------------------------------------------------------------------------
-void
-CPhotoAlbum::slot_OnRefresh() {
-    // TODO: slot_OnRefresh
-}
-//---------------------------------------------------------------------------
+
