@@ -35,8 +35,6 @@ CPhotoAlbum::CPhotoAlbum(
 /* virtual */
 CPhotoAlbum::~CPhotoAlbum() {
     _destruct();
-
-    delete this;
 }
 //-----------------------------------------------------------------------------
 bool

@@ -8,6 +8,7 @@
 
 #include "../QtLib/CUtils.h"
 #include "../Classes/CDelegateDbImage.h"
+#include "CPhotoAlbum.h"
 
 
 /******************************************************************************
@@ -22,6 +23,7 @@ CPersonEdit::CPersonEdit(
     const int      &a_currentRow
 ) :
     QDialog        (a_parent),
+    m_wndPhotoAlbum(NULL),
     _m_ltwGroups   (),
     _m_tmModel     (a_tableModel),
     _m_hsDbControls(),
@@ -174,17 +176,12 @@ CPersonEdit::_initMain() {
 
     // signals
     {
-        connect(m_Ui.tbtnPhotoChange,  SIGNAL( clicked() ),
-                this,                  SLOT  ( slot_tbtnPhotoChange_OnClicked() ));
-        connect(m_Ui.tbtnPhotoDelete,  SIGNAL( clicked() ),
-                this,                  SLOT  ( slot_tbtnPhotoDelete_OnClicked() ));
-        connect(m_Ui.tbtnPhotoSaveAs,  SIGNAL( clicked() ),
-                this,                  SLOT  ( slot_tbtnPhotoSaveAs_OnClicked() ));
-
-        connect(m_Ui.bbxButtons,       SIGNAL( clicked(QAbstractButton *) ),
-                this,                  SLOT  ( slot_bbxButtons_OnClicked(QAbstractButton *) ));
-        connect(m_Ui.twGroups,         SIGNAL( clicked(const QModelIndex &) ),
-                this,                  SLOT  ( slot_twGroups_OnActivated(const QModelIndex &) ));
+        connect(m_Ui.tbtnPhotoAlbum, SIGNAL( clicked() ),
+                this,                SLOT  ( slot_OnPhotoAlbum() ));
+        connect(m_Ui.bbxButtons,     SIGNAL( clicked(QAbstractButton *) ),
+                this,                SLOT  ( slot_bbxButtons_OnClicked(QAbstractButton *) ));
+        connect(m_Ui.twGroups,       SIGNAL( clicked(const QModelIndex &) ),
+                this,                SLOT  ( slot_twGroups_OnActivated(const QModelIndex &) ));
     }
 }
 //-----------------------------------------------------------------------------
@@ -197,18 +194,12 @@ CPersonEdit::_initMain() {
 
 //-----------------------------------------------------------------------------
 void
-CPersonEdit::slot_tbtnPhotoChange_OnClicked() {
-    _m_dbImage->loadFromFile();
-}
-//-----------------------------------------------------------------------------
-void
-CPersonEdit::slot_tbtnPhotoDelete_OnClicked() {
-    _m_dbImage->remove();
-}
-//-----------------------------------------------------------------------------
-void
-CPersonEdit::slot_tbtnPhotoSaveAs_OnClicked() {
-    _m_dbImage->saveToFile();
+CPersonEdit::slot_OnPhotoAlbum() {
+    delete m_wndPhotoAlbum;
+    m_wndPhotoAlbum = NULL;
+
+    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, _m_ciCurrentRow);
+    m_wndPhotoAlbum->show();
 }
 //-----------------------------------------------------------------------------
 void

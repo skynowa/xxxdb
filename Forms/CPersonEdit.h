@@ -15,6 +15,8 @@
 
 #include "CMain.h"
 //-----------------------------------------------------------------------------
+class CPhotoAlbum;
+
 class CPersonEdit :
     public QDialog
 {
@@ -26,6 +28,8 @@ public:
                               CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
                                           const int &currentRow);
     virtual                  ~CPersonEdit();
+
+    CPhotoAlbum              *m_wndPhotoAlbum;
 
 private:
     typedef QHash<QWidget *, QString> db_controls_t;
@@ -45,9 +49,8 @@ private:
     void                      _saveAll  ();
 
 private Q_SLOTS:
-    void                      slot_tbtnPhotoChange_OnClicked();
-    void                      slot_tbtnPhotoDelete_OnClicked();
-    void                      slot_tbtnPhotoSaveAs_OnClicked();
+    // photo
+    void                      slot_OnPhotoAlbum();
 
     void                      slot_bbxButtons_OnClicked(QAbstractButton *button);
     void                      slot_twGroups_OnActivated(const QModelIndex &index);
