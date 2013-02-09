@@ -177,6 +177,8 @@ CPhotoAlbum::_initActions() {
 
     // group "Edit"
     {
+        connect(m_Ui.actEdit_SaveAs,      SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnSaveAs() ));
         connect(m_Ui.actEdit_First,       SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnFirst() ));
         connect(m_Ui.actEdit_Prior,       SIGNAL( triggered() ),
@@ -241,6 +243,11 @@ CPhotoAlbum::slot_OnExit() {
 *
 *****************************************************************************/
 
+//---------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnSaveAs() {
+    _m_dbImage_1->saveToFile();
+}
 //---------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnFirst() {
@@ -313,7 +320,7 @@ CPhotoAlbum::slot_OnRemove() {
 //---------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnEdit() {
-    // TODO: slot_OnEdit
+    _m_dbImage_1->loadFromFile();
 }
 //---------------------------------------------------------------------------
 void

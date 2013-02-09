@@ -49,6 +49,7 @@ private Q_SLOTS:
     void               slot_OnExit        ();
 
     // group "Edit"
+    void               slot_OnSaveAs      ();
     void               slot_OnFirst       ();
     void               slot_OnPrior       ();
     void               slot_OnNext        ();
