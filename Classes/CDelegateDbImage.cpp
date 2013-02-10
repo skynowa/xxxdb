@@ -59,8 +59,8 @@ CDelegateDbImage::setEditorData(
         }
 
         if (NULL != _m_lblInfoPanel) {
-            const QString csText = QString("Photo size: %1").
-                                        arg( CUtils::formatBytes(baPhoto.size()) );
+            const QString csText = QString("Photo size: %1")
+                                        .arg( CUtils::formatBytes(baPhoto.size()) );
 
             _m_lblInfoPanel->setText(csText);
         }

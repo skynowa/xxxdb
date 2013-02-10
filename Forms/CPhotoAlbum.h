@@ -26,13 +26,16 @@ public:
                                            const int &currentRow);
     virtual           ~CPhotoAlbum        ();
 
+protected:
     virtual bool       eventFilter        (QObject *obj, QEvent *event);
     virtual void       showEvent          (QShowEvent *event);
+    virtual void       resizeEvent        (QResizeEvent *event);
 
 private:
     QSqlTableModel    *_m_tmModel;
     const int          _m_ciCurrentRow;
     db_items_t         _m_viDbItems;
+    QPixmap            _m_pixPixmap;
 
     void               _construct         ();
     void               _destruct          ();

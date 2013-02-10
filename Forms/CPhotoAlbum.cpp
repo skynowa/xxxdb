@@ -24,7 +24,8 @@ CPhotoAlbum::CPhotoAlbum(
     QMainWindow    (a_parent),
     _m_tmModel     (a_tableModel),
     _m_ciCurrentRow(a_currentRow),
-    _m_viDbItems   ()
+    _m_viDbItems   (),
+    _m_pixPixmap   ()
 {
     Q_ASSERT(NULL != _m_tmModel);
     Q_ASSERT(- 1   < _m_ciCurrentRow);
@@ -79,6 +80,35 @@ CPhotoAlbum::showEvent(
             QString  sDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
 
             photoMini_OnClicked(lblPhotoMini, sDbFieldName);
+        }
+    }
+}
+//-----------------------------------------------------------------------------
+void
+CPhotoAlbum::resizeEvent(
+    QResizeEvent *a_event
+)
+{
+    Q_UNUSED(a_event);
+
+    // lblPhoto
+    if (!_m_pixPixmap.isNull()) {
+        QSize szScaled = _m_pixPixmap.size();
+
+        szScaled.scale(m_Ui.lblPhoto->size(), Qt::KeepAspectRatio);
+
+        if (NULL     == m_Ui.lblPhoto->pixmap() ||
+            szScaled != m_Ui.lblPhoto->pixmap()->size())
+        {
+            // update
+            const int ciMargin = 2;   // MAGIC: ciMargin
+            QPixmap   pixNew   = _m_pixPixmap.scaled(
+                                    QSize(m_Ui.lblPhoto->width()  - ciMargin,
+                                          m_Ui.lblPhoto->height() - ciMargin),
+                                    Qt::KeepAspectRatio,
+                                    Qt::SmoothTransformation);
+
+            m_Ui.lblPhoto->setPixmap(pixNew);
         }
     }
 }
@@ -381,16 +411,16 @@ CPhotoAlbum::photoMini_OnClicked(
             bool bRv = imgPhoto.loadFromData(baPhoto);
             Q_ASSERT(true == bRv);
 
-            const int   ciHiddenMargin = 2;   // MAGIC: ciHiddenMargin
-            const QSize cszSize        = QSize(m_Ui.lblPhoto->width()  - ciHiddenMargin,
-                                               m_Ui.lblPhoto->height() - ciHiddenMargin);
-            QImage      imgPhotoScaled = imgPhoto.scaled(
-                                            cszSize,
-                                            Qt::KeepAspectRatio,
-                                            Qt::SmoothTransformation);
-            QPixmap     pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+            const int   ciMargin = 2;   // MAGIC: ciMargin
+            const QSize cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
+                                         m_Ui.lblPhoto->height() - ciMargin);
+            QImage      pixNew   = imgPhoto.scaled(
+                                        cszSize,
+                                        Qt::KeepAspectRatio,
+                                        Qt::SmoothTransformation);
+            _m_pixPixmap = QPixmap::fromImage(pixNew);
 
-            m_Ui.lblPhoto->setPixmap(pixPixmap);
+            m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
         }
     }
 }
