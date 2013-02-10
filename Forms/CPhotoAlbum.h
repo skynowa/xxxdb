@@ -26,7 +26,8 @@ public:
                                            const int &currentRow);
     virtual           ~CPhotoAlbum        ();
 
-    bool               eventFilter        (QObject *obj, QEvent *event);
+    virtual bool       eventFilter        (QObject *obj, QEvent *event);
+    virtual void       showEvent          (QShowEvent *event);
 
 private:
     QSqlTableModel    *_m_tmModel;

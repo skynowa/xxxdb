@@ -57,6 +57,32 @@ CPhotoAlbum::eventFilter(
     return QObject::eventFilter(a_obj, a_event);
 }
 //-----------------------------------------------------------------------------
+void
+CPhotoAlbum::showEvent(
+    QShowEvent *a_event
+)
+{
+    Q_UNUSED(a_event);
+
+    // set primary image
+    {
+        // get primary image index
+        int iPrimaryIndex = - 1;
+        {
+            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
+            iPrimaryIndex = srRecord.value(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
+        }
+
+        // set primary image index
+        {
+            QLabel  *lblPhotoMini = CImageItem::find(_m_viDbItems, iPrimaryIndex)->imageLabel;
+            QString  sDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
+
+            photoMini_OnClicked(lblPhotoMini, sDbFieldName);
+        }
+    }
+}
+//-----------------------------------------------------------------------------
 
 
 /******************************************************************************
@@ -135,24 +161,6 @@ CPhotoAlbum::_initMain() {
         Q_ASSERT(NULL != wmRv);
 
         cit->imageLabel->installEventFilter(this);
-    }
-
-    // set primary image
-    {
-        // get primary image index
-        int iPrimaryIndex = - 1;
-        {
-            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-            iPrimaryIndex = srRecord.value(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
-        }
-
-        // set primary image index
-        {
-            QLabel  *lblPhotoMini = CImageItem::find(_m_viDbItems, iPrimaryIndex)->imageLabel;
-            QString  sDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
-
-            photoMini_OnClicked(lblPhotoMini, sDbFieldName);
-        }
     }
 }
 //-----------------------------------------------------------------------------
