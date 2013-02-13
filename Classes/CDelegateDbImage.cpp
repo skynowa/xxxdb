@@ -40,8 +40,7 @@ CDelegateDbImage::setEditorData(
         Q_ASSERT(NULL != lblPhoto);
 
         QByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
-
-        if (0 >= baPhoto.size()) {
+        if (baPhoto.isEmpty()) {
             lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
         } else {
             QImage imgPhoto;
@@ -85,11 +84,13 @@ CDelegateDbImage::setModelData(
         const QPixmap *ppmPixmap = lblPhoto->pixmap();
         if (NULL == ppmPixmap) {
             // clear photo in DB
-            bfPhoto.reset();
+            if (bfPhoto.isOpen()) {
+                bfPhoto.reset();
+            }
 
             a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
         } else {
-            // don't rewrite photo in DB
+            // TODO: don't rewrite photo in DB
         #if 0
             bfPhoto.open(QIODevice::WriteOnly);
 

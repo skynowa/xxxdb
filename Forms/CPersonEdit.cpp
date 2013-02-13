@@ -166,6 +166,10 @@ CPersonEdit::_initMain() {
 
         // activate current record
         _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
+
+        // set default control
+        m_Ui.cboNick->setFocus();
+        m_Ui.cboNick->lineEdit()->selectAll();
     }
 
     // _m_dbImage
@@ -258,13 +262,20 @@ CPersonEdit::_resetAll() {
 //-----------------------------------------------------------------------------
 void
 CPersonEdit::_saveAll() {
-    bool bRv = _m_dmMapper->submit();
-    if (false == bRv) {
-        qDebug() << __FUNCTION__ << ": fail, " << _m_tmModel->lastError().text();
-    }
+    // submit data
+    {
+        bool bRv = _m_dmMapper->submit();
+        if (false == bRv) {
+            qDebug() << __FUNCTION__ << ": mapper fail, "
+                     << _m_tmModel->lastError().text();
+        }
 
-    // save photo to DB
-    //-- _m_dbImage->save();
+        bRv = _m_tmModel->submitAll();
+        if (false == bRv) {
+            qDebug() << __FUNCTION__ << ": model fail, "
+                     << _m_tmModel->lastError().text();
+        }
+    }
 
     // set current index
     _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);

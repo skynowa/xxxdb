@@ -256,7 +256,7 @@ CMain::_initModel() {
         _m_tmModel->setHeaderData(2, Qt::Horizontal, tr("Adge"));
         _m_tmModel->setHeaderData(3, Qt::Horizontal, tr("Photo"));
     #endif
-        _m_tmModel->setEditStrategy(QSqlTableModel::OnRowChange);
+        _m_tmModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
         _m_tmModel->select();
 
         m_Ui.tabvInfo->setModel(_m_tmModel);
@@ -446,10 +446,17 @@ void
 CMain::slot_OnInsert() {
     m_navNavigator.insert();
 
-    const int   ciCurrentRow = _m_tmModel->rowCount() - 1;
-    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+    const int ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
 
-    dlgPersonEdit.exec();
+    // show edit dialog
+    {
+        CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+
+        (int)dlgPersonEdit.exec();
+    }
+
+    // set current index
+    m_navNavigator.to(ciCurrentRow);
 }
 //-----------------------------------------------------------------------------
 void
@@ -459,16 +466,17 @@ CMain::slot_OnRemove() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    const int   ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
-    CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+    const int ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
 
-    dlgPersonEdit.exec();
+    // show edit dialog
+    {
+        CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+
+        (int)dlgPersonEdit.exec();
+    }
 
     // set current index
-    {
-        m_Ui.tabvInfo->selectRow(ciCurrentRow);
-        _m_dmMapper->setCurrentIndex(ciCurrentRow);
-    }
+    m_navNavigator.to(ciCurrentRow);
 }
 //-----------------------------------------------------------------------------
 void
