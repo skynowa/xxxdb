@@ -29,13 +29,15 @@
 #define CONFIG_RES_MAIN_ICON                ":/App.ico"
 
 // etc
-#define CONFIG_BACKUP_DIR_NAME              "Backups"
-#define CONFIG_DB_FILE_EXT                  ".db"
+#define CONFIG_BACKUP_DIR_NAME              "Backup"
+#define CONFIG_INI_FILE_EXT                 ".ini"
 #define CONFIG_GUID                         "PickupDB_simple_guid"
 #define CONFIG_TABLEVIEW_ROW_HEIGHT         20
 #define CONFIG_TEXT_NO_PHOTO                "No photo"
 
 // DB tables, fields
+#define CONFIG_DB_DIR_NAME                  "Db"
+#define CONFIG_DB_FILE_EXT                  ".db"
 #define CONFIG_DB_T_PERSON                  "t_person"
 
 

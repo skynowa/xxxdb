@@ -71,8 +71,8 @@ CMain::_initMain() {
     {
         m_sAppName     = QCoreApplication::applicationName();
         m_sAppDir      = qApp->applicationDirPath();
-        m_sDbDir       = m_sAppDir + QDir::separator() + "Db";
-        m_sDbBackupDir = m_sDbDir  + QDir::separator() + "Backup";
+        m_sDbDir       = m_sAppDir + QDir::separator() + CONFIG_DB_DIR_NAME;
+        m_sDbBackupDir = m_sDbDir  + QDir::separator() + CONFIG_BACKUP_DIR_NAME;
 
         QDir().mkpath(m_sDbDir);
     }
@@ -251,7 +251,7 @@ CMain::_initModel() {
         _m_tmModel = new QSqlTableModel(this, _m_dbDatabase);
         Q_ASSERT(NULL != _m_tmModel);
 
-        _m_tmModel->setTable("t_person");
+        _m_tmModel->setTable(CONFIG_DB_T_PERSON);
     #if 0
         _m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
         _m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
@@ -261,22 +261,22 @@ CMain::_initModel() {
         _m_tmModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
         _m_tmModel->select();
 
-        m_Ui.tabvInfo->setModel(_m_tmModel);
-        m_Ui.tabvInfo->hideColumn(0); // don't show the CONFIG_DB_F_ID
-        // m_Ui.tabvInfo->setColumnWidth(0, 40);
-        m_Ui.tabvInfo->verticalHeader()->setVisible(true);
-        m_Ui.tabvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
-        m_Ui.tabvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        m_Ui.tabvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-        m_Ui.tabvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
-        m_Ui.tabvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        m_Ui.tabvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        // m_Ui.tabvInfo->setAlternatingRowColors(true);
-        // m_Ui.tabvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
-        m_Ui.tabvInfo->setSortingEnabled(true);
-        m_Ui.tabvInfo->sortByColumn(0, Qt::AscendingOrder);
+        m_Ui.tvInfo->setModel(_m_tmModel);
+        m_Ui.tvInfo->hideColumn(0); // don't show the CONFIG_DB_F_ID
+        // m_Ui.tvInfo->setColumnWidth(0, 40);
+        m_Ui.tvInfo->verticalHeader()->setVisible(true);
+        m_Ui.tvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
+        m_Ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        m_Ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        m_Ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+        m_Ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        m_Ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        // m_Ui.tvInfo->setAlternatingRowColors(true);
+        // m_Ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
+        m_Ui.tvInfo->setSortingEnabled(true);
+        m_Ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
 
-        m_Ui.tabvInfo->show();
+        m_Ui.tvInfo->show();
     }
 
     //--------------------------------------------------
@@ -284,11 +284,12 @@ CMain::_initModel() {
     {
         _m_dmMapper = new QDataWidgetMapper(this);
         _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(new CDelegateDbImage(
-                                        _m_dmMapper,
-                                        _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
-                                        CONFIG_PHOTO_SIZE,
-                                        m_Ui.lblPhotoSize));
+        _m_dmMapper->setItemDelegate(
+                        new CDelegateDbImage(
+                                _m_dmMapper,
+                                _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
+                                CONFIG_PHOTO_SIZE,
+                                m_Ui.lblPhotoSize));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
         // DB controls to QMap
@@ -310,20 +311,20 @@ CMain::_initModel() {
     //--------------------------------------------------
     // slots
     {
-        connect(m_Ui.tabvInfo->selectionModel(), SIGNAL( currentRowChanged(QModelIndex, QModelIndex) ),
-                _m_dmMapper,                     SLOT  ( setCurrentModelIndex(QModelIndex)) );
+        connect(m_Ui.tvInfo->selectionModel(), SIGNAL( currentRowChanged(QModelIndex, QModelIndex) ),
+                _m_dmMapper,                   SLOT  ( setCurrentModelIndex(QModelIndex)) );
 
-        connect(m_Ui.tabvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
-                this,                            SLOT  ( slot_OnEdit() ));
+        connect(m_Ui.tvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
+                this,                          SLOT  ( slot_OnEdit() ));
 
-        connect(m_Ui.tbtnPhotoAlbum,             SIGNAL( clicked() ),
-                this,                            SLOT  ( slot_OnPhotoAlbum() ));
+        connect(m_Ui.tbtnPhotoAlbum,           SIGNAL( clicked() ),
+                this,                          SLOT  ( slot_OnPhotoAlbum() ));
     }
 
     //--------------------------------------------------
     // m_navNavigator
     {
-        m_navNavigator.construct(_m_tmModel, m_Ui.tabvInfo);
+        m_navNavigator.construct(_m_tmModel, m_Ui.tvInfo);
         m_navNavigator.last();
     }
 }
@@ -431,13 +432,13 @@ CMain::slot_OnLast() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnTo() {
-    cint ciCurrentRow = m_Ui.tabvInfo->currentIndex().row() + 1;
+    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
 
     cint ciTargetRow = QInputDialog::getInt(
                         this,
-                        CONFIG_APP_NAME, "Go to row:",
+                        CONFIG_APP_NAME, tr("Go to row:"),
                         ciCurrentRow,
                         ciMinValue, ciMaxValue) - 1;
 
@@ -448,7 +449,7 @@ void
 CMain::slot_OnInsert() {
     m_navNavigator.insert();
 
-    cint ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
 
     // show edit dialog
     {
@@ -468,7 +469,7 @@ CMain::slot_OnRemove() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    cint ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
 
     // show edit dialog
     {
@@ -563,7 +564,7 @@ CMain::slot_OnAbout() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
-    cint ciCurrentRow = m_Ui.tabvInfo->currentIndex().row();
+    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
 
     delete m_wndPhotoAlbum;
     m_wndPhotoAlbum = NULL;
@@ -587,7 +588,7 @@ CMain::_settingsLoad() {
 
     {
         QSettings stSettings(
-                    QCoreApplication::applicationName() + ".ini",
+                    QCoreApplication::applicationName() + CONFIG_INI_FILE_EXT,
                     QSettings::IniFormat,
                     this);
 
@@ -607,7 +608,7 @@ CMain::_settingsLoad() {
 void
 CMain::_settingsSave() {
     QSettings stSettings(
-                QCoreApplication::applicationName() + ".ini",
+                QCoreApplication::applicationName() + CONFIG_INI_FILE_EXT,
                 QSettings::IniFormat,
                 this);
 
