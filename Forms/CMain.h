@@ -35,6 +35,7 @@ public:
 
 private:
     typedef QHash<QWidget *, QString> db_controls_t;
+    typedef const db_controls_t       cdb_controls_t;
 
     QSqlDatabase       _m_dbDatabase;
     QSqlTableModel    *_m_tmModel;

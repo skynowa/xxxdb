@@ -299,7 +299,7 @@ CMain::_initModel() {
 
         // map DB controls
         {
-            db_controls_t::ConstIterator cit;
+            cdb_controls_t::ConstIterator cit;
 
             for (cit = _m_hsDbControls.begin(); cit != _m_hsDbControls.end(); ++ cit) {
                 _m_dmMapper->addMapping(cit.key(), _m_tmModel->fieldIndex( cit.value() ));
