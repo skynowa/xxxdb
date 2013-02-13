@@ -11,9 +11,9 @@
 int main(int argc, char *argv[])
 {
 #if defined(Q_WS_WIN)
-    const QByteArray codecName = "Windows-1251";
+    cQByteArray codecName = "Windows-1251";
 #else
-    const QByteArray codecName = "UTF-8";
+    cQByteArray codecName = "UTF-8";
 #endif
 
     // set codecs

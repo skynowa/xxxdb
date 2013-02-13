@@ -16,7 +16,7 @@
 CDbImage::CDbImage(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
-    const QString  &a_dbField,
+    cQString       &a_dbField,
     const int      &a_currentIndex,
     QLabel         *a_label
 ) :
@@ -50,20 +50,18 @@ CDbImage::loadFromFile() {
     fdlgDialog.setNameFilters(slFilters);
     // fdlgDialog.setDirectory();
 
-    int iRv = fdlgDialog.exec();
-    switch (iRv) {
+    cint ciRv = fdlgDialog.exec();
+    switch (ciRv) {
         case QDialog::Rejected: {
                 // n/a
             }
             break;
-
         case QDialog::Accepted: {
-                const QString csFilePath = fdlgDialog.selectedFiles().first();
+                cQString csFilePath = fdlgDialog.selectedFiles().first();
 
                 _loadFromFile(csFilePath);
             }
             break;
-
         default: {
                 Q_ASSERT(false);
             }
@@ -80,20 +78,18 @@ CDbImage::saveToFile() {
     // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
     // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
 
-    int iRv = fdlgDialog.exec();
-    switch (iRv) {
+    cint ciRv = fdlgDialog.exec();
+    switch (ciRv) {
         case QDialog::Rejected: {
                 // n/a;
             }
             break;
-
         case QDialog::Accepted: {
-                const QString csFilePath = fdlgDialog.selectedFiles().first();
+                cQString csFilePath = fdlgDialog.selectedFiles().first();
 
                 _saveToFile(csFilePath);
             }
             break;
-
         default: {
                 Q_ASSERT(false);
             }
@@ -113,17 +109,16 @@ CDbImage::remove() {
         msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
         msgBox.setDefaultButton(QMessageBox::Cancel);
 
-        int iRv = msgBox.exec();
-        switch (iRv) {
+        cint ciRv = msgBox.exec();
+        switch (ciRv) {
             case QMessageBox::Yes: {
-                // yes, remove
+                    // yes, remove
+                }
                 break;
-            }
-
             default: {
-                return;
+                    return;
+                }
                 break;
-            }
         }
     }
 
@@ -154,7 +149,7 @@ CDbImage::remove() {
 //-----------------------------------------------------------------------------
 void
 CDbImage::_loadFromFile(
-    const QString &a_filePath
+    cQString &a_filePath
 )
 {
     // TODO: ensure rewrite image
@@ -202,7 +197,7 @@ CDbImage::_loadFromFile(
 //-----------------------------------------------------------------------------
 void
 CDbImage::_saveToFile(
-    const QString &a_filePath
+    cQString &a_filePath
 )
 {
     QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentIndex)

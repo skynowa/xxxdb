@@ -25,14 +25,16 @@ class CPersonEdit :
 public:
     Ui::CPersonEdit           m_Ui;
 
-                              CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
-                                          const int &currentRow);
+                              CPersonEdit(QWidget *parent,
+                                          QSqlTableModel *tableModel,
+                                          cint &currentRow);
     virtual                  ~CPersonEdit();
 
     CPhotoAlbum              *m_wndPhotoAlbum;
 
 private:
     typedef QHash<QWidget *, QString> db_controls_t;
+    typedef const db_controls_t       cdb_controls_t;
 
     QList<QTreeWidgetItem *>  _m_ltwGroups;
     QSqlTableModel           *_m_tmModel;

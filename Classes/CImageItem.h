@@ -15,6 +15,7 @@
 class CImageItem;
 
 typedef QVector<CImageItem *> db_items_t;
+typedef const db_items_t      cdb_items_t;
 
 class CImageItem {
 public:
@@ -28,8 +29,8 @@ public:
                        CImageItem();
                       ~CImageItem();
 
-    static CImageItem *find      (const db_items_t &dbItems, const QLabel *imageLabel);
-    static CImageItem *find      (const db_items_t &dbItems, const int &index);
+    static CImageItem *find      (cdb_items_t &dbItems, const QLabel *imageLabel);
+    static CImageItem *find      (cdb_items_t &dbItems, cint &index);
 
 private:
 

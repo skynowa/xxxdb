@@ -31,8 +31,8 @@ CImageItem::~CImageItem() {
 /* static */
 CImageItem *
 CImageItem::find(
-    const db_items_t &dbItems,
-    const QLabel     *imageLabel
+    cdb_items_t  &dbItems,
+    const QLabel *imageLabel
 )
 {
     CImageItem *iiRv = NULL;
@@ -50,8 +50,8 @@ CImageItem::find(
 /* static */
 CImageItem *
 CImageItem::find(
-    const db_items_t &dbItems,
-    const int        &index
+    cdb_items_t &dbItems,
+    cint        &index
 )
 {
     CImageItem *iiRv = NULL;

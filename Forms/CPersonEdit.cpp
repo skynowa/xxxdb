@@ -20,7 +20,7 @@
 CPersonEdit::CPersonEdit(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
-    const int      &a_currentRow
+    cint           &a_currentRow
 ) :
     QDialog        (a_parent),
     m_wndPhotoAlbum(NULL),
@@ -211,29 +211,26 @@ CPersonEdit::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
 )
 {
-    QDialogButtonBox::StandardButton sbType = m_Ui.bbxButtons->standardButton(a_button);
+    QDialogButtonBox::StandardButton sbType =
+            m_Ui.bbxButtons->standardButton(a_button);
     switch (sbType) {
         case QDialogButtonBox::Reset: {
                 _resetAll();
             }
             break;
-
         case QDialogButtonBox::Ok: {
                 _saveAll();
                 close();
             }
             break;
-
         case QDialogButtonBox::Cancel: {
                 close();
             }
             break;
-
         case QDialogButtonBox::Apply: {
                 _saveAll();
             }
             break;
-
         default: {
                 Q_ASSERT(false);
             }

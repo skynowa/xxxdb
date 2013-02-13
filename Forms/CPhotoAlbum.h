@@ -22,8 +22,9 @@ class CPhotoAlbum :
 public:
     Ui::CPhotoAlbum    m_Ui;
 
-                       CPhotoAlbum        (QWidget *parent, QSqlTableModel *tableModel,
-                                           const int &currentRow);
+                       CPhotoAlbum        (QWidget *parent,
+                                           QSqlTableModel *tableModel,
+                                           cint &currentRow);
     virtual           ~CPhotoAlbum        ();
 
 protected:
@@ -42,7 +43,8 @@ private:
     void               _initMain          ();
     void               _initActions       ();
 
-    QDataWidgetMapper *_dbWidgetMap       (QWidget *widget, const QString &dbFieldName,
+    QDataWidgetMapper *_dbWidgetMap       (QWidget *widget,
+                                           cQString &dbFieldName,
                                            const QSize &size);
 
 private Q_SLOTS:
@@ -62,7 +64,7 @@ private Q_SLOTS:
     void               slot_OnSetPrimary  ();
 
     // photo
-    void               photoMini_OnClicked(QLabel *label, const QString &dbFieldName);
+    void               photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
 };
 //-----------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH

@@ -47,8 +47,8 @@ CPhotoAlbum::eventFilter(
     Q_UNUSED(a_obj);
 
     if (a_event->type() == QEvent::MouseButtonPress)  {
-        QLabel        *lblPhotoMini  = static_cast<QLabel *>( a_obj );
-        const QString  csDbFieldName = CImageItem::find(_m_viDbItems, lblPhotoMini)->dbFieldName;
+        QLabel   *lblPhotoMini  = static_cast<QLabel *>( a_obj );
+        cQString  csDbFieldName = CImageItem::find(_m_viDbItems, lblPhotoMini)->dbFieldName;
 
         photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 
@@ -76,10 +76,10 @@ CPhotoAlbum::showEvent(
 
         // set primary image index
         {
-            QLabel  *lblPhotoMini = CImageItem::find(_m_viDbItems, iPrimaryIndex)->imageLabel;
-            QString  sDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
+            QLabel   *lblPhotoMini  = CImageItem::find(_m_viDbItems, iPrimaryIndex)->imageLabel;
+            cQString  csDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
 
-            photoMini_OnClicked(lblPhotoMini, sDbFieldName);
+            photoMini_OnClicked(lblPhotoMini, csDbFieldName);
         }
     }
 }
@@ -101,8 +101,8 @@ CPhotoAlbum::resizeEvent(
             szScaled != m_Ui.lblPhoto->pixmap()->size())
         {
             // update
-            const int ciMargin = 2;   // MAGIC: ciMargin
-            QPixmap   pixNew   = _m_pixPixmap.scaled(
+            cint    ciMargin = 2;   // MAGIC: ciMargin
+            QPixmap pixNew   = _m_pixPixmap.scaled(
                                     QSize(m_Ui.lblPhoto->width()  - ciMargin,
                                           m_Ui.lblPhoto->height() - ciMargin),
                                     Qt::KeepAspectRatio,
@@ -140,7 +140,7 @@ CPhotoAlbum::_initMain() {
 
     // _m_viDbItems
     {
-        const size_t ciPhotoNum = CONFIG_PHOTO_NUM;
+        csize_t ciPhotoNum = CONFIG_PHOTO_NUM;
 
         QLabel * imageLabels[ciPhotoNum] = {
             m_Ui.lblPhotoMini_1,
@@ -155,7 +155,7 @@ CPhotoAlbum::_initMain() {
             m_Ui.lblPhotoMini_10
         };
 
-        const QString dbFieldNames[ciPhotoNum] = {
+        cQString dbFieldNames[ciPhotoNum] = {
             CONFIG_DB_F_PHOTOS_1,
             CONFIG_DB_F_PHOTOS_2,
             CONFIG_DB_F_PHOTOS_3,
@@ -185,11 +185,8 @@ CPhotoAlbum::_initMain() {
 
     // map DB controls
     foreach (CImageItem *cit, _m_viDbItems) {
-        QDataWidgetMapper *wmRv = _dbWidgetMap(cit->imageLabel,
-                                               cit->dbFieldName,
-                                               CONFIG_PHOTO_MINI_SIZE);
-        Q_ASSERT(NULL != wmRv);
-
+        (QDataWidgetMapper *) _dbWidgetMap(cit->imageLabel, cit->dbFieldName,
+                                           CONFIG_PHOTO_MINI_SIZE);
         cit->imageLabel->installEventFilter(this);
     }
 }
@@ -278,8 +275,8 @@ CPhotoAlbum::slot_OnSaveAs() {
 //-----------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnFirst() {
-    QLabel        *lblPhotoMini  = _m_viDbItems.first()->imageLabel;
-    const QString  csDbFieldName = _m_viDbItems.first()->dbFieldName;
+    QLabel   *lblPhotoMini  = _m_viDbItems.first()->imageLabel;
+    cQString  csDbFieldName = _m_viDbItems.first()->dbFieldName;
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
@@ -292,8 +289,8 @@ CPhotoAlbum::slot_OnPrior() {
         -- CImageItem::currentDbIndex;
     }
 
-    QLabel        *lblPhotoMini  = _m_viDbItems.at(CImageItem::currentDbIndex)->imageLabel;
-    const QString  csDbFieldName = _m_viDbItems.at(CImageItem::currentDbIndex)->dbFieldName;
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(CImageItem::currentDbIndex)->imageLabel;
+    cQString  csDbFieldName = _m_viDbItems.at(CImageItem::currentDbIndex)->dbFieldName;
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
@@ -306,33 +303,33 @@ CPhotoAlbum::slot_OnNext() {
         ++ CImageItem::currentDbIndex;
     }
 
-    QLabel        *lblPhotoMini  = _m_viDbItems.at(CImageItem::currentDbIndex)->imageLabel;
-    const QString  csDbFieldName = _m_viDbItems.at(CImageItem::currentDbIndex)->dbFieldName;
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(CImageItem::currentDbIndex)->imageLabel;
+    cQString  csDbFieldName = _m_viDbItems.at(CImageItem::currentDbIndex)->dbFieldName;
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
 //-----------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnLast() {
-    QLabel        *lblPhotoMini  = _m_viDbItems.last()->imageLabel;
-    const QString  csDbFieldName = _m_viDbItems.last()->dbFieldName;
+    QLabel  *lblPhotoMini  = _m_viDbItems.last()->imageLabel;
+    QString  csDbFieldName = _m_viDbItems.last()->dbFieldName;
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
 //-----------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnTo() {
-    const int ciMinValue    = 1;
-    const int ciMaxValue    = _m_viDbItems.count();
+    cint ciMinValue    = 1;
+    cint ciMaxValue    = _m_viDbItems.count();
 
-    const int ciTargetIndex = QInputDialog::getInt(
-                                    this,
-                                    CONFIG_APP_NAME, "Go to photo:",
-                                    CImageItem::currentDbIndex + 1,
-                                    ciMinValue, ciMaxValue) - 1;
+    cint ciTargetIndex = QInputDialog::getInt(
+                            this,
+                            CONFIG_APP_NAME, "Go to photo:",
+                            CImageItem::currentDbIndex + 1,
+                            ciMinValue, ciMaxValue) - 1;
 
-    QLabel        *lblPhotoMini  = _m_viDbItems.at(ciTargetIndex)->imageLabel;
-    const QString  csDbFieldName = _m_viDbItems.at(ciTargetIndex)->dbFieldName;
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(ciTargetIndex)->imageLabel;
+    cQString  csDbFieldName = _m_viDbItems.at(ciTargetIndex)->dbFieldName;
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
@@ -354,7 +351,7 @@ CPhotoAlbum::slot_OnEdit() {
 //-----------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnSetPrimary() {
-    const int ciPrimaryIndex = CImageItem::currentDbIndex;
+    cint ciPrimaryIndex = CImageItem::currentDbIndex;
 
     // write to DB
     QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
@@ -375,8 +372,8 @@ CPhotoAlbum::slot_OnSetPrimary() {
 //-----------------------------------------------------------------------------
 void
 CPhotoAlbum::photoMini_OnClicked(
-    QLabel        *a_label,
-    const QString &a_dbFieldName
+    QLabel   *a_label,
+    cQString &a_dbFieldName
 )
 {
     Q_ASSERT(NULL  != a_label);
@@ -400,7 +397,7 @@ CPhotoAlbum::photoMini_OnClicked(
 
     // lblPhoto
     {
-        QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentRow)
+        cQByteArray baPhoto = _m_tmModel->record(_m_ciCurrentRow)
                                 .value(a_dbFieldName).toByteArray();
 
         if (0 >= baPhoto.size()) {
@@ -411,7 +408,7 @@ CPhotoAlbum::photoMini_OnClicked(
             bool bRv = imgPhoto.loadFromData(baPhoto);
             Q_ASSERT(true == bRv);
 
-            const int   ciMargin = 2;   // MAGIC: ciMargin
+            cint        ciMargin = 2;   // MAGIC: ciMargin
             const QSize cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
                                          m_Ui.lblPhoto->height() - ciMargin);
             QImage      pixNew   = imgPhoto.scaled(

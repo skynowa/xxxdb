@@ -18,7 +18,7 @@ Q_OBJECT
 
 public:
                     CDbImage     (QWidget *parent, QSqlTableModel *tableModel,
-                                  const QString &dbField, const int &currentIndex,
+                                  cQString &dbField, cint &currentIndex,
                                   QLabel *label);
     virtual        ~CDbImage     ();
 
@@ -34,8 +34,8 @@ private:
     QLabel         *_m_lblLabel;
     QByteArray      _m_baBuffer;
 
-    void            _loadFromFile(const QString &filePath);
-    void            _saveToFile  (const QString &filePath);
+    void            _loadFromFile(cQString &filePath);
+    void            _saveToFile  (cQString &filePath);
     void            _flush       ();
 
 };

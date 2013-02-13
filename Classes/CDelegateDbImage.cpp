@@ -15,7 +15,7 @@
 //-----------------------------------------------------------------------------
 CDelegateDbImage::CDelegateDbImage(
     QObject     *a_parent,
-    const int   &a_imageFieldIndex,
+    cint        &a_imageFieldIndex,
     const QSize &a_size,
     QLabel      *a_infoPanel /* = NULL */
 ) :
@@ -39,7 +39,7 @@ CDelegateDbImage::setEditorData(
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
         Q_ASSERT(NULL != lblPhoto);
 
-        QByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
+        cQByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
         if (baPhoto.isEmpty()) {
             lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
         } else {
@@ -58,8 +58,8 @@ CDelegateDbImage::setEditorData(
         }
 
         if (NULL != _m_lblInfoPanel) {
-            const QString csText = QString("Photo size: %1")
-                                        .arg( CUtils::formatBytes(baPhoto.size()) );
+            cQString csText = QString("Photo size: %1")
+                                .arg( CUtils::formatBytes(baPhoto.size()) );
 
             _m_lblInfoPanel->setText(csText);
         }
