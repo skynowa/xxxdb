@@ -29,7 +29,7 @@ public:
 private:
     QWidget        *_m_wdParent;
     QSqlTableModel *_m_tmModel;
-    const QString   _m_csDbField;
+    cQString        _m_csDbField;
     const int       _m_ciCurrentIndex;
     QLabel         *_m_lblLabel;
     QByteArray      _m_baBuffer;

@@ -34,7 +34,7 @@ protected:
 
 private:
     QSqlTableModel    *_m_tmModel;
-    const int          _m_ciCurrentRow;
+    cint               _m_ciCurrentRow;
     db_items_t         _m_viDbItems;
     QPixmap            _m_pixPixmap;
 

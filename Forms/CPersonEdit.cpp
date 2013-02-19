@@ -24,14 +24,12 @@ CPersonEdit::CPersonEdit(
 ) :
     QDialog        (a_parent),
     m_wndPhotoAlbum(NULL),
-    _m_ltwGroups   (),
     _m_tmModel     (a_tableModel),
     _m_hsDbControls(),
     _m_dmMapper    (NULL),
     _m_ciCurrentRow(a_currentRow),
     _m_dbImage     ()
 {
-    // _m_ltwGroups - n/a
     Q_ASSERT(NULL != _m_tmModel);
     Q_ASSERT(NULL == _m_dmMapper);
     Q_ASSERT(- 1  <  _m_ciCurrentRow);
@@ -59,7 +57,7 @@ CPersonEdit::_construct() {
 //-----------------------------------------------------------------------------
 void
 CPersonEdit::_destruct() {
-    qDeleteAll(_m_ltwGroups);
+
 }
 //-----------------------------------------------------------------------------
 void
