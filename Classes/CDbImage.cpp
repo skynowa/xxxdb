@@ -17,7 +17,7 @@ CDbImage::CDbImage(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
     cQString       &a_dbField,
-    const int      &a_currentIndex,
+    cint           &a_currentIndex,
     QLabel         *a_label
 ) :
     QObject          (a_parent),

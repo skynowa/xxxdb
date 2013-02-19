@@ -38,7 +38,7 @@ private:
     QSqlTableModel    *_m_tmModel;
     db_controls_t      _m_hsDbControls;
     QDataWidgetMapper *_m_dmMapper;
-    const int          _m_ciCurrentRow;
+    cint               _m_ciCurrentRow;
     CDbImage          *_m_dbImage;
 
     void               _construct();

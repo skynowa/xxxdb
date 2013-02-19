@@ -30,7 +30,7 @@ private:
     QWidget        *_m_wdParent;
     QSqlTableModel *_m_tmModel;
     cQString        _m_csDbField;
-    const int       _m_ciCurrentIndex;
+    cint            _m_ciCurrentIndex;
     QLabel         *_m_lblLabel;
     QByteArray      _m_baBuffer;
 
