@@ -438,7 +438,7 @@ CMain::slot_OnLast() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnTo() {
-    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row() + 1;
+    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
 
@@ -455,7 +455,7 @@ void
 CMain::slot_OnInsert() {
     m_navNavigator.insert();
 
-    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
+    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
 
     // show edit dialog
     {
@@ -475,7 +475,7 @@ CMain::slot_OnRemove() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
+    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
 
     // show edit dialog
     {
@@ -553,9 +553,8 @@ CMain::slot_OnAbout() {
     cQString csMsg = QString(tr(
         "<p>"
         "<b>%1</b> - accounting software for girls"
-        "</p>")
-            .arg(CONFIG_APP_NAME)
-        );
+        "</p>"))
+            .arg(CONFIG_APP_NAME);
 
     QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, csMsg);
 }
@@ -570,7 +569,7 @@ CMain::slot_OnAbout() {
 //-----------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
-    cint ciCurrentRow = m_Ui.tvInfo->currentIndex().row();
+    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
 
     delete m_wndPhotoAlbum;
     m_wndPhotoAlbum = NULL;
