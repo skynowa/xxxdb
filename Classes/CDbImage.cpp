@@ -52,19 +52,16 @@ CDbImage::loadFromFile() {
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
-        case QDialog::Rejected: {
-                // n/a
-            }
+        case QDialog::Rejected:
+            // n/a
             break;
         case QDialog::Accepted: {
-                cQString csFilePath = fdlgDialog.selectedFiles().first();
-
-                _loadFromFile(csFilePath);
+            cQString csFilePath = fdlgDialog.selectedFiles().first();
+            _loadFromFile(csFilePath);
             }
             break;
-        default: {
-                Q_ASSERT(false);
-            }
+        default:
+            Q_ASSERT(false);
             break;
     }
 }
@@ -80,19 +77,16 @@ CDbImage::saveToFile() {
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
-        case QDialog::Rejected: {
-                // n/a;
-            }
+        case QDialog::Rejected:
+            // n/a;
             break;
         case QDialog::Accepted: {
-                cQString csFilePath = fdlgDialog.selectedFiles().first();
-
-                _saveToFile(csFilePath);
+            cQString csFilePath = fdlgDialog.selectedFiles().first();
+            _saveToFile(csFilePath);
             }
             break;
-        default: {
-                Q_ASSERT(false);
-            }
+        default:
+            Q_ASSERT(false);
             break;
     }
 }
@@ -111,13 +105,11 @@ CDbImage::remove() {
 
         cint ciRv = msgBox.exec();
         switch (ciRv) {
-            case QMessageBox::Yes: {
-                    // yes, remove
-                }
+            case QMessageBox::Yes:
+                // yes, remove
                 break;
-            default: {
-                    return;
-                }
+            default:
+                return;
                 break;
         }
     }

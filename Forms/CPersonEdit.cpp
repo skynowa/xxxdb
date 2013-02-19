@@ -30,9 +30,9 @@ CPersonEdit::CPersonEdit(
     _m_ciCurrentRow(a_currentRow),
     _m_dbImage     ()
 {
-    Q_ASSERT(NULL != _m_tmModel);
-    Q_ASSERT(NULL == _m_dmMapper);
-    Q_ASSERT(- 1  <  _m_ciCurrentRow);
+    Q_ASSERT(NULL != a_parent);
+    Q_ASSERT(NULL != a_tableModel);
+    Q_ASSERT(- 1  <  a_currentRow);
 
     _construct();
 }
@@ -157,8 +157,13 @@ CPersonEdit::_initMain() {
         {
             db_controls_t::ConstIterator cit;
 
-            for (cit = _m_hsDbControls.begin(); cit != _m_hsDbControls.end(); ++ cit) {
-                _m_dmMapper->addMapping(cit.key(), _m_tmModel->fieldIndex(cit.value()));
+            for (cit  = _m_hsDbControls.begin();
+                 cit != _m_hsDbControls.end();
+                 ++ cit)
+            {
+                QWidget *widget  = cit.key();
+                cint     section = _m_tmModel->fieldIndex(cit.value());
+                _m_dmMapper->addMapping(widget, section);
             }
         }
 
@@ -212,26 +217,21 @@ CPersonEdit::slot_bbxButtons_OnClicked(
     QDialogButtonBox::StandardButton sbType =
             m_Ui.bbxButtons->standardButton(a_button);
     switch (sbType) {
-        case QDialogButtonBox::Reset: {
-                _resetAll();
-            }
+        case QDialogButtonBox::Reset:
+            _resetAll();
             break;
-        case QDialogButtonBox::Ok: {
-                _saveAll();
-                close();
-            }
+        case QDialogButtonBox::Ok:
+            _saveAll();
+            close();
             break;
-        case QDialogButtonBox::Cancel: {
-                close();
-            }
+        case QDialogButtonBox::Cancel:
+            close();
             break;
-        case QDialogButtonBox::Apply: {
-                _saveAll();
-            }
+        case QDialogButtonBox::Apply:
+            _saveAll();
             break;
-        default: {
-                Q_ASSERT(false);
-            }
+        default:
+            Q_ASSERT(false);
             break;
     }
 }
