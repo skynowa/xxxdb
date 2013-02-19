@@ -302,8 +302,14 @@ CMain::_initModel() {
         {
             cdb_controls_t::ConstIterator cit;
 
-            for (cit = _m_hsDbControls.begin(); cit != _m_hsDbControls.end(); ++ cit) {
-                _m_dmMapper->addMapping(cit.key(), _m_tmModel->fieldIndex( cit.value() ));
+            for (cit  = _m_hsDbControls.constBegin();
+                 cit != _m_hsDbControls.constEnd();
+                 ++ cit)
+            {
+                QWidget *widget  = cit.key();
+                cint     section = _m_tmModel->fieldIndex( cit.value() );
+
+                _m_dmMapper->addMapping(widget, section);
             }
         }
     }
