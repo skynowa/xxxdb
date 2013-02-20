@@ -6,14 +6,14 @@
 
 #ifndef PickupDB_CPhotoAlbumH
 #define PickupDB_CPhotoAlbumH
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 #include "ui_CPhotoAlbum.h"
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
 #include "../Classes/CDbImage.h"
 #include "../Classes/CImageItem.h"
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 class CPhotoAlbum :
     public QMainWindow
 {
@@ -66,5 +66,5 @@ private Q_SLOTS:
     // photo
     void               photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
 };
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH

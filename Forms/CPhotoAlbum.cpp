@@ -10,12 +10,12 @@
 #include "../Classes/CDelegateDbImage.h"
 
 
-/******************************************************************************
+/*******************************************************************************
 *   public
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CPhotoAlbum::CPhotoAlbum(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
@@ -32,12 +32,12 @@ CPhotoAlbum::CPhotoAlbum(
 
     _construct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 /* virtual */
 CPhotoAlbum::~CPhotoAlbum() {
     _destruct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 bool
 CPhotoAlbum::eventFilter(
     QObject *a_obj,
@@ -57,7 +57,7 @@ CPhotoAlbum::eventFilter(
 
     return QObject::eventFilter(a_obj, a_event);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::showEvent(
     QShowEvent *a_event
@@ -71,7 +71,7 @@ CPhotoAlbum::showEvent(
         int iPrimaryIndex = - 1;
         {
             QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-            iPrimaryIndex = srRecord.value(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
+            iPrimaryIndex = srRecord.value(DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
         }
 
         // set primary image index
@@ -83,7 +83,7 @@ CPhotoAlbum::showEvent(
         }
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::resizeEvent(
     QResizeEvent *a_event
@@ -112,26 +112,26 @@ CPhotoAlbum::resizeEvent(
         }
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::_construct() {
     _initMain();
     _initActions();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::_destruct() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::_initMain() {
     m_Ui.setupUi(this);
@@ -140,7 +140,7 @@ CPhotoAlbum::_initMain() {
 
     // _m_viDbItems
     {
-        csize_t ciPhotoNum = CONFIG_PHOTO_NUM;
+        csize_t ciPhotoNum = PHOTO_NUM;
 
         QLabel * imageLabels[ciPhotoNum] = {
             m_Ui.lblPhotoMini_1,
@@ -156,16 +156,16 @@ CPhotoAlbum::_initMain() {
         };
 
         cQString dbFieldNames[ciPhotoNum] = {
-            CONFIG_DB_F_PHOTOS_1,
-            CONFIG_DB_F_PHOTOS_2,
-            CONFIG_DB_F_PHOTOS_3,
-            CONFIG_DB_F_PHOTOS_4,
-            CONFIG_DB_F_PHOTOS_5,
-            CONFIG_DB_F_PHOTOS_6,
-            CONFIG_DB_F_PHOTOS_7,
-            CONFIG_DB_F_PHOTOS_8,
-            CONFIG_DB_F_PHOTOS_9,
-            CONFIG_DB_F_PHOTOS_10
+            DB_F_PHOTOS_1,
+            DB_F_PHOTOS_2,
+            DB_F_PHOTOS_3,
+            DB_F_PHOTOS_4,
+            DB_F_PHOTOS_5,
+            DB_F_PHOTOS_6,
+            DB_F_PHOTOS_7,
+            DB_F_PHOTOS_8,
+            DB_F_PHOTOS_9,
+            DB_F_PHOTOS_10
         };
 
         // fill _m_viDbItems
@@ -186,11 +186,11 @@ CPhotoAlbum::_initMain() {
     // map DB controls
     foreach (CImageItem *cit, _m_viDbItems) {
         (QDataWidgetMapper *) _dbWidgetMap(cit->imageLabel, cit->dbFieldName,
-                                           CONFIG_PHOTO_MINI_SIZE);
+                                           PHOTO_MINI_SIZE);
         cit->imageLabel->installEventFilter(this);
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::_initActions() {
     // group "File"
@@ -223,7 +223,7 @@ CPhotoAlbum::_initActions() {
                 this,                     SLOT  ( slot_OnSetPrimary() ));
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 QDataWidgetMapper *
 CPhotoAlbum::_dbWidgetMap(
     QWidget       *a_widget,
@@ -246,33 +246,33 @@ CPhotoAlbum::_dbWidgetMap(
 
     return wmRv;
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "File"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnExit() {
     close();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "Edit"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnSaveAs() {
     CImageItem::currentDbImage->saveToFile();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnFirst() {
     QLabel   *lblPhotoMini  = _m_viDbItems.first()->imageLabel;
@@ -280,7 +280,7 @@ CPhotoAlbum::slot_OnFirst() {
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnPrior() {
     if (0 >= CImageItem::currentDbIndex) {
@@ -294,7 +294,7 @@ CPhotoAlbum::slot_OnPrior() {
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnNext() {
     if (CImageItem::currentDbIndex >= _m_viDbItems.count() - 1) {
@@ -308,7 +308,7 @@ CPhotoAlbum::slot_OnNext() {
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnLast() {
     QLabel  *lblPhotoMini  = _m_viDbItems.last()->imageLabel;
@@ -316,7 +316,7 @@ CPhotoAlbum::slot_OnLast() {
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnTo() {
     cint ciMinValue    = 1;
@@ -324,7 +324,7 @@ CPhotoAlbum::slot_OnTo() {
 
     cint ciTargetIndex = QInputDialog::getInt(
                             this,
-                            CONFIG_APP_NAME, "Go to photo:",
+                            APP_NAME, "Go to photo:",
                             CImageItem::currentDbIndex + 1,
                             ciMinValue, ciMaxValue) - 1;
 
@@ -333,43 +333,43 @@ CPhotoAlbum::slot_OnTo() {
 
     photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnInsert() {
     CImageItem::currentDbImage->loadFromFile();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnRemove() {
     CImageItem::currentDbImage->remove();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnEdit() {
     CImageItem::currentDbImage->loadFromFile();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnSetPrimary() {
     cint ciPrimaryIndex = CImageItem::currentDbIndex;
 
     // write to DB
     QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-    srRecord.setValue(CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD, ciPrimaryIndex);
+    srRecord.setValue(DB_F_PHOTOS_PRIMARY_DBFIELD, ciPrimaryIndex);
 
     _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
     bool bRv = _m_tmModel->submit();
     Q_ASSERT(true == bRv);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   photo
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPhotoAlbum::photoMini_OnClicked(
     QLabel   *a_label,
@@ -401,7 +401,7 @@ CPhotoAlbum::photoMini_OnClicked(
                                 .value(a_dbFieldName).toByteArray();
 
         if (0 >= baPhoto.size()) {
-            m_Ui.lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
+            m_Ui.lblPhoto->setText(tr(TEXT_NO_PHOTO));
         } else {
             QImage imgPhoto;
 
@@ -421,4 +421,4 @@ CPhotoAlbum::photoMini_OnClicked(
         }
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------

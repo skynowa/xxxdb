@@ -12,12 +12,12 @@
 #include "../Classes/CDelegateDbImage.h"
 
 
-/******************************************************************************
+/*******************************************************************************
 *   public
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CMain::CMain(
     QWidget    *parent,
     Qt::WFlags  flags
@@ -36,32 +36,32 @@ CMain::CMain(
 {
     _construct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 /*virtual*/
 CMain::~CMain() {
     _destruct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_construct() {
     _initMain();
     _initModel();
     _initActions();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_destruct() {
     _settingsSave();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_initMain() {
     m_Ui.setupUi(this);
@@ -71,17 +71,17 @@ CMain::_initMain() {
     {
         m_sAppName     = QCoreApplication::applicationName();
         m_sAppDir      = qApp->applicationDirPath();
-        m_sDbDir       = m_sAppDir + QDir::separator() + CONFIG_DB_DIR_NAME;
-        m_sDbBackupDir = m_sDbDir  + QDir::separator() + CONFIG_BACKUP_DIR_NAME;
+        m_sDbDir       = m_sAppDir + QDir::separator() + DB_DIR_NAME;
+        m_sDbBackupDir = m_sDbDir  + QDir::separator() + BACKUP_DIR_NAME;
 
         QDir().mkpath(m_sDbDir);
     }
 
     // CMain
     {
-        setWindowIcon(QIcon(CONFIG_RES_MAIN_ICON));
-        setWindowTitle(CONFIG_APP_NAME);
-        setGeometry(0, 0, CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT);
+        setWindowIcon(QIcon(RES_MAIN_ICON));
+        setWindowTitle(APP_NAME);
+        setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
         CUtils::widgetAlignCenter(this);
     }
 
@@ -109,7 +109,7 @@ CMain::_initMain() {
     // lblPhoto
     {
         m_Ui.lblPhoto->clear();
-        m_Ui.lblPhoto->setFixedSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT);
+        m_Ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
         m_Ui.lblPhoto->setScaledContents(false);
         m_Ui.lblPhoto->setBackgroundRole(QPalette::Base);
         m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
@@ -119,7 +119,7 @@ CMain::_initMain() {
 
     _settingsLoad();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_initModel() {
     //--------------------------------------------------
@@ -132,7 +132,7 @@ CMain::_initModel() {
         _m_dbDatabase.setDatabaseName(
                         m_sDbDir + QDir::separator() +
                         m_sAppName +
-                        CONFIG_DB_FILE_EXT);
+                        DB_FILE_EXT);
 
         bRv = _m_dbDatabase.open();
         qCHECK_REF(bRv, _m_dbDatabase);
@@ -143,101 +143,101 @@ CMain::_initModel() {
 
             cQString csSql = \
                 "CREATE TABLE IF NOT EXISTS "
-                "    " CONFIG_DB_T_PERSON
+                "    " DB_T_PERSON
                 "(   "
-                "    " CONFIG_DB_F_ID                     " INTEGER PRIMARY KEY "
+                "    " DB_F_ID                     " INTEGER PRIMARY KEY "
                                                           " AUTOINCREMENT "
                                                           " NOT NULL UNIQUE, "
 
                 // Main
-                "    " CONFIG_DB_F_MAIN_NICK              " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_SURNAME           " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_NAME              " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_PATRONYMIC        " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_AGE               " INT, "
-                "    " CONFIG_DB_F_MAIN_HEIGHT            " INT, "
-                "    " CONFIG_DB_F_MAIN_WEIGHT            " INT, "
-                "    " CONFIG_DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_APPEARANCE        " VARCHAR (64), "
-                "    " CONFIG_DB_F_MAIN_AGREEMENT         " VARCHAR (64), "
+                "    " DB_F_MAIN_NICK              " VARCHAR (64), "
+                "    " DB_F_MAIN_SURNAME           " VARCHAR (64), "
+                "    " DB_F_MAIN_NAME              " VARCHAR (64), "
+                "    " DB_F_MAIN_PATRONYMIC        " VARCHAR (64), "
+                "    " DB_F_MAIN_AGE               " INT, "
+                "    " DB_F_MAIN_HEIGHT            " INT, "
+                "    " DB_F_MAIN_WEIGHT            " INT, "
+                "    " DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
+                "    " DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
+                "    " DB_F_MAIN_APPEARANCE        " VARCHAR (64), "
+                "    " DB_F_MAIN_AGREEMENT         " VARCHAR (64), "
 
                 // Phones
-                "    " CONFIG_DB_F_PHONES_MOBILE1         " VARCHAR (64), "
-                "    " CONFIG_DB_F_PHONES_MOBILE2         " VARCHAR (64), "
-                "    " CONFIG_DB_F_PHONES_MOBILE3         " VARCHAR (64), "
-                "    " CONFIG_DB_F_PHONES_HOME            " VARCHAR (64), "
-                "    " CONFIG_DB_F_PHONES_JOB             " VARCHAR (64), "
-                "    " CONFIG_DB_F_PHONES_OTHER           " VARCHAR (256), "
+                "    " DB_F_PHONES_MOBILE1         " VARCHAR (64), "
+                "    " DB_F_PHONES_MOBILE2         " VARCHAR (64), "
+                "    " DB_F_PHONES_MOBILE3         " VARCHAR (64), "
+                "    " DB_F_PHONES_HOME            " VARCHAR (64), "
+                "    " DB_F_PHONES_JOB             " VARCHAR (64), "
+                "    " DB_F_PHONES_OTHER           " VARCHAR (256), "
 
                 // Address
-                "    " CONFIG_DB_F_ADDRESS_COUNTRY        " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_CODE           " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_CITY           " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_DISTRICT       " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_STREET         " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_HOUSE          " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_PORCH          " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_FLOOR          " VARCHAR (64), "
-                "    " CONFIG_DB_F_ADDRESS_APARTMENT      " VARCHAR (64), "
+                "    " DB_F_ADDRESS_COUNTRY        " VARCHAR (64), "
+                "    " DB_F_ADDRESS_CODE           " VARCHAR (64), "
+                "    " DB_F_ADDRESS_CITY           " VARCHAR (64), "
+                "    " DB_F_ADDRESS_DISTRICT       " VARCHAR (64), "
+                "    " DB_F_ADDRESS_STREET         " VARCHAR (64), "
+                "    " DB_F_ADDRESS_HOUSE          " VARCHAR (64), "
+                "    " DB_F_ADDRESS_PORCH          " VARCHAR (64), "
+                "    " DB_F_ADDRESS_FLOOR          " VARCHAR (64), "
+                "    " DB_F_ADDRESS_APARTMENT      " VARCHAR (64), "
 
                 // E-mail
-                "    " CONFIG_DB_F_EMAIL_EMAIL            " VARCHAR (256), "
+                "    " DB_F_EMAIL_EMAIL            " VARCHAR (256), "
 
                 // Web
-                "    " CONFIG_DB_F_WEB_WEB                " VARCHAR (256), "
+                "    " DB_F_WEB_WEB                " VARCHAR (256), "
 
                 // Messengers
-                "    " CONFIG_DB_F_MESSENGERS_ICQ         " VARCHAR (64), "
-                "    " CONFIG_DB_F_MESSENGERS_SKYPE       " VARCHAR (64), "
+                "    " DB_F_MESSENGERS_ICQ         " VARCHAR (64), "
+                "    " DB_F_MESSENGERS_SKYPE       " VARCHAR (64), "
 
                 // Job
-                "    " CONFIG_DB_F_JOB_PROFESSION         " VARCHAR (64), "
-                "    " CONFIG_DB_F_JOB_ADDRESS            " VARCHAR (64), "
-                "    " CONFIG_DB_F_JOB_SALARY             " VARCHAR (64), "
-                "    " CONFIG_DB_F_JOB_COMPANY            " VARCHAR (64), "
+                "    " DB_F_JOB_PROFESSION         " VARCHAR (64), "
+                "    " DB_F_JOB_ADDRESS            " VARCHAR (64), "
+                "    " DB_F_JOB_SALARY             " VARCHAR (64), "
+                "    " DB_F_JOB_COMPANY            " VARCHAR (64), "
 
                 // Dates
-                "    " CONFIG_DB_F_DATES_BIRTHDAY         " DATETIME, "
-                "    " CONFIG_DB_F_DATES_BIRTHDAYFATHER   " DATETIME, "
-                "    " CONFIG_DB_F_DATES_BIRTHDAYMOTHER   " DATETIME, "
-                "    " CONFIG_DB_F_DATES_DAYDATING        " DATETIME, "
-                "    " CONFIG_DB_F_DATES_DAYFIRSTKISS     " DATETIME, "
-                "    " CONFIG_DB_F_DATES_DAYFIRSTSEX      " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAY         " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAYFATHER   " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAYMOTHER   " DATETIME, "
+                "    " DB_F_DATES_DAYDATING        " DATETIME, "
+                "    " DB_F_DATES_DAYFIRSTKISS     " DATETIME, "
+                "    " DB_F_DATES_DAYFIRSTSEX      " DATETIME, "
 
                 // Interests
-                "    " CONFIG_DB_F_INTERESTS_HOBBY        " VARCHAR (64), "
-                "    " CONFIG_DB_F_INTERESTS_SPORTS       " VARCHAR (64), "
-                "    " CONFIG_DB_F_INTERESTS_SMOKING      " VARCHAR (64), "
-                "    " CONFIG_DB_F_INTERESTS_ALCOHOL      " VARCHAR (64), "
-                "    " CONFIG_DB_F_INTERESTS_DRUGS        " VARCHAR (64), "
+                "    " DB_F_INTERESTS_HOBBY        " VARCHAR (64), "
+                "    " DB_F_INTERESTS_SPORTS       " VARCHAR (64), "
+                "    " DB_F_INTERESTS_SMOKING      " VARCHAR (64), "
+                "    " DB_F_INTERESTS_ALCOHOL      " VARCHAR (64), "
+                "    " DB_F_INTERESTS_DRUGS        " VARCHAR (64), "
 
                 // TODO: Periods
 
                 // Etc
-                "    " CONFIG_DB_F_ETC_DATECREATION       " DATETIME, "
-                "    " CONFIG_DB_F_ETC_DATELASTCHANGE     " DATETIME, "
+                "    " DB_F_ETC_DATECREATION       " DATETIME, "
+                "    " DB_F_ETC_DATELASTCHANGE     " DATETIME, "
 
                 // Notes
-                "    " CONFIG_DB_F_NOTES_NOTES            " VARCHAR (256), "
+                "    " DB_F_NOTES_NOTES            " VARCHAR (256), "
 
                 // Photos
-                "    " CONFIG_DB_F_PHOTOS_1               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_2               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_3               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_4               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_5               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_6               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_7               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_8               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_9               " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_10              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_11              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_12              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_13              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_14              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_15              " BLOB, "
-                "    " CONFIG_DB_F_PHOTOS_PRIMARY_DBFIELD " INT "
+                "    " DB_F_PHOTOS_1               " BLOB, "
+                "    " DB_F_PHOTOS_2               " BLOB, "
+                "    " DB_F_PHOTOS_3               " BLOB, "
+                "    " DB_F_PHOTOS_4               " BLOB, "
+                "    " DB_F_PHOTOS_5               " BLOB, "
+                "    " DB_F_PHOTOS_6               " BLOB, "
+                "    " DB_F_PHOTOS_7               " BLOB, "
+                "    " DB_F_PHOTOS_8               " BLOB, "
+                "    " DB_F_PHOTOS_9               " BLOB, "
+                "    " DB_F_PHOTOS_10              " BLOB, "
+                "    " DB_F_PHOTOS_11              " BLOB, "
+                "    " DB_F_PHOTOS_12              " BLOB, "
+                "    " DB_F_PHOTOS_13              " BLOB, "
+                "    " DB_F_PHOTOS_14              " BLOB, "
+                "    " DB_F_PHOTOS_15              " BLOB, "
+                "    " DB_F_PHOTOS_PRIMARY_DBFIELD " INT "
                 ")";
 
             bRv = qryInfo.exec(csSql);
@@ -251,7 +251,7 @@ CMain::_initModel() {
         _m_tmModel = new QSqlTableModel(this, _m_dbDatabase);
         Q_ASSERT(NULL != _m_tmModel);
 
-        _m_tmModel->setTable(CONFIG_DB_T_PERSON);
+        _m_tmModel->setTable(DB_T_PERSON);
     #if 0
         _m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
         _m_tmModel->setHeaderData(1, Qt::Horizontal, tr("Name"));
@@ -262,10 +262,10 @@ CMain::_initModel() {
         _m_tmModel->select();
 
         m_Ui.tvInfo->setModel(_m_tmModel);
-        m_Ui.tvInfo->hideColumn(0); // don't show the CONFIG_DB_F_ID
+        m_Ui.tvInfo->hideColumn(0); // don't show the DB_F_ID
         // m_Ui.tvInfo->setColumnWidth(0, 40);
         m_Ui.tvInfo->verticalHeader()->setVisible(true);
-        m_Ui.tvInfo->verticalHeader()->setDefaultSectionSize(CONFIG_TABLEVIEW_ROW_HEIGHT);
+        m_Ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
         m_Ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
         m_Ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
         m_Ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
@@ -287,15 +287,15 @@ CMain::_initModel() {
         _m_dmMapper->setItemDelegate(
                         new CDelegateDbImage(
                                 _m_dmMapper,
-                                _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
-                                CONFIG_PHOTO_SIZE,
+                                _m_tmModel->fieldIndex(DB_F_PHOTOS_1),
+                                PHOTO_SIZE,
                                 m_Ui.lblPhotoSize));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
         // DB controls to QMap
         {
              // Photos
-            _m_hsDbControls.insert(m_Ui.lblPhoto, CONFIG_DB_F_PHOTOS_1);
+            _m_hsDbControls.insert(m_Ui.lblPhoto, DB_F_PHOTOS_1);
         }
 
         // map DB controls
@@ -334,7 +334,7 @@ CMain::_initModel() {
         m_navNavigator.last();
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_initActions() {
     // group "File"
@@ -394,48 +394,48 @@ CMain::_initActions() {
                 this,                     SLOT  ( slot_OnAbout() ));
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "File"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnExit() {
     close();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "Edit"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnFirst() {
     m_navNavigator.first();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnPrior() {
     m_navNavigator.prior();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnNext() {
     m_navNavigator.next();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnLast() {
     m_navNavigator.last();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnTo() {
     cint ciCurrentRow = m_navNavigator.view()->currentIndex().row() + 1;
@@ -444,13 +444,13 @@ CMain::slot_OnTo() {
 
     cint ciTargetRow = QInputDialog::getInt(
                         this,
-                        CONFIG_APP_NAME, tr("Go to row:"),
+                        APP_NAME, tr("Go to row:"),
                         ciCurrentRow,
                         ciMinValue, ciMaxValue) - 1;
 
     m_navNavigator.to(ciTargetRow);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnInsert() {
     m_navNavigator.insert();
@@ -467,12 +467,12 @@ CMain::slot_OnInsert() {
     // set current index
     m_navNavigator.to(ciCurrentRow);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnRemove() {
     m_navNavigator.remove();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
     cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
@@ -487,86 +487,86 @@ CMain::slot_OnEdit() {
     // set current index
     m_navNavigator.to(ciCurrentRow);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnPost() {
     m_navNavigator.post();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnCancel() {
     m_navNavigator.cancel();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnRefresh() {
     m_navNavigator.refresh();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "Find"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnSearch() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "View"
 *
-******************************************************************************/
+*******************************************************************************/
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "Options"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnSettings() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   group "Help"
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnFaq() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnAbout() {
     cQString csMsg = QString(tr(
         "<p>"
         "<b>%1</b> - accounting software for girls"
         "</p>"))
-            .arg(CONFIG_APP_NAME);
+            .arg(APP_NAME);
 
-    QMessageBox::about(this, tr("About ") + CONFIG_APP_NAME, csMsg);
+    QMessageBox::about(this, tr("About ") + APP_NAME, csMsg);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   photo
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
     cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
@@ -577,15 +577,15 @@ CMain::slot_OnPhotoAlbum() {
     m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, ciCurrentRow);
     m_wndPhotoAlbum->show();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_settingsLoad() {
     QSize  szSize;
@@ -593,12 +593,12 @@ CMain::_settingsLoad() {
 
     {
         QSettings stSettings(
-                    QCoreApplication::applicationName() + CONFIG_INI_FILE_EXT,
+                    QCoreApplication::applicationName() + INI_FILE_EXT,
                     QSettings::IniFormat,
                     this);
 
         stSettings.beginGroup("main");
-        szSize     = stSettings.value("size",     QSize(CONFIG_APP_WIDTH, CONFIG_APP_HEIGHT)).toSize();
+        szSize     = stSettings.value("size",     QSize(APP_WIDTH, APP_HEIGHT)).toSize();
         pnPosition = stSettings.value("position", QPoint(200, 200)).toPoint();
         stSettings.endGroup();
     }
@@ -609,11 +609,11 @@ CMain::_settingsLoad() {
         move(pnPosition);
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CMain::_settingsSave() {
     QSettings stSettings(
-                QCoreApplication::applicationName() + CONFIG_INI_FILE_EXT,
+                QCoreApplication::applicationName() + INI_FILE_EXT,
                 QSettings::IniFormat,
                 this);
 
@@ -622,4 +622,4 @@ CMain::_settingsSave() {
     stSettings.setValue("size",     size());
     stSettings.endGroup();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------

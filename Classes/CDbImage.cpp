@@ -7,12 +7,12 @@
 #include "CDbImage.h"
 
 
-/******************************************************************************
+/*******************************************************************************
 *   public
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CDbImage::CDbImage(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
@@ -30,11 +30,11 @@ CDbImage::CDbImage(
 {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CDbImage::~CDbImage() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::loadFromFile() {
     QFileDialog fdlgDialog(_m_wdParent);
@@ -44,7 +44,7 @@ CDbImage::loadFromFile() {
 
     QStringList slFilters;
 
-    slFilters << "Image files (" CONFIG_IMAGE_FORMATS ")";
+    slFilters << "Image files (" IMAGE_FORMATS ")";
     slFilters << "All   files (*)";
 
     fdlgDialog.setNameFilters(slFilters);
@@ -65,7 +65,7 @@ CDbImage::loadFromFile() {
             break;
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::saveToFile() {
     QFileDialog fdlgDialog(_m_wdParent);
@@ -73,7 +73,7 @@ CDbImage::saveToFile() {
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
     fdlgDialog.setFileMode(QFileDialog::AnyFile);
     // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
-    // fdlgDialog.setDefaultSuffix(CONFIG_SHORTCUT_EXT);
+    // fdlgDialog.setDefaultSuffix(SHORTCUT_EXT);
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
@@ -90,7 +90,7 @@ CDbImage::saveToFile() {
             break;
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::remove() {
     // ensure for removing
@@ -130,15 +130,15 @@ CDbImage::remove() {
         }
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::_loadFromFile(
     cQString &a_filePath
@@ -150,7 +150,7 @@ CDbImage::_loadFromFile(
 
     // file to buffer
     {
-        if (true == CONFIG_IMAGE_IS_CONVERT) {
+        if (true == IMAGE_IS_CONVERT) {
             CUtils::imageConvert(a_filePath, &_m_baBuffer);
         } else {
             QFile file(a_filePath);
@@ -167,7 +167,7 @@ CDbImage::_loadFromFile(
     // _m_lblLabel
     {
         if (0 >= _m_baBuffer.size()) {
-            _m_lblLabel->setText(tr(CONFIG_TEXT_NO_PHOTO));
+            _m_lblLabel->setText(tr(TEXT_NO_PHOTO));
         } else {
             QImage imgPhoto;
 
@@ -175,7 +175,7 @@ CDbImage::_loadFromFile(
             Q_ASSERT(true == bRv);
 
             QImage  imgPhotoScaled = imgPhoto.scaled(
-                                        QSize(CONFIG_PHOTO_WIDTH, CONFIG_PHOTO_HEIGHT),
+                                        QSize(PHOTO_WIDTH, PHOTO_HEIGHT),
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
@@ -186,7 +186,7 @@ CDbImage::_loadFromFile(
 
     _flush();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::_saveToFile(
     cQString &a_filePath
@@ -203,7 +203,7 @@ CDbImage::_saveToFile(
     int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
     Q_ASSERT(0 < iRv);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDbImage::_flush() {
     if (0 < _m_baBuffer.size()) {
@@ -217,5 +217,5 @@ CDbImage::_flush() {
         _m_baBuffer.clear();
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 

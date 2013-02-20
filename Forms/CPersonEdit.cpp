@@ -11,12 +11,12 @@
 #include "CPhotoAlbum.h"
 
 
-/******************************************************************************
+/*******************************************************************************
 *   public
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CPersonEdit::CPersonEdit(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
@@ -36,30 +36,30 @@ CPersonEdit::CPersonEdit(
 
     _construct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 /* virtual */
 CPersonEdit::~CPersonEdit() {
     _destruct();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::_construct() {
     _initMain();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::_destruct() {
 
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::_initMain() {
     m_Ui.setupUi(this);
@@ -70,87 +70,87 @@ CPersonEdit::_initMain() {
         _m_dmMapper->setModel(_m_tmModel);
         _m_dmMapper->setItemDelegate(new CDelegateDbImage(
                                             _m_dmMapper,
-                                            _m_tmModel->fieldIndex(CONFIG_DB_F_PHOTOS_1),
-                                            CONFIG_PHOTO_SIZE,
+                                            _m_tmModel->fieldIndex(DB_F_PHOTOS_1),
+                                            PHOTO_SIZE,
                                             NULL));
         _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
 
         // DB controls to QMap
         {
             // Main
-            _m_hsDbControls.insert(m_Ui.cboNick->lineEdit(),       CONFIG_DB_F_MAIN_NICK);
-            _m_hsDbControls.insert(m_Ui.cboSurname->lineEdit(),    CONFIG_DB_F_MAIN_SURNAME);
-            _m_hsDbControls.insert(m_Ui.cboName->lineEdit(),       CONFIG_DB_F_MAIN_NAME);
-            _m_hsDbControls.insert(m_Ui.cboPatronymic->lineEdit(), CONFIG_DB_F_MAIN_PATRONYMIC);
-            _m_hsDbControls.insert(m_Ui.cboAge->lineEdit(),        CONFIG_DB_F_MAIN_AGE);
-            _m_hsDbControls.insert(m_Ui.cboHeight->lineEdit(),     CONFIG_DB_F_MAIN_HEIGHT);
-            _m_hsDbControls.insert(m_Ui.cboWeight->lineEdit(),     CONFIG_DB_F_MAIN_WEIGHT);
-            _m_hsDbControls.insert(m_Ui.cboHairLength->lineEdit(), CONFIG_DB_F_MAIN_HAIRLENGTH);
-            _m_hsDbControls.insert(m_Ui.cboHairColor->lineEdit(),  CONFIG_DB_F_MAIN_HAIRCOLOR);
-            _m_hsDbControls.insert(m_Ui.cboAppearance->lineEdit(), CONFIG_DB_F_MAIN_APPEARANCE);
-            _m_hsDbControls.insert(m_Ui.cboAgreement->lineEdit(),  CONFIG_DB_F_MAIN_AGREEMENT);
+            _m_hsDbControls.insert(m_Ui.cboNick->lineEdit(),       DB_F_MAIN_NICK);
+            _m_hsDbControls.insert(m_Ui.cboSurname->lineEdit(),    DB_F_MAIN_SURNAME);
+            _m_hsDbControls.insert(m_Ui.cboName->lineEdit(),       DB_F_MAIN_NAME);
+            _m_hsDbControls.insert(m_Ui.cboPatronymic->lineEdit(), DB_F_MAIN_PATRONYMIC);
+            _m_hsDbControls.insert(m_Ui.cboAge->lineEdit(),        DB_F_MAIN_AGE);
+            _m_hsDbControls.insert(m_Ui.cboHeight->lineEdit(),     DB_F_MAIN_HEIGHT);
+            _m_hsDbControls.insert(m_Ui.cboWeight->lineEdit(),     DB_F_MAIN_WEIGHT);
+            _m_hsDbControls.insert(m_Ui.cboHairLength->lineEdit(), DB_F_MAIN_HAIRLENGTH);
+            _m_hsDbControls.insert(m_Ui.cboHairColor->lineEdit(),  DB_F_MAIN_HAIRCOLOR);
+            _m_hsDbControls.insert(m_Ui.cboAppearance->lineEdit(), DB_F_MAIN_APPEARANCE);
+            _m_hsDbControls.insert(m_Ui.cboAgreement->lineEdit(),  DB_F_MAIN_AGREEMENT);
 
             // Phones
-            _m_hsDbControls.insert(m_Ui.cboMobile1->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE1);
-            _m_hsDbControls.insert(m_Ui.cboMobile2->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE2);
-            _m_hsDbControls.insert(m_Ui.cboMobile3->lineEdit(),    CONFIG_DB_F_PHONES_MOBILE3);
-            _m_hsDbControls.insert(m_Ui.cboPhoneHome->lineEdit(),  CONFIG_DB_F_PHONES_HOME);
-            _m_hsDbControls.insert(m_Ui.cboPhoneJob->lineEdit(),   CONFIG_DB_F_PHONES_JOB);
-            _m_hsDbControls.insert(m_Ui.tedtPhoneAdditional,       CONFIG_DB_F_PHONES_OTHER);
+            _m_hsDbControls.insert(m_Ui.cboMobile1->lineEdit(),    DB_F_PHONES_MOBILE1);
+            _m_hsDbControls.insert(m_Ui.cboMobile2->lineEdit(),    DB_F_PHONES_MOBILE2);
+            _m_hsDbControls.insert(m_Ui.cboMobile3->lineEdit(),    DB_F_PHONES_MOBILE3);
+            _m_hsDbControls.insert(m_Ui.cboPhoneHome->lineEdit(),  DB_F_PHONES_HOME);
+            _m_hsDbControls.insert(m_Ui.cboPhoneJob->lineEdit(),   DB_F_PHONES_JOB);
+            _m_hsDbControls.insert(m_Ui.tedtPhoneAdditional,       DB_F_PHONES_OTHER);
 
             // Address
-            _m_hsDbControls.insert(m_Ui.cboCountry->lineEdit(),    CONFIG_DB_F_ADDRESS_COUNTRY);
-            _m_hsDbControls.insert(m_Ui.cboCode->lineEdit(),       CONFIG_DB_F_ADDRESS_CODE);
-            _m_hsDbControls.insert(m_Ui.cboCity->lineEdit(),       CONFIG_DB_F_ADDRESS_CITY);
-            _m_hsDbControls.insert(m_Ui.cboDistrict->lineEdit(),   CONFIG_DB_F_ADDRESS_DISTRICT);
-            _m_hsDbControls.insert(m_Ui.cboStreet->lineEdit(),     CONFIG_DB_F_ADDRESS_STREET);
-            _m_hsDbControls.insert(m_Ui.cboHouse->lineEdit(),      CONFIG_DB_F_ADDRESS_HOUSE);
-            _m_hsDbControls.insert(m_Ui.cboPorch->lineEdit(),      CONFIG_DB_F_ADDRESS_PORCH);
-            _m_hsDbControls.insert(m_Ui.cboFloor->lineEdit(),      CONFIG_DB_F_ADDRESS_FLOOR);
-            _m_hsDbControls.insert(m_Ui.cboApartment->lineEdit(),  CONFIG_DB_F_ADDRESS_APARTMENT);
+            _m_hsDbControls.insert(m_Ui.cboCountry->lineEdit(),    DB_F_ADDRESS_COUNTRY);
+            _m_hsDbControls.insert(m_Ui.cboCode->lineEdit(),       DB_F_ADDRESS_CODE);
+            _m_hsDbControls.insert(m_Ui.cboCity->lineEdit(),       DB_F_ADDRESS_CITY);
+            _m_hsDbControls.insert(m_Ui.cboDistrict->lineEdit(),   DB_F_ADDRESS_DISTRICT);
+            _m_hsDbControls.insert(m_Ui.cboStreet->lineEdit(),     DB_F_ADDRESS_STREET);
+            _m_hsDbControls.insert(m_Ui.cboHouse->lineEdit(),      DB_F_ADDRESS_HOUSE);
+            _m_hsDbControls.insert(m_Ui.cboPorch->lineEdit(),      DB_F_ADDRESS_PORCH);
+            _m_hsDbControls.insert(m_Ui.cboFloor->lineEdit(),      DB_F_ADDRESS_FLOOR);
+            _m_hsDbControls.insert(m_Ui.cboApartment->lineEdit(),  DB_F_ADDRESS_APARTMENT);
 
             // E-mail
-            _m_hsDbControls.insert(m_Ui.tedtEmail,                 CONFIG_DB_F_EMAIL_EMAIL);
+            _m_hsDbControls.insert(m_Ui.tedtEmail,                 DB_F_EMAIL_EMAIL);
 
             // Web
-            _m_hsDbControls.insert(m_Ui.tedtWeb,                   CONFIG_DB_F_WEB_WEB);
+            _m_hsDbControls.insert(m_Ui.tedtWeb,                   DB_F_WEB_WEB);
 
             // Messengers
-            _m_hsDbControls.insert(m_Ui.cboIcq->lineEdit(),        CONFIG_DB_F_MESSENGERS_ICQ);
-            _m_hsDbControls.insert(m_Ui.cboSkype->lineEdit(),      CONFIG_DB_F_MESSENGERS_SKYPE);
+            _m_hsDbControls.insert(m_Ui.cboIcq->lineEdit(),        DB_F_MESSENGERS_ICQ);
+            _m_hsDbControls.insert(m_Ui.cboSkype->lineEdit(),      DB_F_MESSENGERS_SKYPE);
 
             // Job
-            _m_hsDbControls.insert(m_Ui.cboProfession->lineEdit(), CONFIG_DB_F_JOB_PROFESSION);
-            _m_hsDbControls.insert(m_Ui.cboAddress->lineEdit(),    CONFIG_DB_F_JOB_ADDRESS);
-            _m_hsDbControls.insert(m_Ui.cboSalary->lineEdit(),     CONFIG_DB_F_JOB_SALARY);
-            _m_hsDbControls.insert(m_Ui.cboCompany->lineEdit(),    CONFIG_DB_F_JOB_COMPANY);
+            _m_hsDbControls.insert(m_Ui.cboProfession->lineEdit(), DB_F_JOB_PROFESSION);
+            _m_hsDbControls.insert(m_Ui.cboAddress->lineEdit(),    DB_F_JOB_ADDRESS);
+            _m_hsDbControls.insert(m_Ui.cboSalary->lineEdit(),     DB_F_JOB_SALARY);
+            _m_hsDbControls.insert(m_Ui.cboCompany->lineEdit(),    DB_F_JOB_COMPANY);
 
             // Dates
-            _m_hsDbControls.insert(m_Ui.dtBirthday,                CONFIG_DB_F_DATES_BIRTHDAY);
-            _m_hsDbControls.insert(m_Ui.dtBirthdayFather,          CONFIG_DB_F_DATES_BIRTHDAYFATHER);
-            _m_hsDbControls.insert(m_Ui.dtBirthdayMother,          CONFIG_DB_F_DATES_BIRTHDAYMOTHER);
-            _m_hsDbControls.insert(m_Ui.dtDayDating,               CONFIG_DB_F_DATES_DAYDATING);
-            _m_hsDbControls.insert(m_Ui.dtDayFirstKiss,            CONFIG_DB_F_DATES_DAYFIRSTKISS);
-            _m_hsDbControls.insert(m_Ui.dtDayFirstSex,             CONFIG_DB_F_DATES_DAYFIRSTSEX);
+            _m_hsDbControls.insert(m_Ui.dtBirthday,                DB_F_DATES_BIRTHDAY);
+            _m_hsDbControls.insert(m_Ui.dtBirthdayFather,          DB_F_DATES_BIRTHDAYFATHER);
+            _m_hsDbControls.insert(m_Ui.dtBirthdayMother,          DB_F_DATES_BIRTHDAYMOTHER);
+            _m_hsDbControls.insert(m_Ui.dtDayDating,               DB_F_DATES_DAYDATING);
+            _m_hsDbControls.insert(m_Ui.dtDayFirstKiss,            DB_F_DATES_DAYFIRSTKISS);
+            _m_hsDbControls.insert(m_Ui.dtDayFirstSex,             DB_F_DATES_DAYFIRSTSEX);
 
             // Interests
-            _m_hsDbControls.insert(m_Ui.cboHobby->lineEdit(),      CONFIG_DB_F_INTERESTS_HOBBY);
-            _m_hsDbControls.insert(m_Ui.cboSports->lineEdit(),     CONFIG_DB_F_INTERESTS_SPORTS);
-            _m_hsDbControls.insert(m_Ui.cboSmoking->lineEdit(),    CONFIG_DB_F_INTERESTS_SMOKING);
-            _m_hsDbControls.insert(m_Ui.cboAlcohol->lineEdit(),    CONFIG_DB_F_INTERESTS_ALCOHOL);
-            _m_hsDbControls.insert(m_Ui.cboDrugs->lineEdit(),      CONFIG_DB_F_INTERESTS_DRUGS);
+            _m_hsDbControls.insert(m_Ui.cboHobby->lineEdit(),      DB_F_INTERESTS_HOBBY);
+            _m_hsDbControls.insert(m_Ui.cboSports->lineEdit(),     DB_F_INTERESTS_SPORTS);
+            _m_hsDbControls.insert(m_Ui.cboSmoking->lineEdit(),    DB_F_INTERESTS_SMOKING);
+            _m_hsDbControls.insert(m_Ui.cboAlcohol->lineEdit(),    DB_F_INTERESTS_ALCOHOL);
+            _m_hsDbControls.insert(m_Ui.cboDrugs->lineEdit(),      DB_F_INTERESTS_DRUGS);
 
             // TODO: Periods
 
             // Etc
-            _m_hsDbControls.insert(m_Ui.dtDateCreation,            CONFIG_DB_F_ETC_DATECREATION);
-            _m_hsDbControls.insert(m_Ui.dtDateLastChange,          CONFIG_DB_F_ETC_DATELASTCHANGE);
+            _m_hsDbControls.insert(m_Ui.dtDateCreation,            DB_F_ETC_DATECREATION);
+            _m_hsDbControls.insert(m_Ui.dtDateLastChange,          DB_F_ETC_DATELASTCHANGE);
 
             // Note
-            _m_hsDbControls.insert(m_Ui.tedtNotes,                 CONFIG_DB_F_NOTES_NOTES);
+            _m_hsDbControls.insert(m_Ui.tedtNotes,                 DB_F_NOTES_NOTES);
 
             // Photos
-            _m_hsDbControls.insert(m_Ui.lblPhoto,                  CONFIG_DB_F_PHOTOS_1);
+            _m_hsDbControls.insert(m_Ui.lblPhoto,                  DB_F_PHOTOS_1);
         }
 
         // map DB controls
@@ -177,7 +177,7 @@ CPersonEdit::_initMain() {
 
     // _m_dbImage
     {
-        _m_dbImage = new CDbImage(this, _m_tmModel, CONFIG_DB_F_PHOTOS_1,
+        _m_dbImage = new CDbImage(this, _m_tmModel, DB_F_PHOTOS_1,
                                   _m_ciCurrentRow, m_Ui.lblPhoto);
     }
 
@@ -191,15 +191,15 @@ CPersonEdit::_initMain() {
                 this,                SLOT  ( slot_twGroups_OnActivated(const QModelIndex &) ));
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private slots
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::slot_OnPhotoAlbum() {
     delete m_wndPhotoAlbum;
@@ -208,7 +208,7 @@ CPersonEdit::slot_OnPhotoAlbum() {
     m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, _m_ciCurrentRow);
     m_wndPhotoAlbum->show();
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
@@ -235,15 +235,15 @@ CPersonEdit::slot_bbxButtons_OnClicked(
             break;
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 
 
-/******************************************************************************
+/*******************************************************************************
 *   private slots
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::_resetAll() {
     // ensure for reset
@@ -302,7 +302,7 @@ CPersonEdit::_resetAll() {
         }
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::_saveAll() {
     // submit data
@@ -323,7 +323,7 @@ CPersonEdit::_saveAll() {
     // set current index
     _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CPersonEdit::slot_twGroups_OnActivated(
     const QModelIndex &a_index
@@ -331,5 +331,5 @@ CPersonEdit::slot_twGroups_OnActivated(
 {
     m_Ui.tabwGroupsDetail->setCurrentIndex( a_index.row() );
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 

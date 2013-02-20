@@ -7,7 +7,7 @@
 #include <QtGui/QApplication>
 #include "Forms/CMain.h"
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
 #if defined(Q_WS_WIN)
@@ -30,7 +30,7 @@ int main(int argc, char *argv[])
     {
         bool bRes = false;
 
-        static QSharedMemory smLocker(CONFIG_GUID);
+        static QSharedMemory smLocker(GUID);
 
         bRes = smLocker.attach();
         qCHECK_RET(true == bRes, EXIT_SUCCESS);
@@ -41,8 +41,8 @@ int main(int argc, char *argv[])
 
     QApplication apApplication(argc, argv);
 
-    QCoreApplication::setOrganizationName(CONFIG_ORG_NAME);
-    QCoreApplication::setApplicationName(CONFIG_APP_NAME);
+    QCoreApplication::setOrganizationName(ORG_NAME);
+    QCoreApplication::setApplicationName(APP_NAME);
 
     CMain wndMain;
     wndMain.show();
@@ -51,4 +51,4 @@ int main(int argc, char *argv[])
 
     return iRv;
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------

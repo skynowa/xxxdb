@@ -7,12 +7,12 @@
 #include "CDelegateDbImage.h"
 
 
-/******************************************************************************
+/*******************************************************************************
 *   public
 *
-******************************************************************************/
+*******************************************************************************/
 
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 CDelegateDbImage::CDelegateDbImage(
     QObject     *a_parent,
     cint        &a_imageFieldIndex,
@@ -28,7 +28,7 @@ CDelegateDbImage::CDelegateDbImage(
     Q_ASSERT(0    <= _m_ciImageFieldIndex);
     // _m_lblInfoPanel - n/a
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDelegateDbImage::setEditorData(
     QWidget           *a_editor,
@@ -41,7 +41,7 @@ CDelegateDbImage::setEditorData(
 
         cQByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
         if (baPhoto.isEmpty()) {
-            lblPhoto->setText(tr(CONFIG_TEXT_NO_PHOTO));
+            lblPhoto->setText(tr(TEXT_NO_PHOTO));
         } else {
             QImage imgPhoto;
 
@@ -67,7 +67,7 @@ CDelegateDbImage::setEditorData(
         QSqlRelationalDelegate::setEditorData(a_editor, a_index);
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
 void
 CDelegateDbImage::setModelData(
     QWidget            *a_editor,
@@ -104,4 +104,4 @@ CDelegateDbImage::setModelData(
         QSqlRelationalDelegate::setModelData(a_editor, a_model, a_index);
     }
 }
-//-----------------------------------------------------------------------------
+//------------------------------------------------------------------------------
