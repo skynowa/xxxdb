@@ -246,13 +246,61 @@ CPersonEdit::slot_bbxButtons_OnClicked(
 //-----------------------------------------------------------------------------
 void
 CPersonEdit::_resetAll() {
-#if 0
-    QHash<QString, QWidget *>::Iterator it;
+    // ensure for reset
+    {
+        QMessageBox msgBox;
 
-    for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
-        it.value()->clear();
+        msgBox.setIcon(QMessageBox::Warning);
+        msgBox.setText("Reset data.");
+        msgBox.setInformativeText("Do you want to reset data?");
+        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+        msgBox.setDefaultButton(QMessageBox::Cancel);
+
+        cint ciRv = msgBox.exec();
+        switch (ciRv) {
+            case QMessageBox::Yes:
+                // yes, reset
+                break;
+            default:
+                return;
+                break;
+        }
     }
-#endif
+
+    // reset data
+    {
+        db_controls_t::Iterator it;
+
+        for (it = _m_hsDbControls.begin(); it != _m_hsDbControls.end(); ++ it) {
+            QWidget *widget = it.key();
+
+            QLineEdit *lineEdit = dynamic_cast<QLineEdit *>( widget );
+            if (NULL != lineEdit) {
+                lineEdit->clear();
+                continue;
+            }
+
+            QTextEdit *textEdit = dynamic_cast<QTextEdit *>( widget );
+            if (NULL != textEdit) {
+                textEdit->clear();
+                continue;
+            }
+
+            QDateTimeEdit *dateTimeEdit = dynamic_cast<QDateTimeEdit *>( widget );
+            if (NULL != dateTimeEdit) {
+                dateTimeEdit->clear();
+                continue;
+            }
+
+            QLabel *label = dynamic_cast<QLabel *>( widget );
+            if (NULL != label) {
+                label->clear();
+                continue;
+            }
+
+            Q_ASSERT(false);
+        }
+    }
 }
 //-----------------------------------------------------------------------------
 void
