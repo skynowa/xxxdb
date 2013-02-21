@@ -171,7 +171,7 @@ CPhotoAlbum::_initMain() {
         // fill _m_viDbItems
         _m_viDbItems.reserve(ciPhotoNum);
 
-        for (size_t i = 0; i < ciPhotoNum - 1; ++ i) {
+        for (size_t i = 0; i < ciPhotoNum; ++ i) {
             CImageItem *item = new CImageItem;
             item->index       = i;
             item->imageLabel  = imageLabels[i];
