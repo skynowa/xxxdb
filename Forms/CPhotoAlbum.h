@@ -64,7 +64,8 @@ private Q_SLOTS:
     void               slot_OnSetPrimary  ();
 
     // photo
-    void               photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
+    void               slot_OnLoop        ();
+    void               slot_photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH
