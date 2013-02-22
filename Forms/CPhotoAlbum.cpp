@@ -337,7 +337,7 @@ CPhotoAlbum::slot_OnTo() {
 
     cint ciTargetIndex = QInputDialog::getInt(
                             this,
-                            APP_NAME, "Go to photo:",
+                            APP_NAME, tr("Go to photo:"),
                             CImageItem::currentDbIndex + 1,
                             ciMinValue, ciMaxValue) - 1;
 

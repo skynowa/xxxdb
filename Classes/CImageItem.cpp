@@ -35,16 +35,13 @@ CImageItem::find(
     const QLabel *imageLabel
 )
 {
-    CImageItem *iiRv = NULL;
-
     foreach (CImageItem *item, dbItems) {
         if (imageLabel == item->imageLabel) {
-            iiRv = item;
-            break;
+            return item;
         }
     }
 
-    return iiRv;
+    return NULL;
 }
 //------------------------------------------------------------------------------
 /* static */
@@ -54,16 +51,28 @@ CImageItem::find(
     cint        &index
 )
 {
-    CImageItem *iiRv = NULL;
-
     foreach (CImageItem *item, dbItems) {
         if (index == item->index) {
-            iiRv = item;
-            break;
+            return item;
         }
     }
 
-    return iiRv;
+    return NULL;
+}
+//------------------------------------------------------------------------------
+/* static */
+bool
+CImageItem::isLabelsEmpty(
+    cdb_items_t &dbItems
+)
+{
+    foreach (CImageItem *item, dbItems) {
+        if (NULL != item->imageLabel->pixmap()) {
+            return true;
+        }
+    }
+
+    return false;
 }
 //------------------------------------------------------------------------------
 

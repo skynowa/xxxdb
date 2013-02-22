@@ -8,7 +8,7 @@
 
 TARGET          = PickupDB
 TEMPLATE        = app
-QT              = core gui sql network xml
+QT              = core gui widgets sql network xml
 CONFIG         += warn_on
 
 win32 {

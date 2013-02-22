@@ -4,7 +4,7 @@
  */
 
 
-#include <QtGui/QApplication>
+#include <QApplication>
 #include "Forms/CMain.h"
 
 //------------------------------------------------------------------------------
@@ -21,8 +21,6 @@ int main(int argc, char *argv[])
         QTextCodec *codec = QTextCodec::codecForName(codecName);
         Q_ASSERT(NULL != codec);
 
-        QTextCodec::setCodecForTr(codec);
-        QTextCodec::setCodecForCStrings(codec);
         QTextCodec::setCodecForLocale(codec);
     }
 

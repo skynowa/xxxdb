@@ -17,20 +17,24 @@ class CImageItem;
 typedef QVector<CImageItem *> db_items_t;
 typedef const db_items_t      cdb_items_t;
 
-class CImageItem {
+class CImageItem :
+    public QObject
+{
 public:
     int                index;
     QLabel            *imageLabel;
     QString            dbFieldName;
     CDbImage          *dbImage;
+
     static int         currentDbIndex;
     static CDbImage   *currentDbImage;
 
-                       CImageItem();
-                      ~CImageItem();
+                       CImageItem   ();
+    virtual           ~CImageItem   ();
 
-    static CImageItem *find      (cdb_items_t &dbItems, const QLabel *imageLabel);
-    static CImageItem *find      (cdb_items_t &dbItems, cint &index);
+    static CImageItem *find         (cdb_items_t &dbItems, const QLabel *imageLabel);
+    static CImageItem *find         (cdb_items_t &dbItems, cint &index);
+    static bool        isLabelsEmpty(cdb_items_t &dbItems);
 
 private:
 

@@ -19,10 +19,10 @@
 
 //------------------------------------------------------------------------------
 CMain::CMain(
-    QWidget    *parent,
-    Qt::WFlags  flags
+    QWidget         *a_parent,
+    Qt::WindowFlags  a_flags
 ) :
-    QMainWindow    (parent, flags),
+    QMainWindow    (a_parent, a_flags),
     m_sAppName     (),
     m_sAppDir      (),
     m_sDbDir       (),
