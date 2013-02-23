@@ -19,8 +19,6 @@ win32 {
     } else {
         LIBS    =
     }
-
-    #LIBS       += User32.lib Ole32.lib Advapi32.lib shell32.lib
 }
 unix {
     INCLUDEPATH =
