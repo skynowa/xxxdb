@@ -22,7 +22,7 @@ class CImageItem :
 {
 public:
     int                index;
-    QLabel            *imageLabel;
+    QLabel            *photoMini;
     QString            dbFieldName;
     CDbImage          *dbImage;
 
@@ -32,7 +32,7 @@ public:
                        CImageItem   ();
     virtual           ~CImageItem   ();
 
-    static CImageItem *find         (cdb_items_t &dbItems, const QLabel *imageLabel);
+    static CImageItem *find         (cdb_items_t &dbItems, const QLabel *photoMini);
     static CImageItem *find         (cdb_items_t &dbItems, cint &index);
     static bool        isLabelsEmpty(cdb_items_t &dbItems);
 

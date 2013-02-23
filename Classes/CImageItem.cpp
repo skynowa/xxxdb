@@ -18,7 +18,7 @@ CDbImage *CImageItem::currentDbImage = NULL;
 //------------------------------------------------------------------------------
 CImageItem::CImageItem() :
     index      (- 1),
-    imageLabel (NULL),
+    photoMini  (NULL),
     dbFieldName(),
     dbImage    (NULL)
 {
@@ -32,11 +32,11 @@ CImageItem::~CImageItem() {
 CImageItem *
 CImageItem::find(
     cdb_items_t  &dbItems,
-    const QLabel *imageLabel
+    const QLabel *photoMini
 )
 {
     foreach (CImageItem *item, dbItems) {
-        if (imageLabel == item->imageLabel) {
+        if (photoMini == item->photoMini) {
             return item;
         }
     }
@@ -67,7 +67,7 @@ CImageItem::isLabelsEmpty(
 )
 {
     foreach (CImageItem *item, dbItems) {
-        if (NULL != item->imageLabel->pixmap()) {
+        if (NULL != item->photoMini->pixmap()) {
             return true;
         }
     }
