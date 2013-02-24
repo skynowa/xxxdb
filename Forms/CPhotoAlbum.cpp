@@ -44,9 +44,7 @@ CPhotoAlbum::eventFilter(
     QEvent  *a_event
 )
 {
-    Q_UNUSED(a_obj);
-
-    if ( a_event->type() == QEvent::MouseButtonPress) {
+    if (a_event->type() == QEvent::MouseButtonPress) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
         if (mouseEvent->button() == Qt::LeftButton) {
             QLabel *label = static_cast<QLabel *>( a_obj );
@@ -187,7 +185,7 @@ CPhotoAlbum::_initMain() {
         for (size_t i = 0; i < ciPhotoNum; ++ i) {
             CImageItem *item = new CImageItem;
             item->index       = i;
-            item->photoMini  = photoMinis[i];
+            item->photoMini   = photoMinis[i];
             item->dbFieldName = dbFieldNames[i];
             item->dbImage     = new CDbImage(this, _m_tmModel, dbFieldNames[i],
                                              _m_ciCurrentRow, photoMinis[i]);
