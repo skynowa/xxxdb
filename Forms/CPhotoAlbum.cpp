@@ -237,9 +237,9 @@ CPhotoAlbum::_initActions() {
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
 CPhotoAlbum::_dbWidgetMap(
-    QWidget       *a_widget,
-    const QString &a_dbFieldName,
-    const QSize   &a_size
+    QWidget  *a_widget,
+    cQString &a_dbFieldName,
+    cSize    &a_size
 )
 {
     QDataWidgetMapper *wmRv = NULL;
@@ -433,13 +433,13 @@ CPhotoAlbum::slot_photoMini_OnClicked(
             bool bRv = imgPhoto.loadFromData(baPhoto);
             Q_ASSERT(true == bRv);
 
-            cint        ciMargin = 2;   // MAGIC: ciMargin
-            const QSize cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
-                                         m_Ui.lblPhoto->height() - ciMargin);
-            QImage      pixNew   = imgPhoto.scaled(
-                                        cszSize,
-                                        Qt::KeepAspectRatio,
-                                        Qt::SmoothTransformation);
+            cint   ciMargin = 2;   // MAGIC: ciMargin
+            cSize  cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
+                                    m_Ui.lblPhoto->height() - ciMargin);
+            QImage pixNew   = imgPhoto.scaled(
+                                    cszSize,
+                                    Qt::KeepAspectRatio,
+                                    Qt::SmoothTransformation);
             _m_pixPixmap = QPixmap::fromImage(pixNew);
 
             m_Ui.lblPhoto->setPixmap(_m_pixPixmap);

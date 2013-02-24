@@ -18,7 +18,7 @@ class CDelegateDbImage :
 
 public:
                  CDelegateDbImage(QObject *parent, cint &imageFieldIndex,
-                                  const QSize &size, QLabel *infoPanel = NULL);
+                                  cSize &size, QLabel *infoPanel = NULL);
 
     virtual void setEditorData   (QWidget *editor, const QModelIndex &index) const;
     virtual void setModelData    (QWidget *editor, QAbstractItemModel *model,
@@ -26,7 +26,7 @@ public:
 
 private:
     cint         _m_ciImageFieldIndex;
-    const QSize  _m_cszSize;
+    cSize        _m_cszSize;
     QLabel      *_m_lblInfoPanel;
 };
 //------------------------------------------------------------------------------

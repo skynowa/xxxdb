@@ -34,7 +34,7 @@ private:
     QLabel         *_m_lblLabel;
     QByteArray      _m_baBuffer;
 
-    void            _loadFromFile(cQString &filePath, const QSize &photoSize);
+    void            _loadFromFile(cQString &filePath, cSize &photoSize);
     void            _saveToFile  (cQString &filePath);
     void            _flush       ();
 

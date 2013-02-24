@@ -141,13 +141,13 @@ CMain::_initModel() {
         {
             QSqlQuery qryInfo(_m_dbDatabase);
 
-            cQString csSql = \
+            cQString  csSql = \
                 "CREATE TABLE IF NOT EXISTS "
                 "    " DB_T_PERSON
                 "(   "
                 "    " DB_F_ID                     " INTEGER PRIMARY KEY "
-                                                          " AUTOINCREMENT "
-                                                          " NOT NULL UNIQUE, "
+                                                   " AUTOINCREMENT "
+                                                   " NOT NULL UNIQUE, "
 
                 // Main
                 "    " DB_F_MAIN_NICK              " VARCHAR (64), "
@@ -249,8 +249,6 @@ CMain::_initModel() {
     // _m_tmModel
     {
         _m_tmModel = new QSqlTableModel(this, _m_dbDatabase);
-        Q_ASSERT(NULL != _m_tmModel);
-
         _m_tmModel->setTable(DB_T_PERSON);
     #if 0
         _m_tmModel->setHeaderData(0, Qt::Horizontal, tr("Id"));
@@ -443,10 +441,10 @@ CMain::slot_OnTo() {
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
 
     cint ciTargetRow = QInputDialog::getInt(
-                        this,
-                        APP_NAME, tr("Go to row:"),
-                        ciCurrentRow,
-                        ciMinValue, ciMaxValue) - 1;
+                            this,
+                            APP_NAME, tr("Go to row:"),
+                            ciCurrentRow,
+                            ciMinValue, ciMaxValue) - 1;
 
     m_navNavigator.to(ciTargetRow);
 }

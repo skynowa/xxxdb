@@ -141,8 +141,8 @@ CDbImage::remove() {
 //------------------------------------------------------------------------------
 void
 CDbImage::_loadFromFile(
-    cQString    &a_filePath,
-    const QSize &a_photoSize
+    cQString &a_filePath,
+    cSize    &a_photoSize
 )
 {
     // TODO: ensure rewrite image

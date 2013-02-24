@@ -14,10 +14,10 @@
 
 //------------------------------------------------------------------------------
 CDelegateDbImage::CDelegateDbImage(
-    QObject     *a_parent,
-    cint        &a_imageFieldIndex,
-    const QSize &a_size,
-    QLabel      *a_infoPanel /* = NULL */
+    QObject *a_parent,
+    cint    &a_imageFieldIndex,
+    cSize   &a_size,
+    QLabel  *a_infoPanel /* = NULL */
 ) :
     QSqlRelationalDelegate(a_parent),
     _m_ciImageFieldIndex  (a_imageFieldIndex),

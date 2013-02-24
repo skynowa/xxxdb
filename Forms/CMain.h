@@ -22,7 +22,8 @@ class CMain :
     Q_OBJECT
 
 public:
-    explicit           CMain            (QWidget *parent = 0, Qt::WindowFlags flags = 0);
+    explicit           CMain            (QWidget *parent = 0,
+                                         Qt::WindowFlags flags = 0);
     virtual           ~CMain            ();
 
     Ui::CMainClass     m_Ui;

@@ -44,8 +44,7 @@ private:
     void               _initActions       ();
 
     QDataWidgetMapper *_dbWidgetMap       (QWidget *widget,
-                                           cQString &dbFieldName,
-                                           const QSize &size);
+                                           cQString &dbFieldName, cSize &size);
 
 private Q_SLOTS:
     // group "Exit"
@@ -65,7 +64,8 @@ private Q_SLOTS:
 
     // photo
     void               slot_OnLoop        ();
-    void               slot_photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
+    void               slot_photoMini_OnClicked(QLabel *label,
+                                                cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH
