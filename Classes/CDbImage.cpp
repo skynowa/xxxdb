@@ -57,7 +57,7 @@ CDbImage::loadFromFile() {
             break;
         case QDialog::Accepted: {
             cQString csFilePath = fdlgDialog.selectedFiles().first();
-            _loadFromFile(csFilePath);
+            _loadFromFile(csFilePath, QSize(PHOTO_WIDTH, PHOTO_HEIGHT));
             }
             break;
         default:
@@ -141,7 +141,8 @@ CDbImage::remove() {
 //------------------------------------------------------------------------------
 void
 CDbImage::_loadFromFile(
-    cQString &a_filePath
+    cQString    &a_filePath,
+    const QSize &a_photoSize
 )
 {
     // TODO: ensure rewrite image
@@ -175,7 +176,7 @@ CDbImage::_loadFromFile(
             Q_ASSERT(true == bRv);
 
             QImage  imgPhotoScaled = imgPhoto.scaled(
-                                        QSize(PHOTO_WIDTH, PHOTO_HEIGHT),
+                                        a_photoSize,
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
