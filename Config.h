@@ -8,8 +8,10 @@
 #define PickupDb_ConfigH
 //------------------------------------------------------------------------------
 // main window
-#define ORG_NAME                     "Skynowa Studio"
 #define APP_NAME                     "PickupDB"
+#define APP_ORG                      "Skynowa Studio"
+#define APP_GUID                     APP_NAME"simple_guid"
+#define APP_WINDOW_CLASS             "Qt5QWindow"  // for Qt 5.0.1, Qt 4 - QTool
 #define APP_WIDTH                    1000
 #define APP_HEIGHT                   600
 
@@ -31,7 +33,6 @@
 // etc
 #define BACKUP_DIR_NAME              "Backup"
 #define INI_FILE_EXT                 ".ini"
-#define GUID                         "PickupDB_simple_guid"
 #define TABLEVIEW_ROW_HEIGHT         20
 #define TEXT_NO_PHOTO                "No photo"
 

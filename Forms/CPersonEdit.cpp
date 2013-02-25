@@ -214,9 +214,8 @@ CPersonEdit::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
 )
 {
-    QDialogButtonBox::StandardButton sbType =
-            m_Ui.bbxButtons->standardButton(a_button);
-    switch (sbType) {
+    QDialogButtonBox::StandardButton sbRv = m_Ui.bbxButtons->standardButton(a_button);
+    switch (sbRv) {
         case QDialogButtonBox::Reset:
             _resetAll();
             break;
