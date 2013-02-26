@@ -26,7 +26,7 @@ public:
     Ui::CPersonEdit    m_Ui;
 
                        CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
-                                   cint &currentRow);
+                                   CSqlNavigator *sqlNavigator);
     virtual           ~CPersonEdit();
 
     CPhotoAlbum       *m_wndPhotoAlbum;
@@ -36,6 +36,7 @@ private:
     typedef const db_controls_t       cdb_controls_t;
 
     QSqlTableModel    *_m_tmModel;
+    CSqlNavigator     *_m_snSqlNavigator;
     db_controls_t      _m_hsDbControls;
     QDataWidgetMapper *_m_dmMapper;
     cint               _m_ciCurrentRow;

@@ -27,7 +27,7 @@ CMain::CMain(
     m_sAppDir      (),
     m_sDbDir       (),
     m_sDbBackupDir (),
-    m_navNavigator (this),
+    m_snSqlNavigator (this),
     m_wndPhotoAlbum(NULL),
     _m_dbDatabase  (),
     _m_tmModel     (NULL),
@@ -326,10 +326,10 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // m_navNavigator
+    // m_snSqlNavigator
     {
-        m_navNavigator.construct(_m_tmModel, m_Ui.tvInfo);
-        m_navNavigator.last();
+        m_snSqlNavigator.construct(_m_tmModel, m_Ui.tvInfo);
+        m_snSqlNavigator.last();
     }
 }
 //------------------------------------------------------------------------------
@@ -416,27 +416,27 @@ CMain::slot_OnExit() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnFirst() {
-    m_navNavigator.first();
+    m_snSqlNavigator.first();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPrior() {
-    m_navNavigator.prior();
+    m_snSqlNavigator.prior();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnNext() {
-    m_navNavigator.next();
+    m_snSqlNavigator.next();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLast() {
-    m_navNavigator.last();
+    m_snSqlNavigator.last();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnTo() {
-    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row() + 1;
+    cint ciCurrentRow = m_snSqlNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
 
@@ -446,59 +446,47 @@ CMain::slot_OnTo() {
                             ciCurrentRow,
                             ciMinValue, ciMaxValue) - 1;
 
-    m_navNavigator.to(ciTargetRow);
+    m_snSqlNavigator.to(ciTargetRow);
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnInsert() {
-    m_navNavigator.insert();
-
-    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
+    m_snSqlNavigator.insert();
 
     // show edit dialog
     {
-        CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+        CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
         (int)dlgPersonEdit.exec();
     }
-
-    // set current index
-    m_navNavigator.to(ciCurrentRow);
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnRemove() {
-    m_navNavigator.remove();
+    m_snSqlNavigator.remove();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
-
     // show edit dialog
-    {
-        CPersonEdit dlgPersonEdit(this, _m_tmModel, ciCurrentRow);
+    CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
-        (int)dlgPersonEdit.exec();
-    }
-
-    // set current index
-    m_navNavigator.to(ciCurrentRow);
+    (int)dlgPersonEdit.exec();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPost() {
-    m_navNavigator.post();
+    m_snSqlNavigator.post();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnCancel() {
-    m_navNavigator.cancel();
+    m_snSqlNavigator.cancel();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnRefresh() {
-    m_navNavigator.refresh();
+    m_snSqlNavigator.refresh();
 }
 //------------------------------------------------------------------------------
 
@@ -567,12 +555,10 @@ CMain::slot_OnAbout() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
-    cint ciCurrentRow = m_navNavigator.view()->currentIndex().row();
-
     delete m_wndPhotoAlbum;
     m_wndPhotoAlbum = NULL;
 
-    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, ciCurrentRow);
+    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, &m_snSqlNavigator);
     m_wndPhotoAlbum->show();
 }
 //------------------------------------------------------------------------------

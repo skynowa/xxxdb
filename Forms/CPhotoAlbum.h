@@ -10,6 +10,7 @@
 #include "ui_CPhotoAlbum.h"
 
 #include "../QtLib/Common.h"
+#include "../QtLib/CSqlNavigator.h"
 #include "../Config.h"
 #include "../Classes/CDbImage.h"
 #include "../Classes/CImageItem.h"
@@ -24,7 +25,7 @@ public:
 
                        CPhotoAlbum        (QWidget *parent,
                                            QSqlTableModel *tableModel,
-                                           cint &currentRow);
+                                           CSqlNavigator *sqlNavigator);
     virtual           ~CPhotoAlbum        ();
 
 protected:
@@ -34,6 +35,7 @@ protected:
 
 private:
     QSqlTableModel    *_m_tmModel;
+    CSqlNavigator     *_m_snSqlNavigator;
     cint               _m_ciCurrentRow;
     db_items_t         _m_viDbItems;
     QPixmap            _m_pixPixmap;

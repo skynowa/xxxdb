@@ -20,19 +20,21 @@
 CPersonEdit::CPersonEdit(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
-    cint           &a_currentRow
+    CSqlNavigator  *a_sqlNavigator
 ) :
-    QDialog        (a_parent),
-    m_wndPhotoAlbum(NULL),
-    _m_tmModel     (a_tableModel),
-    _m_hsDbControls(),
-    _m_dmMapper    (NULL),
-    _m_ciCurrentRow(a_currentRow),
-    _m_dbImage     ()
+    QDialog          (a_parent),
+    m_wndPhotoAlbum  (NULL),
+    _m_tmModel       (a_tableModel),
+    _m_snSqlNavigator(a_sqlNavigator),
+    _m_hsDbControls  (),
+    _m_dmMapper      (NULL),
+    _m_ciCurrentRow  (a_sqlNavigator->view()->currentIndex().row()),
+    _m_dbImage       ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
-    Q_ASSERT(- 1  <  a_currentRow);
+    Q_ASSERT(NULL != a_sqlNavigator);
+    Q_ASSERT(- 1  <  _m_ciCurrentRow);
 
     _construct();
 }
@@ -205,7 +207,7 @@ CPersonEdit::slot_OnPhotoAlbum() {
     delete m_wndPhotoAlbum;
     m_wndPhotoAlbum = NULL;
 
-    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, _m_ciCurrentRow);
+    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, _m_snSqlNavigator);
     m_wndPhotoAlbum->show();
 }
 //------------------------------------------------------------------------------
@@ -321,6 +323,9 @@ CPersonEdit::_saveAll() {
 
     // set current index
     _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
+
+    // set current index
+    _m_snSqlNavigator->to(_m_ciCurrentRow);
 }
 //------------------------------------------------------------------------------
 void

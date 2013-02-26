@@ -32,7 +32,7 @@ public:
     QString            m_sAppDir;
     QString            m_sDbDir;
     QString            m_sDbBackupDir;
-    CSqlNavigator      m_navNavigator;
+    CSqlNavigator      m_snSqlNavigator;
     CPhotoAlbum       *m_wndPhotoAlbum;
 
 private:

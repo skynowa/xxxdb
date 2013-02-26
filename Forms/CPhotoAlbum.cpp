@@ -19,16 +19,18 @@
 CPhotoAlbum::CPhotoAlbum(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
-    const int      &a_currentRow
+    CSqlNavigator  *a_sqlNavigator
 ) :
     QMainWindow    (a_parent),
     _m_tmModel     (a_tableModel),
-    _m_ciCurrentRow(a_currentRow),
+    _m_ciCurrentRow(a_sqlNavigator->view()->currentIndex().row()),
     _m_viDbItems   (),
     _m_pixPixmap   ()
 {
-    Q_ASSERT(NULL != _m_tmModel);
-    Q_ASSERT(- 1   < _m_ciCurrentRow);
+    Q_ASSERT(NULL != a_parent);
+    Q_ASSERT(NULL != a_tableModel);
+    Q_ASSERT(NULL != a_sqlNavigator);
+    Q_ASSERT(- 1  <  _m_ciCurrentRow);
 
     _construct();
 }
@@ -76,16 +78,13 @@ CPhotoAlbum::showEvent(
     // set primary image
     {
         // get primary image index
-        int iPrimaryIndex = - 1;
-        {
-            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentRow);
-            iPrimaryIndex = srRecord.value(DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
-        }
+        cint ciPrimaryIndex = _m_tmModel->record(_m_ciCurrentRow)
+                                .value(DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
 
         // set primary image index
         {
-            QLabel   *lblPhotoMini  = CImageItem::find(_m_viDbItems, iPrimaryIndex)->photoMini;
-            cQString  csDbFieldName = CImageItem::find(_m_viDbItems, iPrimaryIndex)->dbFieldName;
+            QLabel   *lblPhotoMini  = CImageItem::find(_m_viDbItems, ciPrimaryIndex)->photoMini;
+            cQString  csDbFieldName = CImageItem::find(_m_viDbItems, ciPrimaryIndex)->dbFieldName;
 
             slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
         }
