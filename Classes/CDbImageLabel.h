@@ -24,7 +24,7 @@ Q_OBJECT
 
 public:
                           CDbImageLabel(QWidget *parent, QSqlTableModel *tableModel,
-                                        cQString &dbFieldName, cint &recordIndex,
+                                        cQString &dbFieldName, cint &dbRecordIndex,
                                         QLabel *label);
         ///< constructor
     virtual              ~CDbImageLabel();
@@ -33,8 +33,8 @@ public:
     // data
     const QString &       dbFieldName  () const;
         ///< get DB field name
-    const int &           recordIndex  () const;
-        ///< get record index
+    const int &           dbRecordIndex() const;
+        ///< get DB record index
     QLabel *              label        () const;
         ///< get QLabel
 
@@ -47,14 +47,14 @@ public:
         ///< remove image
 
     // static
-    static int            currentDbIndex;
+    static int            currentDbRecordIndex;
         ///<
-    static CDbImageLabel *currentDbImage;
+    static CDbImageLabel *currentDbImageLabel;
         ///<
 
-    static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *photoMini);
+    static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel
-    static CDbImageLabel *find         (cdb_items_t &dbItems, cint &index);
+    static CDbImageLabel *find         (cdb_items_t &dbItems, cint &dbRecordIndexB);
         ///< find CDbImageLabel by record index
     static bool           isLabelsEmpty(cdb_items_t &dbItems);
         ///< is all QLabels empty
@@ -63,7 +63,7 @@ private:
     QWidget              *_m_wdParent;        ///< parent QWidget
     QSqlTableModel       *_m_tmModel;         ///< QSqlTableModel
     cQString              _m_csDbFieldName;   ///< DB field name
-    cint                  _m_ciRecordIndex;   ///< DB record index
+    cint                  _m_ciDbRecordIndex; ///< DB record index
     QLabel               *_m_lblLabel;        ///< QLabel for display image
     QByteArray            _m_baBuffer;        ///< buffer for store image
 
