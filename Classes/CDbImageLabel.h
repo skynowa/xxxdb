@@ -25,6 +25,12 @@ public:
     virtual        ~CDbImageLabel();
         ///< destructor
 
+    // data
+    const QString & dbFieldName  () const;
+    const int &     recordIndex  () const;
+    QLabel *        label        () const;
+
+    // actions
     void            loadFromFile ();
         ///< load image from file
     void            saveToFile   ();
