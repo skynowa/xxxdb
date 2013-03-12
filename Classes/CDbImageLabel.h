@@ -19,7 +19,7 @@ Q_OBJECT
 
 public:
                     CDbImageLabel(QWidget *parent, QSqlTableModel *tableModel,
-                                  cQString &dbField, cint &currentIndex,
+                                  cQString &dbField, cint &recordIndex,
                                   QLabel *label);
         ///< constructor
     virtual        ~CDbImageLabel();
@@ -36,7 +36,7 @@ private:
     QWidget        *_m_wdParent;        ///< parent QWidget
     QSqlTableModel *_m_tmModel;         ///< QSqlTableModel
     cQString        _m_csDbField;       ///< DB field name
-    cint            _m_ciCurrentIndex;  ///< DB current record index
+    cint            _m_ciRecordIndex;   ///< DB record index
     QLabel         *_m_lblLabel;        ///< QLabel for display image
     QByteArray      _m_baBuffer;        ///< buffer for store image
 

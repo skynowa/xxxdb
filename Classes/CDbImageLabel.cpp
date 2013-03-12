@@ -17,21 +17,21 @@ CDbImageLabel::CDbImageLabel(
     QWidget        *a_parent,       ///< parent QWidget
     QSqlTableModel *a_tableModel,   ///< QSqlTableModel
     cQString       &a_dbField,      ///< DB field name
-    cint           &a_currentIndex, ///< DB current record index
+    cint           &a_recordIndex,  ///< DB record index
     QLabel         *a_label         ///< QLabel for display image
 ) :
-    QObject          (a_parent),
-    _m_wdParent      (a_parent),
-    _m_tmModel       (a_tableModel),
-    _m_csDbField     (a_dbField),
-    _m_ciCurrentIndex(a_currentIndex),
-    _m_lblLabel      (a_label),
-    _m_baBuffer      ()
+    QObject         (a_parent),
+    _m_wdParent     (a_parent),
+    _m_tmModel      (a_tableModel),
+    _m_csDbField    (a_dbField),
+    _m_ciRecordIndex(a_recordIndex),
+    _m_lblLabel     (a_label),
+    _m_baBuffer     ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(!a_dbField.isEmpty());
-    Q_ASSERT(- 1 < a_currentIndex);
+    Q_ASSERT(- 1 < a_recordIndex);
     Q_ASSERT(NULL != a_label);
 }
 //------------------------------------------------------------------------------
@@ -183,7 +183,7 @@ CDbImageLabel::_saveToFile(
     cQString &a_filePath   ///< image file path
 )
 {
-    QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentIndex)
+    QByteArray baPhoto = _m_tmModel->record(_m_ciRecordIndex)
                             .value(_m_csDbField).toByteArray();
 
     QFile file(a_filePath);
@@ -206,10 +206,10 @@ void
 CDbImageLabel::_flush() {
     qCHECK_DO(_m_baBuffer.size() < 0, return);
 
-    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
+    QSqlRecord srRecord = _m_tmModel->record(_m_ciRecordIndex);
     srRecord.setValue(_m_csDbField, _m_baBuffer);
 
-    _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
+    _m_tmModel->setRecord(_m_ciRecordIndex, srRecord);
     bool bRv = _m_tmModel->submitAll();
     Q_ASSERT(bRv);
 
