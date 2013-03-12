@@ -411,7 +411,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
             if (a_label == i->label()) {
                 // set current indexes
                 CDbImageLabel::currentDbRecordIndex = i->dbRecordIndex();
-                CDbImageLabel::currentDbImageLabel = i;
+                CDbImageLabel::currentDbImageLabel  = i;
 
                 i->label()->setFrameShape(QFrame::WinPanel);
             } else {

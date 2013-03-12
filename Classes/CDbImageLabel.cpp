@@ -48,16 +48,22 @@ CDbImageLabel::~CDbImageLabel() {
 //------------------------------------------------------------------------------
 const QString &
 CDbImageLabel::dbFieldName() const {
+    Q_ASSERT(!_m_csDbFieldName.isEmpty());
+
     return _m_csDbFieldName;
 }
 //------------------------------------------------------------------------------
 const int &
 CDbImageLabel::dbRecordIndex() const {
+    Q_ASSERT(- 1 < _m_ciDbRecordIndex);
+
     return _m_ciDbRecordIndex;
 }
 //------------------------------------------------------------------------------
 QLabel *
 CDbImageLabel::label() const {
+    Q_ASSERT(NULL != _m_lblLabel);
+
     return _m_lblLabel;
 }
 //------------------------------------------------------------------------------
