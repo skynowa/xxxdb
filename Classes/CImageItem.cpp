@@ -13,8 +13,8 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-int       CImageItem::currentDbIndex = - 1;
-CDbImage *CImageItem::currentDbImage = NULL;
+int            CImageItem::currentDbIndex = - 1;
+CDbImageLabel *CImageItem::currentDbImage = NULL;
 //------------------------------------------------------------------------------
 CImageItem::CImageItem() :
     index      (- 1),

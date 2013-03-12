@@ -187,8 +187,8 @@ CPhotoAlbum::_initMain() {
             item->index       = i;
             item->photoMini   = photoMinis[i];
             item->dbFieldName = dbFieldNames[i];
-            item->dbImage     = new CDbImage(this, _m_tmModel, dbFieldNames[i],
-                                             _m_ciCurrentRow, photoMinis[i]);
+            item->dbImage     = new CDbImageLabel(this, _m_tmModel, dbFieldNames[i],
+                                                  _m_ciCurrentRow, photoMinis[i]);
 
             _m_viDbItems.push_back(item);
         }

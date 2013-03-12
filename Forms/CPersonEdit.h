@@ -11,7 +11,7 @@
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
-#include "../Classes/CDbImage.h"
+#include "../Classes/CDbImageLabel.h"
 
 #include "CMain.h"
 //------------------------------------------------------------------------------
@@ -40,7 +40,7 @@ private:
     db_controls_t      _m_hsDbControls;
     QDataWidgetMapper *_m_dmMapper;
     cint               _m_ciCurrentRow;
-    CDbImage          *_m_dbImage;
+    CDbImageLabel     *_m_dbImage;
 
     void               _construct();
     void               _destruct ();

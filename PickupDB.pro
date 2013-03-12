@@ -37,21 +37,21 @@ HEADERS         = QtLib/Common.h \
                   QtLib/CSqlNavigator.h \
                   Config.h \
                   Classes/CDelegateDbImage.h \
-                  Classes/CDbImage.h \
                   Classes/CImageItem.h \
+                  Classes/CDbImageLabel.h \
                   Forms/CMain.h \
                   Forms/CPersonEdit.h \
-                  Forms/CPhotoAlbum.h
+                  Forms/CPhotoAlbum.h \
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
                   Classes/CDelegateDbImage.cpp \
-                  Classes/CDbImage.cpp \
                   Classes/CImageItem.cpp \
+                  Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \
                   Forms/CPersonEdit.cpp \
-                  Forms/CPhotoAlbum.cpp
+                  Forms/CPhotoAlbum.cpp \
 
 FORMS           = Forms/CMain.ui \
                   Forms/CPersonEdit.ui \

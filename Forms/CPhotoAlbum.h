@@ -12,7 +12,7 @@
 #include "../QtLib/Common.h"
 #include "../QtLib/CSqlNavigator.h"
 #include "../Config.h"
-#include "../Classes/CDbImage.h"
+#include "../Classes/CDbImageLabel.h"
 #include "../Classes/CImageItem.h"
 //------------------------------------------------------------------------------
 class CPhotoAlbum :

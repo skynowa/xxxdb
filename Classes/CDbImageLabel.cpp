@@ -1,10 +1,10 @@
 /**
- * \file   CDbImage.cpp
- * \brief  DB image
+ * \file   CDbImageLabel.cpp
+ * \brief  DB image label
  */
 
 
-#include "CDbImage.h"
+#include "CDbImageLabel.h"
 
 
 /*******************************************************************************
@@ -13,12 +13,12 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CDbImage::CDbImage(
-    QWidget        *a_parent,
-    QSqlTableModel *a_tableModel,
-    cQString       &a_dbField,
-    cint           &a_currentIndex,
-    QLabel         *a_label
+CDbImageLabel::CDbImageLabel(
+    QWidget        *a_parent,       ///< parent QWidget
+    QSqlTableModel *a_tableModel,   ///< QSqlTableModel
+    cQString       &a_dbField,      ///< DB field name
+    cint           &a_currentIndex, ///< DB current record index
+    QLabel         *a_label         ///< QLabel for display image
 ) :
     QObject          (a_parent),
     _m_wdParent      (a_parent),
@@ -28,15 +28,19 @@ CDbImage::CDbImage(
     _m_lblLabel      (a_label),
     _m_baBuffer      ()
 {
-
+    Q_ASSERT(NULL != a_parent);
+    Q_ASSERT(NULL != a_tableModel);
+    Q_ASSERT(!a_dbField.isEmpty());
+    Q_ASSERT(- 1 < a_currentIndex);
+    Q_ASSERT(NULL != a_label);
 }
 //------------------------------------------------------------------------------
-CDbImage::~CDbImage() {
+CDbImageLabel::~CDbImageLabel() {
 
 }
 //------------------------------------------------------------------------------
 void
-CDbImage::loadFromFile() {
+CDbImageLabel::loadFromFile() {
     QFileDialog fdlgDialog(_m_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -67,7 +71,7 @@ CDbImage::loadFromFile() {
 }
 //------------------------------------------------------------------------------
 void
-CDbImage::saveToFile() {
+CDbImageLabel::saveToFile() {
     QFileDialog fdlgDialog(_m_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -92,7 +96,7 @@ CDbImage::saveToFile() {
 }
 //------------------------------------------------------------------------------
 void
-CDbImage::remove() {
+CDbImageLabel::remove() {
     // ensure for removing
     {
         QMessageBox msgBox;
@@ -114,21 +118,7 @@ CDbImage::remove() {
         }
     }
 
-    // remove
-    {
-        _m_lblLabel->clear();
-
-        {
-            _m_baBuffer.clear();
-
-            QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
-            srRecord.setValue(_m_csDbField, _m_baBuffer);
-
-            _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
-            bool bRv = _m_tmModel->submitAll();
-            Q_ASSERT(bRv);
-        }
-    }
+    _remove();
 }
 //------------------------------------------------------------------------------
 
@@ -140,9 +130,9 @@ CDbImage::remove() {
 
 //------------------------------------------------------------------------------
 void
-CDbImage::_loadFromFile(
-    cQString &a_filePath,
-    cSize    &a_photoSize
+CDbImageLabel::_loadFromFile(
+    cQString &a_filePath,   ///< image file path
+    cSize    &a_photoSize   ///< image target size
 )
 {
     // TODO: ensure rewrite image
@@ -189,8 +179,8 @@ CDbImage::_loadFromFile(
 }
 //------------------------------------------------------------------------------
 void
-CDbImage::_saveToFile(
-    cQString &a_filePath
+CDbImageLabel::_saveToFile(
+    cQString &a_filePath   ///< image file path
 )
 {
     QByteArray baPhoto = _m_tmModel->record(_m_ciCurrentIndex)
@@ -201,22 +191,29 @@ CDbImage::_saveToFile(
     Q_ASSERT(bRv);
 
     QDataStream stream(&file);
-    int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
-    Q_ASSERT(0 < iRv);
+    cint ciRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
+    Q_ASSERT(0 < ciRv);
 }
 //------------------------------------------------------------------------------
 void
-CDbImage::_flush() {
-    if (0 < _m_baBuffer.size()) {
-        QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
-        srRecord.setValue(_m_csDbField, _m_baBuffer);
+CDbImageLabel::_remove() {
+    _m_baBuffer.clear();
+    _flush();
+    _m_lblLabel->clear();
+}
+//------------------------------------------------------------------------------
+void
+CDbImageLabel::_flush() {
+    qCHECK_DO(_m_baBuffer.size() < 0, return);
 
-        _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
-        bool bRv = _m_tmModel->submitAll();
-        Q_ASSERT(bRv);
+    QSqlRecord srRecord = _m_tmModel->record(_m_ciCurrentIndex);
+    srRecord.setValue(_m_csDbField, _m_baBuffer);
 
-        _m_baBuffer.clear();
-    }
+    _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
+    bool bRv = _m_tmModel->submitAll();
+    Q_ASSERT(bRv);
+
+    _m_baBuffer.clear();
 }
 //------------------------------------------------------------------------------
 

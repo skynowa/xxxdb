@@ -179,8 +179,8 @@ CPersonEdit::_initMain() {
 
     // _m_dbImage
     {
-        _m_dbImage = new CDbImage(this, _m_tmModel, DB_F_PHOTOS_1,
-                                  _m_ciCurrentRow, m_Ui.lblPhoto);
+        _m_dbImage = new CDbImageLabel(this, _m_tmModel, DB_F_PHOTOS_1,
+                                       _m_ciCurrentRow, m_Ui.lblPhoto);
     }
 
     // signals
