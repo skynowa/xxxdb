@@ -13,24 +13,23 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CDbImageLabel::CDbImageLabel(
-    QWidget        *a_parent,       ///< parent QWidget
+CDbImageLabel::CDbImageLabel(QWidget        *a_parent,       ///< parent QWidget
     QSqlTableModel *a_tableModel,   ///< QSqlTableModel
-    cQString       &a_dbField,      ///< DB field name
+    cQString       &a_dbFieldName,  ///< DB field name
     cint           &a_recordIndex,  ///< DB record index
     QLabel         *a_label         ///< QLabel for display image
 ) :
     QObject         (a_parent),
     _m_wdParent     (a_parent),
     _m_tmModel      (a_tableModel),
-    _m_csDbField    (a_dbField),
+    _m_csDbFieldName(a_dbFieldName),
     _m_ciRecordIndex(a_recordIndex),
     _m_lblLabel     (a_label),
     _m_baBuffer     ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
-    Q_ASSERT(!a_dbField.isEmpty());
+    Q_ASSERT(!a_dbFieldName.isEmpty());
     Q_ASSERT(- 1 < a_recordIndex);
     Q_ASSERT(NULL != a_label);
 }
@@ -49,7 +48,7 @@ CDbImageLabel::~CDbImageLabel() {
 //------------------------------------------------------------------------------
 const QString &
 CDbImageLabel::dbFieldName() const {
-    return _m_csDbField;
+    return _m_csDbFieldName;
 }
 //------------------------------------------------------------------------------
 const int &
@@ -155,6 +154,64 @@ CDbImageLabel::remove() {
 
 
 /*******************************************************************************
+*   public, static
+*
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+int            CDbImageLabel::currentDbIndex = - 1;
+CDbImageLabel *CDbImageLabel::currentDbImage = NULL;
+//------------------------------------------------------------------------------
+/* static */
+CDbImageLabel *
+CDbImageLabel::find(
+    cdb_items_t  &dbItems,
+    const QLabel *photoMini
+)
+{
+    foreach (CDbImageLabel *item, dbItems) {
+        if (photoMini == item->label()) {
+            return item;
+        }
+    }
+
+    return NULL;
+}
+//------------------------------------------------------------------------------
+/* static */
+CDbImageLabel *
+CDbImageLabel::find(
+    cdb_items_t &dbItems,
+    cint        &index
+)
+{
+    foreach (CDbImageLabel *item, dbItems) {
+        if (index == item->recordIndex()) {
+            return item;
+        }
+    }
+
+    return NULL;
+}
+//------------------------------------------------------------------------------
+/* static */
+bool
+CDbImageLabel::isLabelsEmpty(
+    cdb_items_t &dbItems
+)
+{
+    foreach (CDbImageLabel *item, dbItems) {
+        if (NULL != item->label()->pixmap()) {
+            return true;
+        }
+    }
+
+    return false;
+}
+//------------------------------------------------------------------------------
+
+
+/*******************************************************************************
 *   private
 *
 *******************************************************************************/
@@ -215,7 +272,7 @@ CDbImageLabel::_saveToFile(
 )
 {
     QByteArray baPhoto = _m_tmModel->record(_m_ciRecordIndex)
-                            .value(_m_csDbField).toByteArray();
+                            .value(_m_csDbFieldName).toByteArray();
 
     QFile file(a_filePath);
     bool bRv = file.open(QIODevice::WriteOnly);
@@ -238,7 +295,7 @@ CDbImageLabel::_flush() {
     qCHECK_DO(_m_baBuffer.size() < 0, return);
 
     QSqlRecord srRecord = _m_tmModel->record(_m_ciRecordIndex);
-    srRecord.setValue(_m_csDbField, _m_baBuffer);
+    srRecord.setValue(_m_csDbFieldName, _m_baBuffer);
 
     _m_tmModel->setRecord(_m_ciRecordIndex, srRecord);
     bool bRv = _m_tmModel->submitAll();

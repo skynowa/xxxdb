@@ -13,7 +13,6 @@
 #include "../QtLib/CSqlNavigator.h"
 #include "../Config.h"
 #include "../Classes/CDbImageLabel.h"
-#include "../Classes/CImageItem.h"
 //------------------------------------------------------------------------------
 class CPhotoAlbum :
     public QMainWindow
@@ -36,7 +35,7 @@ protected:
 private:
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
-    cint               _m_ciCurrentRow;
+    cint               _m_ciRecordIndex;
     db_items_t         _m_viDbItems;
     QPixmap            _m_pixPixmap;
 
