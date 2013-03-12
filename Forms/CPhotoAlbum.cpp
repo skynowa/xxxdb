@@ -46,6 +46,7 @@ CPhotoAlbum::eventFilter(
     QEvent  *a_event
 )
 {
+    // clicks on photos
     if (a_event->type() == QEvent::MouseButtonPress) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
         if (mouseEvent->button() == Qt::LeftButton) {
