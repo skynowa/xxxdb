@@ -126,7 +126,7 @@ CDbImage::remove() {
 
             _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
             bool bRv = _m_tmModel->submitAll();
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
         }
     }
 }
@@ -157,7 +157,7 @@ CDbImage::_loadFromFile(
             QFile file(a_filePath);
 
             bool bRv = file.open(QIODevice::ReadOnly);
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
 
             _m_baBuffer = file.readAll();
         }
@@ -173,7 +173,7 @@ CDbImage::_loadFromFile(
             QImage imgPhoto;
 
             bool bRv = imgPhoto.loadFromData(_m_baBuffer);
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
 
             QImage  imgPhotoScaled = imgPhoto.scaled(
                                         a_photoSize,
@@ -198,7 +198,7 @@ CDbImage::_saveToFile(
 
     QFile file(a_filePath);
     bool bRv = file.open(QIODevice::WriteOnly);
-    Q_ASSERT(true == bRv);
+    Q_ASSERT(bRv);
 
     QDataStream stream(&file);
     int iRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
@@ -213,7 +213,7 @@ CDbImage::_flush() {
 
         _m_tmModel->setRecord(_m_ciCurrentIndex, srRecord);
         bool bRv = _m_tmModel->submitAll();
-        Q_ASSERT(true == bRv);
+        Q_ASSERT(bRv);
 
         _m_baBuffer.clear();
     }

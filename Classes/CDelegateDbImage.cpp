@@ -46,7 +46,7 @@ CDelegateDbImage::setEditorData(
             QImage imgPhoto;
 
             bool bRv = imgPhoto.loadFromData(baPhoto);
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
 
             QImage  imgPhotoScaled = imgPhoto.scaled(
                                         _m_cszSize,
@@ -95,7 +95,7 @@ CDelegateDbImage::setModelData(
             bfPhoto.open(QIODevice::WriteOnly);
 
             bool bRv = ppmPixmap->save(&bfPhoto, "jpeg");
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
 
             a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
         #endif

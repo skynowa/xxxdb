@@ -309,13 +309,13 @@ CPersonEdit::_saveAll() {
     // submit data
     {
         bool bRv = _m_dmMapper->submit();
-        if (false == bRv) {
+        if (!bRv) {
             qDebug() << __FUNCTION__ << ": mapper fail, "
                      << _m_tmModel->lastError().text();
         }
 
         bRv = _m_tmModel->submitAll();
-        if (false == bRv) {
+        if (!bRv) {
             qDebug() << __FUNCTION__ << ": model fail, "
                      << _m_tmModel->lastError().text();
         }

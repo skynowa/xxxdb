@@ -370,7 +370,7 @@ CPhotoAlbum::slot_OnSetPrimary() {
 
     _m_tmModel->setRecord(_m_ciCurrentRow, srRecord);
     bool bRv = _m_tmModel->submit();
-    Q_ASSERT(true == bRv);
+    Q_ASSERT(bRv);
 }
 //------------------------------------------------------------------------------
 
@@ -431,7 +431,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
             QImage imgPhoto;
 
             bool bRv = imgPhoto.loadFromData(baPhoto);
-            Q_ASSERT(true == bRv);
+            Q_ASSERT(bRv);
 
             cint   ciMargin = 2;   // MAGIC: ciMargin
             cSize  cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,

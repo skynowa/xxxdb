@@ -32,7 +32,7 @@ int main(int argc, char *argv[])
     // set application single inststance
     {
         bool bRv = CUtils::setApplicationSingle(APP_GUID);
-        qCHECK_RET(false == bRv, EXIT_SUCCESS);
+        qCHECK_RET(!bRv, EXIT_SUCCESS);
     }
 
     // start application
