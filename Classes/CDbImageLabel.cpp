@@ -220,7 +220,7 @@ CDbImageLabel::isLabelsEmpty(
 void
 CDbImageLabel::_loadFromFile(
     cQString &a_filePath,   ///< image file path
-    cSize    &a_photoSize   ///< image target size
+    cSize    &a_imageSize   ///< image target size
 )
 {
     // TODO: ensure rewrite image
@@ -248,16 +248,16 @@ CDbImageLabel::_loadFromFile(
         if (0 >= _m_baBuffer.size()) {
             _m_lblLabel->setText(tr(TEXT_NO_PHOTO));
         } else {
-            QImage imgPhoto;
+            QImage imgImage;
 
-            bool bRv = imgPhoto.loadFromData(_m_baBuffer);
+            bool bRv = imgImage.loadFromData(_m_baBuffer);
             Q_ASSERT(bRv);
 
-            QImage  imgPhotoScaled = imgPhoto.scaled(
-                                        a_photoSize,
+            QImage  imgImageScaled = imgImage.scaled(
+                                        a_imageSize,
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
-            QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
+            QPixmap pixPixmap      = QPixmap::fromImage(imgImageScaled);
 
             _m_lblLabel->setPixmap(pixPixmap);
         }
@@ -271,7 +271,7 @@ CDbImageLabel::_saveToFile(
     cQString &a_filePath   ///< image file path
 )
 {
-    QByteArray baPhoto = _m_tmModel->record( dbRecordIndex() )
+    QByteArray baImage = _m_tmModel->record( dbRecordIndex() )
                             .value(_m_csDbFieldName).toByteArray();
 
     QFile file(a_filePath);
@@ -279,7 +279,7 @@ CDbImageLabel::_saveToFile(
     Q_ASSERT(bRv);
 
     QDataStream stream(&file);
-    cint ciRv = stream.writeRawData(baPhoto.constData(), baPhoto.size());
+    cint ciRv = stream.writeRawData(baImage.constData(), baImage.size());
     Q_ASSERT(0 < ciRv);
 }
 //------------------------------------------------------------------------------

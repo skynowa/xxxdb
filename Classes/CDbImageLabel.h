@@ -47,10 +47,8 @@ public:
         ///< remove image
 
     // static
-    static int            currentDbRecordIndex;
-        ///<
-    static CDbImageLabel *currentDbImageLabel;
-        ///<
+    static int            currentDbRecordIndex; ///< get current DB record index
+    static CDbImageLabel *currentDbImageLabel;  ///< get current current CDbImageLabel
 
     static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel
@@ -67,7 +65,7 @@ private:
     QLabel               *_m_lblLabel;        ///< QLabel for display image
     QByteArray            _m_baBuffer;        ///< buffer for store image
 
-    void                  _loadFromFile(cQString &filePath, cSize &photoSize);
+    void                  _loadFromFile(cQString &filePath, cSize &imageSize);
         ///< load image from file
     void                  _saveToFile  (cQString &filePath);
         ///< save image to file
