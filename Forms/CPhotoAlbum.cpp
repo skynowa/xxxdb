@@ -436,7 +436,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
                                 .value(a_dbFieldName).toByteArray();
 
         if (0 >= baPhoto.size()) {
-            m_Ui.lblPhoto->setText(tr(TEXT_NO_PHOTO));
+            m_Ui.lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
             QImage imgPhoto;
 

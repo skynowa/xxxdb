@@ -45,7 +45,7 @@ CDelegateDbImage::setEditorData(
 
         cQByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
         if (baPhoto.isEmpty()) {
-            lblPhoto->setText(tr(TEXT_NO_PHOTO));
+            lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
             QImage imgPhoto;
 

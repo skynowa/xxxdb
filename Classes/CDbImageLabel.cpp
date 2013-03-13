@@ -269,7 +269,7 @@ CDbImageLabel::_loadFromFile(
     // _m_lblLabel
     {
         if (0 >= _m_baBuffer.size()) {
-            _m_lblLabel->setText(tr(TEXT_NO_PHOTO));
+            _m_lblLabel->setText(TEXT_NO_PHOTO);
         } else {
             QImage imgImage;
 

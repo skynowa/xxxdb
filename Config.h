@@ -34,13 +34,17 @@
 #define BACKUP_DIR_NAME              "Backup"
 #define INI_FILE_EXT                 ".ini"
 #define TABLEVIEW_ROW_HEIGHT         20
-#define TEXT_NO_PHOTO                "No photo"
+#define TEXT_NO_PHOTO                tr("No photo")
 
 // DB tables, fields
 #define DB_DIR_NAME                  "Db"
 #define DB_FILE_EXT                  ".db"
 #define DB_T_PERSON                  "t_person"
 
+/*******************************************************************************
+*   DB fields
+*
+*******************************************************************************/
 
 #define DB_F_ID                      "f_id"
 
@@ -134,5 +138,102 @@
 #define DB_F_PHOTOS_15               "f_photos_15"
 #define DB_F_PHOTOS_PRIMARY_DBFIELD  "f_photos_primary_dbfield"
 
+
+/*******************************************************************************
+*   DB field captions
+*
+*******************************************************************************/
+
+#define DB_CF_ID                     tr("#")
+
+// Main
+#define DB_CF_MAIN_NICK              tr("Nick")
+#define DB_CF_MAIN_SURNAME           tr("Surname")
+#define DB_CF_MAIN_NAME              tr("Name")
+#define DB_CF_MAIN_PATRONYMIC        tr("Patronymic")
+#define DB_CF_MAIN_AGE               tr("Age")
+#define DB_CF_MAIN_HEIGHT            tr("Height")
+#define DB_CF_MAIN_WEIGHT            tr("Weight")
+#define DB_CF_MAIN_HAIRLENGTH        tr("Hair length")
+#define DB_CF_MAIN_HAIRCOLOR         tr("Hair color")
+#define DB_CF_MAIN_APPEARANCE        tr("Appearance")
+#define DB_CF_MAIN_AGREEMENT         tr("Agreement")
+
+// Phones
+#define DB_CF_PHONES_MOBILE1         tr("Mobile 1")
+#define DB_CF_PHONES_MOBILE2         tr("Mobile 2")
+#define DB_CF_PHONES_MOBILE3         tr("Mobile 3")
+#define DB_CF_PHONES_HOME            tr("Phone home")
+#define DB_CF_PHONES_JOB             tr("Phone job")
+#define DB_CF_PHONES_OTHER           tr("Phone other")
+
+// Address
+#define DB_CF_ADDRESS_COUNTRY        tr("Country")
+#define DB_CF_ADDRESS_CODE           tr("Code")
+#define DB_CF_ADDRESS_CITY           tr("City")
+#define DB_CF_ADDRESS_DISTRICT       tr("District")
+#define DB_CF_ADDRESS_STREET         tr("Street")
+#define DB_CF_ADDRESS_HOUSE          tr("House")
+#define DB_CF_ADDRESS_PORCH          tr("Porch")
+#define DB_CF_ADDRESS_FLOOR          tr("Floor")
+#define DB_CF_ADDRESS_APARTMENT      tr("Apartment")
+
+// E-mail
+#define DB_CF_EMAIL_EMAIL            tr("E-mail")
+
+// Web
+#define DB_CF_WEB_WEB                tr("Web")
+
+// Messengers
+#define DB_CF_MESSENGERS_ICQ         tr("ICQ")
+#define DB_CF_MESSENGERS_SKYPE       tr("Skype")
+
+// Job
+#define DB_CF_JOB_PROFESSION         tr("Profession")
+#define DB_CF_JOB_ADDRESS            tr("Address")
+#define DB_CF_JOB_SALARY             tr("Salary")
+#define DB_CF_JOB_COMPANY            tr("Company")
+
+// Dates
+#define DB_CF_DATES_BIRTHDAY         tr("Birthday")
+#define DB_CF_DATES_BIRTHDAYFATHER   tr("Birthday father")
+#define DB_CF_DATES_BIRTHDAYMOTHER   tr("Birthday mother")
+#define DB_CF_DATES_DAYDATING        tr("Day of dating")
+#define DB_CF_DATES_DAYFIRSTKISS     tr("Day of 1-st kiss")
+#define DB_CF_DATES_DAYFIRSTSEX      tr("Day of 1-st sex")
+
+// Interests
+#define DB_CF_INTERESTS_HOBBY        tr("Hobby")
+#define DB_CF_INTERESTS_SPORTS       tr("Sports")
+#define DB_CF_INTERESTS_SMOKING      tr("Smoking")
+#define DB_CF_INTERESTS_ALCOHOL      tr("Alcohol")
+#define DB_CF_INTERESTS_DRUGS        tr("Drugs")
+
+// TODO: Periods
+
+// Etc
+#define DB_CF_ETC_DATECREATION       tr("Date creation")
+#define DB_CF_ETC_DATELASTCHANGE     tr("Date last change")
+
+// Notes
+#define DB_CF_NOTES_NOTES            tr("Notes")
+
+// Photos
+#define DB_CF_PHOTOS_1               tr("Photo 1")
+#define DB_CF_PHOTOS_2               tr("Photo 2")
+#define DB_CF_PHOTOS_3               tr("Photo 3")
+#define DB_CF_PHOTOS_4               tr("Photo 4")
+#define DB_CF_PHOTOS_5               tr("Photo 5")
+#define DB_CF_PHOTOS_6               tr("Photo 6")
+#define DB_CF_PHOTOS_7               tr("Photo 7")
+#define DB_CF_PHOTOS_8               tr("Photo 8")
+#define DB_CF_PHOTOS_9               tr("Photo 9")
+#define DB_CF_PHOTOS_10              tr("Photo 10")
+#define DB_CF_PHOTOS_11              tr("Photo 11")
+#define DB_CF_PHOTOS_12              tr("Photo 12")
+#define DB_CF_PHOTOS_13              tr("Photo 13")
+#define DB_CF_PHOTOS_14              tr("Photo 14")
+#define DB_CF_PHOTOS_15              tr("Photo 15")
+#define DB_CF_PHOTOS_PRIMARY_DBFIELD tr("Photo primary DB field")
 //------------------------------------------------------------------------------
 #endif // PickupDb_ConfigH
