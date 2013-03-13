@@ -54,8 +54,8 @@ public:
 
     static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel
-    static CDbImageLabel *find         (cdb_items_t &dbItems, cint &dbRecordIndexB);
-        ///< find CDbImageLabel by record index
+    static CDbImageLabel *find         (cdb_items_t &dbItems, cint &index);
+        ///< find CDbImageLabel by index
     static bool           isLabelsEmpty(cdb_items_t &dbItems);
         ///< is all QLabels empty
 

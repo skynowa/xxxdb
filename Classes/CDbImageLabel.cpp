@@ -202,14 +202,14 @@ CDbImageLabel::find(
 CDbImageLabel *
 CDbImageLabel::find(
     cdb_items_t &a_dbItems,
-    cint        &a_dbRecordIndex
+    cint        &a_index
 )
 {
     Q_ASSERT(!a_dbItems.empty());
-    Q_ASSERT(- 1 < a_dbRecordIndex);
+    Q_ASSERT(- 1 < a_index);
 
     foreach (CDbImageLabel *item, a_dbItems) {
-        if (a_dbRecordIndex == item->dbRecordIndex()) {
+        if (a_index == item->index()) {
             return item;
         }
     }
