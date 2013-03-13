@@ -13,11 +13,12 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CDbImageLabel::CDbImageLabel(QWidget        *a_parent,       ///< parent QWidget
-    QSqlTableModel *a_tableModel,   ///< QSqlTableModel
-    cQString       &a_dbFieldName,  ///< DB field name
-    cint           &a_dbRecordIndex,  ///< DB record index
-    QLabel         *a_label         ///< QLabel for display image
+CDbImageLabel::CDbImageLabel(
+    QWidget        *a_parent,           ///< parent QWidget
+    QSqlTableModel *a_tableModel,       ///< QSqlTableModel
+    cQString       &a_dbFieldName,      ///< DB field name
+    cint           &a_dbRecordIndex,    ///< DB record index
+    QLabel         *a_label             ///< QLabel for display image
 ) :
     QObject           (a_parent),
     _m_wdParent       (a_parent),
@@ -175,6 +176,9 @@ CDbImageLabel::find(
     const QLabel *a_label
 )
 {
+    Q_ASSERT(!a_dbItems.empty());
+    Q_ASSERT(NULL != a_label);
+
     foreach (CDbImageLabel *item, a_dbItems) {
         if (a_label == item->label()) {
             return item;
@@ -191,6 +195,9 @@ CDbImageLabel::find(
     cint        &a_dbRecordIndex
 )
 {
+    Q_ASSERT(!a_dbItems.empty());
+    Q_ASSERT(- 1 < a_dbRecordIndex);
+
     foreach (CDbImageLabel *item, a_dbItems) {
         if (a_dbRecordIndex == item->dbRecordIndex()) {
             return item;

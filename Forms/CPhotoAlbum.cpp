@@ -46,6 +46,9 @@ CPhotoAlbum::eventFilter(
     QEvent  *a_event
 )
 {
+    Q_ASSERT(NULL != a_obj);
+    Q_ASSERT(NULL != a_event);
+
     // clicks on photos
     if (a_event->type() == QEvent::MouseButtonPress) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
@@ -74,6 +77,7 @@ CPhotoAlbum::showEvent(
     QShowEvent *a_event
 )
 {
+    Q_ASSERT(NULL != a_event);
     Q_UNUSED(a_event);
 
     // set primary image
@@ -97,6 +101,7 @@ CPhotoAlbum::resizeEvent(
     QResizeEvent *a_event
 )
 {
+    Q_ASSERT(NULL != a_event);
     Q_UNUSED(a_event);
 
     // lblPhoto
@@ -242,6 +247,10 @@ CPhotoAlbum::_dbWidgetMap(
     cSize    &a_size
 )
 {
+    Q_ASSERT(NULL != a_widget);
+    Q_ASSERT(!a_dbFieldName.isEmpty());
+    // a_size - n/a
+
     QDataWidgetMapper *wmRv = NULL;
 
     wmRv = new QDataWidgetMapper(this);
@@ -401,8 +410,8 @@ CPhotoAlbum::slot_photoMini_OnClicked(
     cQString &a_dbFieldName
 )
 {
-    Q_ASSERT(NULL  != a_label);
-    Q_ASSERT(false == a_dbFieldName.isEmpty());
+    Q_ASSERT(NULL != a_label);
+    Q_ASSERT(!a_dbFieldName.isEmpty());
 
     // lblPhotoMini
     {
