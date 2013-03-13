@@ -1456,6 +1456,59 @@
    </item>
   </layout>
  </widget>
+ <tabstops>
+  <tabstop>twGroups</tabstop>
+  <tabstop>cboNick</tabstop>
+  <tabstop>cboSurname</tabstop>
+  <tabstop>cboName</tabstop>
+  <tabstop>cboPatronymic</tabstop>
+  <tabstop>cboAge</tabstop>
+  <tabstop>cboHeight</tabstop>
+  <tabstop>cboWeight</tabstop>
+  <tabstop>cboHairLength</tabstop>
+  <tabstop>cboHairColor</tabstop>
+  <tabstop>cboAppearance</tabstop>
+  <tabstop>cboAgreement</tabstop>
+  <tabstop>tbtnPhotoAlbum</tabstop>
+  <tabstop>cboMobile1</tabstop>
+  <tabstop>cboMobile2</tabstop>
+  <tabstop>cboMobile3</tabstop>
+  <tabstop>cboPhoneHome</tabstop>
+  <tabstop>cboPhoneJob</tabstop>
+  <tabstop>tedtPhoneAdditional</tabstop>
+  <tabstop>cboCountry</tabstop>
+  <tabstop>cboCode</tabstop>
+  <tabstop>cboCity</tabstop>
+  <tabstop>cboDistrict</tabstop>
+  <tabstop>cboStreet</tabstop>
+  <tabstop>cboHouse</tabstop>
+  <tabstop>cboPorch</tabstop>
+  <tabstop>cboFloor</tabstop>
+  <tabstop>cboApartment</tabstop>
+  <tabstop>tedtEmail</tabstop>
+  <tabstop>tedtWeb</tabstop>
+  <tabstop>cboIcq</tabstop>
+  <tabstop>cboSkype</tabstop>
+  <tabstop>cboProfession</tabstop>
+  <tabstop>cboAddress</tabstop>
+  <tabstop>cboSalary</tabstop>
+  <tabstop>cboCompany</tabstop>
+  <tabstop>dtBirthday</tabstop>
+  <tabstop>dtBirthdayFather</tabstop>
+  <tabstop>dtBirthdayMother</tabstop>
+  <tabstop>dtDayDating</tabstop>
+  <tabstop>dtDayFirstKiss</tabstop>
+  <tabstop>dtDayFirstSex</tabstop>
+  <tabstop>cboHobby</tabstop>
+  <tabstop>cboSports</tabstop>
+  <tabstop>cboSmoking</tabstop>
+  <tabstop>cboAlcohol</tabstop>
+  <tabstop>cboDrugs</tabstop>
+  <tabstop>dtDateCreation</tabstop>
+  <tabstop>dtDateLastChange</tabstop>
+  <tabstop>tedtNotes</tabstop>
+  <tabstop>bbxButtons</tabstop>
+ </tabstops>
  <resources/>
  <connections/>
 </ui>
