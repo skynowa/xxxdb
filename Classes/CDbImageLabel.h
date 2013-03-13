@@ -24,8 +24,8 @@ Q_OBJECT
 
 public:
                           CDbImageLabel(QWidget *parent, QSqlTableModel *tableModel,
-                                        cQString &dbFieldName, cint &dbRecordIndex,
-                                        QLabel *label);
+                                        cQString &dbFieldName, cint &index,
+                                        cint &dbRecordIndex, QLabel *label);
         ///< constructor
     virtual              ~CDbImageLabel();
         ///< destructor
@@ -33,6 +33,8 @@ public:
     // data
     const QString &       dbFieldName  () const;
         ///< get DB field name
+    const int &           index        () const;
+        ///< get index
     const int &           dbRecordIndex() const;
         ///< get DB record index
     QLabel *              label        () const;
@@ -47,7 +49,7 @@ public:
         ///< remove image
 
     // static
-    static int            currentDbRecordIndex; ///< get current DB record index
+    static int            currentIndex;         ///< get current index
     static CDbImageLabel *currentDbImageLabel;  ///< get current current CDbImageLabel
 
     static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
@@ -61,6 +63,7 @@ private:
     QWidget              *_m_wdParent;        ///< parent QWidget
     QSqlTableModel       *_m_tmModel;         ///< QSqlTableModel
     cQString              _m_csDbFieldName;   ///< DB field name
+    cint                  _m_ciIndex;         ///< index
     cint                  _m_ciDbRecordIndex; ///< DB record index
     QLabel               *_m_lblLabel;        ///< QLabel for display image
     QByteArray            _m_baBuffer;        ///< buffer for store image

@@ -192,6 +192,7 @@ CPhotoAlbum::_initMain() {
                                         this,
                                         _m_tmModel,
                                         dbFieldNames[i],
+                                        i,
                                         _m_ciRecordIndex,
                                         photoMinis[i]);
 
@@ -303,28 +304,28 @@ CPhotoAlbum::slot_OnFirst() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnPrior() {
-    if (0 >= CDbImageLabel::currentDbRecordIndex) {
-        CDbImageLabel::currentDbRecordIndex = 0;
+    if (0 >= CDbImageLabel::currentIndex) {
+        CDbImageLabel::currentIndex = 0;
     } else {
-        -- CDbImageLabel::currentDbRecordIndex;
+        -- CDbImageLabel::currentIndex;
     }
 
-    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->label();
-    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->dbFieldName();
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentIndex)->label();
+    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentIndex)->dbFieldName();
 
     slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnNext() {
-    if (CDbImageLabel::currentDbRecordIndex >= _m_viDbItems.count() - 1) {
-        CDbImageLabel::currentDbRecordIndex = _m_viDbItems.count() - 1;
+    if (CDbImageLabel::currentIndex >= _m_viDbItems.count() - 1) {
+        CDbImageLabel::currentIndex = _m_viDbItems.count() - 1;
     } else {
-        ++ CDbImageLabel::currentDbRecordIndex;
+        ++ CDbImageLabel::currentIndex;
     }
 
-    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->label();
-    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->dbFieldName();
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentIndex)->label();
+    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentIndex)->dbFieldName();
 
     slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
@@ -345,7 +346,7 @@ CPhotoAlbum::slot_OnTo() {
     cint ciTargetIndex = QInputDialog::getInt(
                             this,
                             APP_NAME, tr("Go to photo:"),
-                            CDbImageLabel::currentDbRecordIndex + 1,
+                            CDbImageLabel::currentIndex + 1,
                             ciMinValue, ciMaxValue) - 1;
 
     QLabel   *lblPhotoMini  = _m_viDbItems.at(ciTargetIndex)->label();
@@ -371,7 +372,7 @@ CPhotoAlbum::slot_OnEdit() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnSetPrimary() {
-    cint ciPrimaryIndex = CDbImageLabel::currentDbRecordIndex;
+    cint ciPrimaryIndex = CDbImageLabel::currentIndex;
 
     // write to DB
     QSqlRecord srRecord = _m_tmModel->record(_m_ciRecordIndex);
@@ -392,14 +393,14 @@ CPhotoAlbum::slot_OnSetPrimary() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnLoop() {
-    if (CDbImageLabel::currentDbRecordIndex >= _m_viDbItems.count() - 1) {
-        CDbImageLabel::currentDbRecordIndex = 0;
+    if (CDbImageLabel::currentIndex >= _m_viDbItems.count() - 1) {
+        CDbImageLabel::currentIndex = 0;
     } else {
-        ++ CDbImageLabel::currentDbRecordIndex;
+        ++ CDbImageLabel::currentIndex;
     }
 
-    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->label();
-    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentDbRecordIndex)->dbFieldName();
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentIndex)->label();
+    cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentIndex)->dbFieldName();
 
     slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }
@@ -419,8 +420,8 @@ CPhotoAlbum::slot_photoMini_OnClicked(
         foreach (CDbImageLabel *i, _m_viDbItems) {
             if (a_label == i->label()) {
                 // set current indexes
-                CDbImageLabel::currentDbRecordIndex = i->dbRecordIndex();
-                CDbImageLabel::currentDbImageLabel  = i;
+                CDbImageLabel::currentIndex        = i->index();
+                CDbImageLabel::currentDbImageLabel = i;
 
                 i->label()->setFrameShape(QFrame::WinPanel);
             } else {

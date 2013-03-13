@@ -17,6 +17,7 @@ CDbImageLabel::CDbImageLabel(
     QWidget        *a_parent,           ///< parent QWidget
     QSqlTableModel *a_tableModel,       ///< QSqlTableModel
     cQString       &a_dbFieldName,      ///< DB field name
+    cint           &a_index,            ///< index
     cint           &a_dbRecordIndex,    ///< DB record index
     QLabel         *a_label             ///< QLabel for display image
 ) :
@@ -24,6 +25,7 @@ CDbImageLabel::CDbImageLabel(
     _m_wdParent       (a_parent),
     _m_tmModel        (a_tableModel),
     _m_csDbFieldName  (a_dbFieldName),
+    _m_ciIndex        (a_index),
     _m_ciDbRecordIndex(a_dbRecordIndex),
     _m_lblLabel       (a_label),
     _m_baBuffer       ()
@@ -31,6 +33,7 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(!a_dbFieldName.isEmpty());
+    Q_ASSERT(- 1 < a_index);
     Q_ASSERT(- 1 < a_dbRecordIndex);
     Q_ASSERT(NULL != a_label);
 }
@@ -52,6 +55,13 @@ CDbImageLabel::dbFieldName() const {
     Q_ASSERT(!_m_csDbFieldName.isEmpty());
 
     return _m_csDbFieldName;
+}
+//------------------------------------------------------------------------------
+const int &
+CDbImageLabel::index() const {
+    Q_ASSERT(- 1 < _m_ciIndex);
+
+    return _m_ciIndex;
 }
 //------------------------------------------------------------------------------
 const int &
@@ -166,7 +176,7 @@ CDbImageLabel::remove() {
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-int            CDbImageLabel::currentDbRecordIndex = - 1;
+int            CDbImageLabel::currentIndex         = - 1;
 CDbImageLabel *CDbImageLabel::currentDbImageLabel  = NULL;
 //------------------------------------------------------------------------------
 /* static */
