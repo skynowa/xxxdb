@@ -22,19 +22,19 @@ CPersonEdit::CPersonEdit(
     QSqlTableModel *a_tableModel,
     CSqlNavigator  *a_sqlNavigator
 ) :
-    QDialog          (a_parent),
-    m_wndPhotoAlbum  (NULL),
-    _m_tmModel       (a_tableModel),
-    _m_snSqlNavigator(a_sqlNavigator),
-    _m_hsDbControls  (),
-    _m_dmMapper      (NULL),
-    _m_ciCurrentRow  (a_sqlNavigator->view()->currentIndex().row()),
-    _m_dbImage       ()
+    QDialog           (a_parent),
+    m_wndPhotoAlbum   (NULL),
+    _m_tmModel        (a_tableModel),
+    _m_snSqlNavigator (a_sqlNavigator),
+    _m_hsDbControls   (),
+    _m_dmMapper       (NULL),
+    _m_ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
+    _m_dbImage        ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(NULL != a_sqlNavigator);
-    Q_ASSERT(- 1  <  _m_ciCurrentRow);
+    Q_ASSERT(- 1  <  _m_ciDbRecordIndex);
 
     _construct();
 }
@@ -170,7 +170,7 @@ CPersonEdit::_initMain() {
         }
 
         // activate current record
-        _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
+        _m_dmMapper->setCurrentIndex(_m_ciDbRecordIndex);
 
         // set default control
         m_Ui.cboNick->setFocus();
@@ -181,7 +181,7 @@ CPersonEdit::_initMain() {
     {
         // TODO: 0
         _m_dbImage = new CDbImageLabel(this, _m_tmModel, DB_F_PHOTOS_1,
-                                       0, _m_ciCurrentRow, m_Ui.lblPhoto);
+                                       0, _m_ciDbRecordIndex, m_Ui.lblPhoto);
     }
 
     // signals
@@ -323,10 +323,10 @@ CPersonEdit::_saveAll() {
     }
 
     // set current index
-    _m_dmMapper->setCurrentIndex(_m_ciCurrentRow);
+    _m_dmMapper->setCurrentIndex(_m_ciDbRecordIndex);
 
     // set current index
-    _m_snSqlNavigator->to(_m_ciCurrentRow);
+    _m_snSqlNavigator->to(_m_ciDbRecordIndex);
 }
 //------------------------------------------------------------------------------
 void

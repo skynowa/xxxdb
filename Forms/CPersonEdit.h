@@ -39,7 +39,7 @@ private:
     CSqlNavigator     *_m_snSqlNavigator;
     db_controls_t      _m_hsDbControls;
     QDataWidgetMapper *_m_dmMapper;
-    cint               _m_ciCurrentRow;
+    cint               _m_ciDbRecordIndex;
     CDbImageLabel     *_m_dbImage;
 
     void               _construct();

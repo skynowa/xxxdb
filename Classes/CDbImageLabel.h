@@ -31,11 +31,11 @@ public:
         ///< destructor
 
     // data
-    const QString &       dbFieldName  () const;
+    cQString &            dbFieldName  () const;
         ///< get DB field name
-    const int &           index        () const;
+    cint &                index        () const;
         ///< get index
-    const int &           dbRecordIndex() const;
+    cint &                dbRecordIndex() const;
         ///< get DB record index
     QLabel *              label        () const;
         ///< get QLabel

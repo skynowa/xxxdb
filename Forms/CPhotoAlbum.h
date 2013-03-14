@@ -35,7 +35,7 @@ protected:
 private:
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
-    cint               _m_ciRecordIndex;
+    cint               _m_ciDbRecordIndex;
     db_items_t         _m_viDbItems;
     QPixmap            _m_pixPixmap;
 

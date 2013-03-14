@@ -50,21 +50,21 @@ CDbImageLabel::~CDbImageLabel() {
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-const QString &
+cQString &
 CDbImageLabel::dbFieldName() const {
     Q_ASSERT(!_m_csDbFieldName.isEmpty());
 
     return _m_csDbFieldName;
 }
 //------------------------------------------------------------------------------
-const int &
+cint &
 CDbImageLabel::index() const {
     Q_ASSERT(- 1 < _m_ciIndex);
 
     return _m_ciIndex;
 }
 //------------------------------------------------------------------------------
-const int &
+cint &
 CDbImageLabel::dbRecordIndex() const {
     Q_ASSERT(- 1 < _m_ciDbRecordIndex);
 

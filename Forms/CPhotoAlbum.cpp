@@ -21,16 +21,16 @@ CPhotoAlbum::CPhotoAlbum(
     QSqlTableModel *a_tableModel,
     CSqlNavigator  *a_sqlNavigator
 ) :
-    QMainWindow     (a_parent),
-    _m_tmModel      (a_tableModel),
-    _m_ciRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
-    _m_viDbItems    (),
-    _m_pixPixmap    ()
+    QMainWindow       (a_parent),
+    _m_tmModel        (a_tableModel),
+    _m_ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
+    _m_viDbItems      (),
+    _m_pixPixmap      ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(NULL != a_sqlNavigator);
-    Q_ASSERT(- 1  <  _m_ciRecordIndex);
+    Q_ASSERT(- 1  <  _m_ciDbRecordIndex);
 
     _construct();
 }
@@ -83,7 +83,7 @@ CPhotoAlbum::showEvent(
     // set primary image
     {
         // get primary image index
-        cint ciPrimaryIndex = _m_tmModel->record(_m_ciRecordIndex)
+        cint ciPrimaryIndex = _m_tmModel->record(_m_ciDbRecordIndex)
                                 .value(DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
 
         // set primary image index
@@ -193,7 +193,7 @@ CPhotoAlbum::_initMain() {
                                         _m_tmModel,
                                         dbFieldNames[i],
                                         i,
-                                        _m_ciRecordIndex,
+                                        _m_ciDbRecordIndex,
                                         photoMinis[i]);
 
             _m_viDbItems.push_back(item);
@@ -263,7 +263,7 @@ CPhotoAlbum::_dbWidgetMap(
                             NULL));
     wmRv->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
     wmRv->addMapping(a_widget, _m_tmModel->fieldIndex(a_dbFieldName));
-    wmRv->setCurrentIndex(_m_ciRecordIndex);
+    wmRv->setCurrentIndex(_m_ciDbRecordIndex);
 
     return wmRv;
 }
@@ -375,10 +375,10 @@ CPhotoAlbum::slot_OnSetPrimary() {
     cint ciPrimaryIndex = CDbImageLabel::currentIndex;
 
     // write to DB
-    QSqlRecord srRecord = _m_tmModel->record(_m_ciRecordIndex);
+    QSqlRecord srRecord = _m_tmModel->record(_m_ciDbRecordIndex);
     srRecord.setValue(DB_F_PHOTOS_PRIMARY_DBFIELD, ciPrimaryIndex);
 
-    _m_tmModel->setRecord(_m_ciRecordIndex, srRecord);
+    _m_tmModel->setRecord(_m_ciDbRecordIndex, srRecord);
     bool bRv = _m_tmModel->submit();
     Q_ASSERT(bRv);
 }
@@ -432,7 +432,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
 
     // lblPhoto
     {
-        cQByteArray baPhoto = _m_tmModel->record(_m_ciRecordIndex)
+        cQByteArray baPhoto = _m_tmModel->record(_m_ciDbRecordIndex)
                                 .value(a_dbFieldName).toByteArray();
 
         if (0 >= baPhoto.size()) {
