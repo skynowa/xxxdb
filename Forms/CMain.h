@@ -39,7 +39,7 @@ private:
     QSqlDatabase       _m_dbDatabase;
     QSqlTableModel    *_m_tmModel;
     db_items_t         _m_hsDbItems;
-    QDataWidgetMapper *_m_dmMapper;
+    QDataWidgetMapper *_m_dmImage;
 
     void               _construct       ();
     void               _destruct        ();

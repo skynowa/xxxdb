@@ -32,7 +32,7 @@ CMain::CMain(
     _m_dbDatabase   (),
     _m_tmModel      (NULL),
     _m_hsDbItems    (),
-    _m_dmMapper     (NULL)
+    _m_dmImage      (NULL)
 {
     _construct();
 }
@@ -384,25 +384,25 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _m_dmMapper
+    // _m_dmImage
     {
-        _m_dmMapper = new QDataWidgetMapper(this);
-        _m_dmMapper->setModel(_m_tmModel);
-        _m_dmMapper->setItemDelegate(
+        _m_dmImage = new QDataWidgetMapper(this);
+        _m_dmImage->setModel(_m_tmModel);
+        _m_dmImage->setItemDelegate(
                         new CDelegateDbImage(
-                                _m_dmMapper,
+                                _m_dmImage,
                                 _m_tmModel->fieldIndex(DB_F_PHOTOS_1),
                                 PHOTO_SIZE,
                                 m_Ui.lblPhotoSize));
-        _m_dmMapper->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+        _m_dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
-        // DB controls to QMap
+        // DB items to QHash
         {
              // Photos
             _m_hsDbItems.insert(m_Ui.lblPhoto, DB_F_PHOTOS_1);
         }
 
-        // map DB controls
+        // map DB items
         {
             cdb_items_t::ConstIterator cit;
 
@@ -413,7 +413,7 @@ CMain::_initModel() {
                 QWidget *widget  = cit.key();
                 cint     section = _m_tmModel->fieldIndex( cit.value() );
 
-                _m_dmMapper->addMapping(widget, section);
+                _m_dmImage->addMapping(widget, section);
             }
         }
     }
@@ -422,7 +422,7 @@ CMain::_initModel() {
     // slots
     {
         connect(m_Ui.tvInfo->selectionModel(), SIGNAL( currentRowChanged(QModelIndex, QModelIndex) ),
-                _m_dmMapper,                   SLOT  ( setCurrentModelIndex(QModelIndex)) );
+                _m_dmImage,                    SLOT  ( setCurrentModelIndex(QModelIndex)) );
 
         connect(m_Ui.tvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
                 this,                          SLOT  ( slot_OnEdit() ));
