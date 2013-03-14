@@ -22,17 +22,17 @@ CMain::CMain(
     QWidget         *a_parent,
     Qt::WindowFlags  a_flags
 ) :
-    QMainWindow    (a_parent, a_flags),
-    m_sAppName     (),
-    m_sAppDir      (),
-    m_sDbDir       (),
-    m_sDbBackupDir (),
-    m_snSqlNavigator (this),
-    m_wndPhotoAlbum(NULL),
-    _m_dbDatabase  (),
-    _m_tmModel     (NULL),
-    _m_hsDbItems   (),
-    _m_dmMapper    (NULL)
+    QMainWindow     (a_parent, a_flags),
+    m_sAppName      (),
+    m_sAppDir       (),
+    m_sDbDir        (),
+    m_sDbBackupDir  (),
+    m_snSqlNavigator(this),
+    m_wndPhotoAlbum (NULL),
+    _m_dbDatabase   (),
+    _m_tmModel      (NULL),
+    _m_hsDbItems    (),
+    _m_dmMapper     (NULL)
 {
     _construct();
 }

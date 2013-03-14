@@ -320,7 +320,7 @@ CPersonEdit::_saveAll() {
 #if 0
     // submit data
     {
-        bool bRv = _m_dmMapper->submit();
+        bool bRv = _m_dmText->submit();
         if (!bRv) {
             qDebug() << __FUNCTION__ << ": mapper fail, "
                      << _m_tmModel->lastError().text();
