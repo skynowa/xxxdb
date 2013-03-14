@@ -360,7 +360,11 @@ CMain::_initModel() {
 
         _m_tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         _m_tmModel->select();
+    }
 
+    //--------------------------------------------------
+    // m_Ui.tvInfo
+    {
         m_Ui.tvInfo->setModel(_m_tmModel);
         m_Ui.tvInfo->hideColumn(0); // don't show the DB_F_ID
         // m_Ui.tvInfo->setColumnWidth(0, 40);
