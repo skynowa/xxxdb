@@ -50,7 +50,7 @@ public:
 
     // static
     static int            currentIndex;         ///< get current index
-    static CDbImageLabel *currentDbImageLabel;  ///< get current current CDbImageLabel
+    static CDbImageLabel *currentDbImageLabel;  ///< get current CDbImageLabel
 
     static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel

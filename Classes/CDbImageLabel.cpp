@@ -128,44 +128,34 @@ CDbImageLabel::saveToFile() {
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
+        case QDialog::Accepted:
+            _saveToFile( fdlgDialog.selectedFiles().first() );
+            break;
         case QDialog::Rejected:
-            // n/a;
-            break;
-        case QDialog::Accepted: {
-            cQString csFilePath = fdlgDialog.selectedFiles().first();
-            _saveToFile(csFilePath);
-            }
-            break;
         default:
-            Q_ASSERT(false);
             break;
     }
 }
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::remove() {
-    // ensure for removing
-    {
-        QMessageBox msgBox;
+    QMessageBox msgBox;
 
-        msgBox.setIcon(QMessageBox::Warning);
-        msgBox.setText("Removing image.");
-        msgBox.setInformativeText("Do you want to remove image?");
-        msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
-        msgBox.setDefaultButton(QMessageBox::Cancel);
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText(tr("Removing image."));
+    msgBox.setInformativeText(tr("Do you want to remove image?"));
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
 
-        cint ciRv = msgBox.exec();
-        switch (ciRv) {
-            case QMessageBox::Yes:
-                // yes, remove
-                break;
-            default:
-                return;
-                break;
-        }
+    cint ciRv = msgBox.exec();
+    switch (ciRv) {
+        case QMessageBox::Yes:
+            _remove();
+            break;
+        case QMessageBox::Cancel:
+        default:
+            break;
     }
-
-    _remove();
 }
 //------------------------------------------------------------------------------
 
@@ -223,6 +213,8 @@ CDbImageLabel::isLabelsEmpty(
     cdb_items_t &a_dbItems
 )
 {
+    // a_dbItems - n/a
+
     foreach (CDbImageLabel *item, a_dbItems) {
         if (NULL != item->label()->pixmap()) {
             return true;
@@ -246,6 +238,9 @@ CDbImageLabel::_loadFromFile(
     cSize    &a_imageSize   ///< image target size
 )
 {
+    Q_ASSERT(!a_filePath.isEmpty());
+    Q_ASSERT(a_imageSize.isValid());
+
     // TODO: ensure rewrite image
 
     _m_baBuffer.clear();
@@ -294,6 +289,8 @@ CDbImageLabel::_saveToFile(
     cQString &a_filePath   ///< image file path
 )
 {
+    Q_ASSERT(!a_filePath.isEmpty());
+
     QByteArray baImage = _m_tmModel->record( dbRecordIndex() )
                             .value(_m_csDbFieldName).toByteArray();
 
@@ -303,7 +300,7 @@ CDbImageLabel::_saveToFile(
 
     QDataStream stream(&file);
     cint ciRv = stream.writeRawData(baImage.constData(), baImage.size());
-    Q_ASSERT(0 < ciRv);
+    Q_ASSERT(ciRv == baImage.size());
 }
 //------------------------------------------------------------------------------
 void

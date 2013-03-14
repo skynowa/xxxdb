@@ -26,7 +26,7 @@ CDelegateDbImage::CDelegateDbImage(
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(- 1   < a_imageFieldIndex);
-    // a_size - n/a
+    Q_ASSERT(a_size.isValid());
     // a_infoPanel - n/a
 }
 //------------------------------------------------------------------------------
@@ -37,7 +37,7 @@ CDelegateDbImage::setEditorData(
 ) const
 {
     Q_ASSERT(NULL != a_editor);
-    // a_index - n/a
+    Q_ASSERT(a_index.isValid());
 
     if (_m_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
@@ -81,7 +81,7 @@ CDelegateDbImage::setModelData(
 {
     Q_ASSERT(NULL != a_editor);
     Q_ASSERT(NULL != a_model);
-    // a_index - n/a
+    Q_ASSERT(a_index.isValid());
 
     if (_m_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
