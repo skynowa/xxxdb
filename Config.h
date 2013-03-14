@@ -235,5 +235,14 @@
 #define DB_CF_PHOTOS_14              tr("Photo 14")
 #define DB_CF_PHOTOS_15              tr("Photo 15")
 #define DB_CF_PHOTOS_PRIMARY_DBFIELD tr("Photo primary DB field")
+
+
+/*******************************************************************************
+*   types
+*
+*******************************************************************************/
+
+typedef QHash<QWidget *, QString> db_items_t;
+typedef const db_items_t          cdb_items_t;
 //------------------------------------------------------------------------------
 #endif // PickupDb_ConfigH

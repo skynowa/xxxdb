@@ -32,15 +32,13 @@ public:
     CPhotoAlbum       *m_wndPhotoAlbum;
 
 private:
-    typedef QHash<QWidget *, QString> db_controls_t;
-    typedef const db_controls_t       cdb_controls_t;
-
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
-    db_controls_t      _m_hsDbControls;
-    QDataWidgetMapper *_m_dmMapper;
+    db_items_t         _m_hsDbItems;
+    QDataWidgetMapper *_m_dmText;           ///< one mapper for all text items
+    QDataWidgetMapper *_m_dmImage;          ///< mapper for image item
     cint               _m_ciDbRecordIndex;
-    CDbImageLabel     *_m_dbImage;
+    CDbImageLabel     *_m_dbImageLabel;
 
     void               _construct();
     void               _destruct ();
@@ -51,7 +49,7 @@ private:
 
 private Q_SLOTS:
     // photo
-    void               slot_OnPhotoAlbum        ();
+    void               slot_OnPhotoAlbum();
 
     void               slot_bbxButtons_OnClicked(QAbstractButton *button);
     void               slot_twGroups_OnActivated(const QModelIndex &index);

@@ -31,7 +31,7 @@ CMain::CMain(
     m_wndPhotoAlbum(NULL),
     _m_dbDatabase  (),
     _m_tmModel     (NULL),
-    _m_hsDbControls(),
+    _m_hsDbItems   (),
     _m_dmMapper    (NULL)
 {
     _construct();
@@ -266,7 +266,7 @@ CMain::_initModel() {
             {7,  DB_CF_MAIN_WEIGHT},
             {8,  DB_CF_MAIN_HAIRLENGTH},
             {9,  DB_CF_MAIN_HAIRCOLOR},
-            {10,  DB_CF_MAIN_APPEARANCE},
+            {10, DB_CF_MAIN_APPEARANCE},
             {11, DB_CF_MAIN_AGREEMENT},
 
             // Phones
@@ -358,7 +358,7 @@ CMain::_initModel() {
                     chdHeaders[i].value);
         }
 
-        _m_tmModel->setEditStrategy(QSqlTableModel::OnManualSubmit);
+        _m_tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         _m_tmModel->select();
 
         m_Ui.tvInfo->setModel(_m_tmModel);
@@ -395,15 +395,15 @@ CMain::_initModel() {
         // DB controls to QMap
         {
              // Photos
-            _m_hsDbControls.insert(m_Ui.lblPhoto, DB_F_PHOTOS_1);
+            _m_hsDbItems.insert(m_Ui.lblPhoto, DB_F_PHOTOS_1);
         }
 
         // map DB controls
         {
-            cdb_controls_t::ConstIterator cit;
+            cdb_items_t::ConstIterator cit;
 
-            for (cit  = _m_hsDbControls.constBegin();
-                 cit != _m_hsDbControls.constEnd();
+            for (cit  = _m_hsDbItems.constBegin();
+                 cit != _m_hsDbItems.constEnd();
                  ++ cit)
             {
                 QWidget *widget  = cit.key();

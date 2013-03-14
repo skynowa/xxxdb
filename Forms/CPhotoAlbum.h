@@ -36,7 +36,7 @@ private:
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
     cint               _m_ciDbRecordIndex;
-    db_items_t         _m_viDbItems;
+    db_images_t        _m_viDbItems;
     QPixmap            _m_pixPixmap;
 
     void               _construct         ();
@@ -44,7 +44,7 @@ private:
     void               _initMain          ();
     void               _initActions       ();
 
-    QDataWidgetMapper *_dbWidgetMap       (QWidget *widget,
+    QDataWidgetMapper *_dbImageWidgetMap  (QWidget *widget,
                                            cQString &dbFieldName, cSize &size);
 
 private Q_SLOTS:

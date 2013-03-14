@@ -202,8 +202,7 @@ CPhotoAlbum::_initMain() {
 
     // map DB controls
     foreach (CDbImageLabel *cit, _m_viDbItems) {
-        (QDataWidgetMapper *)_dbWidgetMap(cit->label(), cit->dbFieldName(),
-                                          PHOTO_MINI_SIZE);
+        (void)_dbImageWidgetMap(cit->label(), cit->dbFieldName(), PHOTO_MINI_SIZE);
         cit->label()->installEventFilter(this);
     }
 }
@@ -242,7 +241,7 @@ CPhotoAlbum::_initActions() {
 }
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
-CPhotoAlbum::_dbWidgetMap(
+CPhotoAlbum::_dbImageWidgetMap(
     QWidget  *a_widget,
     cQString &a_dbFieldName,
     cSize    &a_size
@@ -250,18 +249,16 @@ CPhotoAlbum::_dbWidgetMap(
 {
     Q_ASSERT(NULL != a_widget);
     Q_ASSERT(!a_dbFieldName.isEmpty());
-    // a_size - n/a
+    Q_ASSERT(a_size.isValid());
 
-    QDataWidgetMapper *wmRv = NULL;
-
-    wmRv = new QDataWidgetMapper(this);
+    QDataWidgetMapper *wmRv = new QDataWidgetMapper(this);
     wmRv->setModel(_m_tmModel);
     wmRv->setItemDelegate(new CDelegateDbImage(
                             wmRv,
                             _m_tmModel->fieldIndex(a_dbFieldName),
                             a_size,
                             NULL));
-    wmRv->setSubmitPolicy(QDataWidgetMapper::ManualSubmit);
+    wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
     wmRv->addMapping(a_widget, _m_tmModel->fieldIndex(a_dbFieldName));
     wmRv->setCurrentIndex(_m_ciDbRecordIndex);
 

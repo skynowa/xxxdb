@@ -13,8 +13,8 @@
 //------------------------------------------------------------------------------
 class CDbImageLabel;
 
-typedef QVector<CDbImageLabel *> db_items_t;
-typedef const db_items_t         cdb_items_t;
+typedef QVector<CDbImageLabel *> db_images_t;
+typedef const db_images_t        cdb_images_t;
 
 class CDbImageLabel :
     public QObject
@@ -52,11 +52,11 @@ public:
     static int            currentIndex;         ///< get current index
     static CDbImageLabel *currentDbImageLabel;  ///< get current CDbImageLabel
 
-    static CDbImageLabel *find         (cdb_items_t &dbItems, const QLabel *label);
+    static CDbImageLabel *find         (cdb_images_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel
-    static CDbImageLabel *find         (cdb_items_t &dbItems, cint &index);
+    static CDbImageLabel *find         (cdb_images_t &dbItems, cint &index);
         ///< find CDbImageLabel by index
-    static bool           isLabelsEmpty(cdb_items_t &dbItems);
+    static bool           isLabelsEmpty(cdb_images_t &dbItems);
         ///< is all QLabels empty
 
 private:

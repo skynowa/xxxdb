@@ -36,12 +36,9 @@ public:
     CPhotoAlbum       *m_wndPhotoAlbum;
 
 private:
-    typedef QHash<QWidget *, QString> db_controls_t;
-    typedef const db_controls_t       cdb_controls_t;
-
     QSqlDatabase       _m_dbDatabase;
     QSqlTableModel    *_m_tmModel;
-    db_controls_t      _m_hsDbControls;
+    db_items_t         _m_hsDbItems;
     QDataWidgetMapper *_m_dmMapper;
 
     void               _construct       ();

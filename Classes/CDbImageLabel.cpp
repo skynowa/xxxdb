@@ -172,7 +172,7 @@ CDbImageLabel *CDbImageLabel::currentDbImageLabel  = NULL;
 /* static */
 CDbImageLabel *
 CDbImageLabel::find(
-    cdb_items_t  &a_dbItems,
+    cdb_images_t &a_dbItems,
     const QLabel *a_label
 )
 {
@@ -191,8 +191,8 @@ CDbImageLabel::find(
 /* static */
 CDbImageLabel *
 CDbImageLabel::find(
-    cdb_items_t &a_dbItems,
-    cint        &a_index
+    cdb_images_t &a_dbItems,
+    cint         &a_index
 )
 {
     Q_ASSERT(!a_dbItems.empty());
@@ -210,7 +210,7 @@ CDbImageLabel::find(
 /* static */
 bool
 CDbImageLabel::isLabelsEmpty(
-    cdb_items_t &a_dbItems
+    cdb_images_t &a_dbItems
 )
 {
     // a_dbItems - n/a
