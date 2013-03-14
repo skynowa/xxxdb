@@ -247,7 +247,7 @@ CDbImageLabel::_loadFromFile(
 
     // file to buffer
     {
-        if (true == IMAGE_IS_CONVERT) {
+        if (IMAGE_IS_CONVERT) {
             CUtils::imageConvert(a_filePath, &_m_baBuffer);
         } else {
             QFile file(a_filePath);
