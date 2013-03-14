@@ -155,11 +155,9 @@ CPersonEdit::_initMain() {
             _m_dmText->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
             // map
-            db_items_t::ConstIterator cit;
-
-            for (cit = _m_hsDbItems.begin(); cit != _m_hsDbItems.end(); ++ cit) {
-                QWidget *widget  = cit.key();
-                cint     section = _m_tmModel->fieldIndex(cit.value());
+            foreach (QWidget *key, _m_hsDbItems.keys()) {
+                QWidget *widget  = key;
+                cint     section = _m_tmModel->fieldIndex(_m_hsDbItems.value(key));
 
                 _m_dmText->addMapping(widget, section);
             }
