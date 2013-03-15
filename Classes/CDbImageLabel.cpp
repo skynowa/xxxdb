@@ -83,6 +83,13 @@ CDbImageLabel::label() const {
     return _m_lblLabel;
 }
 //------------------------------------------------------------------------------
+cSize &
+CDbImageLabel::size() const {
+    Q_ASSERT(_m_cszSize.isValid());
+
+    return _m_cszSize;
+}
+//------------------------------------------------------------------------------
 
 
 /*******************************************************************************
@@ -108,10 +115,8 @@ CDbImageLabel::loadFromFile() {
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
-        case QDialog::Accepted: {
-            cQString csFilePath = fdlgDialog.selectedFiles().first();
-            _loadFromFile(csFilePath, QSize(PHOTO_WIDTH, PHOTO_HEIGHT));
-            }
+        case QDialog::Accepted:
+            _loadFromFile( fdlgDialog.selectedFiles().first() );
             break;
         case QDialog::Rejected:
         default:
@@ -245,7 +250,7 @@ CDbImageLabel::_map() {
     wmRv->setItemDelegate(new CDelegateDbImage(
                                 wmRv,
                                 _m_tmModel->fieldIndex( dbFieldName() ),
-                                _m_cszSize,
+                                size(),
                                 NULL));
     wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
     wmRv->addMapping(label(), _m_tmModel->fieldIndex( dbFieldName() ));
@@ -256,12 +261,10 @@ CDbImageLabel::_map() {
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::_loadFromFile(
-    cQString &a_filePath,   ///< image file path
-    cSize    &a_imageSize   ///< image target size
+    cQString &a_filePath   ///< image file path
 )
 {
     Q_ASSERT(!a_filePath.isEmpty());
-    Q_ASSERT(a_imageSize.isValid());
 
     // TODO: ensure rewrite image
 
@@ -294,7 +297,7 @@ CDbImageLabel::_loadFromFile(
             Q_ASSERT(bRv);
 
             QImage  imgImageScaled = imgImage.scaled(
-                                        a_imageSize,
+                                        size(),
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
             QPixmap pixPixmap      = QPixmap::fromImage(imgImageScaled);

@@ -17,11 +17,12 @@
 
 // photo
 #define PHOTO_NUM                    10
+#define IMAGE_FORMATS                "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
+#define IMAGE_IS_CONVERT             true
+
 #define PHOTO_WIDTH                  300
 #define PHOTO_HEIGHT                 200
 #define PHOTO_SIZE                   QSize(PHOTO_WIDTH, PHOTO_HEIGHT)
-#define IMAGE_FORMATS                "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
-#define IMAGE_IS_CONVERT             true
 
 #define PHOTO_MINI_WIDTH             120
 #define PHOTO_MINI_HEIGHT            80

@@ -40,6 +40,8 @@ public:
         ///< get DB record index
     QLabel *              label        () const;
         ///< get QLabel
+    cSize &               size         () const;
+        ///< get image sizes
 
     // actions
     void                  loadFromFile ();
@@ -75,7 +77,7 @@ private:
 
     QDataWidgetMapper    *_map         ();
         ///< map QWidget to DB field
-    void                  _loadFromFile(cQString &filePath, cSize &imageSize);
+    void                  _loadFromFile(cQString &filePath);
         ///< load image from file
     void                  _saveToFile  (cQString &filePath);
         ///< save image to file
