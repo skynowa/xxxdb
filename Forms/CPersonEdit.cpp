@@ -90,7 +90,7 @@ CPersonEdit::_initMain() {
             _m_hsDbItems.insert(m_Ui.cboMobile3,       DB_F_PHONES_MOBILE3);
             _m_hsDbItems.insert(m_Ui.cboPhoneHome,     DB_F_PHONES_HOME);
             _m_hsDbItems.insert(m_Ui.cboPhoneJob,      DB_F_PHONES_JOB);
-            _m_hsDbItems.insert(m_Ui.tedtPhoneAdditional, DB_F_PHONES_OTHER);
+            _m_hsDbItems.insert(m_Ui.tedtPhoneOther,   DB_F_PHONES_OTHER);
 
             // Address
             _m_hsDbItems.insert(m_Ui.cboCountry,       DB_F_ADDRESS_COUNTRY);

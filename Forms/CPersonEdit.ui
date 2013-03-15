@@ -477,7 +477,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Additional:</string>
+        <string>Other:</string>
        </property>
       </widget>
       <widget class="QComboBox" name="cboPhoneHome">
@@ -551,7 +551,7 @@
         <string>Home:</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="tedtPhoneAdditional">
+      <widget class="QTextEdit" name="tedtPhoneOther">
        <property name="geometry">
         <rect>
          <x>94</x>
@@ -1475,7 +1475,7 @@
   <tabstop>cboMobile3</tabstop>
   <tabstop>cboPhoneHome</tabstop>
   <tabstop>cboPhoneJob</tabstop>
-  <tabstop>tedtPhoneAdditional</tabstop>
+  <tabstop>tedtPhoneOther</tabstop>
   <tabstop>cboCountry</tabstop>
   <tabstop>cboCode</tabstop>
   <tabstop>cboCity</tabstop>
