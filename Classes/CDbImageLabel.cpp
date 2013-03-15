@@ -40,7 +40,7 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(- 1 < a_dbRecordIndex);
     Q_ASSERT(NULL != a_label);
 
-    _map();
+    (QDataWidgetMapper *)_map();
 }
 //------------------------------------------------------------------------------
 CDbImageLabel::~CDbImageLabel() {
