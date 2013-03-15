@@ -103,16 +103,13 @@ CDbImageLabel::loadFromFile() {
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
-        case QDialog::Rejected:
-            // n/a
-            break;
         case QDialog::Accepted: {
             cQString csFilePath = fdlgDialog.selectedFiles().first();
             _loadFromFile(csFilePath, QSize(PHOTO_WIDTH, PHOTO_HEIGHT));
             }
             break;
+        case QDialog::Rejected:
         default:
-            Q_ASSERT(false);
             break;
     }
 }
