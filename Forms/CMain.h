@@ -56,7 +56,7 @@ private Q_SLOTS:
     void               slot_OnPrior     ();
     void               slot_OnNext      ();
     void               slot_OnLast      ();
-    void               slot_OnTo        ();
+    void               slot_OnGoTo      ();
     void               slot_OnInsert    ();
     void               slot_OnRemove    ();
     void               slot_OnEdit      ();

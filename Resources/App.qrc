@@ -20,7 +20,7 @@
         <file>Menu/Search.bmp</file>
         <file>Menu/www.kyivstar.net.bmp</file>
         <file>Menu/Insert.bmp</file>
-        <file>Menu/To.bmp</file>
+        <file>Menu/GoTo.bmp</file>
         <file>Menu/SetPrimaryImage.bmp</file>
     </qresource>
 </RCC>

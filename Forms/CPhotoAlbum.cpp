@@ -230,8 +230,8 @@ CPhotoAlbum::_initActions() {
                 this,                    SLOT  ( slot_OnNext() ));
         connect(m_Ui.actEdit_Last,       SIGNAL( triggered() ),
                 this,                    SLOT  ( slot_OnLast() ));
-        connect(m_Ui.actEdit_To,         SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnTo() ));
+        connect(m_Ui.actEdit_GoTo,       SIGNAL( triggered() ),
+                this,                    SLOT  ( slot_OnGoTo() ));
         connect(m_Ui.actEdit_Insert,     SIGNAL( triggered() ),
                 this,                    SLOT  ( slot_OnInsert() ));
         connect(m_Ui.actEdit_Delete,     SIGNAL( triggered() ),
@@ -331,7 +331,7 @@ CPhotoAlbum::slot_OnLast() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnTo() {
+CPhotoAlbum::slot_OnGoTo() {
     cint ciMinValue   = 1;
     cint ciMaxValue   = _m_viDbItems.size();
 

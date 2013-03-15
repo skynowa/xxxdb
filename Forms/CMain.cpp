@@ -457,8 +457,8 @@ CMain::_initActions() {
                 this,                     SLOT  ( slot_OnNext() ));
         connect(m_Ui.actEdit_Last,        SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnLast() ));
-        connect(m_Ui.actEdit_To,          SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnTo() ));
+        connect(m_Ui.actEdit_GoTo,        SIGNAL( triggered() ),
+                this,                     SLOT  ( slot_OnGoTo() ));
         connect(m_Ui.actEdit_Insert,      SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnInsert() ));
         connect(m_Ui.actEdit_Delete,      SIGNAL( triggered() ),
@@ -535,7 +535,7 @@ CMain::slot_OnLast() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnTo() {
+CMain::slot_OnGoTo() {
     cint ciCurrentRow = m_snSqlNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);

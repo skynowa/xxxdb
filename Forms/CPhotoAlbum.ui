@@ -353,7 +353,7 @@
     <addaction name="actEdit_Prior"/>
     <addaction name="actEdit_Next"/>
     <addaction name="actEdit_Last"/>
-    <addaction name="actEdit_To"/>
+    <addaction name="actEdit_GoTo"/>
     <addaction name="separator"/>
     <addaction name="actEdit_SaveAs"/>
     <addaction name="actEdit_Insert"/>
@@ -381,7 +381,7 @@
    <addaction name="actEdit_Prior"/>
    <addaction name="actEdit_Next"/>
    <addaction name="actEdit_Last"/>
-   <addaction name="actEdit_To"/>
+   <addaction name="actEdit_GoTo"/>
    <addaction name="separator"/>
    <addaction name="actEdit_SaveAs"/>
    <addaction name="actEdit_Insert"/>
@@ -434,13 +434,16 @@
     <string>Last</string>
    </property>
   </action>
-  <action name="actEdit_To">
+  <action name="actEdit_GoTo">
    <property name="icon">
     <iconset resource="../Resources/App.qrc">
      <normaloff>:/Menu/Menu/To.bmp</normaloff>:/Menu/Menu/To.bmp</iconset>
    </property>
    <property name="text">
-    <string>To...</string>
+    <string>Go to...</string>
+   </property>
+   <property name="toolTip">
+    <string>Go to...</string>
    </property>
   </action>
   <action name="actEdit_Insert">
