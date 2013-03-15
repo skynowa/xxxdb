@@ -563,7 +563,23 @@ CMain::slot_OnInsert() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnRemove() {
-    m_snSqlNavigator.remove();
+    QMessageBox msgBox;
+
+    msgBox.setIcon(QMessageBox::Warning);
+    msgBox.setText(tr("Removing record."));
+    msgBox.setInformativeText(tr("Do you want to remove record?"));
+    msgBox.setStandardButtons(QMessageBox::Yes | QMessageBox::Cancel);
+    msgBox.setDefaultButton(QMessageBox::Cancel);
+
+    cint ciRv = msgBox.exec();
+    switch (ciRv) {
+        case QMessageBox::Yes:
+            m_snSqlNavigator.remove();
+            break;
+        case QMessageBox::Cancel:
+        default:
+            break;
+    }
 }
 //------------------------------------------------------------------------------
 void
