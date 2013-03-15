@@ -59,6 +59,9 @@ public:
     static bool           isLabelsEmpty(cdb_images_t &dbItems);
         ///< is all QLabels empty
 
+Q_SIGNALS:
+    void                  signal_DataChanged(cint &index);
+
 private:
     QWidget              *_m_wdParent;        ///< parent QWidget
     QSqlTableModel       *_m_tmModel;         ///< QSqlTableModel

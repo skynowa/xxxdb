@@ -112,6 +112,8 @@ CDbImageLabel::loadFromFile() {
         default:
             break;
     }
+
+    emit signal_DataChanged( index() );
 }
 //------------------------------------------------------------------------------
 void
@@ -153,6 +155,8 @@ CDbImageLabel::remove() {
         default:
             break;
     }
+
+    emit signal_DataChanged( index() );
 }
 //------------------------------------------------------------------------------
 

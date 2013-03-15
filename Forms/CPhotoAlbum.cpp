@@ -196,6 +196,9 @@ CPhotoAlbum::_initMain() {
                                         _m_ciDbRecordIndex,
                                         photoMinis[i]);
 
+            connect(item, &CDbImageLabel::signal_DataChanged,
+                    this, &CPhotoAlbum::slot_OnPhotoUpdate);
+
             _m_viDbItems.push_back(item);
         }
     }
@@ -396,6 +399,17 @@ CPhotoAlbum::slot_OnLoop() {
 
     QLabel   *lblPhotoMini  = _m_viDbItems.at(CDbImageLabel::currentIndex)->label();
     cQString  csDbFieldName = _m_viDbItems.at(CDbImageLabel::currentIndex)->dbFieldName();
+
+    slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+}
+//------------------------------------------------------------------------------
+void
+CPhotoAlbum::slot_OnPhotoUpdate(
+    cint &index
+)
+{
+    QLabel   *lblPhotoMini  = _m_viDbItems.at(index)->label();
+    cQString  csDbFieldName = _m_viDbItems.at(index)->dbFieldName();
 
     slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
 }

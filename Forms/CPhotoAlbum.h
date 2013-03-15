@@ -65,6 +65,7 @@ private Q_SLOTS:
 
     // photo
     void               slot_OnLoop        ();
+    void               slot_OnPhotoUpdate (cint &index);
     void               slot_photoMini_OnClicked(QLabel *label,
                                                 cQString &dbFieldName);
 };
