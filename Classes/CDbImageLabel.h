@@ -25,7 +25,8 @@ Q_OBJECT
 public:
                           CDbImageLabel(QWidget *parent, QSqlTableModel *tableModel,
                                         cQString &dbFieldName, cint &index,
-                                        cint &dbRecordIndex, QLabel *label);
+                                        cint &dbRecordIndex, QLabel *label,
+                                        cSize &size);
         ///< constructor
     virtual              ~CDbImageLabel();
         ///< destructor
@@ -69,8 +70,11 @@ private:
     cint                  _m_ciIndex;         ///< index
     cint                  _m_ciDbRecordIndex; ///< DB record index
     QLabel               *_m_lblLabel;        ///< QLabel for display image
+    cSize                 _m_cszSize;         ///< image sizes
     QByteArray            _m_baBuffer;        ///< buffer for store image
 
+    QDataWidgetMapper    *_map         ();
+        ///< map QWidget to DB field
     void                  _loadFromFile(cQString &filePath, cSize &imageSize);
         ///< load image from file
     void                  _saveToFile  (cQString &filePath);

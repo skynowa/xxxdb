@@ -191,7 +191,8 @@ CPersonEdit::_initMain() {
     {
         // TODO: 0
         _m_dbImageLabel = new CDbImageLabel(this, _m_tmModel, DB_F_PHOTOS_1,
-                                            0, _m_ciDbRecordIndex, m_Ui.lblPhoto);
+                                            0, _m_ciDbRecordIndex,
+                                            m_Ui.lblPhoto, PHOTO_MINI_SIZE);
     }
 
     // signals

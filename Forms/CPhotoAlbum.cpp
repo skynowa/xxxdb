@@ -7,7 +7,6 @@
 #include "CPhotoAlbum.h"
 
 #include "../QtLib/CUtils.h"
-#include "../Classes/CDelegateDbImage.h"
 
 
 /*******************************************************************************
@@ -194,7 +193,9 @@ CPhotoAlbum::_initMain() {
                                         dbFieldNames[i],
                                         i,
                                         _m_ciDbRecordIndex,
-                                        photoMinis[i]);
+                                        photoMinis[i], PHOTO_MINI_SIZE);
+
+            photoMinis[i]->installEventFilter(this);
 
             connect(item, &CDbImageLabel::signal_DataChanged,
                     this, &CPhotoAlbum::slot_OnPhotoUpdate);
@@ -203,11 +204,6 @@ CPhotoAlbum::_initMain() {
         }
     }
 
-    // map DB controls
-    foreach (CDbImageLabel *cit, _m_viDbItems) {
-        (void)_dbImageWidgetMap(cit->label(), cit->dbFieldName(), PHOTO_MINI_SIZE);
-        cit->label()->installEventFilter(this);
-    }
 }
 //------------------------------------------------------------------------------
 void
@@ -241,31 +237,6 @@ CPhotoAlbum::_initActions() {
         connect(m_Ui.actEdit_SetPrimary, &QAction::triggered,
                 this,                    &CPhotoAlbum::slot_OnSetPrimary);
     }
-}
-//------------------------------------------------------------------------------
-QDataWidgetMapper *
-CPhotoAlbum::_dbImageWidgetMap(
-    QWidget  *a_widget,
-    cQString &a_dbFieldName,
-    cSize    &a_size
-)
-{
-    Q_ASSERT(NULL != a_widget);
-    Q_ASSERT(!a_dbFieldName.isEmpty());
-    Q_ASSERT(a_size.isValid());
-
-    QDataWidgetMapper *wmRv = new QDataWidgetMapper(this);
-    wmRv->setModel(_m_tmModel);
-    wmRv->setItemDelegate(new CDelegateDbImage(
-                            wmRv,
-                            _m_tmModel->fieldIndex(a_dbFieldName),
-                            a_size,
-                            NULL));
-    wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-    wmRv->addMapping(a_widget, _m_tmModel->fieldIndex(a_dbFieldName));
-    wmRv->setCurrentIndex(_m_ciDbRecordIndex);
-
-    return wmRv;
 }
 //------------------------------------------------------------------------------
 

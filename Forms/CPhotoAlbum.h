@@ -44,9 +44,6 @@ private:
     void               _initMain          ();
     void               _initActions       ();
 
-    QDataWidgetMapper *_dbImageWidgetMap  (QWidget *widget,
-                                           cQString &dbFieldName, cSize &size);
-
 private Q_SLOTS:
     // group "Exit"
     void               slot_OnExit        ();
