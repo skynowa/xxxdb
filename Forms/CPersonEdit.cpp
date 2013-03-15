@@ -317,23 +317,6 @@ CPersonEdit::_resetAll() {
 //------------------------------------------------------------------------------
 void
 CPersonEdit::_saveAll() {
-#if 0
-    // submit data
-    {
-        bool bRv = _m_dmText->submit();
-        if (!bRv) {
-            qDebug() << __FUNCTION__ << ": mapper fail, "
-                     << _m_tmModel->lastError().text();
-        }
-
-        bRv = _m_tmModel->submitAll();
-        if (!bRv) {
-            qDebug() << __FUNCTION__ << ": model fail, "
-                     << _m_tmModel->lastError().text();
-        }
-    }
-#endif
-
     // set current index
     _m_dmText->setCurrentIndex(_m_ciDbRecordIndex);
     _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);

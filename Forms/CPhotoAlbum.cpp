@@ -376,8 +376,6 @@ CPhotoAlbum::slot_OnSetPrimary() {
     srRecord.setValue(DB_F_PHOTOS_PRIMARY_DBFIELD, ciPrimaryIndex);
 
     _m_tmModel->setRecord(_m_ciDbRecordIndex, srRecord);
-    bool bRv = _m_tmModel->submit();
-    Q_ASSERT(bRv);
 }
 //------------------------------------------------------------------------------
 
