@@ -421,14 +421,14 @@ CMain::_initModel() {
     //--------------------------------------------------
     // slots
     {
-        connect(m_Ui.tvInfo->selectionModel(), SIGNAL( currentRowChanged(QModelIndex, QModelIndex) ),
-                _m_dmImage,                    SLOT  ( setCurrentModelIndex(QModelIndex)) );
+        connect(m_Ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                _m_dmImage,                    &QDataWidgetMapper::setCurrentModelIndex );
 
-        connect(m_Ui.tvInfo,                   SIGNAL( doubleClicked(const QModelIndex &) ),
-                this,                          SLOT  ( slot_OnEdit() ));
+        connect(m_Ui.tvInfo,                   &QTableView::doubleClicked,
+                this,                          &CMain::slot_OnEdit);
 
-        connect(m_Ui.tbtnPhotoAlbum,           SIGNAL( clicked() ),
-                this,                          SLOT  ( slot_OnPhotoAlbum() ));
+        connect(m_Ui.tbtnPhotoAlbum,           &QToolButton::clicked,
+                this,                          &CMain::slot_OnPhotoAlbum);
     }
 
     //--------------------------------------------------
@@ -443,34 +443,34 @@ void
 CMain::_initActions() {
     // group "File"
     {
-        connect(m_Ui.actFile_Exit,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnExit() ));
+        connect(m_Ui.actFile_Exit,        &QAction::triggered,
+                this,                     &CMain::slot_OnExit);
     }
 
     // group "Edit"
     {
-        connect(m_Ui.actEdit_First,       SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnFirst() ));
-        connect(m_Ui.actEdit_Prior,       SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnPrior() ));
-        connect(m_Ui.actEdit_Next,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnNext() ));
-        connect(m_Ui.actEdit_Last,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnLast() ));
-        connect(m_Ui.actEdit_GoTo,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnGoTo() ));
-        connect(m_Ui.actEdit_Insert,      SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnInsert() ));
-        connect(m_Ui.actEdit_Delete,      SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnRemove() ));
-        connect(m_Ui.actEdit_Edit,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnEdit() ));
+        connect(m_Ui.actEdit_First,       &QAction::triggered,
+                this,                     &CMain::slot_OnFirst);
+        connect(m_Ui.actEdit_Prior,       &QAction::triggered,
+                this,                     &CMain::slot_OnPrior);
+        connect(m_Ui.actEdit_Next,        &QAction::triggered,
+                this,                     &CMain::slot_OnNext);
+        connect(m_Ui.actEdit_Last,        &QAction::triggered,
+                this,                     &CMain::slot_OnLast);
+        connect(m_Ui.actEdit_GoTo,        &QAction::triggered,
+                this,                     &CMain::slot_OnGoTo);
+        connect(m_Ui.actEdit_Insert,      &QAction::triggered,
+                this,                     &CMain::slot_OnInsert);
+        connect(m_Ui.actEdit_Delete,      &QAction::triggered,
+                this,                     &CMain::slot_OnRemove);
+        connect(m_Ui.actEdit_Edit,        &QAction::triggered,
+                this,                     &CMain::slot_OnEdit);
     }
 
     // group "Find"
     {
-        connect(m_Ui.actFind_Search,      SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnSearch() ));
+        connect(m_Ui.actFind_Search,      &QAction::triggered,
+                this,                     &CMain::slot_OnSearch);
     }
 
     // group "View"
@@ -479,17 +479,17 @@ CMain::_initActions() {
 
     // group "Options"
     {
-        connect(m_Ui.actOptions_Settings, SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnSettings() ));
+        connect(m_Ui.actOptions_Settings, &QAction::triggered,
+                this,                     &CMain::slot_OnSettings);
     }
 
     // group "Help"
     {
-        connect(m_Ui.actHelp_Faq,         SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnFaq() ));
+        connect(m_Ui.actHelp_Faq,         &QAction::triggered,
+                this,                     &CMain::slot_OnFaq);
 
-        connect(m_Ui.actHelp_About,       SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnAbout() ));
+        connect(m_Ui.actHelp_About,       &QAction::triggered,
+                this,                     &CMain::slot_OnAbout);
     }
 }
 //------------------------------------------------------------------------------
@@ -546,7 +546,7 @@ CMain::slot_OnGoTo() {
                             ciCurrentRow,
                             ciMinValue, ciMaxValue) - 1;
 
-    m_snSqlNavigator.to(ciTargetRow);
+    m_snSqlNavigator.goTo(ciTargetRow);
 }
 //------------------------------------------------------------------------------
 void

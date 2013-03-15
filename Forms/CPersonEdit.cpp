@@ -196,12 +196,12 @@ CPersonEdit::_initMain() {
 
     // signals
     {
-        connect(m_Ui.tbtnPhotoAlbum, SIGNAL( clicked() ),
-                this,                SLOT  ( slot_OnPhotoAlbum() ));
-        connect(m_Ui.bbxButtons,     SIGNAL( clicked(QAbstractButton *) ),
-                this,                SLOT  ( slot_bbxButtons_OnClicked(QAbstractButton *) ));
-        connect(m_Ui.twGroups,       SIGNAL( clicked(const QModelIndex &) ),
-                this,                SLOT  ( slot_twGroups_OnActivated(const QModelIndex &) ));
+        connect(m_Ui.tbtnPhotoAlbum, &QToolButton::clicked,
+                this,                &CPersonEdit::slot_OnPhotoAlbum);
+        connect(m_Ui.bbxButtons,     &QDialogButtonBox::clicked,
+                this,                &CPersonEdit::slot_bbxButtons_OnClicked);
+        connect(m_Ui.twGroups,       &QTreeWidget::clicked,
+                this,                &CPersonEdit::slot_twGroups_OnActivated);
     }
 }
 //------------------------------------------------------------------------------
@@ -322,7 +322,7 @@ CPersonEdit::_saveAll() {
     _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);
 
     // set current index
-    _m_snSqlNavigator->to(_m_ciDbRecordIndex);
+    _m_snSqlNavigator->goTo(_m_ciDbRecordIndex);
 }
 //------------------------------------------------------------------------------
 void

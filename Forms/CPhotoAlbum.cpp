@@ -214,32 +214,32 @@ void
 CPhotoAlbum::_initActions() {
     // group "File"
     {
-        connect(m_Ui.actFile_Exit,       SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnExit() ));
+        connect(m_Ui.actFile_Exit,       &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnExit);
     }
 
     // group "Edit"
     {
-        connect(m_Ui.actEdit_SaveAs,     SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnSaveAs() ));
-        connect(m_Ui.actEdit_First,      SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnFirst() ));
-        connect(m_Ui.actEdit_Prior,      SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnPrior() ));
-        connect(m_Ui.actEdit_Next,       SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnNext() ));
-        connect(m_Ui.actEdit_Last,       SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnLast() ));
-        connect(m_Ui.actEdit_GoTo,       SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnGoTo() ));
-        connect(m_Ui.actEdit_Insert,     SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnInsert() ));
-        connect(m_Ui.actEdit_Delete,     SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnRemove() ));
-        connect(m_Ui.actEdit_Edit,       SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnEdit() ));
-        connect(m_Ui.actEdit_SetPrimary, SIGNAL( triggered() ),
-                this,                    SLOT  ( slot_OnSetPrimary() ));
+        connect(m_Ui.actEdit_SaveAs,     &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnSaveAs);
+        connect(m_Ui.actEdit_First,      &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnFirst);
+        connect(m_Ui.actEdit_Prior,      &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnPrior);
+        connect(m_Ui.actEdit_Next,       &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnNext);
+        connect(m_Ui.actEdit_Last,       &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnLast);
+        connect(m_Ui.actEdit_GoTo,       &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnGoTo);
+        connect(m_Ui.actEdit_Insert,     &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnInsert);
+        connect(m_Ui.actEdit_Delete,     &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnRemove);
+        connect(m_Ui.actEdit_Edit,       &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnEdit);
+        connect(m_Ui.actEdit_SetPrimary, &QAction::triggered,
+                this,                    &CPhotoAlbum::slot_OnSetPrimary);
     }
 }
 //------------------------------------------------------------------------------
