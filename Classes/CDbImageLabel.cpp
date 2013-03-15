@@ -318,12 +318,6 @@ CDbImageLabel::_flush() {
     srRecord.setValue(_m_csDbFieldName, _m_baBuffer);
 
     _m_tmModel->setRecord(dbRecordIndex(), srRecord);
-    bool bRv = _m_tmModel->submitAll();
-    if (!bRv) {
-        qDebug() << __FUNCTION__ << ": model fail, "
-                 << _m_tmModel->lastError().text();
-        Q_ASSERT(false);
-    }
 
     _m_baBuffer.clear();
 }
