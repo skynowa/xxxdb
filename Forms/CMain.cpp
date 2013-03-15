@@ -465,12 +465,6 @@ CMain::_initActions() {
                 this,                     SLOT  ( slot_OnRemove() ));
         connect(m_Ui.actEdit_Edit,        SIGNAL( triggered() ),
                 this,                     SLOT  ( slot_OnEdit() ));
-        connect(m_Ui.actEdit_Post,        SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnPost() ));
-        connect(m_Ui.actEdit_Cancel,      SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnCancel() ));
-        connect(m_Ui.actEdit_Refresh,     SIGNAL( triggered() ),
-                this,                     SLOT  ( slot_OnRefresh() ));
     }
 
     // group "Find"
@@ -578,21 +572,6 @@ CMain::slot_OnEdit() {
     CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
     (int)dlgPersonEdit.exec();
-}
-//------------------------------------------------------------------------------
-void
-CMain::slot_OnPost() {
-    m_snSqlNavigator.post();
-}
-//------------------------------------------------------------------------------
-void
-CMain::slot_OnCancel() {
-    m_snSqlNavigator.cancel();
-}
-//------------------------------------------------------------------------------
-void
-CMain::slot_OnRefresh() {
-    m_snSqlNavigator.refresh();
 }
 //------------------------------------------------------------------------------
 

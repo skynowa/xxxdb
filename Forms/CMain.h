@@ -60,9 +60,6 @@ private Q_SLOTS:
     void               slot_OnInsert    ();
     void               slot_OnRemove    ();
     void               slot_OnEdit      ();
-    void               slot_OnPost      ();
-    void               slot_OnCancel    ();
-    void               slot_OnRefresh   ();
 
     // group "Find"
     void               slot_OnSearch    ();

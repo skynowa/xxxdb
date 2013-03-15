@@ -3,7 +3,6 @@
         <file>App.ico</file>
     </qresource>
     <qresource prefix="/Menu">
-        <file>Menu/Cancel.bmp</file>
         <file>Menu/Delete.bmp</file>
         <file>Menu/Edit.bmp</file>
         <file>Menu/Exit.bmp</file>
@@ -17,12 +16,10 @@
         <file>Menu/Next.bmp</file>
         <file>Menu/Options.bmp</file>
         <file>Menu/Prior.bmp</file>
-        <file>Menu/Refresh.bmp</file>
         <file>Menu/SaveAs.bmp</file>
         <file>Menu/Search.bmp</file>
         <file>Menu/www.kyivstar.net.bmp</file>
         <file>Menu/Insert.bmp</file>
-        <file>Menu/Post.bmp</file>
         <file>Menu/To.bmp</file>
         <file>Menu/SetPrimaryImage.bmp</file>
     </qresource>
