@@ -16,6 +16,10 @@
   <property name="windowTitle">
    <string>CMain</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../Resources/App.qrc">
+    <normaloff>:/Main/Main/App.ico</normaloff>:/Main/Main/App.ico</iconset>
+  </property>
   <property name="statusTip">
    <string/>
   </property>

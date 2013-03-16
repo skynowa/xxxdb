@@ -79,7 +79,6 @@ CMain::_initMain() {
 
     // CMain
     {
-        setWindowIcon(QIcon(RES_MAIN_ICON));
         setWindowTitle(APP_NAME);
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
         CUtils::widgetAlignCenter(this);

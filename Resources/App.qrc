@@ -1,7 +1,4 @@
 <RCC>
-    <qresource prefix="/">
-        <file>App.ico</file>
-    </qresource>
     <qresource prefix="/Menu">
         <file>Menu/Delete.bmp</file>
         <file>Menu/Edit.bmp</file>
@@ -22,5 +19,8 @@
         <file>Menu/Insert.bmp</file>
         <file>Menu/GoTo.bmp</file>
         <file>Menu/SetPrimaryImage.bmp</file>
+    </qresource>
+    <qresource prefix="/Main">
+        <file>Main/App.ico</file>
     </qresource>
 </RCC>

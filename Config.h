@@ -28,9 +28,6 @@
 #define PHOTO_MINI_HEIGHT            80
 #define PHOTO_MINI_SIZE              QSize(PHOTO_MINI_WIDTH, PHOTO_MINI_HEIGHT)
 
-// resources
-#define RES_MAIN_ICON                ":/App.ico"
-
 // etc
 #define BACKUP_DIR_NAME              "Backup"
 #define INI_FILE_EXT                 ".ini"
