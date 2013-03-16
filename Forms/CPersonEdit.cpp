@@ -67,6 +67,11 @@ void
 CPersonEdit::_initMain() {
     m_Ui.setupUi(this);
 
+    // main
+    {
+        setWindowTitle(APP_PERSON_EDIT_TITLE);
+    }
+
     // maps ui controls into DB fields
     {
         // DB items to QHash

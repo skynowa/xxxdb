@@ -7,13 +7,18 @@
 #ifndef PickupDb_ConfigH
 #define PickupDb_ConfigH
 //------------------------------------------------------------------------------
-// main window
+// application
 #define APP_NAME                     "PickupDB"
 #define APP_ORG                      "Skynowa Studio"
 #define APP_GUID                     APP_NAME"simple_guid"
 #define APP_WINDOW_CLASS             "Qt5QWindow"  // for Qt 5.0.1, Qt 4 - QTool
 #define APP_WIDTH                    1000
 #define APP_HEIGHT                   600
+
+#define APP_MAIN_TITLE               APP_NAME + tr(" - accounting software for girls")
+#define APP_PERSON_EDIT_TITLE        APP_NAME + tr(" - person editor")
+#define APP_PHOTO_ALBUM_TITLE        APP_NAME + tr(" - photo album")
+#define APP_ABOUT_TITLE              APP_NAME + tr(" - about")
 
 // photo
 #define PHOTO_NUM                    10

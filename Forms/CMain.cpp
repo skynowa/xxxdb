@@ -77,9 +77,9 @@ CMain::_initMain() {
         QDir().mkpath(m_sDbDir);
     }
 
-    // CMain
+    // main
     {
-        setWindowTitle(APP_NAME);
+        setWindowTitle(APP_MAIN_TITLE);
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
         CUtils::widgetAlignCenter(this);
     }
@@ -626,7 +626,7 @@ CMain::slot_OnAbout() {
         "</p>"))
             .arg(APP_NAME);
 
-    QMessageBox::about(this, tr("About ") + APP_NAME, csMsg);
+    QMessageBox::about(this, APP_ABOUT_TITLE, csMsg);
 }
 //------------------------------------------------------------------------------
 

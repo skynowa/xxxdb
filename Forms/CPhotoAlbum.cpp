@@ -148,7 +148,11 @@ void
 CPhotoAlbum::_initMain() {
     m_Ui.setupUi(this);
 
-    setWindowFlags(Qt::Window);
+    // main
+    {
+        setWindowTitle(APP_PHOTO_ALBUM_TITLE);
+        setWindowFlags(Qt::Window);
+    }
 
     // lblPhoto
     m_Ui.lblPhoto->installEventFilter(this);
@@ -203,7 +207,6 @@ CPhotoAlbum::_initMain() {
             _m_viDbItems.push_back(item);
         }
     }
-
 }
 //------------------------------------------------------------------------------
 void
