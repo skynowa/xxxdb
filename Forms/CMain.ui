@@ -188,6 +188,8 @@
    <addaction name="actEdit_Edit"/>
    <addaction name="separator"/>
    <addaction name="actFind_Search"/>
+   <addaction name="separator"/>
+   <addaction name="actOptions_Settings"/>
   </widget>
   <action name="actFile_Exit">
    <property name="icon">
