@@ -9,6 +9,7 @@
 #include "../Forms/CPersonEdit.h"
 #include "../Forms/CPhotoAlbum.h"
 #include "../QtLib/CUtils.h"
+#include "../Classes/CSettings.h"
 #include "../Classes/CDelegateDbImage.h"
 
 
@@ -29,16 +30,21 @@ CMain::CMain(
     m_sDbBackupDir  (),
     m_snSqlNavigator(this),
     m_wndPhotoAlbum (NULL),
+    _m_stApp        (NULL),
     _m_dbDatabase   (),
     _m_tmModel      (NULL),
     _m_hsDbItems    (),
     _m_dmImage      (NULL)
 {
     _construct();
+
+    _m_stApp = new CSettings(this, NULL, NULL);
 }
 //------------------------------------------------------------------------------
 /*virtual*/
 CMain::~CMain() {
+    qPTR_DELETE(_m_stApp);
+
     _destruct();
 }
 //------------------------------------------------------------------------------
@@ -59,7 +65,7 @@ CMain::_construct() {
 //------------------------------------------------------------------------------
 void
 CMain::_destruct() {
-    _settingsSave();
+
 }
 //------------------------------------------------------------------------------
 void
@@ -99,8 +105,6 @@ CMain::_initMain() {
         m_Ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
         m_Ui.lblPhoto->setBackgroundRole(QPalette::Base);
     }
-
-    _settingsLoad();
 }
 //------------------------------------------------------------------------------
 void
@@ -644,50 +648,5 @@ CMain::slot_OnPhotoAlbum() {
 
     m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, &m_snSqlNavigator);
     m_wndPhotoAlbum->show();
-}
-//------------------------------------------------------------------------------
-
-
-/*******************************************************************************
-*   private
-*
-*******************************************************************************/
-
-//------------------------------------------------------------------------------
-void
-CMain::_settingsLoad() {
-    QSize  szSize;
-    QPoint pnPosition;
-
-    {
-        QSettings stSettings(
-                    QCoreApplication::applicationName() + INI_FILE_EXT,
-                    QSettings::IniFormat,
-                    this);
-
-        stSettings.beginGroup("main");
-        szSize     = stSettings.value("size",     QSize(APP_WIDTH, APP_HEIGHT)).toSize();
-        pnPosition = stSettings.value("position", QPoint(200, 200)).toPoint();
-        stSettings.endGroup();
-    }
-
-    // apply settings
-    {
-        resize(szSize);
-        move(pnPosition);
-    }
-}
-//------------------------------------------------------------------------------
-void
-CMain::_settingsSave() {
-    QSettings stSettings(
-                QCoreApplication::applicationName() + INI_FILE_EXT,
-                QSettings::IniFormat,
-                this);
-
-    stSettings.beginGroup("main");
-    stSettings.setValue("position", pos());
-    stSettings.setValue("size",     size());
-    stSettings.endGroup();
 }
 //------------------------------------------------------------------------------

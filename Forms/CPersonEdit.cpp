@@ -7,6 +7,7 @@
 #include "CPersonEdit.h"
 
 #include "../QtLib/CUtils.h"
+#include "../Classes/CDbImageLabel.h"
 #include "../Classes/CDelegateDbImage.h"
 #include "CPhotoAlbum.h"
 

@@ -36,6 +36,7 @@ HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
                   Config.h \
+                  Classes/CSettings.h \
                   Classes/CDelegateDbImage.h \
                   Classes/CDbImageLabel.h \
                   Forms/CMain.h \
@@ -45,6 +46,7 @@ HEADERS         = QtLib/Common.h \
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
+                  Classes/CSettings.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \

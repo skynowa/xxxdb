@@ -11,11 +11,10 @@
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
-#include "../Classes/CDbImageLabel.h"
-
 #include "CMain.h"
 //------------------------------------------------------------------------------
 class CPhotoAlbum;
+class CDbImageLabel;
 
 class CPersonEdit :
     public QDialog

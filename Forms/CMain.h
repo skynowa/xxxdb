@@ -10,11 +10,10 @@
 #include "ui_CMain.h"
 
 #include "../QtLib/Common.h"
-#include "../QtLib/CUtils.h"
 #include "../QtLib/CSqlNavigator.h"
-
 #include "../Config.h"
 //------------------------------------------------------------------------------
+class CSettings;
 class CPhotoAlbum;
 
 class CMain :
@@ -36,6 +35,7 @@ public:
     CPhotoAlbum       *m_wndPhotoAlbum;
 
 private:
+    CSettings         *_m_stApp;
     QSqlDatabase       _m_dbDatabase;
     QSqlTableModel    *_m_tmModel;
     db_items_t         _m_hsDbItems;
@@ -76,12 +76,6 @@ private Q_SLOTS:
 
     // photo
     void               slot_OnPhotoAlbum();
-
-private:
-    // settings
-    void               _settingsLoad    ();
-    void               _settingsSave    ();
-
 };
 //------------------------------------------------------------------------------
 #endif // PickupDb_CMainH
