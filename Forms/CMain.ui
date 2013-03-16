@@ -14,7 +14,7 @@
    </rect>
   </property>
   <property name="windowTitle">
-   <string>CMain</string>
+   <string/>
   </property>
   <property name="windowIcon">
    <iconset resource="../Resources/App.qrc">
