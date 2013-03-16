@@ -255,7 +255,10 @@
      <normaloff>:/Menu/Menu/Search.bmp</normaloff>:/Menu/Menu/Search.bmp</iconset>
    </property>
    <property name="text">
-    <string>Search</string>
+    <string>Search...</string>
+   </property>
+   <property name="toolTip">
+    <string>Search...</string>
    </property>
   </action>
   <action name="actOptions_Settings">
@@ -264,7 +267,10 @@
      <normaloff>:/Menu/Menu/Options.bmp</normaloff>:/Menu/Menu/Options.bmp</iconset>
    </property>
    <property name="text">
-    <string>Settings</string>
+    <string>Settings...</string>
+   </property>
+   <property name="toolTip">
+    <string>Settings...</string>
    </property>
   </action>
   <action name="actHelp_Faq">
@@ -278,7 +284,10 @@
   </action>
   <action name="actHelp_About">
    <property name="text">
-    <string>About</string>
+    <string>About...</string>
+   </property>
+   <property name="toolTip">
+    <string>About...</string>
    </property>
   </action>
   <action name="actEdit_GoTo">
