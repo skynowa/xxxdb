@@ -84,17 +84,6 @@ CMain::_initMain() {
         CUtils::widgetAlignCenter(this);
     }
 
-    // gbxPhotoAlbum
-    {
-        m_Ui.gbxPhotoAlbum->setTitle(tr(""));
-        m_Ui.gbxPhotoAlbum->setFixedHeight(50);
-    }
-
-    // gbxShortInfo
-    {
-        m_Ui.gbxShortInfo->setTitle(tr(""));
-    }
-
     // splitters
     {
         // m_Ui.splitter->setStretchFactor(1, 1);
@@ -107,13 +96,8 @@ CMain::_initMain() {
 
     // lblPhoto
     {
-        m_Ui.lblPhoto->clear();
         m_Ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
-        m_Ui.lblPhoto->setScaledContents(false);
         m_Ui.lblPhoto->setBackgroundRole(QPalette::Base);
-        m_Ui.lblPhoto->setSizePolicy(QSizePolicy::Preferred, QSizePolicy::Preferred);
-        m_Ui.lblPhoto->setAlignment(Qt::AlignHCenter | Qt::AlignVCenter);
-        m_Ui.lblPhoto->setFrameShape(QFrame::Box);
     }
 
     _settingsLoad();

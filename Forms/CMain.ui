@@ -18,14 +18,11 @@
    <layout class="QGridLayout" name="gridLayout">
     <item row="0" column="0">
      <widget class="QLabel" name="lblPhoto">
-      <property name="minimumSize">
-       <size>
-        <width>300</width>
-        <height>200</height>
-       </size>
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
-      <property name="text">
-       <string>lblPhoto</string>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -36,18 +33,15 @@
      <widget class="QGroupBox" name="gbxPhotoAlbum">
       <property name="minimumSize">
        <size>
-        <width>300</width>
-        <height>32</height>
+        <width>0</width>
+        <height>40</height>
        </size>
       </property>
       <property name="maximumSize">
        <size>
-        <width>300</width>
-        <height>32</height>
+        <width>16777215</width>
+        <height>40</height>
        </size>
-      </property>
-      <property name="title">
-       <string>gbxPhotoAlbum</string>
       </property>
       <widget class="QLabel" name="lblPhotoSize">
        <property name="geometry">
@@ -87,9 +81,6 @@
         <width>300</width>
         <height>0</height>
        </size>
-      </property>
-      <property name="title">
-       <string>gbxShortInfo</string>
       </property>
       <property name="checkable">
        <bool>false</bool>
