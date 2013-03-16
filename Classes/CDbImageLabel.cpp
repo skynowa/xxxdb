@@ -31,6 +31,7 @@ CDbImageLabel::CDbImageLabel(
     _m_ciDbRecordIndex(a_dbRecordIndex),
     _m_lblLabel       (a_label),
     _m_cszSize        (a_size),
+    _m_dmMapper       (NULL),
     _m_baBuffer       ()
 {
     Q_ASSERT(NULL != a_parent);
@@ -40,7 +41,7 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(- 1 < a_dbRecordIndex);
     Q_ASSERT(NULL != a_label);
 
-    (QDataWidgetMapper *)_map();
+    _m_dmMapper = _map();
 }
 //------------------------------------------------------------------------------
 CDbImageLabel::~CDbImageLabel() {
@@ -88,6 +89,13 @@ CDbImageLabel::size() const {
     Q_ASSERT(_m_cszSize.isValid());
 
     return _m_cszSize;
+}
+//------------------------------------------------------------------------------
+QDataWidgetMapper *
+CDbImageLabel::map() {
+    Q_ASSERT(NULL != _m_dmMapper);
+
+    return _m_dmMapper;
 }
 //------------------------------------------------------------------------------
 
@@ -337,15 +345,22 @@ CDbImageLabel::_remove() {
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::_flush() {
-    qCHECK_DO(_m_baBuffer.size() < 0, return);
+#if 0
+    #error "BUG: QSqlTableModel::setRecord - not work"
 
     QSqlRecord srRecord = _m_tmModel->record( dbRecordIndex() );
-    srRecord.setValue(_m_csDbFieldName, _m_baBuffer);
+    srRecord.setValue(dbFieldName(), _m_baBuffer);
 
     bool bRv = _m_tmModel->setRecord(dbRecordIndex(), srRecord);
-    if (!bRv) {
-        qDebug() << _m_tmModel->lastError();
-    }
+    Q_ASSERT(bRv);
+#else
+    cint              column = _m_tmModel->fieldIndex( dbFieldName() );
+    Q_ASSERT(- 1 < column);
+    const QModelIndex index  = _m_tmModel->index(dbRecordIndex(), column);
+
+    bool bRv = _m_tmModel->setData(index, _m_baBuffer);
+    Q_ASSERT(bRv);
+#endif
 
     _m_baBuffer.clear();
 }

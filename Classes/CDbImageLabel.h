@@ -42,6 +42,8 @@ public:
         ///< get QLabel
     cSize &               size         () const;
         ///< get image sizes
+    QDataWidgetMapper    *map          ();
+        ///< get data widget mapper
 
     // actions
     void                  loadFromFile ();
@@ -73,6 +75,7 @@ private:
     cint                  _m_ciDbRecordIndex; ///< DB record index
     QLabel               *_m_lblLabel;        ///< QLabel for display image
     cSize                 _m_cszSize;         ///< image sizes
+    QDataWidgetMapper    *_m_dmMapper;        ///< data widget mapper
     QByteArray            _m_baBuffer;        ///< buffer for store image
 
     QDataWidgetMapper    *_map         ();
