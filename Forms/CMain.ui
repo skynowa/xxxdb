@@ -2,9 +2,6 @@
 <ui version="4.0">
  <class>CMainClass</class>
  <widget class="QMainWindow" name="CMainClass">
-  <property name="enabled">
-   <bool>true</bool>
-  </property>
   <property name="geometry">
    <rect>
     <x>0</x>
