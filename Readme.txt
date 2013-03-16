@@ -1,14 +1,16 @@
 PickupDB - accounting software for girls
 
 
-Platforms:      Windows, Linux, OSX
-Architecture:   x86, x64
+Platforms:    Windows, Linux, OSX
+Architecture: x86, x64
 
-Authors:        skynowa
-E-mail:         skynowa@gmail.com
-Jabber:         skynowa@jabber.ru
-Skype:          skynowa777
-Web:            https://bitbucket.org/skynowa/pickupdb
+Authors:      skynowa
+E-mail:       skynowa@gmail.com
+Skype:        skynowa777
+Jabber:       skynowa@jabber.ru
+ICQ:          627713628
+
+Web:          https://bitbucket.org/skynowa/pickupdb
 
 
 Prerequisites:
@@ -16,5 +18,3 @@ Prerequisites:
 
 Dependencies:
 		-
-
-
