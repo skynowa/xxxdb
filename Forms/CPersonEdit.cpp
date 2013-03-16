@@ -167,7 +167,6 @@ CPersonEdit::_initMain() {
                 _m_dmText->addMapping(widget, section);
             }
 
-            // activate current record
             _m_dmText->setCurrentIndex(_m_ciDbRecordIndex);
         }
 
@@ -182,8 +181,6 @@ CPersonEdit::_initMain() {
                                                 NULL));
             _m_dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
             _m_dmImage->addMapping(m_Ui.lblPhoto, _m_tmModel->fieldIndex(DB_F_PHOTOS_1));
-
-            // activate current record
             _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);
         }
 
