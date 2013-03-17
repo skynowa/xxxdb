@@ -34,6 +34,9 @@ public:
     CSqlNavigator      m_snSqlNavigator;
     CPhotoAlbum       *m_wndPhotoAlbum;
 
+protected:
+    virtual void       closeEvent       (QCloseEvent *event);
+
 private:
     CSettings         *_m_stApp;
     QSqlDatabase       _m_dbDatabase;

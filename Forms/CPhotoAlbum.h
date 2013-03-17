@@ -31,6 +31,7 @@ protected:
     virtual bool       eventFilter        (QObject *obj, QEvent *event);
     virtual void       showEvent          (QShowEvent *event);
     virtual void       resizeEvent        (QResizeEvent *event);
+    virtual void       closeEvent         (QCloseEvent *event);
 
 private:
     QSqlTableModel    *_m_tmModel;

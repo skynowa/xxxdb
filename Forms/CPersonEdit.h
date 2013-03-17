@@ -30,6 +30,9 @@ public:
 
     CPhotoAlbum       *m_wndPhotoAlbum;
 
+protected:
+    virtual void       closeEvent (QCloseEvent *event);
+
 private:
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
@@ -39,12 +42,12 @@ private:
     cint               _m_ciDbRecordIndex;
     CDbImageLabel     *_m_dbImageLabel;
 
-    void               _construct();
-    void               _destruct ();
-    void               _initMain ();
+    void               _construct ();
+    void               _destruct  ();
+    void               _initMain  ();
 
-    void               _resetAll ();
-    void               _saveAll  ();
+    void               _resetAll  ();
+    void               _saveAll   ();
 
 private Q_SLOTS:
     // photo
