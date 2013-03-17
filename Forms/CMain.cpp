@@ -540,7 +540,6 @@ void
 CMain::slot_OnInsert() {
     m_snSqlNavigator.insert();
 
-    // show edit dialog
     {
         CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
@@ -571,7 +570,6 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    // show edit dialog
     CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
     (int)dlgPersonEdit.exec();
