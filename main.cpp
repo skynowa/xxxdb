@@ -5,8 +5,8 @@
 
 
 #include <QApplication>
-#include "../QtLib/Common.h"
-#include "../QtLib/CUtils.h"
+#include "QtLib/Common.h"
+#include "QtLib/CUtils.h"
 #include "Forms/CMain.h"
 
 //------------------------------------------------------------------------------
