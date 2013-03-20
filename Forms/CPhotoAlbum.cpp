@@ -122,16 +122,7 @@ CPhotoAlbum::resizeEvent(
         if (NULL     == m_Ui.lblPhoto->pixmap() ||
             szScaled != m_Ui.lblPhoto->pixmap()->size())
         {
-            // update
-            cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
-                                    m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-            QPixmap pixNew  = _m_pixPixmap.scaled(
-                                    cszSize,
-                                    Qt::KeepAspectRatio,
-                                    Qt::SmoothTransformation);
-
-            _m_pixPixmap = pixNew;
-            m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
+            _photoUpdate(_m_pixPixmap);
         }
     }
 }
@@ -260,6 +251,24 @@ CPhotoAlbum::_initActions() {
         connect(m_Ui.actEdit_SetPrimary, &QAction::triggered,
                 this,                    &CPhotoAlbum::slot_OnSetPrimary);
     }
+}
+//------------------------------------------------------------------------------
+void
+CPhotoAlbum::_photoUpdate(
+    const QPixmap &a_pixmap
+)
+{
+    Q_ASSERT(!a_pixmap.isNull());
+
+    cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
+                            m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+    QPixmap pixNew  = a_pixmap.scaled(
+                            cszSize,
+                            Qt::KeepAspectRatio,
+                            Qt::SmoothTransformation);
+
+    _m_pixPixmap = pixNew;
+    m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
 }
 //------------------------------------------------------------------------------
 
@@ -430,15 +439,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
             bool bRv = pixPixmap.loadFromData(baPhoto);
             Q_ASSERT(bRv);
 
-            cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
-                                    m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-            QPixmap pixNew  = pixPixmap.scaled(
-                                    cszSize,
-                                    Qt::KeepAspectRatio,
-                                    Qt::SmoothTransformation);
-
-            _m_pixPixmap = pixNew;
-            m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
+            _photoUpdate(pixPixmap);
         }
     }
 }
