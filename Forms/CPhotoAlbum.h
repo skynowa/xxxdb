@@ -38,7 +38,7 @@ private:
     CSqlNavigator     *_m_snSqlNavigator;
     cint               _m_ciDbRecordIndex;
     db_images_t        _m_viDbItems;
-    QPixmap            _m_pixPixmap;
+    QPixmap            _m_pixPhoto;
 
     void               _construct         ();
     void               _destruct          ();

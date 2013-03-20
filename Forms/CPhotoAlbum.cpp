@@ -24,7 +24,7 @@ CPhotoAlbum::CPhotoAlbum(
     _m_tmModel        (a_tableModel),
     _m_ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _m_viDbItems      (),
-    _m_pixPixmap      ()
+    _m_pixPhoto       ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
@@ -114,15 +114,15 @@ CPhotoAlbum::resizeEvent(
     Q_UNUSED(a_event);
 
     // lblPhoto
-    if (!_m_pixPixmap.isNull()) {
-        QSize szScaled = _m_pixPixmap.size();
+    if (!_m_pixPhoto.isNull()) {
+        QSize szScaled = _m_pixPhoto.size();
 
         szScaled.scale(m_Ui.lblPhoto->size(), Qt::KeepAspectRatio);
 
         if (NULL     == m_Ui.lblPhoto->pixmap() ||
             szScaled != m_Ui.lblPhoto->pixmap()->size())
         {
-            _photoUpdate(_m_pixPixmap);
+            _photoUpdate(_m_pixPhoto);
         }
     }
 }
@@ -260,15 +260,15 @@ CPhotoAlbum::_photoUpdate(
 {
     Q_ASSERT(!a_pixmap.isNull());
 
-    cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
-                            m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-    QPixmap pixNew  = a_pixmap.scaled(
-                            cszSize,
-                            Qt::KeepAspectRatio,
-                            Qt::SmoothTransformation);
+    cQSize  cszSize     = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
+                                m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+    QPixmap pixPhotoNew = a_pixmap.scaled(
+                                cszSize,
+                                Qt::KeepAspectRatio,
+                                Qt::SmoothTransformation);
 
-    _m_pixPixmap = pixNew;
-    m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
+    _m_pixPhoto = pixPhotoNew;
+    m_Ui.lblPhoto->setPixmap(_m_pixPhoto);
 }
 //------------------------------------------------------------------------------
 
