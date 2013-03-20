@@ -28,6 +28,7 @@
 #define PHOTO_WIDTH                  300
 #define PHOTO_HEIGHT                 200
 #define PHOTO_SIZE                   QSize(PHOTO_WIDTH, PHOTO_HEIGHT)
+#define PHOTO_MARGIN                 2
 
 #define PHOTO_MINI_WIDTH             120
 #define PHOTO_MINI_HEIGHT            80

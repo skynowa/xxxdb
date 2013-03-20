@@ -123,14 +123,15 @@ CPhotoAlbum::resizeEvent(
             szScaled != m_Ui.lblPhoto->pixmap()->size())
         {
             // update
-            cint    ciMargin = 2;   // MAGIC: ciMargin
-            QPixmap pixNew   = _m_pixPixmap.scaled(
-                                    QSize(m_Ui.lblPhoto->width()  - ciMargin,
-                                          m_Ui.lblPhoto->height() - ciMargin),
+            cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
+                                    m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+            QPixmap pixNew  = _m_pixPixmap.scaled(
+                                    cszSize,
                                     Qt::KeepAspectRatio,
                                     Qt::SmoothTransformation);
 
-            m_Ui.lblPhoto->setPixmap(pixNew);
+            _m_pixPixmap = pixNew;
+            m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
         }
     }
 }
@@ -424,20 +425,19 @@ CPhotoAlbum::slot_photoMini_OnClicked(
         if (baPhoto.isEmpty()) {
             m_Ui.lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
-            QImage imgPhoto;
+            QPixmap pixPixmap;
 
-            bool bRv = imgPhoto.loadFromData(baPhoto);
+            bool bRv = pixPixmap.loadFromData(baPhoto);
             Q_ASSERT(bRv);
 
-            cint   ciMargin = 2;   // MAGIC: ciMargin
-            cQSize cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
-                                    m_Ui.lblPhoto->height() - ciMargin);
-            QImage pixNew   = imgPhoto.scaled(
+            cQSize  cszSize = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
+                                    m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+            QPixmap pixNew  = pixPixmap.scaled(
                                     cszSize,
                                     Qt::KeepAspectRatio,
                                     Qt::SmoothTransformation);
-            _m_pixPixmap = QPixmap::fromImage(pixNew);
 
+            _m_pixPixmap = pixNew;
             m_Ui.lblPhoto->setPixmap(_m_pixPixmap);
         }
     }
