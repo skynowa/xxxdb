@@ -270,6 +270,7 @@ CPhotoAlbum::_photoUpdate(
 
     cQSize  cszSize     = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
                                 m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+
     QPixmap pixPhotoNew = a_pixPhotoOriginal.scaled(
                                 cszSize,
                                 Qt::KeepAspectRatio,
@@ -442,12 +443,12 @@ CPhotoAlbum::slot_photoMini_OnClicked(
         if (baPhoto.isEmpty()) {
             m_Ui.lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
-            QPixmap pixPixmap;
+            QPixmap pixPhoto;
 
-            bool bRv = pixPixmap.loadFromData(baPhoto);
+            bool bRv = pixPhoto.loadFromData(baPhoto);
             Q_ASSERT(bRv);
 
-            _photoUpdate(pixPixmap);
+            _photoUpdate(pixPhoto);
         }
     }
 }
