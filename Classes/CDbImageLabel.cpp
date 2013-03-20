@@ -21,7 +21,7 @@ CDbImageLabel::CDbImageLabel(
     cint           &a_index,            ///< index
     cint           &a_dbRecordIndex,    ///< DB record index
     QLabel         *a_label,            ///< QLabel for display image
-    cSize          &a_size              ///< image sizes
+    cQSize         &a_size              ///< image sizes
 ) :
     QObject           (a_parent),
     _m_wdParent       (a_parent),
@@ -84,7 +84,7 @@ CDbImageLabel::label() const {
     return _m_lblLabel;
 }
 //------------------------------------------------------------------------------
-cSize &
+cQSize &
 CDbImageLabel::size() const {
     Q_ASSERT(_m_cszSize.isValid());
 

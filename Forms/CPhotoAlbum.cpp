@@ -430,7 +430,7 @@ CPhotoAlbum::slot_photoMini_OnClicked(
             Q_ASSERT(bRv);
 
             cint   ciMargin = 2;   // MAGIC: ciMargin
-            cSize  cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
+            cQSize cszSize  = QSize(m_Ui.lblPhoto->width()  - ciMargin,
                                     m_Ui.lblPhoto->height() - ciMargin);
             QImage pixNew   = imgPhoto.scaled(
                                     cszSize,
