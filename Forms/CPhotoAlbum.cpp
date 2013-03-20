@@ -226,6 +226,9 @@ CPhotoAlbum::_initMain() {
         connect(this, &CPhotoAlbum::signal_photo_clicked,
                 this, &CPhotoAlbum::slot_OnLoop);
     }
+
+    // HACK: for m_Ui.saPhotosMini->sizePolicy() == Fixed
+    qApp->processEvents();
 }
 //------------------------------------------------------------------------------
 void
