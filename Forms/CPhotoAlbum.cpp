@@ -263,20 +263,20 @@ CPhotoAlbum::_initActions() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::_photoUpdate(
-    const QPixmap &a_pixmap
+    const QPixmap &a_pixPhotoOriginal
 )
 {
-    Q_ASSERT(!a_pixmap.isNull());
+    Q_ASSERT(!a_pixPhotoOriginal.isNull());
 
     cQSize  cszSize     = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
                                 m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-    QPixmap pixPhotoNew = a_pixmap.scaled(
+    QPixmap pixPhotoNew = a_pixPhotoOriginal.scaled(
                                 cszSize,
                                 Qt::KeepAspectRatio,
                                 Qt::SmoothTransformation);
 
     _m_pixPhoto = pixPhotoNew;
-    m_Ui.lblPhoto->setPixmap(_m_pixPhoto);
+    m_Ui.lblPhoto->setPixmap(pixPhotoNew);
 }
 //------------------------------------------------------------------------------
 

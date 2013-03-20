@@ -45,7 +45,7 @@ private:
     void            _initMain           ();
     void            _initActions        ();
 
-    void            _photoUpdate        (const QPixmap &pixmap);
+    void            _photoUpdate        (const QPixmap &pixPhotoOriginal);
 
 private Q_SLOTS:
     // group "Exit"
