@@ -122,7 +122,7 @@ CPhotoAlbum::resizeEvent(
         if (NULL     == m_Ui.lblPhoto->pixmap() ||
             szScaled != m_Ui.lblPhoto->pixmap()->size())
         {
-            _photoUpdate(_m_pixPhoto);
+            _photoUpdate();
         }
     }
 }
@@ -266,21 +266,16 @@ CPhotoAlbum::_initActions() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_photoUpdate(
-    const QPixmap &a_pixPhotoOriginal
-)
-{
-    Q_ASSERT(!a_pixPhotoOriginal.isNull());
+CPhotoAlbum::_photoUpdate() {
+    Q_ASSERT(!_m_pixPhoto.isNull());
 
     cQSize  cszSize     = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
                                 m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-
-    QPixmap pixPhotoNew = a_pixPhotoOriginal.scaled(
+    QPixmap pixPhotoNew = _m_pixPhoto.scaled(
                                 cszSize,
                                 Qt::KeepAspectRatio,
-                                Qt::SmoothTransformation);
+                                Qt::FastTransformation);
 
-    _m_pixPhoto = pixPhotoNew;
     m_Ui.lblPhoto->setPixmap(pixPhotoNew);
 }
 //------------------------------------------------------------------------------
@@ -447,12 +442,10 @@ CPhotoAlbum::slot_photoMini_OnClicked(
         if (baPhoto.isEmpty()) {
             m_Ui.lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
-            QPixmap pixPhoto;
-
-            bool bRv = pixPhoto.loadFromData(baPhoto);
+            bool bRv = _m_pixPhoto.loadFromData(baPhoto);
             Q_ASSERT(bRv);
 
-            _photoUpdate(pixPhoto);
+            _photoUpdate();
         }
     }
 }
