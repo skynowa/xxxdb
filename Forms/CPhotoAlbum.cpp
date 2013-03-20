@@ -167,6 +167,7 @@ CPhotoAlbum::_initMain() {
 
     // lblPhoto
     m_Ui.lblPhoto->installEventFilter(this);
+    m_Ui.lblPhoto->setMinimumSize(PHOTO_MINI_SIZE);
 
     // _m_viDbItems
     {
