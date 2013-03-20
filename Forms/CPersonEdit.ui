@@ -446,7 +446,7 @@
         </rect>
        </property>
        <property name="text">
-        <string>Agreement:</string>
+        <string>Status:</string>
        </property>
       </widget>
      </widget>

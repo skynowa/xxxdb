@@ -161,7 +161,7 @@ CMain::_initModel() {
                 "    " DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
                 "    " DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
                 "    " DB_F_MAIN_APPEARANCE        " VARCHAR (64), "
-                "    " DB_F_MAIN_AGREEMENT         " VARCHAR (64), "
+                "    " DB_F_MAIN_STATUS            " VARCHAR (64), "
 
                 // Phones
                 "    " DB_F_PHONES_MOBILE1         " VARCHAR (64), "
@@ -268,7 +268,7 @@ CMain::_initModel() {
             {8,  DB_CF_MAIN_HAIRLENGTH},
             {9,  DB_CF_MAIN_HAIRCOLOR},
             {10, DB_CF_MAIN_APPEARANCE},
-            {11, DB_CF_MAIN_AGREEMENT},
+            {11, DB_CF_MAIN_STATUS},
 
             // Phones
             {12, DB_CF_PHONES_MOBILE1},

@@ -104,7 +104,7 @@ CPersonEdit::_initMain() {
             _m_hsDbItems.insert(m_Ui.cboHairLength,    DB_F_MAIN_HAIRLENGTH);
             _m_hsDbItems.insert(m_Ui.cboHairColor,     DB_F_MAIN_HAIRCOLOR);
             _m_hsDbItems.insert(m_Ui.cboAppearance,    DB_F_MAIN_APPEARANCE);
-            _m_hsDbItems.insert(m_Ui.cboAgreement,     DB_F_MAIN_AGREEMENT);
+            _m_hsDbItems.insert(m_Ui.cboAgreement,     DB_F_MAIN_STATUS);
 
             // Phones
             _m_hsDbItems.insert(m_Ui.cboMobile1,       DB_F_PHONES_MOBILE1);

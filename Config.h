@@ -63,7 +63,7 @@
 #define DB_F_MAIN_HAIRLENGTH         "f_main_hairlength"
 #define DB_F_MAIN_HAIRCOLOR          "f_main_haircolor"
 #define DB_F_MAIN_APPEARANCE         "f_main_appearance"
-#define DB_F_MAIN_AGREEMENT          "f_main_agreement"
+#define DB_F_MAIN_STATUS             "f_main_status"
 
 // Phones
 #define DB_F_PHONES_MOBILE1          "f_phones_mobile1"
@@ -161,7 +161,7 @@
 #define DB_CF_MAIN_HAIRLENGTH        tr("Hair length")
 #define DB_CF_MAIN_HAIRCOLOR         tr("Hair color")
 #define DB_CF_MAIN_APPEARANCE        tr("Appearance")
-#define DB_CF_MAIN_AGREEMENT         tr("Agreement")
+#define DB_CF_MAIN_STATUS            tr("Status")
 
 // Phones
 #define DB_CF_PHONES_MOBILE1         tr("Mobile 1")
