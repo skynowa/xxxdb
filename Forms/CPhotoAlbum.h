@@ -68,6 +68,11 @@ private Q_SLOTS:
     void               slot_OnPhotoUpdate (cint &index);
     void               slot_photoMini_OnClicked(QLabel *label,
                                                 cQString &dbFieldName);
+
+Q_SIGNALS:
+    void               signal_photo_clicked();
+    void               signal_photoMini_clicked(QLabel *label,
+                                               cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
 #endif // PickupDB_CPhotoAlbumH
