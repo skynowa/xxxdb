@@ -323,7 +323,7 @@ CDbImageLabel::_saveToFile(
 {
     Q_ASSERT(!a_filePath.isEmpty());
 
-    QByteArray baImage = _m_tmModel->record( dbRecordIndex() )
+    cQByteArray baImage = _m_tmModel->record( dbRecordIndex() )
                             .value(_m_csDbFieldName).toByteArray();
 
     QFile file(a_filePath);

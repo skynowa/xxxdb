@@ -395,6 +395,11 @@ CPhotoAlbum::slot_OnLoop() {
         ++ CDbImageLabel::currentIndex;
     }
 
+// FIX: slot_OnLoop
+//    if (_m_viDbItems.at(currentIndex)) {
+//
+//    }
+
     slot_OnPhotoUpdate(CDbImageLabel::currentIndex);
 }
 //------------------------------------------------------------------------------
