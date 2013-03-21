@@ -47,18 +47,17 @@ CDelegateDbImage::setEditorData(
         if (baPhoto.isEmpty()) {
             lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
-            QImage imgPhoto;
+            QPixmap pixOriginal;
 
-            bool bRv = imgPhoto.loadFromData(baPhoto);
+            bool bRv = pixOriginal.loadFromData(baPhoto);
             Q_ASSERT(bRv);
 
-            QImage  imgPhotoScaled = imgPhoto.scaled(
+            QPixmap pixScaled = pixOriginal.scaled(
                                         _m_cszSize,
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
-            QPixmap pixPixmap      = QPixmap::fromImage(imgPhotoScaled);
 
-            lblPhoto->setPixmap(pixPixmap);
+            lblPhoto->setPixmap(pixScaled);
         }
 
         if (NULL != _m_lblInfoPanel) {
