@@ -269,14 +269,14 @@ void
 CPhotoAlbum::_photoUpdate() {
     Q_ASSERT(!_m_pixPhoto.isNull());
 
-    cQSize  cszSize     = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
-                                m_Ui.lblPhoto->height() - PHOTO_MARGIN);
-    QPixmap pixPhotoNew = _m_pixPhoto.scaled(
-                                cszSize,
-                                Qt::KeepAspectRatio,
-                                Qt::FastTransformation);
+    cQSize  cszSize   = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
+                              m_Ui.lblPhoto->height() - PHOTO_MARGIN);
+    QPixmap pixScaled = _m_pixPhoto.scaled(
+                              cszSize,
+                              Qt::KeepAspectRatio,
+                              Qt::FastTransformation);
 
-    m_Ui.lblPhoto->setPixmap(pixPhotoNew);
+    m_Ui.lblPhoto->setPixmap(pixScaled);
 }
 //------------------------------------------------------------------------------
 

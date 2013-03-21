@@ -291,26 +291,25 @@ CDbImageLabel::_loadFromFile(
             _m_baBuffer = file.readAll();
         }
 
-        Q_ASSERT(0 < _m_baBuffer.size());
+        Q_ASSERT(!_m_baBuffer.isEmpty());
     }
 
     // _m_lblLabel
     {
-        if (0 >= _m_baBuffer.size()) {
+        if (_m_baBuffer.isEmpty()) {
             _m_lblLabel->setText(TEXT_NO_PHOTO);
         } else {
-            QImage imgImage;
+            QPixmap pixOriginal;
 
-            bool bRv = imgImage.loadFromData(_m_baBuffer);
+            bool bRv = pixOriginal.loadFromData(_m_baBuffer);
             Q_ASSERT(bRv);
 
-            QImage  imgImageScaled = imgImage.scaled(
+            QPixmap pixScaled = pixOriginal.scaled(
                                         size(),
                                         Qt::KeepAspectRatio,
-                                        Qt::SmoothTransformation);
-            QPixmap pixPixmap      = QPixmap::fromImage(imgImageScaled);
+                                        Qt::FastTransformation);
 
-            _m_lblLabel->setPixmap(pixPixmap);
+            _m_lblLabel->setPixmap(pixScaled);
         }
     }
 
