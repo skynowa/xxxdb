@@ -396,9 +396,10 @@ CPhotoAlbum::slot_OnLoop() {
     }
 
 // FIX: slot_OnLoop
-//    if (_m_viDbItems.at(currentIndex)) {
-//
-//    }
+    if (_m_viDbItems.at(CDbImageLabel::currentIndex)->isEmpty()) {
+        // qDebug() << CDbImageLabel::currentIndex;
+        slot_OnLoop();
+    }
 
     slot_OnPhotoUpdate(CDbImageLabel::currentIndex);
 }
