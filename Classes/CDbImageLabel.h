@@ -46,6 +46,8 @@ public:
         ///< get data widget mapper
 
     // actions
+    bool                  isEmpty      () const;
+        ///< is empty image
     void                  loadFromFile ();
         ///< load image from file
     void                  saveToFile   ();
