@@ -63,7 +63,7 @@ public:
         ///< find CDbImageLabel by QLabel
     static CDbImageLabel *find         (cdb_images_t &dbItems, cint &index);
         ///< find CDbImageLabel by index
-    static bool           isLabelsEmpty(cdb_images_t &dbItems);
+    static bool           isEmpty      (cdb_images_t &dbItems);
         ///< is all QLabels empty
 
 Q_SIGNALS:

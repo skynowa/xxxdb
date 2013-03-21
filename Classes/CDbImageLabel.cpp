@@ -206,9 +206,7 @@ CDbImageLabel::find(
     Q_ASSERT(NULL != a_label);
 
     foreach (CDbImageLabel *item, a_dbItems) {
-        if (a_label == item->label()) {
-            return item;
-        }
+        qCHECK_RET(a_label == item->label(), item);
     }
 
     return NULL;
@@ -225,9 +223,7 @@ CDbImageLabel::find(
     Q_ASSERT(- 1 < a_index);
 
     foreach (CDbImageLabel *item, a_dbItems) {
-        if (a_index == item->index()) {
-            return item;
-        }
+        qCHECK_RET(a_index == item->index(), item);
     }
 
     return NULL;
@@ -235,19 +231,17 @@ CDbImageLabel::find(
 //------------------------------------------------------------------------------
 /* static */
 bool
-CDbImageLabel::isLabelsEmpty(
+CDbImageLabel::isEmpty(
     cdb_images_t &a_dbItems
 )
 {
     // a_dbItems - n/a
 
     foreach (CDbImageLabel *item, a_dbItems) {
-        if (NULL != item->label()->pixmap()) {
-            return true;
-        }
+        qCHECK_RET(!item->isEmpty(), false);
     }
 
-    return false;
+    return true;
 }
 //------------------------------------------------------------------------------
 

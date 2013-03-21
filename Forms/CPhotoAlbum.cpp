@@ -389,15 +389,18 @@ CPhotoAlbum::slot_OnSetPrimary() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::slot_OnLoop() {
+    // avoid recursion when photo album is empty
+    qCHECK_DO(CDbImageLabel::isEmpty(_m_viDbItems), return);
+
+    // calc current index
     if (CDbImageLabel::currentIndex >= _m_viDbItems.size() - 1) {
         CDbImageLabel::currentIndex = 0;
     } else {
         ++ CDbImageLabel::currentIndex;
     }
 
-// FIX: slot_OnLoop
+    // skip empty images
     if (_m_viDbItems.at(CDbImageLabel::currentIndex)->isEmpty()) {
-        // qDebug() << CDbImageLabel::currentIndex;
         slot_OnLoop();
     }
 
