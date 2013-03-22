@@ -16,6 +16,8 @@
 class CAbout :
     public QDialog
 {
+    Q_OBJECT
+
 public:
     Ui::CAbout ui;
 

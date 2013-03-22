@@ -20,6 +20,8 @@ class CDbImageLabel;
 class CEditor :
     public QDialog
 {
+    Q_OBJECT
+
 public:
     Ui::CEditor        ui;
     CAlbum            *wndAlbum;
