@@ -8,6 +8,7 @@
 
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
+#include "../Forms/CColumns.h"
 #include "../Forms/CAbout.h"
 #include "../QtLib/CUtils.h"
 #include "../Classes/CSettings.h"
@@ -475,6 +476,8 @@ CMain::_initActions() {
 
     // group "View"
     {
+        connect(ui.actView_Columns,     &QAction::triggered,
+                this,                   &CMain::slot_OnColumns);
     }
 
     // group "Options"
@@ -554,9 +557,9 @@ CMain::slot_OnInsert() {
     snSqlNavigator.insert();
 
     {
-        CEditor dlgPersonEdit(this, _tmModel, &snSqlNavigator);
+        CEditor dlgEditor(this, _tmModel, &snSqlNavigator);
 
-        (int)dlgPersonEdit.exec();
+        (int)dlgEditor.exec();
     }
 }
 //------------------------------------------------------------------------------
@@ -583,9 +586,9 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    CEditor dlgPersonEdit(this, _tmModel, &snSqlNavigator);
+    CEditor dlgEditor(this, _tmModel, &snSqlNavigator);
 
-    (int)dlgPersonEdit.exec();
+    (int)dlgEditor.exec();
 }
 //------------------------------------------------------------------------------
 
@@ -607,6 +610,15 @@ CMain::slot_OnSearch() {
 *   group "View"
 *
 *******************************************************************************/
+
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnColumns() {
+    CColumns dlgColumns(this, _tmModel);
+
+    (int)dlgColumns.exec();
+}
+//------------------------------------------------------------------------------
 
 
 /*******************************************************************************

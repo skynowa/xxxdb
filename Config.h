@@ -19,6 +19,7 @@
 #define APP_MAIN_TITLE              APP_NAME + tr(" - accounting software for girls")
 #define APP_PERSON_EDIT_TITLE       APP_NAME + tr(" - person editor")
 #define APP_PHOTO_ALBUM_TITLE       APP_NAME + tr(" - photo album")
+#define APP_COLUMNS_TITLE           APP_NAME + tr(" - select columns")
 #define APP_ABOUT_TITLE             APP_NAME + tr(" - about")
 
 // photo

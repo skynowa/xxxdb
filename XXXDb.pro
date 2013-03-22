@@ -11,27 +11,6 @@ TEMPLATE        = app
 QT              = core gui widgets sql network xml
 CONFIG         += warn_on
 
-win32 {
-    INCLUDEPATH =
-
-    CONFIG(debug, debug|release) {
-        LIBS    =
-    } else {
-        LIBS    =
-    }
-}
-unix {
-    INCLUDEPATH =
-
-    CONFIG(debug, debug|release) {
-        LIBS    =
-    } else {
-        LIBS    =
-    }
-
-    LIBS       +=
-}
-
 HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
@@ -42,7 +21,8 @@ HEADERS         = QtLib/Common.h \
                   Forms/CMain.h \
                   Forms/CEditor.h \
                   Forms/CAlbum.h \
-                  Forms/CAbout.h
+                  Forms/CAbout.h \
+                  Forms/CColumns.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
@@ -53,25 +33,24 @@ SOURCES         = main.cpp \
                   Forms/CMain.cpp \
                   Forms/CEditor.cpp \
                   Forms/CAlbum.cpp \
-                  Forms/CAbout.cpp
+                  Forms/CAbout.cpp \
+                  Forms/CColumns.cpp
 
 FORMS           = Forms/CMain.ui \
                   Forms/CEditor.ui \
                   Forms/CAlbum.ui \
-                  Forms/CAbout.ui
+                  Forms/CAbout.ui \
+                  Forms/CColumns.ui
 
 RESOURCES       = Resources/App.qrc
 
 win32 {
     RC_FILE     = Resources/App_win.rc
 }
-unix {
-    RC_FILE     = # n/a
-}
 
 OUT_DIR         =
 
-CONFIG(debug, debug|release) {
+CONFIG(debug, debug | release) {
     OUT_DIR    = ./Build/Debug
 } else {
     OUT_DIR    = ./Build/Release

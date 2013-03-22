@@ -69,6 +69,7 @@ private:
     void               slot_OnSearch    ();
 
     // group "View"
+    void               slot_OnColumns   ();
 
 
     // group "Options"
