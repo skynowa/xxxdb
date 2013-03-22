@@ -28,7 +28,6 @@ public:
 
                        CEditor     (QWidget *parent, QSqlTableModel *tableModel,
                                     CSqlNavigator *sqlNavigator);
-    virtual           ~CEditor     ();
 
 protected:
     virtual void       closeEvent  (QCloseEvent *event);

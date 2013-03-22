@@ -27,7 +27,6 @@ public:
                     CAlbum              (QWidget *parent,
                                          QSqlTableModel *tableModel,
                                          CSqlNavigator *sqlNavigator);
-    virtual        ~CAlbum              ();
 
 protected:
     virtual bool    eventFilter         (QObject *obj, QEvent *event);
