@@ -1,4 +1,4 @@
-PickupDB - accounting software for girls
+XXXDb - accounting software for girls
 
 
 Platforms:    Windows, Linux, OSX
@@ -10,7 +10,7 @@ Skype:        skynowa777
 Jabber:       skynowa@jabber.ru
 ICQ:          627713628
 
-Web:          https://bitbucket.org/skynowa/pickupdb
+Web:          https://bitbucket.org/skynowa/xxxdb
 
 
 Prerequisites:
