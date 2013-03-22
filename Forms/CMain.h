@@ -30,8 +30,8 @@ public:
     CSqlNavigator      snSqlNavigator;
     CAlbum            *wndAlbum;
 
-    explicit           CMain            (QWidget *parent = 0,
-                                         Qt::WindowFlags flags = 0);
+    explicit           CMain            (QWidget *parent = NULL,
+                                         Qt::WindowFlags flags = NULL);
 
 protected:
     virtual void       closeEvent       (QCloseEvent *event);
