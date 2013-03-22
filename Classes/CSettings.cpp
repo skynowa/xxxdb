@@ -22,23 +22,19 @@ CSettings::CSettings(
     CEditor *a_wndEditor,
     CAlbum  *a_wndAlbum
 ) :
-    _m_wndMain  (a_wndMain),
-    _m_wndEditor(a_wndEditor),
-    _m_wndAlbum (a_wndAlbum)
+    _wndMain  (a_wndMain),
+    _wndEditor(a_wndEditor),
+    _wndAlbum (a_wndAlbum)
 {
-    qDebug() << "_read";
-
-    _read(_m_wndMain);
-    _read(_m_wndEditor);
-    _read(_m_wndAlbum);
+    _read(_wndMain);
+    _read(_wndEditor);
+    _read(_wndAlbum);
 }
 //------------------------------------------------------------------------------
 CSettings::~CSettings() {
-    qDebug() << "_write";
-
-    _write(_m_wndMain);
-    _write(_m_wndEditor);
-    _write(_m_wndAlbum);
+    _write(_wndMain);
+    _write(_wndEditor);
+    _write(_wndAlbum);
 }
 //------------------------------------------------------------------------------
 

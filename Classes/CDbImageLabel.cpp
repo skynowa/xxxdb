@@ -23,16 +23,16 @@ CDbImageLabel::CDbImageLabel(
     QLabel         *a_label,            ///< QLabel for display image
     cQSize         &a_size              ///< image sizes
 ) :
-    QObject           (a_parent),
-    _m_wdParent       (a_parent),
-    _m_tmModel        (a_tableModel),
-    _m_csDbFieldName  (a_dbFieldName),
-    _m_ciIndex        (a_index),
-    _m_ciDbRecordIndex(a_dbRecordIndex),
-    _m_lblLabel       (a_label),
-    _m_cszSize        (a_size),
-    _m_dmMapper       (NULL),
-    _m_baBuffer       ()
+    QObject         (a_parent),
+    _wdParent       (a_parent),
+    _tmModel        (a_tableModel),
+    _csDbFieldName  (a_dbFieldName),
+    _ciIndex        (a_index),
+    _ciDbRecordIndex(a_dbRecordIndex),
+    _lblLabel       (a_label),
+    _cszSize        (a_size),
+    _dmMapper       (NULL),
+    _baBuffer       ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
@@ -41,7 +41,7 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(- 1 < a_dbRecordIndex);
     Q_ASSERT(NULL != a_label);
 
-    _m_dmMapper = _map();
+    _dmMapper = _map();
 }
 //------------------------------------------------------------------------------
 CDbImageLabel::~CDbImageLabel() {
@@ -58,44 +58,44 @@ CDbImageLabel::~CDbImageLabel() {
 //------------------------------------------------------------------------------
 cQString &
 CDbImageLabel::dbFieldName() const {
-    Q_ASSERT(!_m_csDbFieldName.isEmpty());
+    Q_ASSERT(!_csDbFieldName.isEmpty());
 
-    return _m_csDbFieldName;
+    return _csDbFieldName;
 }
 //------------------------------------------------------------------------------
 cint &
 CDbImageLabel::index() const {
-    Q_ASSERT(- 1 < _m_ciIndex);
+    Q_ASSERT(- 1 < _ciIndex);
 
-    return _m_ciIndex;
+    return _ciIndex;
 }
 //------------------------------------------------------------------------------
 cint &
 CDbImageLabel::dbRecordIndex() const {
-    Q_ASSERT(- 1 < _m_ciDbRecordIndex);
+    Q_ASSERT(- 1 < _ciDbRecordIndex);
 
-    return _m_ciDbRecordIndex;
+    return _ciDbRecordIndex;
 }
 //------------------------------------------------------------------------------
 QLabel *
 CDbImageLabel::label() const {
-    Q_ASSERT(NULL != _m_lblLabel);
+    Q_ASSERT(NULL != _lblLabel);
 
-    return _m_lblLabel;
+    return _lblLabel;
 }
 //------------------------------------------------------------------------------
 cQSize &
 CDbImageLabel::size() const {
-    Q_ASSERT(_m_cszSize.isValid());
+    Q_ASSERT(_cszSize.isValid());
 
-    return _m_cszSize;
+    return _cszSize;
 }
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
 CDbImageLabel::map() {
-    Q_ASSERT(NULL != _m_dmMapper);
+    Q_ASSERT(NULL != _dmMapper);
 
-    return _m_dmMapper;
+    return _dmMapper;
 }
 //------------------------------------------------------------------------------
 
@@ -115,7 +115,7 @@ CDbImageLabel::isEmpty() const {
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::loadFromFile() {
-    QFileDialog fdlgDialog(_m_wdParent);
+    QFileDialog fdlgDialog(_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptOpen);
     fdlgDialog.setFileMode(QFileDialog::AnyFile);
@@ -143,7 +143,7 @@ CDbImageLabel::loadFromFile() {
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::saveToFile() {
-    QFileDialog fdlgDialog(_m_wdParent);
+    QFileDialog fdlgDialog(_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
     fdlgDialog.setFileMode(QFileDialog::AnyFile);
@@ -255,14 +255,14 @@ CDbImageLabel::isEmpty(
 QDataWidgetMapper *
 CDbImageLabel::_map() {
     QDataWidgetMapper *wmRv = new QDataWidgetMapper(this);
-    wmRv->setModel(_m_tmModel);
+    wmRv->setModel(_tmModel);
     wmRv->setItemDelegate(new CDelegateDbImage(
                                 wmRv,
-                                _m_tmModel->fieldIndex( dbFieldName() ),
+                                _tmModel->fieldIndex( dbFieldName() ),
                                 size(),
                                 NULL));
     wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-    wmRv->addMapping(label(), _m_tmModel->fieldIndex( dbFieldName() ));
+    wmRv->addMapping(label(), _tmModel->fieldIndex( dbFieldName() ));
     wmRv->setCurrentIndex( dbRecordIndex() );
 
     return wmRv;
@@ -277,32 +277,32 @@ CDbImageLabel::_loadFromFile(
 
     // TODO: ensure rewrite image
 
-    _m_baBuffer.clear();
+    _baBuffer.clear();
 
     // file to buffer
     {
         if (IMAGE_IS_CONVERT) {
-            CUtils::imageConvert(a_filePath, &_m_baBuffer);
+            CUtils::imageConvert(a_filePath, &_baBuffer);
         } else {
             QFile file(a_filePath);
 
             bool bRv = file.open(QIODevice::ReadOnly);
             Q_ASSERT(bRv);
 
-            _m_baBuffer = file.readAll();
+            _baBuffer = file.readAll();
         }
 
-        Q_ASSERT(!_m_baBuffer.isEmpty());
+        Q_ASSERT(!_baBuffer.isEmpty());
     }
 
-    // _m_lblLabel
+    // _lblLabel
     {
-        if (_m_baBuffer.isEmpty()) {
-            _m_lblLabel->setText(TEXT_NO_PHOTO);
+        if (_baBuffer.isEmpty()) {
+            _lblLabel->setText(TEXT_NO_PHOTO);
         } else {
             QPixmap pixOriginal;
 
-            bool bRv = pixOriginal.loadFromData(_m_baBuffer);
+            bool bRv = pixOriginal.loadFromData(_baBuffer);
             Q_ASSERT(bRv);
 
             QPixmap pixScaled = pixOriginal.scaled(
@@ -310,7 +310,7 @@ CDbImageLabel::_loadFromFile(
                                         Qt::KeepAspectRatio,
                                         Qt::FastTransformation);
 
-            _m_lblLabel->setPixmap(pixScaled);
+            _lblLabel->setPixmap(pixScaled);
         }
     }
 
@@ -324,8 +324,8 @@ CDbImageLabel::_saveToFile(
 {
     Q_ASSERT(!a_filePath.isEmpty());
 
-    cQByteArray baImage = _m_tmModel->record( dbRecordIndex() )
-                            .value(_m_csDbFieldName).toByteArray();
+    cQByteArray baImage = _tmModel->record( dbRecordIndex() )
+                                .value(_csDbFieldName).toByteArray();
 
     QFile file(a_filePath);
     bool bRv = file.open(QIODevice::WriteOnly);
@@ -338,9 +338,9 @@ CDbImageLabel::_saveToFile(
 //------------------------------------------------------------------------------
 void
 CDbImageLabel::_remove() {
-    _m_baBuffer.clear();
+    _baBuffer.clear();
     _flush();
-    _m_lblLabel->clear();
+    _lblLabel->clear();
 }
 //------------------------------------------------------------------------------
 void
@@ -348,20 +348,20 @@ CDbImageLabel::_flush() {
 #if 0
     #error "BUG: QSqlTableModel::setRecord - not work"
 
-    QSqlRecord srRecord = _m_tmModel->record( dbRecordIndex() );
-    srRecord.setValue(dbFieldName(), _m_baBuffer);
+    QSqlRecord srRecord = _tmModel->record( dbRecordIndex() );
+    srRecord.setValue(dbFieldName(), _baBuffer);
 
-    bool bRv = _m_tmModel->setRecord(dbRecordIndex(), srRecord);
+    bool bRv = _tmModel->setRecord(dbRecordIndex(), srRecord);
     Q_ASSERT(bRv);
 #else
-    cint              column = _m_tmModel->fieldIndex( dbFieldName() );
+    cint              column = _tmModel->fieldIndex( dbFieldName() );
     Q_ASSERT(- 1 < column);
-    const QModelIndex index  = _m_tmModel->index(dbRecordIndex(), column);
+    const QModelIndex index  = _tmModel->index(dbRecordIndex(), column);
 
-    bool bRv = _m_tmModel->setData(index, _m_baBuffer);
+    bool bRv = _tmModel->setData(index, _baBuffer);
     Q_ASSERT(bRv);
 #endif
 
-    _m_baBuffer.clear();
+    _baBuffer.clear();
 }
 //------------------------------------------------------------------------------

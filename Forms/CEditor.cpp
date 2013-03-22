@@ -24,25 +24,25 @@ CEditor::CEditor(
     QSqlTableModel *a_tableModel,
     CSqlNavigator  *a_sqlNavigator
 ) :
-    QDialog           (a_parent),
-    m_wndAlbum        (NULL),
-    _m_stApp          (NULL),
-    _m_tmModel        (a_tableModel),
-    _m_snSqlNavigator (a_sqlNavigator),
-    _m_hsDbItems      (),
-    _m_dmText         (NULL),
-    _m_dmImage        (NULL),
-    _m_ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
-    _m_dbImageLabel   ()
+    QDialog         (a_parent),
+    wndAlbum        (NULL),
+    _stApp          (NULL),
+    _tmModel        (a_tableModel),
+    _snSqlNavigator (a_sqlNavigator),
+    _hsDbItems      (),
+    _dmText         (NULL),
+    _dmImage        (NULL),
+    _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
+    _dbImageLabel   ()
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(NULL != a_sqlNavigator);
-    Q_ASSERT(- 1  <  _m_ciDbRecordIndex);
+    Q_ASSERT(- 1  <  _ciDbRecordIndex);
 
     _construct();
 
-    _m_stApp = new CSettings(NULL, this, NULL);
+    _stApp = new CSettings(NULL, this, NULL);
 }
 //------------------------------------------------------------------------------
 
@@ -76,12 +76,12 @@ CEditor::_construct() {
 //------------------------------------------------------------------------------
 void
 CEditor::_destruct() {
-    qPTR_DELETE(_m_stApp);
+    qPTR_DELETE(_stApp);
 }
 //------------------------------------------------------------------------------
 void
 CEditor::_initMain() {
-    m_Ui.setupUi(this);
+    ui.setupUi(this);
 
     // main
     {
@@ -93,134 +93,134 @@ CEditor::_initMain() {
         // DB items to QHash
         {
             // Main
-            _m_hsDbItems.insert(m_Ui.cboNick,          DB_F_MAIN_NICK);
-            _m_hsDbItems.insert(m_Ui.cboSurname,       DB_F_MAIN_SURNAME);
-            _m_hsDbItems.insert(m_Ui.cboName,          DB_F_MAIN_NAME);
-            _m_hsDbItems.insert(m_Ui.cboPatronymic,    DB_F_MAIN_PATRONYMIC);
-            _m_hsDbItems.insert(m_Ui.cboAge,           DB_F_MAIN_AGE);
-            _m_hsDbItems.insert(m_Ui.cboHeight,        DB_F_MAIN_HEIGHT);
-            _m_hsDbItems.insert(m_Ui.cboWeight,        DB_F_MAIN_WEIGHT);
-            _m_hsDbItems.insert(m_Ui.cboHairLength,    DB_F_MAIN_HAIRLENGTH);
-            _m_hsDbItems.insert(m_Ui.cboHairColor,     DB_F_MAIN_HAIRCOLOR);
-            _m_hsDbItems.insert(m_Ui.cboAppearance,    DB_F_MAIN_APPEARANCE);
-            _m_hsDbItems.insert(m_Ui.cboAgreement,     DB_F_MAIN_STATUS);
+            _hsDbItems.insert(ui.cboNick,          DB_F_MAIN_NICK);
+            _hsDbItems.insert(ui.cboSurname,       DB_F_MAIN_SURNAME);
+            _hsDbItems.insert(ui.cboName,          DB_F_MAIN_NAME);
+            _hsDbItems.insert(ui.cboPatronymic,    DB_F_MAIN_PATRONYMIC);
+            _hsDbItems.insert(ui.cboAge,           DB_F_MAIN_AGE);
+            _hsDbItems.insert(ui.cboHeight,        DB_F_MAIN_HEIGHT);
+            _hsDbItems.insert(ui.cboWeight,        DB_F_MAIN_WEIGHT);
+            _hsDbItems.insert(ui.cboHairLength,    DB_F_MAIN_HAIRLENGTH);
+            _hsDbItems.insert(ui.cboHairColor,     DB_F_MAIN_HAIRCOLOR);
+            _hsDbItems.insert(ui.cboAppearance,    DB_F_MAIN_APPEARANCE);
+            _hsDbItems.insert(ui.cboAgreement,     DB_F_MAIN_STATUS);
 
             // Phones
-            _m_hsDbItems.insert(m_Ui.cboMobile1,       DB_F_PHONES_MOBILE1);
-            _m_hsDbItems.insert(m_Ui.cboMobile2,       DB_F_PHONES_MOBILE2);
-            _m_hsDbItems.insert(m_Ui.cboMobile3,       DB_F_PHONES_MOBILE3);
-            _m_hsDbItems.insert(m_Ui.cboPhoneHome,     DB_F_PHONES_HOME);
-            _m_hsDbItems.insert(m_Ui.cboPhoneJob,      DB_F_PHONES_JOB);
-            _m_hsDbItems.insert(m_Ui.tedtPhoneOther,   DB_F_PHONES_OTHER);
+            _hsDbItems.insert(ui.cboMobile1,       DB_F_PHONES_MOBILE1);
+            _hsDbItems.insert(ui.cboMobile2,       DB_F_PHONES_MOBILE2);
+            _hsDbItems.insert(ui.cboMobile3,       DB_F_PHONES_MOBILE3);
+            _hsDbItems.insert(ui.cboPhoneHome,     DB_F_PHONES_HOME);
+            _hsDbItems.insert(ui.cboPhoneJob,      DB_F_PHONES_JOB);
+            _hsDbItems.insert(ui.tedtPhoneOther,   DB_F_PHONES_OTHER);
 
             // Address
-            _m_hsDbItems.insert(m_Ui.cboCountry,       DB_F_ADDRESS_COUNTRY);
-            _m_hsDbItems.insert(m_Ui.cboCode,          DB_F_ADDRESS_CODE);
-            _m_hsDbItems.insert(m_Ui.cboCity,          DB_F_ADDRESS_CITY);
-            _m_hsDbItems.insert(m_Ui.cboDistrict,      DB_F_ADDRESS_DISTRICT);
-            _m_hsDbItems.insert(m_Ui.cboStreet,        DB_F_ADDRESS_STREET);
-            _m_hsDbItems.insert(m_Ui.cboHouse,         DB_F_ADDRESS_HOUSE);
-            _m_hsDbItems.insert(m_Ui.cboPorch,         DB_F_ADDRESS_PORCH);
-            _m_hsDbItems.insert(m_Ui.cboFloor,         DB_F_ADDRESS_FLOOR);
-            _m_hsDbItems.insert(m_Ui.cboApartment,     DB_F_ADDRESS_APARTMENT);
+            _hsDbItems.insert(ui.cboCountry,       DB_F_ADDRESS_COUNTRY);
+            _hsDbItems.insert(ui.cboCode,          DB_F_ADDRESS_CODE);
+            _hsDbItems.insert(ui.cboCity,          DB_F_ADDRESS_CITY);
+            _hsDbItems.insert(ui.cboDistrict,      DB_F_ADDRESS_DISTRICT);
+            _hsDbItems.insert(ui.cboStreet,        DB_F_ADDRESS_STREET);
+            _hsDbItems.insert(ui.cboHouse,         DB_F_ADDRESS_HOUSE);
+            _hsDbItems.insert(ui.cboPorch,         DB_F_ADDRESS_PORCH);
+            _hsDbItems.insert(ui.cboFloor,         DB_F_ADDRESS_FLOOR);
+            _hsDbItems.insert(ui.cboApartment,     DB_F_ADDRESS_APARTMENT);
 
             // E-mail
-            _m_hsDbItems.insert(m_Ui.tedtEmail,        DB_F_EMAIL_EMAIL);
+            _hsDbItems.insert(ui.tedtEmail,        DB_F_EMAIL_EMAIL);
 
             // Web
-            _m_hsDbItems.insert(m_Ui.tedtWeb,          DB_F_WEB_WEB);
+            _hsDbItems.insert(ui.tedtWeb,          DB_F_WEB_WEB);
 
             // Messengers
-            _m_hsDbItems.insert(m_Ui.cboIcq,           DB_F_MESSENGERS_ICQ);
-            _m_hsDbItems.insert(m_Ui.cboSkype,         DB_F_MESSENGERS_SKYPE);
+            _hsDbItems.insert(ui.cboIcq,           DB_F_MESSENGERS_ICQ);
+            _hsDbItems.insert(ui.cboSkype,         DB_F_MESSENGERS_SKYPE);
 
             // Job
-            _m_hsDbItems.insert(m_Ui.cboProfession,    DB_F_JOB_PROFESSION);
-            _m_hsDbItems.insert(m_Ui.cboAddress,       DB_F_JOB_ADDRESS);
-            _m_hsDbItems.insert(m_Ui.cboSalary,        DB_F_JOB_SALARY);
-            _m_hsDbItems.insert(m_Ui.cboCompany,       DB_F_JOB_COMPANY);
+            _hsDbItems.insert(ui.cboProfession,    DB_F_JOB_PROFESSION);
+            _hsDbItems.insert(ui.cboAddress,       DB_F_JOB_ADDRESS);
+            _hsDbItems.insert(ui.cboSalary,        DB_F_JOB_SALARY);
+            _hsDbItems.insert(ui.cboCompany,       DB_F_JOB_COMPANY);
 
             // Dates
-            _m_hsDbItems.insert(m_Ui.dtBirthday,       DB_F_DATES_BIRTHDAY);
-            _m_hsDbItems.insert(m_Ui.dtBirthdayFather, DB_F_DATES_BIRTHDAYFATHER);
-            _m_hsDbItems.insert(m_Ui.dtBirthdayMother, DB_F_DATES_BIRTHDAYMOTHER);
-            _m_hsDbItems.insert(m_Ui.dtDayDating,      DB_F_DATES_DAYDATING);
-            _m_hsDbItems.insert(m_Ui.dtDayFirstKiss,   DB_F_DATES_DAYFIRSTKISS);
-            _m_hsDbItems.insert(m_Ui.dtDayFirstSex,    DB_F_DATES_DAYFIRSTSEX);
+            _hsDbItems.insert(ui.dtBirthday,       DB_F_DATES_BIRTHDAY);
+            _hsDbItems.insert(ui.dtBirthdayFather, DB_F_DATES_BIRTHDAYFATHER);
+            _hsDbItems.insert(ui.dtBirthdayMother, DB_F_DATES_BIRTHDAYMOTHER);
+            _hsDbItems.insert(ui.dtDayDating,      DB_F_DATES_DAYDATING);
+            _hsDbItems.insert(ui.dtDayFirstKiss,   DB_F_DATES_DAYFIRSTKISS);
+            _hsDbItems.insert(ui.dtDayFirstSex,    DB_F_DATES_DAYFIRSTSEX);
 
             // Interests
-            _m_hsDbItems.insert(m_Ui.cboHobby,         DB_F_INTERESTS_HOBBY);
-            _m_hsDbItems.insert(m_Ui.cboSports,        DB_F_INTERESTS_SPORTS);
-            _m_hsDbItems.insert(m_Ui.cboSmoking,       DB_F_INTERESTS_SMOKING);
-            _m_hsDbItems.insert(m_Ui.cboAlcohol,       DB_F_INTERESTS_ALCOHOL);
-            _m_hsDbItems.insert(m_Ui.cboDrugs,         DB_F_INTERESTS_DRUGS);
+            _hsDbItems.insert(ui.cboHobby,         DB_F_INTERESTS_HOBBY);
+            _hsDbItems.insert(ui.cboSports,        DB_F_INTERESTS_SPORTS);
+            _hsDbItems.insert(ui.cboSmoking,       DB_F_INTERESTS_SMOKING);
+            _hsDbItems.insert(ui.cboAlcohol,       DB_F_INTERESTS_ALCOHOL);
+            _hsDbItems.insert(ui.cboDrugs,         DB_F_INTERESTS_DRUGS);
 
             // TODO: Periods
 
             // Etc
-            _m_hsDbItems.insert(m_Ui.dtDateCreation,   DB_F_ETC_DATECREATION);
-            _m_hsDbItems.insert(m_Ui.dtDateLastChange, DB_F_ETC_DATELASTCHANGE);
+            _hsDbItems.insert(ui.dtDateCreation,   DB_F_ETC_DATECREATION);
+            _hsDbItems.insert(ui.dtDateLastChange, DB_F_ETC_DATELASTCHANGE);
 
             // Note
-            _m_hsDbItems.insert(m_Ui.tedtNotes,        DB_F_NOTES_NOTES);
+            _hsDbItems.insert(ui.tedtNotes,        DB_F_NOTES_NOTES);
 
             // TODO: Photos
-            // _m_hsDbItems.insert(m_Ui.lblPhoto,      DB_F_PHOTOS_1);
+            // _hsDbItems.insert(ui.lblPhoto,      DB_F_PHOTOS_1);
         }
 
         // map DB items
         {
-            // _m_dmText
-            _m_dmText = new QDataWidgetMapper(this);
-            _m_dmText->setModel(_m_tmModel);
-            _m_dmText->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+            // _dmText
+            _dmText = new QDataWidgetMapper(this);
+            _dmText->setModel(_tmModel);
+            _dmText->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
             // map
-            foreach (QWidget *key, _m_hsDbItems.keys()) {
+            foreach (QWidget *key, _hsDbItems.keys()) {
                 QWidget *widget  = key;
-                cint     section = _m_tmModel->fieldIndex(_m_hsDbItems.value(key));
+                cint     section = _tmModel->fieldIndex(_hsDbItems.value(key));
 
-                _m_dmText->addMapping(widget, section);
+                _dmText->addMapping(widget, section);
             }
 
-            _m_dmText->setCurrentIndex(_m_ciDbRecordIndex);
+            _dmText->setCurrentIndex(_ciDbRecordIndex);
         }
 
-        // _m_dmImage
+        // _dmImage
         {
-            _m_dmImage = new QDataWidgetMapper(this);
-            _m_dmImage->setModel(_m_tmModel);
-            _m_dmImage->setItemDelegate(new CDelegateDbImage(
-                                                _m_dmImage,
-                                                _m_tmModel->fieldIndex(DB_F_PHOTOS_1),
+            _dmImage = new QDataWidgetMapper(this);
+            _dmImage->setModel(_tmModel);
+            _dmImage->setItemDelegate(new CDelegateDbImage(
+                                                _dmImage,
+                                                _tmModel->fieldIndex(DB_F_PHOTOS_1),
                                                 PHOTO_SIZE,
                                                 NULL));
-            _m_dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-            _m_dmImage->addMapping(m_Ui.lblPhoto, _m_tmModel->fieldIndex(DB_F_PHOTOS_1));
-            _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);
+            _dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+            _dmImage->addMapping(ui.lblPhoto, _tmModel->fieldIndex(DB_F_PHOTOS_1));
+            _dmImage->setCurrentIndex(_ciDbRecordIndex);
         }
 
         // set default control
-        m_Ui.cboNick->setFocus();
-        m_Ui.cboNick->lineEdit()->selectAll();
+        ui.cboNick->setFocus();
+        ui.cboNick->lineEdit()->selectAll();
     }
 
     // _m_dbImage
     {
         // TODO: 0
-        _m_dbImageLabel = new CDbImageLabel(this, _m_tmModel, DB_F_PHOTOS_1,
-                                            0, _m_ciDbRecordIndex,
-                                            m_Ui.lblPhoto, PHOTO_SIZE);
+        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
+                                          0, _ciDbRecordIndex,
+                                          ui.lblPhoto, PHOTO_SIZE);
     }
 
     // signals
     {
-        connect(m_Ui.tbtnPhotoAlbum, &QToolButton::clicked,
-                this,                &CEditor::slot_OnAlbum);
-        connect(m_Ui.bbxButtons,     &QDialogButtonBox::clicked,
-                this,                &CEditor::slot_bbxButtons_OnClicked);
-        connect(m_Ui.twGroups,       &QTreeWidget::clicked,
-                this,                &CEditor::slot_twGroups_OnActivated);
+        connect(ui.tbtnPhotoAlbum, &QToolButton::clicked,
+                this,              &CEditor::slot_OnAlbum);
+        connect(ui.bbxButtons,     &QDialogButtonBox::clicked,
+                this,              &CEditor::slot_bbxButtons_OnClicked);
+        connect(ui.twGroups,       &QTreeWidget::clicked,
+                this,              &CEditor::slot_twGroups_OnActivated);
     }
 }
 //------------------------------------------------------------------------------
@@ -234,11 +234,10 @@ CEditor::_initMain() {
 //------------------------------------------------------------------------------
 void
 CEditor::slot_OnAlbum() {
-    delete m_wndAlbum;
-    m_wndAlbum = NULL;
+    qPTR_DELETE(wndAlbum);
 
-    m_wndAlbum = new CAlbum(this, _m_tmModel, _m_snSqlNavigator);
-    m_wndAlbum->show();
+    wndAlbum = new CAlbum(this, _tmModel, _snSqlNavigator);
+    wndAlbum->show();
 }
 //------------------------------------------------------------------------------
 void
@@ -246,7 +245,7 @@ CEditor::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
 )
 {
-    QDialogButtonBox::StandardButton sbRv = m_Ui.bbxButtons->standardButton(a_button);
+    QDialogButtonBox::StandardButton sbRv = ui.bbxButtons->standardButton(a_button);
     switch (sbRv) {
         case QDialogButtonBox::Reset:
             _resetAll();
@@ -302,7 +301,7 @@ CEditor::_resetAll() {
     {
         db_items_t::Iterator it;
 
-        for (it = _m_hsDbItems.begin(); it != _m_hsDbItems.end(); ++ it) {
+        for (it = _hsDbItems.begin(); it != _hsDbItems.end(); ++ it) {
             QWidget *widget = it.key();
 
             QLineEdit *lineEdit = dynamic_cast<QLineEdit *>( widget );
@@ -337,11 +336,11 @@ CEditor::_resetAll() {
 void
 CEditor::_saveAll() {
     // set current index
-    _m_dmText->setCurrentIndex(_m_ciDbRecordIndex);
-    _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);
+    _dmText->setCurrentIndex(_ciDbRecordIndex);
+    _dmImage->setCurrentIndex(_ciDbRecordIndex);
 
     // set current index
-    _m_snSqlNavigator->goTo(_m_ciDbRecordIndex);
+    _snSqlNavigator->goTo(_ciDbRecordIndex);
 }
 //------------------------------------------------------------------------------
 void
@@ -349,7 +348,7 @@ CEditor::slot_twGroups_OnActivated(
     const QModelIndex &a_index
 )
 {
-    m_Ui.tabwGroupsDetail->setCurrentIndex( a_index.row() );
+    ui.tabwGroupsDetail->setCurrentIndex( a_index.row() );
 }
 //------------------------------------------------------------------------------
 

@@ -17,7 +17,7 @@ class CAbout :
     public QDialog
 {
 public:
-    Ui::CAbout m_Ui;
+    Ui::CAbout ui;
 
     explicit   CAbout    (QWidget *parent = NULL);
 

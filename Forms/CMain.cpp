@@ -24,22 +24,22 @@ CMain::CMain(
     QWidget         *a_parent,
     Qt::WindowFlags  a_flags
 ) :
-    QMainWindow     (a_parent, a_flags),
-    m_sAppName      (),
-    m_sAppDir       (),
-    m_sDbDir        (),
-    m_sDbBackupDir  (),
-    m_snSqlNavigator(this),
-    m_wndAlbum      (NULL),
-    _m_stApp        (NULL),
-    _m_dbDatabase   (),
-    _m_tmModel      (NULL),
-    _m_hsDbItems    (),
-    _m_dmImage      (NULL)
+    QMainWindow   (a_parent, a_flags),
+    sAppName      (),
+    sAppDir       (),
+    sDbDir        (),
+    sDbBackupDir  (),
+    snSqlNavigator(this),
+    wndAlbum      (NULL),
+    _stApp        (NULL),
+    _dbDatabase   (),
+    _tmModel      (NULL),
+    _hsDbItems    (),
+    _dmImage      (NULL)
 {
     _construct();
 
-    _m_stApp = new CSettings(this, NULL, NULL);
+    _stApp = new CSettings(this, NULL, NULL);
 }
 //------------------------------------------------------------------------------
 
@@ -75,22 +75,22 @@ CMain::_construct() {
 //------------------------------------------------------------------------------
 void
 CMain::_destruct() {
-    qPTR_DELETE(_m_stApp);
+    qPTR_DELETE(_stApp);
 }
 //------------------------------------------------------------------------------
 void
 CMain::_initMain() {
-    m_Ui.setupUi(this);
+    ui.setupUi(this);
 
     //--------------------------------------------------
     // data
     {
-        m_sAppName     = QCoreApplication::applicationName();
-        m_sAppDir      = qApp->applicationDirPath();
-        m_sDbDir       = m_sAppDir + QDir::separator() + DB_DIR_NAME;
-        m_sDbBackupDir = m_sDbDir  + QDir::separator() + BACKUP_DIR_NAME;
+        sAppName     = QCoreApplication::applicationName();
+        sAppDir      = qApp->applicationDirPath();
+        sDbDir       = sAppDir + QDir::separator() + DB_DIR_NAME;
+        sDbBackupDir = sDbDir  + QDir::separator() + BACKUP_DIR_NAME;
 
-        QDir().mkpath(m_sDbDir);
+        QDir().mkpath(sDbDir);
     }
 
     // main
@@ -102,18 +102,18 @@ CMain::_initMain() {
 
     // splitters
     {
-        // m_Ui.splitter->setStretchFactor(1, 1);
-        // m_Ui.splitter->size().setWidth(1000);
-        // m_Ui.splitter->adjustSize();
+        // ui.splitter->setStretchFactor(1, 1);
+        // ui.splitter->size().setWidth(1000);
+        // ui.splitter->adjustSize();
 
-        // m_Ui.splPhotoTable->setStretchFactor(1, 1);
-        // m_Ui.splPhotoShortInfo->setStretchFactor(1, 1);
+        // ui.splPhotoTable->setStretchFactor(1, 1);
+        // ui.splPhotoShortInfo->setStretchFactor(1, 1);
     }
 
     // lblPhoto
     {
-        m_Ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
-        m_Ui.lblPhoto->setBackgroundRole(QPalette::Base);
+        ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
+        ui.lblPhoto->setBackgroundRole(QPalette::Base);
     }
 }
 //------------------------------------------------------------------------------
@@ -125,18 +125,18 @@ CMain::_initModel() {
         bool bRv = QSqlDatabase::isDriverAvailable("QSQLITE");
         qCHECK_DO(!bRv, qMSG(QSqlDatabase().lastError().text()); return);
 
-        _m_dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
-        _m_dbDatabase.setDatabaseName(
-                        m_sDbDir + QDir::separator() +
-                        m_sAppName +
+        _dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
+        _dbDatabase.setDatabaseName(
+                        sDbDir + QDir::separator() +
+                        sAppName +
                         DB_FILE_EXT);
 
-        bRv = _m_dbDatabase.open();
-        qCHECK_REF(bRv, _m_dbDatabase);
+        bRv = _dbDatabase.open();
+        qCHECK_REF(bRv, _dbDatabase);
 
         // create table
         {
-            QSqlQuery qryInfo(_m_dbDatabase);
+            QSqlQuery qryInfo(_dbDatabase);
 
             cQString  csSql = \
                 "CREATE TABLE IF NOT EXISTS "
@@ -243,7 +243,7 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _m_tmModel
+    // _tmModel
     {
         struct SHeader {
             cint      section;
@@ -344,73 +344,73 @@ CMain::_initModel() {
             {64, DB_CF_PHOTOS_PRIMARY_DBFIELD}
         };
 
-        _m_tmModel = new QSqlTableModel(this, _m_dbDatabase);
-        _m_tmModel->setTable(DB_T_PERSON);
+        _tmModel = new QSqlTableModel(this, _dbDatabase);
+        _tmModel->setTable(DB_T_PERSON);
 
         // set caption for DB fieleds
         for (size_t i = 0; i < qARRAY_LENGTH(chdHeaders); ++ i) {
-            _m_tmModel->setHeaderData(
+            _tmModel->setHeaderData(
                     chdHeaders[i].section,
                     Qt::Horizontal,
                     chdHeaders[i].value);
         }
 
-        _m_tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-        _m_tmModel->select();
+        _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+        _tmModel->select();
     }
 
     //--------------------------------------------------
-    // m_Ui.tvInfo
+    // ui.tvInfo
     {
-        m_Ui.tvInfo->setModel(_m_tmModel);
-        m_Ui.tvInfo->hideColumn(0); // don't show the DB_F_ID
-        // m_Ui.tvInfo->setColumnWidth(0, 40);
-        m_Ui.tvInfo->verticalHeader()->setVisible(true);
-        m_Ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
-        m_Ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        m_Ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-        m_Ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
-        m_Ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        m_Ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        // m_Ui.tvInfo->setAlternatingRowColors(true);
-        // m_Ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
-        m_Ui.tvInfo->setSortingEnabled(true);
-        m_Ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
+        ui.tvInfo->setModel(_tmModel);
+        ui.tvInfo->hideColumn(0); // don't show the DB_F_ID
+        // ui.tvInfo->setColumnWidth(0, 40);
+        ui.tvInfo->verticalHeader()->setVisible(true);
+        ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
+        ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        // ui.tvInfo->setAlternatingRowColors(true);
+        // ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
+        ui.tvInfo->setSortingEnabled(true);
+        ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
 
-        m_Ui.tvInfo->show();
+        ui.tvInfo->show();
     }
 
     //--------------------------------------------------
-    // _m_dmImage
+    // _dmImage
     {
-        _m_dmImage = new QDataWidgetMapper(this);
-        _m_dmImage->setModel(_m_tmModel);
-        _m_dmImage->setItemDelegate(
+        _dmImage = new QDataWidgetMapper(this);
+        _dmImage->setModel(_tmModel);
+        _dmImage->setItemDelegate(
                         new CDelegateDbImage(
-                                _m_dmImage,
-                                _m_tmModel->fieldIndex(DB_F_PHOTOS_1),
+                                _dmImage,
+                                _tmModel->fieldIndex(DB_F_PHOTOS_1),
                                 PHOTO_SIZE,
-                                m_Ui.lblPhotoSize));
-        _m_dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+                                ui.lblPhotoSize));
+        _dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
         // DB items to QHash
         {
              // Photos
-            _m_hsDbItems.insert(m_Ui.lblPhoto, DB_F_PHOTOS_1);
+            _hsDbItems.insert(ui.lblPhoto, DB_F_PHOTOS_1);
         }
 
         // map DB items
         {
             cdb_items_t::ConstIterator cit;
 
-            for (cit  = _m_hsDbItems.constBegin();
-                 cit != _m_hsDbItems.constEnd();
+            for (cit  = _hsDbItems.constBegin();
+                 cit != _hsDbItems.constEnd();
                  ++ cit)
             {
                 QWidget *widget  = cit.key();
-                cint     section = _m_tmModel->fieldIndex( cit.value() );
+                cint     section = _tmModel->fieldIndex( cit.value() );
 
-                _m_dmImage->addMapping(widget, section);
+                _dmImage->addMapping(widget, section);
             }
         }
     }
@@ -418,21 +418,21 @@ CMain::_initModel() {
     //--------------------------------------------------
     // slots
     {
-        connect(m_Ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _m_dmImage,                    &QDataWidgetMapper::setCurrentModelIndex );
+        connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                _dmImage,                    &QDataWidgetMapper::setCurrentModelIndex );
 
-        connect(m_Ui.tvInfo,                   &QTableView::doubleClicked,
-                this,                          &CMain::slot_OnEdit);
+        connect(ui.tvInfo,                   &QTableView::doubleClicked,
+                this,                        &CMain::slot_OnEdit);
 
-        connect(m_Ui.tbtnPhotoAlbum,           &QToolButton::clicked,
-                this,                          &CMain::slot_OnAlbum);
+        connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
+                this,                        &CMain::slot_OnAlbum);
     }
 
     //--------------------------------------------------
-    // m_snSqlNavigator
+    // snSqlNavigator
     {
-        m_snSqlNavigator.construct(_m_tmModel, m_Ui.tvInfo);
-        m_snSqlNavigator.last();
+        snSqlNavigator.construct(_tmModel, ui.tvInfo);
+        snSqlNavigator.last();
     }
 }
 //------------------------------------------------------------------------------
@@ -440,34 +440,34 @@ void
 CMain::_initActions() {
     // group "File"
     {
-        connect(m_Ui.actFile_Exit,        &QAction::triggered,
-                this,                     &CMain::slot_OnExit);
+        connect(ui.actFile_Exit,        &QAction::triggered,
+                this,                   &CMain::slot_OnExit);
     }
 
     // group "Edit"
     {
-        connect(m_Ui.actEdit_First,       &QAction::triggered,
-                this,                     &CMain::slot_OnFirst);
-        connect(m_Ui.actEdit_Prior,       &QAction::triggered,
-                this,                     &CMain::slot_OnPrior);
-        connect(m_Ui.actEdit_Next,        &QAction::triggered,
-                this,                     &CMain::slot_OnNext);
-        connect(m_Ui.actEdit_Last,        &QAction::triggered,
-                this,                     &CMain::slot_OnLast);
-        connect(m_Ui.actEdit_GoTo,        &QAction::triggered,
-                this,                     &CMain::slot_OnGoTo);
-        connect(m_Ui.actEdit_Insert,      &QAction::triggered,
-                this,                     &CMain::slot_OnInsert);
-        connect(m_Ui.actEdit_Delete,      &QAction::triggered,
-                this,                     &CMain::slot_OnRemove);
-        connect(m_Ui.actEdit_Edit,        &QAction::triggered,
-                this,                     &CMain::slot_OnEdit);
+        connect(ui.actEdit_First,       &QAction::triggered,
+                this,                   &CMain::slot_OnFirst);
+        connect(ui.actEdit_Prior,       &QAction::triggered,
+                this,                   &CMain::slot_OnPrior);
+        connect(ui.actEdit_Next,        &QAction::triggered,
+                this,                   &CMain::slot_OnNext);
+        connect(ui.actEdit_Last,        &QAction::triggered,
+                this,                   &CMain::slot_OnLast);
+        connect(ui.actEdit_GoTo,        &QAction::triggered,
+                this,                   &CMain::slot_OnGoTo);
+        connect(ui.actEdit_Insert,      &QAction::triggered,
+                this,                   &CMain::slot_OnInsert);
+        connect(ui.actEdit_Delete,      &QAction::triggered,
+                this,                   &CMain::slot_OnRemove);
+        connect(ui.actEdit_Edit,        &QAction::triggered,
+                this,                   &CMain::slot_OnEdit);
     }
 
     // group "Find"
     {
-        connect(m_Ui.actFind_Search,      &QAction::triggered,
-                this,                     &CMain::slot_OnSearch);
+        connect(ui.actFind_Search,      &QAction::triggered,
+                this,                   &CMain::slot_OnSearch);
     }
 
     // group "View"
@@ -476,17 +476,17 @@ CMain::_initActions() {
 
     // group "Options"
     {
-        connect(m_Ui.actOptions_Settings, &QAction::triggered,
-                this,                     &CMain::slot_OnSettings);
+        connect(ui.actOptions_Settings, &QAction::triggered,
+                this,                   &CMain::slot_OnSettings);
     }
 
     // group "Help"
     {
-        connect(m_Ui.actHelp_Faq,         &QAction::triggered,
-                this,                     &CMain::slot_OnFaq);
+        connect(ui.actHelp_Faq,         &QAction::triggered,
+                this,                   &CMain::slot_OnFaq);
 
-        connect(m_Ui.actHelp_About,       &QAction::triggered,
-                this,                     &CMain::slot_OnAbout);
+        connect(ui.actHelp_About,       &QAction::triggered,
+                this,                   &CMain::slot_OnAbout);
     }
 }
 //------------------------------------------------------------------------------
@@ -513,29 +513,29 @@ CMain::slot_OnExit() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnFirst() {
-    m_snSqlNavigator.first();
+    snSqlNavigator.first();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPrior() {
-    m_snSqlNavigator.prior();
+    snSqlNavigator.prior();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnNext() {
-    m_snSqlNavigator.next();
+    snSqlNavigator.next();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLast() {
-    m_snSqlNavigator.last();
+    snSqlNavigator.last();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnGoTo() {
-    cint ciCurrentRow = m_snSqlNavigator.view()->currentIndex().row() + 1;
+    cint ciCurrentRow = snSqlNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
-    cint ciMaxValue   = CUtils::sqlTableModelRowCount(_m_tmModel);
+    cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
 
     cint ciTargetRow = QInputDialog::getInt(
                             this,
@@ -543,15 +543,15 @@ CMain::slot_OnGoTo() {
                             ciCurrentRow,
                             ciMinValue, ciMaxValue) - 1;
 
-    m_snSqlNavigator.goTo(ciTargetRow);
+    snSqlNavigator.goTo(ciTargetRow);
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnInsert() {
-    m_snSqlNavigator.insert();
+    snSqlNavigator.insert();
 
     {
-        CEditor dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
+        CEditor dlgPersonEdit(this, _tmModel, &snSqlNavigator);
 
         (int)dlgPersonEdit.exec();
     }
@@ -570,7 +570,7 @@ CMain::slot_OnRemove() {
     cint ciRv = msgBox.exec();
     switch (ciRv) {
         case QMessageBox::Yes:
-            m_snSqlNavigator.remove();
+            snSqlNavigator.remove();
             break;
         case QMessageBox::Cancel:
         default:
@@ -580,7 +580,7 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    CEditor dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
+    CEditor dlgPersonEdit(this, _tmModel, &snSqlNavigator);
 
     (int)dlgPersonEdit.exec();
 }
@@ -647,10 +647,9 @@ CMain::slot_OnAbout() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnAlbum() {
-    delete m_wndAlbum;
-    m_wndAlbum = NULL;
+    qPTR_DELETE(wndAlbum);
 
-    m_wndAlbum = new CAlbum(this, _m_tmModel, &m_snSqlNavigator);
-    m_wndAlbum->show();
+    wndAlbum = new CAlbum(this, _tmModel, &snSqlNavigator);
+    wndAlbum->show();
 }
 //------------------------------------------------------------------------------

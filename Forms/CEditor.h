@@ -21,8 +21,8 @@ class CEditor :
     public QDialog
 {
 public:
-    Ui::CEditor        m_Ui;
-    CAlbum            *m_wndAlbum;
+    Ui::CEditor        ui;
+    CAlbum            *wndAlbum;
 
                        CEditor     (QWidget *parent, QSqlTableModel *tableModel,
                                     CSqlNavigator *sqlNavigator);
@@ -31,14 +31,14 @@ protected:
     virtual void       closeEvent  (QCloseEvent *event);
 
 private:
-    CSettings         *_m_stApp;
-    QSqlTableModel    *_m_tmModel;
-    CSqlNavigator     *_m_snSqlNavigator;
-    db_items_t         _m_hsDbItems;
-    QDataWidgetMapper *_m_dmText;           ///< one mapper for all text items
-    QDataWidgetMapper *_m_dmImage;          ///< mapper for image item
-    cint               _m_ciDbRecordIndex;
-    CDbImageLabel     *_m_dbImageLabel;
+    CSettings         *_stApp;
+    QSqlTableModel    *_tmModel;
+    CSqlNavigator     *_snSqlNavigator;
+    db_items_t         _hsDbItems;
+    QDataWidgetMapper *_dmText;           ///< one mapper for all text items
+    QDataWidgetMapper *_dmImage;          ///< mapper for image item
+    cint               _ciDbRecordIndex;
+    CDbImageLabel     *_dbImageLabel;
 
     void               _construct  ();
     void               _destruct   ();

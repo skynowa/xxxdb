@@ -40,7 +40,7 @@ CAbout::_destruct() {
 //------------------------------------------------------------------------------
 void
 CAbout::_initMain() {
-    m_Ui.setupUi(this);
+    ui.setupUi(this);
 
     // main
     {
@@ -49,8 +49,8 @@ CAbout::_initMain() {
 
     //  signals, slots
     {
-        connect(m_Ui.bbxButtons, &QDialogButtonBox::clicked,
-                this,            &CAbout::slot_bbxButtons_OnClicked);
+        connect(ui.bbxButtons, &QDialogButtonBox::clicked,
+                this,          &CAbout::slot_bbxButtons_OnClicked);
     }
 }
 //------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ CAbout::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
 )
 {
-    QDialogButtonBox::StandardButton sbRv = m_Ui.bbxButtons->standardButton(a_button);
+    QDialogButtonBox::StandardButton sbRv = ui.bbxButtons->standardButton(a_button);
     switch (sbRv) {
         case QDialogButtonBox::Ok:
             close();

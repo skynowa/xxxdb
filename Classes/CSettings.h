@@ -25,9 +25,9 @@ public:
         ///< destructor
 
 private:
-    CMain   *_m_wndMain;
-    CEditor *_m_wndEditor;
-    CAlbum  *_m_wndAlbum;
+    CMain   *_wndMain;
+    CEditor *_wndEditor;
+    CAlbum  *_wndAlbum;
 
     template <typename T>
     void     _commonRead (T *);

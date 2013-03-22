@@ -22,13 +22,13 @@ class CMain :
     Q_OBJECT
 
 public:
-    Ui::CMainClass     m_Ui;
-    QString            m_sAppName;
-    QString            m_sAppDir;
-    QString            m_sDbDir;
-    QString            m_sDbBackupDir;
-    CSqlNavigator      m_snSqlNavigator;
-    CAlbum            *m_wndAlbum;
+    Ui::CMainClass     ui;
+    QString            sAppName;
+    QString            sAppDir;
+    QString            sDbDir;
+    QString            sDbBackupDir;
+    CSqlNavigator      snSqlNavigator;
+    CAlbum            *wndAlbum;
 
     explicit           CMain            (QWidget *parent = 0,
                                          Qt::WindowFlags flags = 0);
@@ -37,11 +37,11 @@ protected:
     virtual void       closeEvent       (QCloseEvent *event);
 
 private:
-    CSettings         *_m_stApp;
-    QSqlDatabase       _m_dbDatabase;
-    QSqlTableModel    *_m_tmModel;
-    db_items_t         _m_hsDbItems;
-    QDataWidgetMapper *_m_dmImage;
+    CSettings         *_stApp;
+    QSqlDatabase       _dbDatabase;
+    QSqlTableModel    *_tmModel;
+    db_items_t         _hsDbItems;
+    QDataWidgetMapper *_dmImage;
 
     void               _construct       ();
     void               _destruct        ();

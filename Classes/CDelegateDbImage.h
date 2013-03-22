@@ -25,9 +25,9 @@ public:
                                   const QModelIndex &index) const;
 
 private:
-    cint         _m_ciImageFieldIndex;
-    cQSize       _m_cszSize;
-    QLabel      *_m_lblInfoPanel;
+    cint         _ciImageFieldIndex;
+    cQSize       _cszSize;
+    QLabel      *_lblInfoPanel;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CDelegateDbImageH

@@ -70,15 +70,15 @@ Q_SIGNALS:
     void                  signal_DataChanged(cint &index);
 
 private:
-    QWidget              *_m_wdParent;        ///< parent QWidget
-    QSqlTableModel       *_m_tmModel;         ///< QSqlTableModel
-    cQString              _m_csDbFieldName;   ///< DB field name
-    cint                  _m_ciIndex;         ///< index
-    cint                  _m_ciDbRecordIndex; ///< DB record index
-    QLabel               *_m_lblLabel;        ///< QLabel for display image
-    cQSize                _m_cszSize;         ///< image sizes
-    QDataWidgetMapper    *_m_dmMapper;        ///< data widget mapper
-    QByteArray            _m_baBuffer;        ///< buffer for store image
+    QWidget              *_wdParent;        ///< parent QWidget
+    QSqlTableModel       *_tmModel;         ///< QSqlTableModel
+    cQString              _csDbFieldName;   ///< DB field name
+    cint                  _ciIndex;         ///< index
+    cint                  _ciDbRecordIndex; ///< DB record index
+    QLabel               *_lblLabel;        ///< QLabel for display image
+    cQSize                _cszSize;         ///< image sizes
+    QDataWidgetMapper    *_dmMapper;        ///< data widget mapper
+    QByteArray            _baBuffer;        ///< buffer for store image
 
     QDataWidgetMapper    *_map         ();
         ///< map QWidget to DB field

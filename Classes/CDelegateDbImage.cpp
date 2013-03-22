@@ -20,9 +20,9 @@ CDelegateDbImage::CDelegateDbImage(
     QLabel  *a_infoPanel /* = NULL */
 ) :
     QSqlRelationalDelegate(a_parent),
-    _m_ciImageFieldIndex  (a_imageFieldIndex),
-    _m_cszSize            (a_size),
-    _m_lblInfoPanel       (a_infoPanel)
+    _ciImageFieldIndex    (a_imageFieldIndex),
+    _cszSize              (a_size),
+    _lblInfoPanel         (a_infoPanel)
 {
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(- 1   < a_imageFieldIndex);
@@ -39,7 +39,7 @@ CDelegateDbImage::setEditorData(
     Q_ASSERT(NULL != a_editor);
     Q_ASSERT(a_index.isValid());
 
-    if (_m_ciImageFieldIndex == a_index.column()) {
+    if (_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
         Q_ASSERT(NULL != lblPhoto);
 
@@ -53,18 +53,18 @@ CDelegateDbImage::setEditorData(
             Q_ASSERT(bRv);
 
             QPixmap pixScaled = pixOriginal.scaled(
-                                        _m_cszSize,
+                                        _cszSize,
                                         Qt::KeepAspectRatio,
                                         Qt::SmoothTransformation);
 
             lblPhoto->setPixmap(pixScaled);
         }
 
-        if (NULL != _m_lblInfoPanel) {
+        if (NULL != _lblInfoPanel) {
             cQString csText = QString(tr("Photo size: %1"))
                                 .arg( CUtils::formatBytes(baPhoto.size()) );
 
-            _m_lblInfoPanel->setText(csText);
+            _lblInfoPanel->setText(csText);
         }
     } else {
         QSqlRelationalDelegate::setEditorData(a_editor, a_index);
@@ -82,7 +82,7 @@ CDelegateDbImage::setModelData(
     Q_ASSERT(NULL != a_model);
     Q_ASSERT(a_index.isValid());
 
-    if (_m_ciImageFieldIndex == a_index.column()) {
+    if (_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
         Q_ASSERT(NULL != lblPhoto);
 
