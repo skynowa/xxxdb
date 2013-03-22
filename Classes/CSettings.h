@@ -19,9 +19,9 @@ class CSettings
     /// application settings
 {
 public:
-                 CSettings(CMain *, CPersonEdit *, CPhotoAlbum *);
+                 CSettings   (CMain *, CPersonEdit *, CPhotoAlbum *);
         ///< constructor
-    virtual     ~CSettings();
+    virtual     ~CSettings   ();
         ///< destructor
 
 private:
@@ -29,18 +29,26 @@ private:
     CPersonEdit *_m_wndPersonEdit;
     CPhotoAlbum *_m_wndPhotoAlbum;
 
-    void         _read    (CMain *);
+    template <typename T>
+    void         _commonRead (T *);
         ///< read data
-    void         _read    (CPersonEdit *);
-        ///< read data
-    void         _read    (CPhotoAlbum *);
-        ///< read data
+    template <typename T>
+    void         _commonWrite(T *);
+        ///< write data
 
-    void         _write   (CMain *);
+    void         _read       (CMain *);
+        ///< read data
+    void         _write      (CMain *);
         ///< write data
-    void         _write   (CPersonEdit *);
+
+    void         _read       (CPersonEdit *);
+        ///< read data
+    void         _write      (CPersonEdit *);
         ///< write data
-    void         _write   (CPhotoAlbum *);
+
+    void         _read       (CPhotoAlbum *);
+        ///< read data
+    void         _write      (CPhotoAlbum *);
         ///< write data
 };
 //------------------------------------------------------------------------------

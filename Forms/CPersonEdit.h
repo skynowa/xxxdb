@@ -13,6 +13,7 @@
 #include "../Config.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
+class CSettings;
 class CPhotoAlbum;
 class CDbImageLabel;
 
@@ -34,6 +35,7 @@ protected:
     virtual void       closeEvent (QCloseEvent *event);
 
 private:
+    CSettings         *_m_stApp;
     QSqlTableModel    *_m_tmModel;
     CSqlNavigator     *_m_snSqlNavigator;
     db_items_t         _m_hsDbItems;

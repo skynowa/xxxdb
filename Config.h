@@ -14,6 +14,7 @@
 #define APP_WINDOW_CLASS             "Qt5QWindow"  // for Qt 5.0.1, Qt 4 - QTool
 #define APP_WIDTH                    1000
 #define APP_HEIGHT                   600
+#define APP_SIZE                     QSize(APP_WIDTH, APP_HEIGHT)
 
 #define APP_MAIN_TITLE               APP_NAME + tr(" - accounting software for girls")
 #define APP_PERSON_EDIT_TITLE        APP_NAME + tr(" - person editor")
@@ -37,6 +38,7 @@
 // etc
 #define BACKUP_DIR_NAME              "Backup"
 #define INI_FILE_EXT                 ".ini"
+#define INI_FILE_PATH                (QCoreApplication::applicationFilePath() + INI_FILE_EXT)
 #define TABLEVIEW_ROW_HEIGHT         20
 #define TEXT_NO_PHOTO                tr("No photo")
 

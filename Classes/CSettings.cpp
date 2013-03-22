@@ -27,6 +27,7 @@ CSettings::CSettings(
     _m_wndPhotoAlbum(a_wndPhotoAlbum)
 {
     qDebug() << "_read";
+
     _read(_m_wndMain);
     _read(_m_wndPersonEdit);
     _read(_m_wndPhotoAlbum);
@@ -34,6 +35,7 @@ CSettings::CSettings(
 //------------------------------------------------------------------------------
 CSettings::~CSettings() {
     qDebug() << "_write";
+
     _write(_m_wndMain);
     _write(_m_wndPersonEdit);
     _write(_m_wndPhotoAlbum);
@@ -47,9 +49,10 @@ CSettings::~CSettings() {
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
+template <typename T>
 void
-CSettings::_read(
-    CMain *a_wnd
+CSettings::_commonRead(
+    T *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
@@ -59,11 +62,10 @@ CSettings::_read(
 
     // read
     {
-        QSettings stApp(QCoreApplication::applicationFilePath() + INI_FILE_EXT,
-                        QSettings::IniFormat);
+        QSettings stApp(INI_FILE_PATH, QSettings::IniFormat);
 
-        stApp.beginGroup("main");
-        szSize     = stApp.value("size",     QSize(APP_WIDTH, APP_HEIGHT)).toSize();
+        stApp.beginGroup( a_wnd->objectName() );
+        szSize     = stApp.value("size",     APP_SIZE).toSize();
         pnPosition = stApp.value("position", QPoint(200, 200)).toPoint();
         stApp.endGroup();
     }
@@ -75,6 +77,35 @@ CSettings::_read(
     }
 }
 //------------------------------------------------------------------------------
+template <typename T>
+void
+CSettings::_commonWrite(
+    T *a_wnd
+)
+{
+    qCHECK_DO(a_wnd == NULL, return);
+
+    // write
+    QSettings stApp(INI_FILE_PATH, QSettings::IniFormat);
+
+    stApp.beginGroup( a_wnd->objectName() );
+    stApp.setValue("position", a_wnd->pos());
+    stApp.setValue("size",     a_wnd->size());
+    stApp.endGroup();
+}
+//------------------------------------------------------------------------------
+void
+CSettings::_read(
+    CMain *a_wnd
+)
+{
+    qCHECK_DO(a_wnd == NULL, return);
+
+    _commonRead(a_wnd);
+
+    // TODO: CMain
+}
+//------------------------------------------------------------------------------
 void
 CSettings::_write(
     CMain *a_wnd
@@ -82,14 +113,9 @@ CSettings::_write(
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    // write
-    QSettings stApp(QCoreApplication::applicationFilePath() + INI_FILE_EXT,
-                    QSettings::IniFormat);
+    _commonWrite(a_wnd);
 
-    stApp.beginGroup("main");
-    stApp.setValue("position", a_wnd->pos());
-    stApp.setValue("size",     a_wnd->size());
-    stApp.endGroup();
+    // TODO: CMain
 }
 //------------------------------------------------------------------------------
 
@@ -107,6 +133,8 @@ CSettings::_read(
 {
     qCHECK_DO(a_wnd == NULL, return);
 
+    _commonRead(a_wnd);
+
     // TODO: CPersonEdit
 }
 //------------------------------------------------------------------------------
@@ -116,6 +144,8 @@ CSettings::_write(
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
+
+    _commonWrite(a_wnd);
 
     // TODO: CPersonEdit
 }
@@ -135,6 +165,8 @@ CSettings::_read(
 {
     qCHECK_DO(a_wnd == NULL, return);
 
+    _commonRead(a_wnd);
+
     // TODO: CPhotoAlbum
 }
 //------------------------------------------------------------------------------
@@ -144,6 +176,8 @@ CSettings::_write(
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
+
+    _commonWrite(a_wnd);
 
     // TODO: CPhotoAlbum
 }

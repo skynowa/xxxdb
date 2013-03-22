@@ -14,6 +14,8 @@
 #include "../Config.h"
 #include "../Classes/CDbImageLabel.h"
 //------------------------------------------------------------------------------
+class CSettings;
+
 class CPhotoAlbum :
     public QMainWindow
 {
@@ -34,6 +36,7 @@ protected:
     virtual void    closeEvent          (QCloseEvent *event);
 
 private:
+    CSettings      *_m_stApp;
     QSqlTableModel *_m_tmModel;
     CSqlNavigator  *_m_snSqlNavigator;
     cint            _m_ciDbRecordIndex;

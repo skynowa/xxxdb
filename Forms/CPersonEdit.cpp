@@ -7,6 +7,7 @@
 #include "CPersonEdit.h"
 
 #include "../QtLib/CUtils.h"
+#include "../Classes/CSettings.h"
 #include "../Classes/CDbImageLabel.h"
 #include "../Classes/CDelegateDbImage.h"
 #include "CPhotoAlbum.h"
@@ -25,6 +26,7 @@ CPersonEdit::CPersonEdit(
 ) :
     QDialog           (a_parent),
     m_wndPhotoAlbum   (NULL),
+    _m_stApp          (NULL),
     _m_tmModel        (a_tableModel),
     _m_snSqlNavigator (a_sqlNavigator),
     _m_hsDbItems      (),
@@ -39,6 +41,8 @@ CPersonEdit::CPersonEdit(
     Q_ASSERT(- 1  <  _m_ciDbRecordIndex);
 
     _construct();
+
+    _m_stApp = new CSettings(NULL, this, NULL);
 }
 //------------------------------------------------------------------------------
 /* virtual */
@@ -77,7 +81,7 @@ CPersonEdit::_construct() {
 //------------------------------------------------------------------------------
 void
 CPersonEdit::_destruct() {
-
+    qPTR_DELETE(_m_stApp);
 }
 //------------------------------------------------------------------------------
 void

@@ -7,6 +7,7 @@
 #include "CPhotoAlbum.h"
 
 #include "../QtLib/CUtils.h"
+#include "../Classes/CSettings.h"
 
 
 /*******************************************************************************
@@ -21,6 +22,7 @@ CPhotoAlbum::CPhotoAlbum(
     CSqlNavigator  *a_sqlNavigator
 ) :
     QMainWindow       (a_parent),
+    _m_stApp          (NULL),
     _m_tmModel        (a_tableModel),
     _m_ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _m_viDbItems      (),
@@ -32,6 +34,8 @@ CPhotoAlbum::CPhotoAlbum(
     Q_ASSERT(- 1  <  _m_ciDbRecordIndex);
 
     _construct();
+
+    _m_stApp = new CSettings(NULL, NULL, this);
 }
 //------------------------------------------------------------------------------
 /* virtual */
@@ -152,7 +156,7 @@ CPhotoAlbum::_construct() {
 //------------------------------------------------------------------------------
 void
 CPhotoAlbum::_destruct() {
-
+    qPTR_DELETE(_m_stApp);
 }
 //------------------------------------------------------------------------------
 void
