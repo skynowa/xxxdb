@@ -91,7 +91,7 @@ CAlbum::showEvent(
     {
         // get primary image index
         cint ciPrimaryIndex = _tmModel->record(_ciDbRecordIndex)
-                                .value(DB_F_PHOTOS_PRIMARY_DBFIELD).toInt();
+                                    .value(DB_F_PHOTOS_PRIMARY).toInt();
 
         // set primary image index
         {
@@ -373,7 +373,7 @@ void
 CAlbum::slot_OnSetPrimary() {
     // write to DB
     QSqlRecord srRecord = _tmModel->record(_ciDbRecordIndex);
-    srRecord.setValue(DB_F_PHOTOS_PRIMARY_DBFIELD, CDbImageLabel::currentIndex);
+    srRecord.setValue(DB_F_PHOTOS_PRIMARY, CDbImageLabel::currentIndex);
 
     _tmModel->setRecord(_ciDbRecordIndex, srRecord);
 }

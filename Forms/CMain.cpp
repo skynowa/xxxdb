@@ -142,99 +142,99 @@ CMain::_initModel() {
                 "CREATE TABLE IF NOT EXISTS "
                 "    " DB_T_PERSON
                 "(   "
-                "    " DB_F_ID                     " INTEGER PRIMARY KEY "
-                                                   " AUTOINCREMENT "
-                                                   " NOT NULL UNIQUE, "
+                "    " DB_F_ID                   " INTEGER PRIMARY KEY "
+                                                 " AUTOINCREMENT "
+                                                 " NOT NULL UNIQUE, "
 
                 // Main
-                "    " DB_F_MAIN_NICK              " VARCHAR (64), "
-                "    " DB_F_MAIN_SURNAME           " VARCHAR (64), "
-                "    " DB_F_MAIN_NAME              " VARCHAR (64), "
-                "    " DB_F_MAIN_PATRONYMIC        " VARCHAR (64), "
-                "    " DB_F_MAIN_AGE               " INT, "
-                "    " DB_F_MAIN_HEIGHT            " INT, "
-                "    " DB_F_MAIN_WEIGHT            " INT, "
-                "    " DB_F_MAIN_HAIRLENGTH        " VARCHAR (64), "
-                "    " DB_F_MAIN_HAIRCOLOR         " VARCHAR (64), "
-                "    " DB_F_MAIN_APPEARANCE        " VARCHAR (64), "
-                "    " DB_F_MAIN_STATUS            " VARCHAR (64), "
+                "    " DB_F_MAIN_NICK            " VARCHAR (64), "
+                "    " DB_F_MAIN_SURNAME         " VARCHAR (64), "
+                "    " DB_F_MAIN_NAME            " VARCHAR (64), "
+                "    " DB_F_MAIN_PATRONYMIC      " VARCHAR (64), "
+                "    " DB_F_MAIN_AGE             " INT, "
+                "    " DB_F_MAIN_HEIGHT          " INT, "
+                "    " DB_F_MAIN_WEIGHT          " INT, "
+                "    " DB_F_MAIN_HAIRLENGTH      " VARCHAR (64), "
+                "    " DB_F_MAIN_HAIRCOLOR       " VARCHAR (64), "
+                "    " DB_F_MAIN_APPEARANCE      " VARCHAR (64), "
+                "    " DB_F_MAIN_STATUS          " VARCHAR (64), "
 
                 // Phones
-                "    " DB_F_PHONES_MOBILE1         " VARCHAR (64), "
-                "    " DB_F_PHONES_MOBILE2         " VARCHAR (64), "
-                "    " DB_F_PHONES_MOBILE3         " VARCHAR (64), "
-                "    " DB_F_PHONES_HOME            " VARCHAR (64), "
-                "    " DB_F_PHONES_JOB             " VARCHAR (64), "
-                "    " DB_F_PHONES_OTHER           " VARCHAR (256), "
+                "    " DB_F_PHONES_MOBILE1       " VARCHAR (64), "
+                "    " DB_F_PHONES_MOBILE2       " VARCHAR (64), "
+                "    " DB_F_PHONES_MOBILE3       " VARCHAR (64), "
+                "    " DB_F_PHONES_HOME          " VARCHAR (64), "
+                "    " DB_F_PHONES_JOB           " VARCHAR (64), "
+                "    " DB_F_PHONES_OTHER         " VARCHAR (256), "
 
                 // Address
-                "    " DB_F_ADDRESS_COUNTRY        " VARCHAR (64), "
-                "    " DB_F_ADDRESS_CODE           " VARCHAR (64), "
-                "    " DB_F_ADDRESS_CITY           " VARCHAR (64), "
-                "    " DB_F_ADDRESS_DISTRICT       " VARCHAR (64), "
-                "    " DB_F_ADDRESS_STREET         " VARCHAR (64), "
-                "    " DB_F_ADDRESS_HOUSE          " VARCHAR (64), "
-                "    " DB_F_ADDRESS_PORCH          " VARCHAR (64), "
-                "    " DB_F_ADDRESS_FLOOR          " VARCHAR (64), "
-                "    " DB_F_ADDRESS_APARTMENT      " VARCHAR (64), "
+                "    " DB_F_ADDRESS_COUNTRY      " VARCHAR (64), "
+                "    " DB_F_ADDRESS_CODE         " VARCHAR (64), "
+                "    " DB_F_ADDRESS_CITY         " VARCHAR (64), "
+                "    " DB_F_ADDRESS_DISTRICT     " VARCHAR (64), "
+                "    " DB_F_ADDRESS_STREET       " VARCHAR (64), "
+                "    " DB_F_ADDRESS_HOUSE        " VARCHAR (64), "
+                "    " DB_F_ADDRESS_PORCH        " VARCHAR (64), "
+                "    " DB_F_ADDRESS_FLOOR        " VARCHAR (64), "
+                "    " DB_F_ADDRESS_APARTMENT    " VARCHAR (64), "
 
                 // E-mail
-                "    " DB_F_EMAIL_EMAIL            " VARCHAR (256), "
+                "    " DB_F_EMAIL_EMAIL          " VARCHAR (256), "
 
                 // Web
-                "    " DB_F_WEB_WEB                " VARCHAR (256), "
+                "    " DB_F_WEB_WEB              " VARCHAR (256), "
 
                 // Messengers
-                "    " DB_F_MESSENGERS_ICQ         " VARCHAR (64), "
-                "    " DB_F_MESSENGERS_SKYPE       " VARCHAR (64), "
+                "    " DB_F_MESSENGERS_ICQ       " VARCHAR (64), "
+                "    " DB_F_MESSENGERS_SKYPE     " VARCHAR (64), "
 
                 // Job
-                "    " DB_F_JOB_PROFESSION         " VARCHAR (64), "
-                "    " DB_F_JOB_ADDRESS            " VARCHAR (64), "
-                "    " DB_F_JOB_SALARY             " VARCHAR (64), "
-                "    " DB_F_JOB_COMPANY            " VARCHAR (64), "
+                "    " DB_F_JOB_PROFESSION       " VARCHAR (64), "
+                "    " DB_F_JOB_ADDRESS          " VARCHAR (64), "
+                "    " DB_F_JOB_SALARY           " VARCHAR (64), "
+                "    " DB_F_JOB_COMPANY          " VARCHAR (64), "
 
                 // Dates
-                "    " DB_F_DATES_BIRTHDAY         " DATETIME, "
-                "    " DB_F_DATES_BIRTHDAYFATHER   " DATETIME, "
-                "    " DB_F_DATES_BIRTHDAYMOTHER   " DATETIME, "
-                "    " DB_F_DATES_DAYDATING        " DATETIME, "
-                "    " DB_F_DATES_DAYFIRSTKISS     " DATETIME, "
-                "    " DB_F_DATES_DAYFIRSTSEX      " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAY       " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAYFATHER " DATETIME, "
+                "    " DB_F_DATES_BIRTHDAYMOTHER " DATETIME, "
+                "    " DB_F_DATES_DAYDATING      " DATETIME, "
+                "    " DB_F_DATES_DAYFIRSTKISS   " DATETIME, "
+                "    " DB_F_DATES_DAYFIRSTSEX    " DATETIME, "
 
                 // Interests
-                "    " DB_F_INTERESTS_HOBBY        " VARCHAR (64), "
-                "    " DB_F_INTERESTS_SPORTS       " VARCHAR (64), "
-                "    " DB_F_INTERESTS_SMOKING      " VARCHAR (64), "
-                "    " DB_F_INTERESTS_ALCOHOL      " VARCHAR (64), "
-                "    " DB_F_INTERESTS_DRUGS        " VARCHAR (64), "
+                "    " DB_F_INTERESTS_HOBBY      " VARCHAR (64), "
+                "    " DB_F_INTERESTS_SPORTS     " VARCHAR (64), "
+                "    " DB_F_INTERESTS_SMOKING    " VARCHAR (64), "
+                "    " DB_F_INTERESTS_ALCOHOL    " VARCHAR (64), "
+                "    " DB_F_INTERESTS_DRUGS      " VARCHAR (64), "
 
                 // TODO: Periods
 
                 // Etc
-                "    " DB_F_ETC_DATECREATION       " DATETIME, "
-                "    " DB_F_ETC_DATELASTCHANGE     " DATETIME, "
+                "    " DB_F_ETC_DATECREATION     " DATETIME, "
+                "    " DB_F_ETC_DATELASTCHANGE   " DATETIME, "
 
                 // Notes
-                "    " DB_F_NOTES_NOTES            " VARCHAR (256), "
+                "    " DB_F_NOTES_NOTES          " VARCHAR (256), "
 
                 // Photos
-                "    " DB_F_PHOTOS_1               " BLOB, "
-                "    " DB_F_PHOTOS_2               " BLOB, "
-                "    " DB_F_PHOTOS_3               " BLOB, "
-                "    " DB_F_PHOTOS_4               " BLOB, "
-                "    " DB_F_PHOTOS_5               " BLOB, "
-                "    " DB_F_PHOTOS_6               " BLOB, "
-                "    " DB_F_PHOTOS_7               " BLOB, "
-                "    " DB_F_PHOTOS_8               " BLOB, "
-                "    " DB_F_PHOTOS_9               " BLOB, "
-                "    " DB_F_PHOTOS_10              " BLOB, "
-                "    " DB_F_PHOTOS_11              " BLOB, "
-                "    " DB_F_PHOTOS_12              " BLOB, "
-                "    " DB_F_PHOTOS_13              " BLOB, "
-                "    " DB_F_PHOTOS_14              " BLOB, "
-                "    " DB_F_PHOTOS_15              " BLOB, "
-                "    " DB_F_PHOTOS_PRIMARY_DBFIELD " INT "
+                "    " DB_F_PHOTOS_1             " BLOB, "
+                "    " DB_F_PHOTOS_2             " BLOB, "
+                "    " DB_F_PHOTOS_3             " BLOB, "
+                "    " DB_F_PHOTOS_4             " BLOB, "
+                "    " DB_F_PHOTOS_5             " BLOB, "
+                "    " DB_F_PHOTOS_6             " BLOB, "
+                "    " DB_F_PHOTOS_7             " BLOB, "
+                "    " DB_F_PHOTOS_8             " BLOB, "
+                "    " DB_F_PHOTOS_9             " BLOB, "
+                "    " DB_F_PHOTOS_10            " BLOB, "
+                "    " DB_F_PHOTOS_11            " BLOB, "
+                "    " DB_F_PHOTOS_12            " BLOB, "
+                "    " DB_F_PHOTOS_13            " BLOB, "
+                "    " DB_F_PHOTOS_14            " BLOB, "
+                "    " DB_F_PHOTOS_15            " BLOB, "
+                "    " DB_F_PHOTOS_PRIMARY       " INT "
                 ")";
 
             bRv = qryInfo.exec(csSql);
@@ -341,7 +341,7 @@ CMain::_initModel() {
             {61, DB_CF_PHOTOS_13},
             {62, DB_CF_PHOTOS_14},
             {63, DB_CF_PHOTOS_15},
-            {64, DB_CF_PHOTOS_PRIMARY_DBFIELD}
+            {64, DB_CF_PHOTOS_PRIMARY}
         };
 
         _tmModel = new QSqlTableModel(this, _dbDatabase);
