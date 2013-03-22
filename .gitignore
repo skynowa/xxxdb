@@ -15,5 +15,5 @@ Makefile*
 *.pdb
 *.jpg
 *.png
-object_script.PickupDB.Debug
-object_script.PickupDB.Release
+object_script.XXXDb.Debug
+object_script.XXXDb.Release

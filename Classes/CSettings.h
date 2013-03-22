@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDb_CSettingsH
-#define PickupDb_CSettingsH
+#ifndef XXXDb_CSettingsH
+#define XXXDb_CSettingsH
 //------------------------------------------------------------------------------
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
@@ -52,4 +52,4 @@ private:
         ///< write data
 };
 //------------------------------------------------------------------------------
-#endif // PickupDb_CSettingsH
+#endif // XXXDb_CSettingsH

@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDb_CDelegateDbImageH
-#define PickupDb_CDelegateDbImageH
+#ifndef XXXDb_CDelegateDbImageH
+#define XXXDb_CDelegateDbImageH
 //------------------------------------------------------------------------------
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
@@ -30,4 +30,4 @@ private:
     QLabel      *_m_lblInfoPanel;
 };
 //------------------------------------------------------------------------------
-#endif // PickupDb_CDelegateDbImageH
+#endif // XXXDb_CDelegateDbImageH

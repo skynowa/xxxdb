@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDb_CDbImageLabelH
-#define PickupDb_CDbImageLabelH
+#ifndef XXXDb_CDbImageLabelH
+#define XXXDb_CDbImageLabelH
 //------------------------------------------------------------------------------
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
@@ -93,4 +93,4 @@ private:
 
 };
 //------------------------------------------------------------------------------
-#endif // PickupDb_CDbImageLabelH
+#endif // XXXDb_CDbImageLabelH

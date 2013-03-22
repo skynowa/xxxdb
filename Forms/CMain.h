@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDb_CMainH
-#define PickupDb_CMainH
+#ifndef XXXDb_CMainH
+#define XXXDb_CMainH
 //------------------------------------------------------------------------------
 #include "ui_CMain.h"
 
@@ -81,4 +81,4 @@ private Q_SLOTS:
     void               slot_OnPhotoAlbum();
 };
 //------------------------------------------------------------------------------
-#endif // PickupDb_CMainH
+#endif // XXXDb_CMainH

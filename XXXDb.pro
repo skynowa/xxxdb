@@ -1,12 +1,12 @@
 #---------------------------------------------------------------------------
 #
-# \file  PickupDB.pro
+# \file  XXXDb.pro
 # \brief project file
 #
 #---------------------------------------------------------------------------
 
 
-TARGET          = PickupDB
+TARGET          = XXXDb
 TEMPLATE        = app
 QT              = core gui widgets sql network xml
 CONFIG         += warn_on

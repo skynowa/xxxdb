@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDB_CEditorH
-#define PickupDB_CEditorH
+#ifndef XXXDb_CEditorH
+#define XXXDb_CEditorH
 //------------------------------------------------------------------------------
 #include "ui_CEditor.h"
 
@@ -58,4 +58,4 @@ private Q_SLOTS:
     void               slot_twGroups_OnActivated(const QModelIndex &index);
 };
 //------------------------------------------------------------------------------
-#endif // PickupDB_CEditorH
+#endif // XXXDb_CEditorH

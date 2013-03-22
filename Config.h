@@ -4,11 +4,11 @@
  */
 
 
-#ifndef PickupDb_ConfigH
-#define PickupDb_ConfigH
+#ifndef XXXDb_ConfigH
+#define XXXDb_ConfigH
 //------------------------------------------------------------------------------
 // application
-#define APP_NAME                     "PickupDB"
+#define APP_NAME                     "XXXDb"
 #define APP_ORG                      "Skynowa Studio"
 #define APP_GUID                     APP_NAME"simple_guid"
 #define APP_WINDOW_CLASS             "Qt5QWindow"  // for Qt 5.0.1, Qt 4 - QTool
@@ -251,4 +251,4 @@
 typedef QHash<QWidget *, QString> db_items_t;
 typedef const db_items_t          cdb_items_t;
 //------------------------------------------------------------------------------
-#endif // PickupDb_ConfigH
+#endif // XXXDb_ConfigH

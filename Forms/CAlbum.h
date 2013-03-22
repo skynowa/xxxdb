@@ -4,8 +4,8 @@
  */
 
 
-#ifndef PickupDB_CAlbumH
-#define PickupDB_CAlbumH
+#ifndef XXXDb_CAlbumH
+#define XXXDb_CAlbumH
 //------------------------------------------------------------------------------
 #include "ui_CAlbum.h"
 
@@ -76,4 +76,4 @@ Q_SIGNALS:
     void            signal_photoMini_clicked(QLabel *label, cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
-#endif // PickupDB_CAlbumH
+#endif // XXXDb_CAlbumH
