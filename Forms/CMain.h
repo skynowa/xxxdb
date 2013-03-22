@@ -49,7 +49,7 @@ private:
     void               _initModel       ();
     void               _initActions     ();
 
-private Q_SLOTS:
+    // slots
     // group "Exit"
     void               slot_OnExit      ();
 

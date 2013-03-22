@@ -16,19 +16,17 @@
 class CAbout :
     public QDialog
 {
-    Q_OBJECT
-
 public:
     Ui::CAbout m_Ui;
 
-    explicit   CAbout      (QWidget *parent = NULL);
+    explicit   CAbout    (QWidget *parent = NULL);
 
 private:
-    void       _construct  ();
-    void       _destruct   ();
-    void       _initMain   ();
+    void       _construct();
+    void       _destruct ();
+    void       _initMain ();
 
-private Q_SLOTS:
+    // slots
     void       slot_bbxButtons_OnClicked(QAbstractButton *button);
 };
 //------------------------------------------------------------------------------

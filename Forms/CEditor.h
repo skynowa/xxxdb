@@ -20,8 +20,6 @@ class CDbImageLabel;
 class CEditor :
     public QDialog
 {
-    Q_OBJECT
-
 public:
     Ui::CEditor        m_Ui;
     CAlbum            *m_wndAlbum;
@@ -49,10 +47,8 @@ private:
     void               _resetAll   ();
     void               _saveAll    ();
 
-private Q_SLOTS:
-    // photo
+    // slots
     void               slot_OnAlbum();
-
     void               slot_bbxButtons_OnClicked(QAbstractButton *button);
     void               slot_twGroups_OnActivated(const QModelIndex &index);
 };
