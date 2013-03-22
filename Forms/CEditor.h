@@ -1,38 +1,37 @@
 /**
- * \file   CPersonEdit.h
+ * \file   CEditor.h
  * \brief  edit person data
  */
 
 
-#ifndef PickupDB_CPersonEditH
-#define PickupDB_CPersonEditH
+#ifndef PickupDB_CEditorH
+#define PickupDB_CEditorH
 //------------------------------------------------------------------------------
-#include "ui_CPersonEdit.h"
+#include "ui_CEditor.h"
 
 #include "../QtLib/Common.h"
 #include "../Config.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
 class CSettings;
-class CPhotoAlbum;
+class CAlbum;
 class CDbImageLabel;
 
-class CPersonEdit :
+class CEditor :
     public QDialog
 {
     Q_OBJECT
 
 public:
-    Ui::CPersonEdit    m_Ui;
+    Ui::CEditor        m_Ui;
+    CAlbum            *m_wndAlbum;
 
-                       CPersonEdit(QWidget *parent, QSqlTableModel *tableModel,
-                                   CSqlNavigator *sqlNavigator);
-    virtual           ~CPersonEdit();
-
-    CPhotoAlbum       *m_wndPhotoAlbum;
+                       CEditor     (QWidget *parent, QSqlTableModel *tableModel,
+                                    CSqlNavigator *sqlNavigator);
+    virtual           ~CEditor     ();
 
 protected:
-    virtual void       closeEvent (QCloseEvent *event);
+    virtual void       closeEvent  (QCloseEvent *event);
 
 private:
     CSettings         *_m_stApp;
@@ -44,19 +43,19 @@ private:
     cint               _m_ciDbRecordIndex;
     CDbImageLabel     *_m_dbImageLabel;
 
-    void               _construct ();
-    void               _destruct  ();
-    void               _initMain  ();
+    void               _construct  ();
+    void               _destruct   ();
+    void               _initMain   ();
 
-    void               _resetAll  ();
-    void               _saveAll   ();
+    void               _resetAll   ();
+    void               _saveAll    ();
 
 private Q_SLOTS:
     // photo
-    void               slot_OnPhotoAlbum();
+    void               slot_OnAlbum();
 
     void               slot_bbxButtons_OnClicked(QAbstractButton *button);
     void               slot_twGroups_OnActivated(const QModelIndex &index);
 };
 //------------------------------------------------------------------------------
-#endif // PickupDB_CPersonEditH
+#endif // PickupDB_CEditorH

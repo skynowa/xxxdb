@@ -1,16 +1,16 @@
 /**
- * \file   CPersonEdit.h
+ * \file   CEditor.h
  * \brief  edit person data
  */
 
 
-#include "CPersonEdit.h"
+#include "CEditor.h"
 
 #include "../QtLib/CUtils.h"
 #include "../Classes/CSettings.h"
 #include "../Classes/CDbImageLabel.h"
 #include "../Classes/CDelegateDbImage.h"
-#include "CPhotoAlbum.h"
+#include "CAlbum.h"
 
 
 /*******************************************************************************
@@ -19,13 +19,13 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CPersonEdit::CPersonEdit(
+CEditor::CEditor(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
     CSqlNavigator  *a_sqlNavigator
 ) :
     QDialog           (a_parent),
-    m_wndPhotoAlbum   (NULL),
+    m_wndAlbum        (NULL),
     _m_stApp          (NULL),
     _m_tmModel        (a_tableModel),
     _m_snSqlNavigator (a_sqlNavigator),
@@ -46,7 +46,7 @@ CPersonEdit::CPersonEdit(
 }
 //------------------------------------------------------------------------------
 /* virtual */
-CPersonEdit::~CPersonEdit() {
+CEditor::~CEditor() {
 
 }
 //------------------------------------------------------------------------------
@@ -59,7 +59,7 @@ CPersonEdit::~CPersonEdit() {
 //------------------------------------------------------------------------------
 /* virtual */
 void
-CPersonEdit::closeEvent(
+CEditor::closeEvent(
     QCloseEvent *a_event
 )
 {
@@ -75,17 +75,17 @@ CPersonEdit::closeEvent(
 
 //------------------------------------------------------------------------------
 void
-CPersonEdit::_construct() {
+CEditor::_construct() {
     _initMain();
 }
 //------------------------------------------------------------------------------
 void
-CPersonEdit::_destruct() {
+CEditor::_destruct() {
     qPTR_DELETE(_m_stApp);
 }
 //------------------------------------------------------------------------------
 void
-CPersonEdit::_initMain() {
+CEditor::_initMain() {
     m_Ui.setupUi(this);
 
     // main
@@ -221,11 +221,11 @@ CPersonEdit::_initMain() {
     // signals
     {
         connect(m_Ui.tbtnPhotoAlbum, &QToolButton::clicked,
-                this,                &CPersonEdit::slot_OnPhotoAlbum);
+                this,                &CEditor::slot_OnAlbum);
         connect(m_Ui.bbxButtons,     &QDialogButtonBox::clicked,
-                this,                &CPersonEdit::slot_bbxButtons_OnClicked);
+                this,                &CEditor::slot_bbxButtons_OnClicked);
         connect(m_Ui.twGroups,       &QTreeWidget::clicked,
-                this,                &CPersonEdit::slot_twGroups_OnActivated);
+                this,                &CEditor::slot_twGroups_OnActivated);
     }
 }
 //------------------------------------------------------------------------------
@@ -238,16 +238,16 @@ CPersonEdit::_initMain() {
 
 //------------------------------------------------------------------------------
 void
-CPersonEdit::slot_OnPhotoAlbum() {
-    delete m_wndPhotoAlbum;
-    m_wndPhotoAlbum = NULL;
+CEditor::slot_OnAlbum() {
+    delete m_wndAlbum;
+    m_wndAlbum = NULL;
 
-    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, _m_snSqlNavigator);
-    m_wndPhotoAlbum->show();
+    m_wndAlbum = new CAlbum(this, _m_tmModel, _m_snSqlNavigator);
+    m_wndAlbum->show();
 }
 //------------------------------------------------------------------------------
 void
-CPersonEdit::slot_bbxButtons_OnClicked(
+CEditor::slot_bbxButtons_OnClicked(
     QAbstractButton *a_button
 )
 {
@@ -281,7 +281,7 @@ CPersonEdit::slot_bbxButtons_OnClicked(
 
 //------------------------------------------------------------------------------
 void
-CPersonEdit::_resetAll() {
+CEditor::_resetAll() {
     // ensure for reset
     {
         QMessageBox msgBox;
@@ -340,7 +340,7 @@ CPersonEdit::_resetAll() {
 }
 //------------------------------------------------------------------------------
 void
-CPersonEdit::_saveAll() {
+CEditor::_saveAll() {
     // set current index
     _m_dmText->setCurrentIndex(_m_ciDbRecordIndex);
     _m_dmImage->setCurrentIndex(_m_ciDbRecordIndex);
@@ -350,7 +350,7 @@ CPersonEdit::_saveAll() {
 }
 //------------------------------------------------------------------------------
 void
-CPersonEdit::slot_twGroups_OnActivated(
+CEditor::slot_twGroups_OnActivated(
     const QModelIndex &a_index
 )
 {

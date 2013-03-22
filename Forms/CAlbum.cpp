@@ -1,10 +1,10 @@
 /**
- * \file   CPhotoAlbum.h
+ * \file   CAlbum.h
  * \brief  photo album
  */
 
 
-#include "CPhotoAlbum.h"
+#include "CAlbum.h"
 
 #include "../QtLib/CUtils.h"
 #include "../Classes/CSettings.h"
@@ -16,7 +16,7 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CPhotoAlbum::CPhotoAlbum(
+CAlbum::CAlbum(
     QWidget        *a_parent,
     QSqlTableModel *a_tableModel,
     CSqlNavigator  *a_sqlNavigator
@@ -39,7 +39,7 @@ CPhotoAlbum::CPhotoAlbum(
 }
 //------------------------------------------------------------------------------
 /* virtual */
-CPhotoAlbum::~CPhotoAlbum() {
+CAlbum::~CAlbum() {
 
 }
 //------------------------------------------------------------------------------
@@ -52,7 +52,7 @@ CPhotoAlbum::~CPhotoAlbum() {
 //------------------------------------------------------------------------------
 /* virtual */
 bool
-CPhotoAlbum::eventFilter(
+CAlbum::eventFilter(
     QObject *a_obj,
     QEvent  *a_event
 )
@@ -85,7 +85,7 @@ CPhotoAlbum::eventFilter(
 //------------------------------------------------------------------------------
 /* virtual */
 void
-CPhotoAlbum::showEvent(
+CAlbum::showEvent(
     QShowEvent *a_event
 )
 {
@@ -110,7 +110,7 @@ CPhotoAlbum::showEvent(
 //------------------------------------------------------------------------------
 /* virtual */
 void
-CPhotoAlbum::resizeEvent(
+CAlbum::resizeEvent(
     QResizeEvent *a_event
 )
 {
@@ -133,7 +133,7 @@ CPhotoAlbum::resizeEvent(
 //------------------------------------------------------------------------------
 /* virtual */
 void
-CPhotoAlbum::closeEvent(
+CAlbum::closeEvent(
     QCloseEvent *a_event
 )
 {
@@ -149,18 +149,18 @@ CPhotoAlbum::closeEvent(
 
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_construct() {
+CAlbum::_construct() {
     _initMain();
     _initActions();
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_destruct() {
+CAlbum::_destruct() {
     qPTR_DELETE(_m_stApp);
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_initMain() {
+CAlbum::_initMain() {
     m_Ui.setupUi(this);
 
     // main
@@ -218,9 +218,9 @@ CPhotoAlbum::_initMain() {
             photoMinis[i]->installEventFilter(this);
 
             connect(item, &CDbImageLabel::signal_DataChanged,
-                    this, &CPhotoAlbum::slot_OnPhotoUpdate);
-            connect(this, &CPhotoAlbum::signal_photoMini_clicked,
-                    this, &CPhotoAlbum::slot_photoMini_OnClicked);
+                    this, &CAlbum::slot_OnPhotoUpdate);
+            connect(this, &CAlbum::signal_photoMini_clicked,
+                    this, &CAlbum::slot_photoMini_OnClicked);
 
             _m_viDbItems.push_back(item);
         }
@@ -228,8 +228,8 @@ CPhotoAlbum::_initMain() {
 
     // slots
     {
-        connect(this, &CPhotoAlbum::signal_photo_clicked,
-                this, &CPhotoAlbum::slot_OnLoop);
+        connect(this, &CAlbum::signal_photo_clicked,
+                this, &CAlbum::slot_OnLoop);
     }
 
     // HACK: for m_Ui.saPhotosMini->sizePolicy() == Fixed
@@ -237,40 +237,40 @@ CPhotoAlbum::_initMain() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_initActions() {
+CAlbum::_initActions() {
     // group "File"
     {
         connect(m_Ui.actFile_Exit,       &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnExit);
+                this,                    &CAlbum::slot_OnExit);
     }
 
     // group "Edit"
     {
         connect(m_Ui.actEdit_SaveAs,     &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnSaveAs);
+                this,                    &CAlbum::slot_OnSaveAs);
         connect(m_Ui.actEdit_First,      &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnFirst);
+                this,                    &CAlbum::slot_OnFirst);
         connect(m_Ui.actEdit_Prior,      &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnPrior);
+                this,                    &CAlbum::slot_OnPrior);
         connect(m_Ui.actEdit_Next,       &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnNext);
+                this,                    &CAlbum::slot_OnNext);
         connect(m_Ui.actEdit_Last,       &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnLast);
+                this,                    &CAlbum::slot_OnLast);
         connect(m_Ui.actEdit_GoTo,       &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnGoTo);
+                this,                    &CAlbum::slot_OnGoTo);
         connect(m_Ui.actEdit_Insert,     &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnInsert);
+                this,                    &CAlbum::slot_OnInsert);
         connect(m_Ui.actEdit_Delete,     &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnRemove);
+                this,                    &CAlbum::slot_OnRemove);
         connect(m_Ui.actEdit_Edit,       &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnEdit);
+                this,                    &CAlbum::slot_OnEdit);
         connect(m_Ui.actEdit_SetPrimary, &QAction::triggered,
-                this,                    &CPhotoAlbum::slot_OnSetPrimary);
+                this,                    &CAlbum::slot_OnSetPrimary);
     }
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::_photoUpdate() {
+CAlbum::_photoUpdate() {
     Q_ASSERT(!_m_pixPhoto.isNull());
 
     cQSize  cszSize   = QSize(m_Ui.lblPhoto->width()  - PHOTO_MARGIN,
@@ -292,7 +292,7 @@ CPhotoAlbum::_photoUpdate() {
 
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnExit() {
+CAlbum::slot_OnExit() {
     close();
 }
 //------------------------------------------------------------------------------
@@ -305,19 +305,19 @@ CPhotoAlbum::slot_OnExit() {
 
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnSaveAs() {
+CAlbum::slot_OnSaveAs() {
     CDbImageLabel::currentDbImageLabel->saveToFile();
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnFirst() {
+CAlbum::slot_OnFirst() {
     cint currentIndex = 0;
 
     slot_OnPhotoUpdate(currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnPrior() {
+CAlbum::slot_OnPrior() {
     if (0 >= CDbImageLabel::currentIndex) {
         CDbImageLabel::currentIndex = 0;
     } else {
@@ -328,7 +328,7 @@ CPhotoAlbum::slot_OnPrior() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnNext() {
+CAlbum::slot_OnNext() {
     if (CDbImageLabel::currentIndex >= _m_viDbItems.size() - 1) {
         CDbImageLabel::currentIndex = _m_viDbItems.size() - 1;
     } else {
@@ -339,14 +339,14 @@ CPhotoAlbum::slot_OnNext() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnLast() {
+CAlbum::slot_OnLast() {
     cint currentIndex = _m_viDbItems.size() - 1;
 
     slot_OnPhotoUpdate(currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnGoTo() {
+CAlbum::slot_OnGoTo() {
     cint ciMinValue   = 1;
     cint ciMaxValue   = _m_viDbItems.size();
 
@@ -360,22 +360,22 @@ CPhotoAlbum::slot_OnGoTo() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnInsert() {
+CAlbum::slot_OnInsert() {
     CDbImageLabel::currentDbImageLabel->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnRemove() {
+CAlbum::slot_OnRemove() {
     CDbImageLabel::currentDbImageLabel->remove();
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnEdit() {
+CAlbum::slot_OnEdit() {
     CDbImageLabel::currentDbImageLabel->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnSetPrimary() {
+CAlbum::slot_OnSetPrimary() {
     // write to DB
     QSqlRecord srRecord = _m_tmModel->record(_m_ciDbRecordIndex);
     srRecord.setValue(DB_F_PHOTOS_PRIMARY_DBFIELD, CDbImageLabel::currentIndex);
@@ -392,7 +392,7 @@ CPhotoAlbum::slot_OnSetPrimary() {
 
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnLoop() {
+CAlbum::slot_OnLoop() {
     // avoid recursion when photo album is empty
     qCHECK_DO(CDbImageLabel::isEmpty(_m_viDbItems), return);
 
@@ -412,7 +412,7 @@ CPhotoAlbum::slot_OnLoop() {
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_OnPhotoUpdate(
+CAlbum::slot_OnPhotoUpdate(
     cint &index
 )
 {
@@ -423,7 +423,7 @@ CPhotoAlbum::slot_OnPhotoUpdate(
 }
 //------------------------------------------------------------------------------
 void
-CPhotoAlbum::slot_photoMini_OnClicked(
+CAlbum::slot_photoMini_OnClicked(
     QLabel   *a_label,
     cQString &a_dbFieldName
 )

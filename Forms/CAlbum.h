@@ -1,13 +1,13 @@
 /**
- * \file   CPhotoAlbum.h
+ * \file   CAlbum.h
  * \brief  photo album
  */
 
 
-#ifndef PickupDB_CPhotoAlbumH
-#define PickupDB_CPhotoAlbumH
+#ifndef PickupDB_CAlbumH
+#define PickupDB_CAlbumH
 //------------------------------------------------------------------------------
-#include "ui_CPhotoAlbum.h"
+#include "ui_CAlbum.h"
 
 #include "../QtLib/Common.h"
 #include "../QtLib/CSqlNavigator.h"
@@ -16,18 +16,18 @@
 //------------------------------------------------------------------------------
 class CSettings;
 
-class CPhotoAlbum :
+class CAlbum :
     public QMainWindow
 {
     Q_OBJECT
 
 public:
-    Ui::CPhotoAlbum m_Ui;
+    Ui::CAlbum      m_Ui;
 
-                    CPhotoAlbum         (QWidget *parent,
+                    CAlbum              (QWidget *parent,
                                          QSqlTableModel *tableModel,
                                          CSqlNavigator *sqlNavigator);
-    virtual        ~CPhotoAlbum         ();
+    virtual        ~CAlbum              ();
 
 protected:
     virtual bool    eventFilter         (QObject *obj, QEvent *event);
@@ -76,4 +76,4 @@ Q_SIGNALS:
     void            signal_photoMini_clicked(QLabel *label, cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
-#endif // PickupDB_CPhotoAlbumH
+#endif // PickupDB_CAlbumH

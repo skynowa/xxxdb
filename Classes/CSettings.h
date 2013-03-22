@@ -12,43 +12,43 @@
 #include "../Config.h"
 //------------------------------------------------------------------------------
 class CMain;
-class CPersonEdit;
-class CPhotoAlbum;
+class CEditor;
+class CAlbum;
 
 class CSettings
     /// application settings
 {
 public:
-                 CSettings   (CMain *, CPersonEdit *, CPhotoAlbum *);
+             CSettings   (CMain *, CEditor *, CAlbum *);
         ///< constructor
-    virtual     ~CSettings   ();
+    virtual ~CSettings   ();
         ///< destructor
 
 private:
-    CMain       *_m_wndMain;
-    CPersonEdit *_m_wndPersonEdit;
-    CPhotoAlbum *_m_wndPhotoAlbum;
+    CMain   *_m_wndMain;
+    CEditor *_m_wndEditor;
+    CAlbum  *_m_wndAlbum;
 
     template <typename T>
-    void         _commonRead (T *);
+    void     _commonRead (T *);
         ///< read data
     template <typename T>
-    void         _commonWrite(T *);
+    void     _commonWrite(T *);
         ///< write data
 
-    void         _read       (CMain *);
+    void     _read       (CMain *);
         ///< read data
-    void         _write      (CMain *);
+    void     _write      (CMain *);
         ///< write data
 
-    void         _read       (CPersonEdit *);
+    void     _read       (CEditor *);
         ///< read data
-    void         _write      (CPersonEdit *);
+    void     _write      (CEditor *);
         ///< write data
 
-    void         _read       (CPhotoAlbum *);
+    void     _read       (CAlbum *);
         ///< read data
-    void         _write      (CPhotoAlbum *);
+    void     _write      (CAlbum *);
         ///< write data
 };
 //------------------------------------------------------------------------------

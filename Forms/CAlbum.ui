@@ -1,7 +1,7 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <ui version="4.0">
- <class>CPhotoAlbum</class>
- <widget class="QMainWindow" name="CPhotoAlbum">
+ <class>CAlbum</class>
+ <widget class="QMainWindow" name="CAlbum">
   <property name="geometry">
    <rect>
     <x>0</x>

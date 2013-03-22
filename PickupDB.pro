@@ -40,8 +40,8 @@ HEADERS         = QtLib/Common.h \
                   Classes/CDelegateDbImage.h \
                   Classes/CDbImageLabel.h \
                   Forms/CMain.h \
-                  Forms/CPersonEdit.h \
-                  Forms/CPhotoAlbum.h \
+                  Forms/CEditor.h \
+                  Forms/CAlbum.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
@@ -50,12 +50,12 @@ SOURCES         = main.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \
-                  Forms/CPersonEdit.cpp \
-                  Forms/CPhotoAlbum.cpp \
+                  Forms/CEditor.cpp \
+                  Forms/CAlbum.cpp
 
 FORMS           = Forms/CMain.ui \
-                  Forms/CPersonEdit.ui \
-                  Forms/CPhotoAlbum.ui
+                  Forms/CEditor.ui \
+                  Forms/CAlbum.ui
 
 RESOURCES       = Resources/App.qrc
 

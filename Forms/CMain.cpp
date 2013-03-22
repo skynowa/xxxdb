@@ -6,8 +6,8 @@
 
 #include "CMain.h"
 
-#include "../Forms/CPersonEdit.h"
-#include "../Forms/CPhotoAlbum.h"
+#include "../Forms/CEditor.h"
+#include "../Forms/CAlbum.h"
 #include "../QtLib/CUtils.h"
 #include "../Classes/CSettings.h"
 #include "../Classes/CDelegateDbImage.h"
@@ -29,7 +29,7 @@ CMain::CMain(
     m_sDbDir        (),
     m_sDbBackupDir  (),
     m_snSqlNavigator(this),
-    m_wndPhotoAlbum (NULL),
+    m_wndAlbum      (NULL),
     _m_stApp        (NULL),
     _m_dbDatabase   (),
     _m_tmModel      (NULL),
@@ -555,7 +555,7 @@ CMain::slot_OnInsert() {
     m_snSqlNavigator.insert();
 
     {
-        CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
+        CEditor dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
         (int)dlgPersonEdit.exec();
     }
@@ -584,7 +584,7 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    CPersonEdit dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
+    CEditor dlgPersonEdit(this, _m_tmModel, &m_snSqlNavigator);
 
     (int)dlgPersonEdit.exec();
 }
@@ -655,10 +655,10 @@ CMain::slot_OnAbout() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPhotoAlbum() {
-    delete m_wndPhotoAlbum;
-    m_wndPhotoAlbum = NULL;
+    delete m_wndAlbum;
+    m_wndAlbum = NULL;
 
-    m_wndPhotoAlbum = new CPhotoAlbum(this, _m_tmModel, &m_snSqlNavigator);
-    m_wndPhotoAlbum->show();
+    m_wndAlbum = new CAlbum(this, _m_tmModel, &m_snSqlNavigator);
+    m_wndAlbum->show();
 }
 //------------------------------------------------------------------------------

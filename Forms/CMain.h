@@ -14,7 +14,7 @@
 #include "../Config.h"
 //------------------------------------------------------------------------------
 class CSettings;
-class CPhotoAlbum;
+class CAlbum;
 
 class CMain :
     public QMainWindow
@@ -22,17 +22,17 @@ class CMain :
     Q_OBJECT
 
 public:
-    explicit           CMain            (QWidget *parent = 0,
-                                         Qt::WindowFlags flags = 0);
-    virtual           ~CMain            ();
-
     Ui::CMainClass     m_Ui;
     QString            m_sAppName;
     QString            m_sAppDir;
     QString            m_sDbDir;
     QString            m_sDbBackupDir;
     CSqlNavigator      m_snSqlNavigator;
-    CPhotoAlbum       *m_wndPhotoAlbum;
+    CAlbum            *m_wndAlbum;
+
+    explicit           CMain            (QWidget *parent = 0,
+                                         Qt::WindowFlags flags = 0);
+    virtual           ~CMain            ();
 
 protected:
     virtual void       closeEvent       (QCloseEvent *event);
