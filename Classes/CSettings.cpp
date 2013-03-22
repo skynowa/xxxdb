@@ -125,7 +125,7 @@ CSettings::_write(
         _stApp.beginGroup(a_wnd->objectName() + "/table");
 
         for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
-            cbool isVisible = a_wnd->ui.tvInfo->isColumnHidden(i);
+            cbool isVisible = !a_wnd->ui.tvInfo->isColumnHidden(i);
 
             _stApp.setValue(QString("column%1/visible").arg(i), isVisible);
         }
