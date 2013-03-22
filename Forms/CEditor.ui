@@ -95,6 +95,13 @@
      </item>
     </widget>
    </item>
+   <item row="1" column="0" colspan="3">
+    <widget class="QDialogButtonBox" name="bbxButtons">
+     <property name="standardButtons">
+      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
+     </property>
+    </widget>
+   </item>
    <item row="0" column="1">
     <widget class="QStackedWidget" name="tabwGroupsDetail">
      <property name="frameShape">
@@ -548,16 +555,6 @@
         <string>Home:</string>
        </property>
       </widget>
-      <widget class="QTextEdit" name="tedtPhoneOther">
-       <property name="geometry">
-        <rect>
-         <x>94</x>
-         <y>148</y>
-         <width>120</width>
-         <height>161</height>
-        </rect>
-       </property>
-      </widget>
       <widget class="QComboBox" name="cboMobile2">
        <property name="geometry">
         <rect>
@@ -614,6 +611,16 @@
        </property>
        <property name="text">
         <string>Mobile 3:</string>
+       </property>
+      </widget>
+      <widget class="QPlainTextEdit" name="tedtPhoneOther">
+       <property name="geometry">
+        <rect>
+         <x>96</x>
+         <y>148</y>
+         <width>117</width>
+         <height>140</height>
+        </rect>
        </property>
       </widget>
      </widget>
@@ -873,7 +880,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_2">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="tedtEmail"/>
+          <widget class="QPlainTextEdit" name="tedtEmail"/>
          </item>
         </layout>
        </item>
@@ -884,7 +891,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_4">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="tedtWeb"/>
+          <widget class="QPlainTextEdit" name="tedtWeb"/>
          </item>
         </layout>
        </item>
@@ -1436,7 +1443,7 @@
        <item row="0" column="0">
         <layout class="QGridLayout" name="gridLayout_6">
          <item row="0" column="0">
-          <widget class="QTextEdit" name="tedtNotes"/>
+          <widget class="QPlainTextEdit" name="tedtNotes"/>
          </item>
         </layout>
        </item>
@@ -1444,17 +1451,9 @@
      </widget>
     </widget>
    </item>
-   <item row="1" column="0" colspan="2">
-    <widget class="QDialogButtonBox" name="bbxButtons">
-     <property name="standardButtons">
-      <set>QDialogButtonBox::Apply|QDialogButtonBox::Cancel|QDialogButtonBox::Ok|QDialogButtonBox::Reset</set>
-     </property>
-    </widget>
-   </item>
   </layout>
  </widget>
  <tabstops>
-  <tabstop>twGroups</tabstop>
   <tabstop>cboNick</tabstop>
   <tabstop>cboSurname</tabstop>
   <tabstop>cboName</tabstop>
@@ -1503,6 +1502,7 @@
   <tabstop>cboDrugs</tabstop>
   <tabstop>dtDateCreation</tabstop>
   <tabstop>dtDateLastChange</tabstop>
+  <tabstop>twGroups</tabstop>
   <tabstop>tedtNotes</tabstop>
   <tabstop>bbxButtons</tabstop>
  </tabstops>
