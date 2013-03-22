@@ -23,6 +23,8 @@ class CEditor :
     Q_OBJECT
 
 public:
+    friend class CSettings;
+
     Ui::CEditor        ui;
     CAlbum            *wndAlbum;
 

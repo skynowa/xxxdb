@@ -22,6 +22,8 @@ class CAlbum :
     Q_OBJECT
 
 public:
+    friend class CSettings;
+
     Ui::CAlbum      ui;
 
                     CAlbum              (QWidget *parent,

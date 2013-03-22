@@ -22,6 +22,8 @@ class CMain :
     Q_OBJECT
 
 public:
+    friend class CSettings;
+
     Ui::CMainClass     ui;
     QString            sAppName;
     QString            sAppDir;

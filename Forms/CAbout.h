@@ -19,6 +19,8 @@ class CAbout :
     Q_OBJECT
 
 public:
+    friend class CSettings;
+
     Ui::CAbout ui;
 
     explicit   CAbout    (QWidget *parent = NULL);

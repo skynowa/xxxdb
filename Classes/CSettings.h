@@ -25,6 +25,7 @@ public:
         ///< destructor
 
 private:
+    QSettings _stApp;
     CMain   *_wndMain;
     CEditor *_wndEditor;
     CAlbum  *_wndAlbum;

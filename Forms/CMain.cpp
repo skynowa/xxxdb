@@ -243,7 +243,7 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _tmModel
+    // _tmModel, ui.tvInfo
     {
         struct SHeader {
             cint      section;
@@ -344,40 +344,43 @@ CMain::_initModel() {
             {64, DB_CF_PHOTOS_PRIMARY}
         };
 
-        _tmModel = new QSqlTableModel(this, _dbDatabase);
-        _tmModel->setTable(DB_T_PERSON);
+        //--------------------------------------------------
+        // _tmModel
+        {
+            _tmModel = new QSqlTableModel(this, _dbDatabase);
+            _tmModel->setTable(DB_T_PERSON);
 
-        // set caption for DB fieleds
-        for (size_t i = 0; i < qARRAY_LENGTH(chdHeaders); ++ i) {
-            _tmModel->setHeaderData(
-                    chdHeaders[i].section,
-                    Qt::Horizontal,
-                    chdHeaders[i].value);
+            // set caption for DB fields
+            for (size_t i = 0; i < qARRAY_LENGTH(chdHeaders); ++ i) {
+                _tmModel->setHeaderData(
+                        chdHeaders[i].section,
+                        Qt::Horizontal,
+                        chdHeaders[i].value);
+            }
+
+            _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+            _tmModel->select();
         }
 
-        _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-        _tmModel->select();
-    }
+        //--------------------------------------------------
+        // ui.tvInfo
+        {
+            ui.tvInfo->setModel(_tmModel);
+            // ui.tvInfo->setColumnWidth(0, 40);
+            ui.tvInfo->verticalHeader()->setVisible(true);
+            ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
+            ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
+            ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+            ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+            ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+            ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+            // ui.tvInfo->setAlternatingRowColors(true);
+            // ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
+            ui.tvInfo->setSortingEnabled(true);
+            ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
 
-    //--------------------------------------------------
-    // ui.tvInfo
-    {
-        ui.tvInfo->setModel(_tmModel);
-        ui.tvInfo->hideColumn(0); // don't show the DB_F_ID
-        // ui.tvInfo->setColumnWidth(0, 40);
-        ui.tvInfo->verticalHeader()->setVisible(true);
-        ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
-        ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        // ui.tvInfo->setAlternatingRowColors(true);
-        // ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
-        ui.tvInfo->setSortingEnabled(true);
-        ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
-
-        ui.tvInfo->show();
+            ui.tvInfo->show();
+        }
     }
 
     //--------------------------------------------------

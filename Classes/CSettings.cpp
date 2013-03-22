@@ -22,6 +22,7 @@ CSettings::CSettings(
     CEditor *a_wndEditor,
     CAlbum  *a_wndAlbum
 ) :
+    _stApp    (INI_FILE_PATH, QSettings::IniFormat),
     _wndMain  (a_wndMain),
     _wndEditor(a_wndEditor),
     _wndAlbum (a_wndAlbum)
@@ -58,12 +59,10 @@ CSettings::_commonRead(
 
     // read
     {
-        QSettings stApp(INI_FILE_PATH, QSettings::IniFormat);
-
-        stApp.beginGroup( a_wnd->objectName() );
-        szSize     = stApp.value("size",     APP_SIZE).toSize();
-        pnPosition = stApp.value("position", QPoint(200, 200)).toPoint();
-        stApp.endGroup();
+        _stApp.beginGroup( a_wnd->objectName() );
+        szSize     = _stApp.value("size",     APP_SIZE).toSize();
+        pnPosition = _stApp.value("position", QPoint(200, 200)).toPoint();
+        _stApp.endGroup();
     }
 
     // apply
@@ -82,12 +81,10 @@ CSettings::_commonWrite(
     qCHECK_DO(a_wnd == NULL, return);
 
     // write
-    QSettings stApp(INI_FILE_PATH, QSettings::IniFormat);
-
-    stApp.beginGroup( a_wnd->objectName() );
-    stApp.setValue("position", a_wnd->pos());
-    stApp.setValue("size",     a_wnd->size());
-    stApp.endGroup();
+    _stApp.beginGroup( a_wnd->objectName() );
+    _stApp.setValue("position", a_wnd->pos());
+    _stApp.setValue("size",     a_wnd->size());
+    _stApp.endGroup();
 }
 //------------------------------------------------------------------------------
 void
@@ -99,7 +96,19 @@ CSettings::_read(
 
     _commonRead(a_wnd);
 
-    // TODO: CMain
+    // caption for DB fields
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/table");
+
+        for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
+            cbool isVisible = _stApp.value(QString("column%1/visible").arg(i), true).toBool();
+
+            // apply
+            a_wnd->ui.tvInfo->setColumnHidden(i, !isVisible);
+        }
+
+        _stApp.endGroup();
+    }
 }
 //------------------------------------------------------------------------------
 void
@@ -111,7 +120,18 @@ CSettings::_write(
 
     _commonWrite(a_wnd);
 
-    // TODO: CMain
+    // caption for DB fields
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/table");
+
+        for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
+            cbool isVisible = a_wnd->ui.tvInfo->isColumnHidden(i);
+
+            _stApp.setValue(QString("column%1/visible").arg(i), isVisible);
+        }
+
+        _stApp.endGroup();
+    }
 }
 //------------------------------------------------------------------------------
 
@@ -130,8 +150,6 @@ CSettings::_read(
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonRead(a_wnd);
-
-    // TODO: CEditor
 }
 //------------------------------------------------------------------------------
 void
@@ -142,8 +160,6 @@ CSettings::_write(
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonWrite(a_wnd);
-
-    // TODO: CEditor
 }
 //------------------------------------------------------------------------------
 
@@ -162,8 +178,6 @@ CSettings::_read(
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonRead(a_wnd);
-
-    // TODO: CAlbum
 }
 //------------------------------------------------------------------------------
 void
@@ -174,7 +188,5 @@ CSettings::_write(
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonWrite(a_wnd);
-
-    // TODO: CAlbum
 }
 //------------------------------------------------------------------------------
