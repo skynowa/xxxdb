@@ -8,6 +8,7 @@
 
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
+#include "../Forms/CAbout.h"
 #include "../QtLib/CUtils.h"
 #include "../Classes/CSettings.h"
 #include "../Classes/CDelegateDbImage.h"
@@ -429,7 +430,7 @@ CMain::_initModel() {
                 this,                          &CMain::slot_OnEdit);
 
         connect(m_Ui.tbtnPhotoAlbum,           &QToolButton::clicked,
-                this,                          &CMain::slot_OnPhotoAlbum);
+                this,                          &CMain::slot_OnAlbum);
     }
 
     //--------------------------------------------------
@@ -636,13 +637,9 @@ CMain::slot_OnFaq() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnAbout() {
-    cQString csMsg = QString(tr(
-        "<p>"
-        "<b>%1</b> - accounting software for girls"
-        "</p>"))
-            .arg(APP_NAME);
+    CAbout wndAbout(this);
 
-    QMessageBox::about(this, APP_ABOUT_TITLE, csMsg);
+    (int)wndAbout.exec();
 }
 //------------------------------------------------------------------------------
 
@@ -654,7 +651,7 @@ CMain::slot_OnAbout() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnPhotoAlbum() {
+CMain::slot_OnAlbum() {
     delete m_wndAlbum;
     m_wndAlbum = NULL;
 

@@ -78,7 +78,7 @@ private Q_SLOTS:
     void               slot_OnAbout     ();
 
     // photo
-    void               slot_OnPhotoAlbum();
+    void               slot_OnAlbum     ();
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

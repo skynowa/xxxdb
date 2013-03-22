@@ -41,7 +41,8 @@ HEADERS         = QtLib/Common.h \
                   Classes/CDbImageLabel.h \
                   Forms/CMain.h \
                   Forms/CEditor.h \
-                  Forms/CAlbum.h
+                  Forms/CAlbum.h \
+                  Forms/CAbout.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
@@ -51,11 +52,13 @@ SOURCES         = main.cpp \
                   Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \
                   Forms/CEditor.cpp \
-                  Forms/CAlbum.cpp
+                  Forms/CAlbum.cpp \
+                  Forms/CAbout.cpp
 
 FORMS           = Forms/CMain.ui \
                   Forms/CEditor.ui \
-                  Forms/CAlbum.ui
+                  Forms/CAlbum.ui \
+                  Forms/CAbout.ui
 
 RESOURCES       = Resources/App.qrc
 
