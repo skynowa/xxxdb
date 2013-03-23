@@ -126,9 +126,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QComboBox" name="cboSurname">
        <property name="geometry">
@@ -160,9 +157,6 @@
        </property>
        <property name="text">
         <string/>
-       </property>
-       <property name="scaledContents">
-        <bool>false</bool>
        </property>
        <property name="alignment">
         <set>Qt::AlignCenter</set>
@@ -209,9 +203,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QComboBox" name="cboHeight">
        <property name="geometry">
@@ -237,9 +228,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QComboBox" name="cboHairLength">
@@ -267,9 +255,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QComboBox" name="cboAppearance">
        <property name="geometry">
@@ -295,9 +280,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QComboBox" name="cboAgreement">
@@ -509,9 +491,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_14">
        <property name="geometry">
@@ -537,9 +516,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_15">
@@ -567,9 +543,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_40">
        <property name="geometry">
@@ -595,9 +568,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_45">
@@ -689,9 +659,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_18">
        <property name="geometry">
@@ -718,9 +685,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QComboBox" name="cboApartment">
        <property name="geometry">
@@ -733,9 +697,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_19">
@@ -828,9 +789,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_24">
        <property name="geometry">
@@ -856,9 +814,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QComboBox" name="cboCode">
@@ -936,9 +891,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QComboBox" name="cboSkype">
        <property name="geometry">
@@ -993,9 +945,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_29">
        <property name="geometry">
@@ -1034,9 +983,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_30">
@@ -1255,9 +1201,6 @@
        <property name="editable">
         <bool>true</bool>
        </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
-       </property>
       </widget>
       <widget class="QLabel" name="label_39">
        <property name="geometry">
@@ -1283,9 +1226,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QComboBox" name="cboSports">
@@ -1364,9 +1304,6 @@
        </property>
        <property name="editable">
         <bool>true</bool>
-       </property>
-       <property name="sizeAdjustPolicy">
-        <enum>QComboBox::AdjustToContentsOnFirstShow</enum>
        </property>
       </widget>
       <widget class="QLabel" name="label_44">
