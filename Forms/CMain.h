@@ -45,6 +45,9 @@ private:
     db_items_t         _hsDbItems;
     QDataWidgetMapper *_dmImage;
 
+    QComboBox         *_cboFindText;
+    QComboBox         *_cboDbFields;
+
     void               _construct       ();
     void               _destruct        ();
     void               _initMain        ();
@@ -81,6 +84,8 @@ private:
 
     // photo
     void               slot_OnAlbum     ();
+
+    void               slot_OnQuickFind (const QString &arg);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

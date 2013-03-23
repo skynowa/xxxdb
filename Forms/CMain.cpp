@@ -36,7 +36,9 @@ CMain::CMain(
     _dbDatabase   (),
     _tmModel      (NULL),
     _hsDbItems    (),
-    _dmImage      (NULL)
+    _dmImage      (NULL),
+    _cboFindText  (NULL),
+    _cboDbFields  (NULL)
 {
     _construct();
 
@@ -132,6 +134,21 @@ CMain::_initMain() {
     {
         ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
         ui.lblPhoto->setBackgroundRole(QPalette::Base);
+    }
+
+    // quick find
+    {
+        _cboFindText = new QComboBox(this);
+        _cboFindText->setEditable(true);
+        _cboFindText->setFixedWidth(200);
+
+        connect(_cboFindText, &QComboBox::currentTextChanged,
+                this,         &CMain::slot_OnQuickFind);
+
+        ui.tbQuickFind->addWidget(_cboFindText);
+
+        _cboDbFields = new QComboBox(this);
+        ui.tbQuickFind->addWidget(_cboDbFields);
     }
 }
 //------------------------------------------------------------------------------
@@ -437,14 +454,21 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
+    // quick find
+    {
+        QStringList fields;
+        CUtils::dbFieldNames(_dbDatabase, DB_T_PERSON, &fields);
+
+        _cboDbFields->addItems(fields);
+    }
+
+    //--------------------------------------------------
     // slots
     {
         connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
                 _dmImage,                    &QDataWidgetMapper::setCurrentModelIndex );
-
         connect(ui.tvInfo,                   &QTableView::doubleClicked,
                 this,                        &CMain::slot_OnEdit);
-
         connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
                 this,                        &CMain::slot_OnAlbum);
     }
@@ -683,5 +707,16 @@ CMain::slot_OnAlbum() {
 
     wndAlbum = new CAlbum(this, _tmModel, &snSqlNavigator);
     wndAlbum->show();
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnQuickFind(
+    const QString &a_arg
+)
+{
+    CUtils::db_fields_t fields;
+    fields.push_back( QPair<QString, QString>(_cboDbFields->currentText(), a_arg) );
+
+    CUtils::dbFilter(_tmModel, DB_T_PERSON, fields, "", "", "");
 }
 //------------------------------------------------------------------------------

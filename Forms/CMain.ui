@@ -197,6 +197,17 @@
    <addaction name="separator"/>
    <addaction name="actOptions_Settings"/>
   </widget>
+  <widget class="QToolBar" name="tbQuickFind">
+   <property name="windowTitle">
+    <string>Quick find</string>
+   </property>
+   <attribute name="toolBarArea">
+    <enum>TopToolBarArea</enum>
+   </attribute>
+   <attribute name="toolBarBreak">
+    <bool>false</bool>
+   </attribute>
+  </widget>
   <action name="actFile_Exit">
    <property name="icon">
     <iconset resource="../Resources/App.qrc">
