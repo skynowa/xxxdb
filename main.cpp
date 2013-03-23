@@ -44,7 +44,7 @@ int main(int argc, char *argv[])
         QCoreApplication::setOrganizationName(APP_ORG);
         QCoreApplication::setApplicationName(APP_NAME);
 
-        CMain wndMain;
+        CMain wndMain(NULL, 0);
         wndMain.show();
 
         iExitCode = apApplication.exec();

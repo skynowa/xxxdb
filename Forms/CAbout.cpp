@@ -14,7 +14,7 @@
 
 //------------------------------------------------------------------------------
 CAbout::CAbout(
-    QWidget *a_parent /* NULL */
+    QWidget *a_parent
 ) :
     QDialog(a_parent)
 {

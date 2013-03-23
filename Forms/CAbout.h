@@ -23,7 +23,7 @@ public:
 
     Ui::CAbout ui;
 
-    explicit   CAbout    (QWidget *parent = NULL);
+    explicit   CAbout    (QWidget *parent);
 
 private:
     void       _construct();

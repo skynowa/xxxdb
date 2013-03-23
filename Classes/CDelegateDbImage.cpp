@@ -17,7 +17,7 @@ CDelegateDbImage::CDelegateDbImage(
     QObject *a_parent,
     cint    &a_imageFieldIndex,
     cQSize  &a_size,
-    QLabel  *a_infoPanel /* = NULL */
+    QLabel  *a_infoPanel
 ) :
     QSqlRelationalDelegate(a_parent),
     _ciImageFieldIndex    (a_imageFieldIndex),
