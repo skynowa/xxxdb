@@ -134,7 +134,9 @@ CDbImageLabel::loadFromFile() {
             _loadFromFile( fdlgDialog.selectedFiles().first() );
             break;
         case QDialog::Rejected:
+            break;
         default:
+            Q_ASSERT(false);
             break;
     }
 
@@ -156,7 +158,9 @@ CDbImageLabel::saveToFile() {
             _saveToFile( fdlgDialog.selectedFiles().first() );
             break;
         case QDialog::Rejected:
+            break;
         default:
+            Q_ASSERT(false);
             break;
     }
 }
@@ -177,7 +181,9 @@ CDbImageLabel::remove() {
             _remove();
             break;
         case QMessageBox::Cancel:
+            break;
         default:
+            Q_ASSERT(false);
             break;
     }
 
