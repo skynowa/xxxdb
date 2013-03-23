@@ -409,8 +409,6 @@ CMain::_initModel() {
             ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
             ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
             ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-            // ui.tvInfo->setAlternatingRowColors(true);
-            // ui.tvInfo->setStyleSheet("alternate-background-color: white; background-color: gray;");
             ui.tvInfo->setSortingEnabled(true);
             ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
 
@@ -466,7 +464,7 @@ CMain::_initModel() {
     // slots
     {
         connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dmImage,                    &QDataWidgetMapper::setCurrentModelIndex );
+                _dmImage,                    &QDataWidgetMapper::setCurrentModelIndex);
         connect(ui.tvInfo,                   &QTableView::doubleClicked,
                 this,                        &CMain::slot_OnEdit);
         connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
@@ -584,11 +582,11 @@ CMain::slot_OnGoTo() {
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
 
-    cint ciTargetRow = QInputDialog::getInt(
-                            this,
-                            APP_NAME, tr("Go to row:"),
-                            ciCurrentRow,
-                            ciMinValue, ciMaxValue) - 1;
+    cint ciTargetRow  = QInputDialog::getInt(
+                                this,
+                                APP_NAME, tr("Go to row:"),
+                                ciCurrentRow,
+                                ciMinValue, ciMaxValue) - 1;
 
     snSqlNavigator.goTo(ciTargetRow);
 }
