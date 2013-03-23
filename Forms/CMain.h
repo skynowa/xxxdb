@@ -37,6 +37,7 @@ public:
 
 protected:
     virtual void       closeEvent       (QCloseEvent *event);
+    virtual void       keyPressEvent    (QKeyEvent *event);
 
 private:
     CSettings         *_stApp;

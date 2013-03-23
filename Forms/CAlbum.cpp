@@ -128,6 +128,23 @@ CAlbum::resizeEvent(
 //------------------------------------------------------------------------------
 /* virtual */
 void
+CAlbum::keyPressEvent(
+    QKeyEvent *a_event
+)
+{
+    switch (a_event->key()) {
+        // close on pressing escape
+        case Qt::Key_Escape:
+            slot_OnExit();
+            break;
+        default:
+            QMainWindow::keyPressEvent(a_event);
+            break;
+    }
+}
+//------------------------------------------------------------------------------
+/* virtual */
+void
 CAlbum::closeEvent(
     QCloseEvent *a_event
 )

@@ -34,6 +34,7 @@ protected:
     virtual bool    eventFilter         (QObject *obj, QEvent *event);
     virtual void    showEvent           (QShowEvent *event);
     virtual void    resizeEvent         (QResizeEvent *event);
+    virtual void    keyPressEvent       (QKeyEvent *event);
     virtual void    closeEvent          (QCloseEvent *event);
 
 private:

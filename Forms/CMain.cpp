@@ -60,6 +60,23 @@ CMain::closeEvent(
     a_event->accept();
 }
 //------------------------------------------------------------------------------
+/* virtual */
+void
+CMain::keyPressEvent(
+    QKeyEvent *a_event
+)
+{
+    switch (a_event->key()) {
+        // minimize on pressing escape
+        case Qt::Key_Escape:
+            setWindowState(Qt::WindowMinimized);
+            break;
+        default:
+            QMainWindow::keyPressEvent(a_event);
+            break;
+    }
+}
+//------------------------------------------------------------------------------
 
 /*******************************************************************************
 *   private
