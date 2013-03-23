@@ -5,7 +5,6 @@
         <file>Menu/Exit.bmp</file>
         <file>Menu/Faq.bmp</file>
         <file>Menu/First.bmp</file>
-        <file>Menu/Grid.bmp</file>
         <file>Menu/Last.bmp</file>
         <file>Menu/Mail.bmp</file>
         <file>Menu/mts.com.ua.bmp</file>
@@ -19,6 +18,7 @@
         <file>Menu/Insert.bmp</file>
         <file>Menu/GoTo.bmp</file>
         <file>Menu/SetPrimaryImage.bmp</file>
+        <file>Menu/Columns.bmp</file>
     </qresource>
     <qresource prefix="/Main">
         <file>Main/App.ico</file>

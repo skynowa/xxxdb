@@ -193,6 +193,8 @@
    <addaction name="separator"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
+   <addaction name="actView_Columns"/>
+   <addaction name="separator"/>
    <addaction name="actOptions_Settings"/>
   </widget>
   <action name="actFile_Exit">
@@ -321,7 +323,14 @@
    </property>
   </action>
   <action name="actView_Columns">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Columns.bmp</normaloff>:/Menu/Menu/Columns.bmp</iconset>
+   </property>
    <property name="text">
+    <string>Select columns...</string>
+   </property>
+   <property name="toolTip">
     <string>Select columns...</string>
    </property>
   </action>
