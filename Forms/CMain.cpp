@@ -148,6 +148,7 @@ CMain::_initMain() {
         ui.tbQuickFind->addWidget(_cboFindText);
 
         _cboDbFields = new QComboBox(this);
+        _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
         ui.tbQuickFind->addWidget(_cboDbFields);
     }
 }
