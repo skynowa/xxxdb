@@ -19,6 +19,7 @@
         <file>Menu/GoTo.bmp</file>
         <file>Menu/SetPrimaryImage.bmp</file>
         <file>Menu/Columns.bmp</file>
+        <file>Menu/TextClear.bmp</file>
     </qresource>
     <qresource prefix="/Main">
         <file>Main/App.ico</file>

@@ -511,6 +511,8 @@ CMain::_initActions() {
     {
         connect(ui.actFind_Search,      &QAction::triggered,
                 this,                   &CMain::slot_OnSearch);
+        connect(ui.actFind_TextClear,   &QAction::triggered,
+                this,                   &CMain::slot_OnTextClear);
     }
 
     // group "View"
@@ -641,6 +643,11 @@ CMain::slot_OnEdit() {
 void
 CMain::slot_OnSearch() {
 
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnTextClear() {
+    _cboFindText->lineEdit()->clear();
 }
 //------------------------------------------------------------------------------
 

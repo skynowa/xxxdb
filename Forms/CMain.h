@@ -70,6 +70,7 @@ private:
 
     // group "Find"
     void               slot_OnSearch    ();
+    void               slot_OnTextClear ();
 
     // group "View"
     void               slot_OnColumns   ();
