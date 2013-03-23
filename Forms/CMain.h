@@ -86,7 +86,7 @@ private:
     // photo
     void               slot_OnAlbum     ();
 
-    void               slot_OnQuickFind (const QString &arg);
+    void               slot_OnQuickFind (cQString &arg);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

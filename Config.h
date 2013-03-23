@@ -249,9 +249,9 @@
 struct SDbRecord
     ///< DB fields
 {
-    cint      index;    ///< index
-    cQString  field;    ///< DB field name
-    cQVariant caption;  ///< QTableView header caption
+    cint     index;    ///< index
+    cQString field;    ///< DB field name
+    cQString caption;  ///< QTableView header caption
 };
 
 typedef const SDbRecord cSDbRecord;

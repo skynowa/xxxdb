@@ -137,6 +137,7 @@ CMain::_initMain() {
 
     // quick find
     {
+        // _cboFindText
         _cboFindText = new QComboBox(this);
         _cboFindText->setEditable(true);
         _cboFindText->setFixedWidth(200);
@@ -146,8 +147,14 @@ CMain::_initMain() {
 
         ui.tbQuickFind->addWidget(_cboFindText);
 
+        // _cboDbFields
         _cboDbFields = new QComboBox(this);
         _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
+
+        for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
+            _cboDbFields->addItem(g_dbRecords[i].caption);
+        }
+
         ui.tbQuickFind->addWidget(_cboDbFields);
     }
 }
@@ -278,45 +285,40 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _tmModel, ui.tvInfo
+    // _tmModel
     {
-        //--------------------------------------------------
-        // _tmModel
-        {
-            _tmModel = new QSqlTableModel(this, _dbDatabase);
-            _tmModel->setTable(DB_T_PERSON);
+        _tmModel = new QSqlTableModel(this, _dbDatabase);
+        _tmModel->setTable(DB_T_PERSON);
 
-            // set caption for DB fields
-            Q_ASSERT(qARRAY_LENGTH(g_dbRecords) == (size_t)_tmModel->columnCount());
+        // set caption for DB fields
+        Q_ASSERT(qARRAY_LENGTH(g_dbRecords) == (size_t)_tmModel->columnCount());
 
-            for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
-                _tmModel->setHeaderData(
-                        g_dbRecords[i].index,
-                        Qt::Horizontal,
-                        g_dbRecords[i].caption);
-            }
-
-            _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-            _tmModel->select();
+        for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
+            _tmModel->setHeaderData(
+                    g_dbRecords[i].index,
+                    Qt::Horizontal,
+                    g_dbRecords[i].caption);
         }
 
-        //--------------------------------------------------
-        // ui.tvInfo
-        {
-            ui.tvInfo->setModel(_tmModel);
-            // ui.tvInfo->setColumnWidth(0, 40);
-            ui.tvInfo->verticalHeader()->setVisible(true);
-            ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
-            ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-            ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-            ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
-            ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-            ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-            ui.tvInfo->setSortingEnabled(true);
-            ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
+        _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
+        _tmModel->select();
+    }
 
-            ui.tvInfo->show();
-        }
+    //--------------------------------------------------
+    // ui.tvInfo
+    {
+        ui.tvInfo->setModel(_tmModel);
+        ui.tvInfo->verticalHeader()->setVisible(true);
+        ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
+        ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui.tvInfo->setSortingEnabled(true);
+        ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
+
+        ui.tvInfo->show();
     }
 
     //--------------------------------------------------
@@ -352,15 +354,6 @@ CMain::_initModel() {
                 _dmImage->addMapping(widget, section);
             }
         }
-    }
-
-    //--------------------------------------------------
-    // quick find
-    {
-        QStringList fields;
-        CUtils::dbFieldNames(_dbDatabase, DB_T_PERSON, &fields);
-
-        _cboDbFields->addItems(fields);
     }
 
     //--------------------------------------------------
@@ -619,12 +612,22 @@ CMain::slot_OnAlbum() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnQuickFind(
-    const QString &a_arg
+    cQString &a_arg
 )
 {
-    CUtils::db_fields_t fields;
-    fields.push_back( QPair<QString, QString>(_cboDbFields->currentText(), a_arg) );
+    // get DB field by caption
+    QString dbField;
 
-    CUtils::dbFilter(_tmModel, DB_T_PERSON, fields, "", "", "");
+    for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
+        qCHECK_DO(_cboDbFields->currentText() != g_dbRecords[i].caption, continue);
+
+        dbField = g_dbRecords[i].field;
+    }
+
+    // filter
+    CUtils::db_fields_t dbFields;
+    dbFields.push_back( QPair<QString, QString>(dbField, a_arg) );
+
+    CUtils::dbFilter(_tmModel, DB_T_PERSON, dbFields, "", "", "");
 }
 //------------------------------------------------------------------------------

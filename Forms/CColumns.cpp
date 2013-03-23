@@ -60,7 +60,7 @@ CColumns::_initMain() {
 
             QListWidgetItem *item = new QListWidgetItem(ui.lwItems);
             item->setCheckState( isVisible ? Qt::Checked : Qt::Unchecked);
-            item->setText( g_dbRecords[i].caption.toString() );
+            item->setText(g_dbRecords[i].caption);
 
             ui.lwItems->addItem(item);
         }
