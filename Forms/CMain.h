@@ -87,6 +87,7 @@ private:
     void               slot_OnAlbum     ();
 
     void               slot_OnQuickFind (cQString &arg);
+    void               slot_OnDbFieldChange(cQString &arg);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

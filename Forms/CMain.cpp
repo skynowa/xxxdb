@@ -155,6 +155,9 @@ CMain::_initMain() {
             _cboDbFields->addItem(g_dbRecords[i].caption);
         }
 
+        connect(_cboDbFields, &QComboBox::currentTextChanged,
+                this,         &CMain::slot_OnDbFieldChange);
+
         ui.tbQuickFind->addWidget(_cboDbFields);
     }
 }
@@ -629,5 +632,15 @@ CMain::slot_OnQuickFind(
     dbFields.push_back( QPair<QString, QString>(dbField, a_arg) );
 
     CUtils::dbFilter(_tmModel, DB_T_PERSON, dbFields, "", "", "");
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnDbFieldChange(
+    cQString &a_arg
+)
+{
+    Q_UNUSED(a_arg);
+
+    emit _cboFindText->currentTextChanged( _cboFindText->currentText() );
 }
 //------------------------------------------------------------------------------
