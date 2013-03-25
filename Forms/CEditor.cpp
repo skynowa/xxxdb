@@ -303,6 +303,7 @@ CEditor::_resetAll() {
     {
         Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
             QWidget *widget = key;
+            widget->setFocus();
 
             QComboBox *comboBox = dynamic_cast<QComboBox *>( widget );
             if (NULL != comboBox) {
