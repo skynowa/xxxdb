@@ -304,13 +304,13 @@ CEditor::_resetAll() {
         Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
             QWidget *widget = key;
 
-            QLineEdit *lineEdit = dynamic_cast<QLineEdit *>( widget );
-            if (NULL != lineEdit) {
-                lineEdit->clear();
+            QComboBox *comboBox = dynamic_cast<QComboBox *>( widget );
+            if (NULL != comboBox) {
+                comboBox->lineEdit()->clear();
                 continue;
             }
 
-            QTextEdit *textEdit = dynamic_cast<QTextEdit *>( widget );
+            QPlainTextEdit *textEdit = dynamic_cast<QPlainTextEdit *>( widget );
             if (NULL != textEdit) {
                 textEdit->clear();
                 continue;
@@ -318,7 +318,7 @@ CEditor::_resetAll() {
 
             QDateTimeEdit *dateTimeEdit = dynamic_cast<QDateTimeEdit *>( widget );
             if (NULL != dateTimeEdit) {
-                dateTimeEdit->clear();
+                dateTimeEdit->setDate(QDate(2000, 1, 1));
                 continue;
             }
 
