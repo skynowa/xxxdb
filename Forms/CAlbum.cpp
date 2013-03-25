@@ -62,13 +62,13 @@ CAlbum::eventFilter(
             QLabel *label = static_cast<QLabel *>( a_obj );
             if (ui.lblPhoto == label) {
                 // ui.lblPhoto
-                emit signal_photo_clicked();
+                Q_EMIT signal_photo_clicked();
             } else {
                 // other QLabels
                 QLabel   *lblPhotoMini  = label;
                 cQString  csDbFieldName = CDbImageLabel::find(_viDbItems, lblPhotoMini)->dbFieldName();
 
-                emit signal_photoMini_clicked(lblPhotoMini, csDbFieldName);
+                Q_EMIT signal_photoMini_clicked(lblPhotoMini, csDbFieldName);
             }
 
             return true;
@@ -446,7 +446,7 @@ CAlbum::slot_photoMini_OnClicked(
     // lblPhotoMini
     {
         // set border
-        foreach (CDbImageLabel *i, _viDbItems) {
+        Q_FOREACH (CDbImageLabel *i, _viDbItems) {
             if (a_label == i->label()) {
                 // set current indexes
                 CDbImageLabel::currentIndex        = i->index();

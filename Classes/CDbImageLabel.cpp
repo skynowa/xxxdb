@@ -140,7 +140,7 @@ CDbImageLabel::loadFromFile() {
             break;
     }
 
-    emit signal_DataChanged( index() );
+    Q_EMIT signal_DataChanged( index() );
 }
 //------------------------------------------------------------------------------
 void
@@ -187,7 +187,7 @@ CDbImageLabel::remove() {
             break;
     }
 
-    emit signal_DataChanged( index() );
+    Q_EMIT signal_DataChanged( index() );
 }
 //------------------------------------------------------------------------------
 
@@ -211,7 +211,7 @@ CDbImageLabel::find(
     Q_ASSERT(!a_dbItems.empty());
     Q_ASSERT(NULL != a_label);
 
-    foreach (CDbImageLabel *item, a_dbItems) {
+    Q_FOREACH (CDbImageLabel *item, a_dbItems) {
         qCHECK_RET(a_label == item->label(), item);
     }
 
@@ -228,7 +228,7 @@ CDbImageLabel::find(
     Q_ASSERT(!a_dbItems.empty());
     Q_ASSERT(- 1 < a_index);
 
-    foreach (CDbImageLabel *item, a_dbItems) {
+    Q_FOREACH (CDbImageLabel *item, a_dbItems) {
         qCHECK_RET(a_index == item->index(), item);
     }
 
@@ -243,7 +243,7 @@ CDbImageLabel::isEmpty(
 {
     // a_dbItems - n/a
 
-    foreach (CDbImageLabel *item, a_dbItems) {
+    Q_FOREACH (CDbImageLabel *item, a_dbItems) {
         qCHECK_RET(!item->isEmpty(), false);
     }
 

@@ -641,6 +641,6 @@ CMain::slot_OnDbFieldChange(
 {
     Q_UNUSED(a_arg);
 
-    emit _cboFindText->currentTextChanged( _cboFindText->currentText() );
+    Q_EMIT _cboFindText->currentTextChanged( _cboFindText->currentText() );
 }
 //------------------------------------------------------------------------------

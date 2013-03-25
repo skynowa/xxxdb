@@ -176,7 +176,7 @@ CEditor::_initMain() {
             _dmText->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
             // map
-            foreach (QWidget *key, _hsDbItems.keys()) {
+            Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
                 QWidget *widget  = key;
                 cint     section = _tmModel->fieldIndex(_hsDbItems.value(key));
 
