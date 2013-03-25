@@ -19,37 +19,37 @@ class CSettings
     /// application settings
 {
 public:
-             CSettings   (CMain *, CEditor *, CAlbum *);
+              CSettings   (CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
         ///< constructor
-    virtual ~CSettings   ();
+    virtual  ~CSettings   ();
         ///< destructor
 
 private:
     QSettings _stApp;
-    CMain   *_wndMain;
-    CEditor *_wndEditor;
-    CAlbum  *_wndAlbum;
+    CMain    *_wndMain;
+    CEditor  *_wndEditor;
+    CAlbum   *_wndAlbum;
 
     template <typename T>
-    void     _commonRead (T *);
+    void      _commonRead (T *wnd);
         ///< read data
     template <typename T>
-    void     _commonWrite(T *);
+    void      _commonWrite(T *wnd);
         ///< write data
 
-    void     _read       (CMain *);
+    void      _read       (CMain *wnd);
         ///< read data
-    void     _write      (CMain *);
+    void      _write      (CMain *wnd);
         ///< write data
 
-    void     _read       (CEditor *);
+    void      _read       (CEditor *wnd);
         ///< read data
-    void     _write      (CEditor *);
+    void      _write      (CEditor *wnd);
         ///< write data
 
-    void     _read       (CAlbum *);
+    void      _read       (CAlbum *wnd);
         ///< read data
-    void     _write      (CAlbum *);
+    void      _write      (CAlbum *wnd);
         ///< write data
 };
 //------------------------------------------------------------------------------
