@@ -344,18 +344,11 @@ CMain::_initModel() {
         }
 
         // map DB items
-        {
-            cdb_items_t::ConstIterator cit;
+        Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
+            QWidget *widget  = key;
+            cint     section = _tmModel->fieldIndex(_hsDbItems.value(key));
 
-            for (cit  = _hsDbItems.constBegin();
-                 cit != _hsDbItems.constEnd();
-                 ++ cit)
-            {
-                QWidget *widget  = cit.key();
-                cint     section = _tmModel->fieldIndex( cit.value() );
-
-                _dmImage->addMapping(widget, section);
-            }
+            _dmImage->addMapping(widget, section);
         }
     }
 

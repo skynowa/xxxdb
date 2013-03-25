@@ -92,6 +92,8 @@ CEditor::_initMain() {
     {
         // DB items to QHash
         {
+            Q_ASSERT(_hsDbItems.isEmpty());
+
             // Main
             _hsDbItems.insert(ui.cboNick,          DB_F_MAIN_NICK);
             _hsDbItems.insert(ui.cboSurname,       DB_F_MAIN_SURNAME);
@@ -299,10 +301,8 @@ CEditor::_resetAll() {
 
     // reset data
     {
-        db_items_t::Iterator it;
-
-        for (it = _hsDbItems.begin(); it != _hsDbItems.end(); ++ it) {
-            QWidget *widget = it.key();
+        Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
+            QWidget *widget = key;
 
             QLineEdit *lineEdit = dynamic_cast<QLineEdit *>( widget );
             if (NULL != lineEdit) {

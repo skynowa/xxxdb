@@ -215,6 +215,8 @@ CAlbum::_initMain() {
             DB_F_PHOTOS_10
         };
 
+        Q_ASSERT(qARRAY_LENGTH(photoMinis) == qARRAY_LENGTH(dbFieldNames));
+
         // fill _viDbItems
         _viDbItems.reserve(ciPhotoNum);
 
