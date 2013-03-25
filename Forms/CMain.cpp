@@ -134,7 +134,7 @@ CMain::_initMain() {
 
     // lblPhoto
     {
-        ui.lblPhoto->setFixedSize(PHOTO_WIDTH, PHOTO_HEIGHT);
+        ui.lblPhoto->setFixedSize(PHOTO_SIZE);
         ui.lblPhoto->setBackgroundRole(QPalette::Base);
     }
 
@@ -143,7 +143,7 @@ CMain::_initMain() {
         // _cboFindText
         _cboFindText = new QComboBox(this);
         _cboFindText->setEditable(true);
-        _cboFindText->setFixedWidth(200);
+        _cboFindText->setFixedWidth(FIND_TEXT_WIDTH);
 
         connect(_cboFindText, &QComboBox::currentTextChanged,
                 this,         &CMain::slot_OnQuickFind);
@@ -192,52 +192,52 @@ CMain::_initModel() {
                                                  " NOT NULL UNIQUE, "
 
                 // Main
-                "    " DB_F_MAIN_NICK            " VARCHAR (64), "
-                "    " DB_F_MAIN_SURNAME         " VARCHAR (64), "
-                "    " DB_F_MAIN_NAME            " VARCHAR (64), "
-                "    " DB_F_MAIN_PATRONYMIC      " VARCHAR (64), "
+                "    " DB_F_MAIN_NICK            " VARCHAR(64), "
+                "    " DB_F_MAIN_SURNAME         " VARCHAR(64), "
+                "    " DB_F_MAIN_NAME            " VARCHAR(64), "
+                "    " DB_F_MAIN_PATRONYMIC      " VARCHAR(64), "
                 "    " DB_F_MAIN_AGE             " INT, "
                 "    " DB_F_MAIN_HEIGHT          " INT, "
                 "    " DB_F_MAIN_WEIGHT          " INT, "
-                "    " DB_F_MAIN_HAIRLENGTH      " VARCHAR (64), "
-                "    " DB_F_MAIN_HAIRCOLOR       " VARCHAR (64), "
-                "    " DB_F_MAIN_APPEARANCE      " VARCHAR (64), "
-                "    " DB_F_MAIN_STATUS          " VARCHAR (64), "
+                "    " DB_F_MAIN_HAIRLENGTH      " VARCHAR(64), "
+                "    " DB_F_MAIN_HAIRCOLOR       " VARCHAR(64), "
+                "    " DB_F_MAIN_APPEARANCE      " VARCHAR(64), "
+                "    " DB_F_MAIN_STATUS          " VARCHAR(64), "
 
                 // Phones
-                "    " DB_F_PHONES_MOBILE1       " VARCHAR (64), "
-                "    " DB_F_PHONES_MOBILE2       " VARCHAR (64), "
-                "    " DB_F_PHONES_MOBILE3       " VARCHAR (64), "
-                "    " DB_F_PHONES_HOME          " VARCHAR (64), "
-                "    " DB_F_PHONES_JOB           " VARCHAR (64), "
-                "    " DB_F_PHONES_OTHER         " VARCHAR (256), "
+                "    " DB_F_PHONES_MOBILE1       " VARCHAR(64), "
+                "    " DB_F_PHONES_MOBILE2       " VARCHAR(64), "
+                "    " DB_F_PHONES_MOBILE3       " VARCHAR(64), "
+                "    " DB_F_PHONES_HOME          " VARCHAR(64), "
+                "    " DB_F_PHONES_JOB           " VARCHAR(64), "
+                "    " DB_F_PHONES_OTHER         " VARCHAR(256), "
 
                 // Address
-                "    " DB_F_ADDRESS_COUNTRY      " VARCHAR (64), "
-                "    " DB_F_ADDRESS_CODE         " VARCHAR (64), "
-                "    " DB_F_ADDRESS_CITY         " VARCHAR (64), "
-                "    " DB_F_ADDRESS_DISTRICT     " VARCHAR (64), "
-                "    " DB_F_ADDRESS_STREET       " VARCHAR (64), "
-                "    " DB_F_ADDRESS_HOUSE        " VARCHAR (64), "
-                "    " DB_F_ADDRESS_PORCH        " VARCHAR (64), "
-                "    " DB_F_ADDRESS_FLOOR        " VARCHAR (64), "
-                "    " DB_F_ADDRESS_APARTMENT    " VARCHAR (64), "
+                "    " DB_F_ADDRESS_COUNTRY      " VARCHAR(64), "
+                "    " DB_F_ADDRESS_CODE         " VARCHAR(64), "
+                "    " DB_F_ADDRESS_CITY         " VARCHAR(64), "
+                "    " DB_F_ADDRESS_DISTRICT     " VARCHAR(64), "
+                "    " DB_F_ADDRESS_STREET       " VARCHAR(64), "
+                "    " DB_F_ADDRESS_HOUSE        " VARCHAR(64), "
+                "    " DB_F_ADDRESS_PORCH        " VARCHAR(64), "
+                "    " DB_F_ADDRESS_FLOOR        " VARCHAR(64), "
+                "    " DB_F_ADDRESS_APARTMENT    " VARCHAR(64), "
 
                 // E-mail
-                "    " DB_F_EMAIL_EMAIL          " VARCHAR (256), "
+                "    " DB_F_EMAIL_EMAIL          " VARCHAR(256), "
 
                 // Web
-                "    " DB_F_WEB_WEB              " VARCHAR (256), "
+                "    " DB_F_WEB_WEB              " VARCHAR(256), "
 
                 // Messengers
-                "    " DB_F_MESSENGERS_ICQ       " VARCHAR (64), "
-                "    " DB_F_MESSENGERS_SKYPE     " VARCHAR (64), "
+                "    " DB_F_MESSENGERS_ICQ       " VARCHAR(64), "
+                "    " DB_F_MESSENGERS_SKYPE     " VARCHAR(64), "
 
                 // Job
-                "    " DB_F_JOB_PROFESSION       " VARCHAR (64), "
-                "    " DB_F_JOB_ADDRESS          " VARCHAR (64), "
-                "    " DB_F_JOB_SALARY           " VARCHAR (64), "
-                "    " DB_F_JOB_COMPANY          " VARCHAR (64), "
+                "    " DB_F_JOB_PROFESSION       " VARCHAR(64), "
+                "    " DB_F_JOB_ADDRESS          " VARCHAR(64), "
+                "    " DB_F_JOB_SALARY           " VARCHAR(64), "
+                "    " DB_F_JOB_COMPANY          " VARCHAR(64), "
 
                 // Dates
                 "    " DB_F_DATES_BIRTHDAY       " DATETIME, "
@@ -248,11 +248,11 @@ CMain::_initModel() {
                 "    " DB_F_DATES_DAYFIRSTSEX    " DATETIME, "
 
                 // Interests
-                "    " DB_F_INTERESTS_HOBBY      " VARCHAR (64), "
-                "    " DB_F_INTERESTS_SPORTS     " VARCHAR (64), "
-                "    " DB_F_INTERESTS_SMOKING    " VARCHAR (64), "
-                "    " DB_F_INTERESTS_ALCOHOL    " VARCHAR (64), "
-                "    " DB_F_INTERESTS_DRUGS      " VARCHAR (64), "
+                "    " DB_F_INTERESTS_HOBBY      " VARCHAR(64), "
+                "    " DB_F_INTERESTS_SPORTS     " VARCHAR(64), "
+                "    " DB_F_INTERESTS_SMOKING    " VARCHAR(64), "
+                "    " DB_F_INTERESTS_ALCOHOL    " VARCHAR(64), "
+                "    " DB_F_INTERESTS_DRUGS      " VARCHAR(64), "
 
                 // TODO: Periods
 
@@ -261,7 +261,7 @@ CMain::_initModel() {
                 "    " DB_F_ETC_DATELASTCHANGE   " DATETIME, "
 
                 // Notes
-                "    " DB_F_NOTES_NOTES          " VARCHAR (256), "
+                "    " DB_F_NOTES_NOTES          " VARCHAR(256), "
 
                 // Photos
                 "    " DB_F_PHOTOS_1             " BLOB, "

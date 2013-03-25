@@ -44,6 +44,7 @@
 #define INI_FILE_PATH               (QCoreApplication::applicationFilePath() + INI_FILE_EXT)
 #define TABLEVIEW_ROW_HEIGHT        20
 #define TEXT_NO_PHOTO               tr("No photo")
+#define FIND_TEXT_WIDTH             180
 
 // DB tables, fields
 #define DB_DIR_NAME                 "Db"
