@@ -28,6 +28,7 @@ public:
     QString            sAppName;
     QString            sAppDir;
     QString            sDbDir;
+    QString            sDbFile;
     QString            sDbBackupDir;
     CSqlNavigator      snSqlNavigator;
     CAlbum            *wndAlbum;

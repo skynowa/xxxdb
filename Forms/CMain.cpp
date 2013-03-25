@@ -29,6 +29,7 @@ CMain::CMain(
     sAppName      (),
     sAppDir       (),
     sDbDir        (),
+    sDbFile       (),
     sDbBackupDir  (),
     snSqlNavigator(this),
     wndAlbum      (NULL),
@@ -108,9 +109,11 @@ CMain::_initMain() {
         sAppName     = QCoreApplication::applicationName();
         sAppDir      = qApp->applicationDirPath();
         sDbDir       = sAppDir + QDir::separator() + DB_DIR_NAME;
+        sDbFile      = sDbDir  + QDir::separator() + sAppName + DB_FILE_EXT;
         sDbBackupDir = sDbDir  + QDir::separator() + BACKUP_DIR_NAME;
 
         QDir().mkpath(sDbDir);
+        QDir().mkpath(sDbBackupDir);
     }
 
     // main
@@ -171,10 +174,7 @@ CMain::_initModel() {
         qCHECK_DO(!bRv, qMSG(QSqlDatabase().lastError().text()); return);
 
         _dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
-        _dbDatabase.setDatabaseName(
-                        sDbDir + QDir::separator() +
-                        sAppName +
-                        DB_FILE_EXT);
+        _dbDatabase.setDatabaseName(sDbFile);
 
         bRv = _dbDatabase.open();
         qCHECK_REF(bRv, _dbDatabase);
