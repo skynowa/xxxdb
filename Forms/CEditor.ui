@@ -438,6 +438,19 @@
         <string>Status:</string>
        </property>
       </widget>
+      <widget class="QLabel" name="lblPhotoInfo">
+       <property name="geometry">
+        <rect>
+         <x>228</x>
+         <y>240</y>
+         <width>225</width>
+         <height>16</height>
+        </rect>
+       </property>
+       <property name="text">
+        <string> - </string>
+       </property>
+      </widget>
      </widget>
      <widget class="QWidget" name="tabwGroupsDetailPage2">
       <widget class="QLabel" name="label_12">

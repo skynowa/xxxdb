@@ -334,7 +334,7 @@ CMain::_initModel() {
                                 _dmImage,
                                 _tmModel->fieldIndex(DB_F_PHOTOS_1),
                                 PHOTO_SIZE,
-                                ui.lblPhotoSize));
+                                ui.lblPhotoInfo));
         _dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
         // DB items to QHash

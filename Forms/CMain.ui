@@ -46,7 +46,7 @@
               <height>40</height>
              </size>
             </property>
-            <widget class="QLabel" name="lblPhotoSize">
+            <widget class="QLabel" name="lblPhotoInfo">
              <property name="geometry">
               <rect>
                <x>12</x>

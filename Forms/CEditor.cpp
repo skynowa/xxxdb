@@ -212,7 +212,8 @@ CEditor::_initMain() {
         // TODO: 0
         _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
                                           0, _ciDbRecordIndex,
-                                          ui.lblPhoto, PHOTO_SIZE);
+                                          ui.lblPhoto, PHOTO_SIZE,
+                                          ui.lblPhotoInfo);
     }
 
     // signals

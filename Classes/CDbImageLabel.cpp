@@ -21,7 +21,8 @@ CDbImageLabel::CDbImageLabel(
     cint           &a_index,            ///< index
     cint           &a_dbRecordIndex,    ///< DB record index
     QLabel         *a_label,            ///< QLabel for display image
-    cQSize         &a_size              ///< image sizes
+    cQSize         &a_size,             ///< image sizes
+    QLabel         *a_info              ///< QLabel for display image
 ) :
     QObject         (a_parent),
     _wdParent       (a_parent),
@@ -31,6 +32,7 @@ CDbImageLabel::CDbImageLabel(
     _ciDbRecordIndex(a_dbRecordIndex),
     _lblLabel       (a_label),
     _cszSize        (a_size),
+    _lblInfo        (a_info),
     _dmMapper       (NULL),
     _baBuffer       ()
 {
@@ -40,6 +42,8 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(- 1 < a_index);
     Q_ASSERT(- 1 < a_dbRecordIndex);
     Q_ASSERT(NULL != a_label);
+    Q_ASSERT(a_size.isValid());
+    // a_info - n/a
 
     _dmMapper = _map();
 }
@@ -89,6 +93,13 @@ CDbImageLabel::size() const {
     Q_ASSERT(_cszSize.isValid());
 
     return _cszSize;
+}
+//------------------------------------------------------------------------------
+QLabel *
+CDbImageLabel::info() const {
+    Q_ASSERT(NULL != _lblInfo);
+
+    return _lblInfo;
 }
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
@@ -266,7 +277,7 @@ CDbImageLabel::_map() {
                                 wmRv,
                                 _tmModel->fieldIndex( dbFieldName() ),
                                 size(),
-                                NULL));
+                                _lblInfo));
     wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
     wmRv->addMapping(label(), _tmModel->fieldIndex( dbFieldName() ));
     wmRv->setCurrentIndex( dbRecordIndex() );

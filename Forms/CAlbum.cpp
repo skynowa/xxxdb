@@ -227,7 +227,8 @@ CAlbum::_initMain() {
                                         dbFieldNames[i],
                                         i,
                                         _ciDbRecordIndex,
-                                        photoMinis[i], PHOTO_MINI_SIZE);
+                                        photoMinis[i], PHOTO_MINI_SIZE,
+                                        NULL);
 
             photoMinis[i]->installEventFilter(this);
 

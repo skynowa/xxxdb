@@ -25,8 +25,9 @@ Q_OBJECT
 public:
                           CDbImageLabel(QWidget *parent, QSqlTableModel *tableModel,
                                         cQString &dbFieldName, cint &index,
-                                        cint &dbRecordIndex, QLabel *label,
-                                        cQSize &size);
+                                        cint &dbRecordIndex,
+                                        QLabel *label, cQSize &size,
+                                        QLabel *info);
         ///< constructor
     virtual              ~CDbImageLabel();
         ///< destructor
@@ -42,6 +43,8 @@ public:
         ///< get QLabel
     cQSize &              size         () const;
         ///< get image sizes
+    QLabel *              info         () const;
+        ///< get info QLabel
     QDataWidgetMapper    *mapper       ();
         ///< get data widget mapper
 
@@ -77,6 +80,7 @@ private:
     cint                  _ciDbRecordIndex; ///< DB record index
     QLabel               *_lblLabel;        ///< QLabel for display image
     cQSize                _cszSize;         ///< image sizes
+    QLabel               *_lblInfo;         ///< QLabel for display image info
     QDataWidgetMapper    *_dmMapper;        ///< data widget mapper
     QByteArray            _baBuffer;        ///< buffer for store image
 
