@@ -31,7 +31,7 @@ int main(int argc, char *argv[])
     // activation application window
     CUtils::applicationActivate(APP_WINDOW_CLASS, APP_NAME);
 
-    // set application single inststance
+    // set application single instance
     {
         bool bRv = CUtils::setApplicationSingle(APP_GUID);
         qCHECK_RET(!bRv, EXIT_SUCCESS);
@@ -39,15 +39,15 @@ int main(int argc, char *argv[])
 
     // start application
     {
-        QApplication apApplication(argc, argv);
+        QApplication apApp(argc, argv);
 
-        QCoreApplication::setOrganizationName(APP_ORG);
-        QCoreApplication::setApplicationName(APP_NAME);
+        apApp.setOrganizationName(APP_ORG);
+        apApp.setApplicationName(APP_NAME);
 
         CMain wndMain(NULL, 0);
         wndMain.show();
 
-        iExitCode = apApplication.exec();
+        iExitCode = apApp.exec();
     }
 
     return iExitCode;
