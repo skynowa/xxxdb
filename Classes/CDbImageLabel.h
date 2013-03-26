@@ -42,7 +42,7 @@ public:
         ///< get QLabel
     cQSize &              size         () const;
         ///< get image sizes
-    QDataWidgetMapper    *map          ();
+    QDataWidgetMapper    *mapper       ();
         ///< get data widget mapper
 
     // actions

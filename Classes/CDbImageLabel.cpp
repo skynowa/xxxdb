@@ -92,7 +92,7 @@ CDbImageLabel::size() const {
 }
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
-CDbImageLabel::map() {
+CDbImageLabel::mapper() {
     Q_ASSERT(NULL != _dmMapper);
 
     return _dmMapper;
