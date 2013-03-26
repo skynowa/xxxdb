@@ -35,13 +35,12 @@ protected:
     virtual void       closeEvent  (QCloseEvent *event);
 
 private:
+    cint               _ciDbRecordIndex;
     CSettings         *_stApp;
     QSqlTableModel    *_tmModel;
     CSqlNavigator     *_snSqlNavigator;
     db_items_t         _hsDbItems;
     QDataWidgetMapper *_dmText;           ///< one mapper for all text items
-    QDataWidgetMapper *_dmImage;          ///< mapper for image item
-    cint               _ciDbRecordIndex;
     CDbImageLabel     *_dbImageLabel;
 
     void               _construct  ();

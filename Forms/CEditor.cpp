@@ -26,13 +26,12 @@ CEditor::CEditor(
 ) :
     QDialog         (a_parent),
     wndAlbum        (NULL),
+    _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _stApp          (NULL),
     _tmModel        (a_tableModel),
     _snSqlNavigator (a_sqlNavigator),
     _hsDbItems      (),
     _dmText         (NULL),
-    _dmImage        (NULL),
-    _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _dbImageLabel   ()
 {
     Q_ASSERT(NULL != a_parent);
@@ -188,26 +187,12 @@ CEditor::_initMain() {
             _dmText->setCurrentIndex(_ciDbRecordIndex);
         }
 
-        // _dmImage
-        {
-            _dmImage = new QDataWidgetMapper(this);
-            _dmImage->setModel(_tmModel);
-            _dmImage->setItemDelegate(new CDelegateDbImage(
-                                                _dmImage,
-                                                _tmModel->fieldIndex(DB_F_PHOTOS_1),
-                                                PHOTO_SIZE,
-                                                NULL));
-            _dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-            _dmImage->addMapping(ui.lblPhoto, _tmModel->fieldIndex(DB_F_PHOTOS_1));
-            _dmImage->setCurrentIndex(_ciDbRecordIndex);
-        }
-
         // set default control
         ui.cboNick->setFocus();
         ui.cboNick->lineEdit()->selectAll();
     }
 
-    // _m_dbImage
+    // _dbImageLabel
     {
         // TODO: 0
         _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
@@ -339,7 +324,7 @@ void
 CEditor::_saveAll() {
     // set current index
     _dmText->setCurrentIndex(_ciDbRecordIndex);
-    _dmImage->setCurrentIndex(_ciDbRecordIndex);
+    _dbImageLabel->mapper()->setCurrentIndex(_ciDbRecordIndex);
 
     // set current index
     _snSqlNavigator->goTo(_ciDbRecordIndex);
