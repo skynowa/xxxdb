@@ -48,15 +48,15 @@ win32 {
     RC_FILE     = Resources/App_win.rc
 }
 
-OUT_DIR         =
-
 CONFIG(debug, debug | release) {
-    OUT_DIR    = ./Build/Debug
+    DISTR_DIR   = ./Distr/Debug
+    OUT_DIR     = ./Build/Debug
 } else {
-    OUT_DIR    = ./Build/Release
+    DISTR_DIR   = ./Distr/Release
+    OUT_DIR     = ./Build/Release
 }
 
-DESTDIR         = "$$OUT_DIR/Distr"
+DESTDIR         = "$$DISTR_DIR"
 MOC_DIR         = "$$OUT_DIR/Temp"
 OBJECTS_DIR     = "$$OUT_DIR/Temp"
 RCC_DIR         = "$$OUT_DIR/Temp"
