@@ -37,7 +37,7 @@ CMain::CMain(
     _dbDatabase   (),
     _tmModel      (NULL),
     _hsDbItems    (),
-    _dmImage      (NULL),
+    _dbImageLabel (NULL),
     _cboFindText  (NULL),
     _cboDbFields  (NULL)
 {
@@ -325,49 +325,32 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // _dmImage
+    // snSqlNavigator
     {
-        _dmImage = new QDataWidgetMapper(this);
-        _dmImage->setModel(_tmModel);
-        _dmImage->setItemDelegate(
-                        new CDelegateDbImage(
-                                _dmImage,
-                                _tmModel->fieldIndex(DB_F_PHOTOS_1),
-                                PHOTO_SIZE,
-                                ui.lblPhotoInfo));
-        _dmImage->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
+        snSqlNavigator.construct(_tmModel, ui.tvInfo);
+        snSqlNavigator.last();
+    }
 
-        // DB items to QHash
-        {
-             // Photos
-            _hsDbItems.insert(ui.lblPhoto, DB_F_PHOTOS_1);
-        }
+    //--------------------------------------------------
+    // _dbImageLabel
+    {
+        cint ciDbRecordIndex = snSqlNavigator.view()->currentIndex().row();
 
-        // map DB items
-        Q_FOREACH (QWidget *key, _hsDbItems.keys()) {
-            QWidget *widget  = key;
-            cint     section = _tmModel->fieldIndex(_hsDbItems.value(key));
-
-            _dmImage->addMapping(widget, section);
-        }
+        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
+                                          0, ciDbRecordIndex,
+                                          ui.lblPhoto, PHOTO_SIZE,
+                                          ui.lblPhotoInfo);
     }
 
     //--------------------------------------------------
     // slots
     {
         connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dmImage,                    &QDataWidgetMapper::setCurrentModelIndex);
+                _dbImageLabel->mapper(),     &QDataWidgetMapper::setCurrentModelIndex);
         connect(ui.tvInfo,                   &QTableView::doubleClicked,
                 this,                        &CMain::slot_OnEdit);
         connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
                 this,                        &CMain::slot_OnAlbum);
-    }
-
-    //--------------------------------------------------
-    // snSqlNavigator
-    {
-        snSqlNavigator.construct(_tmModel, ui.tvInfo);
-        snSqlNavigator.last();
     }
 }
 //------------------------------------------------------------------------------

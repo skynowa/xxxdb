@@ -15,6 +15,7 @@
 //------------------------------------------------------------------------------
 class CSettings;
 class CAlbum;
+class CDbImageLabel;
 
 class CMain :
     public QMainWindow
@@ -44,7 +45,7 @@ private:
     QSqlDatabase       _dbDatabase;
     QSqlTableModel    *_tmModel;
     db_items_t         _hsDbItems;
-    QDataWidgetMapper *_dmImage;
+    CDbImageLabel     *_dbImageLabel;
 
     QComboBox         *_cboFindText;
     QComboBox         *_cboDbFields;
