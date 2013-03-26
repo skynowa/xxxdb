@@ -33,14 +33,14 @@ SOURCES         = main.cpp \
                   Forms/CMain.cpp \
                   Forms/CEditor.cpp \
                   Forms/CAlbum.cpp \
-                  Forms/CAbout.cpp \
-                  Forms/CColumns.cpp
+                  Forms/CColumns.cpp \
+                  Forms/CAbout.cpp
 
 FORMS           = Forms/CMain.ui \
                   Forms/CEditor.ui \
                   Forms/CAlbum.ui \
-                  Forms/CAbout.ui \
-                  Forms/CColumns.ui
+                  Forms/CColumns.ui \
+                  Forms/CAbout.ui
 
 RESOURCES       = Resources/App.qrc
 
