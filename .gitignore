@@ -15,5 +15,6 @@ Makefile*
 *.pdb
 *.jpg
 *.png
+*.aps
 object_script.XXXDb.Debug
 object_script.XXXDb.Release

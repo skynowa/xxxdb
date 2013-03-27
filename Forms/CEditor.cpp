@@ -37,7 +37,7 @@ CEditor::CEditor(
     Q_ASSERT(NULL != a_parent);
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(NULL != a_sqlNavigator);
-    Q_ASSERT(- 1  <  _ciDbRecordIndex);
+    // _ciDbRecordIndex - n/a
 
     _construct();
 

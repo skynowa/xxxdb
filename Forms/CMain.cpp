@@ -455,6 +455,8 @@ CMain::slot_OnLast() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnGoTo() {
+    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+
     cint ciCurrentRow = snSqlNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
@@ -482,6 +484,8 @@ CMain::slot_OnInsert() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnRemove() {
+    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+
     QMessageBox msgBox;
 
     msgBox.setIcon(QMessageBox::Warning);
@@ -503,6 +507,8 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
+    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+
     CEditor dlgEditor(this, _tmModel, &snSqlNavigator);
 
     (int)dlgEditor.exec();
@@ -584,6 +590,8 @@ CMain::slot_OnAbout() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnAlbum() {
+    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+
     qPTR_DELETE(wndAlbum);
 
     wndAlbum = new CAlbum(this, _tmModel, &snSqlNavigator);
