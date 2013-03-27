@@ -40,7 +40,7 @@ CDbImageLabel::CDbImageLabel(
     Q_ASSERT(NULL != a_tableModel);
     Q_ASSERT(!a_dbFieldName.isEmpty());
     Q_ASSERT(- 1 < a_index);
-    Q_ASSERT(- 1 < a_dbRecordIndex);
+    // a_dbRecordIndex - n/a
     Q_ASSERT(NULL != a_label);
     Q_ASSERT(a_size.isValid());
     // a_info - n/a
@@ -76,7 +76,7 @@ CDbImageLabel::index() const {
 //------------------------------------------------------------------------------
 cint &
 CDbImageLabel::dbRecordIndex() const {
-    Q_ASSERT(- 1 < _ciDbRecordIndex);
+    // _ciDbRecordIndex - n/a;
 
     return _ciDbRecordIndex;
 }
