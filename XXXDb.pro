@@ -9,7 +9,7 @@
 TARGET          = XXXDb
 TEMPLATE        = app
 QT              = core gui widgets sql network xml
-CONFIG         += warn_on no_keywords
+CONFIG         += console warn_on no_keywords
 
 HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
