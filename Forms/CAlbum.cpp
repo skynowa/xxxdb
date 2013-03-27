@@ -199,7 +199,12 @@ CAlbum::_initMain() {
             ui.lblPhotoMini_7,
             ui.lblPhotoMini_8,
             ui.lblPhotoMini_9,
-            ui.lblPhotoMini_10
+            ui.lblPhotoMini_10,
+            ui.lblPhotoMini_11,
+            ui.lblPhotoMini_12,
+            ui.lblPhotoMini_13,
+            ui.lblPhotoMini_14,
+            ui.lblPhotoMini_15
         };
 
         cQString dbFieldNames[ciPhotoNum] = {
@@ -212,7 +217,12 @@ CAlbum::_initMain() {
             DB_F_PHOTOS_7,
             DB_F_PHOTOS_8,
             DB_F_PHOTOS_9,
-            DB_F_PHOTOS_10
+            DB_F_PHOTOS_10,
+            DB_F_PHOTOS_11,
+            DB_F_PHOTOS_12,
+            DB_F_PHOTOS_13,
+            DB_F_PHOTOS_14,
+            DB_F_PHOTOS_15
         };
 
         Q_ASSERT(qARRAY_LENGTH(photoMinis) == qARRAY_LENGTH(dbFieldNames));

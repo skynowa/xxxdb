@@ -29,7 +29,7 @@
 #define APP_ABOUT_TITLE             APP_NAME + tr(" - about")
 
 // photo
-#define PHOTO_NUM                   10
+#define PHOTO_NUM                   15
 #define IMAGE_FORMATS               "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
 #define IMAGE_IS_CONVERT            true
 
