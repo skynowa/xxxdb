@@ -18,6 +18,10 @@
 #define APP_HEIGHT                  600
 #define APP_SIZE                    QSize(APP_WIDTH, APP_HEIGHT)
 
+#define APP_DIR_PLUGIN_PLATFORMS    "platforms"
+#define APP_DIR_PLUGIN_SQLDRIVERS   "sqldrivers"
+#define APP_DIR_PLUGIN_IMAGEFORMATS "imageformats"
+
 #define APP_MAIN_TITLE              APP_NAME + tr(" - accounting software for girls")
 #define APP_PERSON_EDIT_TITLE       APP_NAME + tr(" - person editor")
 #define APP_PHOTO_ALBUM_TITLE       APP_NAME + tr(" - photo album")

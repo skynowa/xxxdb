@@ -8,7 +8,9 @@
 #include "QtLib/Common.h"
 #include "QtLib/CUtils.h"
 #include "Forms/CMain.h"
-
+//------------------------------------------------------------------------------
+bool applicationSelfCheck();
+    ///< application self check
 //------------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
@@ -28,14 +30,16 @@ int main(int argc, char *argv[])
         QTextCodec::setCodecForLocale(codec);
     }
 
-    // activation application window
     CUtils::applicationActivate(APP_WINDOW_CLASS, APP_NAME);
 
-    // set application single instance
-    {
-        bool bRv = CUtils::setApplicationSingle(APP_GUID);
-        qCHECK_RET(!bRv, EXIT_SUCCESS);
-    }
+    bool bRv = CUtils::setApplicationSingle(APP_GUID);
+    qCHECK_RET(!bRv, EXIT_SUCCESS);
+
+#if 0
+    // BUG: applicationSelfCheck()
+    bRv = applicationSelfCheck();
+    qCHECK_RET(!bRv, EXIT_FAILURE);
+#endif
 
     // start application
     {
@@ -51,5 +55,45 @@ int main(int argc, char *argv[])
     }
 
     return iExitCode;
+}
+//------------------------------------------------------------------------------
+bool
+applicationSelfCheck() {
+    bool bRv = false;
+
+    bRv = QDir(APP_DIR_PLUGIN_PLATFORMS).isReadable();
+    if (!bRv) {
+        QMessageBox::warning(
+            NULL,
+            APP_NAME,
+            QObject::tr("Plugin directory %1 not exists")
+                            .arg(APP_DIR_PLUGIN_PLATFORMS));
+
+        return false;
+    }
+
+    bRv = QDir(APP_DIR_PLUGIN_SQLDRIVERS).isReadable();
+    if (!bRv) {
+        QMessageBox::warning(
+            NULL,
+            APP_NAME,
+            QObject::tr("Plugin directory %1 not exists")
+                            .arg(APP_DIR_PLUGIN_SQLDRIVERS));
+
+        return false;
+    }
+
+    bRv = QDir(APP_DIR_PLUGIN_IMAGEFORMATS).isReadable();
+    if (!bRv) {
+        QMessageBox::warning(
+            NULL,
+            APP_NAME,
+            QObject::tr("Plugin directory %1 not exists")
+                            .arg(APP_DIR_PLUGIN_IMAGEFORMATS));
+
+        return false;
+    }
+
+    return true;
 }
 //------------------------------------------------------------------------------
