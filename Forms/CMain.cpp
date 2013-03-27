@@ -460,10 +460,11 @@ CMain::slot_OnGoTo() {
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
 
     cint ciTargetRow  = QInputDialog::getInt(
-                                this,
-                                APP_NAME, tr("Go to row:"),
-                                ciCurrentRow,
-                                ciMinValue, ciMaxValue) - 1;
+                            this,
+                            APP_NAME,
+                            tr("Go to row (total %1 rows):").arg(ciMaxValue),
+                            ciCurrentRow,
+                            ciMinValue, ciMaxValue) - 1;
 
     snSqlNavigator.goTo(ciTargetRow);
 }
