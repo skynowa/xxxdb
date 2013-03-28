@@ -29,7 +29,7 @@ CEditor::CEditor(
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _stApp          (NULL),
     _tmModel        (a_tableModel),
-    _snSqlNavigator (a_sqlNavigator),
+    _snNavigator    (a_sqlNavigator),
     _hsDbItems      (),
     _dmText         (NULL),
     _dbImageLabel   ()
@@ -224,7 +224,7 @@ void
 CEditor::slot_OnAlbum() {
     qPTR_DELETE(wndAlbum);
 
-    wndAlbum = new CAlbum(this, _tmModel, _snSqlNavigator);
+    wndAlbum = new CAlbum(this, _tmModel, _snNavigator);
     wndAlbum->show();
 }
 //------------------------------------------------------------------------------
@@ -327,7 +327,7 @@ CEditor::_saveAll() {
     _dbImageLabel->mapper()->setCurrentIndex(_ciDbRecordIndex);
 
     // set current index
-    _snSqlNavigator->goTo(_ciDbRecordIndex);
+    _snNavigator->goTo(_ciDbRecordIndex);
 }
 //------------------------------------------------------------------------------
 void

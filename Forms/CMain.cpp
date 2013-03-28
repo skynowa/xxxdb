@@ -25,27 +25,27 @@ CMain::CMain(
     QWidget         *a_parent,
     Qt::WindowFlags  a_flags
 ) :
-    QMainWindow   (a_parent, a_flags),
-    sAppName      (),
-    sAppDir       (),
-    sDbDir        (),
-    sDbFile       (),
-    sDbBackupDir  (),
-    snSqlNavigator(this),
-    wndAlbum      (NULL),
-    _stApp        (NULL),
-    _dbDatabase   (),
-    _tmModel      (NULL),
-    _hsDbItems    (),
-    _dbImageLabel (NULL),
-    _cboFindText  (NULL),
-    _cboDbFields  (NULL)
+    QMainWindow  (a_parent, a_flags),
+    sAppName     (),
+    sAppDir      (),
+    sDbDir       (),
+    sDbFile      (),
+    sDbBackupDir (),
+    snNavigator  (this),
+    wndAlbum     (NULL),
+    _stApp       (NULL),
+    _dbDatabase  (),
+    _tmModel     (NULL),
+    _hsDbItems   (),
+    _dbImageLabel(NULL),
+    _cboFindText (NULL),
+    _cboDbFields (NULL)
 {
     _construct();
 
     _stApp = new CSettings(this, NULL, NULL);
 
-    snSqlNavigator.last();
+    snNavigator.last();
 }
 //------------------------------------------------------------------------------
 
@@ -327,15 +327,15 @@ CMain::_initModel() {
     }
 
     //--------------------------------------------------
-    // snSqlNavigator
+    // snNavigator
     {
-        snSqlNavigator.construct(_tmModel, ui.tvInfo);
+        snNavigator.construct(_tmModel, ui.tvInfo);
     }
 
     //--------------------------------------------------
     // _dbImageLabel
     {
-        cint ciDbRecordIndex = snSqlNavigator.view()->currentIndex().row();
+        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
 
         _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
                                           0, ciDbRecordIndex,
@@ -346,9 +346,9 @@ CMain::_initModel() {
     //--------------------------------------------------
     // slots
     {
-        connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
+        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
                 _dbImageLabel->mapper(),     &QDataWidgetMapper::setCurrentModelIndex);
-        connect(ui.tvInfo,                   &QTableView::doubleClicked,
+        connect(snNavigator.view(),          &QTableView::doubleClicked,
                 this,                        &CMain::slot_OnEdit);
         connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
                 this,                        &CMain::slot_OnAlbum);
@@ -442,29 +442,29 @@ CMain::slot_OnExit() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnFirst() {
-    snSqlNavigator.first();
+    snNavigator.first();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnPrior() {
-    snSqlNavigator.prior();
+    snNavigator.prior();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnNext() {
-    snSqlNavigator.next();
+    snNavigator.next();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLast() {
-    snSqlNavigator.last();
+    snNavigator.last();
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnGoTo() {
-    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
-    cint ciCurrentRow = snSqlNavigator.view()->currentIndex().row() + 1;
+    cint ciCurrentRow = snNavigator.view()->currentIndex().row() + 1;
     cint ciMinValue   = 1;
     cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
 
@@ -475,15 +475,15 @@ CMain::slot_OnGoTo() {
                             ciCurrentRow,
                             ciMinValue, ciMaxValue) - 1;
 
-    snSqlNavigator.goTo(ciTargetRow);
+    snNavigator.goTo(ciTargetRow);
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnInsert() {
-    snSqlNavigator.insert();
+    snNavigator.insert();
 
     {
-        CEditor dlgEditor(this, _tmModel, &snSqlNavigator);
+        CEditor dlgEditor(this, _tmModel, &snNavigator);
 
         (int)dlgEditor.exec();
     }
@@ -491,7 +491,7 @@ CMain::slot_OnInsert() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnRemove() {
-    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     QMessageBox msgBox;
 
@@ -504,7 +504,7 @@ CMain::slot_OnRemove() {
     cint ciRv = msgBox.exec();
     switch (ciRv) {
         case QMessageBox::Yes:
-            snSqlNavigator.remove();
+            snNavigator.remove();
             break;
         case QMessageBox::Cancel:
         default:
@@ -514,9 +514,9 @@ CMain::slot_OnRemove() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnEdit() {
-    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
-    CEditor dlgEditor(this, _tmModel, &snSqlNavigator);
+    CEditor dlgEditor(this, _tmModel, &snNavigator);
 
     (int)dlgEditor.exec();
 }
@@ -618,11 +618,11 @@ CMain::slot_OnAbout() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnAlbum() {
-    qCHECK_DO(snSqlNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     qPTR_DELETE(wndAlbum);
 
-    wndAlbum = new CAlbum(this, _tmModel, &snSqlNavigator);
+    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
     wndAlbum->show();
 }
 //------------------------------------------------------------------------------

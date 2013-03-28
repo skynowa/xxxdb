@@ -38,7 +38,7 @@ private:
     cint               _ciDbRecordIndex;
     CSettings         *_stApp;
     QSqlTableModel    *_tmModel;
-    CSqlNavigator     *_snSqlNavigator;
+    CSqlNavigator     *_snNavigator;
     db_items_t         _hsDbItems;
     QDataWidgetMapper *_dmText;           ///< one mapper for all text items
     CDbImageLabel     *_dbImageLabel;

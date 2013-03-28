@@ -31,7 +31,7 @@ public:
     QString            sDbDir;
     QString            sDbFile;
     QString            sDbBackupDir;
-    CSqlNavigator      snSqlNavigator;
+    CSqlNavigator      snNavigator;
     CAlbum            *wndAlbum;
 
                        CMain             (QWidget *parent, Qt::WindowFlags flags);
