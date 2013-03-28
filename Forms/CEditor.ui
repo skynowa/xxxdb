@@ -7,7 +7,7 @@
     <x>0</x>
     <y>0</y>
     <width>732</width>
-    <height>467</height>
+    <height>477</height>
    </rect>
   </property>
   <layout class="QGridLayout" name="gridLayout">
@@ -2013,7 +2013,7 @@
             </size>
            </property>
            <property name="text">
-            <string>Company :</string>
+            <string>Company:</string>
            </property>
           </widget>
          </item>
