@@ -78,7 +78,7 @@ private:
     void               slot_OnMainToolbar();
     void               slot_OnQuickFindToolbar();
     void               slot_OnColumns    ();
-
+    void               slot_OnStatusbar  ();
 
     // group "Options"
     void               slot_OnSettings   ();

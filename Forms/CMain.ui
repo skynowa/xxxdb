@@ -167,6 +167,7 @@
     <addaction name="actView_MainToolbar"/>
     <addaction name="actView_QuickFindToolbar"/>
     <addaction name="actView_Columns"/>
+    <addaction name="actView_Statusbar"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
     <property name="title">
@@ -188,7 +189,7 @@
    <addaction name="menuOptions"/>
    <addaction name="menuHelp"/>
   </widget>
-  <widget class="QStatusBar" name="statusBar"/>
+  <widget class="QStatusBar" name="sbInfo"/>
   <widget class="QToolBar" name="tbMain">
    <property name="windowTitle">
     <string>Main</string>
@@ -398,6 +399,17 @@
    </property>
    <property name="text">
     <string>Show Quick Find Toolbar</string>
+   </property>
+  </action>
+  <action name="actView_Statusbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Statusbar</string>
    </property>
   </action>
  </widget>

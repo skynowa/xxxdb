@@ -134,6 +134,19 @@ CSettings::_read(
 
         _stApp.endGroup();
     }
+
+    // ui.sbInfo
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
+        cbool isVisible = _stApp.value("statusbar/visible", true).toBool();
+
+        // apply
+        a_wnd->ui.actView_Statusbar->setChecked(isVisible);
+        a_wnd->ui.sbInfo->setVisible(isVisible);
+
+        _stApp.endGroup();
+    }
 }
 //------------------------------------------------------------------------------
 void
@@ -175,6 +188,16 @@ CSettings::_write(
 
             _stApp.setValue(QString("column%1/visible").arg(i), isVisible);
         }
+
+        _stApp.endGroup();
+    }
+
+    // ui.sbInfo
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
+        cbool isVisible = a_wnd->ui.sbInfo->isVisible();
+        _stApp.setValue("statusbar/visible", isVisible);
 
         _stApp.endGroup();
     }
