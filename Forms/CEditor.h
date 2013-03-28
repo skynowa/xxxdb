@@ -53,7 +53,9 @@ private:
     // slots
     void               slot_OnAlbum();
     void               slot_bbxButtons_OnClicked(QAbstractButton *button);
-    void               slot_twGroups_OnActivated(const QModelIndex &index);
+    void               slot_twGroups_OnCurrentItemChanged(
+                                                 QTreeWidgetItem *current,
+                                                 QTreeWidgetItem *previous);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CEditorH

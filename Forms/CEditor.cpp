@@ -207,8 +207,8 @@ CEditor::_initMain() {
                 this,              &CEditor::slot_OnAlbum);
         connect(ui.bbxButtons,     &QDialogButtonBox::clicked,
                 this,              &CEditor::slot_bbxButtons_OnClicked);
-        connect(ui.twGroups,       &QTreeWidget::clicked,
-                this,              &CEditor::slot_twGroups_OnActivated);
+        connect(ui.twGroups,       &QTreeWidget::currentItemChanged,
+                this,              &CEditor::slot_twGroups_OnCurrentItemChanged);
     }
 }
 //------------------------------------------------------------------------------
@@ -331,11 +331,16 @@ CEditor::_saveAll() {
 }
 //------------------------------------------------------------------------------
 void
-CEditor::slot_twGroups_OnActivated(
-    const QModelIndex &a_index
+CEditor::slot_twGroups_OnCurrentItemChanged(
+    QTreeWidgetItem *a_current,
+    QTreeWidgetItem *a_previous
 )
 {
-    ui.tabwGroupsDetail->setCurrentIndex( a_index.row() );
+    Q_UNUSED(a_current);
+    Q_UNUSED(a_previous);
+
+    cint index = ui.twGroups->currentIndex().row();
+
+    ui.tabwGroupsDetail->setCurrentIndex(index);
 }
 //------------------------------------------------------------------------------
-
