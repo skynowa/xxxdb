@@ -44,6 +44,8 @@ CMain::CMain(
     _construct();
 
     _stApp = new CSettings(this, NULL, NULL);
+
+    snSqlNavigator.last();
 }
 //------------------------------------------------------------------------------
 
@@ -328,7 +330,6 @@ CMain::_initModel() {
     // snSqlNavigator
     {
         snSqlNavigator.construct(_tmModel, ui.tvInfo);
-        snSqlNavigator.last();
     }
 
     //--------------------------------------------------
