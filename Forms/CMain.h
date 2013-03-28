@@ -25,73 +25,73 @@ class CMain :
 public:
     friend class CSettings;
 
-    Ui::CMainClass     ui;
-    QString            sAppName;
-    QString            sAppDir;
-    QString            sDbDir;
-    QString            sDbFile;
-    QString            sDbBackupDir;
-    CSqlNavigator      snNavigator;
-    CAlbum            *wndAlbum;
+    Ui::CMainClass  ui;
+    QString         sAppName;
+    QString         sAppDir;
+    QString         sDbDir;
+    QString         sDbFile;
+    QString         sDbBackupDir;
+    CSqlNavigator   snNavigator;
+    CAlbum         *wndAlbum;
 
-                       CMain             (QWidget *parent, Qt::WindowFlags flags);
+                    CMain               (QWidget *parent, Qt::WindowFlags flags);
 
 protected:
-    virtual void       closeEvent        (QCloseEvent *event);
-    virtual void       keyPressEvent     (QKeyEvent *event);
+    virtual void    closeEvent          (QCloseEvent *event);
+    virtual void    keyPressEvent       (QKeyEvent *event);
 
 private:
-    CSettings         *_stApp;
-    QSqlDatabase       _dbDatabase;
-    QSqlTableModel    *_tmModel;
-    db_items_t         _hsDbItems;
-    CDbImageLabel     *_dbImageLabel;
+    CSettings      *_stApp;
+    QSqlDatabase    _dbDatabase;
+    QSqlTableModel *_tmModel;
+    db_items_t      _hsDbItems;
+    CDbImageLabel  *_dbImageLabel;
 
-    QComboBox         *_cboFindText;
-    QComboBox         *_cboDbFields;
+    QComboBox      *_cboFindText;
+    QComboBox      *_cboDbFields;
 
-    void               _construct        ();
-    void               _destruct         ();
-    void               _initMain         ();
-    void               _initModel        ();
-    void               _initActions      ();
+    void            _construct          ();
+    void            _destruct           ();
+    void            _initMain           ();
+    void            _initModel          ();
+    void            _initActions        ();
 
     // slots
     // group "Exit"
-    void               slot_OnExit       ();
+    void            slot_OnExit         ();
 
     // group "Edit"
-    void               slot_OnFirst      ();
-    void               slot_OnPrior      ();
-    void               slot_OnNext       ();
-    void               slot_OnLast       ();
-    void               slot_OnGoTo       ();
-    void               slot_OnInsert     ();
-    void               slot_OnRemove     ();
-    void               slot_OnEdit       ();
+    void            slot_OnFirst        ();
+    void            slot_OnPrior        ();
+    void            slot_OnNext         ();
+    void            slot_OnLast         ();
+    void            slot_OnGoTo         ();
+    void            slot_OnInsert       ();
+    void            slot_OnRemove       ();
+    void            slot_OnEdit         ();
 
     // group "Find"
-    void               slot_OnSearch     ();
-    void               slot_OnTextClear  ();
+    void            slot_OnSearch       ();
+    void            slot_OnTextClear    ();
 
     // group "View"
-    void               slot_OnMainToolbar();
-    void               slot_OnQuickFindToolbar();
-    void               slot_OnColumns    ();
-    void               slot_OnStatusbar  ();
+    void            slot_OnMainToolbar  ();
+    void            slot_OnQuickFindToolbar();
+    void            slot_OnColumns      ();
+    void            slot_OnStatusbar    ();
 
     // group "Options"
-    void               slot_OnSettings   ();
+    void            slot_OnSettings     ();
 
     // group "Help"
-    void               slot_OnFaq        ();
-    void               slot_OnAbout      ();
+    void            slot_OnFaq          ();
+    void            slot_OnAbout        ();
 
     // photo
-    void               slot_OnAlbum      ();
+    void            slot_OnAlbum        ();
 
-    void               slot_OnQuickFind  (cQString &arg);
-    void               slot_OnDbFieldChange(cQString &arg);
+    void            slot_OnQuickFind    (cQString &arg);
+    void            slot_OnDbFieldChange(cQString &arg);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH
