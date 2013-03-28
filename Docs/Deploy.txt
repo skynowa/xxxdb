@@ -2,10 +2,12 @@ Deploy notes
 
 
 Windows:
+    Windows XP SP3
     -
-    
+
 Linux:
-    -
-    
+    Ubuntu 12.04 x64
+    - sudo apt-get install mesa-common-dev libglu1-mesa-dev
+
 OS X:
     -
