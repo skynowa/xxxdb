@@ -47,6 +47,7 @@ int main(int argc, char *argv[])
 
         apApp.setOrganizationName(APP_ORG);
         apApp.setApplicationName(APP_NAME);
+        apApp.setApplicationVersion(APP_VERSION);
 
         CMain wndMain(NULL, 0);
         wndMain.show();
