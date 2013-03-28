@@ -392,8 +392,12 @@ CMain::_initActions() {
 
     // group "View"
     {
-        connect(ui.actView_Columns,     &QAction::triggered,
-                this,                   &CMain::slot_OnColumns);
+        connect(ui.actView_MainToolbar,      &QAction::triggered,
+                this,                        &CMain::slot_OnMainToolbar);
+        connect(ui.actView_QuickFindToolbar, &QAction::triggered,
+                this,                        &CMain::slot_OnQuickFindToolbar);
+        connect(ui.actView_Columns,          &QAction::triggered,
+                this,                        &CMain::slot_OnColumns);
     }
 
     // group "Options"
@@ -539,6 +543,20 @@ CMain::slot_OnTextClear() {
 *
 *******************************************************************************/
 
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnMainToolbar() {
+    bool bIsChecked = ui.actView_MainToolbar->isChecked();
+
+    ui.tbMain->setVisible(bIsChecked);
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnQuickFindToolbar() {
+    bool bIsChecked = ui.actView_QuickFindToolbar->isChecked();
+
+    ui.tbQuickFind->setVisible(bIsChecked);
+}
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnColumns() {

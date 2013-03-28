@@ -96,6 +96,31 @@ CSettings::_read(
 
     _commonRead(a_wnd);
 
+    // toolbars
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
+        // ui.tbMain
+        {
+            cbool isVisible = _stApp.value("toolbar_main/visible", true).toBool();
+
+            // apply
+            a_wnd->ui.actView_MainToolbar->setChecked(isVisible);
+            a_wnd->ui.tbMain->setVisible(isVisible);
+        }
+
+        // ui.tbQuickFind
+        {
+            cbool isVisible = _stApp.value("toolbar_quickfind/visible", true).toBool();
+
+            // apply
+            a_wnd->ui.actView_QuickFindToolbar->setChecked(isVisible);
+            a_wnd->ui.tbQuickFind->setVisible(isVisible);
+        }
+
+        _stApp.endGroup();
+    }
+
     // caption for DB fields
     {
         _stApp.beginGroup(a_wnd->objectName() + "/table");
@@ -119,6 +144,27 @@ CSettings::_write(
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonWrite(a_wnd);
+
+    // toolbars
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
+        // ui.tbMain
+        {
+            cbool isVisible = a_wnd->ui.tbMain->isVisible();
+
+            _stApp.setValue("toolbar_main/visible", isVisible);
+        }
+
+        // ui.tbQuickFind
+        {
+            cbool isVisible = a_wnd->ui.tbQuickFind->isVisible();
+
+            _stApp.setValue("toolbar_quickfind/visible", isVisible);
+        }
+
+        _stApp.endGroup();
+    }
 
     // caption for DB fields
     {

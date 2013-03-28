@@ -164,6 +164,8 @@
     <property name="title">
      <string>View</string>
     </property>
+    <addaction name="actView_MainToolbar"/>
+    <addaction name="actView_QuickFindToolbar"/>
     <addaction name="actView_Columns"/>
    </widget>
    <widget class="QMenu" name="menuOptions">
@@ -358,7 +360,7 @@
      <normaloff>:/Menu/Menu/Columns.bmp</normaloff>:/Menu/Menu/Columns.bmp</iconset>
    </property>
    <property name="text">
-    <string>Select columns...</string>
+    <string>Select Columns...</string>
    </property>
    <property name="toolTip">
     <string>Select columns...</string>
@@ -374,6 +376,28 @@
    </property>
    <property name="toolTip">
     <string>Clear text</string>
+   </property>
+  </action>
+  <action name="actView_MainToolbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Main Toolbar</string>
+   </property>
+  </action>
+  <action name="actView_QuickFindToolbar">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Show Quick Find Toolbar</string>
    </property>
   </action>
  </widget>
