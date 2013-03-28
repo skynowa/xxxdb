@@ -19,9 +19,9 @@ class CSettings
     /// application settings
 {
 public:
-              CSettings   (CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
+              CSettings (CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
         ///< constructor
-    virtual  ~CSettings   ();
+    virtual  ~CSettings ();
         ///< destructor
 
 private:
@@ -31,25 +31,25 @@ private:
     CAlbum   *_wndAlbum;
 
     template <typename T>
-    void      _commonRead (T *wnd);
+    void      _commonGet(T *wnd);
         ///< read data
     template <typename T>
-    void      _commonWrite(T *wnd);
+    void      _commonSet(T *wnd);
         ///< write data
 
-    void      _read       (CMain *wnd);
+    void      _get      (CMain *wnd);
         ///< read data
-    void      _write      (CMain *wnd);
+    void      _set      (CMain *wnd);
         ///< write data
 
-    void      _read       (CEditor *wnd);
+    void      _get      (CEditor *wnd);
         ///< read data
-    void      _write      (CEditor *wnd);
+    void      _set      (CEditor *wnd);
         ///< write data
 
-    void      _read       (CAlbum *wnd);
+    void      _get      (CAlbum *wnd);
         ///< read data
-    void      _write      (CAlbum *wnd);
+    void      _set      (CAlbum *wnd);
         ///< write data
 };
 //------------------------------------------------------------------------------

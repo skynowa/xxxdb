@@ -27,15 +27,15 @@ CSettings::CSettings(
     _wndEditor(a_wndEditor),
     _wndAlbum (a_wndAlbum)
 {
-    _read(_wndMain);
-    _read(_wndEditor);
-    _read(_wndAlbum);
+    _get(_wndMain);
+    _get(_wndEditor);
+    _get(_wndAlbum);
 }
 //------------------------------------------------------------------------------
 CSettings::~CSettings() {
-    _write(_wndMain);
-    _write(_wndEditor);
-    _write(_wndAlbum);
+    _set(_wndMain);
+    _set(_wndEditor);
+    _set(_wndAlbum);
 }
 //------------------------------------------------------------------------------
 
@@ -48,7 +48,7 @@ CSettings::~CSettings() {
 //------------------------------------------------------------------------------
 template <typename T>
 void
-CSettings::_commonRead(
+CSettings::_commonGet(
     T *a_wnd
 )
 {
@@ -74,7 +74,7 @@ CSettings::_commonRead(
 //------------------------------------------------------------------------------
 template <typename T>
 void
-CSettings::_commonWrite(
+CSettings::_commonSet(
     T *a_wnd
 )
 {
@@ -88,13 +88,13 @@ CSettings::_commonWrite(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_read(
+CSettings::_get(
     CMain *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonRead(a_wnd);
+    _commonGet(a_wnd);
 
     // toolbars
     {
@@ -150,13 +150,13 @@ CSettings::_read(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_write(
+CSettings::_set(
     CMain *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonWrite(a_wnd);
+    _commonSet(a_wnd);
 
     // toolbars
     {
@@ -212,23 +212,23 @@ CSettings::_write(
 
 //------------------------------------------------------------------------------
 void
-CSettings::_read(
+CSettings::_get(
     CEditor *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonRead(a_wnd);
+    _commonGet(a_wnd);
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_write(
+CSettings::_set(
     CEditor *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonWrite(a_wnd);
+    _commonSet(a_wnd);
 }
 //------------------------------------------------------------------------------
 
@@ -240,22 +240,22 @@ CSettings::_write(
 
 //------------------------------------------------------------------------------
 void
-CSettings::_read(
+CSettings::_get(
     CAlbum *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonRead(a_wnd);
+    _commonGet(a_wnd);
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_write(
+CSettings::_set(
     CAlbum *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
-    _commonWrite(a_wnd);
+    _commonSet(a_wnd);
 }
 //------------------------------------------------------------------------------
