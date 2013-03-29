@@ -72,6 +72,10 @@ CMain::keyPressEvent(
         case Qt::Key_Return:
             slot_OnEdit();
             break;
+        // delete record by 'Delete'
+        case Qt::Key_Delete:
+            slot_OnRemove();
+            break;
         default:
             QMainWindow::keyPressEvent(a_event);
             break;
