@@ -2,9 +2,20 @@
 
 
 ##### dirs #####
-Distr
-Temp
-Ui
+Distr/
+!Distr/
+
+Distr/*
+!Distr/Debug/
+!Distr/Release/
+
+Distr/Debug/*
+Distr/Release/*
+!Distr/Debug/Langs/
+!Distr/Release/Langs/
+
+Temp/
+Ui/
 
 
 ##### files #####

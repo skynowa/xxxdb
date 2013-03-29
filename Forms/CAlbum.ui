@@ -561,7 +561,7 @@
     <string>Save As...</string>
    </property>
    <property name="toolTip">
-    <string>Save As</string>
+    <string>Save As...</string>
    </property>
   </action>
   <action name="actEdit_SetPrimary">
