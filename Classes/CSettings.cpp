@@ -94,6 +94,12 @@ CSettings::_get(
 {
     qCHECK_DO(a_wnd == NULL, return);
 
+    // translator
+    {
+        // slot_OnLanguageEn();
+        // slot_OnLanguageRu();
+    }
+
     _commonGet(a_wnd);
 
     // toolbars

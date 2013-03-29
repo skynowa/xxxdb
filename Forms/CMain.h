@@ -42,6 +42,7 @@ protected:
 
 private:
     CSettings      *_stApp;
+    QTranslator    *_trTranslator;
     QSqlDatabase    _dbDatabase;
     QSqlTableModel *_tmModel;
     db_items_t      _hsDbItems;
@@ -79,6 +80,8 @@ private:
     void            slot_OnQuickFindToolbar();
     void            slot_OnColumns      ();
     void            slot_OnStatusbar    ();
+    void            slot_OnLanguageEn   ();
+    void            slot_OnLanguageRu   ();
 
     // group "Options"
     void            slot_OnSettings     ();

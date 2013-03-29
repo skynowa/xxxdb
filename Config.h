@@ -46,7 +46,9 @@
 // etc
 #define BACKUP_DIR_NAME             "Backup"
 #define INI_FILE_EXT                ".ini"
-#define INI_FILE_PATH               (QCoreApplication::applicationFilePath() + INI_FILE_EXT)
+#define INI_FILE_PATH               (qApp->applicationFilePath() + INI_FILE_EXT)
+#define LANGS_DIR_PATH              (qApp->applicationDirPath() + "/Langs")
+#define LANGS_FILE_NAME_RU          "XXXDb_ru_RU.qm"
 #define TABLEVIEW_ROW_HEIGHT        20
 #define TEXT_NO_PHOTO               QObject::tr("No photo")
 #define FIND_TEXT_WIDTH             180

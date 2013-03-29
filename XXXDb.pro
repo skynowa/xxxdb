@@ -47,25 +47,24 @@ FORMS           = Forms/CMain.ui \
                   Forms/CColumns.ui \
                   Forms/CAbout.ui
 
-RESOURCES       = Resources/App.qrc \
-                  Resources/Langs/Langs.qrc
+RESOURCES       = Resources/App.qrc
 
 win32 {
     RC_FILE     = Resources/App_win.rc
 }
 
-TRANSLATIONS   += Resources/Langs/XXXDb_ru_RU.ts
-
 CONFIG(debug, debug | release) {
-    DISTR_DIR   = ./Distr/Debug
-    OUT_DIR     = ./Build/Debug
+    DISTR_DIR   = Distr/Debug
+    OUT_DIR     = Build/Debug
 } else {
-    DISTR_DIR   = ./Distr/Release
-    OUT_DIR     = ./Build/Release
+    DISTR_DIR   = Distr/Release
+    OUT_DIR     = Build/Release
 }
 
-DESTDIR         = "$$DISTR_DIR"
-MOC_DIR         = "$$OUT_DIR/Temp"
-OBJECTS_DIR     = "$$OUT_DIR/Temp"
-RCC_DIR         = "$$OUT_DIR/Temp"
-UI_DIR          = "$$OUT_DIR/Ui"
+TRANSLATIONS   += $$DISTR_DIR/Langs/XXXDb_ru_RU.ts
+
+DESTDIR         = $$DISTR_DIR
+MOC_DIR         = $$OUT_DIR/Temp
+OBJECTS_DIR     = $$OUT_DIR/Temp
+RCC_DIR         = $$OUT_DIR/Temp
+UI_DIR          = $$OUT_DIR/Ui

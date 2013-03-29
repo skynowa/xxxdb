@@ -133,13 +133,13 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
+   <widget class="QMenu" name="mnuFile">
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actFile_Exit"/>
    </widget>
-   <widget class="QMenu" name="menuEdit">
+   <widget class="QMenu" name="mnuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
@@ -154,40 +154,49 @@
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
    </widget>
-   <widget class="QMenu" name="menuFind">
+   <widget class="QMenu" name="mnuFind">
     <property name="title">
      <string>Find</string>
     </property>
     <addaction name="actFind_Search"/>
    </widget>
-   <widget class="QMenu" name="menuView">
+   <widget class="QMenu" name="mnuView">
     <property name="title">
      <string>View</string>
     </property>
+    <widget class="QMenu" name="mnuViewLanguage">
+     <property name="title">
+      <string>Language</string>
+     </property>
+     <addaction name="actViewLanguage_En"/>
+     <addaction name="actViewLanguage_Ru"/>
+    </widget>
     <addaction name="actView_MainToolbar"/>
     <addaction name="actView_QuickFindToolbar"/>
     <addaction name="actView_Columns"/>
     <addaction name="actView_Statusbar"/>
+    <addaction name="separator"/>
+    <addaction name="mnuViewLanguage"/>
    </widget>
-   <widget class="QMenu" name="menuOptions">
+   <widget class="QMenu" name="mnuOptions">
     <property name="title">
      <string>Options</string>
     </property>
     <addaction name="actOptions_Settings"/>
    </widget>
-   <widget class="QMenu" name="menuHelp">
+   <widget class="QMenu" name="mnuHelp">
     <property name="title">
      <string>Help</string>
     </property>
     <addaction name="actHelp_Faq"/>
     <addaction name="actHelp_About"/>
    </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuEdit"/>
-   <addaction name="menuFind"/>
-   <addaction name="menuView"/>
-   <addaction name="menuOptions"/>
-   <addaction name="menuHelp"/>
+   <addaction name="mnuFile"/>
+   <addaction name="mnuEdit"/>
+   <addaction name="mnuFind"/>
+   <addaction name="mnuView"/>
+   <addaction name="mnuOptions"/>
+   <addaction name="mnuHelp"/>
   </widget>
   <widget class="QStatusBar" name="sbInfo"/>
   <widget class="QToolBar" name="tbMain">
@@ -410,6 +419,25 @@
    </property>
    <property name="text">
     <string>Show Statusbar</string>
+   </property>
+  </action>
+  <action name="actViewLanguage_En">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="checked">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>English</string>
+   </property>
+  </action>
+  <action name="actViewLanguage_Ru">
+   <property name="checkable">
+    <bool>true</bool>
+   </property>
+   <property name="text">
+    <string>Russian</string>
    </property>
   </action>
  </widget>

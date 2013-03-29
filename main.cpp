@@ -45,20 +45,9 @@ int main(int argc, char *argv[])
     {
         QApplication apApp(argc, argv);
 
-        apApp.setOrganizationName(APP_ORG);
-        apApp.setApplicationName(APP_NAME);
-        apApp.setApplicationVersion(APP_VERSION);
-
-        // QTranslator
-        {
-            QTranslator *translator = new QTranslator;
-            QString      alias      = QLocale::system().name();
-
-            bool bRv = translator->load(":/Langs/" + alias);
-            Q_ASSERT(bRv);
-
-            apApp.installTranslator(translator);
-        }
+        QCoreApplication::setOrganizationName(APP_ORG);
+        QCoreApplication::setApplicationName(APP_NAME);
+        QCoreApplication::setApplicationVersion(APP_VERSION);
 
         CMain wndMain(NULL, 0);
         wndMain.show();

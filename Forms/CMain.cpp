@@ -34,6 +34,7 @@ CMain::CMain(
     snNavigator  (this),
     wndAlbum     (NULL),
     _stApp       (NULL),
+    _trTranslator(NULL),
     _dbDatabase  (),
     _tmModel     (NULL),
     _hsDbItems   (),
@@ -98,11 +99,22 @@ CMain::_construct() {
 //------------------------------------------------------------------------------
 void
 CMain::_destruct() {
+    // _trTranslator
+    {
+        qApp->removeTranslator(_trTranslator);
+        qPTR_DELETE(_trTranslator);
+    }
+
     qPTR_DELETE(_stApp);
 }
 //------------------------------------------------------------------------------
 void
 CMain::_initMain() {
+    // _trTranslator
+    {
+        _trTranslator = new QTranslator(this);
+    }
+
     ui.setupUi(this);
 
     //--------------------------------------------------
@@ -401,6 +413,18 @@ CMain::_initActions() {
                 this,                        &CMain::slot_OnColumns);
         connect(ui.actView_Statusbar,        &QAction::triggered,
                 this,                        &CMain::slot_OnStatusbar);
+
+        // Language
+
+        // use radio actions
+        QActionGroup *agGroup = new QActionGroup(this);
+        ui.actViewLanguage_En->setActionGroup(agGroup);
+        ui.actViewLanguage_Ru->setActionGroup(agGroup);
+
+        connect(ui.actViewLanguage_En,       &QAction::triggered,
+                this,                        &CMain::slot_OnLanguageEn);
+        connect(ui.actViewLanguage_Ru,       &QAction::triggered,
+                this,                        &CMain::slot_OnLanguageRu);
     }
 
     // group "Options"
@@ -573,6 +597,23 @@ CMain::slot_OnStatusbar() {
     cbool bIsChecked = ui.actView_Statusbar->isChecked();
 
     ui.sbInfo->setVisible(bIsChecked);
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnLanguageEn() {
+    (bool)qApp->removeTranslator(_trTranslator);
+
+    ui.retranslateUi(this);
+}
+//------------------------------------------------------------------------------
+void
+CMain::slot_OnLanguageRu() {
+    (bool)qApp->installTranslator(_trTranslator);
+
+    bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, LANGS_DIR_PATH);
+    Q_ASSERT(bRv);
+
+    ui.retranslateUi(this);
 }
 //------------------------------------------------------------------------------
 
