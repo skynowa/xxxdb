@@ -10,7 +10,7 @@ TARGET          = XXXDb
 TEMPLATE        = app
 QT              = core gui widgets sql network xml
 CONFIG         += warn_on no_keywords
-#CODEC           = UTF-8
+CODEC           = UTF-8
 
 CONFIG(debug, debug | release) {
     #CONFIG     += console
@@ -48,7 +48,7 @@ FORMS           = Forms/CMain.ui \
                   Forms/CAbout.ui
 
 RESOURCES       = Resources/App.qrc \
-                  #Langs/Langs.qrc
+                  Resources/Langs/Langs.qrc
 
 win32 {
     RC_FILE     = Resources/App_win.rc

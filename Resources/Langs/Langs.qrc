@@ -1,5 +1,5 @@
 <RCC>
-    <qresource prefix="/translations">
+    <qresource prefix="/Langs">
         <file alias="ru_RU">XXXDb_ru_RU.qm</file>
     </qresource>
 </RCC>
