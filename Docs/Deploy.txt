@@ -11,3 +11,9 @@ Linux:
 
 OS X:
     -
+
+
+Translate by Qt Linguist:
+    lupdate  ./XXXDb.pro
+    linguist ./Resources/Langs/XXXDb_ru_RU.ts
+    lrelease ./Resources/Langs/XXXDb_ru_RU.ts
