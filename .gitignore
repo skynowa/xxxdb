@@ -29,3 +29,4 @@ Makefile*
 *.aps
 object_script.XXXDb.Debug
 object_script.XXXDb.Release
+*.qm
