@@ -59,16 +59,6 @@ CMain::CMain(
 //------------------------------------------------------------------------------
 /* virtual */
 void
-CMain::closeEvent(
-    QCloseEvent *a_event
-)
-{
-    _destruct();
-    a_event->accept();
-}
-//------------------------------------------------------------------------------
-/* virtual */
-void
 CMain::keyPressEvent(
     QKeyEvent *a_event
 )
@@ -82,6 +72,16 @@ CMain::keyPressEvent(
             QMainWindow::keyPressEvent(a_event);
             break;
     }
+}
+//------------------------------------------------------------------------------
+/* virtual */
+void
+CMain::closeEvent(
+    QCloseEvent *a_event
+)
+{
+    _destruct();
+    a_event->accept();
 }
 //------------------------------------------------------------------------------
 

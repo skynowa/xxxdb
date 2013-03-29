@@ -37,8 +37,8 @@ public:
                     CMain               (QWidget *parent, Qt::WindowFlags flags);
 
 protected:
-    virtual void    closeEvent          (QCloseEvent *event);
     virtual void    keyPressEvent       (QKeyEvent *event);
+    virtual void    closeEvent          (QCloseEvent *event);
 
 private:
     CSettings      *_stApp;
