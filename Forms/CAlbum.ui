@@ -26,9 +26,6 @@
       <property name="frameShape">
        <enum>QFrame::Box</enum>
       </property>
-      <property name="text">
-       <string>lblPhoto</string>
-      </property>
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
@@ -72,7 +69,7 @@
          <x>0</x>
          <y>0</y>
          <width>1902</width>
-         <height>100</height>
+         <height>98</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
@@ -92,9 +89,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_1</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -118,9 +112,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_2</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -142,9 +133,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_3</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -168,9 +156,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_4</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -192,9 +177,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_5</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -218,9 +200,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_6</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -242,9 +221,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_7</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -268,9 +244,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_8</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -292,9 +265,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_9</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -318,9 +288,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_10</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -342,9 +309,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_11</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -368,9 +332,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_12</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -392,9 +353,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_13</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
@@ -418,9 +376,6 @@
           <property name="frameShape">
            <enum>QFrame::Box</enum>
           </property>
-          <property name="text">
-           <string>lblPhotoMini_14</string>
-          </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
           </property>
@@ -442,9 +397,6 @@
           </property>
           <property name="frameShape">
            <enum>QFrame::Box</enum>
-          </property>
-          <property name="text">
-           <string>lblPhotoMini_15</string>
           </property>
           <property name="alignment">
            <set>Qt::AlignCenter</set>
