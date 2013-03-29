@@ -33,6 +33,13 @@ public:
     static QString dbBackupDirPath();
         ///< database backup directory path
 
+    static QString pluginPlatformsDirPath();
+        ///< plugin platforms directory path
+    static QString pluginSqlDriversDirPath();
+        ///< plugin sqldrivers  directory path
+    static QString pluginImageFormatsDirPath();
+        ///< plugin imageformats  directory path
+
     static void    windowActivate (cQString &appWndClass, cQString &appName);
         ///< activate main window
     static bool    isRunnig       (cQString &appGuid);

@@ -110,7 +110,7 @@ void
 CMain::_destruct() {
     // _trTranslator
     {
-        qApp->removeTranslator(_trTranslator);
+        CApplication::removeTranslator(_trTranslator);
         qPTR_DELETE(_trTranslator);
     }
 
@@ -603,7 +603,7 @@ CMain::slot_OnStatusbar() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLanguageEn() {
-    (bool)qApp->removeTranslator(_trTranslator);
+    (bool)CApplication::removeTranslator(_trTranslator);
     _sTranslatorLang.clear();
 
     ui.retranslateUi(this);
@@ -611,7 +611,7 @@ CMain::slot_OnLanguageEn() {
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLanguageRu() {
-    (bool)qApp->installTranslator(_trTranslator);
+    (bool)CApplication::installTranslator(_trTranslator);
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     Q_ASSERT(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;

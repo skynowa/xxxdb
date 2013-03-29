@@ -70,6 +70,24 @@ CApplication::dbBackupDirPath() {
 }
 //------------------------------------------------------------------------------
 /* static */
+QString
+CApplication::pluginPlatformsDirPath() {
+    return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_PLATFORMS;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::pluginSqlDriversDirPath() {
+    return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_SQLDRIVERS;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::pluginImageFormatsDirPath() {
+    return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_IMAGEFORMATS;
+}
+//------------------------------------------------------------------------------
+/* static */
 void
 CApplication::windowActivate(
     cQString &a_appWndClass,
@@ -94,35 +112,35 @@ bool
 CApplication::selfCheck() {
     bool bRv = false;
 
-    bRv = QDir(APP_DIR_PLUGIN_PLATFORMS).isReadable();
+    bRv = QDir( pluginPlatformsDirPath() ).isReadable();
     if (!bRv) {
         QMessageBox::warning(
             NULL,
             APP_NAME,
             QObject::tr("Plugin directory %1 not exists")
-                            .arg(APP_DIR_PLUGIN_PLATFORMS));
+                            .arg( pluginPlatformsDirPath() ));
 
         return false;
     }
 
-    bRv = QDir(APP_DIR_PLUGIN_SQLDRIVERS).isReadable();
+    bRv = QDir( pluginSqlDriversDirPath() ).isReadable();
     if (!bRv) {
         QMessageBox::warning(
             NULL,
             APP_NAME,
             QObject::tr("Plugin directory %1 not exists")
-                            .arg(APP_DIR_PLUGIN_SQLDRIVERS));
+                            .arg( pluginSqlDriversDirPath() ));
 
         return false;
     }
 
-    bRv = QDir(APP_DIR_PLUGIN_IMAGEFORMATS).isReadable();
+    bRv = QDir( pluginImageFormatsDirPath() ).isReadable();
     if (!bRv) {
         QMessageBox::warning(
             NULL,
             APP_NAME,
             QObject::tr("Plugin directory %1 not exists")
-                            .arg(APP_DIR_PLUGIN_IMAGEFORMATS));
+                            .arg( pluginImageFormatsDirPath() ));
 
         return false;
     }
