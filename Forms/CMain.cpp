@@ -68,13 +68,17 @@ CMain::keyPressEvent(
         case Qt::Key_Escape:
             setWindowState(Qt::WindowMinimized);
             break;
-        // call editor by 'Enter'
-        case Qt::Key_Return:
-            slot_OnEdit();
+        // insert record by 'Insert'
+        case Qt::Key_Insert:
+            slot_OnInsert();
             break;
         // delete record by 'Delete'
         case Qt::Key_Delete:
             slot_OnRemove();
+            break;
+        // call editor by 'Enter'
+        case Qt::Key_Return:
+            slot_OnEdit();
             break;
         default:
             QMainWindow::keyPressEvent(a_event);
