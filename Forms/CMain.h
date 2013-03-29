@@ -43,6 +43,7 @@ protected:
 private:
     CSettings      *_stApp;
     QTranslator    *_trTranslator;
+    QString         _sTranslatorLang;
     QSqlDatabase    _dbDatabase;
     QSqlTableModel *_tmModel;
     db_items_t      _hsDbItems;

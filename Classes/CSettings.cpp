@@ -98,8 +98,17 @@ CSettings::_get(
     {
         _stApp.beginGroup(a_wnd->objectName() + "/view");
 
-        // slot_OnLanguageEn();
-        // slot_OnLanguageRu();
+        cQString sLanguage = _stApp.value("language", QString()).toString();
+
+        // apply
+        if (LANGS_FILE_NAME_RU == sLanguage) {
+            a_wnd->ui.actViewLanguage_Ru->setChecked(true);
+            a_wnd->slot_OnLanguageRu();
+        } else {
+            // QString() - default language
+            a_wnd->ui.actViewLanguage_En->setChecked(true);
+            a_wnd->slot_OnLanguageEn();
+        }
 
         _stApp.endGroup();
     }
@@ -170,10 +179,8 @@ CSettings::_set(
     {
         _stApp.beginGroup(a_wnd->objectName() + "/view");
 
-        // slot_OnLanguageEn();
-        // slot_OnLanguageRu();
-
-        // _stApp.setValue("language", language);
+        cQString sLanguage = a_wnd->_sTranslatorLang;
+        _stApp.setValue("language", sLanguage);
 
         _stApp.endGroup();
     }

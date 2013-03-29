@@ -35,6 +35,7 @@ CMain::CMain(
     wndAlbum     (NULL),
     _stApp       (NULL),
     _trTranslator(NULL),
+    _sTranslatorLang(),
     _dbDatabase  (),
     _tmModel     (NULL),
     _hsDbItems   (),
@@ -602,6 +603,7 @@ CMain::slot_OnStatusbar() {
 void
 CMain::slot_OnLanguageEn() {
     (bool)qApp->removeTranslator(_trTranslator);
+    _sTranslatorLang.clear();
 
     ui.retranslateUi(this);
 }
@@ -609,9 +611,9 @@ CMain::slot_OnLanguageEn() {
 void
 CMain::slot_OnLanguageRu() {
     (bool)qApp->installTranslator(_trTranslator);
-
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, LANGS_DIR_PATH);
     Q_ASSERT(bRv);
+    _sTranslatorLang = LANGS_FILE_NAME_RU;
 
     ui.retranslateUi(this);
 }
