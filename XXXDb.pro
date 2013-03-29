@@ -20,6 +20,7 @@ HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
                   Config.h \
+                  Classes/CApplication.h \
                   Classes/CSettings.h \
                   Classes/CDelegateDbImage.h \
                   Classes/CDbImageLabel.h \
@@ -32,6 +33,7 @@ HEADERS         = QtLib/Common.h \
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
+                  Classes/CApplication.cpp \
                   Classes/CSettings.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Classes/CDbImageLabel.cpp \

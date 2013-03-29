@@ -11,7 +11,7 @@
 //------------------------------------------------------------------------------
 // application
 #define APP_NAME                    "XXXDb"
-#define APP_ORG                     "Skynowa Studio"
+#define APP_ORG                     "SKYNOWA Studio"
 #define APP_VERSION                 "1.0.0"
 #define APP_GUID                    APP_NAME"simple_guid"
 #define APP_WINDOW_CLASS            "Qt5QWindow"  // for Qt 5.0.1, Qt 4 - QTool
