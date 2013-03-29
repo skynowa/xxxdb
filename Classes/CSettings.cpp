@@ -96,8 +96,12 @@ CSettings::_get(
 
     // translator
     {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
         // slot_OnLanguageEn();
         // slot_OnLanguageRu();
+
+        _stApp.endGroup();
     }
 
     _commonGet(a_wnd);
@@ -161,6 +165,18 @@ CSettings::_set(
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
+
+    // translator
+    {
+        _stApp.beginGroup(a_wnd->objectName() + "/view");
+
+        // slot_OnLanguageEn();
+        // slot_OnLanguageRu();
+
+        // _stApp.setValue("language", language);
+
+        _stApp.endGroup();
+    }
 
     _commonSet(a_wnd);
 
