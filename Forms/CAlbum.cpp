@@ -177,7 +177,6 @@ CAlbum::_initMain() {
 
     // main
     {
-        setWindowTitle(APP_PHOTO_ALBUM_TITLE);
         setWindowFlags(Qt::Window);
     }
 

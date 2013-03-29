@@ -10,6 +10,9 @@
     <height>477</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>XXXDb - editor</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="bbxButtons">

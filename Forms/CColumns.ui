@@ -10,6 +10,9 @@
     <height>400</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>XXXDb - select columns</string>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QListWidget" name="lwItems"/>

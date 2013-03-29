@@ -42,11 +42,6 @@ void
 CAbout::_initMain() {
     ui.setupUi(this);
 
-    // main
-    {
-        setWindowTitle(APP_ABOUT_TITLE);
-    }
-
     //  signals, slots
     {
         connect(ui.bbxButtons, &QDialogButtonBox::clicked,

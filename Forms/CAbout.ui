@@ -10,6 +10,9 @@
     <height>341</height>
    </rect>
   </property>
+  <property name="windowTitle">
+   <string>XXXDb - about</string>
+  </property>
   <property name="windowIcon">
    <iconset resource="../Resources/App.qrc">
     <normaloff>:/Main/Main/App.ico</normaloff>:/Main/Main/App.ico</iconset>

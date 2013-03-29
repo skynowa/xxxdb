@@ -82,11 +82,6 @@ void
 CEditor::_initMain() {
     ui.setupUi(this);
 
-    // main
-    {
-        setWindowTitle(APP_PERSON_EDIT_TITLE);
-    }
-
     // maps ui controls into DB fields
     {
         // DB items to QHash

@@ -133,7 +133,6 @@ CMain::_initMain() {
 
     // main
     {
-        setWindowTitle(APP_MAIN_TITLE);
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
     }
 

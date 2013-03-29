@@ -44,11 +44,6 @@ void
 CColumns::_initMain() {
     ui.setupUi(this);
 
-    // main
-    {
-        setWindowTitle(APP_COLUMNS_TITLE);
-    }
-
     {
         // set caption for DB fields
         Q_ASSERT(qARRAY_LENGTH(g_dbRecords) == (size_t)_tmModel->columnCount());
