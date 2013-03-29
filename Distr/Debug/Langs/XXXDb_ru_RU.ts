@@ -1041,9 +1041,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Фото основное</translation>
     </message>
     <message>
-        <location filename="../../../QtLib/CUtils.cpp" line="473"/>
         <source>Словарь:</source>
-        <translation>Словарь:</translation>
+        <translation type="obsolete">Словарь:</translation>
     </message>
     <message>
         <location filename="../../../QtLib/CUtils.cpp" line="484"/>
