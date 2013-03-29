@@ -23,6 +23,12 @@
 #define APP_DIR_PLUGIN_SQLDRIVERS   "sqldrivers"
 #define APP_DIR_PLUGIN_IMAGEFORMATS "imageformats"
 
+#if defined(Q_WS_WIN)
+    #define APP_LOCALE_CODEC        "Windows-1251"
+#else
+    #define APP_LOCALE_CODEC        "UTF-8"
+#endif
+
 // photo
 #define PHOTO_NUM                   15
 #define IMAGE_FORMATS               "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
@@ -40,8 +46,7 @@
 // etc
 #define BACKUP_DIR_NAME             "Backup"
 #define INI_FILE_EXT                ".ini"
-#define INI_FILE_PATH               (qApp->applicationFilePath() + INI_FILE_EXT)
-#define LANGS_DIR_PATH              (qApp->applicationDirPath() + "/Langs")
+#define LANGS_DIR_NAME              "Langs"
 #define LANGS_FILE_NAME_RU          "XXXDb_ru_RU.qm"
 #define TABLEVIEW_ROW_HEIGHT        20
 #define TEXT_NO_PHOTO               QObject::tr("No photo")

@@ -16,16 +16,28 @@ class CApplication :
     /// application
 {
 public:
-                CApplication  (int &argc, char **argv);
+                   CApplication   (int &argc, char **argv);
         ///< constructor
-    virtual    ~CApplication  ();
+    virtual       ~CApplication   ();
         ///< destructor
 
-    static void windowActivate(cQString &appWndClass, cQString &appName);
+    // static
+    static QString iniFilePath    ();
+        ///< ini file path
+    static QString langsDirPath   ();
+        ///< languages directory path
+    static QString dbDirPath      ();
+        ///< database directory path
+    static QString dbFilePath     ();
+        ///< database file path
+    static QString dbBackupDirPath();
+        ///< database backup directory path
+
+    static void    windowActivate (cQString &appWndClass, cQString &appName);
         ///< activate main window
-    static bool isRunnig      (cQString &appGuid);
+    static bool    isRunnig       (cQString &appGuid);
         ///< check if application already running
-    static bool selfCheck     ();
+    static bool    selfCheck      ();
         ///< self check
 
 private:

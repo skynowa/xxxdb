@@ -295,6 +295,9 @@
    <property name="text">
     <string>Insert</string>
    </property>
+   <property name="shortcut">
+    <string>Ins</string>
+   </property>
   </action>
   <action name="actEdit_Delete">
    <property name="icon">
@@ -304,6 +307,9 @@
    <property name="text">
     <string>Delete</string>
    </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
   </action>
   <action name="actEdit_Edit">
    <property name="icon">
@@ -312,6 +318,9 @@
    </property>
    <property name="text">
     <string>Edit</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
    </property>
   </action>
   <action name="actFind_Search">

@@ -6,6 +6,7 @@
 
 #include "CSettings.h"
 
+#include "CApplication.h"
 #include "../Forms/CMain.h"
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
@@ -22,7 +23,7 @@ CSettings::CSettings(
     CEditor *a_wndEditor,
     CAlbum  *a_wndAlbum
 ) :
-    _stApp    (INI_FILE_PATH, QSettings::IniFormat),
+    _stApp    (CApplication::iniFilePath(), QSettings::IniFormat),
     _wndMain  (a_wndMain),
     _wndEditor(a_wndEditor),
     _wndAlbum (a_wndAlbum)

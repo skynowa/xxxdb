@@ -26,11 +26,6 @@ public:
     friend class CSettings;
 
     Ui::CMainClass  ui;
-    QString         sAppName;
-    QString         sAppDir;
-    QString         sDbDir;
-    QString         sDbFile;
-    QString         sDbBackupDir;
     CSqlNavigator   snNavigator;
     CAlbum         *wndAlbum;
 

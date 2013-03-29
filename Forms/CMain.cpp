@@ -6,13 +6,14 @@
 
 #include "CMain.h"
 
+#include "../QtLib/CUtils.h"
+#include "../Classes/CApplication.h"
+#include "../Classes/CSettings.h"
+#include "../Classes/CDelegateDbImage.h"
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
 #include "../Forms/CColumns.h"
 #include "../Forms/CAbout.h"
-#include "../QtLib/CUtils.h"
-#include "../Classes/CSettings.h"
-#include "../Classes/CDelegateDbImage.h"
 
 
 /*******************************************************************************
@@ -26,11 +27,6 @@ CMain::CMain(
     Qt::WindowFlags  a_flags
 ) :
     QMainWindow  (a_parent, a_flags),
-    sAppName     (),
-    sAppDir      (),
-    sDbDir       (),
-    sDbFile      (),
-    sDbBackupDir (),
     snNavigator  (this),
     wndAlbum     (NULL),
     _stApp       (NULL),
@@ -133,14 +129,8 @@ CMain::_initMain() {
     //--------------------------------------------------
     // data
     {
-        sAppName     = QCoreApplication::applicationName();
-        sAppDir      = qApp->applicationDirPath();
-        sDbDir       = sAppDir + QDir::separator() + DB_DIR_NAME;
-        sDbFile      = sDbDir  + QDir::separator() + sAppName + DB_FILE_EXT;
-        sDbBackupDir = sDbDir  + QDir::separator() + BACKUP_DIR_NAME;
-
-        QDir().mkpath(sDbDir);
-        QDir().mkpath(sDbBackupDir);
+        QDir().mkpath( CApplication::dbDirPath() );
+        QDir().mkpath( CApplication::dbBackupDirPath() );
     }
 
     // main
@@ -200,7 +190,7 @@ CMain::_initModel() {
         qCHECK_DO(!bRv, qMSG(QSqlDatabase().lastError().text()); return);
 
         _dbDatabase = QSqlDatabase::addDatabase("QSQLITE");
-        _dbDatabase.setDatabaseName(sDbFile);
+        _dbDatabase.setDatabaseName( CApplication::dbFilePath() );
 
         bRv = _dbDatabase.open();
         qCHECK_REF(bRv, _dbDatabase);
@@ -622,7 +612,7 @@ CMain::slot_OnLanguageEn() {
 void
 CMain::slot_OnLanguageRu() {
     (bool)qApp->installTranslator(_trTranslator);
-    bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, LANGS_DIR_PATH);
+    bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     Q_ASSERT(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;
 

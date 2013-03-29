@@ -18,15 +18,9 @@ CApplication::CApplication(
 ) :
     QApplication(a_argc, a_argv)
 {
-#if defined(Q_WS_WIN)
-    cQByteArray codecName = "Windows-1251";
-#else
-    cQByteArray codecName = "UTF-8";
-#endif
-
     // set codecs
     {
-        QTextCodec *codec = QTextCodec::codecForName(codecName);
+        QTextCodec *codec = QTextCodec::codecForName(APP_LOCALE_CODEC);
         Q_ASSERT(NULL != codec);
 
         QTextCodec::setCodecForLocale(codec);
@@ -39,12 +33,41 @@ CApplication::~CApplication() {
 }
 //------------------------------------------------------------------------------
 
-
 /*******************************************************************************
 *   public, static
 *
 *******************************************************************************/
 
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::iniFilePath() {
+    return applicationFilePath() + INI_FILE_EXT;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::langsDirPath() {
+    return applicationDirPath() + QDir::separator() + LANGS_DIR_NAME;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::dbDirPath() {
+    return applicationDirPath() + QDir::separator() + DB_DIR_NAME;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::dbFilePath() {
+    return dbDirPath() + QDir::separator() + applicationName() + DB_FILE_EXT;
+}
+//------------------------------------------------------------------------------
+/* static */
+QString
+CApplication::dbBackupDirPath() {
+    return dbDirPath() + QDir::separator() + BACKUP_DIR_NAME;
+}
 //------------------------------------------------------------------------------
 /* static */
 void
