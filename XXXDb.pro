@@ -54,7 +54,7 @@ win32 {
     RC_FILE     = Resources/App_win.rc
 }
 
-TRANSLATIONS   += Langs/XXXDb_ru_RU.ts
+TRANSLATIONS   += Resources/Langs/XXXDb_ru_RU.ts
 
 CONFIG(debug, debug | release) {
     DISTR_DIR   = ./Distr/Debug
