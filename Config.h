@@ -24,7 +24,7 @@
 #define APP_DIR_PLUGIN_IMAGEFORMATS "imageformats"
 
 #define APP_MAIN_TITLE              APP_NAME + QObject::tr(" - accounting software for girls")
-#define APP_PERSON_EDIT_TITLE       APP_NAME + QObject::tr(" - person editor")
+#define APP_PERSON_EDIT_TITLE       APP_NAME + QObject::tr(" - editor")
 #define APP_PHOTO_ALBUM_TITLE       APP_NAME + QObject::tr(" - photo album")
 #define APP_COLUMNS_TITLE           APP_NAME + QObject::tr(" - select columns")
 #define APP_ABOUT_TITLE             APP_NAME + QObject::tr(" - about")

@@ -692,8 +692,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
     <message>
         <location filename="../../../Config.h" line="27"/>
-        <source> - person editor</source>
-        <translation> - редактор личности</translation>
+        <source> - editor</source>
+        <translation> - редактор</translation>
     </message>
     <message>
         <location filename="../../../Config.h" line="28"/>
