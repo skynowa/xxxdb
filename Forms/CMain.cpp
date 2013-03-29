@@ -64,9 +64,13 @@ CMain::keyPressEvent(
 )
 {
     switch (a_event->key()) {
-        // minimize on pressing escape
+        // minimize by 'escape'
         case Qt::Key_Escape:
             setWindowState(Qt::WindowMinimized);
+            break;
+        // call editor by 'Enter'
+        case Qt::Key_Return:
+            slot_OnEdit();
             break;
         default:
             QMainWindow::keyPressEvent(a_event);
