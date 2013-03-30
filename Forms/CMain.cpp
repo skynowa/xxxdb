@@ -153,16 +153,6 @@ CMain::_initMain() {
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
     }
 
-    // splitters
-    {
-        // ui.splitter->setStretchFactor(1, 1);
-        // ui.splitter->size().setWidth(1000);
-        // ui.splitter->adjustSize();
-
-        // ui.splPhotoTable->setStretchFactor(1, 1);
-        // ui.splPhotoShortInfo->setStretchFactor(1, 1);
-    }
-
     // lblPhoto
     {
         ui.lblPhoto->setFixedSize(PHOTO_SIZE);
