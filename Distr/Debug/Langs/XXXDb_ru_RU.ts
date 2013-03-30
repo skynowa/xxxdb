@@ -527,17 +527,17 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
 <context>
     <name>CMain</name>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="498"/>
+        <location filename="../../../Forms/CMain.cpp" line="515"/>
         <source>Go to row (total %1 rows):</source>
         <translation>Перейти к записи (всего %1 записей):</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="523"/>
+        <location filename="../../../Forms/CMain.cpp" line="540"/>
         <source>Removing record.</source>
         <translation>Удаление записи.</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="524"/>
+        <location filename="../../../Forms/CMain.cpp" line="541"/>
         <source>Do you want to remove record?</source>
         <translation>Вы хотите удалить запись?</translation>
     </message>
@@ -566,7 +566,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
     <message>
         <location filename="../../../Forms/CMain.ui" line="147"/>
-        <location filename="../../../Forms/CMain.ui" line="314"/>
+        <location filename="../../../Forms/CMain.ui" line="320"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
@@ -636,77 +636,92 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="305"/>
+        <location filename="../../../Forms/CMain.ui" line="299"/>
+        <source>Ins</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="308"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
+        <location filename="../../../Forms/CMain.ui" line="311"/>
+        <source>Del</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../../../Forms/CMain.ui" line="323"/>
-        <location filename="../../../Forms/CMain.ui" line="326"/>
+        <source>Return</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="332"/>
+        <location filename="../../../Forms/CMain.ui" line="335"/>
         <source>Search...</source>
         <translation>Поиск...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="335"/>
-        <location filename="../../../Forms/CMain.ui" line="338"/>
+        <location filename="../../../Forms/CMain.ui" line="344"/>
+        <location filename="../../../Forms/CMain.ui" line="347"/>
         <source>Settings...</source>
         <translation>Настройки...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="347"/>
+        <location filename="../../../Forms/CMain.ui" line="356"/>
         <source>FAQ</source>
         <translation>Справка</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="352"/>
-        <location filename="../../../Forms/CMain.ui" line="355"/>
+        <location filename="../../../Forms/CMain.ui" line="361"/>
+        <location filename="../../../Forms/CMain.ui" line="364"/>
         <source>About...</source>
         <translation>О программе...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="364"/>
-        <location filename="../../../Forms/CMain.ui" line="367"/>
+        <location filename="../../../Forms/CMain.ui" line="373"/>
+        <location filename="../../../Forms/CMain.ui" line="376"/>
         <source>Go to...</source>
         <translation>Перейти к...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="376"/>
+        <location filename="../../../Forms/CMain.ui" line="385"/>
         <source>Select Columns...</source>
         <translation>Выбрать Столбцы...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="379"/>
+        <location filename="../../../Forms/CMain.ui" line="388"/>
         <source>Select columns...</source>
         <translation>Выбрать Столбцы...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="388"/>
-        <location filename="../../../Forms/CMain.ui" line="391"/>
+        <location filename="../../../Forms/CMain.ui" line="397"/>
+        <location filename="../../../Forms/CMain.ui" line="400"/>
         <source>Clear text</source>
         <translation>Очистить текст</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="402"/>
+        <location filename="../../../Forms/CMain.ui" line="411"/>
         <source>Show Main Toolbar</source>
         <translation>Показать Главную Панель Инструментов</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="413"/>
+        <location filename="../../../Forms/CMain.ui" line="422"/>
         <source>Show Quick Find Toolbar</source>
         <translation>Показать Панель Быстрого Поиска</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="424"/>
+        <location filename="../../../Forms/CMain.ui" line="433"/>
         <source>Show Statusbar</source>
         <translation>Показать Строку Состояния</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="435"/>
+        <location filename="../../../Forms/CMain.ui" line="444"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="443"/>
+        <location filename="../../../Forms/CMain.ui" line="452"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
@@ -734,332 +749,332 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation type="obsolete"> - о программе</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="47"/>
+        <location filename="../../../Config.h" line="52"/>
         <source>No photo</source>
         <translation>Нет фото</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="169"/>
+        <location filename="../../../Config.h" line="174"/>
         <source>#</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="172"/>
+        <location filename="../../../Config.h" line="177"/>
         <source>Nick</source>
         <translation>Ник</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="173"/>
+        <location filename="../../../Config.h" line="178"/>
         <source>Surname</source>
         <translation>Фамилия</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="174"/>
+        <location filename="../../../Config.h" line="179"/>
         <source>Name</source>
         <translation>Имя</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="175"/>
+        <location filename="../../../Config.h" line="180"/>
         <source>Patronymic</source>
         <translation>Отчество</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="176"/>
+        <location filename="../../../Config.h" line="181"/>
         <source>Age</source>
         <translation>Возраст</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="177"/>
+        <location filename="../../../Config.h" line="182"/>
         <source>Height</source>
         <translation>Рост</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="178"/>
+        <location filename="../../../Config.h" line="183"/>
         <source>Weight</source>
         <translation>Вес</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="179"/>
+        <location filename="../../../Config.h" line="184"/>
         <source>Hair length</source>
         <translation>Длина волос</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="180"/>
+        <location filename="../../../Config.h" line="185"/>
         <source>Hair color</source>
         <translation>Цвет волос</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="181"/>
+        <location filename="../../../Config.h" line="186"/>
         <source>Appearance</source>
         <translation>Внешность</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="182"/>
+        <location filename="../../../Config.h" line="187"/>
         <source>Status</source>
         <translation>Статус</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="185"/>
+        <location filename="../../../Config.h" line="190"/>
         <source>Mobile 1</source>
         <translation>Мобильный 1</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="186"/>
+        <location filename="../../../Config.h" line="191"/>
         <source>Mobile 2</source>
         <translation>Мобильный 2</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="187"/>
+        <location filename="../../../Config.h" line="192"/>
         <source>Mobile 3</source>
         <translation>Мобильный 3</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="188"/>
+        <location filename="../../../Config.h" line="193"/>
         <source>Phone home</source>
         <translation>Домашний</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="189"/>
+        <location filename="../../../Config.h" line="194"/>
         <source>Phone job</source>
         <translation>Рабочий</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="190"/>
+        <location filename="../../../Config.h" line="195"/>
         <source>Phone other</source>
         <translation>Другие</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="193"/>
+        <location filename="../../../Config.h" line="198"/>
         <source>Country</source>
         <translation>Страна</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="194"/>
+        <location filename="../../../Config.h" line="199"/>
         <source>Code</source>
         <translation>Код</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="195"/>
+        <location filename="../../../Config.h" line="200"/>
         <source>City</source>
         <translation>Город</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="196"/>
+        <location filename="../../../Config.h" line="201"/>
         <source>District</source>
         <translation>Район</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="197"/>
+        <location filename="../../../Config.h" line="202"/>
         <source>Street</source>
         <translation>Улица</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="198"/>
+        <location filename="../../../Config.h" line="203"/>
         <source>House</source>
         <translation>Дом</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="199"/>
+        <location filename="../../../Config.h" line="204"/>
         <source>Porch</source>
         <translation>Подъезд</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="200"/>
+        <location filename="../../../Config.h" line="205"/>
         <source>Floor</source>
         <translation>Этаж</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="201"/>
+        <location filename="../../../Config.h" line="206"/>
         <source>Apartment</source>
         <translation>Квартира</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="204"/>
+        <location filename="../../../Config.h" line="209"/>
         <source>E-mail</source>
         <translation>Почта</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="207"/>
+        <location filename="../../../Config.h" line="212"/>
         <source>Web</source>
         <translation>Веб</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="210"/>
+        <location filename="../../../Config.h" line="215"/>
         <source>ICQ</source>
         <translation>Аська</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="211"/>
+        <location filename="../../../Config.h" line="216"/>
         <source>Skype</source>
         <translation>Скайп</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="214"/>
+        <location filename="../../../Config.h" line="219"/>
         <source>Profession</source>
         <translation>Профессия</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="215"/>
+        <location filename="../../../Config.h" line="220"/>
         <source>Address</source>
         <translation>Алрес</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="216"/>
+        <location filename="../../../Config.h" line="221"/>
         <source>Salary</source>
         <translation>Зарплата</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="217"/>
+        <location filename="../../../Config.h" line="222"/>
         <source>Company</source>
         <translation>Компания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="220"/>
+        <location filename="../../../Config.h" line="225"/>
         <source>Birthday</source>
         <translation>День рождения</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="221"/>
+        <location filename="../../../Config.h" line="226"/>
         <source>Birthday father</source>
         <translation>ДР отца</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="222"/>
+        <location filename="../../../Config.h" line="227"/>
         <source>Birthday mother</source>
         <translation>ДР матери</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="223"/>
+        <location filename="../../../Config.h" line="228"/>
         <source>Day of dating</source>
         <translation>1-е свидание</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="224"/>
+        <location filename="../../../Config.h" line="229"/>
         <source>Day of 1-st kiss</source>
         <translation>1-ый поцелуй</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="225"/>
+        <location filename="../../../Config.h" line="230"/>
         <source>Day of 1-st sex</source>
         <translation>1-ый секс</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="228"/>
+        <location filename="../../../Config.h" line="233"/>
         <source>Hobby</source>
         <translation>Хобби</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="229"/>
+        <location filename="../../../Config.h" line="234"/>
         <source>Sports</source>
         <translation>Спорт</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="230"/>
+        <location filename="../../../Config.h" line="235"/>
         <source>Smoking</source>
         <translation>Курение</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="231"/>
+        <location filename="../../../Config.h" line="236"/>
         <source>Alcohol</source>
         <translation>Алкоголь</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="232"/>
+        <location filename="../../../Config.h" line="237"/>
         <source>Drugs</source>
         <translation>Наркотики</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="237"/>
+        <location filename="../../../Config.h" line="242"/>
         <source>Date creation</source>
         <translation>Дата создания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="238"/>
+        <location filename="../../../Config.h" line="243"/>
         <source>Date last change</source>
         <translation>Дата изменения</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="241"/>
+        <location filename="../../../Config.h" line="246"/>
         <source>Notes</source>
         <translation>Примечания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="244"/>
+        <location filename="../../../Config.h" line="249"/>
         <source>Photo 1</source>
         <translation>Фото 1</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="245"/>
+        <location filename="../../../Config.h" line="250"/>
         <source>Photo 2</source>
         <translation>Фото 2</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="246"/>
+        <location filename="../../../Config.h" line="251"/>
         <source>Photo 3</source>
         <translation>Фото 3</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="247"/>
+        <location filename="../../../Config.h" line="252"/>
         <source>Photo 4</source>
         <translation>Фото 4</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="248"/>
+        <location filename="../../../Config.h" line="253"/>
         <source>Photo 5</source>
         <translation>Фото 5</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="249"/>
+        <location filename="../../../Config.h" line="254"/>
         <source>Photo 6</source>
         <translation>Фото 6</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="250"/>
+        <location filename="../../../Config.h" line="255"/>
         <source>Photo 7</source>
         <translation>Фото 7</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="251"/>
+        <location filename="../../../Config.h" line="256"/>
         <source>Photo 8</source>
         <translation>Фото 8</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="252"/>
+        <location filename="../../../Config.h" line="257"/>
         <source>Photo 9</source>
         <translation>Фото 9</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="253"/>
+        <location filename="../../../Config.h" line="258"/>
         <source>Photo 10</source>
         <translation>Фото 10</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="254"/>
+        <location filename="../../../Config.h" line="259"/>
         <source>Photo 11</source>
         <translation>Фото 11</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="255"/>
+        <location filename="../../../Config.h" line="260"/>
         <source>Photo 12</source>
         <translation>Фото 12</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="256"/>
+        <location filename="../../../Config.h" line="261"/>
         <source>Photo 13</source>
         <translation>Фото 13</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="257"/>
+        <location filename="../../../Config.h" line="262"/>
         <source>Photo 14</source>
         <translation>Фото 14</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="258"/>
+        <location filename="../../../Config.h" line="263"/>
         <source>Photo 15</source>
         <translation>Фото 15</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="259"/>
+        <location filename="../../../Config.h" line="264"/>
         <source>Photo primary</source>
         <translation>Фото основное</translation>
     </message>
@@ -1078,9 +1093,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>: Не реализовано</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CApplication.cpp" line="79"/>
-        <location filename="../../../Classes/CApplication.cpp" line="90"/>
-        <location filename="../../../Classes/CApplication.cpp" line="101"/>
+        <location filename="../../../Classes/CApplication.cpp" line="120"/>
+        <location filename="../../../Classes/CApplication.cpp" line="131"/>
+        <location filename="../../../Classes/CApplication.cpp" line="142"/>
         <source>Plugin directory %1 not exists</source>
         <translation>Каталог плагина %1 не существует</translation>
     </message>
