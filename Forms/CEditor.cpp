@@ -237,12 +237,6 @@ CEditor::slot_bbxButtons_OnClicked(
             _saveAll();
             close();
             break;
-        case QDialogButtonBox::Cancel:
-            close();
-            break;
-        case QDialogButtonBox::Apply:
-            _saveAll();
-            break;
         default:
             Q_ASSERT(false);
             break;
