@@ -652,7 +652,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
     <message>
         <location filename="../../../Forms/CMain.ui" line="323"/>
-        <source>Return</source>
+        <source>Enter</source>
         <translation></translation>
     </message>
     <message>

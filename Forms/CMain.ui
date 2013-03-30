@@ -320,7 +320,7 @@
     <string>Edit</string>
    </property>
    <property name="shortcut">
-    <string>Return</string>
+    <string>Enter</string>
    </property>
   </action>
   <action name="actFind_Search">
