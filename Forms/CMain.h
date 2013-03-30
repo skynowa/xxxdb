@@ -33,6 +33,7 @@ public:
 
 protected:
     virtual void    keyPressEvent       (QKeyEvent *event);
+    virtual void    changeEvent         (QEvent *event);
     virtual void    closeEvent          (QCloseEvent *event);
 
 private:

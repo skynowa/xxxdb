@@ -82,6 +82,21 @@ CMain::keyPressEvent(
     }
 }
 //------------------------------------------------------------------------------
+void
+CMain::changeEvent(
+    QEvent *a_event
+)
+{
+    // retranslation
+    if (a_event->type() == QEvent::LanguageChange) {
+        ui.retranslateUi(this);
+
+        // TODO: ui.lblPhotoInfo
+    }
+
+    QWidget::changeEvent(a_event);
+}
+//------------------------------------------------------------------------------
 /* virtual */
 void
 CMain::closeEvent(
@@ -605,18 +620,15 @@ void
 CMain::slot_OnLanguageEn() {
     (bool)CApplication::removeTranslator(_trTranslator);
     _sTranslatorLang.clear();
-
-    ui.retranslateUi(this);
 }
 //------------------------------------------------------------------------------
 void
 CMain::slot_OnLanguageRu() {
-    (bool)CApplication::installTranslator(_trTranslator);
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     Q_ASSERT(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;
 
-    ui.retranslateUi(this);
+    (bool)CApplication::installTranslator(_trTranslator);
 }
 //------------------------------------------------------------------------------
 
