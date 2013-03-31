@@ -153,9 +153,7 @@ CEditor::_initMain() {
 
             // TODO: Periods
 
-            // Etc
-            _hsDbItems.insert(ui.dtDateCreation,   DB_F_ETC_DATECREATION);
-            _hsDbItems.insert(ui.dtDateLastChange, DB_F_ETC_DATELASTCHANGE);
+            // TODO: Etc
 
             // Note
             _hsDbItems.insert(ui.tedtNotes,        DB_F_NOTES_NOTES);
