@@ -75,6 +75,19 @@ CEditor::_construct() {
 //------------------------------------------------------------------------------
 void
 CEditor::_destruct() {
+    // update DB_F_ETC_DATECREATION, DB_F_ETC_DATELASTCHANGE
+    {
+        cint       row    = _snNavigator->view()->currentIndex().row();
+        QSqlRecord record = _tmModel->record(row);
+
+        if (record.value(DB_F_ETC_DATECREATION).isNull()) {
+            record.setValue(DB_F_ETC_DATECREATION, QDateTime::currentDateTime());
+        }
+        record.setValue(DB_F_ETC_DATELASTCHANGE, QDateTime::currentDateTime());
+
+        _tmModel->setRecord(row, record);
+    }
+
     qPTR_DELETE(_stApp);
 }
 //------------------------------------------------------------------------------
