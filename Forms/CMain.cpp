@@ -59,6 +59,7 @@ CMain::keyPressEvent(
     QKeyEvent *a_event
 )
 {
+    // shortcuts
     switch (a_event->key()) {
         // minimize by 'escape'
         case Qt::Key_Escape:
@@ -78,9 +79,10 @@ CMain::keyPressEvent(
             slot_OnEdit();
             break;
         default:
-            QMainWindow::keyPressEvent(a_event);
             break;
     }
+
+    QMainWindow::keyPressEvent(a_event);
 }
 //------------------------------------------------------------------------------
 void
