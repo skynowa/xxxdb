@@ -73,6 +73,7 @@ CMain::keyPressEvent(
             slot_OnRemove();
             break;
         // call editor by 'Enter'
+        case Qt::Key_Return:
         case Qt::Key_Enter:
             slot_OnEdit();
             break;
