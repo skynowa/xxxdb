@@ -210,7 +210,7 @@ CEditor::_initMain() {
     // signals
     {
         connect(ui.tbtnPhotoAlbum, &QToolButton::clicked,
-                this,              &CEditor::OnAlbum);
+                this,              &CEditor::onAlbum);
         connect(ui.bbxButtons,     &QDialogButtonBox::clicked,
                 this,              &CEditor::bbxButtons_onClicked);
         connect(ui.twGroups,       &QTreeWidget::currentItemChanged,
@@ -227,7 +227,7 @@ CEditor::_initMain() {
 
 //------------------------------------------------------------------------------
 void
-CEditor::OnAlbum() {
+CEditor::onAlbum() {
     qPTR_DELETE(wndAlbum);
 
     wndAlbum = new CAlbum(this, _tmModel, _snNavigator);

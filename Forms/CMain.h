@@ -67,7 +67,7 @@ private:
     void            actEdit_onInsert();
     void            actEdit_onRemove();
     void            actEdit_onEdit();
-    void            actEdit_onPhotoAlbum();
+    void            actEdit_onAlbum();
 
     // group "Find"
     void            actFind_onSearch();

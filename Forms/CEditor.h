@@ -51,7 +51,7 @@ private:
     void               _saveAll();
 
     // slots
-    void               OnAlbum();
+    void               onAlbum();
     void               bbxButtons_onClicked(QAbstractButton *button);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                                                      QTreeWidgetItem *previous);

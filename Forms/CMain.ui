@@ -80,7 +80,7 @@
               <string> - </string>
              </property>
             </widget>
-            <widget class="QToolButton" name="tbtnPhotoAlbum">
+            <widget class="QToolButton" name="tbtnAlbum">
              <property name="geometry">
               <rect>
                <x>268</x>
@@ -157,7 +157,7 @@
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
     <addaction name="separator"/>
-    <addaction name="actEdit_PhotoAlbum"/>
+    <addaction name="actEdit_Album"/>
    </widget>
    <widget class="QMenu" name="mnuFind">
     <property name="title">
@@ -226,7 +226,7 @@
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
    <addaction name="separator"/>
-   <addaction name="actEdit_PhotoAlbum"/>
+   <addaction name="actEdit_Album"/>
    <addaction name="separator"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
@@ -456,16 +456,16 @@
     <string>Russian</string>
    </property>
   </action>
-  <action name="actEdit_PhotoAlbum">
+  <action name="actEdit_Album">
    <property name="icon">
     <iconset resource="../Resources/App.qrc">
      <normaloff>:/Menu/Menu/PhotoAlbum.png</normaloff>:/Menu/Menu/PhotoAlbum.png</iconset>
    </property>
    <property name="text">
-    <string>Photo album...</string>
+    <string>Album...</string>
    </property>
    <property name="toolTip">
-    <string>Photo album...</string>
+    <string>Album...</string>
    </property>
   </action>
  </widget>

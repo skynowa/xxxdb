@@ -369,11 +369,11 @@ CMain::_initModel() {
     // slots
     {
         connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dbImageLabel->mapper(),     &QDataWidgetMapper::setCurrentModelIndex);
-        connect(snNavigator.view(),          &QTableView::doubleClicked,
-                this,                        &CMain::actEdit_onEdit);
-        connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
-                this,                        &CMain::actEdit_onPhotoAlbum);
+                _dbImageLabel->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
+        connect(snNavigator.view(),      &QTableView::doubleClicked,
+                this,                    &CMain::actEdit_onEdit);
+        connect(ui.tbtnAlbum,            &QToolButton::clicked,
+                this,                    &CMain::actEdit_onAlbum);
     }
 }
 //------------------------------------------------------------------------------
@@ -381,38 +381,38 @@ void
 CMain::_initActions() {
     // group "File"
     {
-        connect(ui.actFile_Exit,        &QAction::triggered,
-                this,                   &CMain::actFile_onExit);
+        connect(ui.actFile_Exit, &QAction::triggered,
+                this,            &CMain::actFile_onExit);
     }
 
     // group "Edit"
     {
-        connect(ui.actEdit_First,       &QAction::triggered,
-                this,                   &CMain::actEdit_onFirst);
-        connect(ui.actEdit_Prior,       &QAction::triggered,
-                this,                   &CMain::actEdit_onPrior);
-        connect(ui.actEdit_Next,        &QAction::triggered,
-                this,                   &CMain::actEdit_onNext);
-        connect(ui.actEdit_Last,        &QAction::triggered,
-                this,                   &CMain::actEdit_onLast);
-        connect(ui.actEdit_GoTo,        &QAction::triggered,
-                this,                   &CMain::actEdit_onGoTo);
-        connect(ui.actEdit_Insert,      &QAction::triggered,
-                this,                   &CMain::actEdit_onInsert);
-        connect(ui.actEdit_Delete,      &QAction::triggered,
-                this,                   &CMain::actEdit_onRemove);
-        connect(ui.actEdit_Edit,        &QAction::triggered,
-                this,                   &CMain::actEdit_onEdit);
-        connect(ui.actEdit_PhotoAlbum,  &QAction::triggered,
-                this,                   &CMain::actEdit_onPhotoAlbum);
+        connect(ui.actEdit_First,  &QAction::triggered,
+                this,              &CMain::actEdit_onFirst);
+        connect(ui.actEdit_Prior,  &QAction::triggered,
+                this,              &CMain::actEdit_onPrior);
+        connect(ui.actEdit_Next,   &QAction::triggered,
+                this,              &CMain::actEdit_onNext);
+        connect(ui.actEdit_Last,   &QAction::triggered,
+                this,              &CMain::actEdit_onLast);
+        connect(ui.actEdit_GoTo,   &QAction::triggered,
+                this,              &CMain::actEdit_onGoTo);
+        connect(ui.actEdit_Insert, &QAction::triggered,
+                this,              &CMain::actEdit_onInsert);
+        connect(ui.actEdit_Delete, &QAction::triggered,
+                this,              &CMain::actEdit_onRemove);
+        connect(ui.actEdit_Edit,   &QAction::triggered,
+                this,              &CMain::actEdit_onEdit);
+        connect(ui.actEdit_Album,  &QAction::triggered,
+                this,              &CMain::actEdit_onAlbum);
     }
 
     // group "Find"
     {
-        connect(ui.actFind_Search,      &QAction::triggered,
-                this,                   &CMain::actFind_onSearch);
-        connect(ui.actFind_TextClear,   &QAction::triggered,
-                this,                   &CMain::actFind_onTextClear);
+        connect(ui.actFind_Search,    &QAction::triggered,
+                this,                 &CMain::actFind_onSearch);
+        connect(ui.actFind_TextClear, &QAction::triggered,
+                this,                 &CMain::actFind_onTextClear);
     }
 
     // group "View"
@@ -447,11 +447,11 @@ CMain::_initActions() {
 
     // group "Help"
     {
-        connect(ui.actHelp_Faq,         &QAction::triggered,
-                this,                   &CMain::actHelp_onFaq);
+        connect(ui.actHelp_Faq,   &QAction::triggered,
+                this,             &CMain::actHelp_onFaq);
 
-        connect(ui.actHelp_About,       &QAction::triggered,
-                this,                   &CMain::actHelp_onAbout);
+        connect(ui.actHelp_About, &QAction::triggered,
+                this,             &CMain::actHelp_onAbout);
     }
 }
 //------------------------------------------------------------------------------
@@ -558,7 +558,7 @@ CMain::actEdit_onEdit() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onPhotoAlbum() {
+CMain::actEdit_onAlbum() {
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     qPTR_DELETE(wndAlbum);
