@@ -137,7 +137,7 @@ CDbImageLabel::loadFromFile() {
     slFilters << "All   files (*)";
 
     fdlgDialog.setNameFilters(slFilters);
-    fdlgDialog.setDirectory( QDir() );
+    fdlgDialog.setDirectory( QDir::home() );
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {
