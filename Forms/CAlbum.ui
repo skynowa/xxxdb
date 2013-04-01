@@ -412,7 +412,7 @@
     </item>
    </layout>
   </widget>
-  <widget class="QMenuBar" name="menubar">
+  <widget class="QMenuBar" name="mbMain">
    <property name="geometry">
     <rect>
      <x>0</x>
@@ -421,13 +421,13 @@
      <height>21</height>
     </rect>
    </property>
-   <widget class="QMenu" name="menuFile">
+   <widget class="QMenu" name="mnuFile">
     <property name="title">
      <string>File</string>
     </property>
     <addaction name="actFile_Exit"/>
    </widget>
-   <widget class="QMenu" name="menuEdit">
+   <widget class="QMenu" name="mnuEdit">
     <property name="title">
      <string>Edit</string>
     </property>
@@ -443,11 +443,11 @@
     <addaction name="actEdit_Edit"/>
     <addaction name="actEdit_SetPrimary"/>
    </widget>
-   <addaction name="menuFile"/>
-   <addaction name="menuEdit"/>
+   <addaction name="mnuFile"/>
+   <addaction name="mnuEdit"/>
   </widget>
-  <widget class="QStatusBar" name="statusbar"/>
-  <widget class="QToolBar" name="toolBar">
+  <widget class="QStatusBar" name="staInfo"/>
+  <widget class="QToolBar" name="tbMain">
    <property name="windowTitle">
     <string>toolBar</string>
    </property>

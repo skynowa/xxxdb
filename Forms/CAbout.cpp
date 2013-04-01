@@ -45,12 +45,12 @@ CAbout::_initMain() {
     //  signals, slots
     {
         connect(ui.bbxButtons, &QDialogButtonBox::clicked,
-                this,          &CAbout::slot_bbxButtons_OnClicked);
+                this,          &CAbout::bbxButtons_onClicked);
     }
 }
 //------------------------------------------------------------------------------
 void
-CAbout::slot_bbxButtons_OnClicked(
+CAbout::bbxButtons_onClicked(
     QAbstractButton *a_button
 )
 {

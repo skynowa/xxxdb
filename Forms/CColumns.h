@@ -34,7 +34,7 @@ private:
     void            _saveAll  ();
 
     // slots
-    void            slot_bbxButtons_OnClicked(QAbstractButton *button);
+    void            bbxButtons_onClicked(QAbstractButton *button);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CColumnsH

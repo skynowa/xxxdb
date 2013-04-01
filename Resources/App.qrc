@@ -20,6 +20,7 @@
         <file>Menu/SetPrimaryImage.bmp</file>
         <file>Menu/Columns.bmp</file>
         <file>Menu/TextClear.bmp</file>
+        <file>Menu/PhotoAlbum.png</file>
     </qresource>
     <qresource prefix="/Main">
         <file>Main/App.ico</file>

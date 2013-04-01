@@ -67,16 +67,16 @@ CMain::keyPressEvent(
             break;
         // insert record by 'Insert'
         case Qt::Key_Insert:
-            slot_OnInsert();
+            actEdit_onInsert();
             break;
         // delete record by 'Delete'
         case Qt::Key_Delete:
-            slot_OnRemove();
+            actEdit_onRemove();
             break;
         // call editor by 'Enter'
         case Qt::Key_Return:
         case Qt::Key_Enter:
-            slot_OnEdit();
+            actEdit_onEdit();
             break;
         default:
             break;
@@ -170,7 +170,7 @@ CMain::_initMain() {
         _cboFindText->setFixedWidth(FIND_TEXT_WIDTH);
 
         connect(_cboFindText, &QComboBox::currentTextChanged,
-                this,         &CMain::slot_OnQuickFind);
+                this,         &CMain::onQuickFind);
 
         ui.tbQuickFind->addWidget(_cboFindText);
 
@@ -183,7 +183,7 @@ CMain::_initMain() {
         }
 
         connect(_cboDbFields, &QComboBox::currentTextChanged,
-                this,         &CMain::slot_OnDbFieldChange);
+                this,         &CMain::cboDbFields_onCurrentTextChanged);
 
         ui.tbQuickFind->addWidget(_cboDbFields);
     }
@@ -371,9 +371,9 @@ CMain::_initModel() {
         connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
                 _dbImageLabel->mapper(),     &QDataWidgetMapper::setCurrentModelIndex);
         connect(snNavigator.view(),          &QTableView::doubleClicked,
-                this,                        &CMain::slot_OnEdit);
+                this,                        &CMain::actEdit_onEdit);
         connect(ui.tbtnPhotoAlbum,           &QToolButton::clicked,
-                this,                        &CMain::slot_OnAlbum);
+                this,                        &CMain::actEdit_onPhotoAlbum);
     }
 }
 //------------------------------------------------------------------------------
@@ -382,47 +382,49 @@ CMain::_initActions() {
     // group "File"
     {
         connect(ui.actFile_Exit,        &QAction::triggered,
-                this,                   &CMain::slot_OnExit);
+                this,                   &CMain::actFile_onExit);
     }
 
     // group "Edit"
     {
         connect(ui.actEdit_First,       &QAction::triggered,
-                this,                   &CMain::slot_OnFirst);
+                this,                   &CMain::actEdit_onFirst);
         connect(ui.actEdit_Prior,       &QAction::triggered,
-                this,                   &CMain::slot_OnPrior);
+                this,                   &CMain::actEdit_onPrior);
         connect(ui.actEdit_Next,        &QAction::triggered,
-                this,                   &CMain::slot_OnNext);
+                this,                   &CMain::actEdit_onNext);
         connect(ui.actEdit_Last,        &QAction::triggered,
-                this,                   &CMain::slot_OnLast);
+                this,                   &CMain::actEdit_onLast);
         connect(ui.actEdit_GoTo,        &QAction::triggered,
-                this,                   &CMain::slot_OnGoTo);
+                this,                   &CMain::actEdit_onGoTo);
         connect(ui.actEdit_Insert,      &QAction::triggered,
-                this,                   &CMain::slot_OnInsert);
+                this,                   &CMain::actEdit_onInsert);
         connect(ui.actEdit_Delete,      &QAction::triggered,
-                this,                   &CMain::slot_OnRemove);
+                this,                   &CMain::actEdit_onRemove);
         connect(ui.actEdit_Edit,        &QAction::triggered,
-                this,                   &CMain::slot_OnEdit);
+                this,                   &CMain::actEdit_onEdit);
+        connect(ui.actEdit_PhotoAlbum,  &QAction::triggered,
+                this,                   &CMain::actEdit_onPhotoAlbum);
     }
 
     // group "Find"
     {
         connect(ui.actFind_Search,      &QAction::triggered,
-                this,                   &CMain::slot_OnSearch);
+                this,                   &CMain::actFind_onSearch);
         connect(ui.actFind_TextClear,   &QAction::triggered,
-                this,                   &CMain::slot_OnTextClear);
+                this,                   &CMain::actFind_onTextClear);
     }
 
     // group "View"
     {
         connect(ui.actView_MainToolbar,      &QAction::triggered,
-                this,                        &CMain::slot_OnMainToolbar);
+                this,                        &CMain::actView_onMainToolbar);
         connect(ui.actView_QuickFindToolbar, &QAction::triggered,
-                this,                        &CMain::slot_OnQuickFindToolbar);
+                this,                        &CMain::actView_onQuickFindToolbar);
         connect(ui.actView_Columns,          &QAction::triggered,
-                this,                        &CMain::slot_OnColumns);
+                this,                        &CMain::actView_onColumns);
         connect(ui.actView_Statusbar,        &QAction::triggered,
-                this,                        &CMain::slot_OnStatusbar);
+                this,                        &CMain::actView_onStatusbar);
 
         // Language
 
@@ -432,24 +434,24 @@ CMain::_initActions() {
         ui.actViewLanguage_Ru->setActionGroup(agGroup);
 
         connect(ui.actViewLanguage_En,       &QAction::triggered,
-                this,                        &CMain::slot_OnLanguageEn);
+                this,                        &CMain::actView_onLanguageEn);
         connect(ui.actViewLanguage_Ru,       &QAction::triggered,
-                this,                        &CMain::slot_OnLanguageRu);
+                this,                        &CMain::actView_onLanguageRu);
     }
 
     // group "Options"
     {
         connect(ui.actOptions_Settings, &QAction::triggered,
-                this,                   &CMain::slot_OnSettings);
+                this,                   &CMain::actOptions_onSettings);
     }
 
     // group "Help"
     {
         connect(ui.actHelp_Faq,         &QAction::triggered,
-                this,                   &CMain::slot_OnFaq);
+                this,                   &CMain::actHelp_onFaq);
 
         connect(ui.actHelp_About,       &QAction::triggered,
-                this,                   &CMain::slot_OnAbout);
+                this,                   &CMain::actHelp_onAbout);
     }
 }
 //------------------------------------------------------------------------------
@@ -462,7 +464,7 @@ CMain::_initActions() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnExit() {
+CMain::actFile_onExit() {
     close();
 }
 //------------------------------------------------------------------------------
@@ -475,27 +477,27 @@ CMain::slot_OnExit() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnFirst() {
+CMain::actEdit_onFirst() {
     snNavigator.first();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnPrior() {
+CMain::actEdit_onPrior() {
     snNavigator.prior();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnNext() {
+CMain::actEdit_onNext() {
     snNavigator.next();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnLast() {
+CMain::actEdit_onLast() {
     snNavigator.last();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnGoTo() {
+CMain::actEdit_onGoTo() {
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     cint ciCurrentRow = snNavigator.view()->currentIndex().row() + 1;
@@ -513,7 +515,7 @@ CMain::slot_OnGoTo() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnInsert() {
+CMain::actEdit_onInsert() {
     snNavigator.insert();
 
     {
@@ -524,7 +526,7 @@ CMain::slot_OnInsert() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnRemove() {
+CMain::actEdit_onRemove() {
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     QMessageBox msgBox;
@@ -547,12 +549,22 @@ CMain::slot_OnRemove() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnEdit() {
+CMain::actEdit_onEdit() {
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     CEditor dlgEditor(this, _tmModel, &snNavigator);
 
     (int)dlgEditor.exec();
+}
+//------------------------------------------------------------------------------
+void
+CMain::actEdit_onPhotoAlbum() {
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+
+    qPTR_DELETE(wndAlbum);
+
+    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
+    wndAlbum->show();
 }
 //------------------------------------------------------------------------------
 
@@ -564,12 +576,12 @@ CMain::slot_OnEdit() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnSearch() {
+CMain::actFind_onSearch() {
 
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnTextClear() {
+CMain::actFind_onTextClear() {
     _cboFindText->lineEdit()->clear();
 }
 //------------------------------------------------------------------------------
@@ -582,41 +594,41 @@ CMain::slot_OnTextClear() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnMainToolbar() {
+CMain::actView_onMainToolbar() {
     cbool bIsChecked = ui.actView_MainToolbar->isChecked();
 
     ui.tbMain->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnQuickFindToolbar() {
+CMain::actView_onQuickFindToolbar() {
     cbool bIsChecked = ui.actView_QuickFindToolbar->isChecked();
 
     ui.tbQuickFind->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnColumns() {
+CMain::actView_onColumns() {
     CColumns dlgColumns(this, _tmModel);
 
     (int)dlgColumns.exec();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnStatusbar() {
+CMain::actView_onStatusbar() {
     cbool bIsChecked = ui.actView_Statusbar->isChecked();
 
     ui.sbInfo->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnLanguageEn() {
+CMain::actView_onLanguageEn() {
     (bool)CApplication::removeTranslator(_trTranslator);
     _sTranslatorLang.clear();
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnLanguageRu() {
+CMain::actView_onLanguageRu() {
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     Q_ASSERT(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;
@@ -633,7 +645,7 @@ CMain::slot_OnLanguageRu() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnSettings() {
+CMain::actOptions_onSettings() {
 
 }
 //------------------------------------------------------------------------------
@@ -646,12 +658,12 @@ CMain::slot_OnSettings() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnFaq() {
+CMain::actHelp_onFaq() {
 
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnAbout() {
+CMain::actHelp_onAbout() {
     CAbout wndAbout(this);
 
     (int)wndAbout.exec();
@@ -666,17 +678,7 @@ CMain::slot_OnAbout() {
 
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnAlbum() {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
-
-    qPTR_DELETE(wndAlbum);
-
-    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
-    wndAlbum->show();
-}
-//------------------------------------------------------------------------------
-void
-CMain::slot_OnQuickFind(
+CMain::onQuickFind(
     cQString &a_arg
 )
 {
@@ -697,7 +699,7 @@ CMain::slot_OnQuickFind(
 }
 //------------------------------------------------------------------------------
 void
-CMain::slot_OnDbFieldChange(
+CMain::cboDbFields_onCurrentTextChanged(
     cQString &a_arg
 )
 {

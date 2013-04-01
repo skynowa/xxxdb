@@ -210,11 +210,11 @@ CEditor::_initMain() {
     // signals
     {
         connect(ui.tbtnPhotoAlbum, &QToolButton::clicked,
-                this,              &CEditor::slot_OnAlbum);
+                this,              &CEditor::OnAlbum);
         connect(ui.bbxButtons,     &QDialogButtonBox::clicked,
-                this,              &CEditor::slot_bbxButtons_OnClicked);
+                this,              &CEditor::bbxButtons_onClicked);
         connect(ui.twGroups,       &QTreeWidget::currentItemChanged,
-                this,              &CEditor::slot_twGroups_OnCurrentItemChanged);
+                this,              &CEditor::twGroups_onCurrentItemChanged);
     }
 }
 //------------------------------------------------------------------------------
@@ -227,7 +227,7 @@ CEditor::_initMain() {
 
 //------------------------------------------------------------------------------
 void
-CEditor::slot_OnAlbum() {
+CEditor::OnAlbum() {
     qPTR_DELETE(wndAlbum);
 
     wndAlbum = new CAlbum(this, _tmModel, _snNavigator);
@@ -235,7 +235,7 @@ CEditor::slot_OnAlbum() {
 }
 //------------------------------------------------------------------------------
 void
-CEditor::slot_bbxButtons_OnClicked(
+CEditor::bbxButtons_onClicked(
     QAbstractButton *a_button
 )
 {
@@ -331,7 +331,7 @@ CEditor::_saveAll() {
 }
 //------------------------------------------------------------------------------
 void
-CEditor::slot_twGroups_OnCurrentItemChanged(
+CEditor::twGroups_onCurrentItemChanged(
     QTreeWidgetItem *a_current,
     QTreeWidgetItem *a_previous
 )

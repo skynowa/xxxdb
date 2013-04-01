@@ -104,11 +104,11 @@ CSettings::_get(
         // apply
         if (LANGS_FILE_NAME_RU == sLanguage) {
             a_wnd->ui.actViewLanguage_Ru->setChecked(true);
-            a_wnd->slot_OnLanguageRu();
+            a_wnd->actView_onLanguageRu();
         } else {
             // QString() - default language
             a_wnd->ui.actViewLanguage_En->setChecked(true);
-            a_wnd->slot_OnLanguageEn();
+            a_wnd->actView_onLanguageEn();
         }
 
         _stApp.endGroup();

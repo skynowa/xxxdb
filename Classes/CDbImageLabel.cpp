@@ -151,7 +151,7 @@ CDbImageLabel::loadFromFile() {
             break;
     }
 
-    Q_EMIT signal_DataChanged( index() );
+    Q_EMIT sig_dataChanged( index() );
 }
 //------------------------------------------------------------------------------
 void
@@ -198,7 +198,7 @@ CDbImageLabel::remove() {
             break;
     }
 
-    Q_EMIT signal_DataChanged( index() );
+    Q_EMIT sig_dataChanged( index() );
 }
 //------------------------------------------------------------------------------
 

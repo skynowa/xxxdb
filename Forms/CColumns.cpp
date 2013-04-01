@@ -64,7 +64,7 @@ CColumns::_initMain() {
     // signals, slots
     {
         connect(ui.bbxButtons, &QDialogButtonBox::clicked,
-                this,          &CColumns::slot_bbxButtons_OnClicked);
+                this,          &CColumns::bbxButtons_onClicked);
     }
 }
 //------------------------------------------------------------------------------
@@ -80,7 +80,7 @@ CColumns::_saveAll() {
 }
 //------------------------------------------------------------------------------
 void
-CColumns::slot_bbxButtons_OnClicked(
+CColumns::bbxButtons_onClicked(
     QAbstractButton *a_button
 )
 {

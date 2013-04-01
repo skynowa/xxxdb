@@ -62,13 +62,13 @@ CAlbum::eventFilter(
             QLabel *label = static_cast<QLabel *>( a_obj );
             if (ui.lblPhoto == label) {
                 // ui.lblPhoto
-                Q_EMIT signal_photo_clicked();
+                Q_EMIT sig_photo_clicked();
             } else {
                 // other QLabels
                 QLabel   *lblPhotoMini  = label;
                 cQString  csDbFieldName = CDbImageLabel::find(_viDbItems, lblPhotoMini)->dbFieldName();
 
-                Q_EMIT signal_photoMini_clicked(lblPhotoMini, csDbFieldName);
+                Q_EMIT sig_photoMini_clicked(lblPhotoMini, csDbFieldName);
             }
 
             return true;
@@ -98,7 +98,7 @@ CAlbum::showEvent(
             QLabel   *lblPhotoMini  = CDbImageLabel::find(_viDbItems, ciPrimaryIndex)->label();
             cQString  csDbFieldName = CDbImageLabel::find(_viDbItems, ciPrimaryIndex)->dbFieldName();
 
-            slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+            photoMini_onClicked(lblPhotoMini, csDbFieldName);
         }
     }
 }
@@ -135,7 +135,7 @@ CAlbum::keyPressEvent(
     switch (a_event->key()) {
         // close on pressing escape
         case Qt::Key_Escape:
-            slot_OnExit();
+            actFile_onExit();
             break;
         default:
             QMainWindow::keyPressEvent(a_event);
@@ -241,10 +241,10 @@ CAlbum::_initMain() {
 
             photoMinis[i]->installEventFilter(this);
 
-            connect(item, &CDbImageLabel::signal_DataChanged,
-                    this, &CAlbum::slot_OnPhotoUpdate);
-            connect(this, &CAlbum::signal_photoMini_clicked,
-                    this, &CAlbum::slot_photoMini_OnClicked);
+            connect(item, &CDbImageLabel::sig_dataChanged,
+                    this, &CAlbum::photoMini_onUpdate);
+            connect(this, &CAlbum::sig_photoMini_clicked,
+                    this, &CAlbum::photoMini_onClicked);
 
             _viDbItems.push_back(item);
         }
@@ -252,8 +252,8 @@ CAlbum::_initMain() {
 
     // slots
     {
-        connect(this, &CAlbum::signal_photo_clicked,
-                this, &CAlbum::slot_OnLoop);
+        connect(this, &CAlbum::sig_photo_clicked,
+                this, &CAlbum::photo_onLoop);
     }
 
     // HACK: for ui.saPhotosMini->sizePolicy() == Fixed
@@ -265,31 +265,31 @@ CAlbum::_initActions() {
     // group "File"
     {
         connect(ui.actFile_Exit,       &QAction::triggered,
-                this,                  &CAlbum::slot_OnExit);
+                this,                  &CAlbum::actFile_onExit);
     }
 
     // group "Edit"
     {
         connect(ui.actEdit_SaveAs,     &QAction::triggered,
-                this,                  &CAlbum::slot_OnSaveAs);
+                this,                  &CAlbum::actEdit_onSaveAs);
         connect(ui.actEdit_First,      &QAction::triggered,
-                this,                  &CAlbum::slot_OnFirst);
+                this,                  &CAlbum::actEdit_onFirst);
         connect(ui.actEdit_Prior,      &QAction::triggered,
-                this,                  &CAlbum::slot_OnPrior);
+                this,                  &CAlbum::actEdit_onPrior);
         connect(ui.actEdit_Next,       &QAction::triggered,
-                this,                  &CAlbum::slot_OnNext);
+                this,                  &CAlbum::actEdit_onNext);
         connect(ui.actEdit_Last,       &QAction::triggered,
-                this,                  &CAlbum::slot_OnLast);
+                this,                  &CAlbum::actEdit_onLast);
         connect(ui.actEdit_GoTo,       &QAction::triggered,
-                this,                  &CAlbum::slot_OnGoTo);
+                this,                  &CAlbum::actEdit_onGoTo);
         connect(ui.actEdit_Insert,     &QAction::triggered,
-                this,                  &CAlbum::slot_OnInsert);
+                this,                  &CAlbum::actEdit_onInsert);
         connect(ui.actEdit_Delete,     &QAction::triggered,
-                this,                  &CAlbum::slot_OnRemove);
+                this,                  &CAlbum::actEdit_onRemove);
         connect(ui.actEdit_Edit,       &QAction::triggered,
-                this,                  &CAlbum::slot_OnEdit);
+                this,                  &CAlbum::actEdit_onEdit);
         connect(ui.actEdit_SetPrimary, &QAction::triggered,
-                this,                  &CAlbum::slot_OnSetPrimary);
+                this,                  &CAlbum::actEdit_onSetPrimary);
     }
 }
 //------------------------------------------------------------------------------
@@ -316,7 +316,7 @@ CAlbum::_photoUpdate() {
 
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnExit() {
+CAlbum::actFile_onExit() {
     close();
 }
 //------------------------------------------------------------------------------
@@ -329,48 +329,48 @@ CAlbum::slot_OnExit() {
 
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnSaveAs() {
+CAlbum::actEdit_onSaveAs() {
     CDbImageLabel::currentDbImageLabel->saveToFile();
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnFirst() {
+CAlbum::actEdit_onFirst() {
     cint currentIndex = 0;
 
-    slot_OnPhotoUpdate(currentIndex);
+    photoMini_onUpdate(currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnPrior() {
+CAlbum::actEdit_onPrior() {
     if (0 >= CDbImageLabel::currentIndex) {
         CDbImageLabel::currentIndex = 0;
     } else {
         -- CDbImageLabel::currentIndex;
     }
 
-    slot_OnPhotoUpdate(CDbImageLabel::currentIndex);
+    photoMini_onUpdate(CDbImageLabel::currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnNext() {
+CAlbum::actEdit_onNext() {
     if (CDbImageLabel::currentIndex >= _viDbItems.size() - 1) {
         CDbImageLabel::currentIndex = _viDbItems.size() - 1;
     } else {
         ++ CDbImageLabel::currentIndex;
     }
 
-    slot_OnPhotoUpdate(CDbImageLabel::currentIndex);
+    photoMini_onUpdate(CDbImageLabel::currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnLast() {
+CAlbum::actEdit_onLast() {
     cint currentIndex = _viDbItems.size() - 1;
 
-    slot_OnPhotoUpdate(currentIndex);
+    photoMini_onUpdate(currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnGoTo() {
+CAlbum::actEdit_onGoTo() {
     cint ciMinValue   = 1;
     cint ciMaxValue   = _viDbItems.size();
 
@@ -380,26 +380,26 @@ CAlbum::slot_OnGoTo() {
                                 CDbImageLabel::currentIndex + 1,
                                 ciMinValue, ciMaxValue) - 1;
 
-    slot_OnPhotoUpdate(currentIndex);
+    photoMini_onUpdate(currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnInsert() {
+CAlbum::actEdit_onInsert() {
     CDbImageLabel::currentDbImageLabel->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnRemove() {
+CAlbum::actEdit_onRemove() {
     CDbImageLabel::currentDbImageLabel->remove();
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnEdit() {
+CAlbum::actEdit_onEdit() {
     CDbImageLabel::currentDbImageLabel->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnSetPrimary() {
+CAlbum::actEdit_onSetPrimary() {
     // write to DB
     QSqlRecord srRecord = _tmModel->record(_ciDbRecordIndex);
     srRecord.setValue(DB_F_PHOTOS_PRIMARY, CDbImageLabel::currentIndex);
@@ -416,7 +416,7 @@ CAlbum::slot_OnSetPrimary() {
 
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnLoop() {
+CAlbum::photo_onLoop() {
     // avoid recursion when photo album is empty
     qCHECK_DO(CDbImageLabel::isEmpty(_viDbItems), return);
 
@@ -429,25 +429,25 @@ CAlbum::slot_OnLoop() {
 
     // skip empty images
     if (_viDbItems.at(CDbImageLabel::currentIndex)->isEmpty()) {
-        slot_OnLoop();
+        photo_onLoop();
     }
 
-    slot_OnPhotoUpdate(CDbImageLabel::currentIndex);
+    photoMini_onUpdate(CDbImageLabel::currentIndex);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_OnPhotoUpdate(
+CAlbum::photoMini_onUpdate(
     cint &index
 )
 {
     QLabel   *lblPhotoMini  = _viDbItems.at(index)->label();
     cQString  csDbFieldName = _viDbItems.at(index)->dbFieldName();
 
-    slot_photoMini_OnClicked(lblPhotoMini, csDbFieldName);
+    photoMini_onClicked(lblPhotoMini, csDbFieldName);
 }
 //------------------------------------------------------------------------------
 void
-CAlbum::slot_photoMini_OnClicked(
+CAlbum::photoMini_onClicked(
     QLabel   *a_label,
     cQString &a_dbFieldName
 )

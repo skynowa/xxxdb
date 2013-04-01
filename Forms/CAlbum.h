@@ -26,16 +26,16 @@ public:
 
     Ui::CAlbum      ui;
 
-                    CAlbum              (QWidget *parent,
-                                         QSqlTableModel *tableModel,
-                                         CSqlNavigator *sqlNavigator);
+                    CAlbum               (QWidget *parent,
+                                          QSqlTableModel *tableModel,
+                                          CSqlNavigator *sqlNavigator);
 
 protected:
-    virtual bool    eventFilter         (QObject *obj, QEvent *event);
-    virtual void    showEvent           (QShowEvent *event);
-    virtual void    resizeEvent         (QResizeEvent *event);
-    virtual void    keyPressEvent       (QKeyEvent *event);
-    virtual void    closeEvent          (QCloseEvent *event);
+    virtual bool    eventFilter          (QObject *obj, QEvent *event);
+    virtual void    showEvent            (QShowEvent *event);
+    virtual void    resizeEvent          (QResizeEvent *event);
+    virtual void    keyPressEvent        (QKeyEvent *event);
+    virtual void    closeEvent           (QCloseEvent *event);
 
 private:
     CSettings      *_stApp;
@@ -45,37 +45,37 @@ private:
     db_images_t     _viDbItems;
     QPixmap         _pixPhoto;
 
-    void            _construct          ();
-    void            _destruct           ();
-    void            _initMain           ();
-    void            _initActions        ();
+    void            _construct           ();
+    void            _destruct            ();
+    void            _initMain            ();
+    void            _initActions         ();
 
-    void            _photoUpdate        ();
+    void            _photoUpdate         ();
 
     // slots
     // group "Exit"
-    void            slot_OnExit         ();
+    void            actFile_onExit       ();
 
     // group "Edit"
-    void            slot_OnSaveAs       ();
-    void            slot_OnFirst        ();
-    void            slot_OnPrior        ();
-    void            slot_OnNext         ();
-    void            slot_OnLast         ();
-    void            slot_OnGoTo         ();
-    void            slot_OnInsert       ();
-    void            slot_OnRemove       ();
-    void            slot_OnEdit         ();
-    void            slot_OnSetPrimary   ();
+    void            actEdit_onSaveAs     ();
+    void            actEdit_onFirst      ();
+    void            actEdit_onPrior      ();
+    void            actEdit_onNext       ();
+    void            actEdit_onLast       ();
+    void            actEdit_onGoTo       ();
+    void            actEdit_onInsert     ();
+    void            actEdit_onRemove     ();
+    void            actEdit_onEdit       ();
+    void            actEdit_onSetPrimary ();
 
     // photo
-    void            slot_OnLoop         ();
-    void            slot_OnPhotoUpdate  (cint &index);
-    void            slot_photoMini_OnClicked(QLabel *label, cQString &dbFieldName);
+    void            photo_onLoop         ();
+    void            photoMini_onUpdate   (cint &index);
+    void            photoMini_onClicked  (QLabel *label, cQString &dbFieldName);
 
 Q_SIGNALS:
-    void            signal_photo_clicked();
-    void            signal_photoMini_clicked(QLabel *label, cQString &dbFieldName);
+    void            sig_photo_clicked    ();
+    void            sig_photoMini_clicked(QLabel *label, cQString &dbFieldName);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CAlbumH

@@ -29,12 +29,12 @@ public:
     CSqlNavigator   snNavigator;
     CAlbum         *wndAlbum;
 
-                    CMain               (QWidget *parent, Qt::WindowFlags flags);
+                    CMain                (QWidget *parent, Qt::WindowFlags flags);
 
 protected:
-    virtual void    keyPressEvent       (QKeyEvent *event);
-    virtual void    changeEvent         (QEvent *event);
-    virtual void    closeEvent          (QCloseEvent *event);
+    virtual void    keyPressEvent        (QKeyEvent *event);
+    virtual void    changeEvent          (QEvent *event);
+    virtual void    closeEvent           (QCloseEvent *event);
 
 private:
     CSettings      *_stApp;
@@ -48,50 +48,49 @@ private:
     QComboBox      *_cboFindText;
     QComboBox      *_cboDbFields;
 
-    void            _construct          ();
-    void            _destruct           ();
-    void            _initMain           ();
-    void            _initModel          ();
-    void            _initActions        ();
+    void            _construct           ();
+    void            _destruct            ();
+    void            _initMain            ();
+    void            _initModel           ();
+    void            _initActions         ();
 
     // slots
     // group "Exit"
-    void            slot_OnExit         ();
+    void            actFile_onExit       ();
 
     // group "Edit"
-    void            slot_OnFirst        ();
-    void            slot_OnPrior        ();
-    void            slot_OnNext         ();
-    void            slot_OnLast         ();
-    void            slot_OnGoTo         ();
-    void            slot_OnInsert       ();
-    void            slot_OnRemove       ();
-    void            slot_OnEdit         ();
+    void            actEdit_onFirst      ();
+    void            actEdit_onPrior      ();
+    void            actEdit_onNext       ();
+    void            actEdit_onLast       ();
+    void            actEdit_onGoTo       ();
+    void            actEdit_onInsert     ();
+    void            actEdit_onRemove     ();
+    void            actEdit_onEdit       ();
+    void            actEdit_onPhotoAlbum ();
 
     // group "Find"
-    void            slot_OnSearch       ();
-    void            slot_OnTextClear    ();
+    void            actFind_onSearch     ();
+    void            actFind_onTextClear  ();
 
     // group "View"
-    void            slot_OnMainToolbar  ();
-    void            slot_OnQuickFindToolbar();
-    void            slot_OnColumns      ();
-    void            slot_OnStatusbar    ();
-    void            slot_OnLanguageEn   ();
-    void            slot_OnLanguageRu   ();
+    void            actView_onMainToolbar();
+    void            actView_onQuickFindToolbar();
+    void            actView_onColumns    ();
+    void            actView_onStatusbar  ();
+    void            actView_onLanguageEn ();
+    void            actView_onLanguageRu ();
 
     // group "Options"
-    void            slot_OnSettings     ();
+    void            actOptions_onSettings();
 
     // group "Help"
-    void            slot_OnFaq          ();
-    void            slot_OnAbout        ();
+    void            actHelp_onFaq        ();
+    void            actHelp_onAbout      ();
 
-    // photo
-    void            slot_OnAlbum        ();
-
-    void            slot_OnQuickFind    (cQString &arg);
-    void            slot_OnDbFieldChange(cQString &arg);
+    //
+    void            onQuickFind          (cQString &arg);
+    void            cboDbFields_onCurrentTextChanged(cQString &arg);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

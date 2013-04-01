@@ -70,7 +70,7 @@ public:
         ///< is all QLabels empty
 
 Q_SIGNALS:
-    void                  signal_DataChanged(cint &index);
+    void                  sig_dataChanged(cint &index);
 
 private:
     QWidget              *_wdParent;        ///< parent QWidget

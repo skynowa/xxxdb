@@ -156,6 +156,8 @@
     <addaction name="actEdit_Insert"/>
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
+    <addaction name="separator"/>
+    <addaction name="actEdit_PhotoAlbum"/>
    </widget>
    <widget class="QMenu" name="mnuFind">
     <property name="title">
@@ -223,6 +225,8 @@
    <addaction name="actEdit_Insert"/>
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
+   <addaction name="separator"/>
+   <addaction name="actEdit_PhotoAlbum"/>
    <addaction name="separator"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
@@ -450,6 +454,18 @@
    </property>
    <property name="text">
     <string>Russian</string>
+   </property>
+  </action>
+  <action name="actEdit_PhotoAlbum">
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/PhotoAlbum.png</normaloff>:/Menu/Menu/PhotoAlbum.png</iconset>
+   </property>
+   <property name="text">
+    <string>Photo album...</string>
+   </property>
+   <property name="toolTip">
+    <string>Photo album...</string>
    </property>
   </action>
  </widget>
