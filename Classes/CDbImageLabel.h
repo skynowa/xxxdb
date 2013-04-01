@@ -33,40 +33,40 @@ public:
         ///< destructor
 
     // data
-    cQString &            dbFieldName  () const;
+    cQString &            dbFieldName() const;
         ///< get DB field name
-    cint &                index        () const;
+    cint &                index() const;
         ///< get index
     cint &                dbRecordIndex() const;
         ///< get DB record index
-    QLabel *              label        () const;
+    QLabel *              label() const;
         ///< get QLabel
-    cQSize &              size         () const;
+    cQSize &              size() const;
         ///< get image sizes
-    QLabel *              info         () const;
+    QLabel *              info() const;
         ///< get info QLabel
-    QDataWidgetMapper    *mapper       ();
+    QDataWidgetMapper    *mapper();
         ///< get data widget mapper
 
     // actions
-    bool                  isEmpty      () const;
+    bool                  isEmpty() const;
         ///< is empty image
-    void                  loadFromFile ();
+    void                  loadFromFile();
         ///< load image from file
-    void                  saveToFile   ();
+    void                  saveToFile();
         ///< save image to file
-    void                  remove       ();
+    void                  remove();
         ///< remove image
 
     // static
     static int            currentIndex;         ///< get current index
     static CDbImageLabel *currentDbImageLabel;  ///< get current CDbImageLabel
 
-    static CDbImageLabel *find         (cdb_images_t &dbItems, const QLabel *label);
+    static CDbImageLabel *find(cdb_images_t &dbItems, const QLabel *label);
         ///< find CDbImageLabel by QLabel
-    static CDbImageLabel *find         (cdb_images_t &dbItems, cint &index);
+    static CDbImageLabel *find(cdb_images_t &dbItems, cint &index);
         ///< find CDbImageLabel by index
-    static bool           isEmpty      (cdb_images_t &dbItems);
+    static bool           isEmpty(cdb_images_t &dbItems);
         ///< is all QLabels empty
 
 Q_SIGNALS:
@@ -84,15 +84,15 @@ private:
     QDataWidgetMapper    *_dmMapper;        ///< data widget mapper
     QByteArray            _baBuffer;        ///< buffer for store image
 
-    QDataWidgetMapper    *_map         ();
+    QDataWidgetMapper    *_map();
         ///< map QWidget to DB field
     void                  _loadFromFile(cQString &filePath);
         ///< load image from file
-    void                  _saveToFile  (cQString &filePath);
+    void                  _saveToFile(cQString &filePath);
         ///< save image to file
-    void                  _remove      ();
+    void                  _remove();
         ///< remove image
-    void                  _flush       ();
+    void                  _flush();
         ///< flush image buffer
 
 };

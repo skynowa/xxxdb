@@ -23,12 +23,12 @@ public:
 
     Ui::CAbout ui;
 
-    explicit   CAbout    (QWidget *parent);
+    explicit   CAbout(QWidget *parent);
 
 private:
     void       _construct();
-    void       _destruct ();
-    void       _initMain ();
+    void       _destruct();
+    void       _initMain();
 
     // slots
     void       bbxButtons_onClicked(QAbstractButton *button);

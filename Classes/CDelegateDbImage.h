@@ -20,9 +20,9 @@ public:
                  CDelegateDbImage(QObject *parent, cint &imageFieldIndex,
                                   cQSize &size, QLabel *infoPanel);
 
-    virtual void setEditorData   (QWidget *editor, const QModelIndex &index) const;
-    virtual void setModelData    (QWidget *editor, QAbstractItemModel *model,
-                                  const QModelIndex &index) const;
+    virtual void setEditorData(QWidget *editor, const QModelIndex &index) const;
+    virtual void setModelData(QWidget *editor, QAbstractItemModel *model,
+                              const QModelIndex &index) const;
 
 private:
     cint         _ciImageFieldIndex;

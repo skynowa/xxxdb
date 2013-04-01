@@ -29,9 +29,9 @@ private:
     QSqlTableModel *_tmModel;
 
     void            _construct();
-    void            _destruct ();
-    void            _initMain ();
-    void            _saveAll  ();
+    void            _destruct();
+    void            _initMain();
+    void            _saveAll();
 
     // slots
     void            bbxButtons_onClicked(QAbstractButton *button);
