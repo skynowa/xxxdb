@@ -78,15 +78,14 @@ CEditor::_destruct() {
 #if 0
     // update DB_F_ETC_DATECREATION, DB_F_ETC_DATELASTCHANGE
     {
-        cint       row    = _snNavigator->view()->currentIndex().row();
-        QSqlRecord record = _tmModel->record(row);
+        QSqlRecord record = _tmModel->record(_ciDbRecordIndex);
 
         if (record.value(DB_F_ETC_DATECREATION).isNull()) {
             record.setValue(DB_F_ETC_DATECREATION, QDateTime::currentDateTime());
         }
         record.setValue(DB_F_ETC_DATELASTCHANGE, QDateTime::currentDateTime());
 
-        _tmModel->setRecord(row, record);
+        _tmModel->setRecord(_ciDbRecordIndex, record);
     }
 #endif
 
