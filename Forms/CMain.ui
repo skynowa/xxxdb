@@ -386,7 +386,7 @@
      <normaloff>:/Menu/Menu/Columns.png</normaloff>:/Menu/Menu/Columns.png</iconset>
    </property>
    <property name="text">
-    <string>Select Columns...</string>
+    <string>Select columns...</string>
    </property>
    <property name="toolTip">
     <string>Select columns...</string>
@@ -412,7 +412,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show Main Toolbar</string>
+    <string>Show main toolbar</string>
    </property>
   </action>
   <action name="actView_QuickFindToolbar">
@@ -423,7 +423,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show Quick Find Toolbar</string>
+    <string>Show quick find toolbar</string>
    </property>
   </action>
   <action name="actView_Statusbar">
@@ -434,7 +434,7 @@
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Show Statusbar</string>
+    <string>Show statusbar</string>
    </property>
   </action>
   <action name="actViewLanguage_En">
