@@ -75,6 +75,7 @@ CEditor::_construct() {
 //------------------------------------------------------------------------------
 void
 CEditor::_destruct() {
+#if 0
     // update DB_F_ETC_DATECREATION, DB_F_ETC_DATELASTCHANGE
     {
         cint       row    = _snNavigator->view()->currentIndex().row();
@@ -87,6 +88,7 @@ CEditor::_destruct() {
 
         _tmModel->setRecord(row, record);
     }
+#endif
 
     qPTR_DELETE(_stApp);
 }
@@ -322,12 +324,14 @@ CEditor::_resetAll() {
 //------------------------------------------------------------------------------
 void
 CEditor::_saveAll() {
+#if 0
     // set current index
     _dmText->setCurrentIndex(_ciDbRecordIndex);
     _dbImageLabel->mapper()->setCurrentIndex(_ciDbRecordIndex);
 
     // set current index
     _snNavigator->goTo(_ciDbRecordIndex);
+#endif
 }
 //------------------------------------------------------------------------------
 void
