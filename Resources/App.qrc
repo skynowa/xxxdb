@@ -24,4 +24,9 @@
     <qresource prefix="/Main">
         <file>Main/App.ico</file>
     </qresource>
+    <qresource prefix="/Languages">
+        <file>Languages/gb.png</file>
+        <file>Languages/ru.png</file>
+        <file>Languages/ua.png</file>
+    </qresource>
 </RCC>

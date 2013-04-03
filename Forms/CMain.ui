@@ -444,6 +444,10 @@
    <property name="checked">
     <bool>true</bool>
    </property>
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Languages/Languages/gb.png</normaloff>:/Languages/Languages/gb.png</iconset>
+   </property>
    <property name="text">
     <string>English</string>
    </property>
@@ -451,6 +455,10 @@
   <action name="actViewLanguage_Ru">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Languages/Languages/ru.png</normaloff>:/Languages/Languages/ru.png</iconset>
    </property>
    <property name="text">
     <string>Russian</string>
