@@ -19,7 +19,7 @@ CONFIG(debug, debug | release) {
 HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
-                  Config.h \
+                  Classes/CConfig.h \
                   Classes/CApplication.h \
                   Classes/CSettings.h \
                   Classes/CDelegateDbImage.h \
@@ -33,6 +33,7 @@ HEADERS         = QtLib/Common.h \
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
+                  Classes/CConfig.cpp \
                   Classes/CApplication.cpp \
                   Classes/CSettings.cpp \
                   Classes/CDelegateDbImage.cpp \

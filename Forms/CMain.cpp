@@ -178,8 +178,8 @@ CMain::_initMain() {
         _cboDbFields = new QComboBox(this);
         _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
 
-        for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
-            _cboDbFields->addItem(g_dbRecords[i].caption);
+        for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+            _cboDbFields->addItem(CConfig::dbRecords[i].caption);
         }
 
         connect(_cboDbFields, &QComboBox::currentTextChanged,
@@ -318,13 +318,13 @@ CMain::_initModel() {
         _tmModel->setTable(DB_T_PERSON);
 
         // set caption for DB fields
-        Q_ASSERT(qARRAY_LENGTH(g_dbRecords) == (size_t)_tmModel->columnCount());
+        Q_ASSERT(qARRAY_LENGTH(CConfig::dbRecords) == (size_t)_tmModel->columnCount());
 
-        for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
+        for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
             _tmModel->setHeaderData(
-                    g_dbRecords[i].index,
+                    CConfig::dbRecords[i].index,
                     Qt::Horizontal,
-                    g_dbRecords[i].caption);
+                    CConfig::dbRecords[i].caption);
         }
 
         _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
@@ -685,9 +685,9 @@ CMain::onQuickFind(
     // get DB field by caption
     QString dbField;
 
-    for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
-        if (_cboDbFields->currentText() == g_dbRecords[i].caption) {
-            dbField = g_dbRecords[i].field;
+    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        if (_cboDbFields->currentText() == CConfig::dbRecords[i].caption) {
+            dbField = CConfig::dbRecords[i].field;
             break;
         }
     }

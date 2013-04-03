@@ -9,7 +9,7 @@
 //------------------------------------------------------------------------------
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
-#include "../Config.h"
+#include "CConfig.h"
 //------------------------------------------------------------------------------
 class CApplication :
     public QApplication

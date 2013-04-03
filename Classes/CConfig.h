@@ -1,6 +1,6 @@
 /**
- * \file  Config.h
- * \brief config
+ * \file  CConfig.h
+ * \brief configs
  */
 
 
@@ -160,109 +160,26 @@
 *
 *******************************************************************************/
 
+//------------------------------------------------------------------------------
 struct SDbRecord
     ///< DB fields
 {
-    cint     index;    ///< index
-    cQString field;    ///< DB field name
-    cQString caption;  ///< QTableView header caption
+    const int   index;    ///< index
+    const char *field;    ///< DB field name
+    const char *caption;  ///< QTableView header caption
 };
 
 typedef const SDbRecord cSDbRecord;
+//------------------------------------------------------------------------------
+class CConfig :
+    public QObject
+{
+    Q_OBJECT
 
-cSDbRecord g_dbRecords[] = {
-    {0,  DB_F_ID,                   QObject::tr("#")},
-
-    // Main
-    {1,  DB_F_MAIN_NICK,            QObject::tr("Nick")},
-    {2,  DB_F_MAIN_SURNAME,         QObject::tr("Surname")},
-    {3,  DB_F_MAIN_NAME,            QObject::tr("Name")},
-    {4,  DB_F_MAIN_PATRONYMIC,      QObject::tr("Patronymic")},
-    {5,  DB_F_MAIN_AGE,             QObject::tr("Age")},
-    {6,  DB_F_MAIN_HEIGHT,          QObject::tr("Height")},
-    {7,  DB_F_MAIN_WEIGHT,          QObject::tr("Weight")},
-    {8,  DB_F_MAIN_HAIRLENGTH,      QObject::tr("Hair length")},
-    {9,  DB_F_MAIN_HAIRCOLOR,       QObject::tr("Hair color")},
-    {10, DB_F_MAIN_APPEARANCE,      QObject::tr("Appearance")},
-    {11, DB_F_MAIN_STATUS,          QObject::tr("Status")},
-
-    // Phones
-    {12, DB_F_PHONES_MOBILE1,       QObject::tr("Mobile 1")},
-    {13, DB_F_PHONES_MOBILE2,       QObject::tr("Mobile 2")},
-    {14, DB_F_PHONES_MOBILE3,       QObject::tr("Mobile 3")},
-    {15, DB_F_PHONES_HOME,          QObject::tr("Phone home")},
-    {16, DB_F_PHONES_JOB,           QObject::tr("Phone job")},
-    {17, DB_F_PHONES_OTHER,         QObject::tr("Phone other")},
-
-    // Address
-    {18, DB_F_ADDRESS_COUNTRY,      QObject::tr("Country")},
-    {19, DB_F_ADDRESS_CODE,         QObject::tr("Code")},
-    {20, DB_F_ADDRESS_CITY,         QObject::tr("City")},
-    {21, DB_F_ADDRESS_DISTRICT,     QObject::tr("District")},
-    {22, DB_F_ADDRESS_STREET,       QObject::tr("Street")},
-    {23, DB_F_ADDRESS_HOUSE,        QObject::tr("House")},
-    {24, DB_F_ADDRESS_PORCH,        QObject::tr("Porch")},
-    {25, DB_F_ADDRESS_FLOOR,        QObject::tr("Floor")},
-    {26, DB_F_ADDRESS_APARTMENT,    QObject::tr("Apartment")},
-
-    // E-mail
-    {27, DB_F_EMAIL_EMAIL,          QObject::tr("E-mail")},
-
-    // Web
-    {28, DB_F_WEB_WEB,              QObject::tr("Web")},
-
-    // Messengers
-    {29, DB_F_MESSENGERS_ICQ,       QObject::tr("ICQ")},
-    {30, DB_F_MESSENGERS_SKYPE,     QObject::tr("Skype")},
-
-    // Job
-    {31, DB_F_JOB_PROFESSION,       QObject::tr("Profession")},
-    {32, DB_F_JOB_ADDRESS,          QObject::tr("Address")},
-    {33, DB_F_JOB_SALARY,           QObject::tr("Salary")},
-    {34, DB_F_JOB_COMPANY,          QObject::tr("Company")},
-
-    // Dates
-    {35, DB_F_DATES_BIRTHDAY,       QObject::tr("Birthday")},
-    {36, DB_F_DATES_BIRTHDAYFATHER, QObject::tr("Birthday father")},
-    {37, DB_F_DATES_BIRTHDAYMOTHER, QObject::tr("Birthday mother")},
-    {38, DB_F_DATES_DAYDATING,      QObject::tr("Day of dating")},
-    {39, DB_F_DATES_DAYFIRSTKISS,   QObject::tr("Day of 1-st kiss")},
-    {40, DB_F_DATES_DAYFIRSTSEX,    QObject::tr("Day of 1-st sex")},
-
-    // Interests
-    {41, DB_F_INTERESTS_HOBBY,      QObject::tr("Hobby")},
-    {42, DB_F_INTERESTS_SPORTS,     QObject::tr("Sports")},
-    {43, DB_F_INTERESTS_SMOKING,    QObject::tr("Smoking")},
-    {44, DB_F_INTERESTS_ALCOHOL,    QObject::tr("Alcohol")},
-    {45, DB_F_INTERESTS_DRUGS,      QObject::tr("Drugs")},
-
-    // TODO: Periods
-
-    // Etc
-    {46, DB_F_ETC_DATECREATION,     QObject::tr("Date creation")},
-    {47, DB_F_ETC_DATELASTCHANGE,   QObject::tr("Date last change")},
-
-    // Notes
-    {48, DB_F_NOTES_NOTES,          QObject::tr("Notes")},
-
-    // Photos
-    {49, DB_F_PHOTOS_1,             QObject::tr("Photo 1")},
-    {50, DB_F_PHOTOS_2,             QObject::tr("Photo 2")},
-    {51, DB_F_PHOTOS_3,             QObject::tr("Photo 3")},
-    {52, DB_F_PHOTOS_4,             QObject::tr("Photo 4")},
-    {53, DB_F_PHOTOS_5,             QObject::tr("Photo 5")},
-    {54, DB_F_PHOTOS_6,             QObject::tr("Photo 6")},
-    {55, DB_F_PHOTOS_7,             QObject::tr("Photo 7")},
-    {56, DB_F_PHOTOS_8,             QObject::tr("Photo 8")},
-    {57, DB_F_PHOTOS_9,             QObject::tr("Photo 9")},
-    {58, DB_F_PHOTOS_10,            QObject::tr("Photo 10")},
-    {59, DB_F_PHOTOS_11,            QObject::tr("Photo 11")},
-    {60, DB_F_PHOTOS_12,            QObject::tr("Photo 12")},
-    {61, DB_F_PHOTOS_13,            QObject::tr("Photo 13")},
-    {62, DB_F_PHOTOS_14,            QObject::tr("Photo 14")},
-    {63, DB_F_PHOTOS_15,            QObject::tr("Photo 15")},
-    {64, DB_F_PHOTOS_PRIMARY,       QObject::tr("Photo primary")}
+public:
+    static cSDbRecord dbRecords[65];  ///< array of DB fields
 };
+//------------------------------------------------------------------------------
 
 /*******************************************************************************
 *   types

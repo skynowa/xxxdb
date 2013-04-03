@@ -170,6 +170,406 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
 </context>
 <context>
+    <name>CConfig</name>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="17"/>
+        <source>#</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="20"/>
+        <source>Nick</source>
+        <translation>Ник</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="21"/>
+        <source>Surname</source>
+        <translation>Фамилия</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="22"/>
+        <source>Name</source>
+        <translation>Имя</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="23"/>
+        <source>Patronymic</source>
+        <translation>Отчество</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="24"/>
+        <source>Age</source>
+        <translation>Возраст</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="25"/>
+        <source>Height</source>
+        <translation>Рост</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="26"/>
+        <source>Weight</source>
+        <translation>Вес</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="27"/>
+        <source>Hair length</source>
+        <translation>Длина волос</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="28"/>
+        <source>Hair color</source>
+        <translation>Цвет волос</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="29"/>
+        <source>Appearance</source>
+        <translation>Внешность</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="30"/>
+        <source>Status</source>
+        <translation>Статус</translation>
+    </message>
+    <message>
+        <source>Mobile 1</source>
+        <translation type="obsolete">Мобильный 1</translation>
+    </message>
+    <message>
+        <source>Mobile 2</source>
+        <translation type="obsolete">Мобильный 2</translation>
+    </message>
+    <message>
+        <source>Mobile 3</source>
+        <translation type="obsolete">Мобильный 3</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="33"/>
+        <source>Mobile #1</source>
+        <translation>Мобильный #1</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="34"/>
+        <source>Mobile #2</source>
+        <translation>Мобильный #2</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="35"/>
+        <source>Mobile #3</source>
+        <translation>Мобильный #3</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="36"/>
+        <source>Phone home</source>
+        <translation>Домашний</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="37"/>
+        <source>Phone job</source>
+        <translation>Рабочий</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="38"/>
+        <source>Phone other</source>
+        <translation>Другие</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="41"/>
+        <source>Country</source>
+        <translation>Страна</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="42"/>
+        <source>Code</source>
+        <translation>Код</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="43"/>
+        <source>City</source>
+        <translation>Город</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="44"/>
+        <source>District</source>
+        <translation>Район</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="45"/>
+        <source>Street</source>
+        <translation>Улица</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="46"/>
+        <source>House</source>
+        <translation>Дом</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="47"/>
+        <source>Porch</source>
+        <translation>Подъезд</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="48"/>
+        <source>Floor</source>
+        <translation>Этаж</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="49"/>
+        <source>Apartment</source>
+        <translation>Квартира</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="52"/>
+        <source>E-mail</source>
+        <translation>Почта</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="55"/>
+        <source>Web</source>
+        <translation>Веб</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="58"/>
+        <source>ICQ</source>
+        <translation>Аська</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="59"/>
+        <source>Skype</source>
+        <translation>Скайп</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="62"/>
+        <source>Profession</source>
+        <translation>Профессия</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="63"/>
+        <source>Address</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="64"/>
+        <source>Salary</source>
+        <translation>Зарплата</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="65"/>
+        <source>Company</source>
+        <translation>Компания</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="68"/>
+        <source>Birthday</source>
+        <translation>День рождения</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="69"/>
+        <source>Birthday father</source>
+        <translation>ДР отца</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="70"/>
+        <source>Birthday mother</source>
+        <translation>ДР матери</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="71"/>
+        <source>Day of dating</source>
+        <translation>1-е свидание</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="72"/>
+        <source>Day of 1-st kiss</source>
+        <translation>1-ый поцелуй</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="73"/>
+        <source>Day of 1-st sex</source>
+        <translation>1-ый секс</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="76"/>
+        <source>Hobby</source>
+        <translation>Хобби</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="77"/>
+        <source>Sports</source>
+        <translation>Спорт</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="78"/>
+        <source>Smoking</source>
+        <translation>Курение</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="79"/>
+        <source>Alcohol</source>
+        <translation>Алкоголь</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="80"/>
+        <source>Drugs</source>
+        <translation>Наркотики</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="85"/>
+        <source>Date creation</source>
+        <translation>Дата создания</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="86"/>
+        <source>Date last change</source>
+        <translation>Дата изменения</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="89"/>
+        <source>Notes</source>
+        <translation>Примечания</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="92"/>
+        <source>Photo #1</source>
+        <translation>Фото #1</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="93"/>
+        <source>Photo #2</source>
+        <translation>Фото #2</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="94"/>
+        <source>Photo #3</source>
+        <translation>Фото #3</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="95"/>
+        <source>Photo #4</source>
+        <translation>Фото #4</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="96"/>
+        <source>Photo #5</source>
+        <translation>Фото #5</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="97"/>
+        <source>Photo #6</source>
+        <translation>Фото #6</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="98"/>
+        <source>Photo #7</source>
+        <translation>Фото #7</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="99"/>
+        <source>Photo #8</source>
+        <translation>Фото #8</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="100"/>
+        <source>Photo #9</source>
+        <translation>Фото #9</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="101"/>
+        <source>Photo #10</source>
+        <translation>Фото #10</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="102"/>
+        <source>Photo #11</source>
+        <translation>Фото #11</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="103"/>
+        <source>Photo #12</source>
+        <translation>Фото #12</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="104"/>
+        <source>Photo #13</source>
+        <translation>Фото #13</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="105"/>
+        <source>Photo #14</source>
+        <translation>Фото #14</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="106"/>
+        <source>Photo #15</source>
+        <translation>Фото #15</translation>
+    </message>
+    <message>
+        <source>Photo 1</source>
+        <translation type="obsolete">Фото 1</translation>
+    </message>
+    <message>
+        <source>Photo 2</source>
+        <translation type="obsolete">Фото 2</translation>
+    </message>
+    <message>
+        <source>Photo 3</source>
+        <translation type="obsolete">Фото 3</translation>
+    </message>
+    <message>
+        <source>Photo 4</source>
+        <translation type="obsolete">Фото 4</translation>
+    </message>
+    <message>
+        <source>Photo 5</source>
+        <translation type="obsolete">Фото 5</translation>
+    </message>
+    <message>
+        <source>Photo 6</source>
+        <translation type="obsolete">Фото 6</translation>
+    </message>
+    <message>
+        <source>Photo 7</source>
+        <translation type="obsolete">Фото 7</translation>
+    </message>
+    <message>
+        <source>Photo 8</source>
+        <translation type="obsolete">Фото 8</translation>
+    </message>
+    <message>
+        <source>Photo 9</source>
+        <translation type="obsolete">Фото 9</translation>
+    </message>
+    <message>
+        <source>Photo 10</source>
+        <translation type="obsolete">Фото 10</translation>
+    </message>
+    <message>
+        <source>Photo 11</source>
+        <translation type="obsolete">Фото 11</translation>
+    </message>
+    <message>
+        <source>Photo 12</source>
+        <translation type="obsolete">Фото 12</translation>
+    </message>
+    <message>
+        <source>Photo 13</source>
+        <translation type="obsolete">Фото 13</translation>
+    </message>
+    <message>
+        <source>Photo 14</source>
+        <translation type="obsolete">Фото 14</translation>
+    </message>
+    <message>
+        <source>Photo 15</source>
+        <translation type="obsolete">Фото 15</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="107"/>
+        <source>Photo primary</source>
+        <translation>Фото основное</translation>
+    </message>
+</context>
+<context>
     <name>CDbImageLabel</name>
     <message>
         <location filename="../../../Classes/CDbImageLabel.cpp" line="184"/>
@@ -690,8 +1090,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Показать строку состояния</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="465"/>
-        <location filename="../../../Forms/CMain.ui" line="468"/>
+        <location filename="../../../Forms/CMain.ui" line="473"/>
+        <location filename="../../../Forms/CMain.ui" line="476"/>
         <source>Album...</source>
         <translation>Альбом...</translation>
     </message>
@@ -708,12 +1108,12 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Очистить текст</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="448"/>
+        <location filename="../../../Forms/CMain.ui" line="452"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="456"/>
+        <location filename="../../../Forms/CMain.ui" line="464"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
@@ -741,334 +1141,265 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation type="obsolete"> - о программе</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="52"/>
+        <location filename="../../../Classes/CConfig.h" line="52"/>
         <source>No photo</source>
         <translation>Нет фото</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="174"/>
-        <source>#</source>
-        <translation></translation>
-    </message>
-    <message>
-        <location filename="../../../Config.h" line="177"/>
         <source>Nick</source>
-        <translation>Ник</translation>
+        <translation type="obsolete">Ник</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="178"/>
         <source>Surname</source>
-        <translation>Фамилия</translation>
+        <translation type="obsolete">Фамилия</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="179"/>
         <source>Name</source>
-        <translation>Имя</translation>
+        <translation type="obsolete">Имя</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="180"/>
         <source>Patronymic</source>
-        <translation>Отчество</translation>
+        <translation type="obsolete">Отчество</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="181"/>
         <source>Age</source>
-        <translation>Возраст</translation>
+        <translation type="obsolete">Возраст</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="182"/>
         <source>Height</source>
-        <translation>Рост</translation>
+        <translation type="obsolete">Рост</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="183"/>
         <source>Weight</source>
-        <translation>Вес</translation>
+        <translation type="obsolete">Вес</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="184"/>
         <source>Hair length</source>
-        <translation>Длина волос</translation>
+        <translation type="obsolete">Длина волос</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="185"/>
         <source>Hair color</source>
-        <translation>Цвет волос</translation>
+        <translation type="obsolete">Цвет волос</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="186"/>
         <source>Appearance</source>
-        <translation>Внешность</translation>
+        <translation type="obsolete">Внешность</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="187"/>
         <source>Status</source>
-        <translation>Статус</translation>
+        <translation type="obsolete">Статус</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="190"/>
         <source>Mobile 1</source>
-        <translation>Мобильный 1</translation>
+        <translation type="obsolete">Мобильный 1</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="191"/>
         <source>Mobile 2</source>
-        <translation>Мобильный 2</translation>
+        <translation type="obsolete">Мобильный 2</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="192"/>
         <source>Mobile 3</source>
-        <translation>Мобильный 3</translation>
+        <translation type="obsolete">Мобильный 3</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="193"/>
         <source>Phone home</source>
-        <translation>Домашний</translation>
+        <translation type="obsolete">Домашний</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="194"/>
         <source>Phone job</source>
-        <translation>Рабочий</translation>
+        <translation type="obsolete">Рабочий</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="195"/>
         <source>Phone other</source>
-        <translation>Другие</translation>
+        <translation type="obsolete">Другие</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="198"/>
         <source>Country</source>
-        <translation>Страна</translation>
+        <translation type="obsolete">Страна</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="199"/>
         <source>Code</source>
-        <translation>Код</translation>
+        <translation type="obsolete">Код</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="200"/>
         <source>City</source>
-        <translation>Город</translation>
+        <translation type="obsolete">Город</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="201"/>
         <source>District</source>
-        <translation>Район</translation>
+        <translation type="obsolete">Район</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="202"/>
         <source>Street</source>
-        <translation>Улица</translation>
+        <translation type="obsolete">Улица</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="203"/>
         <source>House</source>
-        <translation>Дом</translation>
+        <translation type="obsolete">Дом</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="204"/>
         <source>Porch</source>
-        <translation>Подъезд</translation>
+        <translation type="obsolete">Подъезд</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="205"/>
         <source>Floor</source>
-        <translation>Этаж</translation>
+        <translation type="obsolete">Этаж</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="206"/>
         <source>Apartment</source>
-        <translation>Квартира</translation>
+        <translation type="obsolete">Квартира</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="209"/>
         <source>E-mail</source>
-        <translation>Почта</translation>
+        <translation type="obsolete">Почта</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="212"/>
         <source>Web</source>
-        <translation>Веб</translation>
+        <translation type="obsolete">Веб</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="215"/>
         <source>ICQ</source>
-        <translation>Аська</translation>
+        <translation type="obsolete">Аська</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="216"/>
         <source>Skype</source>
-        <translation>Скайп</translation>
+        <translation type="obsolete">Скайп</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="219"/>
         <source>Profession</source>
-        <translation>Профессия</translation>
+        <translation type="obsolete">Профессия</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="220"/>
         <source>Address</source>
-        <translation>Алрес</translation>
+        <translation type="obsolete">Алрес</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="221"/>
         <source>Salary</source>
-        <translation>Зарплата</translation>
+        <translation type="obsolete">Зарплата</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="222"/>
         <source>Company</source>
-        <translation>Компания</translation>
+        <translation type="obsolete">Компания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="225"/>
         <source>Birthday</source>
-        <translation>День рождения</translation>
+        <translation type="obsolete">День рождения</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="226"/>
         <source>Birthday father</source>
-        <translation>ДР отца</translation>
+        <translation type="obsolete">ДР отца</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="227"/>
         <source>Birthday mother</source>
-        <translation>ДР матери</translation>
+        <translation type="obsolete">ДР матери</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="228"/>
         <source>Day of dating</source>
-        <translation>1-е свидание</translation>
+        <translation type="obsolete">1-е свидание</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="229"/>
         <source>Day of 1-st kiss</source>
-        <translation>1-ый поцелуй</translation>
+        <translation type="obsolete">1-ый поцелуй</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="230"/>
         <source>Day of 1-st sex</source>
-        <translation>1-ый секс</translation>
+        <translation type="obsolete">1-ый секс</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="233"/>
         <source>Hobby</source>
-        <translation>Хобби</translation>
+        <translation type="obsolete">Хобби</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="234"/>
         <source>Sports</source>
-        <translation>Спорт</translation>
+        <translation type="obsolete">Спорт</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="235"/>
         <source>Smoking</source>
-        <translation>Курение</translation>
+        <translation type="obsolete">Курение</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="236"/>
         <source>Alcohol</source>
-        <translation>Алкоголь</translation>
+        <translation type="obsolete">Алкоголь</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="237"/>
         <source>Drugs</source>
-        <translation>Наркотики</translation>
+        <translation type="obsolete">Наркотики</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="242"/>
         <source>Date creation</source>
-        <translation>Дата создания</translation>
+        <translation type="obsolete">Дата создания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="243"/>
         <source>Date last change</source>
-        <translation>Дата изменения</translation>
+        <translation type="obsolete">Дата изменения</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="246"/>
         <source>Notes</source>
-        <translation>Примечания</translation>
+        <translation type="obsolete">Примечания</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="249"/>
         <source>Photo 1</source>
-        <translation>Фото 1</translation>
+        <translation type="obsolete">Фото 1</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="250"/>
         <source>Photo 2</source>
-        <translation>Фото 2</translation>
+        <translation type="obsolete">Фото 2</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="251"/>
         <source>Photo 3</source>
-        <translation>Фото 3</translation>
+        <translation type="obsolete">Фото 3</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="252"/>
         <source>Photo 4</source>
-        <translation>Фото 4</translation>
+        <translation type="obsolete">Фото 4</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="253"/>
         <source>Photo 5</source>
-        <translation>Фото 5</translation>
+        <translation type="obsolete">Фото 5</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="254"/>
         <source>Photo 6</source>
-        <translation>Фото 6</translation>
+        <translation type="obsolete">Фото 6</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="255"/>
         <source>Photo 7</source>
-        <translation>Фото 7</translation>
+        <translation type="obsolete">Фото 7</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="256"/>
         <source>Photo 8</source>
-        <translation>Фото 8</translation>
+        <translation type="obsolete">Фото 8</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="257"/>
         <source>Photo 9</source>
-        <translation>Фото 9</translation>
+        <translation type="obsolete">Фото 9</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="258"/>
         <source>Photo 10</source>
-        <translation>Фото 10</translation>
+        <translation type="obsolete">Фото 10</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="259"/>
         <source>Photo 11</source>
-        <translation>Фото 11</translation>
+        <translation type="obsolete">Фото 11</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="260"/>
         <source>Photo 12</source>
-        <translation>Фото 12</translation>
+        <translation type="obsolete">Фото 12</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="261"/>
         <source>Photo 13</source>
-        <translation>Фото 13</translation>
+        <translation type="obsolete">Фото 13</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="262"/>
         <source>Photo 14</source>
-        <translation>Фото 14</translation>
+        <translation type="obsolete">Фото 14</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="263"/>
         <source>Photo 15</source>
-        <translation>Фото 15</translation>
+        <translation type="obsolete">Фото 15</translation>
     </message>
     <message>
-        <location filename="../../../Config.h" line="264"/>
         <source>Photo primary</source>
-        <translation>Фото основное</translation>
+        <translation type="obsolete">Фото основное</translation>
     </message>
     <message>
         <source>Словарь:</source>

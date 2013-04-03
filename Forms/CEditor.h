@@ -10,7 +10,7 @@
 #include "ui_CEditor.h"
 
 #include "../QtLib/Common.h"
-#include "../Config.h"
+#include "../Classes/CConfig.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
 class CSettings;
