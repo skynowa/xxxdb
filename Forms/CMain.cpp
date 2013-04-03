@@ -686,9 +686,10 @@ CMain::onQuickFind(
     QString dbField;
 
     for (size_t i = 0; i < qARRAY_LENGTH(g_dbRecords); ++ i) {
-        qCHECK_DO(_cboDbFields->currentText() != g_dbRecords[i].caption, continue);
-
-        dbField = g_dbRecords[i].field;
+        if (_cboDbFields->currentText() == g_dbRecords[i].caption) {
+            dbField = g_dbRecords[i].field;
+            break;
+        }
     }
 
     // filter
