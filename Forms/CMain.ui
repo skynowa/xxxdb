@@ -266,6 +266,9 @@
    <property name="text">
     <string>First</string>
    </property>
+   <property name="shortcut">
+    <string>Home</string>
+   </property>
   </action>
   <action name="actEdit_Prior">
    <property name="icon">
@@ -274,6 +277,9 @@
    </property>
    <property name="text">
     <string>Prior</string>
+   </property>
+   <property name="shortcut">
+    <string>Up</string>
    </property>
   </action>
   <action name="actEdit_Next">
@@ -284,6 +290,9 @@
    <property name="text">
     <string>Next</string>
    </property>
+   <property name="shortcut">
+    <string>Down</string>
+   </property>
   </action>
   <action name="actEdit_Last">
    <property name="icon">
@@ -292,6 +301,9 @@
    </property>
    <property name="text">
     <string>Last</string>
+   </property>
+   <property name="shortcut">
+    <string>End</string>
    </property>
   </action>
   <action name="actEdit_Insert">
@@ -356,6 +368,9 @@
    <property name="toolTip">
     <string>Settings...</string>
    </property>
+   <property name="shortcut">
+    <string>F4</string>
+   </property>
   </action>
   <action name="actHelp_Faq">
    <property name="icon">
@@ -373,6 +388,9 @@
    <property name="toolTip">
     <string>About...</string>
    </property>
+   <property name="shortcut">
+    <string>F1</string>
+   </property>
   </action>
   <action name="actEdit_GoTo">
    <property name="icon">
@@ -385,6 +403,9 @@
    <property name="toolTip">
     <string>Go to...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
   </action>
   <action name="actView_Columns">
    <property name="icon">
@@ -396,6 +417,9 @@
    </property>
    <property name="toolTip">
     <string>Select columns...</string>
+   </property>
+   <property name="shortcut">
+    <string>F3</string>
    </property>
   </action>
   <action name="actFind_TextClear">
@@ -480,6 +504,9 @@
    </property>
    <property name="toolTip">
     <string>Album...</string>
+   </property>
+   <property name="shortcut">
+    <string>F2</string>
    </property>
   </action>
   <action name="actFile_Minimize">

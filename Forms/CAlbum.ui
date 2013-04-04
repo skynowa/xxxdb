@@ -479,6 +479,9 @@
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="actEdit_First">
    <property name="icon">
@@ -487,6 +490,9 @@
    </property>
    <property name="text">
     <string>First</string>
+   </property>
+   <property name="shortcut">
+    <string>Home</string>
    </property>
   </action>
   <action name="actEdit_Prior">
@@ -497,6 +503,9 @@
    <property name="text">
     <string>Prior</string>
    </property>
+   <property name="shortcut">
+    <string>Left</string>
+   </property>
   </action>
   <action name="actEdit_Next">
    <property name="icon">
@@ -506,6 +515,9 @@
    <property name="text">
     <string>Next</string>
    </property>
+   <property name="shortcut">
+    <string>Right</string>
+   </property>
   </action>
   <action name="actEdit_Last">
    <property name="icon">
@@ -514,6 +526,9 @@
    </property>
    <property name="text">
     <string>Last</string>
+   </property>
+   <property name="shortcut">
+    <string>End</string>
    </property>
   </action>
   <action name="actEdit_GoTo">
@@ -527,6 +542,9 @@
    <property name="toolTip">
     <string>Go to...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+G</string>
+   </property>
   </action>
   <action name="actEdit_Insert">
    <property name="icon">
@@ -535,6 +553,9 @@
    </property>
    <property name="text">
     <string>Insert</string>
+   </property>
+   <property name="shortcut">
+    <string>Ins</string>
    </property>
   </action>
   <action name="actEdit_Delete">
@@ -545,6 +566,9 @@
    <property name="text">
     <string>Delete</string>
    </property>
+   <property name="shortcut">
+    <string>Del</string>
+   </property>
   </action>
   <action name="actEdit_Edit">
    <property name="icon">
@@ -553,6 +577,9 @@
    </property>
    <property name="text">
     <string>Edit</string>
+   </property>
+   <property name="shortcut">
+    <string>Return</string>
    </property>
   </action>
   <action name="actEdit_SaveAs">
@@ -566,6 +593,9 @@
    <property name="toolTip">
     <string>Save As...</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+S</string>
+   </property>
   </action>
   <action name="actEdit_SetPrimary">
    <property name="icon">
@@ -577,6 +607,9 @@
    </property>
    <property name="toolTip">
     <string>Set primary</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+P</string>
    </property>
   </action>
  </widget>

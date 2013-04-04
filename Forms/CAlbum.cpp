@@ -132,15 +132,21 @@ CAlbum::keyPressEvent(
     QKeyEvent *a_event
 )
 {
+    // addition UI shortcuts
     switch (a_event->key()) {
         // close on pressing escape
         case Qt::Key_Escape:
             actFile_onExit();
             break;
+        // call editor by 'Enter'
+        case Qt::Key_Enter:
+            actEdit_onEdit();
+            break;
         default:
-            QMainWindow::keyPressEvent(a_event);
             break;
     }
+
+    QMainWindow::keyPressEvent(a_event);
 }
 //------------------------------------------------------------------------------
 /* virtual */
