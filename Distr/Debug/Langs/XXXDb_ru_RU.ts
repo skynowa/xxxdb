@@ -93,7 +93,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
     <message>
         <location filename="../../../Forms/CAlbum.ui" line="432"/>
-        <location filename="../../../Forms/CAlbum.ui" line="555"/>
+        <location filename="../../../Forms/CAlbum.ui" line="579"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
@@ -108,55 +108,110 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="489"/>
+        <location filename="../../../Forms/CAlbum.ui" line="483"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="492"/>
         <source>First</source>
         <translation>В начало</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="498"/>
+        <location filename="../../../Forms/CAlbum.ui" line="495"/>
+        <source>Home</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="504"/>
         <source>Prior</source>
         <translation>Назад</translation>
     </message>
     <message>
         <location filename="../../../Forms/CAlbum.ui" line="507"/>
+        <source>Left</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="516"/>
         <source>Next</source>
         <translation>Вперёд</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="516"/>
+        <location filename="../../../Forms/CAlbum.ui" line="519"/>
+        <source>Right</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="528"/>
         <source>Last</source>
         <translation>В конец</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="525"/>
-        <location filename="../../../Forms/CAlbum.ui" line="528"/>
+        <location filename="../../../Forms/CAlbum.ui" line="531"/>
+        <source>End</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="540"/>
+        <location filename="../../../Forms/CAlbum.ui" line="543"/>
         <source>Go to...</source>
         <translation>Перейти к...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="537"/>
+        <location filename="../../../Forms/CAlbum.ui" line="546"/>
+        <source>Ctrl+G</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="555"/>
         <source>Insert</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="546"/>
+        <location filename="../../../Forms/CAlbum.ui" line="558"/>
+        <source>Ins</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="567"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="564"/>
-        <location filename="../../../Forms/CAlbum.ui" line="567"/>
+        <location filename="../../../Forms/CAlbum.ui" line="570"/>
+        <source>Del</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="582"/>
+        <source>Return</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="591"/>
+        <location filename="../../../Forms/CAlbum.ui" line="594"/>
         <source>Save As...</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="576"/>
-        <location filename="../../../Forms/CAlbum.ui" line="579"/>
+        <location filename="../../../Forms/CAlbum.ui" line="597"/>
+        <source>Ctrl+S</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.ui" line="606"/>
+        <location filename="../../../Forms/CAlbum.ui" line="609"/>
         <source>Set primary</source>
         <translation>Сделать главной</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.cpp" line="379"/>
+        <location filename="../../../Forms/CAlbum.ui" line="612"/>
+        <source>Ctrl+P</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CAlbum.cpp" line="385"/>
         <source>Go to photo:</source>
         <translation>Перейти к фото:</translation>
     </message>
@@ -917,17 +972,17 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
 <context>
     <name>CMain</name>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="510"/>
+        <location filename="../../../Forms/CMain.cpp" line="524"/>
         <source>Go to row (total %1 rows):</source>
         <translation>Перейти к записи (всего %1 записей):</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="535"/>
+        <location filename="../../../Forms/CMain.cpp" line="549"/>
         <source>Removing record.</source>
         <translation>Удаление записи.</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="536"/>
+        <location filename="../../../Forms/CMain.cpp" line="550"/>
         <source>Do you want to remove record?</source>
         <translation>Вы хотите удалить запись?</translation>
     </message>
@@ -955,8 +1010,8 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="147"/>
-        <location filename="../../../Forms/CMain.ui" line="324"/>
+        <location filename="../../../Forms/CMain.ui" line="148"/>
+        <location filename="../../../Forms/CMain.ui" line="339"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
@@ -1001,119 +1056,184 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="264"/>
+        <location filename="../../../Forms/CMain.ui" line="258"/>
+        <source>Ctrl+Q</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="267"/>
         <source>First</source>
         <translation>В начало</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="273"/>
+        <location filename="../../../Forms/CMain.ui" line="270"/>
+        <source>Home</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="279"/>
         <source>Prior</source>
         <translation>Назад</translation>
     </message>
     <message>
         <location filename="../../../Forms/CMain.ui" line="282"/>
+        <source>Up</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="291"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="291"/>
+        <location filename="../../../Forms/CMain.ui" line="294"/>
+        <source>Down</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="303"/>
         <source>Last</source>
         <translation>В конец</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="300"/>
+        <location filename="../../../Forms/CMain.ui" line="306"/>
+        <source>End</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="315"/>
         <source>Insert</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="303"/>
+        <location filename="../../../Forms/CMain.ui" line="318"/>
         <source>Ins</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="312"/>
+        <location filename="../../../Forms/CMain.ui" line="327"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="315"/>
+        <location filename="../../../Forms/CMain.ui" line="330"/>
         <source>Del</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="327"/>
-        <source>Enter</source>
+        <location filename="../../../Forms/CMain.ui" line="509"/>
+        <source>F2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="336"/>
-        <location filename="../../../Forms/CMain.ui" line="339"/>
+        <location filename="../../../Forms/CMain.ui" line="514"/>
+        <source>Minimize</source>
+        <translation>Свернуть</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="517"/>
+        <source>Esc</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="351"/>
+        <location filename="../../../Forms/CMain.ui" line="354"/>
         <source>Search...</source>
         <translation>Поиск...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="348"/>
-        <location filename="../../../Forms/CMain.ui" line="351"/>
+        <location filename="../../../Forms/CMain.ui" line="357"/>
+        <source>Ctrl+F</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="366"/>
+        <location filename="../../../Forms/CMain.ui" line="369"/>
         <source>Settings...</source>
         <translation>Настройки...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="360"/>
+        <location filename="../../../Forms/CMain.ui" line="372"/>
+        <source>F4</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="381"/>
         <source>FAQ</source>
         <translation>Справка</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="365"/>
-        <location filename="../../../Forms/CMain.ui" line="368"/>
+        <location filename="../../../Forms/CMain.ui" line="386"/>
+        <location filename="../../../Forms/CMain.ui" line="389"/>
         <source>About...</source>
         <translation>О программе...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="377"/>
-        <location filename="../../../Forms/CMain.ui" line="380"/>
-        <source>Go to...</source>
-        <translation>Перейти к...</translation>
-    </message>
-    <message>
-        <location filename="../../../Forms/CMain.ui" line="415"/>
-        <source>Show main toolbar</source>
-        <translation>Показать главную панель инструментов</translation>
-    </message>
-    <message>
-        <location filename="../../../Forms/CMain.ui" line="426"/>
-        <source>Show quick find toolbar</source>
-        <translation>Показать панель быстрого поиска</translation>
-    </message>
-    <message>
-        <location filename="../../../Forms/CMain.ui" line="437"/>
-        <source>Show statusbar</source>
-        <translation>Показать строку состояния</translation>
-    </message>
-    <message>
-        <location filename="../../../Forms/CMain.ui" line="473"/>
-        <location filename="../../../Forms/CMain.ui" line="476"/>
-        <source>Album...</source>
-        <translation>Альбом...</translation>
-    </message>
-    <message>
-        <location filename="../../../Forms/CMain.ui" line="389"/>
         <location filename="../../../Forms/CMain.ui" line="392"/>
-        <source>Select columns...</source>
-        <translation>Выбрать столбцы...</translation>
+        <source>F1</source>
+        <translation></translation>
     </message>
     <message>
         <location filename="../../../Forms/CMain.ui" line="401"/>
         <location filename="../../../Forms/CMain.ui" line="404"/>
+        <source>Go to...</source>
+        <translation>Перейти к...</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="407"/>
+        <source>Ctrl+G</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="422"/>
+        <source>F3</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="445"/>
+        <source>Show main toolbar</source>
+        <translation>Показать главную панель инструментов</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="456"/>
+        <source>Show quick find toolbar</source>
+        <translation>Показать панель быстрого поиска</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="467"/>
+        <source>Show statusbar</source>
+        <translation>Показать строку состояния</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="503"/>
+        <location filename="../../../Forms/CMain.ui" line="506"/>
+        <source>Album...</source>
+        <translation>Альбом...</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="416"/>
+        <location filename="../../../Forms/CMain.ui" line="419"/>
+        <source>Select columns...</source>
+        <translation>Выбрать столбцы...</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="342"/>
+        <source>Return</source>
+        <translation></translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CMain.ui" line="431"/>
+        <location filename="../../../Forms/CMain.ui" line="434"/>
         <source>Clear text</source>
         <translation>Очистить текст</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="452"/>
+        <location filename="../../../Forms/CMain.ui" line="482"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="464"/>
+        <location filename="../../../Forms/CMain.ui" line="494"/>
         <source>Russian</source>
         <translation>Русский</translation>
     </message>
