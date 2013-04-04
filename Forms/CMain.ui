@@ -140,6 +140,7 @@
     <property name="title">
      <string>File</string>
     </property>
+    <addaction name="actFile_Minimize"/>
     <addaction name="actFile_Exit"/>
    </widget>
    <widget class="QMenu" name="mnuEdit">
@@ -326,7 +327,7 @@
     <string>Edit</string>
    </property>
    <property name="shortcut">
-    <string>Enter</string>
+    <string>Return</string>
    </property>
   </action>
   <action name="actFind_Search">
@@ -479,6 +480,14 @@
    </property>
    <property name="toolTip">
     <string>Album...</string>
+   </property>
+  </action>
+  <action name="actFile_Minimize">
+   <property name="text">
+    <string>Minimize</string>
+   </property>
+   <property name="shortcut">
+    <string>Esc</string>
    </property>
   </action>
  </widget>

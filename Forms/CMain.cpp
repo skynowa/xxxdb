@@ -59,22 +59,9 @@ CMain::keyPressEvent(
     QKeyEvent *a_event
 )
 {
-    // shortcuts
+    // addition UI shortcuts
     switch (a_event->key()) {
-        // minimize by 'escape'
-        case Qt::Key_Escape:
-            setWindowState(Qt::WindowMinimized);
-            break;
-        // insert record by 'Insert'
-        case Qt::Key_Insert:
-            actEdit_onInsert();
-            break;
-        // delete record by 'Delete'
-        case Qt::Key_Delete:
-            actEdit_onRemove();
-            break;
         // call editor by 'Enter'
-        case Qt::Key_Return:
         case Qt::Key_Enter:
             actEdit_onEdit();
             break;
@@ -382,8 +369,10 @@ void
 CMain::_initActions() {
     // group "File"
     {
-        connect(ui.actFile_Exit, &QAction::triggered,
-                this,            &CMain::actFile_onExit);
+        connect(ui.actFile_Exit,     &QAction::triggered,
+                this,                &CMain::actFile_onExit);
+        connect(ui.actFile_Minimize, &QAction::triggered,
+                this,                &CMain::actFile_onMinimize);
     }
 
     // group "Edit"
@@ -486,6 +475,11 @@ CMain::_retranslateUi() {
 void
 CMain::actFile_onExit() {
     close();
+}
+//------------------------------------------------------------------------------
+void
+CMain::actFile_onMinimize() {
+    setWindowState(Qt::WindowMinimized);
 }
 //------------------------------------------------------------------------------
 

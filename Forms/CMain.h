@@ -58,6 +58,7 @@ private:
     // slots
     // group "Exit"
     void            actFile_onExit();
+    void            actFile_onMinimize();
 
     // group "Edit"
     void            actEdit_onFirst();
