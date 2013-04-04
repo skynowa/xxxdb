@@ -152,7 +152,6 @@
     <addaction name="actEdit_Last"/>
     <addaction name="actEdit_GoTo"/>
     <addaction name="separator"/>
-    <addaction name="separator"/>
     <addaction name="actEdit_Insert"/>
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
@@ -254,6 +253,9 @@
    <property name="text">
     <string>Exit</string>
    </property>
+   <property name="shortcut">
+    <string>Ctrl+Q</string>
+   </property>
   </action>
   <action name="actEdit_First">
    <property name="icon">
@@ -337,6 +339,9 @@
    </property>
    <property name="toolTip">
     <string>Search...</string>
+   </property>
+   <property name="shortcut">
+    <string>Ctrl+F</string>
    </property>
   </action>
   <action name="actOptions_Settings">
