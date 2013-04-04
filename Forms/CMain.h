@@ -53,6 +53,7 @@ private:
     void            _initMain();
     void            _initModel();
     void            _initActions();
+    void            _retranslateUi();
 
     // slots
     // group "Exit"

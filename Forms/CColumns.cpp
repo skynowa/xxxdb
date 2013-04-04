@@ -25,6 +25,26 @@ CColumns::CColumns(
 //------------------------------------------------------------------------------
 
 /*******************************************************************************
+*   protected
+*
+*******************************************************************************/
+
+//------------------------------------------------------------------------------
+void
+CColumns::changeEvent(
+    QEvent *a_event
+)
+{
+    // retranslation
+    if (a_event->type() == QEvent::LanguageChange) {
+        _retranslateUi();
+    }
+
+    QWidget::changeEvent(a_event);
+}
+//------------------------------------------------------------------------------
+
+/*******************************************************************************
 *   private
 *
 *******************************************************************************/
@@ -61,6 +81,11 @@ CColumns::_initMain() {
         }
     }
 
+    // raise event for retranslation UI
+    {
+        qApp->sendEvent(this, new QEvent(QEvent::LanguageChange));
+    }
+
     // signals, slots
     {
         connect(ui.bbxButtons, &QDialogButtonBox::clicked,
@@ -76,6 +101,16 @@ CColumns::_saveAll() {
         cbool isVisible = (ui.lwItems->item(i)->checkState() == Qt::Checked) ? true : false;
 
         wnd->ui.tvInfo->setColumnHidden(i, !isVisible);
+    }
+}
+//------------------------------------------------------------------------------
+void
+CColumns::_retranslateUi() {
+    // ui.lwItems
+    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        ui.lwItems->item(i)->setText(
+            qApp->translate("CConfig", CConfig::dbRecords[i].caption)
+        );
     }
 }
 //------------------------------------------------------------------------------

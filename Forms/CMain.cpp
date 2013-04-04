@@ -93,6 +93,7 @@ CMain::changeEvent(
     // retranslation
     if (a_event->type() == QEvent::LanguageChange) {
         ui.retranslateUi(this);
+        _retranslateUi();
 
         // TODO: ui.lblPhotoInfo
     }
@@ -455,6 +456,25 @@ CMain::_initActions() {
     }
 }
 //------------------------------------------------------------------------------
+void
+CMain::_retranslateUi() {
+    // ui.tvInfo
+    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        _tmModel->setHeaderData(
+                CConfig::dbRecords[i].index,
+                Qt::Horizontal,
+                qApp->translate("CConfig", CConfig::dbRecords[i].caption));
+    }
+
+    // _cboDbFields
+    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        _cboDbFields->setItemText(
+            i,
+            qApp->translate("CConfig", CConfig::dbRecords[i].caption)
+        );
+    }
+}
+//------------------------------------------------------------------------------
 
 
 /*******************************************************************************
@@ -686,11 +706,14 @@ CMain::onQuickFind(
     QString dbField;
 
     for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
-        if (_cboDbFields->currentText() == CConfig::dbRecords[i].caption) {
+        if (_cboDbFields->currentText() ==
+            qApp->translate("CConfig", CConfig::dbRecords[i].caption)
+        ) {
             dbField = CConfig::dbRecords[i].field;
             break;
         }
     }
+    Q_ASSERT(!dbField.isEmpty());
 
     // filter
     CUtils::db_fields_t dbFields;

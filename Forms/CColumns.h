@@ -25,6 +25,9 @@ public:
 
                     CColumns(QWidget *parent, QSqlTableModel *model);
 
+protected:
+    virtual void    changeEvent(QEvent *event);
+
 private:
     QSqlTableModel *_tmModel;
 
@@ -32,6 +35,7 @@ private:
     void            _destruct();
     void            _initMain();
     void            _saveAll();
+    void            _retranslateUi();
 
     // slots
     void            bbxButtons_onClicked(QAbstractButton *button);
