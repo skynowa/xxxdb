@@ -361,7 +361,7 @@ CMain::_initModel() {
         connect(snNavigator.view(),      &QTableView::doubleClicked,
                 this,                    &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,            &QToolButton::clicked,
-                this,                    &CMain::actEdit_onAlbum);
+                this,                    &CMain::actView_onAlbum);
     }
 }
 //------------------------------------------------------------------------------
@@ -393,8 +393,6 @@ CMain::_initActions() {
                 this,              &CMain::actEdit_onRemove);
         connect(ui.actEdit_Edit,   &QAction::triggered,
                 this,              &CMain::actEdit_onEdit);
-        connect(ui.actEdit_Album,  &QAction::triggered,
-                this,              &CMain::actEdit_onAlbum);
     }
 
     // group "Find"
@@ -413,6 +411,8 @@ CMain::_initActions() {
                 this,                        &CMain::actView_onQuickFindToolbar);
         connect(ui.actView_Columns,          &QAction::triggered,
                 this,                        &CMain::actView_onColumns);
+        connect(ui.actView_Album,            &QAction::triggered,
+                this,                        &CMain::actView_onAlbum);
         connect(ui.actView_Statusbar,        &QAction::triggered,
                 this,                        &CMain::actView_onStatusbar);
 
@@ -571,17 +571,6 @@ CMain::actEdit_onEdit() {
     (int)dlgEditor.exec();
 }
 //------------------------------------------------------------------------------
-void
-CMain::actEdit_onAlbum() {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
-
-    qPTR_DELETE(wndAlbum);
-
-    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
-    wndAlbum->show();
-}
-//------------------------------------------------------------------------------
-
 
 /*******************************************************************************
 *   group "Find"
@@ -626,6 +615,16 @@ CMain::actView_onColumns() {
     CColumns dlgColumns(this, _tmModel);
 
     (int)dlgColumns.exec();
+}
+//------------------------------------------------------------------------------
+void
+CMain::actView_onAlbum() {
+    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+
+    qPTR_DELETE(wndAlbum);
+
+    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
+    wndAlbum->show();
 }
 //------------------------------------------------------------------------------
 void

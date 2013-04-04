@@ -156,8 +156,6 @@
     <addaction name="actEdit_Insert"/>
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
-    <addaction name="separator"/>
-    <addaction name="actEdit_Album"/>
    </widget>
    <widget class="QMenu" name="mnuFind">
     <property name="title">
@@ -179,6 +177,7 @@
     <addaction name="actView_MainToolbar"/>
     <addaction name="actView_QuickFindToolbar"/>
     <addaction name="actView_Columns"/>
+    <addaction name="actView_Album"/>
     <addaction name="actView_Statusbar"/>
     <addaction name="separator"/>
     <addaction name="mnuViewLanguage"/>
@@ -226,7 +225,7 @@
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
    <addaction name="separator"/>
-   <addaction name="actEdit_Album"/>
+   <addaction name="actView_Album"/>
    <addaction name="separator"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
@@ -419,7 +418,7 @@
     <string>Select columns...</string>
    </property>
    <property name="shortcut">
-    <string>F3</string>
+    <string>F2</string>
    </property>
   </action>
   <action name="actFind_TextClear">
@@ -494,7 +493,7 @@
     <string>Russian</string>
    </property>
   </action>
-  <action name="actEdit_Album">
+  <action name="actView_Album">
    <property name="icon">
     <iconset resource="../Resources/App.qrc">
      <normaloff>:/Menu/Menu/Album.png</normaloff>:/Menu/Menu/Album.png</iconset>
@@ -506,7 +505,7 @@
     <string>Album...</string>
    </property>
    <property name="shortcut">
-    <string>F2</string>
+    <string>F3</string>
    </property>
   </action>
   <action name="actFile_Minimize">
