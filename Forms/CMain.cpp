@@ -197,7 +197,7 @@ CMain::_initModel() {
 
         // create table
         {
-            QSqlQuery qryInfo(_dbDatabase);
+            QSqlQuery qryTableCreate(_dbDatabase);
 
             cQString  csSql = \
                 "CREATE TABLE IF NOT EXISTS "
@@ -298,8 +298,8 @@ CMain::_initModel() {
                 "    " DB_F_PHOTOS_PRIMARY       " INT "
                 ")";
 
-            bRv = qryInfo.exec(csSql);
-            qCHECK_REF(bRv, qryInfo);
+            bRv = qryTableCreate.exec(csSql);
+            qCHECK_REF(bRv, qryTableCreate);
         }
     }
 
