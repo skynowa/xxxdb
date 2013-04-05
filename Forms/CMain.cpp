@@ -320,7 +320,8 @@ CMain::_initModel() {
         }
 
         _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-        _tmModel->select();
+        bool bRv = _tmModel->select();
+        Q_ASSERT(bRv);
     }
 
     //--------------------------------------------------
