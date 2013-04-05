@@ -164,9 +164,10 @@
 struct SDbRecord
     ///< DB fields
 {
-    const int   index;    ///< index
-    const char *field;    ///< DB field name
-    const char *caption;  ///< QTableView header caption
+    const int   index;      ///< index
+    const bool  isGui;      ///< is showing in UI
+    const char *field;      ///< DB field name
+    const char *caption;    ///< QTableView header caption
 };
 
 typedef const SDbRecord cSDbRecord;
