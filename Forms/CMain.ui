@@ -157,12 +157,6 @@
     <addaction name="actEdit_Delete"/>
     <addaction name="actEdit_Edit"/>
    </widget>
-   <widget class="QMenu" name="mnuFind">
-    <property name="title">
-     <string>Find</string>
-    </property>
-    <addaction name="actFind_Search"/>
-   </widget>
    <widget class="QMenu" name="mnuView">
     <property name="title">
      <string>View</string>
@@ -197,7 +191,6 @@
    </widget>
    <addaction name="mnuFile"/>
    <addaction name="mnuEdit"/>
-   <addaction name="mnuFind"/>
    <addaction name="mnuView"/>
    <addaction name="mnuOptions"/>
    <addaction name="mnuHelp"/>
@@ -226,7 +219,6 @@
    <addaction name="actEdit_Edit"/>
    <addaction name="separator"/>
    <addaction name="actView_Album"/>
-   <addaction name="separator"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
    <addaction name="actView_Columns"/>
@@ -354,6 +346,9 @@
    </property>
    <property name="shortcut">
     <string>Ctrl+F</string>
+   </property>
+   <property name="visible">
+    <bool>false</bool>
    </property>
   </action>
   <action name="actOptions_Settings">
