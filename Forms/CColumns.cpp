@@ -71,8 +71,6 @@ CColumns::_initMain() {
         CMain *wnd = static_cast<CMain *>(parent());
 
         for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
-            qCHECK_DO(!CConfig::dbRecords[i].isGui, continue);
-
             cbool isVisible = !wnd->ui.tvInfo->isColumnHidden(i);
 
             QListWidgetItem *item = new QListWidgetItem(ui.lwItems);
