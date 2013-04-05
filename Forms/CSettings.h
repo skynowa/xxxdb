@@ -21,6 +21,10 @@ class CSettings :
     Q_OBJECT
 
 public:
+    // store data
+    // group "Photos"
+    static bool   photos_isDeleteFromDisk;
+
                   CSettings(QWidget *parent);
 
 protected:
