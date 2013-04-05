@@ -13,7 +13,7 @@
 #include "../QtLib/CSqlNavigator.h"
 #include "Classes/CConfig.h"
 //------------------------------------------------------------------------------
-class CSettings;
+class CIni;
 class CAlbum;
 class CDbImageLabel;
 
@@ -23,7 +23,7 @@ class CMain :
     Q_OBJECT
 
 public:
-    friend class CSettings;
+    friend class CIni;
 
     Ui::CMainClass  ui;
     CSqlNavigator   snNavigator;
@@ -37,7 +37,7 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
-    CSettings      *_stApp;
+    CIni           *_iniApp;
     QTranslator    *_trTranslator;
     QString         _sTranslatorLang;
     QSqlDatabase    _dbDatabase;

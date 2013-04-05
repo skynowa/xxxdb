@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>XXXDb - select columns</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../Resources/App.qrc">
+    <normaloff>:/Main/Main/App.ico</normaloff>:/Main/Main/App.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="0" column="0">
     <widget class="QListWidget" name="lwItems"/>
@@ -29,7 +33,9 @@
    </item>
   </layout>
  </widget>
- <resources/>
+ <resources>
+  <include location="../Resources/App.qrc"/>
+ </resources>
  <connections>
   <connection>
    <sender>bbxButtons</sender>

@@ -8,12 +8,13 @@
 
 #include "../QtLib/CUtils.h"
 #include "../Classes/CApplication.h"
-#include "../Classes/CSettings.h"
+#include "../Classes/CIni.h"
 #include "../Classes/CDelegateDbImage.h"
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
 #include "../Forms/CColumns.h"
 #include "../Forms/CAbout.h"
+#include "../Forms/CSettings.h"
 
 
 /*******************************************************************************
@@ -29,7 +30,7 @@ CMain::CMain(
     QMainWindow  (a_parent, a_flags),
     snNavigator  (this),
     wndAlbum     (NULL),
-    _stApp       (NULL),
+    _iniApp      (NULL),
     _trTranslator(NULL),
     _sTranslatorLang(),
     _dbDatabase  (),
@@ -41,7 +42,7 @@ CMain::CMain(
 {
     _construct();
 
-    _stApp = new CSettings(this, NULL, NULL);
+    _iniApp = new CIni(this, NULL, NULL);
 
     snNavigator.last();
 }
@@ -120,7 +121,7 @@ CMain::_destruct() {
         qPTR_DELETE(_trTranslator);
     }
 
-    qPTR_DELETE(_stApp);
+    qPTR_DELETE(_iniApp);
 }
 //------------------------------------------------------------------------------
 void
@@ -659,7 +660,9 @@ CMain::actView_onLanguageRu() {
 //------------------------------------------------------------------------------
 void
 CMain::actOptions_onSettings() {
+    CSettings dlgSettings(this);
 
+    (int)dlgSettings.exec();
 }
 //------------------------------------------------------------------------------
 

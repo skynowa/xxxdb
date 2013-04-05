@@ -7,7 +7,7 @@
 #include "CEditor.h"
 
 #include "../QtLib/CUtils.h"
-#include "../Classes/CSettings.h"
+#include "../Classes/CIni.h"
 #include "../Classes/CDbImageLabel.h"
 #include "../Classes/CDelegateDbImage.h"
 #include "CAlbum.h"
@@ -27,7 +27,7 @@ CEditor::CEditor(
     QDialog         (a_parent),
     wndAlbum        (NULL),
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
-    _stApp          (NULL),
+    _iniApp          (NULL),
     _tmModel        (a_tableModel),
     _snNavigator    (a_sqlNavigator),
     _hsDbItems      (),
@@ -41,7 +41,7 @@ CEditor::CEditor(
 
     _construct();
 
-    _stApp = new CSettings(NULL, this, NULL);
+    _iniApp = new CIni(NULL, this, NULL);
 }
 //------------------------------------------------------------------------------
 
@@ -89,7 +89,7 @@ CEditor::_destruct() {
     }
 #endif
 
-    qPTR_DELETE(_stApp);
+    qPTR_DELETE(_iniApp);
 }
 //------------------------------------------------------------------------------
 void

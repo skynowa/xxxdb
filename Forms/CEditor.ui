@@ -13,6 +13,10 @@
   <property name="windowTitle">
    <string>XXXDb - editor</string>
   </property>
+  <property name="windowIcon">
+   <iconset resource="../Resources/App.qrc">
+    <normaloff>:/Main/Main/App.ico</normaloff>:/Main/Main/App.ico</iconset>
+  </property>
   <layout class="QGridLayout" name="gridLayout">
    <item row="1" column="0" colspan="3">
     <widget class="QDialogButtonBox" name="bbxButtons">
@@ -3132,6 +3136,8 @@
   <tabstop>tedtNotes</tabstop>
   <tabstop>bbxButtons</tabstop>
  </tabstops>
- <resources/>
+ <resources>
+  <include location="../Resources/App.qrc"/>
+ </resources>
  <connections/>
 </ui>

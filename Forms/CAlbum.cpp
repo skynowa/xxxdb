@@ -7,7 +7,7 @@
 #include "CAlbum.h"
 
 #include "../QtLib/CUtils.h"
-#include "../Classes/CSettings.h"
+#include "../Classes/CIni.h"
 
 
 /*******************************************************************************
@@ -22,7 +22,7 @@ CAlbum::CAlbum(
     CSqlNavigator  *a_sqlNavigator
 ) :
     QMainWindow     (a_parent),
-    _stApp          (NULL),
+    _iniApp         (NULL),
     _tmModel        (a_tableModel),
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _viDbItems      (),
@@ -35,7 +35,7 @@ CAlbum::CAlbum(
 
     _construct();
 
-    _stApp = new CSettings(NULL, NULL, this);
+    _iniApp = new CIni(NULL, NULL, this);
 }
 //------------------------------------------------------------------------------
 
@@ -174,7 +174,7 @@ CAlbum::_construct() {
 //------------------------------------------------------------------------------
 void
 CAlbum::_destruct() {
-    qPTR_DELETE(_stApp);
+    qPTR_DELETE(_iniApp);
 }
 //------------------------------------------------------------------------------
 void

@@ -14,7 +14,7 @@
 #include "../Classes/CConfig.h"
 #include "../Classes/CDbImageLabel.h"
 //------------------------------------------------------------------------------
-class CSettings;
+class CIni;
 
 class CAlbum :
     public QMainWindow
@@ -22,7 +22,7 @@ class CAlbum :
     Q_OBJECT
 
 public:
-    friend class CSettings;
+    friend class CIni;
 
     Ui::CAlbum      ui;
 
@@ -37,7 +37,7 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
-    CSettings      *_stApp;
+    CIni           *_iniApp;
     QSqlTableModel *_tmModel;
     CSqlNavigator  *_snSqlNavigator;
     cint            _ciDbRecordIndex;

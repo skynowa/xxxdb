@@ -1,11 +1,11 @@
 /**
- * \file   CSettings.h
+ * \file   CIni.h
  * \brief  application settings
  */
 
 
-#ifndef XXXDb_CSettingsH
-#define XXXDb_CSettingsH
+#ifndef XXXDb_CIniH
+#define XXXDb_CIniH
 //------------------------------------------------------------------------------
 #include "../QtLib/Common.h"
 #include "../QtLib/CUtils.h"
@@ -15,13 +15,13 @@ class CMain;
 class CEditor;
 class CAlbum;
 
-class CSettings
+class CIni
     /// application settings
 {
 public:
-              CSettings(CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
+              CIni(CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
         ///< constructor
-    virtual  ~CSettings();
+    virtual  ~CIni();
         ///< destructor
 
 private:
@@ -53,4 +53,4 @@ private:
         ///< write data
 };
 //------------------------------------------------------------------------------
-#endif // XXXDb_CSettingsH
+#endif // XXXDb_CIniH

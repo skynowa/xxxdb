@@ -19,7 +19,7 @@ class CAbout :
     Q_OBJECT
 
 public:
-    friend class CSettings;
+    friend class CIni;
 
     Ui::CAbout ui;
 

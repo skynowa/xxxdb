@@ -1,10 +1,10 @@
 /**
- * \file   CSettings.cpp
+ * \file   CIni.cpp
  * \brief  application settings
  */
 
 
-#include "CSettings.h"
+#include "CIni.h"
 
 #include "CApplication.h"
 #include "../Forms/CMain.h"
@@ -18,7 +18,7 @@
 *******************************************************************************/
 
 //------------------------------------------------------------------------------
-CSettings::CSettings(
+CIni::CIni(
     CMain   *a_wndMain,
     CEditor *a_wndEditor,
     CAlbum  *a_wndAlbum
@@ -33,7 +33,7 @@ CSettings::CSettings(
     _get(_wndAlbum);
 }
 //------------------------------------------------------------------------------
-CSettings::~CSettings() {
+CIni::~CIni() {
     _set(_wndMain);
     _set(_wndEditor);
     _set(_wndAlbum);
@@ -49,7 +49,7 @@ CSettings::~CSettings() {
 //------------------------------------------------------------------------------
 template <typename T>
 void
-CSettings::_commonGet(
+CIni::_commonGet(
     T *a_wnd
 )
 {
@@ -75,7 +75,7 @@ CSettings::_commonGet(
 //------------------------------------------------------------------------------
 template <typename T>
 void
-CSettings::_commonSet(
+CIni::_commonSet(
     T *a_wnd
 )
 {
@@ -89,7 +89,7 @@ CSettings::_commonSet(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_get(
+CIni::_get(
     CMain *a_wnd
 )
 {
@@ -170,7 +170,7 @@ CSettings::_get(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_set(
+CIni::_set(
     CMain *a_wnd
 )
 {
@@ -242,7 +242,7 @@ CSettings::_set(
 
 //------------------------------------------------------------------------------
 void
-CSettings::_get(
+CIni::_get(
     CEditor *a_wnd
 )
 {
@@ -252,7 +252,7 @@ CSettings::_get(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_set(
+CIni::_set(
     CEditor *a_wnd
 )
 {
@@ -270,7 +270,7 @@ CSettings::_set(
 
 //------------------------------------------------------------------------------
 void
-CSettings::_get(
+CIni::_get(
     CAlbum *a_wnd
 )
 {
@@ -280,7 +280,7 @@ CSettings::_get(
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_set(
+CIni::_set(
     CAlbum *a_wnd
 )
 {

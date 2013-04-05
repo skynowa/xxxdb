@@ -13,7 +13,7 @@
 #include "../Classes/CConfig.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
-class CSettings;
+class CIni;
 class CAlbum;
 class CDbImageLabel;
 
@@ -23,7 +23,7 @@ class CEditor :
     Q_OBJECT
 
 public:
-    friend class CSettings;
+    friend class CIni;
 
     Ui::CEditor        ui;
     CAlbum            *wndAlbum;
@@ -36,7 +36,7 @@ protected:
 
 private:
     cint               _ciDbRecordIndex;
-    CSettings         *_stApp;
+    CIni              *_iniApp;
     QSqlTableModel    *_tmModel;
     CSqlNavigator     *_snNavigator;
     db_items_t         _hsDbItems;

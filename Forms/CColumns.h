@@ -19,7 +19,7 @@ class CColumns :
     Q_OBJECT
 
 public:
-    friend class CSettings;
+    friend class CIni;
 
     Ui::CColumns    ui;
 

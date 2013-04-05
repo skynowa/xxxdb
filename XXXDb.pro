@@ -20,35 +20,38 @@ HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
                   Classes/CConfig.h \
+                  Classes/CIni.h \
                   Classes/CApplication.h \
-                  Classes/CSettings.h \
                   Classes/CDelegateDbImage.h \
                   Classes/CDbImageLabel.h \
                   Forms/CMain.h \
                   Forms/CEditor.h \
                   Forms/CAlbum.h \
+                  Forms/CColumns.h \
                   Forms/CAbout.h \
-                  Forms/CColumns.h
+                  Forms/CSettings.h
 
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
                   Classes/CConfig.cpp \
+                  Classes/CIni.cpp \
                   Classes/CApplication.cpp \
-                  Classes/CSettings.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \
                   Forms/CEditor.cpp \
                   Forms/CAlbum.cpp \
                   Forms/CColumns.cpp \
-                  Forms/CAbout.cpp
+                  Forms/CAbout.cpp \
+                  Forms/CSettings.cpp
 
 FORMS           = Forms/CMain.ui \
                   Forms/CEditor.ui \
                   Forms/CAlbum.ui \
                   Forms/CColumns.ui \
-                  Forms/CAbout.ui
+                  Forms/CAbout.ui \
+                  Forms/CSettings.ui
 
 RESOURCES       = Resources/App.qrc
 
