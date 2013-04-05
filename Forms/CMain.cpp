@@ -108,8 +108,8 @@ CMain::closeEvent(
 //------------------------------------------------------------------------------
 void
 CMain::_construct() {
-    _initMain();
     _initModel();
+    _initMain();
     _initActions();
 }
 //------------------------------------------------------------------------------
@@ -178,6 +178,51 @@ CMain::_initMain() {
                 this,         &CMain::cboDbFields_onCurrentTextChanged);
 
         ui.tbQuickFind->addWidget(_cboDbFields);
+    }
+
+    //--------------------------------------------------
+    // ui.tvInfo
+    {
+        ui.tvInfo->setModel(_tmModel);
+        ui.tvInfo->verticalHeader()->setVisible(true);
+        ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
+        ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
+        ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
+        ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
+        ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
+        ui.tvInfo->setSortingEnabled(true);
+        ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
+
+        ui.tvInfo->show();
+    }
+
+    //--------------------------------------------------
+    // snNavigator
+    {
+        snNavigator.construct(_tmModel, ui.tvInfo);
+    }
+
+    //--------------------------------------------------
+    // _dbImageLabel
+    {
+        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
+
+        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
+                                          0, ciDbRecordIndex,
+                                          ui.lblPhoto, PHOTO_SIZE,
+                                          ui.lblPhotoInfo);
+    }
+
+    //--------------------------------------------------
+    // slots
+    {
+        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                _dbImageLabel->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
+        connect(snNavigator.view(),      &QTableView::doubleClicked,
+                this,                    &CMain::actEdit_onEdit);
+        connect(ui.tbtnAlbum,            &QToolButton::clicked,
+                this,                    &CMain::actView_onAlbum);
     }
 }
 //------------------------------------------------------------------------------
@@ -322,51 +367,6 @@ CMain::_initModel() {
         _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         bool bRv = _tmModel->select();
         Q_ASSERT(bRv);
-    }
-
-    //--------------------------------------------------
-    // ui.tvInfo
-    {
-        ui.tvInfo->setModel(_tmModel);
-        ui.tvInfo->verticalHeader()->setVisible(true);
-        ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
-        ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
-        ui.tvInfo->setSelectionBehavior(QAbstractItemView::SelectRows);
-        ui.tvInfo->setSelectionMode(QAbstractItemView::SingleSelection);
-        ui.tvInfo->setHorizontalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        ui.tvInfo->setVerticalScrollBarPolicy(Qt::ScrollBarAlwaysOn);
-        ui.tvInfo->setSortingEnabled(true);
-        ui.tvInfo->sortByColumn(0, Qt::AscendingOrder);
-
-        ui.tvInfo->show();
-    }
-
-    //--------------------------------------------------
-    // snNavigator
-    {
-        snNavigator.construct(_tmModel, ui.tvInfo);
-    }
-
-    //--------------------------------------------------
-    // _dbImageLabel
-    {
-        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
-
-        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
-                                          0, ciDbRecordIndex,
-                                          ui.lblPhoto, PHOTO_SIZE,
-                                          ui.lblPhotoInfo);
-    }
-
-    //--------------------------------------------------
-    // slots
-    {
-        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dbImageLabel->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
-        connect(snNavigator.view(),      &QTableView::doubleClicked,
-                this,                    &CMain::actEdit_onEdit);
-        connect(ui.tbtnAlbum,            &QToolButton::clicked,
-                this,                    &CMain::actView_onAlbum);
     }
 }
 //------------------------------------------------------------------------------
