@@ -168,7 +168,8 @@ CMain::_initMain() {
         _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
 
         for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
-            qCHECK_DO(!CConfig::dbRecords[i].isGui, continue);
+            // hide non UI DB fields
+            qCHECK_DO(!CConfig::dbRecords[i].isUi, continue);
 
             _cboDbFields->addItem(CConfig::dbRecords[i].caption);
         }
