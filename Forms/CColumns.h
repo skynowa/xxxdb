@@ -19,8 +19,6 @@ class CColumns :
     Q_OBJECT
 
 public:
-    friend class CIni;
-
     Ui::CColumns    ui;
 
                     CColumns(QWidget *parent, QSqlTableModel *model);
@@ -29,6 +27,8 @@ protected:
     virtual void    changeEvent(QEvent *event);
 
 private:
+    friend class CIni;
+
     QSqlTableModel *_tmModel;
 
     void            _construct();

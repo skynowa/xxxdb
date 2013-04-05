@@ -23,8 +23,6 @@ class CEditor :
     Q_OBJECT
 
 public:
-    friend class CIni;
-
     Ui::CEditor        ui;
     CAlbum            *wndAlbum;
 
@@ -35,6 +33,8 @@ protected:
     virtual void       closeEvent(QCloseEvent *event);
 
 private:
+    friend class CIni;
+
     cint               _ciDbRecordIndex;
     CIni              *_iniApp;
     QSqlTableModel    *_tmModel;

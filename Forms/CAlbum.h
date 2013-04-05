@@ -22,8 +22,6 @@ class CAlbum :
     Q_OBJECT
 
 public:
-    friend class CIni;
-
     Ui::CAlbum      ui;
 
                     CAlbum(QWidget *parent, QSqlTableModel *tableModel,
@@ -37,6 +35,8 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
+    friend class CIni;
+
     CIni           *_iniApp;
     QSqlTableModel *_tmModel;
     CSqlNavigator  *_snSqlNavigator;

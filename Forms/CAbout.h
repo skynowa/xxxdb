@@ -19,13 +19,13 @@ class CAbout :
     Q_OBJECT
 
 public:
-    friend class CIni;
-
     Ui::CAbout ui;
 
     explicit   CAbout(QWidget *parent);
 
 private:
+    friend class CIni;
+
     void       _construct();
     void       _destruct();
     void       _initMain();

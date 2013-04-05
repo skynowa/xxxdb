@@ -23,8 +23,6 @@ class CMain :
     Q_OBJECT
 
 public:
-    friend class CIni;
-
     Ui::CMainClass  ui;
     CSqlNavigator   snNavigator;
     CAlbum         *wndAlbum;
@@ -37,6 +35,8 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
+    friend class CIni;
+
     CIni           *_iniApp;
     QTranslator    *_trTranslator;
     QString         _sTranslatorLang;
