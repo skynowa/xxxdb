@@ -591,6 +591,7 @@ CMain::actFind_onSearch() {
 void
 CMain::actFind_onTextClear() {
     _cboFindText->lineEdit()->clear();
+    _cboFindText->setFocus();
 }
 //------------------------------------------------------------------------------
 
@@ -728,6 +729,12 @@ CMain::cboDbFields_onCurrentTextChanged(
 )
 {
     Q_UNUSED(a_arg);
+
+    // set focus
+    {
+        _cboFindText->setFocus();
+        _cboFindText->lineEdit()->selectAll();
+    }
 
     Q_EMIT _cboFindText->currentTextChanged( _cboFindText->currentText() );
 }
