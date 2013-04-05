@@ -167,7 +167,7 @@ CMain::_initMain() {
         _cboDbFields = new QComboBox(this);
         _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
 
-        for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
             // hide non UI DB fields
             qCHECK_DO(!CConfig::dbRecords[i].isUi, continue);
 
@@ -355,9 +355,7 @@ CMain::_initModel() {
         _tmModel->setTable(DB_T_PERSON);
 
         // set caption for DB fields
-        Q_ASSERT(qARRAY_LENGTH(CConfig::dbRecords) == (size_t)_tmModel->columnCount());
-
-        for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
             _tmModel->setHeaderData(
                     CConfig::dbRecords[i].index,
                     Qt::Horizontal,
@@ -368,6 +366,8 @@ CMain::_initModel() {
         bool bRv = _tmModel->select();
         Q_ASSERT(bRv);
     }
+
+    Q_ASSERT((int)qARRAY_LENGTH(CConfig::dbRecords) == _tmModel->columnCount());
 }
 //------------------------------------------------------------------------------
 void
@@ -453,7 +453,7 @@ CMain::_initActions() {
 void
 CMain::_retranslateUi() {
     // ui.tvInfo
-    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
         _tmModel->setHeaderData(
                 CConfig::dbRecords[i].index,
                 Qt::Horizontal,
@@ -461,7 +461,7 @@ CMain::_retranslateUi() {
     }
 
     // _cboDbFields
-    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
         _cboDbFields->setItemText(
             i,
             qApp->translate("CConfig", CConfig::dbRecords[i].caption)
@@ -705,7 +705,7 @@ CMain::onQuickFind(
     // get DB field by caption
     QString dbField;
 
-    for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
         if (_cboDbFields->currentText() ==
             qApp->translate("CConfig", CConfig::dbRecords[i].caption)
         ) {

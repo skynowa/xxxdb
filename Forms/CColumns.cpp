@@ -66,11 +66,9 @@ CColumns::_initMain() {
 
     {
         // set caption for DB fields
-        Q_ASSERT(qARRAY_LENGTH(CConfig::dbRecords) == (size_t)_tmModel->columnCount());
-
         CMain *wnd = static_cast<CMain *>(parent());
 
-        for (size_t i = 0; i < qARRAY_LENGTH(CConfig::dbRecords); ++ i) {
+        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
             cbool isVisible = !wnd->ui.tvInfo->isColumnHidden(i);
 
             QListWidgetItem *item = new QListWidgetItem(ui.lwItems);
