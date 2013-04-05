@@ -218,11 +218,20 @@ CMain::_initMain() {
     // slots
     {
         connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dbImageLabel->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
-        connect(snNavigator.view(),      &QTableView::doubleClicked,
-                this,                    &CMain::actEdit_onEdit);
-        connect(ui.tbtnAlbum,            &QToolButton::clicked,
-                this,                    &CMain::actView_onAlbum);
+                _dbImageLabel->mapper(),  &QDataWidgetMapper::setCurrentModelIndex);
+        connect(snNavigator.view(),       &QTableView::doubleClicked,
+                this,                     &CMain::actEdit_onEdit);
+        connect(ui.tbtnAlbum,             &QToolButton::clicked,
+                this,                     &CMain::actView_onAlbum);
+
+        QShortcut *shortCut = new QShortcut(Qt::CTRL + Qt::Key_F, this);
+    #if 0
+        connect(shortCut,                 &QShortcut::activated,
+                _cboFindText->lineEdit(), &QLineEdit::setFocus);
+    #else
+        connect(shortCut,                 SIGNAL( activated() ),
+                _cboFindText->lineEdit(), SLOT  ( setFocus() ));
+    #endif
     }
 }
 //------------------------------------------------------------------------------
