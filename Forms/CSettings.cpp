@@ -61,17 +61,20 @@ CSettings::closeEvent(
 
 //------------------------------------------------------------------------------
 void
-CSettings::_construct() {
+CSettings::_construct()
+{
     _initMain();
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_destruct() {
+CSettings::_destruct()
+{
     qPTR_DELETE(_iniApp);
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_initMain() {
+CSettings::_initMain()
+{
     ui.setupUi(this);
 
     // signals
@@ -84,12 +87,14 @@ CSettings::_initMain() {
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_resetAll() {
+CSettings::_resetAll()
+{
 
 }
 //------------------------------------------------------------------------------
 void
-CSettings::_saveAll() {
+CSettings::_saveAll()
+{
 
 }
 //------------------------------------------------------------------------------

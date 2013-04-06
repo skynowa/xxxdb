@@ -28,7 +28,8 @@ CApplication::CApplication(
 }
 //------------------------------------------------------------------------------
 /* virtual */
-CApplication::~CApplication() {
+CApplication::~CApplication()
+{
 
 }
 //------------------------------------------------------------------------------
@@ -41,49 +42,57 @@ CApplication::~CApplication() {
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::iniFilePath() {
+CApplication::iniFilePath()
+{
     return applicationFilePath() + INI_FILE_EXT;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::langsDirPath() {
+CApplication::langsDirPath()
+{
     return applicationDirPath() + QDir::separator() + LANGS_DIR_NAME;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::dbDirPath() {
+CApplication::dbDirPath()
+{
     return applicationDirPath() + QDir::separator() + DB_DIR_NAME;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::dbFilePath() {
+CApplication::dbFilePath()
+{
     return dbDirPath() + QDir::separator() + applicationName() + DB_FILE_EXT;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::dbBackupDirPath() {
+CApplication::dbBackupDirPath()
+{
     return dbDirPath() + QDir::separator() + BACKUP_DIR_NAME;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::pluginPlatformsDirPath() {
+CApplication::pluginPlatformsDirPath()
+{
     return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_PLATFORMS;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::pluginSqlDriversDirPath() {
+CApplication::pluginSqlDriversDirPath()
+{
     return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_SQLDRIVERS;
 }
 //------------------------------------------------------------------------------
 /* static */
 QString
-CApplication::pluginImageFormatsDirPath() {
+CApplication::pluginImageFormatsDirPath()
+{
     return applicationDirPath() + QDir::separator() + APP_DIR_PLUGIN_IMAGEFORMATS;
 }
 //------------------------------------------------------------------------------
@@ -109,7 +118,8 @@ CApplication::isRunnig(
 // BUG: CApplication::selfCheck()
 /* static */
 bool
-CApplication::selfCheck() {
+CApplication::selfCheck()
+{
     bool bRv = false;
 
     bRv = QDir( pluginPlatformsDirPath() ).isReadable();

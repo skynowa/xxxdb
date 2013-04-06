@@ -29,17 +29,20 @@ CAbout::CAbout(
 
 //------------------------------------------------------------------------------
 void
-CAbout::_construct() {
+CAbout::_construct()
+{
     _initMain();
 }
 //------------------------------------------------------------------------------
 void
-CAbout::_destruct() {
+CAbout::_destruct()
+{
 
 }
 //------------------------------------------------------------------------------
 void
-CAbout::_initMain() {
+CAbout::_initMain()
+{
     ui.setupUi(this);
 
     //  signals, slots

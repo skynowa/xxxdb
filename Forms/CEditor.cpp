@@ -69,12 +69,14 @@ CEditor::closeEvent(
 
 //------------------------------------------------------------------------------
 void
-CEditor::_construct() {
+CEditor::_construct()
+{
     _initMain();
 }
 //------------------------------------------------------------------------------
 void
-CEditor::_destruct() {
+CEditor::_destruct()
+{
 #if 0
     // update DB_F_ETC_DATECREATION, DB_F_ETC_DATELASTCHANGE
     {
@@ -93,7 +95,8 @@ CEditor::_destruct() {
 }
 //------------------------------------------------------------------------------
 void
-CEditor::_initMain() {
+CEditor::_initMain()
+{
     ui.setupUi(this);
 
     // maps ui controls into DB fields
@@ -228,7 +231,8 @@ CEditor::_initMain() {
 
 //------------------------------------------------------------------------------
 void
-CEditor::onAlbum() {
+CEditor::onAlbum()
+{
     qPTR_DELETE(wndAlbum);
 
     wndAlbum = new CAlbum(this, _tmModel, _snNavigator);
@@ -264,7 +268,8 @@ CEditor::bbxButtons_onClicked(
 
 //------------------------------------------------------------------------------
 void
-CEditor::_resetAll() {
+CEditor::_resetAll()
+{
     // ensure for reset
     {
         QMessageBox msgBox;
@@ -322,7 +327,8 @@ CEditor::_resetAll() {
 }
 //------------------------------------------------------------------------------
 void
-CEditor::_saveAll() {
+CEditor::_saveAll()
+{
 #if 0
     // set current index
     _dmText->setCurrentIndex(_ciDbRecordIndex);

@@ -107,14 +107,16 @@ CMain::closeEvent(
 
 //------------------------------------------------------------------------------
 void
-CMain::_construct() {
+CMain::_construct()
+{
     _initModel();
     _initMain();
     _initActions();
 }
 //------------------------------------------------------------------------------
 void
-CMain::_destruct() {
+CMain::_destruct()
+{
     // _trTranslator
     {
         CApplication::removeTranslator(_trTranslator);
@@ -125,7 +127,8 @@ CMain::_destruct() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::_initMain() {
+CMain::_initMain()
+{
     // _trTranslator
     {
         _trTranslator = new QTranslator(this);
@@ -236,7 +239,8 @@ CMain::_initMain() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::_initModel() {
+CMain::_initModel()
+{
     //--------------------------------------------------
     // settings DB
     {
@@ -380,7 +384,8 @@ CMain::_initModel() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::_initActions() {
+CMain::_initActions()
+{
     // group "File"
     {
         connect(ui.actFile_Exit,     &QAction::triggered,
@@ -460,7 +465,8 @@ CMain::_initActions() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::_retranslateUi() {
+CMain::_retranslateUi()
+{
     // ui.tvInfo
     for (int i = 0; i < _tmModel->columnCount(); ++ i) {
         _tmModel->setHeaderData(
@@ -487,12 +493,14 @@ CMain::_retranslateUi() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actFile_onExit() {
+CMain::actFile_onExit()
+{
     close();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actFile_onMinimize() {
+CMain::actFile_onMinimize()
+{
     setWindowState(Qt::WindowMinimized);
 }
 //------------------------------------------------------------------------------
@@ -505,27 +513,32 @@ CMain::actFile_onMinimize() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onFirst() {
+CMain::actEdit_onFirst()
+{
     snNavigator.first();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onPrior() {
+CMain::actEdit_onPrior()
+{
     snNavigator.prior();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onNext() {
+CMain::actEdit_onNext()
+{
     snNavigator.next();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onLast() {
+CMain::actEdit_onLast()
+{
     snNavigator.last();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onGoTo() {
+CMain::actEdit_onGoTo()
+{
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     cint ciCurrentRow = snNavigator.view()->currentIndex().row() + 1;
@@ -543,7 +556,8 @@ CMain::actEdit_onGoTo() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onInsert() {
+CMain::actEdit_onInsert()
+{
     snNavigator.insert();
 
     {
@@ -554,7 +568,8 @@ CMain::actEdit_onInsert() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onRemove() {
+CMain::actEdit_onRemove()
+{
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     QMessageBox msgBox;
@@ -577,7 +592,8 @@ CMain::actEdit_onRemove() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::actEdit_onEdit() {
+CMain::actEdit_onEdit()
+{
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     CEditor dlgEditor(this, _tmModel, &snNavigator);
@@ -593,12 +609,14 @@ CMain::actEdit_onEdit() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actFind_onSearch() {
+CMain::actFind_onSearch()
+{
 
 }
 //------------------------------------------------------------------------------
 void
-CMain::actFind_onTextClear() {
+CMain::actFind_onTextClear()
+{
     _cboFindText->lineEdit()->clear();
     _cboFindText->setFocus();
 }
@@ -612,28 +630,32 @@ CMain::actFind_onTextClear() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actView_onMainToolbar() {
+CMain::actView_onMainToolbar()
+{
     cbool bIsChecked = ui.actView_MainToolbar->isChecked();
 
     ui.tbMain->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onQuickFindToolbar() {
+CMain::actView_onQuickFindToolbar()
+{
     cbool bIsChecked = ui.actView_QuickFindToolbar->isChecked();
 
     ui.tbQuickFind->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onColumns() {
+CMain::actView_onColumns()
+{
     CColumns dlgColumns(this, _tmModel);
 
     (int)dlgColumns.exec();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onAlbum() {
+CMain::actView_onAlbum()
+{
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
     qPTR_DELETE(wndAlbum);
@@ -643,20 +665,23 @@ CMain::actView_onAlbum() {
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onStatusbar() {
+CMain::actView_onStatusbar()
+{
     cbool bIsChecked = ui.actView_Statusbar->isChecked();
 
     ui.sbInfo->setVisible(bIsChecked);
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onLanguageEn() {
+CMain::actView_onLanguageEn()
+{
     (bool)CApplication::removeTranslator(_trTranslator);
     _sTranslatorLang.clear();
 }
 //------------------------------------------------------------------------------
 void
-CMain::actView_onLanguageRu() {
+CMain::actView_onLanguageRu()
+{
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     Q_ASSERT(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;
@@ -673,7 +698,8 @@ CMain::actView_onLanguageRu() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actOptions_onSettings() {
+CMain::actOptions_onSettings()
+{
     CSettings dlgSettings(this);
 
     (int)dlgSettings.exec();
@@ -688,12 +714,14 @@ CMain::actOptions_onSettings() {
 
 //------------------------------------------------------------------------------
 void
-CMain::actHelp_onFaq() {
+CMain::actHelp_onFaq()
+{
 
 }
 //------------------------------------------------------------------------------
 void
-CMain::actHelp_onAbout() {
+CMain::actHelp_onAbout()
+{
     CAbout wndAbout(this);
 
     (int)wndAbout.exec();

@@ -51,17 +51,20 @@ CColumns::changeEvent(
 
 //------------------------------------------------------------------------------
 void
-CColumns::_construct() {
+CColumns::_construct()
+{
     _initMain();
 }
 //------------------------------------------------------------------------------
 void
-CColumns::_destruct() {
+CColumns::_destruct()
+{
 
 }
 //------------------------------------------------------------------------------
 void
-CColumns::_initMain() {
+CColumns::_initMain()
+{
     ui.setupUi(this);
 
     {
@@ -92,7 +95,8 @@ CColumns::_initMain() {
 }
 //------------------------------------------------------------------------------
 void
-CColumns::_saveAll() {
+CColumns::_saveAll()
+{
     CMain *wnd = static_cast<CMain *>(parent());
 
     for (int i = 0; i < _tmModel->columnCount(); ++ i) {
@@ -103,7 +107,8 @@ CColumns::_saveAll() {
 }
 //------------------------------------------------------------------------------
 void
-CColumns::_retranslateUi() {
+CColumns::_retranslateUi()
+{
     // ui.lwItems
     for (int i = 0; i < ui.lwItems->count(); ++ i) {
         ui.lwItems->item(i)->setText(

@@ -61,49 +61,56 @@ CDbImageLabel::~CDbImageLabel() {
 
 //------------------------------------------------------------------------------
 cQString &
-CDbImageLabel::dbFieldName() const {
+CDbImageLabel::dbFieldName() const
+{
     Q_ASSERT(!_csDbFieldName.isEmpty());
 
     return _csDbFieldName;
 }
 //------------------------------------------------------------------------------
 cint &
-CDbImageLabel::index() const {
+CDbImageLabel::index() const
+{
     Q_ASSERT(- 1 < _ciIndex);
 
     return _ciIndex;
 }
 //------------------------------------------------------------------------------
 cint &
-CDbImageLabel::dbRecordIndex() const {
+CDbImageLabel::dbRecordIndex() const
+{
     // _ciDbRecordIndex - n/a;
 
     return _ciDbRecordIndex;
 }
 //------------------------------------------------------------------------------
 QLabel *
-CDbImageLabel::label() const {
+CDbImageLabel::label() const
+{
     Q_ASSERT(NULL != _lblLabel);
 
     return _lblLabel;
 }
 //------------------------------------------------------------------------------
 cQSize &
-CDbImageLabel::size() const {
+CDbImageLabel::size() const
+{
     Q_ASSERT(_cszSize.isValid());
 
     return _cszSize;
 }
 //------------------------------------------------------------------------------
 QLabel *
-CDbImageLabel::info() const {
+CDbImageLabel::info() const
+{
     Q_ASSERT(NULL != _lblInfo);
 
     return _lblInfo;
 }
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
-CDbImageLabel::mapper() {
+CDbImageLabel::mapper()
+{
     Q_ASSERT(NULL != _dmMapper);
 
     return _dmMapper;
@@ -117,7 +124,8 @@ CDbImageLabel::mapper() {
 
 //------------------------------------------------------------------------------
 bool
-CDbImageLabel::isEmpty() const {
+CDbImageLabel::isEmpty() const
+{
     qCHECK_RET(label()->pixmap() == NULL,   true);
     qCHECK_RET(label()->pixmap()->isNull(), true);
 
@@ -125,7 +133,8 @@ CDbImageLabel::isEmpty() const {
 }
 //------------------------------------------------------------------------------
 void
-CDbImageLabel::loadFromFile() {
+CDbImageLabel::loadFromFile()
+{
     QFileDialog fdlgDialog(_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptOpen);
@@ -155,7 +164,8 @@ CDbImageLabel::loadFromFile() {
 }
 //------------------------------------------------------------------------------
 void
-CDbImageLabel::saveToFile() {
+CDbImageLabel::saveToFile()
+{
     QFileDialog fdlgDialog(_wdParent);
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
@@ -177,7 +187,8 @@ CDbImageLabel::saveToFile() {
 }
 //------------------------------------------------------------------------------
 void
-CDbImageLabel::remove() {
+CDbImageLabel::remove()
+{
     QMessageBox msgBox;
 
     msgBox.setIcon(QMessageBox::Warning);
@@ -270,7 +281,8 @@ CDbImageLabel::isEmpty(
 
 //------------------------------------------------------------------------------
 QDataWidgetMapper *
-CDbImageLabel::_map() {
+CDbImageLabel::_map()
+{
     QDataWidgetMapper *wmRv = new QDataWidgetMapper(this);
     wmRv->setModel(_tmModel);
     wmRv->setItemDelegate(new CDelegateDbImage(
@@ -354,14 +366,16 @@ CDbImageLabel::_saveToFile(
 }
 //------------------------------------------------------------------------------
 void
-CDbImageLabel::_remove() {
+CDbImageLabel::_remove()
+{
     _baBuffer.clear();
     _flush();
     _lblLabel->clear();
 }
 //------------------------------------------------------------------------------
 void
-CDbImageLabel::_flush() {
+CDbImageLabel::_flush()
+{
 #if 0
     #error "BUG: QSqlTableModel::setRecord - not work"
 
