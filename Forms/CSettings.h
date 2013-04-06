@@ -13,18 +13,12 @@
 #include "../Classes/CConfig.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
-class CIni;
-
 class CSettings :
     public QDialog
 {
     Q_OBJECT
 
 public:
-    // store data
-    // group "Photos"
-    static bool   photos_isDeleteFromDisk;
-
                   CSettings(QWidget *parent);
 
 protected:
@@ -34,7 +28,6 @@ private:
     friend class CIni;
 
     Ui::CSettings ui;
-    CIni         *_iniApp;
 
     void          _construct();
     void          _destruct();

@@ -13,7 +13,6 @@
 #include "../Classes/CConfig.h"
 #include "CMain.h"
 //------------------------------------------------------------------------------
-class CIni;
 class CAlbum;
 class CDbImageLabel;
 
@@ -36,7 +35,6 @@ private:
     friend class CIni;
 
     cint               _ciDbRecordIndex;
-    CIni              *_iniApp;
     QSqlTableModel    *_tmModel;
     CSqlNavigator     *_snNavigator;
     db_items_t         _hsDbItems;

@@ -14,8 +14,6 @@
 #include "../Classes/CConfig.h"
 #include "../Classes/CDbImageLabel.h"
 //------------------------------------------------------------------------------
-class CIni;
-
 class CAlbum :
     public QMainWindow
 {
@@ -37,7 +35,6 @@ protected:
 private:
     friend class CIni;
 
-    CIni           *_iniApp;
     QSqlTableModel *_tmModel;
     CSqlNavigator  *_snSqlNavigator;
     cint            _ciDbRecordIndex;

@@ -5,6 +5,8 @@
 
 
 #include "CDbImageLabel.h"
+
+#include "../Classes/CIni.h"
 #include "../Classes/CDelegateDbImage.h"
 
 
@@ -344,6 +346,12 @@ CDbImageLabel::_loadFromFile(
     }
 
     _flush();
+
+    // use CIni
+    if (CIni::photos_isDeleteFromDisk()) {
+        bool bRv = QFile::remove(a_filePath);
+        Q_ASSERT(bRv);
+    }
 }
 //------------------------------------------------------------------------------
 void

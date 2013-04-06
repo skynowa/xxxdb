@@ -27,7 +27,6 @@ CEditor::CEditor(
     QDialog         (a_parent),
     wndAlbum        (NULL),
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
-    _iniApp          (NULL),
     _tmModel        (a_tableModel),
     _snNavigator    (a_sqlNavigator),
     _hsDbItems      (),
@@ -41,7 +40,7 @@ CEditor::CEditor(
 
     _construct();
 
-    _iniApp = new CIni(NULL, this, NULL);
+    CIni::get(this);
 }
 //------------------------------------------------------------------------------
 
@@ -91,7 +90,7 @@ CEditor::_destruct()
     }
 #endif
 
-    qPTR_DELETE(_iniApp);
+    CIni::set(this);
 }
 //------------------------------------------------------------------------------
 void

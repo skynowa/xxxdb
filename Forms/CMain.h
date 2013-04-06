@@ -13,7 +13,6 @@
 #include "../QtLib/CSqlNavigator.h"
 #include "Classes/CConfig.h"
 //------------------------------------------------------------------------------
-class CIni;
 class CAlbum;
 class CDbImageLabel;
 
@@ -37,7 +36,6 @@ protected:
 private:
     friend class CIni;
 
-    CIni           *_iniApp;
     QTranslator    *_trTranslator;
     QString         _sTranslatorLang;
     QSqlDatabase    _dbDatabase;

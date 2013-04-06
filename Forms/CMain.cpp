@@ -30,7 +30,6 @@ CMain::CMain(
     QMainWindow  (a_parent, a_flags),
     snNavigator  (this),
     wndAlbum     (NULL),
-    _iniApp      (NULL),
     _trTranslator(NULL),
     _sTranslatorLang(),
     _dbDatabase  (),
@@ -42,7 +41,7 @@ CMain::CMain(
 {
     _construct();
 
-    _iniApp = new CIni(this, NULL, NULL);
+    CIni::get(this);
 
     snNavigator.last();
 }
@@ -123,7 +122,7 @@ CMain::_destruct()
         qPTR_DELETE(_trTranslator);
     }
 
-    qPTR_DELETE(_iniApp);
+    CIni::set(this);
 }
 //------------------------------------------------------------------------------
 void

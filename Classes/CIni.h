@@ -18,29 +18,40 @@ class CAlbum;
 class CIni
     /// application settings
 {
+private:
+                      CIni();
+                     ~CIni();
+
 public:
-              CIni(CMain *wndMain, CEditor *wndEditor, CAlbum *wndAlbum);
-    virtual  ~CIni();
+    static void       construct();
+    static void       destruct();
+
+    static void       get(CMain *wnd);
+    static void       set(CMain *wnd);
+
+    static void       get(CEditor *wnd);
+    static void       set(CEditor *wnd);
+
+    static void       get(CAlbum *wnd);
+    static void       set(CAlbum *wnd);
+
+public:
+    static bool       photos_isDeleteFromDisk();
+    static void       setPhotos_isDeleteFromDisk(const bool &value);
 
 private:
-    QSettings _stApp;
-    CMain    *_wndMain;
-    CEditor  *_wndEditor;
-    CAlbum   *_wndAlbum;
+    static QSettings *_iniApp;
+
+    static void       _load();
+    static void       _save();
+
+    // group "Photos"
+    static bool       _photos_isDeleteFromDisk;  ///< is delete photo from disk after import
 
     template <typename T>
-    void      _commonGet(T *wnd);
+    static void       _commonGet(T *wnd);
     template <typename T>
-    void      _commonSet(T *wnd);
-
-    void      _get(CMain *wnd);
-    void      _set(CMain *wnd);
-
-    void      _get(CEditor *wnd);
-    void      _set(CEditor *wnd);
-
-    void      _get(CAlbum *wnd);
-    void      _set(CAlbum *wnd);
+    static void       _commonSet(T *wnd);
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CIniH

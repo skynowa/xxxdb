@@ -22,7 +22,6 @@ CAlbum::CAlbum(
     CSqlNavigator  *a_sqlNavigator
 ) :
     QMainWindow     (a_parent),
-    _iniApp         (NULL),
     _tmModel        (a_tableModel),
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
     _viDbItems      (),
@@ -35,7 +34,7 @@ CAlbum::CAlbum(
 
     _construct();
 
-    _iniApp = new CIni(NULL, NULL, this);
+    CIni::get(this);
 }
 //------------------------------------------------------------------------------
 
@@ -176,7 +175,7 @@ CAlbum::_construct()
 void
 CAlbum::_destruct()
 {
-    qPTR_DELETE(_iniApp);
+    CIni::set(this);
 }
 //------------------------------------------------------------------------------
 void

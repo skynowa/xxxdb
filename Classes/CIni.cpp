@@ -17,26 +17,51 @@
 *
 *******************************************************************************/
 
+QSettings *CIni::_iniApp = NULL;
+
 //------------------------------------------------------------------------------
-CIni::CIni(
-    CMain   *a_wndMain,
-    CEditor *a_wndEditor,
-    CAlbum  *a_wndAlbum
-) :
-    _stApp    (CApplication::iniFilePath(), QSettings::IniFormat),
-    _wndMain  (a_wndMain),
-    _wndEditor(a_wndEditor),
-    _wndAlbum (a_wndAlbum)
+/* static */
+void
+CIni::construct()
 {
-    _get(_wndMain);
-    _get(_wndEditor);
-    _get(_wndAlbum);
+    _iniApp = new QSettings(CApplication::iniFilePath(), QSettings::IniFormat);
+
+    _load();
 }
 //------------------------------------------------------------------------------
-CIni::~CIni() {
-    _set(_wndMain);
-    _set(_wndEditor);
-    _set(_wndAlbum);
+/* static */
+void
+CIni::destruct()
+{
+    _save();
+
+    qPTR_DELETE(_iniApp);
+}
+//------------------------------------------------------------------------------
+/* static */
+void
+CIni::_load()
+{
+    // _photos_isDeleteFromDisk
+    {
+        _iniApp->beginGroup("data");
+        cbool value = _iniApp->value("_photos_isDeleteFromDisk", false).toBool();
+        _iniApp->endGroup();
+
+        setPhotos_isDeleteFromDisk(value);
+    }
+}
+//------------------------------------------------------------------------------
+/* static */
+void
+CIni::_save()
+{
+    // _photos_isDeleteFromDisk
+    {
+        _iniApp->beginGroup("data");
+        _iniApp->setValue("_photos_isDeleteFromDisk", photos_isDeleteFromDisk());
+        _iniApp->endGroup();
+    }
 }
 //------------------------------------------------------------------------------
 
@@ -46,6 +71,14 @@ CIni::~CIni() {
 *
 *******************************************************************************/
 
+//------------------------------------------------------------------------------
+CIni::CIni()
+{
+}
+//------------------------------------------------------------------------------
+CIni::~CIni()
+{
+}
 //------------------------------------------------------------------------------
 template <typename T>
 void
@@ -60,10 +93,10 @@ CIni::_commonGet(
 
     // read
     {
-        _stApp.beginGroup( a_wnd->objectName() );
-        szSize     = _stApp.value("size",     APP_SIZE).toSize();
-        pnPosition = _stApp.value("position", QPoint(200, 200)).toPoint();
-        _stApp.endGroup();
+        _iniApp->beginGroup( a_wnd->objectName() );
+        szSize     = _iniApp->value("size",     APP_SIZE).toSize();
+        pnPosition = _iniApp->value("position", QPoint(200, 200)).toPoint();
+        _iniApp->endGroup();
     }
 
     // apply
@@ -82,14 +115,14 @@ CIni::_commonSet(
     qCHECK_DO(a_wnd == NULL, return);
 
     // write
-    _stApp.beginGroup( a_wnd->objectName() );
-    _stApp.setValue("position", a_wnd->pos());
-    _stApp.setValue("size",     a_wnd->size());
-    _stApp.endGroup();
+    _iniApp->beginGroup( a_wnd->objectName() );
+    _iniApp->setValue("position", a_wnd->pos());
+    _iniApp->setValue("size",     a_wnd->size());
+    _iniApp->endGroup();
 }
 //------------------------------------------------------------------------------
 void
-CIni::_get(
+CIni::get(
     CMain *a_wnd
 )
 {
@@ -97,9 +130,9 @@ CIni::_get(
 
     // translator
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
-        cQString sLanguage = _stApp.value("language", QString()).toString();
+        cQString sLanguage = _iniApp->value("language", QString()).toString();
 
         // apply
         if (LANGS_FILE_NAME_RU == sLanguage) {
@@ -111,18 +144,18 @@ CIni::_get(
             a_wnd->actView_onLanguageEn();
         }
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     _commonGet(a_wnd);
 
     // toolbars
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
         // ui.tbMain
         {
-            cbool isVisible = _stApp.value("toolbar_main/visible", true).toBool();
+            cbool isVisible = _iniApp->value("toolbar_main/visible", true).toBool();
 
             // apply
             a_wnd->ui.actView_MainToolbar->setChecked(isVisible);
@@ -131,46 +164,46 @@ CIni::_get(
 
         // ui.tbQuickFind
         {
-            cbool isVisible = _stApp.value("toolbar_quickfind/visible", true).toBool();
+            cbool isVisible = _iniApp->value("toolbar_quickfind/visible", true).toBool();
 
             // apply
             a_wnd->ui.actView_QuickFindToolbar->setChecked(isVisible);
             a_wnd->ui.tbQuickFind->setVisible(isVisible);
         }
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     // caption for DB fields
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/table");
+        _iniApp->beginGroup(a_wnd->objectName() + "/table");
 
         for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
-            cbool isVisible = _stApp.value(QString("column%1/visible").arg(i), true).toBool();
+            cbool isVisible = _iniApp->value(QString("column%1/visible").arg(i), true).toBool();
 
             // apply
             a_wnd->ui.tvInfo->setColumnHidden(i, !isVisible);
         }
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     // ui.sbInfo
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
-        cbool isVisible = _stApp.value("statusbar/visible", true).toBool();
+        cbool isVisible = _iniApp->value("statusbar/visible", true).toBool();
 
         // apply
         a_wnd->ui.actView_Statusbar->setChecked(isVisible);
         a_wnd->ui.sbInfo->setVisible(isVisible);
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 }
 //------------------------------------------------------------------------------
 void
-CIni::_set(
+CIni::set(
     CMain *a_wnd
 )
 {
@@ -178,58 +211,58 @@ CIni::_set(
 
     // translator
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
         cQString sLanguage = a_wnd->_sTranslatorLang;
-        _stApp.setValue("language", sLanguage);
+        _iniApp->setValue("language", sLanguage);
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     _commonSet(a_wnd);
 
     // toolbars
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
         // ui.tbMain
         {
             cbool isVisible = a_wnd->ui.tbMain->isVisible();
 
-            _stApp.setValue("toolbar_main/visible", isVisible);
+            _iniApp->setValue("toolbar_main/visible", isVisible);
         }
 
         // ui.tbQuickFind
         {
             cbool isVisible = a_wnd->ui.tbQuickFind->isVisible();
 
-            _stApp.setValue("toolbar_quickfind/visible", isVisible);
+            _iniApp->setValue("toolbar_quickfind/visible", isVisible);
         }
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     // caption for DB fields
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/table");
+        _iniApp->beginGroup(a_wnd->objectName() + "/table");
 
         for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
             cbool isVisible = !a_wnd->ui.tvInfo->isColumnHidden(i);
 
-            _stApp.setValue(QString("column%1/visible").arg(i), isVisible);
+            _iniApp->setValue(QString("column%1/visible").arg(i), isVisible);
         }
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 
     // ui.sbInfo
     {
-        _stApp.beginGroup(a_wnd->objectName() + "/view");
+        _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
         cbool isVisible = a_wnd->ui.sbInfo->isVisible();
-        _stApp.setValue("statusbar/visible", isVisible);
+        _iniApp->setValue("statusbar/visible", isVisible);
 
-        _stApp.endGroup();
+        _iniApp->endGroup();
     }
 }
 //------------------------------------------------------------------------------
@@ -242,7 +275,7 @@ CIni::_set(
 
 //------------------------------------------------------------------------------
 void
-CIni::_get(
+CIni::get(
     CEditor *a_wnd
 )
 {
@@ -252,7 +285,7 @@ CIni::_get(
 }
 //------------------------------------------------------------------------------
 void
-CIni::_set(
+CIni::set(
     CEditor *a_wnd
 )
 {
@@ -270,7 +303,7 @@ CIni::_set(
 
 //------------------------------------------------------------------------------
 void
-CIni::_get(
+CIni::get(
     CAlbum *a_wnd
 )
 {
@@ -280,12 +313,37 @@ CIni::_get(
 }
 //------------------------------------------------------------------------------
 void
-CIni::_set(
+CIni::set(
     CAlbum *a_wnd
 )
 {
     qCHECK_DO(a_wnd == NULL, return);
 
     _commonSet(a_wnd);
+}
+//------------------------------------------------------------------------------
+
+/*******************************************************************************
+*   public
+*
+*******************************************************************************/
+
+bool CIni::_photos_isDeleteFromDisk = false;
+
+//------------------------------------------------------------------------------
+/* static */
+bool
+CIni::photos_isDeleteFromDisk()
+{
+    return _photos_isDeleteFromDisk;
+}
+//------------------------------------------------------------------------------
+/* static */
+void
+CIni::setPhotos_isDeleteFromDisk(
+    const bool &a_value
+)
+{
+    _photos_isDeleteFromDisk = a_value;
 }
 //------------------------------------------------------------------------------

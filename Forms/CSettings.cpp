@@ -9,13 +9,6 @@
 #include "../QtLib/CUtils.h"
 #include "../Classes/CIni.h"
 
-/*******************************************************************************
-*   public static
-*
-*******************************************************************************/
-
-bool CSettings::photos_isDeleteFromDisk = false;
-
 
 /*******************************************************************************
 *   public
@@ -32,8 +25,6 @@ CSettings::CSettings(
     Q_ASSERT(NULL != a_parent);
 
     _construct();
-
-    _iniApp = new CIni(NULL, NULL, NULL);
 }
 //------------------------------------------------------------------------------
 
@@ -64,12 +55,14 @@ void
 CSettings::_construct()
 {
     _initMain();
+
+    ui.chkPhotos_IsDeleteFromDisk->setChecked( CIni::photos_isDeleteFromDisk() );
 }
 //------------------------------------------------------------------------------
 void
 CSettings::_destruct()
 {
-    qPTR_DELETE(_iniApp);
+    CIni::setPhotos_isDeleteFromDisk( ui.chkPhotos_IsDeleteFromDisk->isChecked() );
 }
 //------------------------------------------------------------------------------
 void

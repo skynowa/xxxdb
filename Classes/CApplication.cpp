@@ -6,6 +6,8 @@
 
 #include "CApplication.h"
 
+#include "CIni.h"
+
 
 /*******************************************************************************
 *   public
@@ -25,12 +27,14 @@ CApplication::CApplication(
 
         QTextCodec::setCodecForLocale(codec);
     }
+
+    CIni::construct();
 }
 //------------------------------------------------------------------------------
 /* virtual */
 CApplication::~CApplication()
 {
-
+    CIni::destruct();
 }
 //------------------------------------------------------------------------------
 
