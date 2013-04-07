@@ -87,131 +87,131 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>XXXDb - фотоальбом</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="426"/>
+        <location filename="../../../Forms/CAlbum.ui" line="430"/>
         <source>File</source>
         <translation>Файл</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="432"/>
-        <location filename="../../../Forms/CAlbum.ui" line="579"/>
+        <location filename="../../../Forms/CAlbum.ui" line="436"/>
+        <location filename="../../../Forms/CAlbum.ui" line="583"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="452"/>
+        <location filename="../../../Forms/CAlbum.ui" line="456"/>
         <source>toolBar</source>
         <translation>Панель инструментов</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="480"/>
+        <location filename="../../../Forms/CAlbum.ui" line="484"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="483"/>
+        <location filename="../../../Forms/CAlbum.ui" line="487"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="492"/>
+        <location filename="../../../Forms/CAlbum.ui" line="496"/>
         <source>First</source>
         <translation>В начало</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="495"/>
+        <location filename="../../../Forms/CAlbum.ui" line="499"/>
         <source>Home</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="504"/>
+        <location filename="../../../Forms/CAlbum.ui" line="508"/>
         <source>Prior</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="507"/>
+        <location filename="../../../Forms/CAlbum.ui" line="511"/>
         <source>Left</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="516"/>
+        <location filename="../../../Forms/CAlbum.ui" line="520"/>
         <source>Next</source>
         <translation>Вперёд</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="519"/>
+        <location filename="../../../Forms/CAlbum.ui" line="523"/>
         <source>Right</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="528"/>
+        <location filename="../../../Forms/CAlbum.ui" line="532"/>
         <source>Last</source>
         <translation>В конец</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="531"/>
+        <location filename="../../../Forms/CAlbum.ui" line="535"/>
         <source>End</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="540"/>
-        <location filename="../../../Forms/CAlbum.ui" line="543"/>
+        <location filename="../../../Forms/CAlbum.ui" line="544"/>
+        <location filename="../../../Forms/CAlbum.ui" line="547"/>
         <source>Go to...</source>
         <translation>Перейти к...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="546"/>
+        <location filename="../../../Forms/CAlbum.ui" line="550"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="555"/>
+        <location filename="../../../Forms/CAlbum.ui" line="559"/>
         <source>Insert</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="558"/>
+        <location filename="../../../Forms/CAlbum.ui" line="562"/>
         <source>Ins</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="567"/>
+        <location filename="../../../Forms/CAlbum.ui" line="571"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="570"/>
+        <location filename="../../../Forms/CAlbum.ui" line="574"/>
         <source>Del</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="582"/>
+        <location filename="../../../Forms/CAlbum.ui" line="586"/>
         <source>Return</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="591"/>
-        <location filename="../../../Forms/CAlbum.ui" line="594"/>
+        <location filename="../../../Forms/CAlbum.ui" line="595"/>
+        <location filename="../../../Forms/CAlbum.ui" line="598"/>
         <source>Save As...</source>
         <translation>Сохранить как...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="597"/>
+        <location filename="../../../Forms/CAlbum.ui" line="601"/>
         <source>Ctrl+S</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="606"/>
-        <location filename="../../../Forms/CAlbum.ui" line="609"/>
+        <location filename="../../../Forms/CAlbum.ui" line="610"/>
+        <location filename="../../../Forms/CAlbum.ui" line="613"/>
         <source>Set primary</source>
         <translation>Сделать главной</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.ui" line="612"/>
+        <location filename="../../../Forms/CAlbum.ui" line="616"/>
         <source>Ctrl+P</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CAlbum.cpp" line="385"/>
+        <location filename="../../../Forms/CAlbum.cpp" line="394"/>
         <source>Go to photo:</source>
         <translation>Перейти к фото:</translation>
     </message>
@@ -627,12 +627,12 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
 <context>
     <name>CDbImageLabel</name>
     <message>
-        <location filename="../../../Classes/CDbImageLabel.cpp" line="184"/>
+        <location filename="../../../Classes/CDbImageLabel.cpp" line="197"/>
         <source>Removing image.</source>
         <translation>Удаление изображения.</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CDbImageLabel.cpp" line="185"/>
+        <location filename="../../../Classes/CDbImageLabel.cpp" line="198"/>
         <source>Do you want to remove image?</source>
         <translation>Вы хотите удалить изображение?</translation>
     </message>
@@ -653,336 +653,340 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>XXXDb - редактор</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="48"/>
-        <location filename="../../../Forms/CEditor.ui" line="700"/>
+        <location filename="../../../Forms/CEditor.ui" line="52"/>
+        <location filename="../../../Forms/CEditor.ui" line="704"/>
         <source>Main</source>
         <translation>Основное</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="53"/>
-        <location filename="../../../Forms/CEditor.ui" line="1150"/>
+        <location filename="../../../Forms/CEditor.ui" line="57"/>
+        <location filename="../../../Forms/CEditor.ui" line="1154"/>
         <source>Phones</source>
         <translation>Телефоны</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="58"/>
-        <location filename="../../../Forms/CEditor.ui" line="1323"/>
+        <location filename="../../../Forms/CEditor.ui" line="62"/>
+        <location filename="../../../Forms/CEditor.ui" line="1327"/>
         <source>Address</source>
         <translation>Адрес</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="63"/>
-        <location filename="../../../Forms/CEditor.ui" line="1715"/>
+        <location filename="../../../Forms/CEditor.ui" line="67"/>
+        <location filename="../../../Forms/CEditor.ui" line="1719"/>
         <source>E-mail</source>
         <translation>Почта</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="68"/>
-        <location filename="../../../Forms/CEditor.ui" line="1756"/>
+        <location filename="../../../Forms/CEditor.ui" line="72"/>
+        <location filename="../../../Forms/CEditor.ui" line="1760"/>
         <source>WEB</source>
         <translation>Веб</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="73"/>
+        <location filename="../../../Forms/CEditor.ui" line="77"/>
         <source>Messengers</source>
         <translation>Мессенджеры</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="78"/>
-        <location filename="../../../Forms/CEditor.ui" line="2133"/>
+        <location filename="../../../Forms/CEditor.ui" line="82"/>
+        <location filename="../../../Forms/CEditor.ui" line="2137"/>
         <source>Job</source>
         <translation>Работа</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="83"/>
-        <location filename="../../../Forms/CEditor.ui" line="2394"/>
+        <location filename="../../../Forms/CEditor.ui" line="87"/>
+        <location filename="../../../Forms/CEditor.ui" line="2398"/>
         <source>Dates</source>
         <translation>Даты</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="88"/>
-        <location filename="../../../Forms/CEditor.ui" line="2745"/>
+        <location filename="../../../Forms/CEditor.ui" line="92"/>
+        <location filename="../../../Forms/CEditor.ui" line="2749"/>
         <source>Interests</source>
         <translation>Интересы</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="93"/>
-        <location filename="../../../Forms/CEditor.ui" line="2918"/>
+        <location filename="../../../Forms/CEditor.ui" line="97"/>
+        <location filename="../../../Forms/CEditor.ui" line="2922"/>
         <source>Periods</source>
         <translation>Месячные</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="98"/>
-        <location filename="../../../Forms/CEditor.ui" line="3005"/>
+        <location filename="../../../Forms/CEditor.ui" line="102"/>
+        <location filename="../../../Forms/CEditor.ui" line="3009"/>
         <source>Etc</source>
         <translation>Остальное</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="103"/>
-        <location filename="../../../Forms/CEditor.ui" line="3056"/>
+        <location filename="../../../Forms/CEditor.ui" line="107"/>
+        <location filename="../../../Forms/CEditor.ui" line="3060"/>
         <source>Notes</source>
         <translation>Примечания</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="144"/>
+        <location filename="../../../Forms/CEditor.ui" line="148"/>
         <source>Weight:</source>
         <translation>Вес:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="169"/>
+        <location filename="../../../Forms/CEditor.ui" line="173"/>
         <source>Hair length:</source>
         <translation>Длина волос:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="269"/>
+        <location filename="../../../Forms/CEditor.ui" line="273"/>
         <source>Appearance:</source>
         <translation>Внешность:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="294"/>
+        <location filename="../../../Forms/CEditor.ui" line="298"/>
         <source>Name:</source>
         <translation>Имя:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="419"/>
+        <location filename="../../../Forms/CEditor.ui" line="423"/>
         <source>Surname:</source>
         <translation>Фамилия:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="469"/>
+        <location filename="../../../Forms/CEditor.ui" line="473"/>
         <source>Nick:</source>
         <translation>Ник:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="494"/>
+        <location filename="../../../Forms/CEditor.ui" line="498"/>
         <source>Age:</source>
         <translation>Возраст:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="544"/>
+        <location filename="../../../Forms/CEditor.ui" line="548"/>
         <source>Status:</source>
         <translation>Статус:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="619"/>
+        <location filename="../../../Forms/CEditor.ui" line="623"/>
         <source>Hair color:</source>
         <translation>Цвет волос:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="644"/>
+        <location filename="../../../Forms/CEditor.ui" line="648"/>
         <source>Height:</source>
         <translation>Рост:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="669"/>
+        <location filename="../../../Forms/CEditor.ui" line="673"/>
         <source>Patronymic:</source>
         <translation>Отчество:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="729"/>
+        <location filename="../../../Forms/CEditor.ui" line="733"/>
         <source> - </source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="736"/>
+        <location filename="../../../Forms/CEditor.ui" line="740"/>
         <source>...</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="873"/>
+        <location filename="../../../Forms/CEditor.ui" line="877"/>
         <source>Mobile 3:</source>
         <translation>Мобильный 3:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="923"/>
+        <location filename="../../../Forms/CEditor.ui" line="927"/>
         <source>Other:</source>
         <translation>Другие:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="948"/>
+        <location filename="../../../Forms/CEditor.ui" line="952"/>
         <source>Mobile 2:</source>
         <translation>Мобильный 2:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="998"/>
+        <location filename="../../../Forms/CEditor.ui" line="1002"/>
         <source>Home:</source>
         <translation>Домашний:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1095"/>
+        <location filename="../../../Forms/CEditor.ui" line="1099"/>
         <source>Job:</source>
         <translation>Рабочий:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1120"/>
+        <location filename="../../../Forms/CEditor.ui" line="1124"/>
         <source>Mobile 1:</source>
         <translation>Мобильный 1:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1209"/>
+        <location filename="../../../Forms/CEditor.ui" line="1213"/>
         <source>Country:</source>
         <translation>Страна:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1309"/>
+        <location filename="../../../Forms/CEditor.ui" line="1313"/>
         <source>Porch:</source>
         <translation>Подъезд:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1373"/>
+        <location filename="../../../Forms/CEditor.ui" line="1377"/>
         <source>Floor:</source>
         <translation>Этаж:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1423"/>
+        <location filename="../../../Forms/CEditor.ui" line="1427"/>
         <source>Code:</source>
         <translation>Код:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1448"/>
+        <location filename="../../../Forms/CEditor.ui" line="1452"/>
         <source>City:</source>
         <translation>Город:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1498"/>
+        <location filename="../../../Forms/CEditor.ui" line="1502"/>
         <source>Street:</source>
         <translation>Улица:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1573"/>
+        <location filename="../../../Forms/CEditor.ui" line="1577"/>
         <source>Apartment:</source>
         <translation>Квартира:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1623"/>
+        <location filename="../../../Forms/CEditor.ui" line="1627"/>
         <source>House:</source>
         <translation>Дом:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1648"/>
+        <location filename="../../../Forms/CEditor.ui" line="1652"/>
         <source>District :</source>
         <translation>Район:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1805"/>
+        <location filename="../../../Forms/CEditor.ui" line="1809"/>
         <source>Skype:</source>
         <translation>Скайп:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1855"/>
+        <location filename="../../../Forms/CEditor.ui" line="1859"/>
         <source>ICQ:</source>
         <translation>Аська:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="1894"/>
+        <location filename="../../../Forms/CEditor.ui" line="1898"/>
         <source>Messangers</source>
         <translation>Мессенджеры</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2019"/>
+        <location filename="../../../Forms/CEditor.ui" line="2023"/>
         <source>Company:</source>
         <translation>Компания:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2044"/>
+        <location filename="../../../Forms/CEditor.ui" line="2048"/>
         <source>Salary:</source>
         <translation>Зарплата:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2069"/>
+        <location filename="../../../Forms/CEditor.ui" line="2073"/>
         <source>Address:</source>
         <translation>Адрес:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2158"/>
+        <location filename="../../../Forms/CEditor.ui" line="2162"/>
         <source>Profession:</source>
         <translation>Профессия:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2233"/>
+        <location filename="../../../Forms/CEditor.ui" line="2237"/>
         <source>Father birthday:</source>
         <translation>ДР отца:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2258"/>
+        <location filename="../../../Forms/CEditor.ui" line="2262"/>
         <source>1-st kiss day:</source>
         <translation>1-й поцелуй:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2286"/>
-        <location filename="../../../Forms/CEditor.ui" line="2314"/>
-        <location filename="../../../Forms/CEditor.ui" line="2472"/>
-        <location filename="../../../Forms/CEditor.ui" line="2500"/>
-        <location filename="../../../Forms/CEditor.ui" line="2528"/>
-        <location filename="../../../Forms/CEditor.ui" line="2556"/>
+        <location filename="../../../Forms/CEditor.ui" line="2290"/>
+        <location filename="../../../Forms/CEditor.ui" line="2318"/>
+        <location filename="../../../Forms/CEditor.ui" line="2476"/>
+        <location filename="../../../Forms/CEditor.ui" line="2504"/>
+        <location filename="../../../Forms/CEditor.ui" line="2532"/>
+        <location filename="../../../Forms/CEditor.ui" line="2560"/>
         <source>dd.MM.yyyy</source>
         <translation>dd.MM.yyyy</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2339"/>
+        <location filename="../../../Forms/CEditor.ui" line="2343"/>
         <source>Dating day:</source>
         <translation>1-е свидание:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2364"/>
+        <location filename="../../../Forms/CEditor.ui" line="2368"/>
         <source>Mother birthday:</source>
         <translation>ДР матери:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2419"/>
+        <location filename="../../../Forms/CEditor.ui" line="2423"/>
         <source>Birthday:</source>
         <translation>День рождения:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2444"/>
+        <location filename="../../../Forms/CEditor.ui" line="2448"/>
         <source>1-st sex day:</source>
         <translation>1-ый секс:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2631"/>
+        <location filename="../../../Forms/CEditor.ui" line="2635"/>
         <source>Sports:</source>
         <translation>Спорт:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2656"/>
+        <location filename="../../../Forms/CEditor.ui" line="2660"/>
         <source>Hobby:</source>
         <translation>Хобби:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2681"/>
+        <location filename="../../../Forms/CEditor.ui" line="2685"/>
         <source>Smoking:</source>
         <translation>Курение:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2706"/>
+        <location filename="../../../Forms/CEditor.ui" line="2710"/>
         <source>Alcohol:</source>
         <translation>Алкоголь:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2770"/>
+        <location filename="../../../Forms/CEditor.ui" line="2774"/>
         <source>Drugs:</source>
         <translation>Наркотики:</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CEditor.ui" line="2941"/>
+        <location filename="../../../Forms/CEditor.ui" line="2945"/>
+        <source>&lt;Not implemented yet&gt;</source>
+        <translation>&lt;Пока еще не реализовано&gt;</translation>
+    </message>
+    <message>
         <source>Not implemented yet</source>
-        <translation>Пока не реализовано</translation>
+        <translation type="obsolete">Пока не реализовано</translation>
     </message>
 </context>
 <context>
     <name>CMain</name>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="524"/>
+        <location filename="../../../Forms/CMain.cpp" line="550"/>
         <source>Go to row (total %1 rows):</source>
         <translation>Перейти к записи (всего %1 записей):</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="549"/>
+        <location filename="../../../Forms/CMain.cpp" line="577"/>
         <source>Removing record.</source>
         <translation>Удаление записи.</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="550"/>
+        <location filename="../../../Forms/CMain.cpp" line="578"/>
         <source>Do you want to remove record?</source>
         <translation>Вы хотите удалить запись?</translation>
     </message>
@@ -1011,231 +1015,255 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
     </message>
     <message>
         <location filename="../../../Forms/CMain.ui" line="148"/>
-        <location filename="../../../Forms/CMain.ui" line="338"/>
+        <location filename="../../../Forms/CMain.ui" line="330"/>
         <source>Edit</source>
         <translation>Правка</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="162"/>
         <source>Find</source>
-        <translation>Поиск</translation>
+        <translation type="obsolete">Поиск</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="168"/>
+        <location filename="../../../Forms/CMain.ui" line="162"/>
         <source>View</source>
         <translation>Вид</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="172"/>
+        <location filename="../../../Forms/CMain.ui" line="166"/>
         <source>Language</source>
         <translation>Язык</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="187"/>
+        <location filename="../../../Forms/CMain.ui" line="181"/>
         <source>Options</source>
         <translation>Опции</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="193"/>
+        <location filename="../../../Forms/CMain.ui" line="187"/>
         <source>Help</source>
         <translation>Помощь</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="208"/>
+        <location filename="../../../Forms/CMain.ui" line="201"/>
         <source>Main</source>
         <translation>Главная панель</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="238"/>
+        <location filename="../../../Forms/CMain.ui" line="230"/>
         <source>Quick find</source>
         <translation>Панель быстрого поиска</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="254"/>
+        <location filename="../../../Forms/CMain.ui" line="246"/>
         <source>Exit</source>
         <translation>Выход</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="257"/>
+        <location filename="../../../Forms/CMain.ui" line="249"/>
         <source>Ctrl+Q</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="266"/>
+        <location filename="../../../Forms/CMain.ui" line="258"/>
         <source>First</source>
         <translation>В начало</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="269"/>
+        <location filename="../../../Forms/CMain.ui" line="261"/>
         <source>Home</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="278"/>
+        <location filename="../../../Forms/CMain.ui" line="270"/>
         <source>Prior</source>
         <translation>Назад</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="281"/>
+        <location filename="../../../Forms/CMain.ui" line="273"/>
         <source>Up</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="290"/>
+        <location filename="../../../Forms/CMain.ui" line="282"/>
         <source>Next</source>
         <translation>Вперед</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="293"/>
+        <location filename="../../../Forms/CMain.ui" line="285"/>
         <source>Down</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="302"/>
+        <location filename="../../../Forms/CMain.ui" line="294"/>
         <source>Last</source>
         <translation>В конец</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="305"/>
+        <location filename="../../../Forms/CMain.ui" line="297"/>
         <source>End</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="314"/>
+        <location filename="../../../Forms/CMain.ui" line="306"/>
         <source>Insert</source>
         <translation>Вставить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="317"/>
+        <location filename="../../../Forms/CMain.ui" line="309"/>
         <source>Ins</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="326"/>
+        <location filename="../../../Forms/CMain.ui" line="318"/>
         <source>Delete</source>
         <translation>Удалить</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="329"/>
+        <location filename="../../../Forms/CMain.ui" line="321"/>
         <source>Del</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="421"/>
+        <location filename="../../../Forms/CMain.ui" line="416"/>
         <source>F2</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="513"/>
+        <location filename="../../../Forms/CMain.ui" line="508"/>
         <source>Minimize</source>
         <translation>Свернуть</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="516"/>
+        <location filename="../../../Forms/CMain.ui" line="511"/>
         <source>Esc</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="350"/>
-        <location filename="../../../Forms/CMain.ui" line="353"/>
+        <location filename="../../../Forms/CMain.ui" line="342"/>
+        <location filename="../../../Forms/CMain.ui" line="345"/>
         <source>Search...</source>
         <translation>Поиск...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="356"/>
+        <location filename="../../../Forms/CMain.ui" line="348"/>
         <source>Ctrl+F</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="365"/>
-        <location filename="../../../Forms/CMain.ui" line="368"/>
+        <location filename="../../../Forms/CMain.ui" line="360"/>
+        <location filename="../../../Forms/CMain.ui" line="363"/>
         <source>Settings...</source>
         <translation>Настройки...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="371"/>
+        <location filename="../../../Forms/CMain.ui" line="366"/>
         <source>F4</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="380"/>
+        <location filename="../../../Forms/CMain.ui" line="375"/>
         <source>FAQ</source>
         <translation>Справка</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="385"/>
-        <location filename="../../../Forms/CMain.ui" line="388"/>
+        <location filename="../../../Forms/CMain.ui" line="380"/>
+        <location filename="../../../Forms/CMain.ui" line="383"/>
         <source>About...</source>
         <translation>О программе...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="391"/>
+        <location filename="../../../Forms/CMain.ui" line="386"/>
         <source>F1</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="400"/>
-        <location filename="../../../Forms/CMain.ui" line="403"/>
+        <location filename="../../../Forms/CMain.ui" line="395"/>
+        <location filename="../../../Forms/CMain.ui" line="398"/>
         <source>Go to...</source>
         <translation>Перейти к...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="406"/>
+        <location filename="../../../Forms/CMain.ui" line="401"/>
         <source>Ctrl+G</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="508"/>
+        <location filename="../../../Forms/CMain.ui" line="503"/>
         <source>F3</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="444"/>
+        <location filename="../../../Forms/CMain.ui" line="439"/>
         <source>Show main toolbar</source>
         <translation>Показать главную панель инструментов</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="455"/>
+        <location filename="../../../Forms/CMain.ui" line="450"/>
         <source>Show quick find toolbar</source>
         <translation>Показать панель быстрого поиска</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="466"/>
+        <location filename="../../../Forms/CMain.ui" line="461"/>
         <source>Show statusbar</source>
         <translation>Показать строку состояния</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="502"/>
-        <location filename="../../../Forms/CMain.ui" line="505"/>
+        <location filename="../../../Forms/CMain.ui" line="497"/>
+        <location filename="../../../Forms/CMain.ui" line="500"/>
         <source>Album...</source>
         <translation>Альбом...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="415"/>
-        <location filename="../../../Forms/CMain.ui" line="418"/>
+        <location filename="../../../Forms/CMain.ui" line="410"/>
+        <location filename="../../../Forms/CMain.ui" line="413"/>
         <source>Select columns...</source>
         <translation>Выбрать столбцы...</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="341"/>
+        <location filename="../../../Forms/CMain.ui" line="333"/>
         <source>Return</source>
         <translation></translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="430"/>
-        <location filename="../../../Forms/CMain.ui" line="433"/>
+        <location filename="../../../Forms/CMain.ui" line="425"/>
+        <location filename="../../../Forms/CMain.ui" line="428"/>
         <source>Clear text</source>
         <translation>Очистить текст</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="481"/>
+        <location filename="../../../Forms/CMain.ui" line="476"/>
         <source>English</source>
         <translation>English</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.ui" line="493"/>
+        <location filename="../../../Forms/CMain.ui" line="488"/>
         <source>Russian</source>
         <translation>Русский</translation>
+    </message>
+</context>
+<context>
+    <name>CSettings</name>
+    <message>
+        <location filename="../../../Forms/CSettings.ui" line="14"/>
+        <source>XXXDb - settings</source>
+        <translation>XXXDb - настройки</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CSettings.ui" line="45"/>
+        <location filename="../../../Forms/CSettings.ui" line="119"/>
+        <source>Main</source>
+        <translation>Основное</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CSettings.ui" line="50"/>
+        <location filename="../../../Forms/CSettings.ui" line="170"/>
+        <source>Photos</source>
+        <translation>Фото</translation>
+    </message>
+    <message>
+        <location filename="../../../Forms/CSettings.ui" line="177"/>
+        <source>Delete photo from disk after import</source>
+        <translation>Удалять фото с диска после импорта</translation>
     </message>
 </context>
 <context>
@@ -1526,7 +1554,7 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation type="obsolete">Словарь:</translation>
     </message>
     <message>
-        <location filename="../../../QtLib/CUtils.cpp" line="484"/>
+        <location filename="../../../QtLib/CUtils.cpp" line="486"/>
         <source>Google</source>
         <translation></translation>
     </message>
@@ -1536,9 +1564,9 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</sou
         <translation>: Не реализовано</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CApplication.cpp" line="120"/>
-        <location filename="../../../Classes/CApplication.cpp" line="131"/>
-        <location filename="../../../Classes/CApplication.cpp" line="142"/>
+        <location filename="../../../Classes/CApplication.cpp" line="134"/>
+        <location filename="../../../Classes/CApplication.cpp" line="145"/>
+        <location filename="../../../Classes/CApplication.cpp" line="156"/>
         <source>Plugin directory %1 not exists</source>
         <translation>Каталог плагина %1 не существует</translation>
     </message>
