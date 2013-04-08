@@ -195,43 +195,30 @@ CAlbum::_initMain() {
     {
         csize_t ciPhotoNum = PHOTO_NUM;
 
-        QLabel * photoMinis[ciPhotoNum] = {
-            ui.lblPhotoMini_1,
-            ui.lblPhotoMini_2,
-            ui.lblPhotoMini_3,
-            ui.lblPhotoMini_4,
-            ui.lblPhotoMini_5,
-            ui.lblPhotoMini_6,
-            ui.lblPhotoMini_7,
-            ui.lblPhotoMini_8,
-            ui.lblPhotoMini_9,
-            ui.lblPhotoMini_10,
-            ui.lblPhotoMini_11,
-            ui.lblPhotoMini_12,
-            ui.lblPhotoMini_13,
-            ui.lblPhotoMini_14,
-            ui.lblPhotoMini_15
+        struct SDbPhotoMini {
+            QLabel   *label;
+            cQString  field;
         };
 
-        cQString dbFieldNames[ciPhotoNum] = {
-            DB_F_PHOTOS_1,
-            DB_F_PHOTOS_2,
-            DB_F_PHOTOS_3,
-            DB_F_PHOTOS_4,
-            DB_F_PHOTOS_5,
-            DB_F_PHOTOS_6,
-            DB_F_PHOTOS_7,
-            DB_F_PHOTOS_8,
-            DB_F_PHOTOS_9,
-            DB_F_PHOTOS_10,
-            DB_F_PHOTOS_11,
-            DB_F_PHOTOS_12,
-            DB_F_PHOTOS_13,
-            DB_F_PHOTOS_14,
-            DB_F_PHOTOS_15
-        };
+        typedef const SDbPhotoMini cSDbPhotoMini;
 
-        Q_ASSERT(qARRAY_LENGTH(photoMinis) == qARRAY_LENGTH(dbFieldNames));
+        cSDbPhotoMini dbPhotoMinis[ciPhotoNum] = {
+            { ui.lblPhotoMini_1,  DB_F_PHOTOS_1  },
+            { ui.lblPhotoMini_2,  DB_F_PHOTOS_2  },
+            { ui.lblPhotoMini_3,  DB_F_PHOTOS_3  },
+            { ui.lblPhotoMini_4,  DB_F_PHOTOS_4  },
+            { ui.lblPhotoMini_5,  DB_F_PHOTOS_5  },
+            { ui.lblPhotoMini_6,  DB_F_PHOTOS_6  },
+            { ui.lblPhotoMini_7,  DB_F_PHOTOS_7  },
+            { ui.lblPhotoMini_8,  DB_F_PHOTOS_8  },
+            { ui.lblPhotoMini_9,  DB_F_PHOTOS_9  },
+            { ui.lblPhotoMini_10, DB_F_PHOTOS_10 },
+            { ui.lblPhotoMini_11, DB_F_PHOTOS_11 },
+            { ui.lblPhotoMini_12, DB_F_PHOTOS_12 },
+            { ui.lblPhotoMini_13, DB_F_PHOTOS_13 },
+            { ui.lblPhotoMini_14, DB_F_PHOTOS_14 },
+            { ui.lblPhotoMini_15, DB_F_PHOTOS_15 }
+        };
 
         // fill _viDbItems
         _viDbItems.reserve(ciPhotoNum);
@@ -240,13 +227,13 @@ CAlbum::_initMain() {
             CDbImageLabel *item = new CDbImageLabel(
                                         this,
                                         _tmModel,
-                                        dbFieldNames[i],
+                                        dbPhotoMinis[i].field,
                                         i,
                                         _ciDbRecordIndex,
-                                        photoMinis[i], PHOTO_MINI_SIZE,
+                                        dbPhotoMinis[i].label, PHOTO_MINI_SIZE,
                                         NULL);
 
-            photoMinis[i]->installEventFilter(this);
+            dbPhotoMinis[i].label->installEventFilter(this);
 
             connect(item, &CDbImageLabel::sig_dataChanged,
                     this, &CAlbum::photoMini_onUpdate);
