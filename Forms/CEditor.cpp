@@ -33,9 +33,9 @@ CEditor::CEditor(
     _dmText         (NULL),
     _dbImageLabel   ()
 {
-    Q_ASSERT(NULL != a_parent);
-    Q_ASSERT(NULL != a_tableModel);
-    Q_ASSERT(NULL != a_sqlNavigator);
+    qTEST(NULL != a_parent);
+    qTEST(NULL != a_tableModel);
+    qTEST(NULL != a_sqlNavigator);
     // _ciDbRecordIndex - n/a
 
     _construct();
@@ -102,7 +102,7 @@ CEditor::_initMain()
     {
         // DB items to QHash
         {
-            Q_ASSERT(_hsDbItems.isEmpty());
+            qTEST(_hsDbItems.isEmpty());
 
             // Main
             _hsDbItems.insert(ui.cboNick,          DB_F_MAIN_NICK);
@@ -253,7 +253,7 @@ CEditor::bbxButtons_onClicked(
             close();
             break;
         default:
-            Q_ASSERT(false);
+            qTEST(false);
             break;
     }
 }
@@ -320,7 +320,7 @@ CEditor::_resetAll()
                 continue;
             }
 
-            Q_ASSERT(false);
+            qTEST(false);
         }
     }
 }

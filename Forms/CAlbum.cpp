@@ -27,10 +27,10 @@ CAlbum::CAlbum(
     _viDbItems      (),
     _pixPhoto       ()
 {
-    Q_ASSERT(NULL != a_parent);
-    Q_ASSERT(NULL != a_tableModel);
-    Q_ASSERT(NULL != a_sqlNavigator);
-    Q_ASSERT(- 1  <  _ciDbRecordIndex);
+    qTEST(NULL != a_parent);
+    qTEST(NULL != a_tableModel);
+    qTEST(NULL != a_sqlNavigator);
+    qTEST(- 1  <  _ciDbRecordIndex);
 
     _construct();
 
@@ -51,8 +51,8 @@ CAlbum::eventFilter(
     QEvent  *a_event
 )
 {
-    Q_ASSERT(NULL != a_obj);
-    Q_ASSERT(NULL != a_event);
+    qTEST(NULL != a_obj);
+    qTEST(NULL != a_event);
 
     // clicks on photos
     if (a_event->type() == QEvent::MouseButtonPress) {
@@ -83,7 +83,7 @@ CAlbum::showEvent(
     QShowEvent *a_event
 )
 {
-    Q_ASSERT(NULL != a_event);
+    qTEST(NULL != a_event);
     Q_UNUSED(a_event);
 
     // set primary image
@@ -108,7 +108,7 @@ CAlbum::resizeEvent(
     QResizeEvent *a_event
 )
 {
-    Q_ASSERT(NULL != a_event);
+    qTEST(NULL != a_event);
     Q_UNUSED(a_event);
 
     // lblPhoto
@@ -291,7 +291,7 @@ CAlbum::_initActions()
 void
 CAlbum::_photoUpdate()
 {
-    Q_ASSERT(!_pixPhoto.isNull());
+    qTEST(!_pixPhoto.isNull());
 
     cQSize  cszSize   = QSize(ui.lblPhoto->width()  - PHOTO_MARGIN,
                               ui.lblPhoto->height() - PHOTO_MARGIN);
@@ -459,8 +459,8 @@ CAlbum::photoMini_onClicked(
     cQString &a_dbFieldName
 )
 {
-    Q_ASSERT(NULL != a_label);
-    Q_ASSERT(!a_dbFieldName.isEmpty());
+    qTEST(NULL != a_label);
+    qTEST(!a_dbFieldName.isEmpty());
 
     // lblPhotoMini
     {
@@ -487,7 +487,7 @@ CAlbum::photoMini_onClicked(
             ui.lblPhoto->setText(TEXT_NO_PHOTO);
         } else {
             bool bRv = _pixPhoto.loadFromData(baPhoto);
-            Q_ASSERT(bRv);
+            qTEST(bRv);
 
             _photoUpdate();
         }

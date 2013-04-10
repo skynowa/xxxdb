@@ -63,7 +63,7 @@ CAbout::bbxButtons_onClicked(
             close();
             break;
         default:
-            Q_ASSERT(false);
+            qTEST(false);
             break;
     }
 }

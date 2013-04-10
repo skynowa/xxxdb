@@ -376,10 +376,10 @@ CMain::_initModel()
 
         _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
         bool bRv = _tmModel->select();
-        Q_ASSERT(bRv);
+        qTEST(bRv);
     }
 
-    Q_ASSERT((int)qARRAY_LENGTH(CConfig::dbRecords) == _tmModel->columnCount());
+    qTEST((int)qARRAY_LENGTH(CConfig::dbRecords) == _tmModel->columnCount());
 }
 //------------------------------------------------------------------------------
 void
@@ -682,7 +682,7 @@ void
 CMain::actView_onLanguageRu()
 {
     bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
-    Q_ASSERT(bRv);
+    qTEST(bRv);
     _sTranslatorLang = LANGS_FILE_NAME_RU;
 
     (bool)CApplication::installTranslator(_trTranslator);
@@ -750,7 +750,7 @@ CMain::onQuickFind(
             break;
         }
     }
-    Q_ASSERT(!dbField.isEmpty());
+    qTEST(!dbField.isEmpty());
 
     // filter
     CUtils::db_fields_t dbFields;

@@ -23,7 +23,7 @@ CApplication::CApplication(
     // set codecs
     {
         QTextCodec *codec = QTextCodec::codecForName(APP_LOCALE_CODEC);
-        Q_ASSERT(NULL != codec);
+        qTEST(NULL != codec);
 
         QTextCodec::setCodecForLocale(codec);
     }

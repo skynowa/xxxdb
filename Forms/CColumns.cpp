@@ -135,7 +135,7 @@ CColumns::bbxButtons_onClicked(
             _saveAll();
             break;
         default:
-            Q_ASSERT(false);
+            qTEST(false);
             break;
     }
 }

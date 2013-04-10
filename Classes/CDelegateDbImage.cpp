@@ -24,9 +24,9 @@ CDelegateDbImage::CDelegateDbImage(
     _cszSize              (a_size),
     _lblInfoPanel         (a_infoPanel)
 {
-    Q_ASSERT(NULL != a_parent);
-    Q_ASSERT(- 1   < a_imageFieldIndex);
-    Q_ASSERT(a_size.isValid());
+    qTEST(NULL != a_parent);
+    qTEST(- 1   < a_imageFieldIndex);
+    qTEST(a_size.isValid());
     // a_infoPanel - n/a
 }
 //------------------------------------------------------------------------------
@@ -36,12 +36,12 @@ CDelegateDbImage::setEditorData(
     const QModelIndex &a_index
 ) const
 {
-    Q_ASSERT(NULL != a_editor);
-    Q_ASSERT(a_index.isValid());
+    qTEST(NULL != a_editor);
+    qTEST(a_index.isValid());
 
     if (_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
-        Q_ASSERT(NULL != lblPhoto);
+        qTEST(NULL != lblPhoto);
 
         cQByteArray baPhoto = a_index.data(Qt::EditRole).toByteArray();
         if (baPhoto.isEmpty()) {
@@ -50,7 +50,7 @@ CDelegateDbImage::setEditorData(
             QPixmap pixOriginal;
 
             bool bRv = pixOriginal.loadFromData(baPhoto);
-            Q_ASSERT(bRv);
+            qTEST(bRv);
 
             QPixmap pixScaled = pixOriginal.scaled(
                                         _cszSize,
@@ -78,13 +78,13 @@ CDelegateDbImage::setModelData(
     const QModelIndex  &a_index
 ) const
 {
-    Q_ASSERT(NULL != a_editor);
-    Q_ASSERT(NULL != a_model);
-    Q_ASSERT(a_index.isValid());
+    qTEST(NULL != a_editor);
+    qTEST(NULL != a_model);
+    qTEST(a_index.isValid());
 
     if (_ciImageFieldIndex == a_index.column()) {
         QLabel *lblPhoto = static_cast<QLabel *>( a_editor );
-        Q_ASSERT(NULL != lblPhoto);
+        qTEST(NULL != lblPhoto);
 
         QBuffer bfPhoto;
 
@@ -102,7 +102,7 @@ CDelegateDbImage::setModelData(
             bfPhoto.open(QIODevice::WriteOnly);
 
             bool bRv = ppmPixmap->save(&bfPhoto, "jpeg");
-            Q_ASSERT(bRv);
+            qTEST(bRv);
 
             a_model->setData(a_index, bfPhoto.data(), Qt::EditRole);
         #endif

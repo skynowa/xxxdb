@@ -22,7 +22,7 @@ CSettings::CSettings(
     QDialog(a_parent)
 
 {
-    Q_ASSERT(NULL != a_parent);
+    qTEST(NULL != a_parent);
 
     _construct();
 }
@@ -113,7 +113,7 @@ CSettings::bbxButtons_onClicked(
             close();
             break;
         default:
-            Q_ASSERT(false);
+            qTEST(false);
             break;
     }
 }
