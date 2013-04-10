@@ -10,6 +10,7 @@ TARGET          = XXXDb
 TEMPLATE        = app
 QT              = core gui widgets sql network xml
 CONFIG         += warn_on no_keywords
+DEFINES        += qTEST_IS_USED=1
 CODECFORTR      = UTF-8
 
 CONFIG(debug, debug | release) {
