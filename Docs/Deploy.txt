@@ -9,7 +9,7 @@ Linux:
     Ubuntu 12.04 x64
     - sudo apt-get install mesa-common-dev libglu1-mesa-dev
 
-OS X:
+OSX:
     -
 
 
@@ -17,3 +17,6 @@ Translate by Qt Linguist:
     lupdate  ./XXXDb.pro
     linguist ./Resources/Langs/XXXDb_ru_RU.ts
     lrelease ./Resources/Langs/XXXDb_ru_RU.ts
+
+Pack:
+    7z, zip
