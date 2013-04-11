@@ -172,8 +172,8 @@ CDbImageLabel::saveToFile()
 
     fdlgDialog.setAcceptMode(QFileDialog::AcceptSave);
     fdlgDialog.setFileMode(QFileDialog::AnyFile);
-    // fdlgDialog.selectFile( QFileInfo(psbtnParent->filePath()).baseName() );
-    // fdlgDialog.setDefaultSuffix(SHORTCUT_EXT);
+    fdlgDialog.setDefaultSuffix(IMAGE_EXT_DEAFULT);
+    fdlgDialog.setConfirmOverwrite(true);
 
     cint ciRv = fdlgDialog.exec();
     switch (ciRv) {

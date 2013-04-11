@@ -33,6 +33,7 @@
 #define PHOTO_NUM                   15
 #define IMAGE_FORMATS               "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
 #define IMAGE_IS_CONVERT            true
+#define IMAGE_EXT_DEAFULT           "jpeg"
 
 #define PHOTO_WIDTH                 300
 #define PHOTO_HEIGHT                200
