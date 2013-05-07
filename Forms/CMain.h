@@ -34,8 +34,6 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
-    friend class CIni;
-
     QTranslator    *_trTranslator;
     QString         _sTranslatorLang;
     QSqlDatabase    _dbDatabase;
@@ -91,6 +89,8 @@ private:
     //
     void            onQuickFind(cQString &arg);
     void            cboDbFields_onCurrentTextChanged(cQString &arg);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CMainH

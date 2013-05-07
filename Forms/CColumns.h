@@ -27,8 +27,6 @@ protected:
     virtual void    changeEvent(QEvent *event);
 
 private:
-    friend class CIni;
-
     QSqlTableModel *_tmModel;
 
     void            _construct();
@@ -39,6 +37,8 @@ private:
 
     // slots
     void            bbxButtons_onClicked(QAbstractButton *button);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CColumnsH

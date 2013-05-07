@@ -24,14 +24,14 @@ public:
     explicit   CAbout(QWidget *parent);
 
 private:
-    friend class CIni;
-
     void       _construct();
     void       _destruct();
     void       _initMain();
 
     // slots
     void       bbxButtons_onClicked(QAbstractButton *button);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CAboutH

@@ -25,8 +25,6 @@ protected:
     virtual void  closeEvent(QCloseEvent *event);
 
 private:
-    friend class CIni;
-
     Ui::CSettings ui;
 
     void          _construct();
@@ -40,6 +38,8 @@ private:
     void          bbxButtons_onClicked(QAbstractButton *button);
     void          twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                                                 QTreeWidgetItem *previous);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CSettingsH

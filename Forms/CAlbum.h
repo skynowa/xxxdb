@@ -33,8 +33,6 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
-    friend class CIni;
-
     QSqlTableModel *_tmModel;
     CSqlNavigator  *_snSqlNavigator;
     cint            _ciDbRecordIndex;
@@ -72,6 +70,8 @@ private:
 Q_SIGNALS:
     void            sig_photo_clicked();
     void            sig_photoMini_clicked(QLabel *label, cQString &dbFieldName);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CAlbumH

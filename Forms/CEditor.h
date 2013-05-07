@@ -32,8 +32,6 @@ protected:
     virtual void       closeEvent(QCloseEvent *event);
 
 private:
-    friend class CIni;
-
     cint               _ciDbRecordIndex;
     QSqlTableModel    *_tmModel;
     CSqlNavigator     *_snNavigator;
@@ -53,6 +51,8 @@ private:
     void               bbxButtons_onClicked(QAbstractButton *button);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                                                      QTreeWidgetItem *previous);
+
+    friend class CIni;
 };
 //------------------------------------------------------------------------------
 #endif // XXXDb_CEditorH
