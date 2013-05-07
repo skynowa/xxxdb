@@ -41,7 +41,11 @@ CMain::CMain(
 {
     _construct();
 
-    CIni::get(this);
+    // CIni
+    {
+        CIni::construct();
+        CIni::get(this);
+    }
 
     snNavigator.last();
 }
@@ -122,7 +126,11 @@ CMain::_destruct()
         qPTR_DELETE(_trTranslator);
     }
 
-    CIni::set(this);
+    // CIni
+    {
+        CIni::set(this);
+        CIni::destruct();
+    }
 }
 //------------------------------------------------------------------------------
 void

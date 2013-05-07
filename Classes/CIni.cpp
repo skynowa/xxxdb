@@ -40,6 +40,8 @@ CIni::~CIni()
 void
 CIni::construct()
 {
+    qTEST(_iniApp == NULL);
+
     _iniApp = new QSettings(CApplication::iniFilePath(), QSettings::IniFormat);
 
     _load();
@@ -51,6 +53,7 @@ CIni::destruct()
 {
     _save();
 
+    qTEST(_iniApp != NULL);
     qPTR_DELETE(_iniApp);
 }
 //------------------------------------------------------------------------------
