@@ -6,7 +6,7 @@
 
 #include "CIni.h"
 
-#include "CApplication.h"
+#include "../QtLib/CApplication.h"
 #include "../Forms/CMain.h"
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"

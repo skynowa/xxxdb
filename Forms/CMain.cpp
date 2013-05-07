@@ -7,7 +7,7 @@
 #include "CMain.h"
 
 #include "../QtLib/CUtils.h"
-#include "../Classes/CApplication.h"
+#include "../QtLib/CApplication.h"
 #include "../Classes/CIni.h"
 #include "../Classes/CDelegateDbImage.h"
 #include "../Forms/CEditor.h"

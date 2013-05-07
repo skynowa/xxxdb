@@ -20,9 +20,9 @@ CONFIG(debug, debug | release) {
 HEADERS         = QtLib/Common.h \
                   QtLib/CUtils.h \
                   QtLib/CSqlNavigator.h \
+                  QtLib/CApplication.h \
                   Classes/CConfig.h \
                   Classes/CIni.h \
-                  Classes/CApplication.h \
                   Classes/CDelegateDbImage.h \
                   Classes/CDbImageLabel.h \
                   Forms/CMain.h \
@@ -35,9 +35,9 @@ HEADERS         = QtLib/Common.h \
 SOURCES         = main.cpp \
                   QtLib/CUtils.cpp \
                   QtLib/CSqlNavigator.cpp \
+                  QtLib/CApplication.cpp \
                   Classes/CConfig.cpp \
                   Classes/CIni.cpp \
-                  Classes/CApplication.cpp \
                   Classes/CDelegateDbImage.cpp \
                   Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \

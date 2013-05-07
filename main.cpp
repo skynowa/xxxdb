@@ -7,7 +7,7 @@
 #include <QApplication>
 #include "QtLib/Common.h"
 #include "QtLib/CUtils.h"
-#include "Classes/CApplication.h"
+#include "QtLib/CApplication.h"
 #include "Forms/CMain.h"
 //------------------------------------------------------------------------------
 int main(int argc, char *argv[])
