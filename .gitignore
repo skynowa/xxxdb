@@ -17,6 +17,8 @@ Distr/Release/*
 Temp/
 Ui/
 
+Widgets/CDbImage/debug
+Widgets/CDbImage/release
 
 ##### files #####
 TODO.txt
