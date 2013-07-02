@@ -31,3 +31,5 @@ Makefile*
 object_script.XXXDb.Debug
 object_script.XXXDb.Release
 *.qm
+*.so
+*.dll
