@@ -1,2 +1,10 @@
-HEADERS += CDbImage.h
-SOURCES += CDbImage.cpp
+#-------------------------------------------------------------------------------
+#
+# \file  CDBImage.pri
+# \brief project file
+#
+#-------------------------------------------------------------------------------
+
+
+HEADERS += CDbImage.h
+SOURCES += CDbImage.cpp
