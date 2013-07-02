@@ -38,12 +38,27 @@ CDbImagePlugin::isInitialized() const
     return _initialized;
 }
 //------------------------------------------------------------------------------
-QWidget *
-CDbImagePlugin::createWidget(
-    QWidget *parent
+QWidget *createWidget(
+    QWidget *a_parent
 )
 {
-    return new CDbImage(parent);
+    return new CDbImage(a_parent);
+}
+//------------------------------------------------------------------------------
+QWidget *
+CDbImagePlugin::createWidget(
+    QWidget        *a_parent,           ///< parent QWidget
+    QSqlTableModel *a_tableModel,       ///< QSqlTableModel
+    cQString       &a_dbFieldName,      ///< DB field name
+    cint           &a_index,            ///< index
+    cint           &a_dbRecordIndex,    ///< DB record index
+    QLabel         *a_label,            ///< QLabel for display image
+    cQSize         &a_size,             ///< image sizes
+    QLabel         *a_info              ///< QLabel for display image
+)
+{
+    return new CDbImage(a_parent, a_tableModel, a_dbFieldName, a_index,
+                        a_dbRecordIndex, a_label, a_size, a_info);
 }
 //------------------------------------------------------------------------------
 QString
@@ -85,7 +100,23 @@ CDbImagePlugin::isContainer() const
 QString
 CDbImagePlugin::domXml() const
 {
-    return QLatin1String("<widget class=\"CDbImage\" name=\"cDbImage\">\n</widget>\n");
+    return QLatin1String(
+           "<widget class=\"CDbImage\" name=\"cDbImage\">\n"
+           " <property name=\"geometry\">\n"
+           "  <rect>\n"
+           "   <x>0</x>\n"
+           "   <y>0</y>\n"
+           "   <width>300</width>\n"
+           "   <height>50</height>\n"
+           "  </rect>\n"
+           " </property>\n"
+           " <property name=\"toolTip\" >\n"
+           "  <string>LogListBox</string>\n"
+           " </property>\n"
+           " <property name=\"whatsThis\" >\n"
+           "  <string>LogListBox</string>\n"
+           " </property>\n"
+           " </widget>\n");
 }
 //------------------------------------------------------------------------------
 QString

@@ -7,6 +7,10 @@
 #ifndef CDBIMAGEPLUGIN_H
 #define CDBIMAGEPLUGIN_H
 //------------------------------------------------------------------------------
+#include "../../QtLib/Common.h"
+#include "../../QtLib/CUtils.h"
+#include "../../Classes/CConfig.h"
+
 #include <QDesignerCustomWidgetInterface>
 //------------------------------------------------------------------------------
 class CDbImagePlugin :
@@ -29,7 +33,12 @@ public:
     QString  name() const;
     QString  toolTip() const;
     QString  whatsThis() const;
-    QWidget *createWidget(QWidget *parent);
+    QWidget *createWidget(QWidget *parent = NULL);
+    QWidget *createWidget(QWidget *parent, QSqlTableModel *tableModel,
+                          cQString &dbFieldName, cint &index,
+                          cint &dbRecordIndex,
+                          QLabel *label, cQSize &size,
+                          QLabel *info);
     void     initialize(QDesignerFormEditorInterface *core);
 
 private:
