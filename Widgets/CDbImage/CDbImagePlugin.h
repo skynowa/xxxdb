@@ -26,8 +26,7 @@ public:
 
     QWidget * construct(QWidget *parent, QSqlTableModel *tableModel,
                         cQString &dbFieldName, cint &index,
-                        cint &dbRecordIndex, QLabel *label, cQSize &size,
-                        QLabel *info);
+                        cint &dbRecordIndex, cQSize &size, QLabel *info);
     bool      isContainer() const;
     bool      isInitialized() const;
     QIcon     icon() const;

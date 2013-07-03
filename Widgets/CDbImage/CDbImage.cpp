@@ -25,7 +25,6 @@ CDbImage::CDbImage(
     _csDbFieldName  (),
     _ciIndex        (- 1),
     _ciDbRecordIndex(- 1),
-    _lblLabel       (NULL),
     _cszSize        (),
     _lblInfo        (NULL),
     _dmMapper       (NULL),
@@ -39,7 +38,6 @@ CDbImage::CDbImage(
     cQString       &a_dbFieldName,      ///< DB field name
     cint           &a_index,            ///< index
     cint           &a_dbRecordIndex,    ///< DB record index
-    QLabel         *a_label,            ///< QLabel for display image
     cQSize         &a_size,             ///< image sizes
     QLabel         *a_info              ///< QLabel for display image
 ) :
@@ -49,7 +47,6 @@ CDbImage::CDbImage(
     _csDbFieldName  (a_dbFieldName),
     _ciIndex        (a_index),
     _ciDbRecordIndex(a_dbRecordIndex),
-    _lblLabel       (a_label),
     _cszSize        (a_size),
     _lblInfo        (a_info),
     _dmMapper       (NULL),
@@ -60,7 +57,6 @@ CDbImage::CDbImage(
     qTEST(!a_dbFieldName.isEmpty());
     qTEST(- 1 < a_index);
     // a_dbRecordIndex - n/a
-    qTEST(NULL != a_label);
     qTEST(a_size.isValid());
     // a_info - n/a
 
@@ -104,14 +100,6 @@ CDbImage::dbRecordIndex() const
     return _ciDbRecordIndex;
 }
 //------------------------------------------------------------------------------
-QLabel *
-CDbImage::label() const
-{
-    qTEST(NULL != _lblLabel);
-
-    return _lblLabel;
-}
-//------------------------------------------------------------------------------
 cQSize &
 CDbImage::size() const
 {
@@ -146,8 +134,8 @@ CDbImage::mapper()
 bool
 CDbImage::isEmpty() const
 {
-    qCHECK_RET(label()->pixmap() == NULL,   true);
-    qCHECK_RET(label()->pixmap()->isNull(), true);
+    qCHECK_RET(pixmap() == NULL,   true);
+    qCHECK_RET(pixmap()->isNull(), true);
 
     return false;
 }
@@ -254,7 +242,7 @@ CDbImage::find(
     qTEST(NULL != a_label);
 
     Q_FOREACH (CDbImage *item, a_dbItems) {
-        qCHECK_RET(a_label == item->label(), item);
+        qCHECK_RET(a_label == item, item);
     }
 
     return NULL;
@@ -311,7 +299,7 @@ CDbImage::_map()
                                 size(),
                                 _lblInfo));
     wmRv->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
-    wmRv->addMapping(label(), _tmModel->fieldIndex( dbFieldName() ));
+    wmRv->addMapping(this, _tmModel->fieldIndex( dbFieldName() ));
     wmRv->setCurrentIndex( dbRecordIndex() );
 
     return wmRv;
@@ -347,7 +335,7 @@ CDbImage::_loadFromFile(
     // _lblLabel
     {
         if (_baBuffer.isEmpty()) {
-            _lblLabel->setText(TEXT_NO_PHOTO);
+            setText(TEXT_NO_PHOTO);
         } else {
             QPixmap pixOriginal;
 
@@ -359,7 +347,7 @@ CDbImage::_loadFromFile(
                                         Qt::KeepAspectRatio,
                                         Qt::FastTransformation);
 
-            _lblLabel->setPixmap(pixScaled);
+            setPixmap(pixScaled);
         }
     }
 
@@ -396,7 +384,7 @@ CDbImage::_remove()
 {
     _baBuffer.clear();
     _flush();
-    _lblLabel->clear();
+    clear();
 }
 //------------------------------------------------------------------------------
 void
