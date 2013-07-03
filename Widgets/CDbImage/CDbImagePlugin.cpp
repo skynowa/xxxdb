@@ -10,12 +10,25 @@
 #include <QtPlugin>
 
 //------------------------------------------------------------------------------
-CDbImagePlugin::CDbImagePlugin(
-    QObject *parent
-) :
-    QObject(parent)
+CDbImagePlugin::CDbImagePlugin() :
+    _initialized(false)
 {
-    _initialized = false;
+}
+//------------------------------------------------------------------------------
+QWidget *
+CDbImagePlugin::construct(
+    QWidget        *a_parent,           ///< parent QWidget
+    QSqlTableModel *a_tableModel,       ///< QSqlTableModel
+    cQString       &a_dbFieldName,      ///< DB field name
+    cint           &a_index,            ///< index
+    cint           &a_dbRecordIndex,    ///< DB record index
+    QLabel         *a_label,            ///< QLabel for display image
+    cQSize         &a_size,             ///< image sizes
+    QLabel         *a_info              ///< QLabel for display image
+)
+{
+    return new CDbImage(a_parent, a_tableModel, a_dbFieldName, a_index,
+                        a_dbRecordIndex, a_label, a_size, a_info);
 }
 //------------------------------------------------------------------------------
 void
@@ -40,31 +53,11 @@ CDbImagePlugin::isInitialized() const
 //------------------------------------------------------------------------------
 QWidget *
 CDbImagePlugin::createWidget(
-    QWidget *a_parent
+    QWidget *a_parent /* = NULL */
 )
 {
     return new CDbImage(a_parent);
 }
-//------------------------------------------------------------------------------
-#if 0
-
-QWidget *
-CDbImagePlugin::createWidget(
-    QWidget        *a_parent,           ///< parent QWidget
-    QSqlTableModel *a_tableModel,       ///< QSqlTableModel
-    cQString       &a_dbFieldName,      ///< DB field name
-    cint           &a_index,            ///< index
-    cint           &a_dbRecordIndex,    ///< DB record index
-    QLabel         *a_label,            ///< QLabel for display image
-    cQSize         &a_size,             ///< image sizes
-    QLabel         *a_info              ///< QLabel for display image
-)
-{
-    return new CDbImage(a_parent, a_tableModel, a_dbFieldName, a_index,
-                        a_dbRecordIndex, a_label, a_size, a_info);
-}
-
-#endif
 //------------------------------------------------------------------------------
 QString
 CDbImagePlugin::name() const

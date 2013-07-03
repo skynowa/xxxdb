@@ -22,7 +22,7 @@ CDbImage::CDbImage(
     QLabel          (a_parent),
     _wdParent       (a_parent),
     _tmModel        (NULL),
-    _csDbFieldName  (""),
+    _csDbFieldName  (),
     _ciIndex        (- 1),
     _ciDbRecordIndex(- 1),
     _lblLabel       (NULL),
@@ -33,8 +33,6 @@ CDbImage::CDbImage(
 {
 }
 //------------------------------------------------------------------------------
-#if 0
-
 CDbImage::CDbImage(
     QWidget        *a_parent,           ///< parent QWidget
     QSqlTableModel *a_tableModel,       ///< QSqlTableModel
@@ -68,9 +66,8 @@ CDbImage::CDbImage(
 
     _dmMapper = _map();
 }
-
-#endif
 //------------------------------------------------------------------------------
+/* virtual */
 CDbImage::~CDbImage() {
 
 }

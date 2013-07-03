@@ -26,13 +26,13 @@ Q_OBJECT
 
 public:
                        CDbImage(QWidget *parent = NULL);
-#if 0
+        ///< constructor
                        CDbImage(QWidget *parent, QSqlTableModel *tableModel,
                                 cQString &dbFieldName, cint &index,
                                 cint &dbRecordIndex,
                                 QLabel *label, cQSize &size, QLabel *info);
         ///< constructor
-#endif
+
     virtual           ~CDbImage();
         ///< destructor
 
