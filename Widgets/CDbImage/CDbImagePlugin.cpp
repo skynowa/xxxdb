@@ -38,13 +38,16 @@ CDbImagePlugin::isInitialized() const
     return _initialized;
 }
 //------------------------------------------------------------------------------
-QWidget *createWidget(
+QWidget *
+CDbImagePlugin::createWidget(
     QWidget *a_parent
 )
 {
     return new CDbImage(a_parent);
 }
 //------------------------------------------------------------------------------
+#if 0
+
 QWidget *
 CDbImagePlugin::createWidget(
     QWidget        *a_parent,           ///< parent QWidget
@@ -60,6 +63,8 @@ CDbImagePlugin::createWidget(
     return new CDbImage(a_parent, a_tableModel, a_dbFieldName, a_index,
                         a_dbRecordIndex, a_label, a_size, a_info);
 }
+
+#endif
 //------------------------------------------------------------------------------
 QString
 CDbImagePlugin::name() const

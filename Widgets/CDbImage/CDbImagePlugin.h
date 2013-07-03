@@ -34,11 +34,13 @@ public:
     QString  toolTip() const;
     QString  whatsThis() const;
     QWidget *createWidget(QWidget *parent = NULL);
+#if 0
     QWidget *createWidget(QWidget *parent, QSqlTableModel *tableModel,
                           cQString &dbFieldName, cint &index,
                           cint &dbRecordIndex,
                           QLabel *label, cQSize &size,
                           QLabel *info);
+#endif
     void     initialize(QDesignerFormEditorInterface *core);
 
 private:

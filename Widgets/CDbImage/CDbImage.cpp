@@ -33,6 +33,8 @@ CDbImage::CDbImage(
 {
 }
 //------------------------------------------------------------------------------
+#if 0
+
 CDbImage::CDbImage(
     QWidget        *a_parent,           ///< parent QWidget
     QSqlTableModel *a_tableModel,       ///< QSqlTableModel
@@ -66,6 +68,8 @@ CDbImage::CDbImage(
 
     _dmMapper = _map();
 }
+
+#endif
 //------------------------------------------------------------------------------
 CDbImage::~CDbImage() {
 
