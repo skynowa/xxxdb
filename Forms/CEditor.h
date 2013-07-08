@@ -37,7 +37,6 @@ private:
     CSqlNavigator     *_snNavigator;
     db_items_t         _hsDbItems;
     QDataWidgetMapper *_dmText;           ///< one mapper for all text items
-    CDbImageLabel     *_dbImageLabel;
 
     void               _construct();
     void               _destruct();

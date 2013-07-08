@@ -9,7 +9,6 @@
 #include "../QtLib/CUtils.h"
 #include "../QtLib/CApplication.h"
 #include "../Classes/CIni.h"
-#include "../Classes/CDelegateDbImage.h"
 #include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
 #include "../Forms/CColumns.h"
@@ -35,7 +34,6 @@ CMain::CMain(
     _dbDatabase  (),
     _tmModel     (NULL),
     _hsDbItems   (),
-    _dbImageLabel(NULL),
     _cboFindText (NULL),
     _cboDbFields (NULL)
 {
@@ -218,17 +216,15 @@ CMain::_initMain()
     {
         cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
 
-        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
-                                          0, ciDbRecordIndex,
-                                          ui.lblPhoto, PHOTO_SIZE,
-                                          ui.lblPhotoInfo);
+        ui.cDbImage->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+                               ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
     }
 
     //--------------------------------------------------
     // slots
     {
         connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                _dbImageLabel->mapper(),  &QDataWidgetMapper::setCurrentModelIndex);
+                ui.cDbImage->mapper(),    &QDataWidgetMapper::setCurrentModelIndex);
         connect(snNavigator.view(),       &QTableView::doubleClicked,
                 this,                     &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,             &QToolButton::clicked,

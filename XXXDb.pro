@@ -23,8 +23,6 @@ HEADERS         = QtLib/Common.h \
                   QtLib/CApplication.h \
                   Classes/CConfig.h \
                   Classes/CIni.h \
-                  Classes/CDelegateDbImage.h \
-                  Classes/CDbImageLabel.h \
                   Forms/CMain.h \
                   Forms/CEditor.h \
                   Forms/CAlbum.h \
@@ -38,8 +36,6 @@ SOURCES         = main.cpp \
                   QtLib/CApplication.cpp \
                   Classes/CConfig.cpp \
                   Classes/CIni.cpp \
-                  Classes/CDelegateDbImage.cpp \
-                  Classes/CDbImageLabel.cpp \
                   Forms/CMain.cpp \
                   Forms/CEditor.cpp \
                   Forms/CAlbum.cpp \
@@ -55,6 +51,10 @@ FORMS           = Forms/CMain.ui \
                   Forms/CSettings.ui
 
 RESOURCES       = Resources/App.qrc
+
+# INCLUDEPATH    += C:\[PATH TO LIBRARY'S A HEADERS]
+# LIBS           += C:\[PATH TO LIBRARY'S A BINARY]
+LIBS           += /opt/Libs/Qt/5.0.2_x64/Tools/QtCreator/bin/designer/libCDbImagePlugin.so
 
 win32 {
     RC_FILE     = Resources/App_win.rc

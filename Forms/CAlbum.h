@@ -12,7 +12,6 @@
 #include "../QtLib/Common.h"
 #include "../QtLib/CSqlNavigator.h"
 #include "../Classes/CConfig.h"
-#include "../Classes/CDbImageLabel.h"
 //------------------------------------------------------------------------------
 class CAlbum :
     public QMainWindow

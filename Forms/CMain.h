@@ -14,7 +14,7 @@
 #include "Classes/CConfig.h"
 //------------------------------------------------------------------------------
 class CAlbum;
-class CDbImageLabel;
+//// class CDbImageLabel;
 
 class CMain :
     public QMainWindow
@@ -39,7 +39,6 @@ private:
     QSqlDatabase    _dbDatabase;
     QSqlTableModel *_tmModel;
     db_items_t      _hsDbItems;
-    CDbImageLabel  *_dbImageLabel;
 
     QComboBox      *_cboFindText;
     QComboBox      *_cboDbFields;

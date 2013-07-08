@@ -90,6 +90,22 @@
       <property name="checkable">
        <bool>false</bool>
       </property>
+      <widget class="CDbImage" name="cDbImage">
+       <property name="geometry">
+        <rect>
+         <x>64</x>
+         <y>48</y>
+         <width>120</width>
+         <height>80</height>
+        </rect>
+       </property>
+       <property name="toolTip">
+        <string>CDbImage</string>
+       </property>
+       <property name="whatsThis">
+        <string>CDbImage</string>
+       </property>
+      </widget>
      </widget>
     </item>
     <item row="0" column="1" rowspan="3">
@@ -103,7 +119,7 @@
      <x>0</x>
      <y>0</y>
      <width>893</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="mnuFile">
@@ -483,6 +499,13 @@
   </action>
  </widget>
  <layoutdefault spacing="6" margin="11"/>
+ <customwidgets>
+  <customwidget>
+   <class>CDbImage</class>
+   <extends>QLabel</extends>
+   <header location="global">CDbImage/CDbImage.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../Resources/App.qrc"/>
  </resources>

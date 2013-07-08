@@ -22,22 +22,6 @@
   </property>
   <widget class="QWidget" name="centralwidget">
    <layout class="QGridLayout" name="gridLayout_2">
-    <item row="0" column="0">
-     <widget class="QLabel" name="lblPhoto">
-      <property name="sizePolicy">
-       <sizepolicy hsizetype="Expanding" vsizetype="Expanding">
-        <horstretch>0</horstretch>
-        <verstretch>0</verstretch>
-       </sizepolicy>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
-      </property>
-     </widget>
-    </item>
     <item row="1" column="0">
      <widget class="QScrollArea" name="saPhotosMini">
       <property name="sizePolicy">
@@ -75,343 +59,173 @@
         <rect>
          <x>0</x>
          <y>0</y>
-         <width>1902</width>
-         <height>98</height>
+         <width>873</width>
+         <height>102</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="13">
+         <widget class="CDbImage" name="cDbImage_15">
+          <property name="toolTip">
+           <string>CDbImage</string>
+          </property>
+          <property name="whatsThis">
+           <string>CDbImage</string>
+          </property>
+         </widget>
+        </item>
         <item row="0" column="0">
-         <widget class="QLabel" name="lblPhotoMini_1">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+         <widget class="CDbImage" name="cDbImage_2">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="QLabel" name="lblPhotoMini_2">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="QLabel" name="lblPhotoMini_3">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
-         <widget class="QLabel" name="lblPhotoMini_4">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="QLabel" name="lblPhotoMini_5">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+         <widget class="CDbImage" name="cDbImage_6">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="5">
-         <widget class="QLabel" name="lblPhotoMini_6">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+        <item row="0" column="2">
+         <widget class="CDbImage" name="cDbImage_4">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6">
-         <widget class="QLabel" name="lblPhotoMini_7">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="QLabel" name="lblPhotoMini_8">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8">
-         <widget class="QLabel" name="lblPhotoMini_9">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <widget class="QLabel" name="lblPhotoMini_10">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
         <item row="0" column="10">
-         <widget class="QLabel" name="lblPhotoMini_11">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+         <widget class="CDbImage" name="cDbImage_12">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="11">
-         <widget class="QLabel" name="lblPhotoMini_12">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+        <item row="0" column="6">
+         <widget class="CDbImage" name="cDbImage_8">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
+         </widget>
+        </item>
+        <item row="0" column="9">
+         <widget class="CDbImage" name="cDbImage_11">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
         <item row="0" column="12">
-         <widget class="QLabel" name="lblPhotoMini_13">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+         <widget class="CDbImage" name="cDbImage_14">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
-        <item row="0" column="13">
-         <widget class="QLabel" name="lblPhotoMini_14">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+        <item row="0" column="5">
+         <widget class="CDbImage" name="cDbImage_7">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
+         </widget>
+        </item>
+        <item row="0" column="1">
+         <widget class="CDbImage" name="cDbImage_3">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="7">
+         <widget class="CDbImage" name="cDbImage_9">
+          <property name="toolTip">
+           <string>CDbImage</string>
+          </property>
+          <property name="whatsThis">
+           <string>CDbImage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="11">
+         <widget class="CDbImage" name="cDbImage_13">
+          <property name="toolTip">
+           <string>CDbImage</string>
+          </property>
+          <property name="whatsThis">
+           <string>CDbImage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="8">
+         <widget class="CDbImage" name="cDbImage_10">
+          <property name="toolTip">
+           <string>CDbImage</string>
+          </property>
+          <property name="whatsThis">
+           <string>CDbImage</string>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="3">
+         <widget class="CDbImage" name="cDbImage_5">
+          <property name="toolTip">
+           <string>CDbImage</string>
+          </property>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
         <item row="0" column="14">
-         <widget class="QLabel" name="lblPhotoMini_15">
-          <property name="minimumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
+         <widget class="CDbImage" name="cDbImage_16">
+          <property name="toolTip">
+           <string>CDbImage</string>
           </property>
-          <property name="maximumSize">
-           <size>
-            <width>120</width>
-            <height>80</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
+          <property name="whatsThis">
+           <string>CDbImage</string>
           </property>
          </widget>
         </item>
        </layout>
       </widget>
+     </widget>
+    </item>
+    <item row="0" column="0">
+     <widget class="CDbImage" name="cDbImage">
+      <property name="toolTip">
+       <string>CDbImage</string>
+      </property>
+      <property name="whatsThis">
+       <string>CDbImage</string>
+      </property>
      </widget>
     </item>
    </layout>
@@ -422,7 +236,7 @@
      <x>0</x>
      <y>0</y>
      <width>893</width>
-     <height>21</height>
+     <height>25</height>
     </rect>
    </property>
    <widget class="QMenu" name="mnuFile">
@@ -617,6 +431,13 @@
    </property>
   </action>
  </widget>
+ <customwidgets>
+  <customwidget>
+   <class>CDbImage</class>
+   <extends>QLabel</extends>
+   <header location="global">CDbImage/CDbImage.h</header>
+  </customwidget>
+ </customwidgets>
  <resources>
   <include location="../Resources/App.qrc"/>
  </resources>

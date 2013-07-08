@@ -8,8 +8,6 @@
 
 #include "../QtLib/CUtils.h"
 #include "../Classes/CIni.h"
-#include "../Classes/CDbImageLabel.h"
-#include "../Classes/CDelegateDbImage.h"
 #include "CAlbum.h"
 
 
@@ -30,8 +28,7 @@ CEditor::CEditor(
     _tmModel        (a_tableModel),
     _snNavigator    (a_sqlNavigator),
     _hsDbItems      (),
-    _dmText         (NULL),
-    _dbImageLabel   ()
+    _dmText         (NULL)
 {
     qTEST(NULL != a_parent);
     qTEST(NULL != a_tableModel);
@@ -204,10 +201,8 @@ CEditor::_initMain()
     // _dbImageLabel
     {
         // TODO: 0
-        _dbImageLabel = new CDbImageLabel(this, _tmModel, DB_F_PHOTOS_1,
-                                          0, _ciDbRecordIndex,
-                                          ui.lblPhoto, PHOTO_SIZE,
-                                          ui.lblPhotoInfo);
+        ui.cDbImage->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+                               _ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
     }
 
     // signals
