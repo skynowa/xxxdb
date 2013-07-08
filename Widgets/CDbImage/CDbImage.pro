@@ -18,5 +18,9 @@ SOURCES     = CDbImage.cpp CDbImagePlugin.cpp
 RESOURCES   = Resource.qrc
 LIBS       += -L.
 
-target.path = /opt/Libs/Qt/5.0.2_x64/Tools/QtCreator/bin/designer
-INSTALLS   += target
+target.path   = /opt/Libs/Qt/5.0.2_x64/Tools/QtCreator/bin/designer
+sources.files = $$HEADERS
+sources.path  = ../../
+
+INSTALLS   += target sources
+
