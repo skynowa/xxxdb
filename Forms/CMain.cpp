@@ -155,8 +155,8 @@ CMain::_initMain()
 
     // cDbImage
     {
-        ui.cDbImage->setFixedSize(PHOTO_SIZE);
-        ui.cDbImage->setBackgroundRole(QPalette::Base);
+        ui.dbPhoto->setFixedSize(PHOTO_SIZE);
+        ui.dbPhoto->setBackgroundRole(QPalette::Base);
     }
 
     // quick find
@@ -216,19 +216,19 @@ CMain::_initMain()
     {
         cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
 
-        ui.cDbImage->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
-                               ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
+        ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+                              ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
     }
 
     //--------------------------------------------------
     // slots
     {
         connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                ui.cDbImage->mapper(),    &QDataWidgetMapper::setCurrentModelIndex);
-        connect(snNavigator.view(),       &QTableView::doubleClicked,
-                this,                     &CMain::actEdit_onEdit);
-        connect(ui.tbtnAlbum,             &QToolButton::clicked,
-                this,                     &CMain::actView_onAlbum);
+                ui.dbPhoto->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
+        connect(snNavigator.view(),   &QTableView::doubleClicked,
+                this,                 &CMain::actEdit_onEdit);
+        connect(ui.tbtnAlbum,         &QToolButton::clicked,
+                this,                 &CMain::actView_onAlbum);
 
         QShortcut *shortCut = new QShortcut(Qt::CTRL + Qt::Key_F, this);
     #if 0

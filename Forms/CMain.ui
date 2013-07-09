@@ -68,21 +68,12 @@
      <widget class="QTableView" name="tvInfo"/>
     </item>
     <item row="0" column="0">
-     <widget class="CDbImage" name="cDbImage">
-      <property name="toolTip">
-       <string>CDbImage</string>
-      </property>
-      <property name="whatsThis">
-       <string>CDbImage</string>
-      </property>
-      <property name="frameShape">
-       <enum>QFrame::Box</enum>
-      </property>
-      <property name="scaledContents">
-       <bool>true</bool>
-      </property>
-      <property name="alignment">
-       <set>Qt::AlignCenter</set>
+     <widget class="CDbImage" name="dbPhoto">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>200</height>
+       </size>
       </property>
      </widget>
     </item>
