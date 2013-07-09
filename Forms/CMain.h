@@ -11,10 +11,9 @@
 
 #include "../QtLib/Common.h"
 #include "../QtLib/CSqlNavigator.h"
-#include "Classes/CConfig.h"
+#include "../Classes/CConfig.h"
 //------------------------------------------------------------------------------
 class CAlbum;
-//// class CDbImageLabel;
 
 class CMain :
     public QMainWindow

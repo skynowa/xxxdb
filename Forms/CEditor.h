@@ -14,7 +14,6 @@
 #include "CMain.h"
 //------------------------------------------------------------------------------
 class CAlbum;
-class CDbImageLabel;
 
 class CEditor :
     public QDialog

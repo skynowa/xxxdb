@@ -9,11 +9,11 @@
 #include "../QtLib/CUtils.h"
 #include "../QtLib/CApplication.h"
 #include "../Classes/CIni.h"
-#include "../Forms/CEditor.h"
-#include "../Forms/CAlbum.h"
-#include "../Forms/CColumns.h"
-#include "../Forms/CAbout.h"
-#include "../Forms/CSettings.h"
+#include "CEditor.h"
+#include "CAlbum.h"
+#include "CColumns.h"
+#include "CAbout.h"
+#include "CSettings.h"
 
 
 /*******************************************************************************
@@ -153,10 +153,10 @@ CMain::_initMain()
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
     }
 
-    // lblPhoto
+    // cDbImage
     {
-        ui.lblPhoto->setFixedSize(PHOTO_SIZE);
-        ui.lblPhoto->setBackgroundRole(QPalette::Base);
+        ui.cDbImage->setFixedSize(PHOTO_SIZE);
+        ui.cDbImage->setBackgroundRole(QPalette::Base);
     }
 
     // quick find
