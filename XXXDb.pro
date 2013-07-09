@@ -54,7 +54,7 @@ RESOURCES       = Resources/App.qrc
 
 # INCLUDEPATH    += C:\[PATH TO LIBRARY'S A HEADERS]
 # LIBS           += C:\[PATH TO LIBRARY'S A BINARY]
-LIBS           += /opt/Libs/Qt/5.0.2_x64/Tools/QtCreator/bin/designer/libCDbImagePlugin.so
+LIBS           += /opt/Libs/Qt/5.1.0_x64/Tools/QtCreator/bin/designer/libCDbImagePlugin.so
 
 win32 {
     RC_FILE     = Resources/App_win.rc
