@@ -64,11 +64,11 @@ private:
     // photo
     void            photo_onLoop();
     void            photoMini_onUpdate(cint &index);
-    void            photoMini_onClicked(QLabel *label, cQString &dbFieldName);
+    void            photoMini_onClicked(CDbImage *dbPhoto, cQString &dbFieldName);
 
 Q_SIGNALS:
     void            sig_photo_clicked();
-    void            sig_photoMini_clicked(QLabel *label, cQString &dbFieldName);
+    void            sig_photoMini_clicked(CDbImage *dbPhoto, cQString &dbFieldName);
 
     friend class CIni;
 };

@@ -58,16 +58,16 @@ CAlbum::eventFilter(
     if (a_event->type() == QEvent::MouseButtonPress) {
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
         if (mouseEvent->button() == Qt::LeftButton) {
-            QLabel *label = static_cast<QLabel *>( a_obj );
-            if (ui.dbPhoto == label) {
+            CDbImage *dbPhoto = static_cast<CDbImage *>( a_obj );
+            if (ui.dbPhoto == dbPhoto) {
                 // ui.dbPhoto
                 Q_EMIT sig_photo_clicked();
             } else {
-                // other QLabels
-                QLabel   *lblPhotoMini  = label;
-                cQString  csDbFieldName = CDbImage::find(_viDbItems, lblPhotoMini)->dbFieldName();
+                // other CDbImages
+                CDbImage *dbPhotoMini  = dbPhoto;
+                cQString  csDbFieldName = CDbImage::find(_viDbItems, dbPhotoMini)->dbFieldName();
 
-                Q_EMIT sig_photoMini_clicked(lblPhotoMini, csDbFieldName);
+                Q_EMIT sig_photoMini_clicked(dbPhotoMini, csDbFieldName);
             }
 
             return true;
@@ -94,10 +94,10 @@ CAlbum::showEvent(
 
         // set primary image index
         {
-            QLabel   *lblPhotoMini  = CDbImage::find(_viDbItems, ciPrimaryIndex);
+            CDbImage *dbPhotoMini   = CDbImage::find(_viDbItems, ciPrimaryIndex);
             cQString  csDbFieldName = CDbImage::find(_viDbItems, ciPrimaryIndex)->dbFieldName();
 
-            photoMini_onClicked(lblPhotoMini, csDbFieldName);
+            photoMini_onClicked(dbPhotoMini, csDbFieldName);
         }
     }
 }
@@ -446,36 +446,36 @@ CAlbum::photo_onLoop()
 //------------------------------------------------------------------------------
 void
 CAlbum::photoMini_onUpdate(
-    cint &index
+    cint &a_index
 )
 {
-    CDbImage *lblPhotoMini  = _viDbItems.at(index);
-    cQString  csDbFieldName = _viDbItems.at(index)->dbFieldName();
+    CDbImage *dbPhotoMini   = _viDbItems.at(a_index);
+    cQString  csDbFieldName = _viDbItems.at(a_index)->dbFieldName();
 
-    photoMini_onClicked(lblPhotoMini, csDbFieldName);
+    photoMini_onClicked(dbPhotoMini, csDbFieldName);
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::photoMini_onClicked(
-    QLabel   *a_label,
+    CDbImage *a_dbPhoto,
     cQString &a_dbFieldName
 )
 {
-    qTEST(NULL != a_label);
+    qTEST(NULL != a_dbPhoto);
     qTEST(!a_dbFieldName.isEmpty());
 
     // lblPhotoMini
     {
         // set border
-        Q_FOREACH (CDbImage *i, _viDbItems) {
-            if (a_label == i) {
+        Q_FOREACH (CDbImage *it_item, _viDbItems) {
+            if (a_dbPhoto == it_item) {
                 // set current indexes
-                CDbImage::currentIndex        = i->index();
-                CDbImage::currentDbImageLabel = i;
+                CDbImage::currentIndex        = it_item->index();
+                CDbImage::currentDbImageLabel = it_item;
 
-                i->setFrameShape(QFrame::WinPanel);
+                it_item->setFrameShape(QFrame::WinPanel);
             } else {
-                i->setFrameShape(QFrame::Box);
+                it_item->setFrameShape(QFrame::Box);
             }
         }
     }
