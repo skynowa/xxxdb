@@ -187,7 +187,7 @@ CAlbum::_initMain() {
         setWindowFlags(Qt::Window);
     }
 
-    // lblPhoto
+    // ui.dbPhoto
     ui.dbPhoto->installEventFilter(this);
     ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
 
@@ -200,9 +200,9 @@ CAlbum::_initMain() {
             cQString  field;
         };
 
-        typedef const SDbPhotoMini cSDbPhotoMini;
+        typedef const SDbPhotoMini cdb_photo_mini_t;
 
-        cSDbPhotoMini dbPhotoMinis[ciPhotoNum] = {
+        cdb_photo_mini_t dbPhotoMinis[ciPhotoNum] = {
             { ui.dbPhoto_1,  DB_F_PHOTOS_1  },
             { ui.dbPhoto_2,  DB_F_PHOTOS_2  },
             { ui.dbPhoto_3,  DB_F_PHOTOS_3  },
@@ -234,6 +234,7 @@ CAlbum::_initMain() {
                                         NULL);
 
             dbPhotoMinis[i].dbPhoto->installEventFilter(this);
+            dbPhotoMinis[i].dbPhoto->setFixedSize(PHOTO_MINI_SIZE);
 
             connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_dataChanged,
                     this, &CAlbum::photoMini_onUpdate);
