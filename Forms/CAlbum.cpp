@@ -487,7 +487,7 @@ CAlbum::photoMini_onClicked(
                                     .value(a_dbFieldName).toByteArray();
 
         if (baPhoto.isEmpty()) {
-            ui.dbPhoto->setText(CDbImage::TEXT_NO_PHOTO);
+            ui.dbPhoto->setTextDefault();
         } else {
             bool bRv = _pixPhoto.loadFromData(baPhoto);
             qTEST(bRv);
