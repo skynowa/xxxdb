@@ -21,9 +21,6 @@
 
 // photo
 #define PHOTO_NUM                   15
-#define IMAGE_FORMATS               "*.bmp *.jpg *.jpeg *.gif *.tiff *.png *.xpm"
-#define IMAGE_IS_CONVERT            true
-#define IMAGE_EXT_DEAFULT           "jpeg"
 
 #define PHOTO_WIDTH                 300
 #define PHOTO_HEIGHT                200
@@ -37,7 +34,6 @@
 // etc
 #define LANGS_FILE_NAME_RU          "XXXDb_ru_RU.qm"
 #define TABLEVIEW_ROW_HEIGHT        20
-#define TEXT_NO_PHOTO               QObject::tr("No photo")
 #define FIND_TEXT_WIDTH             180
 
 /*******************************************************************************

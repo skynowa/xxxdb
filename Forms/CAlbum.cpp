@@ -196,7 +196,7 @@ CAlbum::_initMain() {
         csize_t ciPhotoNum = PHOTO_NUM;
 
         struct SDbPhotoMini {
-            CDbImage *label;
+            CDbImage *dbPhoto;
             cQString  field;
         };
 
@@ -224,7 +224,7 @@ CAlbum::_initMain() {
         _viDbItems.reserve(ciPhotoNum);
 
         for (size_t i = 0; i < ciPhotoNum; ++ i) {
-            dbPhotoMinis[i].label->construct(
+            dbPhotoMinis[i].dbPhoto->construct(
                                         this,
                                         _tmModel,
                                         dbPhotoMinis[i].field,
@@ -233,14 +233,14 @@ CAlbum::_initMain() {
                                         PHOTO_MINI_SIZE,
                                         NULL);
 
-            dbPhotoMinis[i].label->installEventFilter(this);
+            dbPhotoMinis[i].dbPhoto->installEventFilter(this);
 
-            connect(dbPhotoMinis[i].label, &CDbImage::sig_dataChanged,
+            connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_dataChanged,
                     this, &CAlbum::photoMini_onUpdate);
             connect(this, &CAlbum::sig_photoMini_clicked,
                     this, &CAlbum::photoMini_onClicked);
 
-            _viDbItems.push_back(dbPhotoMinis[i].label);
+            _viDbItems.push_back(dbPhotoMinis[i].dbPhoto);
         }
     }
 
@@ -486,7 +486,7 @@ CAlbum::photoMini_onClicked(
                                     .value(a_dbFieldName).toByteArray();
 
         if (baPhoto.isEmpty()) {
-            ui.dbPhoto->setText(TEXT_NO_PHOTO);
+            ui.dbPhoto->setText(CDbImage::TEXT_NO_PHOTO);
         } else {
             bool bRv = _pixPhoto.loadFromData(baPhoto);
             qTEST(bRv);
