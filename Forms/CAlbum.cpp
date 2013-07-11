@@ -59,8 +59,8 @@ CAlbum::eventFilter(
         QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
         if (mouseEvent->button() == Qt::LeftButton) {
             QLabel *label = static_cast<QLabel *>( a_obj );
-            if (ui.cDbImage == label) {
-                // ui.lblPhoto
+            if (ui.dbPhoto == label) {
+                // ui.dbPhoto
                 Q_EMIT sig_photo_clicked();
             } else {
                 // other QLabels
@@ -111,14 +111,14 @@ CAlbum::resizeEvent(
     qTEST(NULL != a_event);
     Q_UNUSED(a_event);
 
-    // lblPhoto
+    // ui.dbPhoto
     if (!_pixPhoto.isNull()) {
         QSize szScaled = _pixPhoto.size();
 
-        szScaled.scale(ui.cDbImage->size(), Qt::KeepAspectRatio);
+        szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
 
-        if (NULL     == ui.cDbImage->pixmap() ||
-            szScaled != ui.cDbImage->pixmap()->size())
+        if (NULL     == ui.dbPhoto->pixmap() ||
+            szScaled != ui.dbPhoto->pixmap()->size())
         {
             _photoUpdate();
         }
@@ -188,8 +188,8 @@ CAlbum::_initMain() {
     }
 
     // lblPhoto
-    ui.cDbImage->installEventFilter(this);
-    ui.cDbImage->setMinimumSize(PHOTO_MINI_SIZE);
+    ui.dbPhoto->installEventFilter(this);
+    ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
 
     // _viDbItems
     {
@@ -203,21 +203,21 @@ CAlbum::_initMain() {
         typedef const SDbPhotoMini cSDbPhotoMini;
 
         cSDbPhotoMini dbPhotoMinis[ciPhotoNum] = {
-            { ui.cDbImage_2,  DB_F_PHOTOS_1  },
-            { ui.cDbImage_3,  DB_F_PHOTOS_2  },
-            { ui.cDbImage_4,  DB_F_PHOTOS_3  },
-            { ui.cDbImage_5,  DB_F_PHOTOS_4  },
-            { ui.cDbImage_6,  DB_F_PHOTOS_5  },
-            { ui.cDbImage_7,  DB_F_PHOTOS_6  },
-            { ui.cDbImage_8,  DB_F_PHOTOS_7  },
-            { ui.cDbImage_9,  DB_F_PHOTOS_8  },
-            { ui.cDbImage_10, DB_F_PHOTOS_9  },
-            { ui.cDbImage_11, DB_F_PHOTOS_10 },
-            { ui.cDbImage_12, DB_F_PHOTOS_11 },
-            { ui.cDbImage_13, DB_F_PHOTOS_12 },
-            { ui.cDbImage_14, DB_F_PHOTOS_13 },
-            { ui.cDbImage_15, DB_F_PHOTOS_14 },
-            { ui.cDbImage_16, DB_F_PHOTOS_15 }
+            { ui.dbPhoto_1,  DB_F_PHOTOS_1  },
+            { ui.dbPhoto_2,  DB_F_PHOTOS_2  },
+            { ui.dbPhoto_3,  DB_F_PHOTOS_3  },
+            { ui.dbPhoto_4,  DB_F_PHOTOS_4  },
+            { ui.dbPhoto_5,  DB_F_PHOTOS_5  },
+            { ui.dbPhoto_6,  DB_F_PHOTOS_6  },
+            { ui.dbPhoto_7,  DB_F_PHOTOS_7  },
+            { ui.dbPhoto_8,  DB_F_PHOTOS_8  },
+            { ui.dbPhoto_9,  DB_F_PHOTOS_9  },
+            { ui.dbPhoto_10, DB_F_PHOTOS_10 },
+            { ui.dbPhoto_11, DB_F_PHOTOS_11 },
+            { ui.dbPhoto_12, DB_F_PHOTOS_12 },
+            { ui.dbPhoto_13, DB_F_PHOTOS_13 },
+            { ui.dbPhoto_14, DB_F_PHOTOS_14 },
+            { ui.dbPhoto_15, DB_F_PHOTOS_15 }
         };
 
         // fill _viDbItems
@@ -486,7 +486,7 @@ CAlbum::photoMini_onClicked(
                                     .value(a_dbFieldName).toByteArray();
 
         if (baPhoto.isEmpty()) {
-            ui.cDbImage->setText(TEXT_NO_PHOTO);
+            ui.dbPhoto->setText(TEXT_NO_PHOTO);
         } else {
             bool bRv = _pixPhoto.loadFromData(baPhoto);
             qTEST(bRv);

@@ -60,12 +60,12 @@
          <x>0</x>
          <y>0</y>
          <width>873</width>
-         <height>102</height>
+         <height>104</height>
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
         <item row="0" column="13">
-         <widget class="CDbImage" name="cDbImage_15">
+         <widget class="CDbImage" name="dbPhoto_14">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -75,7 +75,7 @@
          </widget>
         </item>
         <item row="0" column="0">
-         <widget class="CDbImage" name="cDbImage_2">
+         <widget class="CDbImage" name="dbPhoto_1">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -85,7 +85,7 @@
          </widget>
         </item>
         <item row="0" column="4">
-         <widget class="CDbImage" name="cDbImage_6">
+         <widget class="CDbImage" name="dbPhoto_5">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -95,7 +95,7 @@
          </widget>
         </item>
         <item row="0" column="2">
-         <widget class="CDbImage" name="cDbImage_4">
+         <widget class="CDbImage" name="dbPhoto_3">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -105,7 +105,7 @@
          </widget>
         </item>
         <item row="0" column="10">
-         <widget class="CDbImage" name="cDbImage_12">
+         <widget class="CDbImage" name="dbPhoto_11">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -115,7 +115,7 @@
          </widget>
         </item>
         <item row="0" column="6">
-         <widget class="CDbImage" name="cDbImage_8">
+         <widget class="CDbImage" name="dbPhoto_7">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -125,7 +125,7 @@
          </widget>
         </item>
         <item row="0" column="9">
-         <widget class="CDbImage" name="cDbImage_11">
+         <widget class="CDbImage" name="dbPhoto_10">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -135,7 +135,7 @@
          </widget>
         </item>
         <item row="0" column="12">
-         <widget class="CDbImage" name="cDbImage_14">
+         <widget class="CDbImage" name="dbPhoto_13">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -145,7 +145,7 @@
          </widget>
         </item>
         <item row="0" column="5">
-         <widget class="CDbImage" name="cDbImage_7">
+         <widget class="CDbImage" name="dbPhoto_6">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -155,7 +155,7 @@
          </widget>
         </item>
         <item row="0" column="1">
-         <widget class="CDbImage" name="cDbImage_3">
+         <widget class="CDbImage" name="dbPhoto_2">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -165,7 +165,7 @@
          </widget>
         </item>
         <item row="0" column="7">
-         <widget class="CDbImage" name="cDbImage_9">
+         <widget class="CDbImage" name="dbPhoto_8">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -175,7 +175,7 @@
          </widget>
         </item>
         <item row="0" column="11">
-         <widget class="CDbImage" name="cDbImage_13">
+         <widget class="CDbImage" name="dbPhoto_12">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -185,7 +185,7 @@
          </widget>
         </item>
         <item row="0" column="8">
-         <widget class="CDbImage" name="cDbImage_10">
+         <widget class="CDbImage" name="dbPhoto_9">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -195,7 +195,7 @@
          </widget>
         </item>
         <item row="0" column="3">
-         <widget class="CDbImage" name="cDbImage_5">
+         <widget class="CDbImage" name="dbPhoto_4">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -205,7 +205,7 @@
          </widget>
         </item>
         <item row="0" column="14">
-         <widget class="CDbImage" name="cDbImage_16">
+         <widget class="CDbImage" name="dbPhoto_15">
           <property name="toolTip">
            <string>CDbImage</string>
           </property>
@@ -219,12 +219,12 @@
      </widget>
     </item>
     <item row="0" column="0">
-     <widget class="CDbImage" name="cDbImage">
-      <property name="toolTip">
-       <string>CDbImage</string>
+     <widget class="CDbImage" name="dbPhoto">
+      <property name="frameShape">
+       <enum>QFrame::Box</enum>
       </property>
-      <property name="whatsThis">
-       <string>CDbImage</string>
+      <property name="alignment">
+       <set>Qt::AlignCenter</set>
       </property>
      </widget>
     </item>
@@ -236,7 +236,7 @@
      <x>0</x>
      <y>0</y>
      <width>893</width>
-     <height>25</height>
+     <height>20</height>
     </rect>
    </property>
    <widget class="QMenu" name="mnuFile">

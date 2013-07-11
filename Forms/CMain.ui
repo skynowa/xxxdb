@@ -68,14 +68,7 @@
      <widget class="QTableView" name="tvInfo"/>
     </item>
     <item row="0" column="0">
-     <widget class="CDbImage" name="dbPhoto">
-      <property name="minimumSize">
-       <size>
-        <width>300</width>
-        <height>200</height>
-       </size>
-      </property>
-     </widget>
+     <widget class="CDbImage" name="dbPhoto"/>
     </item>
    </layout>
   </widget>

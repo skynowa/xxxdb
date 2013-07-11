@@ -153,7 +153,7 @@ CMain::_initMain()
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
     }
 
-    // cDbImage
+    // ui.dbPhoto
     {
         ui.dbPhoto->setFixedSize(PHOTO_SIZE);
         ui.dbPhoto->setBackgroundRole(QPalette::Base);
@@ -212,7 +212,7 @@ CMain::_initMain()
     }
 
     //--------------------------------------------------
-    // _dbImageLabel
+    // ui.dbPhoto
     {
         cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
 
