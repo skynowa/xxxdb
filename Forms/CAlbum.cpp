@@ -38,44 +38,12 @@ CAlbum::CAlbum(
 }
 //------------------------------------------------------------------------------
 
+
 /*******************************************************************************
 *   protected
 *
 *******************************************************************************/
 
-//------------------------------------------------------------------------------
-/* virtual */
-bool
-CAlbum::eventFilter(
-    QObject *a_obj,
-    QEvent  *a_event
-)
-{
-    qTEST(NULL != a_obj);
-    qTEST(NULL != a_event);
-
-    // clicks on photos
-    if (a_event->type() == QEvent::MouseButtonPress) {
-        QMouseEvent *mouseEvent = static_cast<QMouseEvent *>(a_event);
-        if (mouseEvent->button() == Qt::LeftButton) {
-            CDbImage *dbPhoto = static_cast<CDbImage *>( a_obj );
-            if (ui.dbPhoto == dbPhoto) {
-                // ui.dbPhoto
-                Q_EMIT sig_photo_clicked();
-            } else {
-                // other CDbImages
-                CDbImage *dbPhotoMini   = dbPhoto;
-                cQString  csDbFieldName = CDbImage::find(_viDbItems, dbPhotoMini)->dbFieldName();
-
-                Q_EMIT sig_photoMini_clicked(dbPhotoMini, csDbFieldName);
-            }
-
-            return true;
-        }
-    }
-
-    return QObject::eventFilter(a_obj, a_event);
-}
 //------------------------------------------------------------------------------
 /* virtual */
 void
@@ -94,10 +62,9 @@ CAlbum::showEvent(
 
         // set primary image index
         {
-            CDbImage *dbPhotoMini   = CDbImage::find(_viDbItems, ciPrimaryIndex);
-            cQString  csDbFieldName = CDbImage::find(_viDbItems, ciPrimaryIndex)->dbFieldName();
+            CDbImage *dbPhotoMini = CDbImage::find(_viDbItems, ciPrimaryIndex);
 
-            photoMini_onClicked(dbPhotoMini, csDbFieldName);
+            photoMini_onClicked(dbPhotoMini);
         }
     }
 }
@@ -190,8 +157,9 @@ CAlbum::_initMain() {
     // ui.dbPhoto
     ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 1, _ciDbRecordIndex,
                           PHOTO_SIZE);
-    ui.dbPhoto->installEventFilter(this);
     ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
+    connect(ui.dbPhoto, &CDbImage::sig_pressed,
+            this,       &CAlbum::photo_onLoop);
 
     // _viDbItems
     {
@@ -225,23 +193,14 @@ CAlbum::_initMain() {
         for (size_t i = 0; i < PHOTO_NUM; ++ i) {
             dbPhotoMinis[i].dbPhoto->construct(this, _tmModel,
                 dbPhotoMinis[i].field, i, _ciDbRecordIndex, PHOTO_MINI_SIZE);
-
-            dbPhotoMinis[i].dbPhoto->installEventFilter(this);
             dbPhotoMinis[i].dbPhoto->setFixedSize(PHOTO_MINI_SIZE);
-
             connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_dataChanged,
-                    this, &CAlbum::photoMini_onUpdate);
-            connect(this, &CAlbum::sig_photoMini_clicked,
-                    this, &CAlbum::photoMini_onClicked);
+                    this,                    &CAlbum::photoMini_onUpdate);
+            connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_pressed,
+                    this,                    &CAlbum::photoMini_onClicked);
 
             _viDbItems.push_back(dbPhotoMinis[i].dbPhoto);
         }
-    }
-
-    // slots
-    {
-        connect(this, &CAlbum::sig_photo_clicked,
-                this, &CAlbum::photo_onLoop);
     }
 
     // HACK: for ui.saPhotosMini->sizePolicy() == Fixed
@@ -441,26 +400,25 @@ CAlbum::photoMini_onUpdate(
     cint &a_index
 )
 {
-    CDbImage *dbPhotoMini   = _viDbItems.at(a_index);
-    cQString  csDbFieldName = _viDbItems.at(a_index)->dbFieldName();
+    CDbImage *dbPhotoMini = _viDbItems.at(a_index);
 
-    photoMini_onClicked(dbPhotoMini, csDbFieldName);
+    photoMini_onClicked(dbPhotoMini);
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::photoMini_onClicked(
-    CDbImage *a_dbPhoto,
-    cQString &a_dbFieldName
+    QObject *a_sender
 )
 {
-    qTEST(NULL != a_dbPhoto);
-    qTEST(!a_dbFieldName.isEmpty());
+    qTEST(NULL != a_sender);
 
-    // lblPhotoMini
+    CDbImage *dbPhoto = static_cast<CDbImage *>(a_sender);
+
+    // dbPhotoMini
     {
         // set border
         Q_FOREACH (CDbImage *it_item, _viDbItems) {
-            if (a_dbPhoto == it_item) {
+            if (dbPhoto == it_item) {
                 // set current indexes
                 CDbImage::currentIndex        = it_item->index();
                 CDbImage::currentDbImageLabel = it_item;
@@ -472,10 +430,12 @@ CAlbum::photoMini_onClicked(
         }
     }
 
-    // lblPhoto
+    // ui.dbPhoto
     {
+        cQString csDbFieldName = dbPhoto->dbFieldName();
+
         cQByteArray baPhoto = _tmModel->record(_ciDbRecordIndex)
-                                    .value(a_dbFieldName).toByteArray();
+                                    .value(csDbFieldName).toByteArray();
 
         if (baPhoto.isEmpty()) {
             ui.dbPhoto->setTextDefault();
