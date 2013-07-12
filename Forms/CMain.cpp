@@ -218,6 +218,8 @@ CMain::_initMain()
 
         ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
                               ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
+        connect(ui.dbPhoto, &CDbImage::sig_doubleClicked,
+                this,       &CMain::actView_onAlbum);
     }
 
     //--------------------------------------------------
