@@ -115,7 +115,7 @@ CAlbum::resizeEvent(
     if (!_pixPhoto.isNull()) {
         QSize szScaled = _pixPhoto.size();
 
-        // TODO: szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
+        szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
 
         if (NULL     == ui.dbPhoto->pixmap() ||
             szScaled != ui.dbPhoto->pixmap()->size())
@@ -188,6 +188,8 @@ CAlbum::_initMain() {
     }
 
     // ui.dbPhoto
+    ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 1, _ciDbRecordIndex,
+                          PHOTO_SIZE, NULL);
     ui.dbPhoto->installEventFilter(this);
     ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
 
@@ -294,16 +296,14 @@ CAlbum::_photoUpdate()
 {
     qTEST(!_pixPhoto.isNull());
 
-#if TEM_DISABLE
-    cQSize  cszSize   = QSize(ui.lblPhoto->width()  - PHOTO_MARGIN,
-                              ui.lblPhoto->height() - PHOTO_MARGIN);
+    cQSize  cszSize   = QSize(ui.dbPhoto->width()  - PHOTO_MARGIN,
+                              ui.dbPhoto->height() - PHOTO_MARGIN);
     QPixmap pixScaled = _pixPhoto.scaled(
                               cszSize,
                               Qt::KeepAspectRatio,
                               Qt::FastTransformation);
 
-    ui.lblPhoto->setPixmap(pixScaled);
-#endif
+    ui.dbPhoto->setPixmap(pixScaled);
 }
 //------------------------------------------------------------------------------
 
