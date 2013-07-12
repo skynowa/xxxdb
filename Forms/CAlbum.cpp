@@ -195,16 +195,13 @@ CAlbum::_initMain() {
 
     // _viDbItems
     {
-        csize_t ciPhotoNum = PHOTO_NUM;
-
         struct SDbPhotoMini {
             CDbImage *dbPhoto;
             cQString  field;
         };
-
         typedef const SDbPhotoMini cdb_photo_mini_t;
 
-        cdb_photo_mini_t dbPhotoMinis[ciPhotoNum] = {
+        cdb_photo_mini_t dbPhotoMinis[PHOTO_NUM] = {
             { ui.dbPhoto_1,  DB_F_PHOTOS_1  },
             { ui.dbPhoto_2,  DB_F_PHOTOS_2  },
             { ui.dbPhoto_3,  DB_F_PHOTOS_3  },
@@ -223,17 +220,11 @@ CAlbum::_initMain() {
         };
 
         // fill _viDbItems
-        _viDbItems.reserve(ciPhotoNum);
+        _viDbItems.reserve(PHOTO_NUM);
 
-        for (size_t i = 0; i < ciPhotoNum; ++ i) {
-            dbPhotoMinis[i].dbPhoto->construct(
-                                        this,
-                                        _tmModel,
-                                        dbPhotoMinis[i].field,
-                                        i,
-                                        _ciDbRecordIndex,
-                                        PHOTO_MINI_SIZE,
-                                        NULL);
+        for (size_t i = 0; i < PHOTO_NUM; ++ i) {
+            dbPhotoMinis[i].dbPhoto->construct(this, _tmModel,
+                dbPhotoMinis[i].field, i, _ciDbRecordIndex, PHOTO_MINI_SIZE, NULL);
 
             dbPhotoMinis[i].dbPhoto->installEventFilter(this);
             dbPhotoMinis[i].dbPhoto->setFixedSize(PHOTO_MINI_SIZE);
