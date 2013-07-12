@@ -64,7 +64,7 @@ CAlbum::eventFilter(
                 Q_EMIT sig_photo_clicked();
             } else {
                 // other CDbImages
-                CDbImage *dbPhotoMini  = dbPhoto;
+                CDbImage *dbPhotoMini   = dbPhoto;
                 cQString  csDbFieldName = CDbImage::find(_viDbItems, dbPhotoMini)->dbFieldName();
 
                 Q_EMIT sig_photoMini_clicked(dbPhotoMini, csDbFieldName);
@@ -115,7 +115,7 @@ CAlbum::resizeEvent(
     if (!_pixPhoto.isNull()) {
         QSize szScaled = _pixPhoto.size();
 
-        szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
+        // TODO: szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
 
         if (NULL     == ui.dbPhoto->pixmap() ||
             szScaled != ui.dbPhoto->pixmap()->size())
