@@ -64,153 +64,153 @@
         </rect>
        </property>
        <layout class="QGridLayout" name="gridLayout_3">
-        <item row="0" column="13">
+        <item row="0" column="30">
          <widget class="CDbImage" name="dbPhoto_14">
-          <property name="toolTip">
-           <string>CDbImage</string>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
           </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0">
-         <widget class="CDbImage" name="dbPhoto_1">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="0" column="4">
-         <widget class="CDbImage" name="dbPhoto_5">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="2">
-         <widget class="CDbImage" name="dbPhoto_3">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="10">
-         <widget class="CDbImage" name="dbPhoto_11">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="6">
-         <widget class="CDbImage" name="dbPhoto_7">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="9">
-         <widget class="CDbImage" name="dbPhoto_10">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="12">
-         <widget class="CDbImage" name="dbPhoto_13">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="5">
-         <widget class="CDbImage" name="dbPhoto_6">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="1">
-         <widget class="CDbImage" name="dbPhoto_2">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="7">
-         <widget class="CDbImage" name="dbPhoto_8">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="11">
-         <widget class="CDbImage" name="dbPhoto_12">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="8">
-         <widget class="CDbImage" name="dbPhoto_9">
-          <property name="toolTip">
-           <string>CDbImage</string>
-          </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="3">
+        <item row="0" column="20">
          <widget class="CDbImage" name="dbPhoto_4">
-          <property name="toolTip">
-           <string>CDbImage</string>
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
           </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
-        <item row="0" column="14">
-         <widget class="CDbImage" name="dbPhoto_15">
-          <property name="toolTip">
-           <string>CDbImage</string>
+        <item row="0" column="19">
+         <widget class="CDbImage" name="dbPhoto_3">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
           </property>
-          <property name="whatsThis">
-           <string>CDbImage</string>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="17">
+         <widget class="CDbImage" name="dbPhoto_1">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="21">
+         <widget class="CDbImage" name="dbPhoto_5">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="18">
+         <widget class="CDbImage" name="dbPhoto_2">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="22">
+         <widget class="CDbImage" name="dbPhoto_6">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="23">
+         <widget class="CDbImage" name="dbPhoto_7">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="25">
+         <widget class="CDbImage" name="dbPhoto_9">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="24">
+         <widget class="CDbImage" name="dbPhoto_8">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="28">
+         <widget class="CDbImage" name="dbPhoto_12">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="29">
+         <widget class="CDbImage" name="dbPhoto_13">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="26">
+         <widget class="CDbImage" name="dbPhoto_10">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="27">
+         <widget class="CDbImage" name="dbPhoto_11">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
+          </property>
+         </widget>
+        </item>
+        <item row="0" column="31">
+         <widget class="CDbImage" name="dbPhoto_15">
+          <property name="frameShape">
+           <enum>QFrame::Box</enum>
+          </property>
+          <property name="alignment">
+           <set>Qt::AlignCenter</set>
           </property>
          </widget>
         </item>
