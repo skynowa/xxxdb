@@ -189,7 +189,7 @@ CAlbum::_initMain() {
 
     // ui.dbPhoto
     ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 1, _ciDbRecordIndex,
-                          PHOTO_SIZE, NULL);
+                          PHOTO_SIZE);
     ui.dbPhoto->installEventFilter(this);
     ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
 
@@ -224,7 +224,7 @@ CAlbum::_initMain() {
 
         for (size_t i = 0; i < PHOTO_NUM; ++ i) {
             dbPhotoMinis[i].dbPhoto->construct(this, _tmModel,
-                dbPhotoMinis[i].field, i, _ciDbRecordIndex, PHOTO_MINI_SIZE, NULL);
+                dbPhotoMinis[i].field, i, _ciDbRecordIndex, PHOTO_MINI_SIZE);
 
             dbPhotoMinis[i].dbPhoto->installEventFilter(this);
             dbPhotoMinis[i].dbPhoto->setFixedSize(PHOTO_MINI_SIZE);
