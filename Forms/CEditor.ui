@@ -742,12 +742,12 @@
           </widget>
          </item>
          <item row="0" column="0" colspan="2">
-          <widget class="CDbImage" name="cDbImage">
-           <property name="toolTip">
-            <string>CDbImage</string>
+          <widget class="CDbImage" name="dbImage">
+           <property name="frameShape">
+            <enum>QFrame::Box</enum>
            </property>
-           <property name="whatsThis">
-            <string>CDbImage</string>
+           <property name="alignment">
+            <set>Qt::AlignCenter</set>
            </property>
           </widget>
          </item>
