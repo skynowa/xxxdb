@@ -161,9 +161,9 @@
           <enum>QFrame::Plain</enum>
          </property>
          <property name="currentIndex">
-          <number>0</number>
+          <number>11</number>
          </property>
-         <widget class="QWidget" name="tabwGroupsDetailPage1_2">
+         <widget class="QWidget" name="tabwGroupsDetailPage1">
           <layout class="QGridLayout" name="gridLayout_28">
            <item row="2" column="0" rowspan="2" colspan="2">
             <layout class="QGridLayout" name="gridLayout_29">
@@ -218,7 +218,7 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QComboBox" name="cboSurname_2">
+              <widget class="QComboBox" name="cboSurname">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -243,7 +243,7 @@
               </widget>
              </item>
              <item row="8" column="1">
-              <widget class="QComboBox" name="cboHairColor_2">
+              <widget class="QComboBox" name="cboHairColor">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -268,7 +268,7 @@
               </widget>
              </item>
              <item row="0" column="1">
-              <widget class="QComboBox" name="cboNick_2">
+              <widget class="QComboBox" name="cboNick">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -343,7 +343,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QComboBox" name="cboAge_2">
+              <widget class="QComboBox" name="cboAge">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -368,7 +368,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QComboBox" name="cboHeight_2">
+              <widget class="QComboBox" name="cboHeight">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -393,7 +393,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboName_2">
+              <widget class="QComboBox" name="cboName">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -418,7 +418,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboPatronymic_2">
+              <widget class="QComboBox" name="cboPatronymic">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -468,7 +468,7 @@
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QComboBox" name="cboWeight_2">
+              <widget class="QComboBox" name="cboWeight">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -543,7 +543,7 @@
               </widget>
              </item>
              <item row="9" column="1">
-              <widget class="QComboBox" name="cboAppearance_2">
+              <widget class="QComboBox" name="cboAppearance">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -593,7 +593,7 @@
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="QComboBox" name="cboHairLength_2">
+              <widget class="QComboBox" name="cboHairLength">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -618,7 +618,7 @@
               </widget>
              </item>
              <item row="10" column="1">
-              <widget class="QComboBox" name="cboAgreement_2">
+              <widget class="QComboBox" name="cboAgreement">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -753,7 +753,7 @@
            <item row="2" column="2">
             <layout class="QGridLayout" name="gridLayout_30">
              <item row="1" column="0">
-              <widget class="QLabel" name="lblPhotoInfo_3">
+              <widget class="QLabel" name="lblPhotoInfo_2">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Preferred">
                  <horstretch>0</horstretch>
@@ -778,14 +778,14 @@
               </widget>
              </item>
              <item row="1" column="1">
-              <widget class="QToolButton" name="tbtnPhotoAlbum_2">
+              <widget class="QToolButton" name="tbtnPhotoAlbum">
                <property name="text">
                 <string>...</string>
                </property>
               </widget>
              </item>
              <item row="0" column="0" colspan="2">
-              <widget class="CDbImage" name="dbPhoto_3">
+              <widget class="CDbImage" name="dbPhoto_2">
                <property name="frameShape">
                 <enum>QFrame::Box</enum>
                </property>
@@ -832,7 +832,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_32">
              <item row="4" column="1">
-              <widget class="QComboBox" name="cboMobile3_2">
+              <widget class="QComboBox" name="cboMobile3">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -882,7 +882,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboMobile1_2">
+              <widget class="QComboBox" name="cboMobile1">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -957,7 +957,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboMobile2_2">
+              <widget class="QComboBox" name="cboMobile2">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1007,7 +1007,7 @@
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="QPlainTextEdit" name="tedtPhoneOther_2">
+              <widget class="QPlainTextEdit" name="tedtPhoneOther">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1029,7 +1029,7 @@
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QComboBox" name="cboPhoneJob_2">
+              <widget class="QComboBox" name="cboPhoneJob">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1054,7 +1054,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QComboBox" name="cboPhoneHome_2">
+              <widget class="QComboBox" name="cboPhoneHome">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1218,7 +1218,7 @@
               </widget>
              </item>
              <item row="8" column="1">
-              <widget class="QComboBox" name="cboPorch_2">
+              <widget class="QComboBox" name="cboPorch">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1243,7 +1243,7 @@
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="QComboBox" name="cboHouse_2">
+              <widget class="QComboBox" name="cboHouse">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1268,7 +1268,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QComboBox" name="cboDistrict_2">
+              <widget class="QComboBox" name="cboDistrict">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1332,7 +1332,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboCountry_2">
+              <widget class="QComboBox" name="cboCountry">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1382,7 +1382,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QComboBox" name="cboCity_2">
+              <widget class="QComboBox" name="cboCity">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1457,7 +1457,7 @@
               </widget>
              </item>
              <item row="10" column="1">
-              <widget class="QComboBox" name="cboApartment_2">
+              <widget class="QComboBox" name="cboApartment">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1507,7 +1507,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboCode_2">
+              <widget class="QComboBox" name="cboCode">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1532,7 +1532,7 @@
               </widget>
              </item>
              <item row="9" column="1">
-              <widget class="QComboBox" name="cboFloor_2">
+              <widget class="QComboBox" name="cboFloor">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1582,7 +1582,7 @@
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QComboBox" name="cboStreet_2">
+              <widget class="QComboBox" name="cboStreet">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1707,7 +1707,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_36">
              <item row="2" column="0">
-              <widget class="QPlainTextEdit" name="tedtEmail_2"/>
+              <widget class="QPlainTextEdit" name="tedtEmail"/>
              </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_86">
@@ -1748,7 +1748,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_38">
              <item row="2" column="0">
-              <widget class="QPlainTextEdit" name="tedtWeb_2"/>
+              <widget class="QPlainTextEdit" name="tedtWeb"/>
              </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_87">
@@ -1814,7 +1814,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboSkype_2">
+              <widget class="QComboBox" name="cboSkype">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1864,7 +1864,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboIcq_2">
+              <widget class="QComboBox" name="cboIcq">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1953,7 +1953,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_42">
              <item row="5" column="1">
-              <widget class="QComboBox" name="cboCompany_2">
+              <widget class="QComboBox" name="cboCompany">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -1978,7 +1978,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QComboBox" name="cboSalary_2">
+              <widget class="QComboBox" name="cboSalary">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2078,7 +2078,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboProfession_2">
+              <widget class="QComboBox" name="cboProfession">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2103,7 +2103,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboAddress_2">
+              <widget class="QComboBox" name="cboAddress">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2267,7 +2267,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QDateTimeEdit" name="dtBirthdayFather_2">
+              <widget class="QDateTimeEdit" name="dtBirthdayFather">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2295,7 +2295,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QDateTimeEdit" name="dtBirthday_2">
+              <widget class="QDateTimeEdit" name="dtBirthday">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2453,7 +2453,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QDateTimeEdit" name="dtBirthdayMother_2">
+              <widget class="QDateTimeEdit" name="dtBirthdayMother">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2481,7 +2481,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QDateTimeEdit" name="dtDayDating_2">
+              <widget class="QDateTimeEdit" name="dtDayDating">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2509,7 +2509,7 @@
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QDateTimeEdit" name="dtDayFirstKiss_2">
+              <widget class="QDateTimeEdit" name="dtDayFirstKiss">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2537,7 +2537,7 @@
               </widget>
              </item>
              <item row="7" column="1">
-              <widget class="QDateTimeEdit" name="dtDayFirstSex_2">
+              <widget class="QDateTimeEdit" name="dtDayFirstSex">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2715,7 +2715,7 @@
               </widget>
              </item>
              <item row="2" column="1">
-              <widget class="QComboBox" name="cboHobby_2">
+              <widget class="QComboBox" name="cboHobby">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2779,7 +2779,7 @@
               </widget>
              </item>
              <item row="3" column="1">
-              <widget class="QComboBox" name="cboSports_2">
+              <widget class="QComboBox" name="cboSports">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2804,7 +2804,7 @@
               </widget>
              </item>
              <item row="4" column="1">
-              <widget class="QComboBox" name="cboSmoking_2">
+              <widget class="QComboBox" name="cboSmoking">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2829,7 +2829,7 @@
               </widget>
              </item>
              <item row="5" column="1">
-              <widget class="QComboBox" name="cboAlcohol_2">
+              <widget class="QComboBox" name="cboAlcohol">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -2854,7 +2854,7 @@
               </widget>
              </item>
              <item row="6" column="1">
-              <widget class="QComboBox" name="cboDrugs_2">
+              <widget class="QComboBox" name="cboDrugs">
                <property name="sizePolicy">
                 <sizepolicy hsizetype="Fixed" vsizetype="Fixed">
                  <horstretch>0</horstretch>
@@ -3048,7 +3048,7 @@
            <item row="0" column="0">
             <layout class="QGridLayout" name="gridLayout_52">
              <item row="2" column="0">
-              <widget class="QPlainTextEdit" name="tedtNotes_2"/>
+              <widget class="QPlainTextEdit" name="tedtNotes"/>
              </item>
              <item row="0" column="0">
               <widget class="QLabel" name="label_112">

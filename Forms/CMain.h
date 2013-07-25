@@ -33,10 +33,12 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
+    // tab_1
     QTranslator    *_trTranslator;
     QString         _sTranslatorLang;
     QSqlDatabase    _dbDatabase;
     QSqlTableModel *_tmModel;
+    QDataWidgetMapper *_dmText;           ///< one mapper for all text items
     db_items_t      _hsDbItems;
 
     QComboBox      *_cboFindText;
@@ -45,6 +47,7 @@ private:
     void            _construct();
     void            _destruct();
     void            _initMain();
+    void            _initMain_2();
     void            _initModel();
     void            _initActions();
     void            _retranslateUi();
@@ -87,6 +90,17 @@ private:
     //
     void            onQuickFind(cQString &arg);
     void            cboDbFields_onCurrentTextChanged(cQString &arg);
+
+private:
+    // tab_2
+    void               _resetAll_2();
+    void               _saveAll_2();
+
+    // slots
+    void               onAlbum();
+    void               bbxButtons_onClicked(QAbstractButton *button);
+    void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
+                                                     QTreeWidgetItem *previous);
 
     friend class CIni;
 };
