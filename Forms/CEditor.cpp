@@ -200,8 +200,7 @@ CEditor::_initMain()
 
     // _dbImageLabel
     {
-        // TODO: 0
-        ui.cDbImage->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+        ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
                                _ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
     }
 
