@@ -155,7 +155,7 @@ CMain::_initMain()
 
     // ui.dbPhoto
     {
-        ui.dbPhoto->setFixedSize(PHOTO_SIZE);
+        //// ui.dbPhoto->setFixedSize(PHOTO_SIZE);
         ui.dbPhoto->setBackgroundRole(QPalette::Base);
     }
 
@@ -186,6 +186,13 @@ CMain::_initMain()
                 this,         &CMain::cboDbFields_onCurrentTextChanged);
 
         ui.tbQuickFind->addWidget(_cboDbFields);
+    }
+
+    //--------------------------------------------------
+    // ui.tabInfo
+    {
+        ui.tabInfo->setTabText(0, tr("Full view"));
+        ui.tabInfo->setTabText(1, tr("Detail view"));
     }
 
     //--------------------------------------------------

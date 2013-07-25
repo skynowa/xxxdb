@@ -19,6 +19,19 @@
   </property>
   <widget class="QWidget" name="centralWidget">
    <layout class="QGridLayout" name="gridLayout_2">
+    <item row="2" column="0">
+     <widget class="QGroupBox" name="gbxShortInfo">
+      <property name="minimumSize">
+       <size>
+        <width>300</width>
+        <height>0</height>
+       </size>
+      </property>
+      <property name="checkable">
+       <bool>false</bool>
+      </property>
+     </widget>
+    </item>
     <item row="1" column="0">
      <widget class="QGroupBox" name="gbxPhotoAlbum">
       <property name="minimumSize">
@@ -51,22 +64,6 @@
       </layout>
      </widget>
     </item>
-    <item row="0" column="1" rowspan="3">
-     <widget class="QTableView" name="tvInfo"/>
-    </item>
-    <item row="2" column="0">
-     <widget class="QGroupBox" name="gbxShortInfo">
-      <property name="minimumSize">
-       <size>
-        <width>300</width>
-        <height>0</height>
-       </size>
-      </property>
-      <property name="checkable">
-       <bool>false</bool>
-      </property>
-     </widget>
-    </item>
     <item row="0" column="0">
      <widget class="CDbImage" name="dbPhoto">
       <property name="frameShape">
@@ -75,6 +72,28 @@
       <property name="alignment">
        <set>Qt::AlignCenter</set>
       </property>
+     </widget>
+    </item>
+    <item row="0" column="1" rowspan="3">
+     <widget class="QTabWidget" name="tabInfo">
+      <property name="currentIndex">
+       <number>0</number>
+      </property>
+      <widget class="QWidget" name="tabInfoFull">
+       <attribute name="title">
+        <string>Tab 1</string>
+       </attribute>
+       <layout class="QGridLayout" name="gridLayout_3">
+        <item row="0" column="0">
+         <widget class="QTableView" name="tvInfo"/>
+        </item>
+       </layout>
+      </widget>
+      <widget class="QWidget" name="tabInfoDetail">
+       <attribute name="title">
+        <string>Tab 2</string>
+       </attribute>
+      </widget>
      </widget>
     </item>
    </layout>
