@@ -265,11 +265,22 @@ CIni::get(
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
-        cbool isVisible = _iniApp->value("statusbar/visible", true).toBool();
+        // ui.splitter
+        {
+            cQByteArray state = _iniApp->value("spliter/state", "").toByteArray();
 
-        // apply
-        a_wnd->ui.actView_Statusbar->setChecked(isVisible);
-        a_wnd->ui.sbInfo->setVisible(isVisible);
+            // apply
+            a_wnd->ui.splitter->restoreState(state);
+        }
+
+        // ui.sbInfo
+        {
+            cbool isVisible = _iniApp->value("statusbar/visible", true).toBool();
+
+            // apply
+            a_wnd->ui.actView_Statusbar->setChecked(isVisible);
+            a_wnd->ui.sbInfo->setVisible(isVisible);
+        }
 
         _iniApp->endGroup();
     }
@@ -331,6 +342,9 @@ CIni::set(
     // ui.sbInfo
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/view");
+
+        cQByteArray state = a_wnd->ui.splitter->saveState();
+        _iniApp->setValue("spliter/state", state);
 
         cbool isVisible = a_wnd->ui.sbInfo->isVisible();
         _iniApp->setValue("statusbar/visible", isVisible);
