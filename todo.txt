@@ -1,1 +1,0 @@
-ADD: fill QTableWidget 'View detail'

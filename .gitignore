@@ -21,7 +21,7 @@ Widgets/CDbImage/debug
 Widgets/CDbImage/release
 
 ##### files #####
-TODO.txt
+todo.txt
 *.pro.user
 *.autosave
 Makefile*
