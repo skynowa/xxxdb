@@ -21,75 +21,75 @@ class CMain :
     Q_OBJECT
 
 public:
-    Ui::CMainClass  ui;
-    CSqlNavigator   snNavigator;
-    CAlbum         *wndAlbum;
+    Ui::CMainClass     ui;
+    CSqlNavigator      snNavigator;
+    CAlbum            *wndAlbum;
 
-                    CMain(QWidget *parent, Qt::WindowFlags flags);
+                       CMain(QWidget *parent, Qt::WindowFlags flags);
 
 protected:
-    virtual void    keyPressEvent(QKeyEvent *event);
-    virtual void    changeEvent(QEvent *event);
-    virtual void    closeEvent(QCloseEvent *event);
+    virtual void       keyPressEvent(QKeyEvent *event);
+    virtual void       changeEvent(QEvent *event);
+    virtual void       closeEvent(QCloseEvent *event);
 
 private:
     // tab_1
-    QTranslator    *_trTranslator;
-    QString         _sTranslatorLang;
-    QSqlDatabase    _dbDatabase;
-    QSqlTableModel *_tmModel;
-    QDataWidgetMapper *_dmText;           ///< one mapper for all text items
-    db_items_t      _hsDbItems;
+    QTranslator       *_trTranslator;
+    QString            _sTranslatorLang;
+    QSqlDatabase       _dbDatabase;
+    QSqlTableModel    *_tmModel;
+    QDataWidgetMapper *_dmText; ///< one mapper for all text items
+    db_items_t         _hsDbItems;
 
-    QComboBox      *_cboFindText;
-    QComboBox      *_cboDbFields;
+    QComboBox         *_cboFindText;
+    QComboBox         *_cboDbFields;
 
-    void            _construct();
-    void            _destruct();
-    void            _initMain();
-    void            _initMain_2();
-    void            _initModel();
-    void            _initActions();
-    void            _retranslateUi();
+    void               _construct();
+    void               _destruct();
+    void               _initMain();
+    void               _initMain_2();
+    void               _initModel();
+    void               _initActions();
+    void               _retranslateUi();
 
     // slots
     // group "Exit"
-    void            actFile_onExit();
-    void            actFile_onMinimize();
+    void               actFile_onExit();
+    void               actFile_onMinimize();
 
     // group "Edit"
-    void            actEdit_onFirst();
-    void            actEdit_onPrior();
-    void            actEdit_onNext();
-    void            actEdit_onLast();
-    void            actEdit_onGoTo();
-    void            actEdit_onInsert();
-    void            actEdit_onRemove();
-    void            actEdit_onEdit();
+    void               actEdit_onFirst();
+    void               actEdit_onPrior();
+    void               actEdit_onNext();
+    void               actEdit_onLast();
+    void               actEdit_onGoTo();
+    void               actEdit_onInsert();
+    void               actEdit_onRemove();
+    void               actEdit_onEdit();
 
     // group "Find"
-    void            actFind_onSearch();
-    void            actFind_onTextClear();
+    void               actFind_onSearch();
+    void               actFind_onTextClear();
 
     // group "View"
-    void            actView_onMainToolbar();
-    void            actView_onQuickFindToolbar();
-    void            actView_onColumns();
-    void            actView_onAlbum();
-    void            actView_onStatusbar();
-    void            actView_onLanguageEn();
-    void            actView_onLanguageRu();
+    void               actView_onMainToolbar();
+    void               actView_onQuickFindToolbar();
+    void               actView_onColumns();
+    void               actView_onAlbum();
+    void               actView_onStatusbar();
+    void               actView_onLanguageEn();
+    void               actView_onLanguageRu();
 
     // group "Options"
-    void            actOptions_onSettings();
+    void               actOptions_onSettings();
 
     // group "Help"
-    void            actHelp_onFaq();
-    void            actHelp_onAbout();
+    void               actHelp_onFaq();
+    void               actHelp_onAbout();
 
     //
-    void            onQuickFind(cQString &arg);
-    void            cboDbFields_onCurrentTextChanged(cQString &arg);
+    void               onQuickFind(cQString &arg);
+    void               cboDbFields_onCurrentTextChanged(cQString &arg);
 
 private:
     // tab_2
@@ -100,7 +100,7 @@ private:
     void               onAlbum();
     void               bbxButtons_onClicked(QAbstractButton *button);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
-                                                     QTreeWidgetItem *previous);
+                           QTreeWidgetItem *previous);
 
     friend class CIni;
 };

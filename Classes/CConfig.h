@@ -145,7 +145,7 @@ struct SDbRecord
     ///< DB fields
 {
     const int   index;      ///< index
-    const bool  isUi;       ///< is showing in UI
+    const bool  isNonUi;    ///< is non UI DB field
     const char *field;      ///< DB field name
     const char *caption;    ///< QTableView header caption
 };
@@ -161,6 +161,7 @@ public:
     static cSDbRecord dbRecords[65];  ///< array of DB fields
 };
 //------------------------------------------------------------------------------
+
 
 /*******************************************************************************
 *   types
