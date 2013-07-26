@@ -273,6 +273,12 @@ CIni::get(
             a_wnd->ui.splitter->restoreState(state);
         }
 
+        // ui.tabInfo
+        {
+            cint tabIndex = _iniApp->value("tab_index", 0).toInt();
+            a_wnd->ui.tabInfo->setCurrentIndex(tabIndex);
+        }
+
         // ui.sbInfo
         {
             cbool isVisible = _iniApp->value("statusbar/visible", true).toBool();
@@ -345,6 +351,9 @@ CIni::set(
 
         cQByteArray state = a_wnd->ui.splitter->saveState();
         _iniApp->setValue("spliter/state", state);
+
+        cint tabIndex = a_wnd->ui.tabInfo->currentIndex();
+        _iniApp->setValue("tab_index", tabIndex);
 
         cbool isVisible = a_wnd->ui.sbInfo->isVisible();
         _iniApp->setValue("statusbar/visible", isVisible);
