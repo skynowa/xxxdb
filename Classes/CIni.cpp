@@ -278,7 +278,7 @@ CIni::get(
         _iniApp->endGroup();
     }
 
-    // ui.sbInfo
+    // view
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
@@ -362,18 +362,27 @@ CIni::set(
         _iniApp->endGroup();
     }
 
-    // ui.sbInfo
+    // view
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
-        cQByteArray state = a_wnd->ui.splitter->saveState();
-        _iniApp->setValue("spliter/state", state);
+        // ui.splitter
+        {
+            cQByteArray state = a_wnd->ui.splitter->saveState();
+            _iniApp->setValue("spliter/state", state);
+        }
 
-        cint tabIndex = a_wnd->ui.tabInfo->currentIndex();
-        _iniApp->setValue("tab_index", tabIndex);
+        // ui.tabInfo
+        {
+            cint tabIndex = a_wnd->ui.tabInfo->currentIndex();
+            _iniApp->setValue("tab_index", tabIndex);
+        }
 
-        cbool isVisible = a_wnd->ui.sbInfo->isVisible();
-        _iniApp->setValue("statusbar/visible", isVisible);
+        // ui.sbInfo
+        {
+            cbool isVisible = a_wnd->ui.sbInfo->isVisible();
+            _iniApp->setValue("statusbar/visible", isVisible);
+        }
 
         _iniApp->endGroup();
     }
