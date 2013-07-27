@@ -367,8 +367,6 @@ CMain::_initMain_2()
     {
         connect(ui.tbtnPhotoAlbum, &QToolButton::clicked,
                 this,              &CMain::onAlbum);
-        connect(ui.bbxButtons,     &QDialogButtonBox::clicked,
-                this,              &CMain::bbxButtons_onClicked);
         connect(ui.twGroups,       &QTreeWidget::currentItemChanged,
                 this,              &CMain::twGroups_onCurrentItemChanged);
     }
@@ -980,19 +978,6 @@ CMain::_resetAll_2()
 }
 //------------------------------------------------------------------------------
 void
-CMain::_saveAll_2()
-{
-#if 0
-    // set current index
-    _dmText->setCurrentIndex(_ciDbRecordIndex);
-    _dbImageLabel->mapper()->setCurrentIndex(_ciDbRecordIndex);
-
-    // set current index
-    snNavigator->goTo(_ciDbRecordIndex);
-#endif
-}
-//------------------------------------------------------------------------------
-void
 CMain::onAlbum()
 {
     qPTR_DELETE(wndAlbum);
@@ -1009,26 +994,6 @@ void CMain::tabInfo_onCurrentChanged(
         // set default control
         ui.cboNick->setFocus();
         ui.cboNick->lineEdit()->selectAll();
-    }
-}
-//------------------------------------------------------------------------------
-void
-CMain::bbxButtons_onClicked(
-    QAbstractButton *a_button
-)
-{
-    QDialogButtonBox::StandardButton sbRv = ui.bbxButtons->standardButton(a_button);
-    switch (sbRv) {
-        case QDialogButtonBox::Reset:
-            _resetAll_2();
-            break;
-        case QDialogButtonBox::Ok:
-            _saveAll_2();
-            close();
-            break;
-        default:
-            qTEST(false);
-            break;
     }
 }
 //------------------------------------------------------------------------------

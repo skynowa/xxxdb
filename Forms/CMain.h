@@ -94,12 +94,10 @@ private:
 private:
     // tab_2
     void               _resetAll_2();
-    void               _saveAll_2();
 
     // slots
     void               onAlbum();
     void               tabInfo_onCurrentChanged(int index);
-    void               bbxButtons_onClicked(QAbstractButton *button);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                            QTreeWidgetItem *previous);
 
