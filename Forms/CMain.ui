@@ -115,6 +115,9 @@
        </layout>
       </widget>
       <widget class="QTabWidget" name="tabInfo">
+       <property name="currentIndex">
+        <number>0</number>
+       </property>
        <widget class="QWidget" name="tabInfoFull">
         <attribute name="title">
          <string>Tab 1</string>

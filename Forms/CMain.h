@@ -93,7 +93,7 @@ private:
 
 private:
     // tab_2
-    void               _resetAll_2();
+    void               _detailView_resetAll();
 
     // slots
     void               onAlbum();

@@ -919,7 +919,7 @@ CMain::cboDbFields_onCurrentTextChanged(
 
 //------------------------------------------------------------------------------
 void
-CMain::_resetAll_2()
+CMain::_detailView_resetAll()
 {
     // ensure for reset
     {
