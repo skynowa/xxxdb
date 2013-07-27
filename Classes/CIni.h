@@ -29,9 +29,6 @@ public:
     static void       get(CMain *wnd);
     static void       set(CMain *wnd);
 
-    static void       get(CEditor *wnd);
-    static void       set(CEditor *wnd);
-
     static void       get(CAlbum *wnd);
     static void       set(CAlbum *wnd);
 

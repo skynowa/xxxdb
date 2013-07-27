@@ -24,7 +24,6 @@ HEADERS         = QtLib/Common.h \
                   Classes/CConfig.h \
                   Classes/CIni.h \
                   Forms/CMain.h \
-                  Forms/CEditor.h \
                   Forms/CAlbum.h \
                   Forms/CColumns.h \
                   Forms/CAbout.h \
@@ -37,14 +36,12 @@ SOURCES         = main.cpp \
                   Classes/CConfig.cpp \
                   Classes/CIni.cpp \
                   Forms/CMain.cpp \
-                  Forms/CEditor.cpp \
                   Forms/CAlbum.cpp \
                   Forms/CColumns.cpp \
                   Forms/CAbout.cpp \
                   Forms/CSettings.cpp
 
 FORMS           = Forms/CMain.ui \
-                  Forms/CEditor.ui \
                   Forms/CAlbum.ui \
                   Forms/CColumns.ui \
                   Forms/CAbout.ui \

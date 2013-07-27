@@ -9,7 +9,6 @@
 #include "../QtLib/CUtils.h"
 #include "../QtLib/CApplication.h"
 #include "../Classes/CIni.h"
-#include "CEditor.h"
 #include "CAlbum.h"
 #include "CColumns.h"
 #include "CAbout.h"
@@ -693,12 +692,6 @@ void
 CMain::actEdit_onInsert()
 {
     snNavigator.insert();
-
-    {
-        CEditor dlgEditor(this, _tmModel, &snNavigator);
-
-        (int)dlgEditor.exec();
-    }
 }
 //------------------------------------------------------------------------------
 void
@@ -730,9 +723,7 @@ CMain::actEdit_onEdit()
 {
     qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
 
-    CEditor dlgEditor(this, _tmModel, &snNavigator);
-
-    (int)dlgEditor.exec();
+    ui.tabInfo->setCurrentWidget(ui.tabInfoDetail);
 }
 //------------------------------------------------------------------------------
 

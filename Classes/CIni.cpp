@@ -8,7 +8,6 @@
 
 #include "../QtLib/CApplication.h"
 #include "../Forms/CMain.h"
-#include "../Forms/CEditor.h"
 #include "../Forms/CAlbum.h"
 
 
@@ -64,28 +63,6 @@ CIni::destruct()
 
     qTEST(_iniApp != NULL);
     qPTR_DELETE(_iniApp);
-}
-//------------------------------------------------------------------------------
-/* static */
-void
-CIni::get(
-    CEditor *a_wnd
-)
-{
-    qCHECK_DO(a_wnd == NULL, return);
-
-    _commonGet(a_wnd);
-}
-//------------------------------------------------------------------------------
-/* static */
-void
-CIni::set(
-    CEditor *a_wnd
-)
-{
-    qCHECK_DO(a_wnd == NULL, return);
-
-    _commonSet(a_wnd);
 }
 //------------------------------------------------------------------------------
 /* static */
