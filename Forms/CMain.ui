@@ -2,20 +2,6 @@
 <ui version="4.0">
  <class>CMainClass</class>
  <widget class="QMainWindow" name="CMainClass">
-  <property name="geometry">
-   <rect>
-    <x>0</x>
-    <y>0</y>
-    <width>1030</width>
-    <height>593</height>
-   </rect>
-  </property>
-  <property name="sizePolicy">
-   <sizepolicy hsizetype="Minimum" vsizetype="Minimum">
-    <horstretch>0</horstretch>
-    <verstretch>0</verstretch>
-   </sizepolicy>
-  </property>
   <property name="windowTitle">
    <string>XXXDb - accounting software for girls</string>
   </property>
@@ -93,12 +79,6 @@
         <item row="0" column="0" colspan="3">
          <widget class="CDbImage" name="dbPhoto">
           <property name="minimumSize">
-           <size>
-            <width>300</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="baseSize">
            <size>
             <width>300</width>
             <height>200</height>
@@ -848,6 +828,12 @@
                </item>
                <item row="0" column="0" colspan="2">
                 <widget class="CDbImage" name="dbPhoto_2">
+                 <property name="minimumSize">
+                  <size>
+                   <width>300</width>
+                   <height>200</height>
+                  </size>
+                 </property>
                  <property name="frameShape">
                   <enum>QFrame::Box</enum>
                  </property>
@@ -883,6 +869,19 @@
                 <size>
                  <width>40</width>
                  <height>20</height>
+                </size>
+               </property>
+              </spacer>
+             </item>
+             <item row="3" column="2">
+              <spacer name="verticalSpacer_2">
+               <property name="orientation">
+                <enum>Qt::Vertical</enum>
+               </property>
+               <property name="sizeHint" stdset="0">
+                <size>
+                 <width>20</width>
+                 <height>40</height>
                 </size>
                </property>
               </spacer>
@@ -3160,7 +3159,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1030</width>
+     <width>1084</width>
      <height>20</height>
     </rect>
    </property>

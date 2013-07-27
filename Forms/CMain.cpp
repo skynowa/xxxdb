@@ -154,12 +154,6 @@ CMain::_initMain()
         setGeometry(0, 0, APP_WIDTH, APP_HEIGHT);
     }
 
-    // ui.dbPhoto
-    {
-        //// ui.dbPhoto->setFixedSize(PHOTO_SIZE);
-        ui.dbPhoto->setBackgroundRole(QPalette::Base);
-    }
-
     // quick find
     {
         // _cboFindText
@@ -225,6 +219,11 @@ CMain::_initMain()
 
         ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
             ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
+        //// ui.dbPhoto->setFixedSize(PHOTO_SIZE);
+        ui.dbPhoto->setBackgroundRole(QPalette::Base);
+
+        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                ui.dbPhoto->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
         connect(ui.dbPhoto, &CDbImage::sig_doubleClicked,
                 this,       &CMain::actView_onAlbum);
     }
@@ -232,8 +231,6 @@ CMain::_initMain()
     //--------------------------------------------------
     // slots
     {
-        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
-                ui.dbPhoto->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
         connect(snNavigator.view(),   &QTableView::doubleClicked,
                 this,                 &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,         &QToolButton::clicked,
@@ -330,9 +327,6 @@ CMain::_initMain_2()
 
             // Note
             _hsDbItems.insert(ui.tedtNotes,        DB_F_NOTES_NOTES);
-
-            // TODO: Photos
-            // _hsDbItems.insert(ui.lblPhoto,      DB_F_PHOTOS_1);
         }
 
         // map DB items
@@ -355,11 +349,19 @@ CMain::_initMain_2()
         }
     }
 
-    // _dbImageLabel
+    // ui.dbPhoto_2
     {
-        ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
-                              snNavigator.view()->currentIndex().row(),
-                              PHOTO_SIZE, ui.lblPhotoInfo);
+        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
+
+        ui.dbPhoto_2->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+            ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
+        //// ui.dbPhoto_2->setFixedSize(PHOTO_SIZE);
+        ui.dbPhoto_2->setBackgroundRole(QPalette::Base);
+
+        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                ui.dbPhoto_2->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
+        connect(ui.dbPhoto_2, &CDbImage::sig_doubleClicked,
+                this,         &CMain::actView_onAlbum);
     }
 
     // signals
@@ -977,7 +979,8 @@ CMain::onAlbum()
     wndAlbum->show();
 }
 //------------------------------------------------------------------------------
-void CMain::tabInfo_onCurrentChanged(
+void
+CMain::tabInfo_onCurrentChanged(
     int index
 )
 {
