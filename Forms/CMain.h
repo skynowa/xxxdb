@@ -98,6 +98,7 @@ private:
 
     // slots
     void               onAlbum();
+    void               tabInfo_onCurrentChanged(int index);
     void               bbxButtons_onClicked(QAbstractButton *button);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                            QTreeWidgetItem *previous);

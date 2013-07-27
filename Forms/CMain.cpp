@@ -239,6 +239,8 @@ CMain::_initMain()
                 this,                 &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,         &QToolButton::clicked,
                 this,                 &CMain::actView_onAlbum);
+        connect(ui.tabInfo,           &QTabWidget::currentChanged,
+                this,                 &CMain::tabInfo_onCurrentChanged);
 
         QShortcut *shortCut = new QShortcut(Qt::CTRL + Qt::Key_F, this);
     #if 0
@@ -352,10 +354,6 @@ CMain::_initMain_2()
             connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
                     _dmText,                     &QDataWidgetMapper::setCurrentModelIndex );
         }
-
-        // set default control
-        ui.cboNick->setFocus();
-        ui.cboNick->lineEdit()->selectAll();
     }
 
     // _dbImageLabel
@@ -1001,6 +999,17 @@ CMain::onAlbum()
 
     wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
     wndAlbum->show();
+}
+//------------------------------------------------------------------------------
+void CMain::tabInfo_onCurrentChanged(
+    int index
+)
+{
+    if (index == 1) {
+        // set default control
+        ui.cboNick->setFocus();
+        ui.cboNick->lineEdit()->selectAll();
+    }
 }
 //------------------------------------------------------------------------------
 void
