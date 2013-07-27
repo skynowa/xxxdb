@@ -47,7 +47,7 @@ private:
     void               _construct();
     void               _destruct();
     void               _initMain();
-    void               _initMain_2();
+    void               _initInfoDetail();
     void               _initModel();
     void               _initActions();
     void               _retranslateUi();
@@ -90,13 +90,13 @@ private:
     //
     void               onQuickFind(cQString &arg);
     void               cboDbFields_onCurrentTextChanged(cQString &arg);
+    void               onAlbum();
 
 private:
     // tab_2
     void               _detailView_resetAll();
 
     // slots
-    void               onAlbum();
     void               tabInfo_onCurrentChanged(int index);
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                            QTreeWidgetItem *previous);

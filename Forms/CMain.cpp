@@ -112,7 +112,7 @@ CMain::_construct()
 {
     _initModel();
     _initMain();
-    _initMain_2();
+    _initInfoDetail();
     _initActions();
 }
 //------------------------------------------------------------------------------
@@ -250,7 +250,7 @@ CMain::_initMain()
 }
 //------------------------------------------------------------------------------
 void
-CMain::_initMain_2()
+CMain::_initInfoDetail()
 {
     // maps ui controls into DB fields
     {
@@ -903,6 +903,15 @@ CMain::cboDbFields_onCurrentTextChanged(
     Q_EMIT _cboFindText->currentTextChanged( _cboFindText->currentText() );
 }
 //------------------------------------------------------------------------------
+void
+CMain::onAlbum()
+{
+    qPTR_DELETE(wndAlbum);
+
+    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
+    wndAlbum->show();
+}
+//------------------------------------------------------------------------------
 
 
 /*******************************************************************************
@@ -968,15 +977,6 @@ CMain::_detailView_resetAll()
             qTEST(false);
         }
     }
-}
-//------------------------------------------------------------------------------
-void
-CMain::onAlbum()
-{
-    qPTR_DELETE(wndAlbum);
-
-    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
-    wndAlbum->show();
 }
 //------------------------------------------------------------------------------
 void
