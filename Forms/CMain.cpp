@@ -694,6 +694,8 @@ void
 CMain::actEdit_onInsert()
 {
     snNavigator.insert();
+
+    actEdit_onEdit();
 }
 //------------------------------------------------------------------------------
 void
