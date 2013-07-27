@@ -349,10 +349,8 @@ CMain::_initMain_2()
                 _dmText->addMapping(widget, section);
             }
 
-            _dmText->setCurrentIndex( snNavigator.view()->currentIndex().row() );
-//            connect(_tmModel, &QSqlTableModel::dataChanged ,
-//                    _dmText,   &QDataWidgetMapper::setCurrentIndex);
-//            );
+            connect(ui.tvInfo->selectionModel(), &QItemSelectionModel::currentRowChanged,
+                    _dmText,                     &QDataWidgetMapper::setCurrentModelIndex );
         }
 
         // set default control
