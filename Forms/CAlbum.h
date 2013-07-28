@@ -22,7 +22,7 @@ public:
     Ui::CAlbum      ui;
 
                     CAlbum(QWidget *parent, QSqlTableModel *tableModel,
-                           CSqlNavigator *sqlNavigator);
+                        CSqlNavigator *sqlNavigator);
 
 protected:
     virtual void    showEvent(QShowEvent *event);

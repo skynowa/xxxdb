@@ -81,7 +81,6 @@ CAlbum::resizeEvent(
     // ui.dbPhoto
     if (!_pixPhoto.isNull()) {
         QSize szScaled = _pixPhoto.size();
-
         szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
 
         if (NULL     == ui.dbPhoto->pixmap() ||
@@ -281,7 +280,7 @@ CAlbum::actFile_onExit()
 void
 CAlbum::actEdit_onSaveAs()
 {
-    CDbImage::currentDbImageLabel->saveToFile();
+    CDbImage::currentItem->saveToFile();
 }
 //------------------------------------------------------------------------------
 void
@@ -341,19 +340,19 @@ CAlbum::actEdit_onGoTo()
 void
 CAlbum::actEdit_onInsert()
 {
-    CDbImage::currentDbImageLabel->loadFromFile();
+    CDbImage::currentItem->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onRemove()
 {
-    CDbImage::currentDbImageLabel->remove();
+    CDbImage::currentItem->remove();
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onEdit()
 {
-    CDbImage::currentDbImageLabel->loadFromFile();
+    CDbImage::currentItem->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
@@ -420,8 +419,8 @@ CAlbum::photoMini_onClicked(
         Q_FOREACH (CDbImage *it_item, _viDbItems) {
             if (dbPhoto == it_item) {
                 // set current indexes
-                CDbImage::currentIndex        = it_item->index();
-                CDbImage::currentDbImageLabel = it_item;
+                CDbImage::currentIndex  = it_item->index();
+                CDbImage::currentItem   = it_item;
 
                 it_item->setFrameShape(QFrame::WinPanel);
             } else {
