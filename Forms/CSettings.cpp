@@ -70,6 +70,17 @@ CSettings::_initMain()
 {
     ui.setupUi(this);
 
+    // ui.twGroups
+    {
+        // select first item
+        for (QTreeWidgetItemIterator it(ui.twGroups); *it; ++ it) {
+            if ((*it)->text(0) == "Main") {
+                (*it)->setSelected(true);
+                break;
+            }
+        }
+    }
+
     // signals
     {
         connect(ui.bbxButtons, &QDialogButtonBox::clicked,
