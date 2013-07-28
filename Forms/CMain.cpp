@@ -354,7 +354,7 @@ CMain::_initInfoDetail()
         cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
 
         ui.dbPhoto_2->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
-            ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
+            ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo_2);
         //// ui.dbPhoto_2->setFixedSize(PHOTO_SIZE);
         ui.dbPhoto_2->setBackgroundRole(QPalette::Base);
 
