@@ -563,6 +563,8 @@ CMain::_initActions()
                 this,                        &CMain::actView_onMainToolbar);
         connect(ui.actView_QuickFindToolbar, &QAction::triggered,
                 this,                        &CMain::actView_onQuickFindToolbar);
+        connect(ui.actView_Sidebar,          &QAction::triggered,
+                this,                        &CMain::actView_onSidebar);
         connect(ui.actView_Columns,          &QAction::triggered,
                 this,                        &CMain::actView_onColumns);
         connect(ui.actView_Album,            &QAction::triggered,
@@ -772,6 +774,12 @@ CMain::actView_onQuickFindToolbar()
     cbool bIsChecked = ui.actView_QuickFindToolbar->isChecked();
 
     ui.tbQuickFind->setVisible(bIsChecked);
+}
+//------------------------------------------------------------------------------
+void CMain::actView_onSidebar()
+{
+    // cbool bIsChecked = ui.actView_Sidebar->isChecked();
+    // TODO: CMain::actView_onSidebar
 }
 //------------------------------------------------------------------------------
 void

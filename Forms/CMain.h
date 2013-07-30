@@ -74,6 +74,7 @@ private:
     // group "View"
     void               actView_onMainToolbar();
     void               actView_onQuickFindToolbar();
+    void               actView_onSidebar();
     void               actView_onColumns();
     void               actView_onAlbum();
     void               actView_onStatusbar();
