@@ -81,7 +81,7 @@ CAlbum::resizeEvent(
     // ui.dbPhoto
     if (!_pixPhoto.isNull()) {
         QSize szScaled = _pixPhoto.size();
-        szScaled.scale(ui.dbPhoto->size(), Qt::KeepAspectRatio);
+        szScaled.scale(ui.dbPhoto->geometry(), Qt::KeepAspectRatio);
 
         if (NULL     == ui.dbPhoto->pixmap() ||
             szScaled != ui.dbPhoto->pixmap()->size())
