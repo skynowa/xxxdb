@@ -213,6 +213,9 @@
            <property name="frameShadow">
             <enum>QFrame::Plain</enum>
            </property>
+           <property name="currentIndex">
+            <number>0</number>
+           </property>
            <widget class="QWidget" name="tabwGroupsDetailPage1">
             <layout class="QGridLayout" name="gridLayout_28">
              <item row="2" column="0" rowspan="2" colspan="2">
@@ -2359,7 +2362,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
@@ -2387,7 +2390,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
@@ -2545,7 +2548,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
@@ -2573,7 +2576,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
@@ -2601,7 +2604,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
@@ -2629,7 +2632,7 @@
                   <enum>QAbstractSpinBox::NoButtons</enum>
                  </property>
                  <property name="displayFormat">
-                  <string>dd.MM.yyyy</string>
+                  <string>dd MMMM yyyy</string>
                  </property>
                 </widget>
                </item>
