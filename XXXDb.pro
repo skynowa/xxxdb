@@ -9,7 +9,7 @@
 TARGET          = XXXDb
 TEMPLATE        = app
 QT              = core gui widgets sql network xml
-CONFIG         += debug_and_release warn_on no_keywords
+CONFIG         += release warn_on no_keywords
 DEFINES        += qTEST_IS_USED=1
 CODECFORTR      = UTF-8
 
@@ -51,7 +51,15 @@ RESOURCES       = Resources/App.qrc
 
 # INCLUDEPATH    += C:\[PATH TO LIBRARY'S A HEADERS]
 # LIBS           += C:\[PATH TO LIBRARY'S A BINARY]
-LIBS           += /opt/Libs/Qt/5.1.0_x64/Tools/QtCreator/bin/designer/libCDbImagePlugin.so
+
+win32 {
+    #LIBS       += -LD:/Libs/Qt/5.1.0_mingw_48_x32/Tools/QtCreator/bin/plugins/designer/CDbImagePlugin.dll
+    LIBS       += D:/Libs/Qt/5.1.0_mingw_48_x32/Tools/QtCreator/bin/plugins/designer/libCDbImagePlugin.a
+    #QMAKE_LIBDIR += D:/Libs/Qt/5.1.0_mingw_48_x32/Tools/QtCreator/bin/plugins/designer
+}
+unix {
+    QMAKE_LIBDIR += /opt/Libs/Qt/5.1.0_x64/Tools/QtCreator/bin/designer/libCDbImagePlugin.so
+}
 
 win32 {
     RC_FILE     = Resources/App_win.rc
