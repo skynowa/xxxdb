@@ -19,7 +19,7 @@ CONFIG(debug, debug | release) {
 
 # libs
 INCLUDEPATH      +=
-LIBS             +=
+QMAKE_LIBDIR     += .
 
 win32 {
     QMAKE_LIBDIR += D:/Libs/Qt/5.1.0_mingw_48_x32/Tools/QtCreator/bin/designer
