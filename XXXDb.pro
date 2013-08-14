@@ -25,9 +25,8 @@ unix {
 }
 
 # libs
-INCLUDEPATH     +=
-LIBS            += -L. -L$$QT_DIR/Tools/QtCreator/bin/designer
-LIBS            += -lCDbImagePlugin
+INCLUDEPATH     += Widgets
+LIBS            += -L./Distr/Release -lCDbImagePlugin
 
 # project
 HEADERS          = QtLib/Common.h \
