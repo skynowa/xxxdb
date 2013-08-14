@@ -1,3 +1,6 @@
 [submodule "QtLib"]
 	path = QtLib
 	url = git@bitbucket.org:skynowa/qtlib.git
+[submodule "Widgets/CDbImage"]
+	path = Widgets/CDbImage
+	url = git@bitbucket.org:skynowa/cdbimage.git
