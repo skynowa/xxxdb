@@ -7,6 +7,7 @@
 #include "CAbout.h"
 
 #include "../QtLib/CUtils.h"
+#include "../QtLib/CApplication.h"
 
 
 /*******************************************************************************
@@ -46,6 +47,8 @@ void
 CAbout::_initMain()
 {
     ui.setupUi(this);
+
+    ui.lblAppName->setText( qCApp->versionInfo() );
 
     //  signals, slots
     {

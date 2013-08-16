@@ -7,6 +7,7 @@
 
 
 TARGET           = XXXDb
+VERSION          = 1.0.0
 TEMPLATE         = app
 QT               = core gui widgets sql network xml
 CONFIG          += release warn_on no_keywords

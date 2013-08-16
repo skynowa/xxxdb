@@ -43,7 +43,7 @@
         </font>
        </property>
        <property name="text">
-        <string>&lt;html&gt;&lt;head/&gt;&lt;body&gt;&lt;p&gt;XXXDb 1.0.0&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+        <string>[version]</string>
        </property>
       </widget>
      </item>
