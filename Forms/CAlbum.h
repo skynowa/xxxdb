@@ -34,7 +34,7 @@ private:
     QSqlTableModel *_tmModel;
     CSqlNavigator  *_snSqlNavigator;
     cint            _ciDbRecordIndex;
-    db_images_t     _viDbItems;
+    CDbImageCollectioin _viDbItems;
     QPixmap         _pixPhoto;
 
     void            _construct();
