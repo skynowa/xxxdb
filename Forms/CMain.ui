@@ -108,7 +108,7 @@
        </property>
        <widget class="QWidget" name="tabInfoFull">
         <attribute name="title">
-         <string>Tab 1</string>
+         <string>Full view</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_3">
          <item row="0" column="0">
@@ -118,7 +118,7 @@
        </widget>
        <widget class="QWidget" name="tabInfoDetail">
         <attribute name="title">
-         <string>Tab 2</string>
+         <string>Detail view</string>
         </attribute>
         <layout class="QGridLayout" name="gridLayout_5">
          <item row="0" column="0">
@@ -3171,7 +3171,7 @@
      <x>0</x>
      <y>0</y>
      <width>1118</width>
-     <height>20</height>
+     <height>21</height>
     </rect>
    </property>
    <widget class="QMenu" name="mnuFile">

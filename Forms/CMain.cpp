@@ -183,13 +183,6 @@ CMain::_initMain()
     }
 
     //--------------------------------------------------
-    // ui.tabInfo
-    {
-        ui.tabInfo->setTabText(0, tr("Full view"));
-        ui.tabInfo->setTabText(1, tr("Detail view"));
-    }
-
-    //--------------------------------------------------
     // ui.tvInfo
     {
         ui.tvInfo->setModel(_tmModel);
