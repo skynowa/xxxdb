@@ -389,6 +389,7 @@ CAlbum::photo_onLoop()
     // skip empty images
     if (_dbItems.get().at(_dbItems.currentIndex)->isEmpty()) {
         photo_onLoop();
+        return;
     }
 
     photoMini_onUpdate(_dbItems.currentIndex);
