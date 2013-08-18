@@ -24,7 +24,7 @@ CAlbum::CAlbum(
     QMainWindow     (a_parent),
     _tmModel        (a_tableModel),
     _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
-    _viDbItems      (),
+    _dbItems      (),
     _pixPhoto       ()
 {
     qTEST(NULL != a_parent);
@@ -62,7 +62,7 @@ CAlbum::showEvent(
 
         // set primary image index
         {
-            CDbImage *dbPhotoMini = _viDbItems.find(ciPrimaryIndex);
+            CDbImage *dbPhotoMini = _dbItems.find(ciPrimaryIndex);
 
             photoMini_onClicked(dbPhotoMini);
         }
@@ -160,7 +160,7 @@ CAlbum::_initMain() {
     connect(ui.dbPhoto, &CDbImage::sig_pressed,
             this,       &CAlbum::photo_onLoop);
 
-    // _viDbItems
+    // _dbItems
     {
         struct SDbPhotoMini {
             CDbImage *dbPhoto;
@@ -186,8 +186,8 @@ CAlbum::_initMain() {
             { ui.dbPhoto_15, DB_F_PHOTOS_15 }
         };
 
-        // fill _viDbItems
-        _viDbItems.get().reserve(PHOTO_NUM);
+        // fill _dbItems
+        _dbItems.get().reserve(PHOTO_NUM);
 
         for (size_t i = 0; i < PHOTO_NUM; ++ i) {
             dbPhotoMinis[i].dbPhoto->construct(this, _tmModel,
@@ -198,7 +198,7 @@ CAlbum::_initMain() {
             connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_pressed,
                     this,                    &CAlbum::photoMini_onClicked);
 
-            _viDbItems.get().push_back(dbPhotoMinis[i].dbPhoto);
+            _dbItems.get().push_back(dbPhotoMinis[i].dbPhoto);
         }
     }
 
@@ -280,7 +280,7 @@ CAlbum::actFile_onExit()
 void
 CAlbum::actEdit_onSaveAs()
 {
-    _viDbItems.currentItem->saveToFile();
+    _dbItems.currentItem->saveToFile();
 }
 //------------------------------------------------------------------------------
 void
@@ -294,30 +294,30 @@ CAlbum::actEdit_onFirst()
 void
 CAlbum::actEdit_onPrior()
 {
-    if (0 >= _viDbItems.currentIndex) {
-        _viDbItems.currentIndex = 0;
+    if (0 >= _dbItems.currentIndex) {
+        _dbItems.currentIndex = 0;
     } else {
-        -- _viDbItems.currentIndex;
+        -- _dbItems.currentIndex;
     }
 
-    photoMini_onUpdate(_viDbItems.currentIndex);
+    photoMini_onUpdate(_dbItems.currentIndex);
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onNext() {
-    if (_viDbItems.currentIndex >= _viDbItems.get().size() - 1) {
-        _viDbItems.currentIndex = _viDbItems.get().size() - 1;
+    if (_dbItems.currentIndex >= _dbItems.get().size() - 1) {
+        _dbItems.currentIndex = _dbItems.get().size() - 1;
     } else {
-        ++ _viDbItems.currentIndex;
+        ++ _dbItems.currentIndex;
     }
 
-    photoMini_onUpdate(_viDbItems.currentIndex);
+    photoMini_onUpdate(_dbItems.currentIndex);
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onLast()
 {
-    cint currentIndex = _viDbItems.get().size() - 1;
+    cint currentIndex = _dbItems.get().size() - 1;
 
     photoMini_onUpdate(currentIndex);
 }
@@ -326,12 +326,12 @@ void
 CAlbum::actEdit_onGoTo()
 {
     cint ciMinValue   = 1;
-    cint ciMaxValue   = _viDbItems.get().size();
+    cint ciMaxValue   = _dbItems.get().size();
 
     cint currentIndex = QInputDialog::getInt(
                                 this,
                                 APP_NAME, tr("Go to photo:"),
-                                _viDbItems.currentIndex + 1,
+                                _dbItems.currentIndex + 1,
                                 ciMinValue, ciMaxValue) - 1;
 
     photoMini_onUpdate(currentIndex);
@@ -340,19 +340,19 @@ CAlbum::actEdit_onGoTo()
 void
 CAlbum::actEdit_onInsert()
 {
-    _viDbItems.currentItem->loadFromFile();
+    _dbItems.currentItem->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onRemove()
 {
-    _viDbItems.currentItem->remove();
+    _dbItems.currentItem->remove();
 }
 //------------------------------------------------------------------------------
 void
 CAlbum::actEdit_onEdit()
 {
-    _viDbItems.currentItem->loadFromFile();
+    _dbItems.currentItem->loadFromFile();
 }
 //------------------------------------------------------------------------------
 void
@@ -360,7 +360,7 @@ CAlbum::actEdit_onSetPrimary()
 {
     // write to DB
     QSqlRecord srRecord = _tmModel->record(_ciDbRecordIndex);
-    srRecord.setValue(DB_F_PHOTOS_PRIMARY, _viDbItems.currentIndex);
+    srRecord.setValue(DB_F_PHOTOS_PRIMARY, _dbItems.currentIndex);
 
     _tmModel->setRecord(_ciDbRecordIndex, srRecord);
 }
@@ -377,21 +377,21 @@ void
 CAlbum::photo_onLoop()
 {
     // avoid recursion when photo album is empty
-    qCHECK_DO(_viDbItems.isEmpty(), return);
+    qCHECK_DO(_dbItems.isEmpty(), return);
 
     // calc current index
-    if (_viDbItems.currentIndex >= _viDbItems.get().size() - 1) {
-        _viDbItems.currentIndex = 0;
+    if (_dbItems.currentIndex >= _dbItems.get().size() - 1) {
+        _dbItems.currentIndex = 0;
     } else {
-        ++ _viDbItems.currentIndex;
+        ++ _dbItems.currentIndex;
     }
 
     // skip empty images
-    if (_viDbItems.get().at(_viDbItems.currentIndex)->isEmpty()) {
+    if (_dbItems.get().at(_dbItems.currentIndex)->isEmpty()) {
         photo_onLoop();
     }
 
-    photoMini_onUpdate(_viDbItems.currentIndex);
+    photoMini_onUpdate(_dbItems.currentIndex);
 }
 //------------------------------------------------------------------------------
 void
@@ -399,7 +399,7 @@ CAlbum::photoMini_onUpdate(
     cint &a_index
 )
 {
-    CDbImage *dbPhotoMini = _viDbItems.get().at(a_index);
+    CDbImage *dbPhotoMini = _dbItems.get().at(a_index);
 
     photoMini_onClicked(dbPhotoMini);
 }
@@ -416,11 +416,11 @@ CAlbum::photoMini_onClicked(
     // dbPhotoMini
     {
         // set border
-        Q_FOREACH (CDbImage *it_item, _viDbItems.get()) {
+        Q_FOREACH (CDbImage *it_item, _dbItems.get()) {
             if (dbPhoto == it_item) {
                 // set current indexes
-                _viDbItems.currentIndex = it_item->index();
-                _viDbItems.currentItem  = it_item;
+                _dbItems.currentIndex = it_item->index();
+                _dbItems.currentItem  = it_item;
 
                 it_item->setFrameShape(QFrame::WinPanel);
             } else {
@@ -431,10 +431,8 @@ CAlbum::photoMini_onClicked(
 
     // ui.dbPhoto
     {
-        cQString csDbFieldName = dbPhoto->dbFieldName();
-
         cQByteArray baPhoto = _tmModel->record(_ciDbRecordIndex)
-                                    .value(csDbFieldName).toByteArray();
+            .value( dbPhoto->dbFieldName() ).toByteArray();
 
         if (baPhoto.isEmpty()) {
             ui.dbPhoto->setTextDefault();
