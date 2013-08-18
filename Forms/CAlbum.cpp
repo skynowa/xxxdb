@@ -411,6 +411,9 @@ CAlbum::photoMini_onClicked(
 {
     qTEST(NULL != a_sender);
 
+    const QCursor cursorDefault = cursor();
+    setCursor(Qt::BusyCursor);
+
     CDbImage *dbPhoto = static_cast<CDbImage *>(a_sender);
 
     // dbPhotoMini
@@ -443,5 +446,7 @@ CAlbum::photoMini_onClicked(
             _photoUpdate();
         }
     }
+
+    setCursor(cursorDefault);
 }
 //------------------------------------------------------------------------------
