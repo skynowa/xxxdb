@@ -317,9 +317,11 @@ CMain::_initInfoDetail()
             // TODO: Periods
 
             // TODO: Etc
-            // DB_F_ETC_DATECREATION
-            // DB_F_ETC_DATELASTCHANGE
-            // DB_F_ETC_ATTACHMENT
+            // DB_F_ETC_DATECREATION - n/a
+            // DB_F_ETC_DATELASTCHANGE - n/a
+        #if 0
+            _dbItemsDetail.insert(NULL,                DB_F_ETC_ATTACHMENT);
+        #endif
 
             // Note
             _dbItemsDetail.insert(ui.tedtNotes,        DB_F_NOTES_NOTES);
