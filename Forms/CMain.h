@@ -38,8 +38,8 @@ private:
     QString            _sTranslatorLang;
     QSqlDatabase       _dbDatabase;
     QSqlTableModel    *_tmModel;
-    QDataWidgetMapper *_dmText; ///< one mapper for all text items
-    db_items_t         _hsDbItems;
+    QDataWidgetMapper *_dbText; ///< one mapper for all DB text items
+    db_items_t         _dbItemsDetail;
 
     QComboBox         *_cboFindText;
     QComboBox         *_cboDbFields;
