@@ -317,6 +317,9 @@ CMain::_initInfoDetail()
             // TODO: Periods
 
             // TODO: Etc
+            // DB_F_ETC_DATECREATION
+            // DB_F_ETC_DATELASTCHANGE
+            // DB_F_ETC_ATTACHMENT
 
             // Note
             _hsDbItems.insert(ui.tedtNotes,        DB_F_NOTES_NOTES);
@@ -461,6 +464,7 @@ CMain::_initModel()
                 // Etc
                 "    " DB_F_ETC_DATECREATION     " DATETIME, "
                 "    " DB_F_ETC_DATELASTCHANGE   " DATETIME, "
+                "    " DB_F_ETC_ATTACHMENT       " BLOB, "
 
                 // Notes
                 "    " DB_F_NOTES_NOTES          " VARCHAR(256), "

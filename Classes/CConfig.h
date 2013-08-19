@@ -112,6 +112,7 @@
 // Etc
 #define DB_F_ETC_DATECREATION       "f_etc_datecreation"
 #define DB_F_ETC_DATELASTCHANGE     "f_etc_datelastchange"
+#define DB_F_ETC_ATTACHMENT         "f_etc_attachment"
 
 // Notes
 #define DB_F_NOTES_NOTES            "f_notes_notes"
@@ -158,7 +159,7 @@ class CConfig :
     Q_OBJECT
 
 public:
-    static cSDbRecord dbRecords[65];  ///< array of DB fields
+    static cSDbRecord dbRecords[66];  ///< array of DB fields
 };
 //------------------------------------------------------------------------------
 
