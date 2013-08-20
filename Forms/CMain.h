@@ -102,6 +102,9 @@ private:
     void               twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
                            QTreeWidgetItem *previous);
 
+    void               model_onBeforeInsert(QSqlRecord &record);
+    void               model_onBeforeUpdate(int row, QSqlRecord &record);
+
     friend class CIni;
 };
 //------------------------------------------------------------------------------

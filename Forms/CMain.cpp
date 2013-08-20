@@ -224,6 +224,11 @@ CMain::_initMain()
     //--------------------------------------------------
     // slots
     {
+        connect(_tmModel,             &QSqlTableModel::beforeInsert,
+                this,                 &CMain::model_onBeforeInsert);
+        connect(_tmModel,             &QSqlTableModel::beforeUpdate,
+                this,                 &CMain::model_onBeforeUpdate);
+
         connect(snNavigator.view(),   &QTableView::doubleClicked,
                 this,                 &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,         &QToolButton::clicked,
@@ -1012,5 +1017,50 @@ CMain::twGroups_onCurrentItemChanged(
     cint index = ui.twGroups->currentIndex().row();
 
     ui.tabwGroupsDetail->setCurrentIndex(index);
+}
+//------------------------------------------------------------------------------
+void
+CMain::model_onBeforeInsert(
+    QSqlRecord &a_record
+)
+{
+    Q_UNUSED(a_record);
+
+    qDebug() << __FUNCTION__;
+
+    QSqlQuery qryDatetimeStamp(_dbDatabase);
+
+    cQString csSql = \
+        "UPDATE " DB_T_PERSON " "
+        "SET " DB_F_ETC_DATECREATION "=datetime('now')";
+
+    bool bRv = qryDatetimeStamp.exec(csSql);
+    qCHECK_REF(bRv, qryDatetimeStamp);
+}
+//------------------------------------------------------------------------------
+void
+CMain::model_onBeforeUpdate(
+    int         a_row,
+    QSqlRecord &a_record
+)
+{
+    Q_UNUSED(a_row);
+    Q_UNUSED(a_record);
+
+    qDebug() << __FUNCTION__;
+
+#if 0
+    QSqlQuery qryDatetimeStamp(_dbDatabase);
+
+    cQString csSql = \
+        "UPDATE " DB_T_PERSON " "
+        "SET    " DB_F_ETC_DATELASTCHANGE "=datetime('now')"
+        "WHERE  " DB_F_ID "=" + a_record.value(DB_F_ID).toString();
+
+    bool bRv = qryDatetimeStamp.exec(csSql);
+    qCHECK_REF(bRv, qryDatetimeStamp);
+#else
+    a_record.setValue(DB_F_ETC_DATELASTCHANGE, QDateTime::currentDateTime());
+#endif
 }
 //------------------------------------------------------------------------------
