@@ -508,10 +508,8 @@ CMain::_initModel()
 
         // set caption for DB fields
         for (int i = 0; i < _tmModel->columnCount(); ++ i) {
-            _tmModel->setHeaderData(
-                    CConfig::dbRecords[i].index,
-                    Qt::Horizontal,
-                    CConfig::dbRecords[i].caption);
+            _tmModel->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
+                CConfig::dbRecords[i].caption);
         }
 
         _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
@@ -610,18 +608,14 @@ CMain::_retranslateUi()
 {
     // ui.tvInfo
     for (int i = 0; i < _tmModel->columnCount(); ++ i) {
-        _tmModel->setHeaderData(
-                CConfig::dbRecords[i].index,
-                Qt::Horizontal,
-                qApp->translate("CConfig", CConfig::dbRecords[i].caption));
+        _tmModel->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
+            qApp->translate("CConfig", CConfig::dbRecords[i].caption));
     }
 
     // _cboDbFields
     for (int i = 0; i < _tmModel->columnCount(); ++ i) {
-        _cboDbFields->setItemText(
-            i,
-            qApp->translate("CConfig", CConfig::dbRecords[i].caption)
-        );
+        _cboDbFields->setItemText(i,
+            qApp->translate("CConfig", CConfig::dbRecords[i].caption));
     }
 }
 //------------------------------------------------------------------------------
@@ -887,7 +881,8 @@ CMain::onQuickFind(
     for (int i = 0; i < _tmModel->columnCount(); ++ i) {
         if (_cboDbFields->currentText() ==
             qApp->translate("CConfig", CConfig::dbRecords[i].caption)
-        ) {
+        )
+        {
             dbField = CConfig::dbRecords[i].field;
             break;
         }
