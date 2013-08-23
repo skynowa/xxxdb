@@ -156,6 +156,26 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</str
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabDonate">
+      <attribute name="title">
+       <string>Donate</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_5">
+       <item row="0" column="0">
+        <widget class="QPlainTextEdit" name="tbAuthors_2">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="plainText">
+          <string>PayPal -  [TODO]
+WebMoney - [TODO]
+YandexMoney - [TODO]
+Private24 - [TODO]</string>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
     </widget>
    </item>
    <item row="2" column="0">
