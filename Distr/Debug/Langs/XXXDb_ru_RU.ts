@@ -920,17 +920,17 @@ Private24 - [TODO]</source>
 <context>
     <name>CMain</name>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="691"/>
+        <location filename="../../../Forms/CMain.cpp" line="694"/>
         <source>Go to row (total %1 rows):</source>
         <translation>Перейти к записи (всего %1 записей):</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="714"/>
+        <location filename="../../../Forms/CMain.cpp" line="717"/>
         <source>Removing record.</source>
         <translation>Удаление записи.</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="715"/>
+        <location filename="../../../Forms/CMain.cpp" line="718"/>
         <source>Do you want to remove record?</source>
         <translation>Вы хотите удалить запись?</translation>
     </message>
