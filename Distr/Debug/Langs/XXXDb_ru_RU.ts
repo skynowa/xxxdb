@@ -481,97 +481,112 @@ Private24 - [TODO]</source>
         <translation>Наркотики</translation>
     </message>
     <message>
+        <location filename="../../../Classes/CConfig.cpp" line="83"/>
+        <source>Periods begin</source>
+        <translation>Начало месячных</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="84"/>
+        <source>Periods duration (days)</source>
+        <translation>Длительность месячных (дни)</translation>
+    </message>
+    <message>
         <location filename="../../../Classes/CConfig.cpp" line="85"/>
+        <source>Periods cycle duration (days)</source>
+        <translation>Длительность цикла месячных (дни)</translation>
+    </message>
+    <message>
+        <location filename="../../../Classes/CConfig.cpp" line="88"/>
         <source>Date creation</source>
         <translation>Дата создания</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="86"/>
+        <location filename="../../../Classes/CConfig.cpp" line="89"/>
         <source>Date last change</source>
         <translation>Дата изменения</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="87"/>
+        <location filename="../../../Classes/CConfig.cpp" line="90"/>
         <source>Attachment</source>
         <translation>Вложение</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="90"/>
+        <location filename="../../../Classes/CConfig.cpp" line="93"/>
         <source>Notes</source>
         <translation>Примечания</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="93"/>
+        <location filename="../../../Classes/CConfig.cpp" line="96"/>
         <source>Photo #1</source>
         <translation>Фото #1</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="94"/>
+        <location filename="../../../Classes/CConfig.cpp" line="97"/>
         <source>Photo #2</source>
         <translation>Фото #2</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="95"/>
+        <location filename="../../../Classes/CConfig.cpp" line="98"/>
         <source>Photo #3</source>
         <translation>Фото #3</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="96"/>
+        <location filename="../../../Classes/CConfig.cpp" line="99"/>
         <source>Photo #4</source>
         <translation>Фото #4</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="97"/>
+        <location filename="../../../Classes/CConfig.cpp" line="100"/>
         <source>Photo #5</source>
         <translation>Фото #5</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="98"/>
+        <location filename="../../../Classes/CConfig.cpp" line="101"/>
         <source>Photo #6</source>
         <translation>Фото #6</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="99"/>
+        <location filename="../../../Classes/CConfig.cpp" line="102"/>
         <source>Photo #7</source>
         <translation>Фото #7</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="100"/>
+        <location filename="../../../Classes/CConfig.cpp" line="103"/>
         <source>Photo #8</source>
         <translation>Фото #8</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="101"/>
+        <location filename="../../../Classes/CConfig.cpp" line="104"/>
         <source>Photo #9</source>
         <translation>Фото #9</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="102"/>
+        <location filename="../../../Classes/CConfig.cpp" line="105"/>
         <source>Photo #10</source>
         <translation>Фото #10</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="103"/>
+        <location filename="../../../Classes/CConfig.cpp" line="106"/>
         <source>Photo #11</source>
         <translation>Фото #11</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="104"/>
+        <location filename="../../../Classes/CConfig.cpp" line="107"/>
         <source>Photo #12</source>
         <translation>Фото #12</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="105"/>
+        <location filename="../../../Classes/CConfig.cpp" line="108"/>
         <source>Photo #13</source>
         <translation>Фото #13</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="106"/>
+        <location filename="../../../Classes/CConfig.cpp" line="109"/>
         <source>Photo #14</source>
         <translation>Фото #14</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="107"/>
+        <location filename="../../../Classes/CConfig.cpp" line="110"/>
         <source>Photo #15</source>
         <translation>Фото #15</translation>
     </message>
@@ -636,7 +651,7 @@ Private24 - [TODO]</source>
         <translation type="obsolete">Фото 15</translation>
     </message>
     <message>
-        <location filename="../../../Classes/CConfig.cpp" line="108"/>
+        <location filename="../../../Classes/CConfig.cpp" line="111"/>
         <source>Photo primary</source>
         <translation>Фото основное</translation>
     </message>
@@ -905,17 +920,17 @@ Private24 - [TODO]</source>
 <context>
     <name>CMain</name>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="686"/>
+        <location filename="../../../Forms/CMain.cpp" line="691"/>
         <source>Go to row (total %1 rows):</source>
         <translation>Перейти к записи (всего %1 записей):</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="709"/>
+        <location filename="../../../Forms/CMain.cpp" line="714"/>
         <source>Removing record.</source>
         <translation>Удаление записи.</translation>
     </message>
     <message>
-        <location filename="../../../Forms/CMain.cpp" line="710"/>
+        <location filename="../../../Forms/CMain.cpp" line="715"/>
         <source>Do you want to remove record?</source>
         <translation>Вы хотите удалить запись?</translation>
     </message>

@@ -320,6 +320,11 @@ CMain::_initInfoDetail()
             _dbItemsDetail.insert(ui.cboDrugs,         DB_F_INTERESTS_DRUGS);
 
             // TODO: Periods
+        #if 0
+            _dbItemsDetail.insert(NULL,                DB_F_PERIODS_BEGIN);
+            _dbItemsDetail.insert(NULL,                DB_F_PERIODS_DURATION);
+            _dbItemsDetail.insert(NULL,                DB_F_PERIODS_CYCLE_DURATION);
+        #endif
 
             // TODO: Etc
             // DB_F_ETC_DATECREATION - n/a
@@ -466,7 +471,10 @@ CMain::_initModel()
                 "    " DB_F_INTERESTS_ALCOHOL    " VARCHAR(64), "
                 "    " DB_F_INTERESTS_DRUGS      " VARCHAR(64), "
 
-                // TODO: Periods
+                // Periods
+                "    " DB_F_PERIODS_BEGIN        " DATETIME, "
+                "    " DB_F_PERIODS_DURATION     " INT, "
+                "    " DB_F_PERIODS_CYCLE_DURATION " INT, "
 
                 // Etc
                 "    " DB_F_ETC_DATECREATION     " DATETIME, "

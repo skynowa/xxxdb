@@ -107,7 +107,10 @@
 #define DB_F_INTERESTS_ALCOHOL      "f_interests_alcohol"
 #define DB_F_INTERESTS_DRUGS        "f_interests_drugs"
 
-// TODO: Periods
+// Periods
+#define DB_F_PERIODS_BEGIN          "f_periods_begin"
+#define DB_F_PERIODS_DURATION       "f_periods_duration"
+#define DB_F_PERIODS_CYCLE_DURATION "f_periods_cycle_duration"
 
 // Etc
 #define DB_F_ETC_DATECREATION       "f_etc_datecreation"
@@ -159,7 +162,7 @@ class CConfig :
     Q_OBJECT
 
 public:
-    static cSDbRecord dbRecords[66];  ///< array of DB fields
+    static cSDbRecord dbRecords[69];  ///< array of DB fields
 };
 //------------------------------------------------------------------------------
 

@@ -79,32 +79,35 @@ cSDbRecord CConfig::dbRecords[] = {
     {44, false,  DB_F_INTERESTS_ALCOHOL,    QT_TR_NOOP("Alcohol")},
     {45, false,  DB_F_INTERESTS_DRUGS,      QT_TR_NOOP("Drugs")},
 
-    // TODO: Periods
+    // Periods
+    {46, false,  DB_F_PERIODS_BEGIN,        QT_TR_NOOP("Periods begin")},
+    {47, false,  DB_F_PERIODS_DURATION,     QT_TR_NOOP("Periods duration (days)")},
+    {48, false,  DB_F_PERIODS_CYCLE_DURATION, QT_TR_NOOP("Periods cycle duration (days)")},
 
     // Etc
-    {46, false,  DB_F_ETC_DATECREATION,     QT_TR_NOOP("Date creation")},
-    {47, false,  DB_F_ETC_DATELASTCHANGE,   QT_TR_NOOP("Date last change")},
-    {48, true,   DB_F_ETC_ATTACHMENT,       QT_TR_NOOP("Attachment")},
+    {49, false,  DB_F_ETC_DATECREATION,     QT_TR_NOOP("Date creation")},
+    {50, false,  DB_F_ETC_DATELASTCHANGE,   QT_TR_NOOP("Date last change")},
+    {51, true,   DB_F_ETC_ATTACHMENT,       QT_TR_NOOP("Attachment")},
 
     // Notes
-    {49, false,  DB_F_NOTES_NOTES,          QT_TR_NOOP("Notes")},
+    {52, false,  DB_F_NOTES_NOTES,          QT_TR_NOOP("Notes")},
 
     // Photos
-    {50, true,   DB_F_PHOTOS_1,             QT_TR_NOOP("Photo #1")},
-    {51, true,   DB_F_PHOTOS_2,             QT_TR_NOOP("Photo #2")},
-    {52, true,   DB_F_PHOTOS_3,             QT_TR_NOOP("Photo #3")},
-    {53, true,   DB_F_PHOTOS_4,             QT_TR_NOOP("Photo #4")},
-    {54, true,   DB_F_PHOTOS_5,             QT_TR_NOOP("Photo #5")},
-    {55, true,   DB_F_PHOTOS_6,             QT_TR_NOOP("Photo #6")},
-    {56, true,   DB_F_PHOTOS_7,             QT_TR_NOOP("Photo #7")},
-    {57, true,   DB_F_PHOTOS_8,             QT_TR_NOOP("Photo #8")},
-    {58, true,   DB_F_PHOTOS_9,             QT_TR_NOOP("Photo #9")},
-    {59, true,   DB_F_PHOTOS_10,            QT_TR_NOOP("Photo #10")},
-    {60, true,   DB_F_PHOTOS_11,            QT_TR_NOOP("Photo #11")},
-    {61, true,   DB_F_PHOTOS_12,            QT_TR_NOOP("Photo #12")},
-    {62, true,   DB_F_PHOTOS_13,            QT_TR_NOOP("Photo #13")},
-    {63, true,   DB_F_PHOTOS_14,            QT_TR_NOOP("Photo #14")},
-    {64, true,   DB_F_PHOTOS_15,            QT_TR_NOOP("Photo #15")},
-    {65, true,   DB_F_PHOTOS_PRIMARY,       QT_TR_NOOP("Photo primary")}
+    {53, true,   DB_F_PHOTOS_1,             QT_TR_NOOP("Photo #1")},
+    {54, true,   DB_F_PHOTOS_2,             QT_TR_NOOP("Photo #2")},
+    {55, true,   DB_F_PHOTOS_3,             QT_TR_NOOP("Photo #3")},
+    {56, true,   DB_F_PHOTOS_4,             QT_TR_NOOP("Photo #4")},
+    {57, true,   DB_F_PHOTOS_5,             QT_TR_NOOP("Photo #5")},
+    {58, true,   DB_F_PHOTOS_6,             QT_TR_NOOP("Photo #6")},
+    {59, true,   DB_F_PHOTOS_7,             QT_TR_NOOP("Photo #7")},
+    {60, true,   DB_F_PHOTOS_8,             QT_TR_NOOP("Photo #8")},
+    {61, true,   DB_F_PHOTOS_9,             QT_TR_NOOP("Photo #9")},
+    {62, true,   DB_F_PHOTOS_10,            QT_TR_NOOP("Photo #10")},
+    {63, true,   DB_F_PHOTOS_11,            QT_TR_NOOP("Photo #11")},
+    {64, true,   DB_F_PHOTOS_12,            QT_TR_NOOP("Photo #12")},
+    {65, true,   DB_F_PHOTOS_13,            QT_TR_NOOP("Photo #13")},
+    {66, true,   DB_F_PHOTOS_14,            QT_TR_NOOP("Photo #14")},
+    {67, true,   DB_F_PHOTOS_15,            QT_TR_NOOP("Photo #15")},
+    {68, true,   DB_F_PHOTOS_PRIMARY,       QT_TR_NOOP("Photo primary")}
 };
 //------------------------------------------------------------------------------
