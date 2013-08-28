@@ -1031,20 +1031,28 @@ CMain::model_onBeforeUpdate(
     QSqlRecord &a_record
 )
 {
+    qDebug() << __FUNCTION__;
+
+#if 1
     Q_UNUSED(a_row);
     Q_UNUSED(a_record);
 
-    qDebug() << __FUNCTION__;
+    bool bRv = false;
 
-#if 0
     QSqlQuery qryDatetimeStamp(_dbDatabase);
 
-    cQString csSql = \
+    bRv = qryDatetimeStamp.prepare(
         "UPDATE " DB_T_PERSON " "
-        "SET    " DB_F_ETC_DATELASTCHANGE "=datetime('now')"
-        "WHERE  " DB_F_ID "=" + a_record.value(DB_F_ID).toString();
+        "SET    " DB_F_ETC_DATELASTCHANGE "=:datetime_stamp "
+        "WHERE  " DB_F_ID "=:db_f_id;");
+    qCHECK_REF(bRv, qryDatetimeStamp);
 
-    bool bRv = qryDatetimeStamp.exec(csSql);
+    qryDatetimeStamp.bindValue(":datetime_stamp",
+        QDateTime::currentDateTime().toString("dd-MM-yyyy h:mm:ss"));
+    qryDatetimeStamp.bindValue(":db_f_id",
+        a_record.value(DB_F_ID).toString());
+
+    bRv = qryDatetimeStamp.exec();
     qCHECK_REF(bRv, qryDatetimeStamp);
 #else
     a_record.setValue(DB_F_ETC_DATELASTCHANGE,
