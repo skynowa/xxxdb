@@ -1047,7 +1047,8 @@ CMain::model_onBeforeUpdate(
     bool bRv = qryDatetimeStamp.exec(csSql);
     qCHECK_REF(bRv, qryDatetimeStamp);
 #else
-    a_record.setValue(DB_F_ETC_DATELASTCHANGE, QDateTime::currentDateTime());
+    a_record.setValue(DB_F_ETC_DATELASTCHANGE,
+        QDateTime::currentDateTime().toString("dd-MM-yyyy h:mm:ss"));
 #endif
 }
 //------------------------------------------------------------------------------
