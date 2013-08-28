@@ -1019,18 +1019,10 @@ CMain::model_onBeforeInsert(
     QSqlRecord &a_record
 )
 {
-    Q_UNUSED(a_record);
-
     qDebug() << __FUNCTION__;
 
-    QSqlQuery qryDatetimeStamp(_dbDatabase);
-
-    cQString csSql = \
-        "UPDATE " DB_T_PERSON " "
-        "SET " DB_F_ETC_DATECREATION "=datetime('now')";
-
-    bool bRv = qryDatetimeStamp.exec(csSql);
-    qCHECK_REF(bRv, qryDatetimeStamp);
+    a_record.setValue(DB_F_ETC_DATECREATION,
+        QDateTime::currentDateTime().toString("dd-MM-yyyy h:mm:ss"));
 }
 //------------------------------------------------------------------------------
 void
