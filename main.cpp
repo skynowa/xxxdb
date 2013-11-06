@@ -40,6 +40,8 @@ int main(int argc, char *argv[])
             return EXIT_FAILURE;
         }
 
+        apApp.addLibraryPath(".");
+
         CMain wndMain(NULL, 0);
         wndMain.show();
 
