@@ -13,7 +13,9 @@ Web:          https://bitbucket.org/skynowa/xxxdb
 
 
 Prerequisites:
-              -
+    -
 
 Dependencies:
-              - Qt 5.0.1 (included)
+    - Qt 5.0.1 (included)
+    - OpenCL
+        apt-get install libmesa-dev libglu1-mesa-dev
