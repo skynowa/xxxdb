@@ -5,4 +5,4 @@
 #
 
 
-make clean && qmake && make
+qmake && make clean && qmake && make
