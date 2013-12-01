@@ -27,7 +27,12 @@ unix {
 
 # libs
 INCLUDEPATH     += Widgets
-LIBS            += -L./Distr/Release -lCDbImagePlugin
+
+CONFIG(debug, debug | release) {
+    LIBS        += -L./Distr/Debug/Plugins -lCDbImagePlugin
+} else {
+    LIBS        += -L./Distr/Release/Plugins -lCDbImagePlugin
+}
 
 # project
 HEADERS          = QtLib/Common.h \

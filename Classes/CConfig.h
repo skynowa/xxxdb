@@ -18,6 +18,7 @@
 #define APP_WIDTH                   1000
 #define APP_HEIGHT                  600
 #define APP_SIZE                    QSize(APP_WIDTH, APP_HEIGHT)
+#define APP_PLUGINS_DIR_NAME        "Plugins"
 
 // photo
 #define PHOTO_NUM                   15

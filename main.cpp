@@ -31,16 +31,17 @@ int main(int argc, char *argv[])
     // start application
     {
         CApplication apApp(argc, argv);
+        apApp.addLibraryPath( apApp.applicationDirPath() + "/" + APP_PLUGINS_DIR_NAME);
 
-        bRv = QDir( CApplication::dbFilePath() ).isReadable();
+        bRv = QDir( apApp.dbFilePath() ).isReadable();
         if (!bRv) {
             std::wcerr << "Missing database file: "
-                       << CApplication::dbFilePath().toStdWString()
+                       << apApp.dbFilePath().toStdWString()
                        << std::endl;
             return EXIT_FAILURE;
         }
 
-        apApp.addLibraryPath(".");
+
 
         CMain wndMain(NULL, 0);
         wndMain.show();
