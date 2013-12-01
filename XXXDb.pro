@@ -26,7 +26,13 @@ unix {
 }
 
 # libs
-QMAKE_RPATHDIR  += ./Distr/Release/Plugins
+# suppress the default RPATH if you wish
+# QMAKE_LFLAGS_RPATH=
+# add your own with quoting gyrations to make sure $ORIGIN gets to the command line unexpanded
+QMAKE_LFLAGS    += "-Wl,-rpath,\'\$$ORIGIN\'"
+# or for a subdir of your install
+QMAKE_LFLAGS    += "-Wl,-rpath,\'\$$ORIGIN/Plugins\'"
+
 INCLUDEPATH     += Widgets
 
 CONFIG(debug, debug | release) {
