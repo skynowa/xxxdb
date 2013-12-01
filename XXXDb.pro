@@ -26,6 +26,7 @@ unix {
 }
 
 # libs
+QMAKE_RPATHDIR  += ./Distr/Release/Plugins
 INCLUDEPATH     += Widgets
 
 CONFIG(debug, debug | release) {
