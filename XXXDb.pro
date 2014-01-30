@@ -22,7 +22,7 @@ win32 {
     QT_DIR       = D:/Libs/Qt/5.1.0_mingw_48_x32
 }
 unix {
-    QT_DIR       = /opt/Libs/Qt/5.1.0_x64
+    QT_DIR       = /opt/Libs/Qt/5.2.0_x64
 }
 
 # libs
