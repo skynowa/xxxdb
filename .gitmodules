@@ -4,3 +4,6 @@
 [submodule "Widgets/CDbImage"]
 	path = Widgets/CDbImage
 	url = git@bitbucket.org:skynowa/cdbimage.git
+[submodule "xLib"]
+	path = xLib
+	url = git@bitbucket.org:skynowa/xlib.git
