@@ -33,7 +33,7 @@ QMAKE_LFLAGS    += "-Wl,-rpath,\'\$$ORIGIN\'"
 # or for a subdir of your install
 QMAKE_LFLAGS    += "-Wl,-rpath,\'\$$ORIGIN/Plugins\'"
 
-INCLUDEPATH     += Widgets
+INCLUDEPATH     += Widgets xLib/Include
 
 CONFIG(debug, debug | release) {
     LIBS        += -L./Distr/Debug/Plugins -lCDbImagePlugin
