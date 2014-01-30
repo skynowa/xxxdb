@@ -7,11 +7,17 @@
 #include <QApplication>
 #include "QtLib/Common.h"
 #include "QtLib/CUtils.h"
+#include <xLib/xLib.h>
 #include "QtLib/CApplication.h"
 #include "Forms/CMain.h"
 //-------------------------------------------------------------------------------------------------
 int main(int argc, char *argv[])
 {
+#if !defined(Q_OS_WIN)
+    CxSystemInfo info;
+    xCHECK_MSG_RET(info.isUserAdmin(), xT(APP_NAME) xT(": Can't run as root"), EXIT_FAILURE);
+#endif
+
     int iExitCode = EXIT_FAILURE;
 
     CApplication::windowActivate(APP_WINDOW_CLASS, APP_NAME);
