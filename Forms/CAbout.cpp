@@ -6,8 +6,8 @@
 
 #include "CAbout.h"
 
-#include "../QtLib/CUtils.h"
-#include "../QtLib/CApplication.h"
+#include <QtLib/CUtils.h>
+#include <QtLib/CApplication.h>
 
 
 /**************************************************************************************************
@@ -49,6 +49,12 @@ CAbout::_initMain()
     ui.setupUi(this);
 
     ui.lblAppName->setText( qCApp->versionInfo() );
+
+    // TODO: build info
+    {
+        ui.tbAbout->appendPlainText( "\n" );
+        ui.tbAbout->appendPlainText( qCApp->buildInfo() );
+    }
 
     //  signals, slots
     {

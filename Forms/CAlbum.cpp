@@ -6,7 +6,7 @@
 
 #include "CAlbum.h"
 
-#include "../QtLib/CUtils.h"
+#include <QtLib/CUtils.h>
 #include "../Classes/CIni.h"
 
 
