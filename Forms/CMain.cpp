@@ -6,8 +6,8 @@
 
 #include "CMain.h"
 
-#include "../QtLib/CUtils.h"
-#include "../QtLib/CApplication.h"
+#include <QtLib/CUtils.h>
+#include <QtLib/CApplication.h>
 #include "../Classes/CIni.h"
 #include "CAlbum.h"
 #include "CColumns.h"

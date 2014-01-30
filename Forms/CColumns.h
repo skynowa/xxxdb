@@ -9,8 +9,8 @@
 //-------------------------------------------------------------------------------------------------
 #include "ui_CColumns.h"
 
-#include "../QtLib/Common.h"
-#include "../Classes/CConfig.h"
+#include <QtLib/Common.h>
+#include <Classes/CConfig.h>
 #include "CMain.h"
 //-------------------------------------------------------------------------------------------------
 class CColumns :

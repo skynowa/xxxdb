@@ -9,8 +9,8 @@
 //-------------------------------------------------------------------------------------------------
 #include "ui_CAlbum.h"
 
-#include "../QtLib/Common.h"
-#include "../QtLib/CSqlNavigator.h"
+#include <QtLib/Common.h>
+#include <QtLib/CSqlNavigator.h>
 #include "../Classes/CConfig.h"
 //-------------------------------------------------------------------------------------------------
 class CAlbum :

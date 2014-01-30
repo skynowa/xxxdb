@@ -6,7 +6,7 @@
 
 #include "CSettings.h"
 
-#include "../QtLib/CUtils.h"
+#include <QtLib/CUtils.h>
 #include "../Classes/CIni.h"
 
 

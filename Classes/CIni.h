@@ -7,8 +7,8 @@
 #ifndef XXXDb_CIniH
 #define XXXDb_CIniH
 //-------------------------------------------------------------------------------------------------
-#include "../QtLib/Common.h"
-#include "../QtLib/CUtils.h"
+#include <QtLib/Common.h>
+#include <QtLib/CUtils.h>
 #include "CConfig.h"
 //-------------------------------------------------------------------------------------------------
 class CMain;
