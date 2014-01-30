@@ -20,6 +20,8 @@ Ui/
 Widgets/CDbImage/debug
 Widgets/CDbImage/release
 
+xLib_*/
+
 ##### files #####
 todo.txt
 *.pro.user
