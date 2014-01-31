@@ -52,8 +52,7 @@ CAbout::_initMain()
 
     // TODO: build info
     {
-        ui.tbAbout->appendPlainText( "\n" );
-        ui.tbAbout->appendPlainText( qCApp->buildInfo() );
+        ui.tbAbout->appendPlainText(qCApp->buildInfo() + "\n");
     }
 
     //  signals, slots
