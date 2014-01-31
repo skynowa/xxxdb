@@ -36,13 +36,13 @@ QMAKE_LFLAGS    += "-Wl,-rpath,\'\$$ORIGIN/Plugins\'"
 INCLUDEPATH     += . Widgets xLib/Include
 
 CONFIG(debug, debug | release) {
-    LIBS        += -L./Distr/Debug/Plugins -lCDbImagePlugin
+    LIBS        += -LDistr/Debug/Plugins -lCDbImagePlugin
 
     unix {
         LIBS    += -lX11 -ldl
     }
 } else {
-    LIBS        += -L./Distr/Release/Plugins -lCDbImagePlugin
+    LIBS        += -LDistr/Release/Plugins -lCDbImagePlugin
 
     unix {
         LIBS    += -lX11 -ldl
