@@ -40,7 +40,6 @@ CAbout::_construct()
 void
 CAbout::_destruct()
 {
-
 }
 //-------------------------------------------------------------------------------------------------
 void
@@ -50,9 +49,41 @@ CAbout::_initMain()
 
     ui.lblAppName->setText( qCApp->versionInfo() );
 
-    // TODO: build info
+    // build info
     {
-        ui.tbAbout->appendPlainText(qCApp->buildInfo() + "\n");
+        CxBuildInfo info;
+
+        cQString painText = QString(
+            tr(
+            "Build info:\n"
+            "Type: %1\n"
+            "Date time: %2\n"
+            "Language standart: %3\n"
+            "OS environment: %4\n"
+            "OS: %5\n"
+            "Architecture: %6\n"
+            "Compiler: %7\n"
+            "Character encoding: %8\n"
+            "LibC: %9\n"
+            "LibC++: %10\n"
+            "xLib: %11\n"
+            "Qt: %12\n"
+            "Binary type: %13\n")
+            .arg( info.isRelease() ? "Release" : "Debug" )
+            .arg( info.datetime().c_str() )
+            .arg( info.langStandart().c_str() )
+            .arg( info.osEnvironment().c_str() )
+            .arg( info.os().c_str() )
+            .arg( info.arch().c_str() )
+            .arg( info.compiler().c_str() )
+            .arg( info.isUnicodeEncoding() ? "Unicode" : "Ansi" )
+            .arg( info.stdLibC().c_str() )
+            .arg( info.stdLibCpp().c_str() )
+            .arg( info.xlibVersion().c_str() )
+            .arg( QT_VERSION_STR )
+            .arg( info.binaryType().c_str() ));
+
+        ui.tbAbout->appendPlainText(painText);
     }
 
     //  signals, slots

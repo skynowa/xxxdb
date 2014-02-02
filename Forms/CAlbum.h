@@ -11,6 +11,7 @@
 
 #include <QtLib/Common.h>
 #include <QtLib/CSqlNavigator.h>
+#include <xLib/xLib.h>
 #include "../Classes/CConfig.h"
 //-------------------------------------------------------------------------------------------------
 class CAlbum :

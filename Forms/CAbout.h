@@ -10,6 +10,7 @@
 #include "ui_CAbout.h"
 
 #include <QtLib/Common.h>
+#include <xLib/xLib.h>
 #include "../Classes/CConfig.h"
 #include "CMain.h"
 //-------------------------------------------------------------------------------------------------
