@@ -83,7 +83,7 @@ CAbout::_initMain()
             .arg( QT_VERSION_STR )
             .arg( info.binaryType().c_str() ));
 
-        ui.tbAbout->appendPlainText(painText);
+        ui.pteAbout->appendPlainText(painText);
     }
 
     //  signals, slots

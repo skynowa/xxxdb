@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>463</width>
-    <height>492</height>
+    <width>500</width>
+    <height>490</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -73,7 +73,7 @@
       </attribute>
       <layout class="QGridLayout" name="gridLayout_6">
        <item row="0" column="0">
-        <widget class="QPlainTextEdit" name="tbAbout">
+        <widget class="QPlainTextEdit" name="pteAbout">
          <property name="enabled">
           <bool>true</bool>
          </property>
@@ -97,7 +97,7 @@ Architecture: x86, x64
       </attribute>
       <layout class="QGridLayout" name="gridLayout_4">
        <item row="0" column="0">
-        <widget class="QPlainTextEdit" name="tbAuthors">
+        <widget class="QPlainTextEdit" name="pteAuthors">
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -120,7 +120,7 @@ Web: https://bitbucket.org/skynowa/xxxdb
       </attribute>
       <layout class="QGridLayout" name="gridLayout_3">
        <item row="0" column="0">
-        <widget class="QPlainTextEdit" name="tbThanks">
+        <widget class="QPlainTextEdit" name="pteThanks">
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -134,7 +134,7 @@ Web: https://bitbucket.org/skynowa/xxxdb
       </attribute>
       <layout class="QGridLayout" name="gridLayout_2">
        <item row="0" column="0">
-        <widget class="QPlainTextEdit" name="tbLicense">
+        <widget class="QPlainTextEdit" name="pteLicense">
          <property name="readOnly">
           <bool>true</bool>
          </property>
@@ -156,13 +156,44 @@ along with this program.  If not, see &lt;http://www.gnu.org/licenses/&gt;.</str
        </item>
       </layout>
      </widget>
+     <widget class="QWidget" name="tabReportBugs">
+      <attribute name="title">
+       <string>Report bugs</string>
+      </attribute>
+      <layout class="QGridLayout" name="gridLayout_7">
+       <item row="0" column="0">
+        <widget class="QTextEdit" name="textEdit">
+         <property name="readOnly">
+          <bool>true</bool>
+         </property>
+         <property name="html">
+          <string>&lt;!DOCTYPE HTML PUBLIC &quot;-//W3C//DTD HTML 4.0//EN&quot; &quot;http://www.w3.org/TR/REC-html40/strict.dtd&quot;&gt;
+&lt;html&gt;&lt;head&gt;&lt;meta name=&quot;qrichtext&quot; content=&quot;1&quot; /&gt;&lt;style type=&quot;text/css&quot;&gt;
+p, li { white-space: pre-wrap; }
+&lt;/style&gt;&lt;/head&gt;&lt;body style=&quot; font-family:'Sans Serif'; font-size:9pt; font-weight:400; font-style:normal;&quot;&gt;
+&lt;p style=&quot; margin-top:0px; margin-bottom:0px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Report bugs or wishes.&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;E-mail: &lt;a href=&quot;skynowa@gmail.com&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;skynowa@gmail.com&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Skype: &lt;a href=&quot;skype:skynowa777?chat&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;skynowa777&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Jabber: skynowa@jabber.ru&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;ICQ: 627713628&lt;/p&gt;
+&lt;p style=&quot; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;Web: &lt;a href=&quot;https://bitbucket.org/skynowa/xxxdb&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;https://bitbucket.org/skynowa/xxxdb&lt;/span&gt;&lt;/a&gt;, &lt;a href=&quot;http://code.google.com/p/xxxdb/issues/list&quot;&gt;&lt;span style=&quot; text-decoration: underline; color:#0000ff;&quot;&gt;http://code.google.com/p/xxxdb/issues/list&lt;/span&gt;&lt;/a&gt;&lt;/p&gt;
+&lt;p style=&quot;-qt-paragraph-type:empty; margin-top:12px; margin-bottom:12px; margin-left:0px; margin-right:0px; -qt-block-indent:0; text-indent:0px;&quot;&gt;&lt;br /&gt;&lt;/p&gt;&lt;/body&gt;&lt;/html&gt;</string>
+         </property>
+         <property name="textInteractionFlags">
+          <set>Qt::TextBrowserInteraction</set>
+         </property>
+        </widget>
+       </item>
+      </layout>
+     </widget>
      <widget class="QWidget" name="tabDonate">
       <attribute name="title">
        <string>Donate</string>
       </attribute>
       <layout class="QGridLayout" name="gridLayout_5">
        <item row="0" column="0">
-        <widget class="QPlainTextEdit" name="tbAuthors_2">
+        <widget class="QPlainTextEdit" name="pteDonate">
          <property name="readOnly">
           <bool>true</bool>
          </property>
