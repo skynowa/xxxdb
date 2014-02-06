@@ -6,8 +6,8 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1118</width>
-    <height>580</height>
+    <width>1104</width>
+    <height>547</height>
    </rect>
   </property>
   <property name="windowTitle">
@@ -18,89 +18,118 @@
     <normaloff>:/Main/Main/App.ico</normaloff>:/Main/Main/App.ico</iconset>
   </property>
   <widget class="QWidget" name="centralWidget">
-   <layout class="QGridLayout" name="gridLayout_4">
+   <layout class="QGridLayout" name="gridLayout_6">
     <item row="0" column="0">
      <widget class="QSplitter" name="splitter">
       <property name="orientation">
        <enum>Qt::Horizontal</enum>
       </property>
-      <widget class="QWidget" name="horizontalLayoutWidget">
-       <layout class="QGridLayout" name="gridLayout_2">
-        <item row="2" column="0" colspan="3">
-         <spacer name="verticalSpacer">
-          <property name="orientation">
-           <enum>Qt::Vertical</enum>
-          </property>
-          <property name="sizeHint" stdset="0">
-           <size>
-            <width>20</width>
-            <height>40</height>
-           </size>
-          </property>
-         </spacer>
-        </item>
-        <item row="1" column="0">
-         <widget class="QGroupBox" name="gbxPhotoAlbum">
-          <property name="minimumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <property name="maximumSize">
-           <size>
-            <width>0</width>
-            <height>40</height>
-           </size>
-          </property>
-          <layout class="QGridLayout" name="gridLayout">
-           <item row="0" column="0">
-            <widget class="QGroupBox" name="gbxShortInfo">
+      <widget class="QScrollArea" name="saSideBar">
+       <property name="minimumSize">
+        <size>
+         <width>326</width>
+         <height>0</height>
+        </size>
+       </property>
+       <property name="maximumSize">
+        <size>
+         <width>326</width>
+         <height>16777215</height>
+        </size>
+       </property>
+       <property name="widgetResizable">
+        <bool>true</bool>
+       </property>
+       <widget class="QWidget" name="scrollAreaWidgetContents">
+        <property name="geometry">
+         <rect>
+          <x>0</x>
+          <y>0</y>
+          <width>324</width>
+          <height>446</height>
+         </rect>
+        </property>
+        <layout class="QGridLayout" name="gridLayout_4">
+         <item row="0" column="0">
+          <layout class="QGridLayout" name="gridLayout_2">
+           <item row="1" column="0">
+            <widget class="QGroupBox" name="gbxPhotoAlbum">
              <property name="minimumSize">
               <size>
-               <width>300</width>
-               <height>0</height>
+               <width>0</width>
+               <height>40</height>
               </size>
              </property>
-             <property name="checkable">
-              <bool>false</bool>
+             <property name="maximumSize">
+              <size>
+               <width>0</width>
+               <height>40</height>
+              </size>
+             </property>
+             <layout class="QGridLayout" name="gridLayout">
+              <item row="0" column="0">
+               <widget class="QGroupBox" name="gbxShortInfo">
+                <property name="minimumSize">
+                 <size>
+                  <width>300</width>
+                  <height>0</height>
+                 </size>
+                </property>
+                <property name="checkable">
+                 <bool>false</bool>
+                </property>
+               </widget>
+              </item>
+             </layout>
+            </widget>
+           </item>
+           <item row="1" column="2">
+            <widget class="QToolButton" name="tbtnAlbum">
+             <property name="text">
+              <string>...</string>
              </property>
             </widget>
            </item>
+           <item row="0" column="0" colspan="3">
+            <widget class="CDbImage" name="dbPhoto">
+             <property name="minimumSize">
+              <size>
+               <width>300</width>
+               <height>200</height>
+              </size>
+             </property>
+             <property name="frameShape">
+              <enum>QFrame::Box</enum>
+             </property>
+             <property name="alignment">
+              <set>Qt::AlignCenter</set>
+             </property>
+            </widget>
+           </item>
+           <item row="1" column="1">
+            <widget class="QLabel" name="lblPhotoInfo">
+             <property name="text">
+              <string>-</string>
+             </property>
+            </widget>
+           </item>
+           <item row="2" column="0" colspan="3">
+            <spacer name="verticalSpacer">
+             <property name="orientation">
+              <enum>Qt::Vertical</enum>
+             </property>
+             <property name="sizeHint" stdset="0">
+              <size>
+               <width>20</width>
+               <height>40</height>
+              </size>
+             </property>
+            </spacer>
+           </item>
           </layout>
-         </widget>
-        </item>
-        <item row="1" column="2">
-         <widget class="QToolButton" name="tbtnAlbum">
-          <property name="text">
-           <string>...</string>
-          </property>
-         </widget>
-        </item>
-        <item row="0" column="0" colspan="3">
-         <widget class="CDbImage" name="dbPhoto">
-          <property name="minimumSize">
-           <size>
-            <width>300</width>
-            <height>200</height>
-           </size>
-          </property>
-          <property name="frameShape">
-           <enum>QFrame::Box</enum>
-          </property>
-          <property name="alignment">
-           <set>Qt::AlignCenter</set>
-          </property>
-         </widget>
-        </item>
-        <item row="1" column="1">
-         <widget class="QLabel" name="lblPhotoInfo">
-          <property name="text">
-           <string>-</string>
-          </property>
-         </widget>
-        </item>
-       </layout>
+         </item>
+        </layout>
+       </widget>
       </widget>
       <widget class="QTabWidget" name="tabInfo">
        <property name="currentIndex">
@@ -3170,7 +3199,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1118</width>
+     <width>1104</width>
      <height>20</height>
     </rect>
    </property>

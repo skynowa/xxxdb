@@ -782,13 +782,14 @@ CMain::actView_onQuickFindToolbar()
     ui.tbQuickFind->setVisible(bIsChecked);
 }
 //-------------------------------------------------------------------------------------------------
-void CMain::actView_onSidebar()
+void
+CMain::actView_onSidebar()
 {
     cbool bIsChecked = ui.actView_Sidebar->isChecked();
     if (bIsChecked) {
         ui.saSideBar->setFixedWidth(0);
     } else {
-        ui.saSideBar->setFixedWidth(320);
+        ui.saSideBar->setFixedWidth(SIDEBAR_WIDTH);
     }
 }
 //-------------------------------------------------------------------------------------------------

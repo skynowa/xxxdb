@@ -36,6 +36,8 @@
 #define LANGS_FILE_NAME_RU          "XXXDb_ru_RU.qm"
 #define TABLEVIEW_ROW_HEIGHT        20
 #define FIND_TEXT_WIDTH             180
+#define SIDEBAR_WIDTH               326
+
 
 /**************************************************************************************************
 *    DB tables, fields
