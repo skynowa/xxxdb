@@ -3208,7 +3208,7 @@
     </widget>
     <addaction name="actView_MainToolbar"/>
     <addaction name="actView_QuickFindToolbar"/>
-    <addaction name="actionShow_sidebar"/>
+    <addaction name="actView_Sidebar"/>
     <addaction name="actView_Columns"/>
     <addaction name="actView_Album"/>
     <addaction name="actView_Statusbar"/>
@@ -3550,20 +3550,12 @@
     <string>Esc</string>
    </property>
   </action>
-  <action name="actionShow_sidebar">
-   <property name="checkable">
-    <bool>true</bool>
-   </property>
-   <property name="text">
-    <string>Show sidebar</string>
-   </property>
-  </action>
   <action name="actView_Sidebar">
    <property name="checkable">
     <bool>true</bool>
    </property>
    <property name="text">
-    <string>Sidebar</string>
+    <string>Show sidebar</string>
    </property>
   </action>
  </widget>
