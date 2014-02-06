@@ -784,8 +784,12 @@ CMain::actView_onQuickFindToolbar()
 //-------------------------------------------------------------------------------------------------
 void CMain::actView_onSidebar()
 {
-    // cbool bIsChecked = ui.actView_Sidebar->isChecked();
-    // TODO: CMain::actView_onSidebar
+    cbool bIsChecked = ui.actView_Sidebar->isChecked();
+    if (bIsChecked) {
+        ui.saSideBar->setFixedWidth(0);
+    } else {
+        ui.saSideBar->setFixedWidth(320);
+    }
 }
 //-------------------------------------------------------------------------------------------------
 void
