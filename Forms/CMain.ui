@@ -6,7 +6,7 @@
    <rect>
     <x>0</x>
     <y>0</y>
-    <width>1104</width>
+    <width>1108</width>
     <height>547</height>
    </rect>
   </property>
@@ -3199,7 +3199,7 @@
     <rect>
      <x>0</x>
      <y>0</y>
-     <width>1104</width>
+     <width>1108</width>
      <height>20</height>
     </rect>
    </property>
@@ -3286,6 +3286,7 @@
    <addaction name="actEdit_Delete"/>
    <addaction name="actEdit_Edit"/>
    <addaction name="separator"/>
+   <addaction name="actView_Sidebar"/>
    <addaction name="actView_Album"/>
    <addaction name="actFind_Search"/>
    <addaction name="separator"/>
@@ -3582,6 +3583,10 @@
   <action name="actView_Sidebar">
    <property name="checkable">
     <bool>true</bool>
+   </property>
+   <property name="icon">
+    <iconset resource="../Resources/App.qrc">
+     <normaloff>:/Menu/Menu/Sidebar.png</normaloff>:/Menu/Menu/Sidebar.png</iconset>
    </property>
    <property name="text">
     <string>Show sidebar</string>

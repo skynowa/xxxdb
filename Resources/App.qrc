@@ -20,6 +20,7 @@
         <file>Menu/Search.png</file>
         <file>Menu/SetPrimaryImage.png</file>
         <file>Menu/TextClear.png</file>
+        <file>Menu/Sidebar.png</file>
     </qresource>
     <qresource prefix="/Main">
         <file>Main/App.ico</file>
