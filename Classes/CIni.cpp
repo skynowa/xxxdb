@@ -264,6 +264,20 @@ CIni::get(
             cQByteArray state = _iniApp->value("spliter/state", "").toByteArray();
 
             // apply
+            cQByteArray stateOn      = QByteArray::fromBase64(SIDEBAR_STATE_BASE64_ON);
+            cQByteArray stateOff     = QByteArray::fromBase64(SIDEBAR_STATE_BASE64_OFF);
+            cQByteArray stateCurrent = QByteArray::fromBase64( state.toBase64() );
+
+            if      (stateCurrent == stateOff) {
+                a_wnd->ui.actView_Sidebar->setChecked(true);
+            }
+            else if (stateCurrent == stateOn) {
+                a_wnd->ui.actView_Sidebar->setChecked(false);
+            }
+            else {
+                qTEST(false);
+            }
+
             a_wnd->ui.splitter->restoreState(state);
         }
 

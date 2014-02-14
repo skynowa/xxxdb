@@ -785,12 +785,26 @@ CMain::actView_onQuickFindToolbar()
 void
 CMain::actView_onSidebar()
 {
+#if 0
     cbool bIsChecked = ui.actView_Sidebar->isChecked();
     if (bIsChecked) {
         ui.saSideBar->setFixedWidth(0);
     } else {
         ui.saSideBar->setFixedWidth(SIDEBAR_WIDTH);
     }
+#else
+    cQByteArray stateOn      = QByteArray::fromBase64(SIDEBAR_STATE_BASE64_ON);
+    cQByteArray stateOff     = QByteArray::fromBase64(SIDEBAR_STATE_BASE64_OFF);
+    cQByteArray stateCurrent = QByteArray::fromBase64( ui.splitter->saveState().toBase64() );
+
+    if (stateCurrent == stateOff) {
+        ui.splitter->restoreState(stateOn);
+        ui.actView_Sidebar->setChecked(false);
+    } else {
+        ui.splitter->restoreState(stateOff);
+        ui.actView_Sidebar->setChecked(true);
+    }
+#endif
 }
 //-------------------------------------------------------------------------------------------------
 void

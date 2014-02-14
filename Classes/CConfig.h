@@ -37,6 +37,8 @@
 #define TABLEVIEW_ROW_HEIGHT        20
 #define FIND_TEXT_WIDTH             180
 #define SIDEBAR_WIDTH               326
+#define SIDEBAR_STATE_BASE64_ON     "AAAA/wAAAAEAAAACAAAAAAAABNkBAAAABgEAAAABAA=="
+#define SIDEBAR_STATE_BASE64_OFF    "AAAA/wAAAAEAAAACAAABRgAAA5MBAAAABgEAAAABAA=="
 
 
 /**************************************************************************************************
