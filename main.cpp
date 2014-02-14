@@ -23,12 +23,13 @@ int main(int argc, char *argv[])
     CApplication::windowActivate(APP_WINDOW_CLASS, APP_NAME);
 
     bool bRv = CApplication::isRunnig(APP_GUID);
-    qCHECK_RET(!bRv, EXIT_SUCCESS);
+    if (bRv) {
+        std::wcerr << "Application is already running." << std::endl;
+        return EXIT_SUCCESS;
+    }
 
-#if 0
     bRv = CApplication::selfCheck();
     qCHECK_RET(!bRv, EXIT_FAILURE);
-#endif
 
     CApplication::setOrganizationName(APP_ORG);
     CApplication::setApplicationName(APP_NAME);
@@ -46,8 +47,6 @@ int main(int argc, char *argv[])
                        << std::endl;
             return EXIT_FAILURE;
         }
-
-
 
         CMain wndMain(NULL, 0);
         wndMain.show();
