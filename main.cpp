@@ -28,8 +28,10 @@ int main(int argc, char *argv[])
         return EXIT_SUCCESS;
     }
 
+#if 1
     bRv = CApplication::selfCheck();
     qCHECK_RET(!bRv, EXIT_FAILURE);
+#endif
 
     CApplication::setOrganizationName(APP_ORG);
     CApplication::setApplicationName(APP_NAME);

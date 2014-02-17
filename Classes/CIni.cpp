@@ -261,7 +261,8 @@ CIni::get(
 
         // ui.splitter
         {
-            cQByteArray state = _iniApp->value("spliter/state", "").toByteArray();
+            cQByteArray state = _iniApp->value("spliter/state",
+                QByteArray::fromBase64(SIDEBAR_STATE_BASE64_ON)).toByteArray();
 
             // apply
             cQByteArray stateOn      = QByteArray::fromBase64(SIDEBAR_STATE_BASE64_ON);
