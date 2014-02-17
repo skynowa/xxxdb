@@ -3,28 +3,27 @@ Deploy notes
 
 Windows:
     Windows XP SP3
-    -
+    - Qt dir: D:/Libs/Qt/5.2.0_mingw_48_32
 
 Linux:
     Ubuntu 12.04 x64
     - sudo apt-get install mesa-common-dev libglu1-mesa-dev
+    - Qt dir: /opt/Libs/Qt/5.2.0_x64
 
 OSX:
-    -
-
+    - Qt dir: /opt/Libs/Qt/5.2.0_x64
 
 Translate by Qt Linguist:
     lupdate  ./XXXDb.pro
     linguist ./Resources/Langs/XXXDb_ru_RU.ts
     lrelease ./Resources/Langs/XXXDb_ru_RU.ts
 
-
 Unix libs:
-	sudo vim /etc/ld.so.conf
+    sudo vim /etc/ld.so.conf
 
-	/opt/Libs/Qt/5.1.0_x64/5.1.0/gcc_64/lib
-	/opt/Libs/Qt/5.1.0_x64/Tools/QtCreator/bin/designer
-
+    /opt/Libs/Qt/5.2.0_x64/5.2.0/gcc_64/lib
+    /opt/Libs/Qt/5.2.0_x64/Tools/QtCreator/bin/designer
 
 Pack:
     7z, zip
+
