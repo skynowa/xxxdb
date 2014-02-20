@@ -61,7 +61,7 @@ CIni::destruct()
 {
     _save();
 
-    qTEST(_iniApp != NULL);
+    qTEST_PTR(_iniApp);
     qPTR_DELETE(_iniApp);
 }
 //-------------------------------------------------------------------------------------------------
@@ -245,7 +245,7 @@ CIni::get(
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/table");
 
-        for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
+        for (int i = 0; i < a_wnd->_model->columnCount(); ++ i) {
             cbool isVisible = _iniApp->value(QString("column%1/visible").arg(i), true).toBool();
 
             // apply
@@ -312,7 +312,7 @@ CIni::set(
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/view");
 
-        cQString sLanguage = a_wnd->_sTranslatorLang;
+        cQString sLanguage = a_wnd->_translatorLang;
         _iniApp->setValue("language", sLanguage);
 
         _iniApp->endGroup();
@@ -345,7 +345,7 @@ CIni::set(
     {
         _iniApp->beginGroup(a_wnd->objectName() + "/table");
 
-        for (int i = 0; i < a_wnd->_tmModel->columnCount(); ++ i) {
+        for (int i = 0; i < a_wnd->_model->columnCount(); ++ i) {
             cbool isVisible = !a_wnd->ui.tvInfo->isColumnHidden(i);
 
             _iniApp->setValue(QString("column%1/visible").arg(i), isVisible);

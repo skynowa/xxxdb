@@ -28,7 +28,7 @@ protected:
     virtual void    changeEvent(QEvent *event);
 
 private:
-    QSqlTableModel *_tmModel;
+    QSqlTableModel *_model;
 
     void            _construct();
     void            _destruct();

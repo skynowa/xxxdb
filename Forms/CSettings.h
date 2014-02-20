@@ -37,8 +37,7 @@ private:
 
     // slots
     void          bbxButtons_onClicked(QAbstractButton *button);
-    void          twGroups_onCurrentItemChanged(QTreeWidgetItem *current,
-                      QTreeWidgetItem *previous);
+    void          twGroups_onCurrentItemChanged(QTreeWidgetItem *current, QTreeWidgetItem *previous);
 
     friend class CIni;
 };

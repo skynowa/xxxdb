@@ -23,7 +23,7 @@ class CMain :
 
 public:
     Ui::CMainClass     ui;
-    CSqlNavigator      snNavigator;
+    CSqlNavigator      navigator;
     CAlbum            *wndAlbum;
 
                        CMain(QWidget *parent, Qt::WindowFlags flags);
@@ -35,10 +35,10 @@ protected:
 
 private:
     // tab_1
-    QTranslator       *_trTranslator;
-    QString            _sTranslatorLang;
+    QTranslator       *_translator;
+    QString            _translatorLang;
     QSqlDatabase       _dbDatabase;
-    QSqlTableModel    *_tmModel;
+    QSqlTableModel    *_model;
     QDataWidgetMapper *_dbText; ///< one mapper for all DB text items
     db_items_t         _dbItemsDetail;
 

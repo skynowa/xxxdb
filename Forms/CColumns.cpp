@@ -20,7 +20,7 @@ CColumns::CColumns(
     QSqlTableModel *a_model
 ) :
     QDialog (a_parent),
-    _tmModel(a_model)
+    _model(a_model)
 {
     _construct();
 }
@@ -73,7 +73,7 @@ CColumns::_initMain()
         // set caption for DB fields
         CMain *wnd = static_cast<CMain *>(parent());
 
-        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
+        for (int i = 0; i < _model->columnCount(); ++ i) {
             cbool isVisible = !wnd->ui.tvInfo->isColumnHidden(i);
 
             QListWidgetItem *item = new QListWidgetItem(ui.lwItems);
@@ -101,7 +101,7 @@ CColumns::_saveAll()
 {
     CMain *wnd = static_cast<CMain *>(parent());
 
-    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
+    for (int i = 0; i < _model->columnCount(); ++ i) {
         cbool isVisible = (ui.lwItems->item(i)->checkState() == Qt::Checked) ? true : false;
 
         wnd->ui.tvInfo->setColumnHidden(i, !isVisible);

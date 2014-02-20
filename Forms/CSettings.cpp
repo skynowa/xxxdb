@@ -22,7 +22,7 @@ CSettings::CSettings(
     QDialog(a_parent)
 
 {
-    qTEST(NULL != a_parent);
+    qTEST_PTR(a_parent);
 
     _construct();
 }

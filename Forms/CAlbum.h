@@ -22,8 +22,7 @@ class CAlbum :
 public:
     Ui::CAlbum      ui;
 
-                    CAlbum(QWidget *parent, QSqlTableModel *tableModel,
-                        CSqlNavigator *sqlNavigator);
+                    CAlbum(QWidget *parent, QSqlTableModel *model, CSqlNavigator *navigator);
 
 protected:
     virtual void    showEvent(QShowEvent *event);
@@ -32,9 +31,9 @@ protected:
     virtual void    closeEvent(QCloseEvent *event);
 
 private:
-    QSqlTableModel *_tmModel;
-    CSqlNavigator  *_snSqlNavigator;
-    cint            _ciDbRecordIndex;
+    QSqlTableModel *_model;
+    CSqlNavigator  *_navigator;
+    cint            _dbRecordIndex;
     CDbImageCollection _dbItems;
     QPixmap         _pixPhoto;
 

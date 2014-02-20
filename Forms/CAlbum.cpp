@@ -18,19 +18,19 @@
 //-------------------------------------------------------------------------------------------------
 CAlbum::CAlbum(
     QWidget        *a_parent,
-    QSqlTableModel *a_tableModel,
-    CSqlNavigator  *a_sqlNavigator
+    QSqlTableModel *a_model,
+    CSqlNavigator  *a_navigator
 ) :
-    QMainWindow     (a_parent),
-    _tmModel        (a_tableModel),
-    _ciDbRecordIndex(a_sqlNavigator->view()->currentIndex().row()),
+    QMainWindow   (a_parent),
+    _model        (a_model),
+    _dbRecordIndex(a_navigator->view()->currentIndex().row()),
     _dbItems      (),
-    _pixPhoto       ()
+    _pixPhoto     ()
 {
-    qTEST(NULL != a_parent);
-    qTEST(NULL != a_tableModel);
-    qTEST(NULL != a_sqlNavigator);
-    qTEST(- 1  <  _ciDbRecordIndex);
+    qTEST_PTR(a_parent);
+    qTEST_PTR(a_model);
+    qTEST_PTR(a_navigator);
+    qTEST(- 1 < _dbRecordIndex);
 
     _construct();
 
@@ -51,18 +51,17 @@ CAlbum::showEvent(
     QShowEvent *a_event
 )
 {
-    qTEST(NULL != a_event);
+    qTEST_PTR(a_event);
     Q_UNUSED(a_event);
 
     // set primary image
     {
         // get primary image index
-        cint ciPrimaryIndex = _tmModel->record(_ciDbRecordIndex)
-                                    .value(DB_F_PHOTOS_PRIMARY).toInt();
+        cint primaryIndex = _model->record(_dbRecordIndex).value(DB_F_PHOTOS_PRIMARY).toInt();
 
         // set primary image index
         {
-            CDbImage *dbPhotoMini = _dbItems.find(ciPrimaryIndex);
+            CDbImage *dbPhotoMini = _dbItems.find(primaryIndex);
 
             photoMini_onClicked(dbPhotoMini);
         }
@@ -75,17 +74,15 @@ CAlbum::resizeEvent(
     QResizeEvent *a_event
 )
 {
-    qTEST(NULL != a_event);
+    qTEST_PTR(a_event);
     Q_UNUSED(a_event);
 
     // ui.dbPhoto
     if (!_pixPhoto.isNull()) {
-        QSize szScaled = _pixPhoto.size();
-        szScaled.scale(ui.dbPhoto->geometry(), Qt::KeepAspectRatio);
+        QSize scaled = _pixPhoto.size();
+        scaled.scale(ui.dbPhoto->geometry(), Qt::KeepAspectRatio);
 
-        if (NULL     == ui.dbPhoto->pixmap() ||
-            szScaled != ui.dbPhoto->pixmap()->size())
-        {
+        if (ui.dbPhoto->pixmap() == NULL || scaled != ui.dbPhoto->pixmap()->size()) {
             _photoUpdate();
         }
     }
@@ -145,7 +142,8 @@ CAlbum::_destruct()
 }
 //-------------------------------------------------------------------------------------------------
 void
-CAlbum::_initMain() {
+CAlbum::_initMain()
+{
     ui.setupUi(this);
 
     // main
@@ -154,19 +152,20 @@ CAlbum::_initMain() {
     }
 
     // ui.dbPhoto
-    ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 1, _ciDbRecordIndex,
-                          PHOTO_SIZE);
+    ui.dbPhoto->construct(this, _model, DB_F_PHOTOS_1, 1, _dbRecordIndex, PHOTO_SIZE);
     ui.dbPhoto->setMinimumSize(PHOTO_MINI_SIZE);
+
     connect(ui.dbPhoto, &CDbImage::sig_pressed,
             this,       &CAlbum::photo_onLoop);
 
     // _dbItems
     {
-        struct SDbPhotoMini {
+        struct DbPhotoMini
+        {
             CDbImage *dbPhoto;
             cQString  field;
         };
-        typedef const SDbPhotoMini cdb_photo_mini_t;
+        typedef const DbPhotoMini cdb_photo_mini_t;
 
         cdb_photo_mini_t dbPhotoMinis[PHOTO_NUM] = {
             { ui.dbPhoto_1,  DB_F_PHOTOS_1  },
@@ -190,9 +189,10 @@ CAlbum::_initMain() {
         _dbItems.get().reserve(PHOTO_NUM);
 
         for (size_t i = 0; i < PHOTO_NUM; ++ i) {
-            dbPhotoMinis[i].dbPhoto->construct(this, _tmModel,
-                dbPhotoMinis[i].field, i, _ciDbRecordIndex, PHOTO_MINI_SIZE);
+            dbPhotoMinis[i].dbPhoto->construct(this, _model, dbPhotoMinis[i].field, i,
+                _dbRecordIndex, PHOTO_MINI_SIZE);
             dbPhotoMinis[i].dbPhoto->setFixedSize(PHOTO_MINI_SIZE);
+
             connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_dataChanged,
                     this,                    &CAlbum::photoMini_onUpdate);
             connect(dbPhotoMinis[i].dbPhoto, &CDbImage::sig_pressed,
@@ -245,12 +245,8 @@ CAlbum::_photoUpdate()
 {
     qTEST(!_pixPhoto.isNull());
 
-    cQSize  cszSize   = QSize(ui.dbPhoto->width()  - PHOTO_MARGIN,
-                              ui.dbPhoto->height() - PHOTO_MARGIN);
-    QPixmap pixScaled = _pixPhoto.scaled(
-                              cszSize,
-                              Qt::KeepAspectRatio,
-                              Qt::FastTransformation);
+    cQSize  size      = QSize(ui.dbPhoto->width() - PHOTO_MARGIN, ui.dbPhoto->height() - PHOTO_MARGIN);
+    QPixmap pixScaled = _pixPhoto.scaled(size, Qt::KeepAspectRatio, Qt::FastTransformation);
 
     ui.dbPhoto->setPixmap(pixScaled);
 }
@@ -325,14 +321,11 @@ CAlbum::actEdit_onLast()
 void
 CAlbum::actEdit_onGoTo()
 {
-    cint ciMinValue   = 1;
-    cint ciMaxValue   = _dbItems.get().size();
+    cint minValue     = 1;
+    cint maxValue     = _dbItems.get().size();
 
-    cint currentIndex = QInputDialog::getInt(
-                                this,
-                                APP_NAME, tr("Go to photo:"),
-                                _dbItems.currentIndex + 1,
-                                ciMinValue, ciMaxValue) - 1;
+    cint currentIndex = QInputDialog::getInt(this, APP_NAME, tr("Go to photo:"),
+        _dbItems.currentIndex + 1, minValue, maxValue) - 1;
 
     photoMini_onUpdate(currentIndex);
 }
@@ -359,10 +352,10 @@ void
 CAlbum::actEdit_onSetPrimary()
 {
     // write to DB
-    QSqlRecord srRecord = _tmModel->record(_ciDbRecordIndex);
-    srRecord.setValue(DB_F_PHOTOS_PRIMARY, _dbItems.currentIndex);
+    QSqlRecord record = _model->record(_dbRecordIndex);
+    record.setValue(DB_F_PHOTOS_PRIMARY, _dbItems.currentIndex);
 
-    _tmModel->setRecord(_ciDbRecordIndex, srRecord);
+    _model->setRecord(_dbRecordIndex, record);
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -410,7 +403,7 @@ CAlbum::photoMini_onClicked(
     QObject *a_sender
 )
 {
-    qTEST(NULL != a_sender);
+    qTEST_PTR(a_sender);
 
     const QCursor cursorDefault = cursor();
     setCursor(Qt::BusyCursor);
@@ -435,13 +428,12 @@ CAlbum::photoMini_onClicked(
 
     // ui.dbPhoto
     {
-        cQByteArray baPhoto = _tmModel->record(_ciDbRecordIndex)
-            .value( dbPhoto->dbFieldName() ).toByteArray();
+        cQByteArray photo = _model->record(_dbRecordIndex).value(dbPhoto->dbFieldName()).toByteArray();
 
-        if (baPhoto.isEmpty()) {
+        if (photo.isEmpty()) {
             ui.dbPhoto->setTextDefault();
         } else {
-            bool bRv = _pixPhoto.loadFromData(baPhoto);
+            bool bRv = _pixPhoto.loadFromData(photo);
             qTEST(bRv);
 
             _photoUpdate();

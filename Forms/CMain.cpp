@@ -25,17 +25,17 @@ CMain::CMain(
     QWidget         *a_parent,
     Qt::WindowFlags  a_flags
 ) :
-    QMainWindow     (a_parent, a_flags),
-    snNavigator     (this),
-    wndAlbum        (NULL),
-    _trTranslator   (NULL),
-    _sTranslatorLang(),
-    _dbDatabase     (),
-    _tmModel        (NULL),
-    _dbText         (NULL),
-    _dbItemsDetail  (),
-    _cboFindText    (NULL),
-    _cboDbFields    (NULL)
+    QMainWindow    (a_parent, a_flags),
+    navigator      (this),
+    wndAlbum       (NULL),
+    _translator    (NULL),
+    _translatorLang(),
+    _dbDatabase    (),
+    _model         (NULL),
+    _dbText        (NULL),
+    _dbItemsDetail (),
+    _cboFindText   (NULL),
+    _cboDbFields   (NULL)
 {
     _construct();
 
@@ -45,7 +45,7 @@ CMain::CMain(
         CIni::get(this);
     }
 
-    snNavigator.last();
+    navigator.last();
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -119,10 +119,10 @@ CMain::_construct()
 void
 CMain::_destruct()
 {
-    // _trTranslator
+    // _translator
     {
-        CApplication::removeTranslator(_trTranslator);
-        qPTR_DELETE(_trTranslator);
+        CApplication::removeTranslator(_translator);
+        qPTR_DELETE(_translator);
     }
 
     // CIni
@@ -135,9 +135,9 @@ CMain::_destruct()
 void
 CMain::_initMain()
 {
-    // _trTranslator - call first
+    // _translator - call first
     {
-        _trTranslator = new QTranslator(this);
+        _translator = new QTranslator(this);
     }
 
     ui.setupUi(this);
@@ -170,7 +170,7 @@ CMain::_initMain()
         _cboDbFields = new QComboBox(this);
         _cboDbFields->setMaxVisibleItems( _cboDbFields->maxVisibleItems() * 2 );
 
-        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
+        for (int i = 0; i < _model->columnCount(); ++ i) {
             qCHECK_DO(CConfig::dbRecords[i].isNonUi, continue);
 
             _cboDbFields->addItem(CConfig::dbRecords[i].caption);
@@ -185,7 +185,7 @@ CMain::_initMain()
     //--------------------------------------------------
     // ui.tvInfo
     {
-        ui.tvInfo->setModel(_tmModel);
+        ui.tvInfo->setModel(_model);
         ui.tvInfo->verticalHeader()->setVisible(true);
         ui.tvInfo->verticalHeader()->setDefaultSectionSize(TABLEVIEW_ROW_HEIGHT);
         ui.tvInfo->setEditTriggers(QAbstractItemView::NoEditTriggers);
@@ -200,22 +200,22 @@ CMain::_initMain()
     }
 
     //--------------------------------------------------
-    // snNavigator
+    // navigator
     {
-        snNavigator.construct(_tmModel, ui.tvInfo);
+        navigator.construct(_model, ui.tvInfo);
     }
 
     //--------------------------------------------------
     // ui.dbPhoto
     {
-        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
+        cint ciDbRecordIndex = navigator.view()->currentIndex().row();
 
-        ui.dbPhoto->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+        ui.dbPhoto->construct(this, _model, DB_F_PHOTOS_1, 0,
             ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo);
         //// ui.dbPhoto->setFixedSize(PHOTO_SIZE);
         ui.dbPhoto->setBackgroundRole(QPalette::Base);
 
-        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
+        connect(navigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
                 ui.dbPhoto->mapper(), &QDataWidgetMapper::setCurrentModelIndex);
         connect(ui.dbPhoto, &CDbImage::sig_doubleClicked,
                 this,       &CMain::actView_onAlbum);
@@ -224,12 +224,12 @@ CMain::_initMain()
     //--------------------------------------------------
     // slots
     {
-        connect(_tmModel,             &QSqlTableModel::beforeInsert,
+        connect(_model,             &QSqlTableModel::beforeInsert,
                 this,                 &CMain::model_onBeforeInsert);
-        connect(_tmModel,             &QSqlTableModel::beforeUpdate,
+        connect(_model,             &QSqlTableModel::beforeUpdate,
                 this,                 &CMain::model_onBeforeUpdate);
 
-        connect(snNavigator.view(),   &QTableView::doubleClicked,
+        connect(navigator.view(),   &QTableView::doubleClicked,
                 this,                 &CMain::actEdit_onEdit);
         connect(ui.tbtnAlbum,         &QToolButton::clicked,
                 this,                 &CMain::actView_onAlbum);
@@ -341,13 +341,13 @@ CMain::_initInfoDetail()
         {
             // _dbText
             _dbText = new QDataWidgetMapper(this);
-            _dbText->setModel(_tmModel);
+            _dbText->setModel(_model);
             _dbText->setSubmitPolicy(QDataWidgetMapper::AutoSubmit);
 
             // map
             Q_FOREACH (QWidget *key, _dbItemsDetail.keys()) {
                 QWidget *widget  = key;
-                cint     section = _tmModel->fieldIndex(_dbItemsDetail.value(key));
+                cint     section = _model->fieldIndex(_dbItemsDetail.value(key));
 
                 _dbText->addMapping(widget, section);
             }
@@ -359,14 +359,14 @@ CMain::_initInfoDetail()
 
     // ui.dbPhotoDetail
     {
-        cint ciDbRecordIndex = snNavigator.view()->currentIndex().row();
+        cint ciDbRecordIndex = navigator.view()->currentIndex().row();
 
-        ui.dbPhotoDetail->construct(this, _tmModel, DB_F_PHOTOS_1, 0,
+        ui.dbPhotoDetail->construct(this, _model, DB_F_PHOTOS_1, 0,
             ciDbRecordIndex, PHOTO_SIZE, ui.lblPhotoInfo_2);
         //// ui.dbPhotoDetail->setFixedSize(PHOTO_SIZE);
         ui.dbPhotoDetail->setBackgroundRole(QPalette::Base);
 
-        connect(snNavigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
+        connect(navigator.view()->selectionModel(), &QItemSelectionModel::currentRowChanged,
                 ui.dbPhotoDetail->mapper(),           &QDataWidgetMapper::setCurrentModelIndex);
         connect(ui.dbPhotoDetail, &CDbImage::sig_doubleClicked,
                 this,             &CMain::actView_onAlbum);
@@ -509,23 +509,23 @@ CMain::_initModel()
     }
 
     //--------------------------------------------------
-    // _tmModel
+    // _model
     {
-        _tmModel = new QSqlTableModel(this, _dbDatabase);
-        _tmModel->setTable(DB_T_PERSON);
+        _model = new QSqlTableModel(this, _dbDatabase);
+        _model->setTable(DB_T_PERSON);
 
         // set caption for DB fields
-        for (int i = 0; i < _tmModel->columnCount(); ++ i) {
-            _tmModel->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
+        for (int i = 0; i < _model->columnCount(); ++ i) {
+            _model->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
                 CConfig::dbRecords[i].caption);
         }
 
-        _tmModel->setEditStrategy(QSqlTableModel::OnFieldChange);
-        bool bRv = _tmModel->select();
+        _model->setEditStrategy(QSqlTableModel::OnFieldChange);
+        bool bRv = _model->select();
         qTEST(bRv);
     }
 
-    qTEST((int)qARRAY_LENGTH(CConfig::dbRecords) == _tmModel->columnCount());
+    qTEST((int)qARRAY_LENGTH(CConfig::dbRecords) == _model->columnCount());
 }
 //-------------------------------------------------------------------------------------------------
 void
@@ -615,13 +615,13 @@ void
 CMain::_retranslateUi()
 {
     // ui.tvInfo
-    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
-        _tmModel->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
+    for (int i = 0; i < _model->columnCount(); ++ i) {
+        _model->setHeaderData(CConfig::dbRecords[i].index, Qt::Horizontal,
             qApp->translate("CConfig", CConfig::dbRecords[i].caption));
     }
 
     // _cboDbFields
-    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
+    for (int i = 0; i < _model->columnCount(); ++ i) {
         _cboDbFields->setItemText(i,
             qApp->translate("CConfig", CConfig::dbRecords[i].caption));
     }
@@ -658,50 +658,46 @@ CMain::actFile_onMinimize()
 void
 CMain::actEdit_onFirst()
 {
-    snNavigator.first();
+    navigator.first();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actEdit_onPrior()
 {
-    snNavigator.prior();
+    navigator.prior();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actEdit_onNext()
 {
-    snNavigator.next();
+    navigator.next();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actEdit_onLast()
 {
-    snNavigator.last();
+    navigator.last();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actEdit_onGoTo()
 {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(navigator.view()->currentIndex().row() < 0, return);
 
-    cint ciCurrentRow = snNavigator.view()->currentIndex().row() + 1;
-    cint ciMinValue   = 1;
-    cint ciMaxValue   = CUtils::sqlTableModelRowCount(_tmModel);
+    cint currentRow = navigator.view()->currentIndex().row() + 1;
+    cint minValue   = 1;
+    cint maxValue   = CUtils::sqlTableModelRowCount(_model);
 
-    cint ciTargetRow  = QInputDialog::getInt(
-                            this,
-                            APP_NAME,
-                            tr("Go to row (total %1 rows):").arg(ciMaxValue),
-                            ciCurrentRow,
-                            ciMinValue, ciMaxValue) - 1;
+    cint targetRow  = QInputDialog::getInt(this, APP_NAME,
+        tr("Go to row (total %1 rows):").arg(maxValue), currentRow, minValue, maxValue) - 1;
 
-    snNavigator.goTo(ciTargetRow);
+    navigator.goTo(targetRow);
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actEdit_onInsert()
 {
-    snNavigator.insert();
+    navigator.insert();
 
     actEdit_onEdit();
 }
@@ -709,7 +705,7 @@ CMain::actEdit_onInsert()
 void
 CMain::actEdit_onRemove()
 {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(navigator.view()->currentIndex().row() < 0, return);
 
     QMessageBox msgBox;
 
@@ -722,7 +718,7 @@ CMain::actEdit_onRemove()
     cint ciRv = msgBox.exec();
     switch (ciRv) {
         case QMessageBox::Yes:
-            snNavigator.remove();
+            navigator.remove();
             break;
         case QMessageBox::Cancel:
         default:
@@ -733,7 +729,7 @@ CMain::actEdit_onRemove()
 void
 CMain::actEdit_onEdit()
 {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(navigator.view()->currentIndex().row() < 0, return);
 
     ui.tabInfo->setCurrentWidget(ui.tabInfoDetail);
 }
@@ -769,25 +765,25 @@ CMain::actFind_onTextClear()
 void
 CMain::actView_onMainToolbar()
 {
-    cbool bIsChecked = ui.actView_MainToolbar->isChecked();
+    cbool isChecked = ui.actView_MainToolbar->isChecked();
 
-    ui.tbMain->setVisible(bIsChecked);
+    ui.tbMain->setVisible(isChecked);
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actView_onQuickFindToolbar()
 {
-    cbool bIsChecked = ui.actView_QuickFindToolbar->isChecked();
+    cbool isChecked = ui.actView_QuickFindToolbar->isChecked();
 
-    ui.tbQuickFind->setVisible(bIsChecked);
+    ui.tbQuickFind->setVisible(isChecked);
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actView_onSidebar()
 {
 #if 0
-    cbool bIsChecked = ui.actView_Sidebar->isChecked();
-    if (bIsChecked) {
+    cbool isChecked = ui.actView_Sidebar->isChecked();
+    if (isChecked) {
         ui.saSideBar->setFixedWidth(0);
     } else {
         ui.saSideBar->setFixedWidth(SIDEBAR_WIDTH);
@@ -810,7 +806,7 @@ CMain::actView_onSidebar()
 void
 CMain::actView_onColumns()
 {
-    CColumns dlgColumns(this, _tmModel);
+    CColumns dlgColumns(this, _model);
 
     (int)dlgColumns.exec();
 }
@@ -818,37 +814,37 @@ CMain::actView_onColumns()
 void
 CMain::actView_onAlbum()
 {
-    qCHECK_DO(snNavigator.view()->currentIndex().row() < 0, return);
+    qCHECK_DO(navigator.view()->currentIndex().row() < 0, return);
 
     qPTR_DELETE(wndAlbum);
 
-    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
+    wndAlbum = new CAlbum(this, _model, &navigator);
     wndAlbum->show();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actView_onStatusbar()
 {
-    cbool bIsChecked = ui.actView_Statusbar->isChecked();
+    cbool isChecked = ui.actView_Statusbar->isChecked();
 
-    ui.sbInfo->setVisible(bIsChecked);
+    ui.sbInfo->setVisible(isChecked);
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actView_onLanguageEn()
 {
-    (bool)CApplication::removeTranslator(_trTranslator);
-    _sTranslatorLang.clear();
+    (bool)CApplication::removeTranslator(_translator);
+    _translatorLang.clear();
 }
 //-------------------------------------------------------------------------------------------------
 void
 CMain::actView_onLanguageRu()
 {
-    bool bRv = _trTranslator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
+    bool bRv = _translator->load(LANGS_FILE_NAME_RU, CApplication::langsDirPath());
     qTEST(bRv);
-    _sTranslatorLang = LANGS_FILE_NAME_RU;
+    _translatorLang = LANGS_FILE_NAME_RU;
 
-    (bool)CApplication::installTranslator(_trTranslator);
+    (bool)CApplication::installTranslator(_translator);
 }
 //-------------------------------------------------------------------------------------------------
 
@@ -905,7 +901,7 @@ CMain::onQuickFind(
     // get DB field by caption
     QString dbField;
 
-    for (int i = 0; i < _tmModel->columnCount(); ++ i) {
+    for (int i = 0; i < _model->columnCount(); ++ i) {
         if (_cboDbFields->currentText() ==
             qApp->translate("CConfig", CConfig::dbRecords[i].caption)
         )
@@ -920,7 +916,7 @@ CMain::onQuickFind(
     CUtils::db_fields_t dbFields;
     dbFields.push_back( QPair<QString, QString>(dbField, a_arg) );
 
-    CUtils::dbFilter(_tmModel, DB_T_PERSON, dbFields, "", "", "");
+    CUtils::dbFilter(_model, DB_T_PERSON, dbFields, "", "", "");
 }
 //-------------------------------------------------------------------------------------------------
 void
@@ -944,7 +940,7 @@ CMain::onAlbum()
 {
     qPTR_DELETE(wndAlbum);
 
-    wndAlbum = new CAlbum(this, _tmModel, &snNavigator);
+    wndAlbum = new CAlbum(this, _model, &navigator);
     wndAlbum->show();
 }
 //-------------------------------------------------------------------------------------------------
