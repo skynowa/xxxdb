@@ -18,7 +18,7 @@ int main(int argc, char *argv[])
     xCHECK_MSG_RET(info.isUserAdmin(), xT(APP_NAME) xT(": Can't run as root"), EXIT_FAILURE);
 #endif
 
-    int iExitCode = EXIT_FAILURE;
+    int exitCode = EXIT_FAILURE;
 
     CApplication::windowActivate(APP_WINDOW_CLASS, APP_NAME);
 
@@ -39,13 +39,13 @@ int main(int argc, char *argv[])
 
     // start application
     {
-        CApplication apApp(argc, argv);
-        apApp.addLibraryPath( apApp.applicationDirPath() + "/" + APP_PLUGINS_DIR_NAME);
+        CApplication app(argc, argv);
+        app.addLibraryPath( app.applicationDirPath() + "/" + APP_PLUGINS_DIR_NAME);
 
-        bRv = QDir( apApp.dbFilePath() ).isReadable();
+        bRv = QDir( app.dbFilePath() ).isReadable();
         if (!bRv) {
             std::wcerr << "Missing database file: "
-                       << apApp.dbFilePath().toStdWString()
+                       << app.dbFilePath().toStdWString()
                        << std::endl;
             return EXIT_FAILURE;
         }
@@ -53,9 +53,9 @@ int main(int argc, char *argv[])
         CMain wndMain(NULL, 0);
         wndMain.show();
 
-        iExitCode = apApp.exec();
+        exitCode = app.exec();
     }
 
-    return iExitCode;
+    return exitCode;
 }
 //-------------------------------------------------------------------------------------------------
